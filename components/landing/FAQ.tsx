@@ -29,12 +29,12 @@ const faqs = [
 
 export function FAQ() {
   return (
-    <section id="faq" className="relative overflow-hidden border-y border-border py-24" style={{ background: "#F5F0E8" }}>
+    <section id="faq" className="relative overflow-hidden border-y border-border bg-bg-surface py-24">
       <div className="bg-noise pointer-events-none absolute inset-0 opacity-40" />
       <div className="container relative mx-auto max-w-3xl px-6">
         <div className="text-center">
           <p className="font-mono text-xs uppercase tracking-[0.3em] text-primary">/ FAQ</p>
-          <h2 className="mt-4 text-4xl font-bold tracking-tight md:text-5xl">
+          <h2 className="mt-4 text-4xl font-bold tracking-tight text-text-primary md:text-5xl">
             Answers before you ask
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-muted-foreground">

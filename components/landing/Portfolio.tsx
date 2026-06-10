@@ -41,20 +41,20 @@ const dotMap = {
 
 export function Portfolio() {
   return (
-    <section id="work" className="dark relative overflow-hidden py-24 text-foreground md:py-32" style={{ background: "#05050A" }}>
+    <section id="work" className="dark relative overflow-hidden bg-bg-base py-24 text-foreground md:py-32">
       <img src={portfolioBg} alt="" aria-hidden="true" className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-25" />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#05050A]/90 via-[#05050A]/75 to-[#05050A]/95" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-bg-base/90 via-bg-base/75 to-bg-base/95" />
       <div className="bg-neon-grid pointer-events-none absolute inset-0 opacity-40 [mask-image:radial-gradient(ellipse_at_center,black,transparent_80%)]" />
       <div className="pointer-events-none absolute left-1/2 top-1/4 h-[480px] w-[480px] -translate-x-1/2 animate-orb rounded-full bg-secondary/20 blur-3xl" />
       <div className="container relative mx-auto max-w-7xl px-6">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="font-mono text-xs uppercase tracking-[0.3em] text-[#00E5FF]">/ Selected work</p>
+            <p className="font-mono text-xs uppercase tracking-[0.3em] text-amber-base">/ Selected work</p>
             <h2 className="mt-4 max-w-2xl text-4xl font-bold tracking-tight text-white md:text-5xl">
               Protocols and products shipped to <span className="text-gradient">production</span>
             </h2>
           </div>
-          <a href="#contact" className="inline-flex items-center gap-2 font-mono text-sm font-semibold text-[#00E5FF]">
+          <a href="#contact" className="inline-flex items-center gap-2 font-mono text-sm font-semibold text-amber-base">
             See more case studies <ArrowUpRight className="h-4 w-4" />
           </a>
         </div>
@@ -77,7 +77,7 @@ export function Portfolio() {
                 {p.metrics.map((m) => (
                   <div key={m.k}>
                     <dt className="font-mono text-[10px] uppercase tracking-widest text-white/55">{m.k}</dt>
-                    <dd className="mt-1 text-lg font-bold text-white">{m.v}</dd>
+                    <dd className="mt-1 text-lg font-bold text-amber-base">{m.v}</dd>
                   </div>
                 ))}
               </dl>

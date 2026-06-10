@@ -177,7 +177,7 @@ export function WhatsAppFAB() {
       {showDot && (
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute right-1 top-1 h-2.5 w-2.5 rounded-full bg-[#EF4444] ring-2 ring-[#050B18]"
+          className="pointer-events-none absolute right-1 top-1 h-2.5 w-2.5 rounded-full bg-[#EF4444] ring-2 ring-bg-base"
         />
       )}
 
@@ -185,7 +185,7 @@ export function WhatsAppFAB() {
       {!shownExpanded && (
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute right-full mr-3 hidden translate-x-1 rounded-md bg-[#1E293B] px-2.5 py-1.5 text-xs font-medium text-white opacity-0 transition-all duration-150 group-hover:translate-x-0 group-hover:opacity-100 md:block"
+          className="pointer-events-none absolute right-full mr-3 hidden translate-x-1 rounded-md bg-bg-elevated px-2.5 py-1.5 text-xs font-medium text-white opacity-0 transition-all duration-150 group-hover:translate-x-0 group-hover:opacity-100 md:block"
         >
           Chat with us →
         </span>

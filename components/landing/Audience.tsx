@@ -10,14 +10,14 @@ const audiences = [
 
 export function Audience() {
   return (
-    <section className="dark relative overflow-hidden py-24 text-foreground md:py-32" style={{ background: "#05050A" }}>
+    <section className="dark relative overflow-hidden bg-bg-base py-24 text-foreground md:py-32">
       <div className="bg-neon-grid pointer-events-none absolute inset-0 opacity-30 [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
       <div className="pointer-events-none absolute -left-32 top-10 h-[420px] w-[420px] animate-orb rounded-full bg-primary/20 blur-3xl" />
       <div className="pointer-events-none absolute -right-32 bottom-10 h-[420px] w-[420px] animate-orb rounded-full bg-secondary/20 blur-3xl" style={{ animationDelay: "-5s" }} />
 
       <div className="container relative mx-auto max-w-7xl px-6">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="font-mono text-xs uppercase tracking-[0.3em] text-[#00E5FF]">/ Who we serve</p>
+          <p className="font-mono text-xs uppercase tracking-[0.3em] text-amber-base">/ Who we serve</p>
           <h2 className="mt-4 text-4xl font-bold tracking-tight text-white md:text-5xl">
             Built for the teams shaping <span className="text-gradient">Web3</span>
           </h2>
@@ -32,7 +32,7 @@ export function Audience() {
                 style={{ animation: `fade-in 0.6s ${idx * 0.08}s ease-out both` }}
               >
                 <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-primary/20 opacity-0 blur-3xl transition-opacity group-hover:opacity-100" />
-                <span className="grid h-11 w-11 place-items-center rounded-xl bg-primary/20 text-[#00E5FF]">
+                <span className="grid h-11 w-11 place-items-center rounded-xl bg-amber-glow text-amber-base">
                   <a.icon className="h-5 w-5" />
                 </span>
                 <h3 className="mt-5 text-lg font-semibold text-white">{a.title}</h3>

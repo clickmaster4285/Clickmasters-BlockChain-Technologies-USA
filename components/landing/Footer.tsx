@@ -2,9 +2,9 @@ import { Hexagon } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="dark relative overflow-hidden border-t border-white/10 text-foreground" style={{ background: "#111827" }}>
+    <footer className="dark relative overflow-hidden border-t border-white/10 bg-bg-elevated text-foreground">
       <div className="bg-dots-light pointer-events-none absolute inset-0 opacity-40" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px" style={{ background: "linear-gradient(90deg,transparent,#0052FF,#7C3AED,transparent)" }} />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-amber-base to-transparent" />
       <div className="container relative mx-auto max-w-7xl px-6 py-14">
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
@@ -12,7 +12,7 @@ export function Footer() {
               <span className="grid h-8 w-8 place-items-center rounded-lg bg-primary/10 text-primary">
                 <Hexagon className="h-4 w-4" />
               </span>
-              <span className="font-display text-sm font-bold tracking-tight">CLICKMASTERS</span>
+              <span className="font-display text-sm font-bold tracking-tight text-text-primary">CLICKMASTERS</span>
             </div>
             <p className="mt-4 max-w-sm text-sm text-muted-foreground">
               Blockchain &amp; Web3 development company. Engineering decentralized infrastructure for founders, protocols and enterprises.

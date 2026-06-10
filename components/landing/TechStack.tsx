@@ -14,7 +14,7 @@ const categories: Category[] = [
   {
     label: "Mobile",
     icon: Smartphone,
-    accent: "#2563EB",
+    accent: "#F59E0B",
     items: [
       { name: "React Native", slug: "react", color: "61DAFB" },
       { name: "Flutter", slug: "flutter", color: "02569B" },
@@ -26,7 +26,7 @@ const categories: Category[] = [
   {
     label: "Blockchain",
     icon: Link2,
-    accent: "#7C3AED",
+    accent: "#FCD34D",
     items: [
       { name: "Solidity", slug: "solidity", color: "363636" },
       { name: "Ethereum", slug: "ethereum", color: "3C3C3D" },
@@ -39,7 +39,7 @@ const categories: Category[] = [
   {
     label: "Backend",
     icon: Server,
-    accent: "#06B6D4",
+    accent: "#94A3B8",
     items: [
       { name: "Node.js", slug: "nodedotjs", color: "5FA04E" },
       { name: "NestJS", slug: "nestjs", color: "E0234E" },
@@ -52,7 +52,7 @@ const categories: Category[] = [
   {
     label: "Cloud & DevOps",
     icon: Cloud,
-    accent: "#EC4899",
+    accent: "#CBD5E1",
     items: [
       { name: "AWS", slug: "amazonwebservices", color: "FF9900" },
       { name: "Docker", slug: "docker", color: "2496ED" },
@@ -85,26 +85,25 @@ export function TechStack() {
   return (
     <section
       id="tech-stack"
-      className="dark relative overflow-hidden border-y border-white/5 py-24 md:py-32 text-foreground"
-      style={{ background: "#050B18" }}
+      className="dark relative overflow-hidden border-y border-white/5 bg-bg-elevated py-24 text-foreground md:py-32"
     >
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 80% 50% at 50% 50%, rgba(37,99,235,0.06), transparent 70%)",
+            "radial-gradient(ellipse 80% 50% at 50% 50%, rgba(245,158,11,0.06), transparent 70%)",
         }}
       />
 
       <div className="container relative mx-auto max-w-7xl px-6">
         {/* Header */}
         <div className="mx-auto max-w-2xl text-center">
-          <p className="font-mono text-xs uppercase tracking-[0.2em] text-[#06B6D4]">Under the Hood</p>
+          <p className="font-mono text-xs uppercase tracking-[0.2em] text-amber-base">Under the Hood</p>
           <h2 className="mt-4 font-bold tracking-tight text-white" style={{ fontSize: "clamp(2.25rem, 4vw, 3.5rem)", lineHeight: 1.05 }}>
             Battle-Tested <span className="text-gradient">Stack.</span>
           </h2>
-          <p className="mt-5 text-base text-[#94A3B8] md:text-lg">
+          <p className="mt-5 text-base text-silver-base md:text-lg">
             Every tool chosen for performance, security, and scale.
           </p>
         </div>
@@ -120,17 +119,10 @@ export function TechStack() {
                 style={{ animation: `tech-in 0.6s ${ci * 0.1}s ease-out both` }}
               >
                 <div
-                  className="inline-flex w-fit items-center gap-2 rounded-full border px-4 py-2"
-                  style={{
-                    background: "rgba(37,99,235,0.12)",
-                    borderColor: "rgba(37,99,235,0.3)",
-                  }}
+                  className="inline-flex w-fit items-center gap-2 rounded-full border border-amber-border bg-amber-glow px-4 py-2"
                 >
                   <Icon className="h-3.5 w-3.5" style={{ color: cat.accent }} />
-                  <span
-                    className="text-[11px] font-bold uppercase tracking-[0.18em]"
-                    style={{ color: "#93C5FD" }}
-                  >
+                  <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-silver-light">
                     {cat.label}
                   </span>
                 </div>
@@ -138,20 +130,9 @@ export function TechStack() {
                   {cat.items.map((item, ii) => (
                     <li
                       key={item.name}
-                      className="group flex items-center gap-3 rounded-xl border px-3.5 py-2.5 text-sm transition-all hover:-translate-y-0.5"
+                      className="group flex items-center gap-3 rounded-xl border border-white/5 bg-white/[0.02] px-3.5 py-2.5 text-sm text-silver-bright transition-all hover:-translate-y-0.5 hover:border-amber-border hover:bg-amber-glow"
                       style={{
-                        background: "rgba(255,255,255,0.02)",
-                        borderColor: "rgba(255,255,255,0.06)",
-                        color: "#E2E8F0",
                         animation: `tech-in 0.4s ${ci * 0.1 + ii * 0.04}s ease-out both`,
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.borderColor = "rgba(6,182,212,0.4)";
-                        e.currentTarget.style.background = "rgba(6,182,212,0.06)";
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.borderColor = "rgba(255,255,255,0.06)";
-                        e.currentTarget.style.background = "rgba(255,255,255,0.02)";
                       }}
                     >
                       <span
@@ -185,8 +166,8 @@ export function TechStack() {
 
         {/* Trust line */}
         <div className="mt-12 flex items-center justify-center gap-2 text-center">
-          <ShieldCheck className="h-4 w-4" style={{ color: "#06B6D4" }} />
-          <p className="text-sm font-medium text-[#64748B]">
+          <ShieldCheck className="h-4 w-4 text-amber-base" />
+          <p className="text-sm font-medium text-silver-mid">
             All blockchain code undergoes third-party security audits before deployment.
           </p>
         </div>
@@ -194,7 +175,8 @@ export function TechStack() {
 
       <style>{`
         @keyframes tech-in { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
-        @media (prefers-reduced-motion: reduce) { #tech-stack * { animation: none !important; transition: none !important; } }
+        @media (prefers-reduced-motion: reduce) { #tech-stack * { animation: none !important; transition: none !important; }
+        }
       `}</style>
     </section>
   );
@@ -218,9 +200,9 @@ function Marquee({ items, reverse }: { items: string[]; reverse: boolean }) {
         {doubled.map((t, i) => (
           <span
             key={i}
-            className="text-xs font-semibold uppercase tracking-[0.1em] text-[#334155]"
+            className="text-xs font-semibold uppercase tracking-[0.1em] text-silver-dim"
           >
-            {t} <span className="ml-8 text-[#1E293B]">·</span>
+            {t} <span className="ml-8 text-silver-dim/50">·</span>
           </span>
         ))}
       </div>

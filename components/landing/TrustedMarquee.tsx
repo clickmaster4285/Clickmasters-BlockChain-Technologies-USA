@@ -51,7 +51,7 @@ function LogoStrip({ logos, direction }: { logos: typeof row1; direction: "left"
 
 export function TrustedMarquee() {
   return (
-    <section className="relative overflow-hidden border-y border-border py-12" style={{ background: "#F5F0E8" }}>
+    <section className="relative overflow-hidden border-y border-border bg-bg-surface py-12">
       <div className="bg-noise pointer-events-none absolute inset-0 opacity-50" />
       <div className="container relative mx-auto max-w-7xl px-6">
         <p className="mb-8 text-center font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground">

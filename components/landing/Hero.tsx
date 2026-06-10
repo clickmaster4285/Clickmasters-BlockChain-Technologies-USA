@@ -18,7 +18,7 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="dark relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-28 text-foreground bg-[#05050A]"
+      className="dark relative overflow-hidden bg-bg-base pt-32 pb-20 text-foreground md:pt-40 md:pb-28"
     >
       <VideoWithFallback
         src={heroVideo}
@@ -28,7 +28,7 @@ export function Hero() {
         ariaLabel="Animated blockchain grid background"
       />
       {/* Readability scrim — stronger on mobile */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#0A0A0F]/80 via-[#05050A]/70 to-[#05050A] md:from-[#0A0A0F]/70 md:via-[#05050A]/60" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-bg-base/80 via-bg-base/70 to-bg-base md:from-bg-base/70 md:via-bg-base/60" />
       <div className="bg-neon-grid pointer-events-none absolute inset-0 opacity-30 [mask-image:radial-gradient(ellipse_at_top,black,transparent_75%)] hidden md:block" />
       <div className="pointer-events-none absolute -top-32 left-1/4 h-[420px] w-[420px] animate-orb rounded-full bg-primary/30 blur-3xl" />
       <div className="pointer-events-none absolute top-40 right-10 h-[380px] w-[380px] animate-orb rounded-full bg-secondary/25 blur-3xl" style={{ animationDelay: "-6s" }} />
@@ -43,7 +43,7 @@ export function Hero() {
           </h1>
           <p className="mt-6 max-w-xl text-lg text-white/70 md:text-xl">
             We engineer secure smart contracts, scalable DApps and Web3 infrastructure for{" "}
-            <span key={i} className="inline-block animate-fade-in font-semibold text-white" style={{ background: "linear-gradient(90deg,#00E5FF,#7C3AED)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+            <span key={i} className="inline-block animate-fade-in font-semibold text-amber-base">
               {ROTATING[i]}
             </span>
             .
@@ -66,7 +66,7 @@ export function Hero() {
           </div>
           <div className="mt-10 flex flex-wrap gap-6 text-sm text-white/60">
             <div className="flex items-center gap-2">
-              <Star className="h-4 w-4 text-[#F59E0B] fill-[#F59E0B]" />
+              <Star className="h-4 w-4 text-amber-base fill-amber-base" />
               <span><span className="font-semibold text-white">4.9</span> on Clutch</span>
             </div>
             <div className="flex items-center gap-2">
@@ -74,14 +74,14 @@ export function Hero() {
               <span><span className="font-semibold text-white">50+</span> Smart Contracts</span>
             </div>
             <div className="flex items-center gap-2">
-              <TrendingUp className="h-4 w-4 text-[#00E5FF]" />
+              <TrendingUp className="h-4 w-4 text-amber-light" />
               <span><span className="font-semibold text-white">$100M+</span> Secured</span>
             </div>
           </div>
         </div>
         <div className="relative">
           {/* Layered cinematic right-panel composition */}
-          <div className="relative aspect-square w-full overflow-hidden rounded-3xl border border-white/10 bg-[#050B18] shadow-soft md:min-h-[560px]">
+          <div className="relative aspect-square w-full overflow-hidden rounded-3xl border border-white/10 bg-bg-elevated shadow-soft md:min-h-[560px]">
             {/* Layer 0: blockchain grid video (atmosphere) */}
             <VideoWithFallback
               src={heroVideo}
@@ -111,32 +111,25 @@ export function Hero() {
             {/* Layer 2: pulsing radial glow for depth */}
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full animate-float-slow"
-              style={{
-                background:
-                  "radial-gradient(circle, rgba(37,99,235,0.28) 0%, rgba(124,58,237,0.12) 40%, transparent 70%)",
-              }}
+              className="pointer-events-none absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-amber-glow animate-float-slow"
             />
 
             {/* Layer 3: left-edge fade into the text column (desktop only) */}
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute inset-y-0 left-0 hidden w-2/5 md:block"
-              style={{ background: "linear-gradient(90deg, #050B18, transparent)" }}
+              className="pointer-events-none absolute inset-y-0 left-0 hidden w-2/5 bg-gradient-to-r from-bg-elevated to-transparent md:block"
             />
 
             {/* Layer 4: bottom fade */}
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3"
-              style={{ background: "linear-gradient(180deg, transparent, #050B18)" }}
+              className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-bg-elevated to-transparent"
             />
 
             {/* Mobile readability scrim */}
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute inset-0 md:hidden"
-              style={{ background: "rgba(5,11,24,0.5)" }}
+              className="pointer-events-none absolute inset-0 bg-bg-elevated/50 md:hidden"
             />
 
             <BlockchainNetwork className="absolute inset-0 h-full w-full mix-blend-screen opacity-40" />

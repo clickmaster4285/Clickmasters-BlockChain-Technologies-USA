@@ -5,7 +5,7 @@ const awards = [
     year: "2024",
     icon: "🏆",
     gradient: "linear-gradient(135deg, rgba(249,115,22,0.18), rgba(245,158,11,0.18))",
-    border: "rgba(249,115,22,0.35)",
+    border: "rgba(245,158,11,0.35)",
     accent: "#F59E0B",
   },
   {
@@ -13,9 +13,9 @@ const awards = [
     body: "Web3 Awards",
     year: "2024",
     icon: "⛓️",
-    gradient: "linear-gradient(135deg, rgba(59,130,246,0.18), rgba(6,182,212,0.18))",
-    border: "rgba(59,130,246,0.35)",
-    accent: "#06B6D4",
+    gradient: "linear-gradient(135deg, rgba(245,158,11,0.12), rgba(253,224,71,0.12))",
+    border: "rgba(245,158,11,0.30)",
+    accent: "#FCD34D",
   },
   {
     title: "Most Secure Smart Contract",
@@ -31,15 +31,15 @@ const awards = [
     body: "ProductHunt",
     year: "2023",
     icon: "🚀",
-    gradient: "linear-gradient(135deg, rgba(139,92,246,0.18), rgba(168,85,247,0.18))",
-    border: "rgba(139,92,246,0.35)",
-    accent: "#A855F7",
+    gradient: "linear-gradient(135deg, rgba(148,163,184,0.18), rgba(203,213,225,0.18))",
+    border: "rgba(148,163,184,0.35)",
+    accent: "#CBD5E1",
   },
 ];
 
 export function Awards() {
   return (
-    <section className="dark relative overflow-hidden py-24 text-foreground" style={{ background: "#0D1117" }}>
+    <section className="dark relative overflow-hidden bg-bg-elevated py-24 text-foreground">
       <div className="pointer-events-none absolute inset-0">
         {Array.from({ length: 30 }).map((_, i) => (
           <span
@@ -55,7 +55,7 @@ export function Awards() {
       </div>
       <div className="container relative mx-auto max-w-7xl px-6">
         <div className="text-center">
-          <p className="font-mono text-xs uppercase tracking-[0.3em] text-[#00E5FF]">/ Recognition</p>
+          <p className="font-mono text-xs uppercase tracking-[0.3em] text-amber-base">/ Recognition</p>
           <h2 className="mt-4 text-3xl font-bold tracking-tight text-white md:text-4xl">
             Awarded by the people who set the bar
           </h2>

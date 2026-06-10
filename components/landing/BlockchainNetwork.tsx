@@ -54,8 +54,8 @@ export function BlockchainNetwork({ density = 0.00012, className = "" }: { densi
           if (d < maxDist) {
             const alpha = 1 - d / maxDist;
             const grad = ctx.createLinearGradient(nodes[i].x, nodes[i].y, nodes[j].x, nodes[j].y);
-            grad.addColorStop(0, `rgba(0, 82, 255, ${alpha * 0.35})`);
-            grad.addColorStop(1, `rgba(124, 58, 237, ${alpha * 0.35})`);
+            grad.addColorStop(0, `rgba(245, 158, 11, ${alpha * 0.35})`);
+            grad.addColorStop(1, `rgba(203, 213, 225, ${alpha * 0.35})`);
             ctx.strokeStyle = grad;
             ctx.lineWidth = 1;
             ctx.beginPath();
@@ -67,7 +67,7 @@ export function BlockchainNetwork({ density = 0.00012, className = "" }: { densi
       }
 
       for (const n of nodes) {
-        ctx.fillStyle = "rgba(0, 82, 255, 0.85)";
+        ctx.fillStyle = "rgba(245, 158, 11, 0.85)";
         ctx.beginPath();
         ctx.arc(n.x, n.y, 2.4, 0, Math.PI * 2);
         ctx.fill();

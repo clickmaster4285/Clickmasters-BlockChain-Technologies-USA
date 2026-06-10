@@ -5,7 +5,7 @@ const ctaPoster = "/media/cta-bg.png";
 
 export function FinalCTA() {
   return (
-    <section id="contact" className="dark relative overflow-hidden py-24 text-foreground md:py-32" style={{ background: "linear-gradient(135deg,#0052FF 0%,#7C3AED 100%)" }}>
+    <section id="contact" className="dark relative overflow-hidden bg-gradient-to-br from-amber-dim via-amber-base to-amber-light py-24 text-foreground md:py-32">
       <VideoWithFallback
         src={ctaVideo}
         fallbackImage={ctaPoster}
@@ -16,7 +16,7 @@ export function FinalCTA() {
         blendClassName="mix-blend-screen"
         ariaLabel="Wallet connection pulse"
       />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[#0052FF]/60 via-transparent to-[#7C3AED]/70" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-amber-dim/60 via-transparent to-amber-base/70" />
       <div className="bg-grid pointer-events-none absolute inset-0 opacity-20" />
       <div className="pointer-events-none absolute inset-0">
         {Array.from({ length: 18 }).map((_, i) => (
@@ -35,7 +35,7 @@ export function FinalCTA() {
         <p className="font-serif text-4xl italic text-white/80 md:text-5xl" style={{ fontFamily: "'Instrument Serif', Georgia, serif" }}>
           build the future on-chain
         </p>
-        <h2 className="mt-3 text-4xl font-bold tracking-tight text-white md:text-6xl">
+        <h2 className="mt-3 text-4xl font-bold tracking-tight text-bg-base md:text-6xl">
           LET'S BUILD YOUR BLOCKCHAIN PROJECT
         </h2>
         <p className="mx-auto mt-5 max-w-2xl text-lg text-white/80">
@@ -44,7 +44,7 @@ export function FinalCTA() {
         <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
           <a
             href="mailto:sale@clickmastersblockchaindevelopmentcompany.com"
-            className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-primary shadow-glow transition-transform hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-amber-base shadow-glow transition-transform hover:-translate-y-0.5"
           >
             <Mail className="h-4 w-4" /> Email us
           </a>

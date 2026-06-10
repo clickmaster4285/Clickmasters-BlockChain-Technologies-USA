@@ -46,7 +46,6 @@ export function Process() {
     const onScroll = () => {
       const rect = el.getBoundingClientRect();
       const vh = window.innerHeight;
-      // 0 when top of section hits middle of viewport; 1 when bottom hits middle
       const total = rect.height + vh;
       const passed = Math.min(Math.max(vh - rect.top, 0), total);
       setProgress(Math.min(1, passed / total));
@@ -60,28 +59,22 @@ export function Process() {
     <section
       id="process"
       ref={sectionRef}
-      className="dark relative overflow-hidden py-24 md:py-32 text-foreground"
-      style={{
-        background:
-          "linear-gradient(180deg, #050B18 0%, #020810 50%, #050B18 100%)",
-      }}
+      className="dark relative overflow-hidden bg-bg-elevated py-24 text-foreground md:py-32"
     >
       {/* star field */}
       <div className="pointer-events-none absolute inset-0 opacity-50">
         <StarField />
       </div>
-      <div className="pointer-events-none absolute -left-32 top-1/4 h-[400px] w-[400px] rounded-full opacity-30 blur-3xl"
-        style={{ background: "rgba(37,99,235,0.4)" }} />
-      <div className="pointer-events-none absolute -right-32 bottom-1/4 h-[400px] w-[400px] rounded-full opacity-25 blur-3xl"
-        style={{ background: "rgba(124,58,237,0.4)" }} />
+      <div className="pointer-events-none absolute -left-32 top-1/4 h-[400px] w-[400px] rounded-full bg-amber-glow opacity-30 blur-3xl" />
+      <div className="pointer-events-none absolute -right-32 bottom-1/4 h-[400px] w-[400px] rounded-full bg-amber-glow opacity-25 blur-3xl" />
 
       <div className="container relative mx-auto max-w-6xl px-6">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="font-mono text-xs uppercase tracking-[0.2em] text-[#06B6D4]">Our Process</p>
+          <p className="font-mono text-xs uppercase tracking-[0.2em] text-amber-base">Our Process</p>
           <h2 className="mt-4 font-bold tracking-tight text-white" style={{ fontSize: "clamp(2.5rem, 5vw, 3.75rem)", lineHeight: 1.05 }}>
             Your App's Journey to the <span className="text-gradient">Stars.</span>
           </h2>
-          <p className="mt-5 text-base text-[#94A3B8] md:text-lg">
+          <p className="mt-5 text-base text-silver-base md:text-lg">
             From first call to App Store launch — a proven 5-phase mission.
           </p>
         </div>
@@ -91,14 +84,11 @@ export function Process() {
           {/* Spine (desktop: centered, mobile: left) */}
           <div
             aria-hidden="true"
-            className="absolute top-0 left-6 h-full w-[2px] -translate-x-1/2 overflow-hidden md:left-1/2"
-            style={{ background: "rgba(255,255,255,0.06)" }}
+            className="absolute top-0 left-6 h-full w-[2px] -translate-x-1/2 overflow-hidden md:left-1/2 bg-white/[0.06]"
           >
             <div
-              className="origin-top w-full"
+              className="origin-top h-full w-full bg-gradient-to-b from-amber-base via-amber-light to-silver-light"
               style={{
-                height: "100%",
-                background: "linear-gradient(180deg, #2563EB, #7C3AED, #06B6D4)",
                 transform: `scaleY(${progress})`,
                 transformOrigin: "top",
                 transition: "transform 100ms linear",
@@ -122,10 +112,9 @@ export function Process() {
                       className="absolute left-6 top-6 -translate-x-1/2 md:left-1/2 md:top-1/2 md:-translate-y-1/2"
                     >
                       <span
-                        className="block h-3 w-3 rounded-full"
+                        className="block h-3 w-3 rounded-full bg-amber-base"
                         style={{
-                          background: "#06B6D4",
-                          boxShadow: "0 0 0 4px rgba(6,182,212,0.2), 0 0 20px rgba(6,182,212,0.6)",
+                          boxShadow: "0 0 0 4px rgba(245,158,11,0.2), 0 0 20px rgba(245,158,11,0.6)",
                         }}
                       />
                     </span>
@@ -138,28 +127,20 @@ export function Process() {
                     }}
                   >
                     <article
-                      className="relative overflow-hidden rounded-3xl border p-7 backdrop-blur md:p-8"
-                      style={{
-                        background: "rgba(255,255,255,0.03)",
-                        borderColor: "rgba(255,255,255,0.08)",
-                      }}
+                      className="relative overflow-hidden rounded-3xl border border-white/5 bg-white/[0.03] p-7 backdrop-blur md:p-8"
                     >
                       {/* ghosted step number */}
                       <span
                         aria-hidden="true"
-                        className="pointer-events-none absolute -right-2 -top-6 font-bold leading-none text-white"
-                        style={{ fontSize: "8rem", opacity: 0.04 }}
+                        className="pointer-events-none absolute -right-2 -top-6 font-bold leading-none text-white/[0.04]"
+                        style={{ fontSize: "8rem" }}
                       >
                         0{i + 1}
                       </span>
 
                       <div
-                        className="grid h-12 w-12 place-items-center rounded-2xl"
-                        style={{
-                          background: "rgba(6,182,212,0.1)",
-                          color: "#06B6D4",
-                          border: "1px solid rgba(6,182,212,0.25)",
-                        }}
+                        className="grid h-12 w-12 place-items-center rounded-2xl bg-amber-glow text-amber-base"
+                        style={{ border: "1px solid rgba(245,158,11,0.25)" }}
                       >
                         <Icon className="h-5 w-5" />
                       </div>
@@ -167,16 +148,11 @@ export function Process() {
                       <h3 className="mt-4 text-xl font-bold tracking-tight text-white md:text-2xl">
                         {s.title}
                       </h3>
-                      <p className="mt-2 text-sm leading-relaxed text-[#94A3B8] md:text-[0.9375rem]">
+                      <p className="mt-2 text-sm leading-relaxed text-silver-base md:text-[0.9375rem]">
                         {s.desc}
                       </p>
                       <span
-                        className="mt-4 inline-block rounded-full px-3 py-1 text-xs font-medium"
-                        style={{
-                          background: "rgba(37,99,235,0.12)",
-                          color: "#93C5FD",
-                          border: "1px solid rgba(37,99,235,0.3)",
-                        }}
+                        className="mt-4 inline-block rounded-full border border-amber-border bg-amber-glow px-3 py-1 text-xs font-medium text-silver-light"
                       >
                         {s.duration}
                       </span>
@@ -198,9 +174,8 @@ export function Process() {
 }
 
 function StarField() {
-  // Deterministic pseudo-random dots
   const dots = Array.from({ length: 80 }, (_, i) => {
-    const x = ((i * 9301 + 49297) % 233280) / 2332.8; // 0..100
+    const x = ((i * 9301 + 49297) % 233280) / 2332.8;
     const y = ((i * 1597 + 51749) % 233280) / 2332.8;
     const s = 0.5 + ((i * 7) % 15) / 10;
     const o = 0.2 + ((i * 13) % 60) / 100;

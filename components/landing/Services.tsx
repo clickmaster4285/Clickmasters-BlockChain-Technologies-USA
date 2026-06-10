@@ -24,15 +24,15 @@ export function Services() {
     e.currentTarget.style.transform = "";
   }
   return (
-    <section id="services" className="dark relative overflow-hidden py-24 text-foreground md:py-32" style={{ background: "#0D1117" }}>
+    <section id="services" className="dark relative overflow-hidden bg-bg-elevated py-24 text-foreground md:py-32">
       <img src={servicesBg} alt="" aria-hidden="true" className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-20" />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#0D1117]/80 via-[#0D1117]/70 to-[#0D1117]/90" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-bg-elevated/80 via-bg-elevated/70 to-bg-elevated/90" />
       <div className="bg-hex pointer-events-none absolute inset-0 opacity-50" />
       <div className="pointer-events-none absolute -left-32 top-1/3 h-96 w-96 animate-orb rounded-full bg-primary/20 blur-3xl" />
       <div className="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 animate-orb rounded-full bg-secondary/20 blur-3xl" style={{ animationDelay: "-7s" }} />
       <div className="container relative mx-auto max-w-7xl px-6">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="font-mono text-xs uppercase tracking-[0.3em] text-[#00E5FF]">/ Services</p>
+          <p className="font-mono text-xs uppercase tracking-[0.3em] text-amber-base">/ Services</p>
           <h2 className="mt-4 text-4xl font-bold tracking-tight text-white md:text-5xl">
             Full-spectrum <span className="text-gradient">blockchain engineering</span>
           </h2>
@@ -65,7 +65,7 @@ export function Services() {
                 </div>
                 <a
                   href="#contact"
-                  className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-[#00E5FF] opacity-0 transition-opacity group-hover:opacity-100"
+                  className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-amber-base opacity-0 transition-opacity group-hover:opacity-100"
                 >
                   Discuss project <ArrowUpRight className="h-4 w-4" />
                 </a>
