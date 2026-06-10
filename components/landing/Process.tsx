@@ -65,8 +65,8 @@ export function Process() {
       <div className="pointer-events-none absolute inset-0 opacity-50">
         <StarField />
       </div>
-      <div className="pointer-events-none absolute -left-32 top-1/4 h-[400px] w-[400px] rounded-full bg-amber-glow opacity-30 blur-3xl" />
-      <div className="pointer-events-none absolute -right-32 bottom-1/4 h-[400px] w-[400px] rounded-full bg-amber-glow opacity-25 blur-3xl" />
+      <div className="pointer-events-none absolute -left-32 top-1/4 h-100 w-100 rounded-full bg-amber-glow opacity-30 blur-3xl" />
+      <div className="pointer-events-none absolute -right-32 bottom-1/4 h-100 w-100 rounded-full bg-amber-glow opacity-25 blur-3xl" />
 
       <div className="container relative mx-auto max-w-6xl px-6">
         <div className="mx-auto max-w-2xl text-center">
@@ -84,7 +84,7 @@ export function Process() {
           {/* Spine (desktop: centered, mobile: left) */}
           <div
             aria-hidden="true"
-            className="absolute top-0 left-6 h-full w-[2px] -translate-x-1/2 overflow-hidden md:left-1/2 bg-white/[0.06]"
+            className="absolute top-0 left-6 h-full w-0.5 -translate-x-1/2 overflow-hidden md:left-1/2 bg-white/6"
           >
             <div
               className="origin-top h-full w-full bg-linear-to-b from-amber-base via-amber-light to-silver-light"
@@ -127,12 +127,12 @@ export function Process() {
                     }}
                   >
                     <article
-                      className="relative overflow-hidden rounded-3xl border border-white/5 bg-white/[0.03] p-7 backdrop-blur md:p-8"
+                      className="relative overflow-hidden rounded-3xl border border-white/5 bg-white/3 p-7 backdrop-blur md:p-8"
                     >
                       {/* ghosted step number */}
                       <span
                         aria-hidden="true"
-                        className="pointer-events-none absolute -right-2 -top-6 font-bold leading-none text-white/[0.04]"
+                        className="pointer-events-none absolute -right-2 -top-6 font-bold leading-none text-white/4"
                         style={{ fontSize: "8rem" }}
                       >
                         0{i + 1}

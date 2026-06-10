@@ -31,9 +31,9 @@ export function Hero() {
       />
       {/* Readability scrim — stronger on mobile */}
       <div className="pointer-events-none absolute inset-0 bg-linear-to-b from-bg-base/80 via-bg-base/70 to-bg-base md:from-bg-base/70 md:via-bg-base/60" />
-      <div className="bg-neon-grid pointer-events-none absolute inset-0 opacity-30 [mask-image:radial-gradient(ellipse_at_top,black,transparent_75%)] hidden md:block" />
-      <div className="pointer-events-none absolute -top-32 left-1/4 h-[420px] w-[420px] animate-orb rounded-full bg-primary/30 blur-3xl" />
-      <div className="pointer-events-none absolute top-40 right-10 h-[380px] w-[380px] animate-orb rounded-full bg-secondary/25 blur-3xl" style={{ animationDelay: "-6s" }} />
+      <div className="bg-neon-grid pointer-events-none absolute inset-0 opacity-90 mask-[radial-gradient(ellipse_at_top,black,transparent_75%)] hidden md:block" />
+      <div className="pointer-events-none absolute -top-32 left-1/4 h-105 w-105 animate-orb rounded-full bg-primary/30 blur-3xl" />
+      <div className="pointer-events-none absolute top-40 right-10 h-95 w-95 animate-orb rounded-full bg-secondary/25 blur-3xl" style={{ animationDelay: "-6s" }} />
       <div className="container mx-auto grid max-w-[85vw] gap-12 px-6 md:grid-cols-[1.1fr_1fr] md:items-center">
         <div>
           <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono text-xs text-white/70 backdrop-blur">
@@ -64,7 +64,7 @@ export function Hero() {
             >
               Audit Smart Contract
               <ArrowRight className="h-4 w-4" />
-            </Link>
+            </Link>                                                             
           </div>
           <div className="mt-10 flex flex-wrap gap-6 text-sm text-white/60">
             <div className="flex items-center gap-2">
@@ -83,7 +83,7 @@ export function Hero() {
         </div>
         <div className="relative">
           {/* Layered cinematic right-panel composition */}
-          <div className="relative aspect-square w-full overflow-hidden rounded-3xl border border-white/10 bg-bg-elevated shadow-soft md:min-h-[560px]">
+          <div className="relative aspect-square w-full overflow-hidden rounded-3xl border border-white/10 bg-bg-elevated shadow-soft md:min-h-140">
             {/* Layer 0: blockchain grid video (atmosphere) */}
             <VideoWithFallback
               src={heroVideo}
@@ -114,7 +114,7 @@ export function Hero() {
             {/* Layer 2: pulsing radial glow for depth */}
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-amber-glow animate-float-slow"
+              className="pointer-events-none absolute left-1/2 top-1/2 h-150 w-150 -translate-x-1/2 -translate-y-1/2 rounded-full bg-amber-glow animate-float-slow"
             />
 
             {/* Layer 3: left-edge fade into the text column (desktop only) */}

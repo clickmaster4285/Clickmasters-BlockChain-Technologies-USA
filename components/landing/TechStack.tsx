@@ -130,7 +130,7 @@ export function TechStack() {
                   {cat.items.map((item, ii) => (
                     <li
                       key={item.name}
-                      className="group flex items-center gap-3 rounded-xl border border-white/5 bg-white/[0.02] px-3.5 py-2.5 text-sm text-silver-bright transition-all hover:-translate-y-0.5 hover:border-amber-border hover:bg-amber-glow"
+                      className="group flex items-center gap-3 rounded-xl border border-white/5 bg-white/2 px-3.5 py-2.5 text-sm text-silver-bright transition-all hover:-translate-y-0.5 hover:border-amber-border hover:bg-amber-glow"
                       style={{
                         animation: `tech-in 0.4s ${ci * 0.1 + ii * 0.04}s ease-out both`,
                       }}
@@ -200,7 +200,7 @@ function Marquee({ items, reverse }: { items: string[]; reverse: boolean }) {
         {doubled.map((t, i) => (
           <span
             key={i}
-            className="text-xs font-semibold uppercase tracking-[0.1em] text-silver-dim"
+            className="text-xs font-semibold uppercase tracking-widest text-silver-dim"
           >
             {t} <span className="ml-8 text-silver-dim/50">·</span>
           </span>

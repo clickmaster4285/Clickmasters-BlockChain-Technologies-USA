@@ -26,7 +26,7 @@ function LogoStrip({ logos, direction }: { logos: typeof row1; direction: "left"
   const items = [...logos, ...logos];
   return (
     <div className="group relative overflow-hidden">
-      <div className={`flex w-max gap-16 ${direction === "left" ? "animate-marquee-left" : "animate-marquee-right"} [animation-play-state:running] group-hover:[animation-play-state:paused]`}>
+      <div className={`flex w-max gap-16 ${direction === "left" ? "animate-marquee-left" : "animate-marquee-right"} running group-hover:paused`}>
         {items.map((logo, i) => (
           <div key={`${logo.slug}-${i}`} className="flex h-12 w-32 shrink-0 items-center justify-center">
             <Image

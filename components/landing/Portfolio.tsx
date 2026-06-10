@@ -46,8 +46,8 @@ export function Portfolio() {
     <section id="work" className="dark relative overflow-hidden bg-bg-base py-24 text-foreground md:py-32">
       <Image src={portfolioBg} alt="" aria-hidden="true" fill className="pointer-events-none object-cover opacity-55" />
       <div className="pointer-events-none absolute inset-0 bg-linear-to-b from-bg-base/90 via-bg-base/75 to-bg-base/95" />
-      <div className="bg-neon-grid pointer-events-none absolute inset-0 opacity-40 [mask-image:radial-gradient(ellipse_at_center,black,transparent_80%)]" />
-      <div className="pointer-events-none absolute left-1/2 top-1/4 h-[480px] w-[480px] -translate-x-1/2 animate-orb rounded-full bg-secondary/20 blur-3xl" />
+      <div className="bg-neon-grid pointer-events-none absolute inset-0 opacity-40 mask-[radial-gradient(ellipse_at_center,black,transparent_80%)]" />
+      <div className="pointer-events-none absolute left-1/2 top-1/4 h-120 w-120 -translate-x-1/2 animate-orb rounded-full bg-secondary/20 blur-3xl" />
       <div className="container relative mx-auto max-w-[85vw] px-6">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
@@ -64,7 +64,7 @@ export function Portfolio() {
           {projects.map((p) => (
             <article
               key={p.title}
-              className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] p-8 backdrop-blur transition-all hover:-translate-y-1 hover:border-primary/60 hover:shadow-glow"
+              className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/4 p-8 backdrop-blur transition-all hover:-translate-y-1 hover:border-primary/60 hover:shadow-glow"
             >
               <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-primary/20 opacity-0 blur-3xl transition-opacity group-hover:opacity-100" />
               <div className="flex items-center gap-2">

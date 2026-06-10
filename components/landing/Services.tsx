@@ -50,7 +50,7 @@ export function Services() {
                 key={s.slug}
                 onMouseMove={onTilt}
                 onMouseLeave={onLeave}
-                className="tilt-card group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] p-7 backdrop-blur transition-all duration-300 hover:border-primary/60 hover:shadow-glow"
+                className="tilt-card group relative overflow-hidden rounded-2xl border border-white/10 bg-white/4 p-7 backdrop-blur transition-all duration-300 hover:border-primary/60 hover:shadow-glow"
               >
                 <div className="pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-primary/25 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
                 <div className={`mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl ${accentMap[s.accent]}`}>

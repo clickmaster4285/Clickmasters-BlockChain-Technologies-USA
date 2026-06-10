@@ -11,9 +11,9 @@ const audiences = [
 export function Audience() {
   return (
     <section className="dark relative overflow-hidden bg-bg-base py-24 text-foreground md:py-32">
-      <div className="bg-neon-grid pointer-events-none absolute inset-0 opacity-30 [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
-      <div className="pointer-events-none absolute -left-32 top-10 h-[420px] w-[420px] animate-orb rounded-full bg-primary/20 blur-3xl" />
-      <div className="pointer-events-none absolute -right-32 bottom-10 h-[420px] w-[420px] animate-orb rounded-full bg-secondary/20 blur-3xl" style={{ animationDelay: "-5s" }} />
+      <div className="bg-neon-grid pointer-events-none absolute inset-0 opacity-30 mask-[radial-gradient(ellipse_at_center,black,transparent_75%)]" />
+      <div className="pointer-events-none absolute -left-32 top-10 h-105 w-105 animate-orb rounded-full bg-primary/20 blur-3xl" />
+      <div className="pointer-events-none absolute -right-32 bottom-10 h-105 w-105 animate-orb rounded-full bg-secondary/20 blur-3xl" style={{ animationDelay: "-5s" }} />
 
       <div className="container relative mx-auto max-w-[85vw] px-6">
         <div className="mx-auto max-w-3xl text-center">
@@ -23,12 +23,12 @@ export function Audience() {
           </h2>
         </div>
 
-        <div className="mt-14 -mx-6 overflow-x-auto px-6 pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <div className="mt-14 -mx-6 overflow-x-auto px-6 pb-4 scrollbar-none [&::-webkit-scrollbar]:hidden">
           <div className="flex gap-5 md:grid md:grid-cols-3 lg:grid-cols-5 md:gap-5">
             {audiences.map((a, idx) => (
               <article
                 key={a.title}
-                className="group relative w-[280px] shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] p-7 backdrop-blur transition-all hover:-translate-y-1 hover:border-primary/60 md:w-auto"
+                className="group relative w-70 shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-white/4 p-7 backdrop-blur transition-all hover:-translate-y-1 hover:border-primary/60 md:w-auto"
                 style={{ animation: `fade-in 0.6s ${idx * 0.08}s ease-out both` }}
               >
                 <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-primary/20 opacity-0 blur-3xl transition-opacity group-hover:opacity-100" />

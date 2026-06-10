@@ -34,9 +34,9 @@ export function Testimonials() {
     <section className="dark relative overflow-hidden bg-bg-surface py-24 text-foreground md:py-32">
       <Image src={testimonialsBg} alt="" aria-hidden="true" fill className="pointer-events-none object-cover opacity-70" />
       <div className="pointer-events-none absolute inset-0 bg-linear-to-b from-bg-surface/90 via-bg-surface/80 to-bg-surface/95" />
-      <div className="pointer-events-none absolute -left-32 top-1/4 h-[420px] w-[420px] animate-orb rounded-full bg-primary/25 blur-3xl" />
-      <div className="pointer-events-none absolute -right-32 bottom-10 h-[420px] w-[420px] animate-orb rounded-full bg-secondary/25 blur-3xl" style={{ animationDelay: "-5s" }} />
-      <div className="pointer-events-none absolute left-10 top-10 font-display text-[220px] leading-none text-white/[0.04]">"</div>
+      <div className="pointer-events-none absolute -left-32 top-1/4 h-105 w-105 animate-orb rounded-full bg-primary/25 blur-3xl" />
+      <div className="pointer-events-none absolute -right-32 bottom-10 h-105 w-105 animate-orb rounded-full bg-secondary/25 blur-3xl" style={{ animationDelay: "-5s" }} />
+      <div className="pointer-events-none absolute left-10 top-10 font-display text-[220px] leading-none text-white/4">"</div>
       <div className="container relative mx-auto max-w-[85vw] px-6">
         <div className="mx-auto max-w-3xl text-center">
           <p className="font-mono text-xs uppercase tracking-[0.3em] text-amber-base">Testimonials</p>
@@ -46,7 +46,7 @@ export function Testimonials() {
         </div>
         <div className="mt-14 grid gap-6 md:grid-cols-3">
           {testimonials.map((t) => (
-            <figure key={t.name} className="flex flex-col rounded-2xl border border-white/10 bg-white/[0.04] p-7 backdrop-blur transition-all hover:-translate-y-1 hover:border-primary/60">
+            <figure key={t.name} className="flex flex-col rounded-2xl border border-white/10 bg-white/4 p-7 backdrop-blur transition-all hover:-translate-y-1 hover:border-primary/60">
               <span className="inline-flex w-fit items-center rounded-full border border-amber-border bg-amber-glow px-3 py-1 font-mono text-[10px] uppercase tracking-[0.15em] text-amber-base">
                 {t.category}
               </span>

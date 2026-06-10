@@ -26,9 +26,9 @@ export function Dominate() {
       className="dark relative overflow-hidden border-y border-white/5 bg-bg-elevated py-24 text-foreground md:py-32"
     >
       {/* atmospheric orbs */}
-      <div className="pointer-events-none absolute -top-32 left-1/4 h-[420px] w-[420px] rounded-full bg-amber-glow opacity-40 blur-3xl animate-orb" />
-      <div className="pointer-events-none absolute -bottom-32 right-1/5 h-[460px] w-[460px] rounded-full bg-amber-glow opacity-30 blur-3xl animate-orb" style={{ animationDelay: "-6s" }} />
-      <div className="bg-dots-light pointer-events-none absolute inset-0 opacity-30 [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
+      <div className="pointer-events-none absolute -top-32 left-1/4 h-105 w-105 rounded-full bg-amber-glow opacity-40 blur-3xl animate-orb" />
+      <div className="pointer-events-none absolute -bottom-32 right-1/5 h-115 w-115 rounded-full bg-amber-glow opacity-30 blur-3xl animate-orb" style={{ animationDelay: "-6s" }} />
+      <div className="bg-dots-light pointer-events-none absolute inset-0 opacity-30 mask-[radial-gradient(ellipse_at_center,black,transparent_75%)]" />
 
       <div className="container relative mx-auto max-w-[85vw] px-6">
         {/* Row 1 — header */}
@@ -39,7 +39,7 @@ export function Dominate() {
           <h2 className="mt-4 font-bold tracking-tight text-white" style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", lineHeight: 1.05 }}>
             Built to <span className="text-gradient">Dominate.</span>
           </h2>
-          <p className="mx-auto mt-5 max-w-[520px] text-base text-silver-base md:text-lg">
+          <p className="mx-auto mt-5 max-w-130 text-base text-silver-base md:text-lg">
             We don't just build apps. We build market leaders.
           </p>
         </div>
@@ -49,7 +49,7 @@ export function Dominate() {
           {stats.map((s, idx) => (
             <div
               key={s.label}
-              className="group relative overflow-hidden rounded-3xl border border-white/5 bg-white/[0.03] p-8 backdrop-blur transition-all hover:-translate-y-1"
+              className="group relative overflow-hidden rounded-3xl border border-white/5 bg-white/3 p-8 backdrop-blur transition-all hover:-translate-y-1"
               style={{
                 animation: `dominate-rise 0.7s ${idx * 0.08}s ease-out both`,
               }}
@@ -62,7 +62,7 @@ export function Dominate() {
               </p>
               <span
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-x-6 bottom-0 h-[2px] rounded-full bg-linear-to-r from-amber-base to-silver-light opacity-70"
+                className="pointer-events-none absolute inset-x-6 bottom-0 h-0.5 rounded-full bg-linear-to-r from-amber-base to-silver-light opacity-70"
               />
             </div>
           ))}

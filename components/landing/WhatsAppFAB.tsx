@@ -165,7 +165,7 @@ export function WhatsAppFAB() {
       <span
         className={[
           "flex flex-col justify-center overflow-hidden whitespace-nowrap pr-5 text-left transition-all duration-300",
-          shownExpanded ? "max-w-[180px] opacity-100 translate-x-0" : "max-w-0 opacity-0 -translate-x-2",
+          shownExpanded ? "max-w-45 opacity-100 translate-x-0" : "max-w-0 opacity-0 -translate-x-2",
         ].join(" ")}
         style={{ fontFamily: "var(--font-display)" }}
       >

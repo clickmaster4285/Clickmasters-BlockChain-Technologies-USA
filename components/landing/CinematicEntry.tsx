@@ -32,7 +32,7 @@ export function CinematicEntry() {
   if (done) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-background transition-opacity duration-500" style={{ opacity: stage >= 6 ? 0 : 1, pointerEvents: stage >= 6 ? "none" : "auto" }}>
+    <div className="fixed inset-0 z-100 flex items-center justify-center bg-background transition-opacity duration-500" style={{ opacity: stage >= 6 ? 0 : 1, pointerEvents: stage >= 6 ? "none" : "auto" }}>
       <video
         src={introVideo}
         autoPlay
