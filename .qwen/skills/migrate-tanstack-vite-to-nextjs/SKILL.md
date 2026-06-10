@@ -161,3 +161,80 @@ Next.js enforces the server/client component boundary. Any file using client-onl
 - **Lovable `.asset.json` sidecars may be orphans** — the actual image files they reference don't exist on disk; they were served from the Lovable platform. You must provide real images or placeholders.
 - **Supabase `.server.ts` imports** may reference files not on disk (Lovable generated) — handle gracefully
 - **When replacing asset imports with URL strings**, also remove `.url` property accesses — Vite `.asset.json` imports returned objects with a `.url` field, but plain URL strings don't have a `.url` property. Replace `x.url` → just `x`.
+
+## Project-Specific Findings (ClickMasters Blockchain, 2026-06-10)
+
+### Actual Directory Structure (critical)
+This project has a **flat structure at repo root** — NOT inside `app/`:
+```
+components/landing/   ← landing components at root level
+components/ui/        ← shadcn/ui at root level
+components/media/     ← VideoWithFallback at root level
+data/                 ← blockchain-services.ts at root level
+hooks/                ← use-mobile.tsx at root level
+lib/                  ← utils.ts at root level
+app/                  ← ONLY contains routes/, styles.css, layout files
+public/media/         ← actual media assets (images, videos)
+```
+The `tsconfig.json` path alias must be `"@/*": ["./*"]` (root), **not** `"./src/*"` (there is no `src/` dir). With this alias, `@/components` → `./components`, `@/data` → `./data`, etc.
+
+### Asset Location Pattern
+Assets were **already in `public/media/`** (not `app/assets/`). The `.asset.json` sidecar imports pointed to Lovable dev-server paths, but the actual files existed at `public/media/{filename}`. When replacing `.asset.json` imports:
+- Check `public/media/` first — files may already be there
+- Replace `import x from "@/assets/media/file.ext.asset.json"` + `x.url` with `"/media/file.ext"` (not `/assets/...`)
+- No need to move files if they're already in `public/`
+
+### Verified Asset Mapping (this project)
+| `.asset.json` import | Actual file in `public/media/` | URL string |
+|---|---|---|
+| `hero-bg.mp4.asset.json` | `hero-bg.mp4` | `/media/hero-bg.mp4` |
+| `cta-bg.png.asset.json` | `cta-bg.png` | `/media/cta-bg.png` |
+| `intro.mp4.asset.json` | `intro.mp4` | `/media/intro.mp4` |
+| `cta.mp4.asset.json` | `cta.mp4` | `/media/cta.mp4` |
+| `services-bg.jpg.asset.json` | `services-bg.jpeg` | `/media/services-bg.jpeg` |
+| `portfolio-bg.jpg.asset.json` | `portfolio-bg.jpeg` | `/media/portfolio-bg.jpeg` |
+| `testimonials-bg.jpg.asset.json` | `testimonials-bg.jpg` | `/media/testimonials-bg.jpg` |
+
+**Note:** Some `.jpg` sidecars referenced `.jpeg` actual files — always verify the actual filename extension on disk.
+
+### `components.json` Update Required
+The shadcn/ui `components.json` must be updated for Next.js:
+- `"rsc": false` → `"rsc": true`
+- `"css": "src/styles.css"` → `"css": "app/styles.css"` (match actual CSS location)
+- Aliases like `"components": "@/components"` are correct IF tsconfig has `"@/*": ["./*"]`
+
+### Files That Don't Exist (avoid phantom references)
+The prior `agent.md` referenced routes and pages that **never existed** on disk:
+- No `routes/services.tsx` or `routes/solutions.tsx` — only `/`, `/about`, `/contact` existed
+- No `app/assets/` directory — assets were in `public/media/`
+- No `motion.tsx` or `decor.tsx` utility files in `components/landing/`
+- No `app/lib/config.server.ts`, `error-capture.ts`, `error-page.ts`, `lovable-error-reporting.ts` at the time of migration (already cleaned or at root `lib/`)
+- Always verify file existence with `list_directory` before referencing in migration plans
+
+### TanStack `Link` Usage Was Minimal
+In this project, the Navbar and all landing components already used plain `<a href>` tags — only `routes/about.tsx` imported `Link` from `@tanstack/react-router`. The `Link` audit was simpler than expected. Always grep for actual usage rather than assuming all navigation uses TanStack Link.
+
+### `app/lib/api/` Directory
+Contained only `example.functions.ts` (a TanStack server function stub). Safe to delete the entire `app/lib/api/` directory. Also delete these server-only Lovable files if present: `config.server.ts`, `error-capture.ts`, `error-page.ts`, `lovable-error-reporting.ts`.
+
+### `'use client'` + `metadata` Conflict on Pages
+**Key build error:** If a page file has `"use client"` (e.g., it uses `useState`), it **cannot** export `metadata`. Next.js requires `metadata` to be resolved on the server.
+- **Fix:** Create a sibling `layout.tsx` in the same directory that exports `metadata`, and remove `metadata` from the `'use client'` page file.
+- Example: `app/contact/layout.tsx` exports metadata, `app/contact/page.tsx` is `"use client"` with no metadata export.
+
+### Verified `'use client'` File Count
+In this project, **17 landing/media components** needed `"use client"`:
+`BlockchainNetwork`, `CinematicEntry`, `Counter`, `CursorGlow`, `Dominate`, `Hero`, `MagneticButton`, `Navbar`, `Process`, `Reveal`, `ScrollProgress`, `Services`, `SmoothScroll`, `TechStack`, `TrustedMarquee`, `WhatsAppFAB`, `VideoWithFallback`
+
+**7 components did NOT need it** (pure presentational):
+`Audience`, `Awards`, `Comparison`, `FAQ`, `FinalCTA`, `Footer`, `Portfolio`
+
+### Build Result
+```
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ○ /about
+└ ○ /contact
+```
+All 4 routes (3 pages + not-found) compiled as static content. Build succeeded on first attempt after fixing the `metadata` + `"use client"` conflict.
