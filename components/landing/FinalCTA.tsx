@@ -5,7 +5,7 @@ const ctaPoster = "/media/cta-bg.png";
 
 export function FinalCTA() {
   return (
-    <section id="contact" className="dark relative overflow-hidden bg-gradient-to-br from-amber-dim via-amber-base to-amber-light py-24 text-foreground md:py-32">
+    <section id="contact" className="dark relative overflow-hidden bg-linear-to-br from-amber-dim via-amber-base to-amber-light py-24 text-foreground md:py-32">
       <VideoWithFallback
         src={ctaVideo}
         fallbackImage={ctaPoster}
@@ -16,7 +16,7 @@ export function FinalCTA() {
         blendClassName="mix-blend-screen"
         ariaLabel="Wallet connection pulse"
       />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-amber-dim/60 via-transparent to-amber-base/70" />
+      <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-amber-dim/60 via-transparent to-amber-base/70" />
       <div className="bg-grid pointer-events-none absolute inset-0 opacity-20" />
       <div className="pointer-events-none absolute inset-0">
         {Array.from({ length: 18 }).map((_, i) => (

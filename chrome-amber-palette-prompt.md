@@ -182,7 +182,7 @@ nav {
 }
 
 /* Gradient word (e.g. "Decentralized") */
-.hero-gradient-text {
+.hero-linear-text {
   background: linear-gradient(135deg, #CBD5E1 0%, #F59E0B 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

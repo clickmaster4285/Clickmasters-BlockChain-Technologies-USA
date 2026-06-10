@@ -1,4 +1,6 @@
+import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import Image from "next/image";
 const portfolioBg = "/media/portfolio-bg.jpeg";
 
 const projects = [
@@ -42,21 +44,21 @@ const dotMap = {
 export function Portfolio() {
   return (
     <section id="work" className="dark relative overflow-hidden bg-bg-base py-24 text-foreground md:py-32">
-      <img src={portfolioBg} alt="" aria-hidden="true" className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-25" />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-bg-base/90 via-bg-base/75 to-bg-base/95" />
+      <Image src={portfolioBg} alt="" aria-hidden="true" fill className="pointer-events-none object-cover opacity-55" />
+      <div className="pointer-events-none absolute inset-0 bg-linear-to-b from-bg-base/90 via-bg-base/75 to-bg-base/95" />
       <div className="bg-neon-grid pointer-events-none absolute inset-0 opacity-40 [mask-image:radial-gradient(ellipse_at_center,black,transparent_80%)]" />
       <div className="pointer-events-none absolute left-1/2 top-1/4 h-[480px] w-[480px] -translate-x-1/2 animate-orb rounded-full bg-secondary/20 blur-3xl" />
-      <div className="container relative mx-auto max-w-7xl px-6">
+      <div className="container relative mx-auto max-w-[85vw] px-6">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="font-mono text-xs uppercase tracking-[0.3em] text-amber-base">/ Selected work</p>
+            <p className="font-mono text-xs uppercase tracking-[0.3em] text-amber-base">Selected work</p>
             <h2 className="mt-4 max-w-2xl text-4xl font-bold tracking-tight text-white md:text-5xl">
               Protocols and products shipped to <span className="text-gradient">production</span>
             </h2>
           </div>
-          <a href="#contact" className="inline-flex items-center gap-2 font-mono text-sm font-semibold text-amber-base">
+          <Link href="#contact" className="inline-flex items-center gap-2 font-mono text-sm font-semibold text-amber-base">
             See more case studies <ArrowUpRight className="h-4 w-4" />
-          </a>
+          </Link>
         </div>
         <div className="mt-14 grid gap-6 md:grid-cols-2">
           {projects.map((p) => (

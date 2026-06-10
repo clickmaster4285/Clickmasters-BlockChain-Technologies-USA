@@ -14,7 +14,7 @@ export function Comparison() {
       <div className="bg-noise pointer-events-none absolute inset-0 opacity-40" />
       <div className="container relative mx-auto max-w-5xl px-6">
         <div className="text-center">
-          <p className="font-mono text-xs uppercase tracking-[0.3em] text-primary">/ Why ClickMasters</p>
+          <p className="font-mono text-xs uppercase tracking-[0.3em] text-primary">Why ClickMasters</p>
           <h2 className="mt-4 text-4xl font-bold tracking-tight text-text-primary md:text-5xl">
             Built for the long game, not the launch
           </h2>

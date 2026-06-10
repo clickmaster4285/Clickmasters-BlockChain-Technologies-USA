@@ -96,7 +96,7 @@ export function TechStack() {
         }}
       />
 
-      <div className="container relative mx-auto max-w-7xl px-6">
+      <div className="container relative mx-auto max-w-[85vw] px-6">
         {/* Header */}
         <div className="mx-auto max-w-2xl text-center">
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-amber-base">Under the Hood</p>

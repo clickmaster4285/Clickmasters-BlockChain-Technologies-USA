@@ -33,7 +33,7 @@ export function FAQ() {
       <div className="bg-noise pointer-events-none absolute inset-0 opacity-40" />
       <div className="container relative mx-auto max-w-3xl px-6">
         <div className="text-center">
-          <p className="font-mono text-xs uppercase tracking-[0.3em] text-primary">/ FAQ</p>
+          <p className="font-mono text-xs uppercase tracking-[0.3em] text-primary">FAQ</p>
           <h2 className="mt-4 text-4xl font-bold tracking-tight text-text-primary md:text-5xl">
             Answers before you ask
           </h2>

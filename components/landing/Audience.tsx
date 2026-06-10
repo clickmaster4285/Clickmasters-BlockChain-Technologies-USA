@@ -15,9 +15,9 @@ export function Audience() {
       <div className="pointer-events-none absolute -left-32 top-10 h-[420px] w-[420px] animate-orb rounded-full bg-primary/20 blur-3xl" />
       <div className="pointer-events-none absolute -right-32 bottom-10 h-[420px] w-[420px] animate-orb rounded-full bg-secondary/20 blur-3xl" style={{ animationDelay: "-5s" }} />
 
-      <div className="container relative mx-auto max-w-7xl px-6">
+      <div className="container relative mx-auto max-w-[85vw] px-6">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="font-mono text-xs uppercase tracking-[0.3em] text-amber-base">/ Who we serve</p>
+          <p className="font-mono text-xs uppercase tracking-[0.3em] text-amber-base">Who we serve</p>
           <h2 className="mt-4 text-4xl font-bold tracking-tight text-white md:text-5xl">
             Built for the teams shaping <span className="text-gradient">Web3</span>
           </h2>

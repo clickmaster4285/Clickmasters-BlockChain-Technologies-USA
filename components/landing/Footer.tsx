@@ -1,11 +1,12 @@
+import Link from "next/link";
 import { Hexagon } from "lucide-react";
 
 export function Footer() {
   return (
     <footer className="dark relative overflow-hidden border-t border-white/10 bg-bg-elevated text-foreground">
       <div className="bg-dots-light pointer-events-none absolute inset-0 opacity-40" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-amber-base to-transparent" />
-      <div className="container relative mx-auto max-w-7xl px-6 py-14">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-amber-base to-transparent" />
+      <div className="container relative mx-auto max-w-[85vw] px-6 py-14">
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
             <div className="flex items-center gap-2">
@@ -21,18 +22,18 @@ export function Footer() {
           <div>
             <p className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">Services</p>
             <ul className="mt-4 space-y-2 text-sm">
-              <li><a href="#services" className="text-foreground/80 hover:text-primary">Smart Contracts</a></li>
-              <li><a href="#services" className="text-foreground/80 hover:text-primary">DApp Development</a></li>
-              <li><a href="#services" className="text-foreground/80 hover:text-primary">NFT Marketplaces</a></li>
-              <li><a href="#services" className="text-foreground/80 hover:text-primary">Crypto Wallets</a></li>
+              <li><Link href="#services" className="text-foreground/80 hover:text-primary">Smart Contracts</Link></li>
+              <li><Link href="#services" className="text-foreground/80 hover:text-primary">DApp Development</Link></li>
+              <li><Link href="#services" className="text-foreground/80 hover:text-primary">NFT Marketplaces</Link></li>
+              <li><Link href="#services" className="text-foreground/80 hover:text-primary">Crypto Wallets</Link></li>
             </ul>
           </div>
           <div>
             <p className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">Company</p>
             <ul className="mt-4 space-y-2 text-sm">
-              <li><a href="#work" className="text-foreground/80 hover:text-primary">Work</a></li>
-              <li><a href="#process" className="text-foreground/80 hover:text-primary">Process</a></li>
-              <li><a href="#contact" className="text-foreground/80 hover:text-primary">Contact</a></li>
+              <li><Link href="#work" className="text-foreground/80 hover:text-primary">Work</Link></li>
+              <li><Link href="#process" className="text-foreground/80 hover:text-primary">Process</Link></li>
+              <li><Link href="#contact" className="text-foreground/80 hover:text-primary">Contact</Link></li>
             </ul>
           </div>
           <div>

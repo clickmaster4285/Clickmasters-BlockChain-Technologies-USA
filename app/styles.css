@@ -177,14 +177,19 @@
     border-color: var(--color-border);
   }
 
-  html, body {
+  html,
+  body {
     background-color: var(--bg-base);
     color: var(--text-primary);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
   }
 
-  h1, h2, h3, h4, h5 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
     font-family: var(--font-display);
     letter-spacing: -0.02em;
   }
@@ -194,10 +199,22 @@
     color: var(--text-primary);
   }
 
-  ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: var(--bg-base); }
-  ::-webkit-scrollbar-thumb { background: var(--silver-dim); border-radius: 9999px; }
-  ::-webkit-scrollbar-thumb:hover { background: var(--amber-base); }
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--bg-base);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--silver-dim);
+    border-radius: 9999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--amber-base);
+  }
 
   :focus-visible {
     outline: 2px solid var(--amber-base);
@@ -221,43 +238,43 @@
 
 @utility bg-grid {
   background-image:
-    linear-gradient(to right, rgba(148,163,184,0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(148,163,184,0.04) 1px, transparent 1px);
+    linear-gradient(to right, rgba(148, 163, 184, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 163, 184, 0.04) 1px, transparent 1px);
   background-size: 56px 56px;
 }
 
 @utility bg-neon-grid {
   background-image:
-    linear-gradient(to right, rgba(245,158,11,0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(148,163,184,0.05) 1px, transparent 1px);
+    linear-gradient(to right, rgba(245, 158, 11, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
   background-size: 48px 48px;
 }
 
 @utility bg-dots {
-  background-image: radial-gradient(circle, rgba(148,163,184,0.12) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(148, 163, 184, 0.12) 1px, transparent 1px);
   background-size: 22px 22px;
 }
 
 @utility bg-dots-light {
-  background-image: radial-gradient(circle, rgba(148,163,184,0.08) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
   background-size: 22px 22px;
 }
 
 @utility bg-hex {
   background-color: transparent;
   background-image:
-    linear-gradient(30deg, rgba(245,158,11,0.03) 12%, transparent 12.5%, transparent 87%, rgba(245,158,11,0.03) 87.5%),
-    linear-gradient(150deg, rgba(148,163,184,0.03) 12%, transparent 12.5%, transparent 87%, rgba(148,163,184,0.03) 87.5%),
-    linear-gradient(30deg, rgba(148,163,184,0.03) 12%, transparent 12.5%, transparent 87%, rgba(148,163,184,0.03) 87.5%),
-    linear-gradient(150deg, rgba(245,158,11,0.02) 12%, transparent 12.5%, transparent 87%, rgba(245,158,11,0.02) 87.5%);
+    linear-gradient(30deg, rgba(245, 158, 11, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(245, 158, 11, 0.03) 87.5%),
+    linear-gradient(150deg, rgba(148, 163, 184, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(148, 163, 184, 0.03) 87.5%),
+    linear-gradient(30deg, rgba(148, 163, 184, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(148, 163, 184, 0.03) 87.5%),
+    linear-gradient(150deg, rgba(245, 158, 11, 0.02) 12%, transparent 12.5%, transparent 87%, rgba(245, 158, 11, 0.02) 87.5%);
   background-size: 64px 112px;
   background-position: 0 0, 0 0, 32px 56px, 32px 56px;
 }
 
 @utility bg-hex-light {
   background-image:
-    linear-gradient(30deg, rgba(245,158,11,0.04) 12%, transparent 12.5%, transparent 87%, rgba(245,158,11,0.04) 87.5%),
-    linear-gradient(150deg, rgba(148,163,184,0.04) 12%, transparent 12.5%, transparent 87%, rgba(148,163,184,0.04) 87.5%);
+    linear-gradient(30deg, rgba(245, 158, 11, 0.04) 12%, transparent 12.5%, transparent 87%, rgba(245, 158, 11, 0.04) 87.5%),
+    linear-gradient(150deg, rgba(148, 163, 184, 0.04) 12%, transparent 12.5%, transparent 87%, rgba(148, 163, 184, 0.04) 87.5%);
   background-size: 64px 112px;
 }
 
@@ -268,57 +285,115 @@
 /* ── Animations ── */
 
 @keyframes marquee-left {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
 }
+
 @keyframes marquee-right {
-  from { transform: translateX(-50%); }
-  to { transform: translateX(0); }
+  from {
+    transform: translateX(-50%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
 }
+
 @utility animate-marquee-left {
   animation: marquee-left 40s linear infinite;
 }
+
 @utility animate-marquee-right {
   animation: marquee-right 40s linear infinite;
 }
 
 @keyframes pulse-ring {
-  0% { transform: scale(0.6); opacity: 0.8; }
-  100% { transform: scale(2.2); opacity: 0; }
+  0% {
+    transform: scale(0.6);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
 }
+
 @utility animate-pulse-ring {
   animation: pulse-ring 2.4s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
 }
 
 @keyframes float-slow {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
 }
+
 @utility animate-float-slow {
   animation: float-slow 6s ease-in-out infinite;
 }
 
 @keyframes orb-drift {
-  0%, 100% { transform: translate(0,0) scale(1); }
-  50% { transform: translate(40px,-30px) scale(1.1); }
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(40px, -30px) scale(1.1);
+  }
 }
+
 @utility animate-orb {
   animation: orb-drift 14s ease-in-out infinite;
 }
 
 @keyframes sparkle {
-  0%, 100% { opacity: 0.2; transform: scale(0.8); }
-  50% { opacity: 1; transform: scale(1.2); }
+
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
 }
+
 @utility animate-sparkle {
   animation: sparkle 3s ease-in-out infinite;
 }
 
 @keyframes rise {
-  from { transform: translateY(110%); opacity: 0; }
-  10% { opacity: 0.6; }
-  to { transform: translateY(-20%); opacity: 0; }
+  from {
+    transform: translateY(110%);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.6;
+  }
+
+  to {
+    transform: translateY(-20%);
+    opacity: 0;
+  }
 }
+
 @utility animate-rise {
   animation: rise linear infinite;
 }

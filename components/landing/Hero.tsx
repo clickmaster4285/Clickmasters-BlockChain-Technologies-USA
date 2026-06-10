@@ -1,9 +1,11 @@
 "use client";
 
+import Link from "next/link";
 import { ArrowRight, ShieldCheck, Star, TrendingUp } from "lucide-react";
 import { useEffect, useState } from "react";
 import { BlockchainNetwork } from "./BlockchainNetwork";
 import { VideoWithFallback } from "@/components/media/VideoWithFallback";
+import Image from "next/image";
 const heroVideo = "/media/hero-bg.mp4";
 const heroSide = "/media/cta-bg.png";
 
@@ -28,11 +30,11 @@ export function Hero() {
         ariaLabel="Animated blockchain grid background"
       />
       {/* Readability scrim — stronger on mobile */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-bg-base/80 via-bg-base/70 to-bg-base md:from-bg-base/70 md:via-bg-base/60" />
+      <div className="pointer-events-none absolute inset-0 bg-linear-to-b from-bg-base/80 via-bg-base/70 to-bg-base md:from-bg-base/70 md:via-bg-base/60" />
       <div className="bg-neon-grid pointer-events-none absolute inset-0 opacity-30 [mask-image:radial-gradient(ellipse_at_top,black,transparent_75%)] hidden md:block" />
       <div className="pointer-events-none absolute -top-32 left-1/4 h-[420px] w-[420px] animate-orb rounded-full bg-primary/30 blur-3xl" />
       <div className="pointer-events-none absolute top-40 right-10 h-[380px] w-[380px] animate-orb rounded-full bg-secondary/25 blur-3xl" style={{ animationDelay: "-6s" }} />
-      <div className="container mx-auto grid max-w-7xl gap-12 px-6 md:grid-cols-[1.1fr_1fr] md:items-center">
+      <div className="container mx-auto grid max-w-[85vw] gap-12 px-6 md:grid-cols-[1.1fr_1fr] md:items-center">
         <div>
           <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono text-xs text-white/70 backdrop-blur">
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-success" />
@@ -49,20 +51,20 @@ export function Hero() {
             .
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
-            <a
+            <Link
               href="#contact"
               className="group inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-glow transition-transform hover:-translate-y-0.5"
             >
               Launch Your DApp
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </a>
-            <a
+            </Link>
+            <Link
               href="#contact"
               className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition-colors hover:bg-white/10"
             >
               Audit Smart Contract
               <ArrowRight className="h-4 w-4" />
-            </a>
+            </Link>
           </div>
           <div className="mt-10 flex flex-wrap gap-6 text-sm text-white/60">
             <div className="flex items-center gap-2">
@@ -98,13 +100,14 @@ export function Hero() {
             />
 
             {/* Layer 1: cta-bg.png lit by the video underneath via screen blend */}
-            <img
+            <Image
               src={heroSide}
               alt="ClickMasters blockchain DApp visual"
+              fill
               loading="eager"
               fetchPriority="high"
               decoding="async"
-              className="absolute inset-0 h-full w-full object-cover md:object-contain"
+              className="object-cover md:object-contain"
               style={{ objectPosition: "center right", opacity: 0.92, mixBlendMode: "screen" }}
             />
 
@@ -117,13 +120,13 @@ export function Hero() {
             {/* Layer 3: left-edge fade into the text column (desktop only) */}
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute inset-y-0 left-0 hidden w-2/5 bg-gradient-to-r from-bg-elevated to-transparent md:block"
+              className="pointer-events-none absolute inset-y-0 left-0 hidden w-2/5 bg-linear-to-r from-bg-elevated to-transparent md:block"
             />
 
             {/* Layer 4: bottom fade */}
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-bg-elevated to-transparent"
+              className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-linear-to-t from-bg-elevated to-transparent"
             />
 
             {/* Mobile readability scrim */}

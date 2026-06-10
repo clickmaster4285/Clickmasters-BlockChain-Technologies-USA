@@ -30,7 +30,7 @@ export function Dominate() {
       <div className="pointer-events-none absolute -bottom-32 right-1/5 h-[460px] w-[460px] rounded-full bg-amber-glow opacity-30 blur-3xl animate-orb" style={{ animationDelay: "-6s" }} />
       <div className="bg-dots-light pointer-events-none absolute inset-0 opacity-30 [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
 
-      <div className="container relative mx-auto max-w-7xl px-6">
+      <div className="container relative mx-auto max-w-[85vw] px-6">
         {/* Row 1 — header */}
         <div className="mx-auto max-w-2xl text-center">
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-amber-base">
@@ -62,7 +62,7 @@ export function Dominate() {
               </p>
               <span
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-x-6 bottom-0 h-[2px] rounded-full bg-gradient-to-r from-amber-base to-silver-light opacity-70"
+                className="pointer-events-none absolute inset-x-6 bottom-0 h-[2px] rounded-full bg-linear-to-r from-amber-base to-silver-light opacity-70"
               />
             </div>
           ))}
@@ -99,7 +99,7 @@ export function Dominate() {
           </div>
           <a
             href="#contact"
-            className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-amber-base to-amber-light px-7 py-3.5 text-sm font-semibold text-bg-base transition-all hover:-translate-y-0.5 hover:shadow-[0_12px_40px_rgba(245,158,11,0.5)] md:w-auto"
+            className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-linear-to-r from-amber-base to-amber-light px-7 py-3.5 text-sm font-semibold text-bg-base transition-all hover:-translate-y-0.5 hover:shadow-[0_12px_40px_rgba(245,158,11,0.5)] md:w-auto"
           >
             Book Free Call
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />

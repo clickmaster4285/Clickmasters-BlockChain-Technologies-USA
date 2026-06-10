@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 interface VideoWithFallbackProps {
@@ -19,7 +20,7 @@ interface VideoWithFallbackProps {
 /**
  * Autoplaying, muted, looping background video with a static image fallback.
  * - Shows the fallback image immediately as a poster (no blank flash).
- * - Swaps to a static <img> if the video fails to load or autoplay is blocked.
+ * - Swaps to a static <Image> if the video fails to load or autoplay is blocked.
  * - When `lazy` is true, defers network load until the element is near the viewport.
  */
 export function VideoWithFallback({
@@ -69,13 +70,14 @@ export function VideoWithFallback({
 
   if (hasError) {
     return (
-      <img
+      <Image
         src={fallbackImage}
         alt={ariaLabel ?? ""}
         aria-hidden={ariaLabel ? undefined : true}
+        fill
         loading="lazy"
         decoding="async"
-        className={`pointer-events-none object-cover ${opacityClassName} ${blendClassName} ${className}`}
+        className={`pointer-events-none object-cover ${opacityClassName} ${blendClassName}`}
       />
     );
   }

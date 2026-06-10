@@ -1,4 +1,5 @@
 import { Star } from "lucide-react";
+import Image from "next/image";
 const testimonialsBg = "/media/testimonials-bg.jpg";
 
 const testimonials = [
@@ -31,14 +32,14 @@ const testimonials = [
 export function Testimonials() {
   return (
     <section className="dark relative overflow-hidden bg-bg-surface py-24 text-foreground md:py-32">
-      <img src={testimonialsBg} alt="" aria-hidden="true" className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-20" />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-bg-surface/90 via-bg-surface/80 to-bg-surface/95" />
+      <Image src={testimonialsBg} alt="" aria-hidden="true" fill className="pointer-events-none object-cover opacity-70" />
+      <div className="pointer-events-none absolute inset-0 bg-linear-to-b from-bg-surface/90 via-bg-surface/80 to-bg-surface/95" />
       <div className="pointer-events-none absolute -left-32 top-1/4 h-[420px] w-[420px] animate-orb rounded-full bg-primary/25 blur-3xl" />
       <div className="pointer-events-none absolute -right-32 bottom-10 h-[420px] w-[420px] animate-orb rounded-full bg-secondary/25 blur-3xl" style={{ animationDelay: "-5s" }} />
       <div className="pointer-events-none absolute left-10 top-10 font-display text-[220px] leading-none text-white/[0.04]">"</div>
-      <div className="container relative mx-auto max-w-7xl px-6">
+      <div className="container relative mx-auto max-w-[85vw] px-6">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="font-mono text-xs uppercase tracking-[0.3em] text-amber-base">/ Testimonials</p>
+          <p className="font-mono text-xs uppercase tracking-[0.3em] text-amber-base">Testimonials</p>
           <h2 className="mt-4 text-4xl font-bold tracking-tight text-white md:text-5xl">
             Founders and protocols trust us with <span className="text-gradient">mission-critical</span> infra
           </h2>

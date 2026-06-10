@@ -16,7 +16,7 @@ export default function ContactPage() {
       <Navbar />
       <main className="pt-32 pb-24">
         <section className="container mx-auto max-w-5xl px-6">
-          <p className="font-mono text-xs uppercase tracking-[0.3em] text-primary">/ Contact</p>
+          <p className="font-mono text-xs uppercase tracking-[0.3em] text-primary">Contact</p>
           <h1 className="mt-4 text-5xl font-bold tracking-tight md:text-6xl">
             Let's build your <span className="text-gradient">Web3 project</span>
           </h1>

@@ -53,9 +53,9 @@ export function Awards() {
           />
         ))}
       </div>
-      <div className="container relative mx-auto max-w-7xl px-6">
+      <div className="container relative mx-auto max-w-[85vw] px-6">
         <div className="text-center">
-          <p className="font-mono text-xs uppercase tracking-[0.3em] text-amber-base">/ Recognition</p>
+          <p className="font-mono text-xs uppercase tracking-[0.3em] text-amber-base">Recognition</p>
           <h2 className="mt-4 text-3xl font-bold tracking-tight text-white md:text-4xl">
             Awarded by the people who set the bar
           </h2>

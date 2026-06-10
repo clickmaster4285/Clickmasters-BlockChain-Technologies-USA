@@ -87,7 +87,7 @@ export function Process() {
             className="absolute top-0 left-6 h-full w-[2px] -translate-x-1/2 overflow-hidden md:left-1/2 bg-white/[0.06]"
           >
             <div
-              className="origin-top h-full w-full bg-gradient-to-b from-amber-base via-amber-light to-silver-light"
+              className="origin-top h-full w-full bg-linear-to-b from-amber-base via-amber-light to-silver-light"
               style={{
                 transform: `scaleY(${progress})`,
                 transformOrigin: "top",
