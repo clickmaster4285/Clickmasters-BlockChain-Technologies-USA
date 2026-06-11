@@ -35,7 +35,7 @@ export function Hero() {
       <div className="pointer-events-none absolute -top-32 left-1/4 h-105 w-105 animate-orb rounded-full bg-primary/30 blur-3xl" />
       <div className="pointer-events-none absolute top-40 right-10 h-95 w-95 animate-orb rounded-full bg-secondary/25 blur-3xl" style={{ animationDelay: "-6s" }} />
       <div className="container mx-auto grid max-w-[85vw] gap-12 px-6 md:grid-cols-[1.1fr_1fr] md:items-center">
-        <div>
+        <div className="relative z-50">
           <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono text-xs text-white/70 backdrop-blur">
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-success" />
             Securing $100M+ on-chain value
