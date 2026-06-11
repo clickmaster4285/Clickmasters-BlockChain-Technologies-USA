@@ -232,6 +232,10 @@
   color: transparent;
 }
 
+@utility text-shadow {
+  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.75);
+}
+
 @utility shadow-glow {
   box-shadow: var(--shadow-glow);
 }
