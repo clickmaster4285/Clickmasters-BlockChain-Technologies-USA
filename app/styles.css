@@ -288,6 +288,144 @@
 
 /* ── Animations ── */
 
+/* Custom blobs & section animations */
+@keyframes wave {
+  0% {
+    transform: translateX(-8%) scale(1);
+    opacity: 0.95;
+  }
+
+  50% {
+    transform: translateX(8%) scale(1.06);
+    opacity: 0.75;
+  }
+
+  100% {
+    transform: translateX(-8%) scale(1);
+    opacity: 0.95;
+  }
+}
+
+.animate-wave {
+  animation: wave 18s ease-in-out infinite;
+}
+
+/* layered wave speeds for parallax */
+@keyframes waveFast {
+  0% { transform: translateX(-6%); }
+  50% { transform: translateX(6%); }
+  100% { transform: translateX(-6%); }
+}
+.animate-wave-fast { animation: waveFast 12s ease-in-out infinite; }
+
+@keyframes waveSlow {
+  0% { transform: translateX(-12%); }
+  50% { transform: translateX(12%); }
+  100% { transform: translateX(-12%); }
+}
+.animate-wave-slow { animation: waveSlow 28s ease-in-out infinite; }
+
+@keyframes blobFloat {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(-12px) scale(1.03);
+  }
+
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-blob {
+  animation: blobFloat 10s ease-in-out infinite;
+}
+
+.bg-yellow-blob {
+  position: absolute;
+  inset: auto;
+  pointer-events: none;
+  filter: blur(56px);
+  mix-blend-mode: screen;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  opacity: 0;
+  animation: fadeUp 700ms ease forwards;
+}
+
+@keyframes slideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-left {
+  opacity: 0;
+  animation: slideLeft 700ms ease forwards;
+}
+
+/* Component utilities */
+.card {
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+.cta-btn {
+  transition: transform 160ms ease;
+}
+
+.cta-btn:active {
+  transform: translateY(1px);
+}
+
+/* Accessibility: respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+
+  .animate-wave,
+  .animate-blob,
+  .animate-fade-up,
+  .animate-slide-left,
+  .animate-orb,
+  .animate-float-slow,
+  .animate-marquee-left,
+  .animate-marquee-right,
+  .animate-pulse-ring,
+  .animate-float-slow {
+    animation: none !important;
+  }
+
+  .tilt-card {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* ── Animations ── */
+
 @keyframes marquee-left {
   from {
     transform: translateX(0);

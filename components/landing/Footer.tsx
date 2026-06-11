@@ -22,18 +22,18 @@ export function Footer() {
           <div>
             <p className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">Services</p>
             <ul className="mt-4 space-y-2 text-sm">
-              <li><Link href="#services" className="text-foreground/80 hover:text-primary">Smart Contracts</Link></li>
-              <li><Link href="#services" className="text-foreground/80 hover:text-primary">DApp Development</Link></li>
-              <li><Link href="#services" className="text-foreground/80 hover:text-primary">NFT Marketplaces</Link></li>
-              <li><Link href="#services" className="text-foreground/80 hover:text-primary">Crypto Wallets</Link></li>
+              <li><Link href="/service" className="text-foreground/80 hover:text-primary">Smart Contracts</Link></li>
+              <li><Link href="/service" className="text-foreground/80 hover:text-primary">DApp Development</Link></li>
+              <li><Link href="/service" className="text-foreground/80 hover:text-primary">NFT Marketplaces</Link></li>
+              <li><Link href="/service" className="text-foreground/80 hover:text-primary">Crypto Wallets</Link></li>
             </ul>
           </div>
           <div>
             <p className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">Company</p>
             <ul className="mt-4 space-y-2 text-sm">
-              <li><Link href="#work" className="text-foreground/80 hover:text-primary">Work</Link></li>
-              <li><Link href="#process" className="text-foreground/80 hover:text-primary">Process</Link></li>
-              <li><Link href="#contact" className="text-foreground/80 hover:text-primary">Contact</Link></li>
+              <li><Link href="/solution" className="text-foreground/80 hover:text-primary">Solution</Link></li>
+              <li><Link href="/about" className="text-foreground/80 hover:text-primary">About</Link></li>
+              <li><Link href="/contact" className="text-foreground/80 hover:text-primary">Contact</Link></li>
             </ul>
           </div>
           <div>

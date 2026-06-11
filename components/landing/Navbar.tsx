@@ -5,8 +5,8 @@ import Link from "next/link";
 import { Hexagon, Menu, X } from "lucide-react";
 
 const links = [
-  { label: "Services", href: "#services" },
-  { label: "Work", href: "#work" },
+  { label: "Services", href: "/service" },
+  { label: "Solution", href: "/solution" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
