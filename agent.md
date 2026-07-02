@@ -1,5 +1,7 @@
 # ClickMaster Mobile — Migration Guide & Progress
 
+> **⚠️ CONTENT RULE:** All content written in this project **MUST** follow the style guide defined in `CLICKMASTERS_CONTENT_STYLE_GUIDE.md`. Read it fully before writing any page copy, blog post, service description, or marketing text.
+
 ## Migration: TanStack Start (Vite/Bun) → Next.js 16 App Router
 
 **Status: ✅ COMPLETED** — All 13 steps done. Build passes. 4 routes compile as static pages.
