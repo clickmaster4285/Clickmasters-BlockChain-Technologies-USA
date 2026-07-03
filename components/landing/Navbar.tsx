@@ -51,7 +51,7 @@ export function Navbar() {
             href="#contact"
             className="inline-flex items-center gap-2 rounded-full bg-amber-base px-4 py-2.5 text-sm font-semibold text-bg-base transition-transform hover:-translate-y-0.5"
           >
-            Book a Call
+            Book a Free Strategy Call
           </Link>
         </div>
         <button
@@ -82,7 +82,7 @@ export function Navbar() {
                 onClick={() => setOpen(false)}
                 className="mt-2 block rounded-full bg-amber-base px-4 py-2 text-center text-sm font-semibold text-bg-base"
               >
-                Book a Call
+                Book a Free Strategy Call
               </Link>
             </li>
           </ul>

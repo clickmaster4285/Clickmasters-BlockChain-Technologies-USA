@@ -1,7 +1,57 @@
 "use client";
 
-import { useRef, type ReactNode } from "react";
-import { motion, useInView, type Variants } from "framer-motion";
+import { useEffect, useRef, useState, type ReactNode } from "react";
+import { motion, type Variants } from "framer-motion";
+
+/* ── Shared IntersectionObserver singleton ── */
+
+const observers = new Map<string, IntersectionObserver>();
+const observedCallbacks = new Map<Element, { cb: () => void; margin: string }>();
+
+function getObserver(rootMargin: string): IntersectionObserver {
+  if (!observers.has(rootMargin)) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const data = observedCallbacks.get(entry.target);
+            if (data) {
+              data.cb();
+              observer.unobserve(entry.target);
+              observedCallbacks.delete(entry.target);
+            }
+          }
+        });
+      },
+      { rootMargin, threshold: 0 },
+    );
+    observers.set(rootMargin, observer);
+  }
+  return observers.get(rootMargin)!;
+}
+
+function useSharedInView(ref: React.RefObject<Element | null>, margin: string): boolean {
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = getObserver(margin);
+    observedCallbacks.set(el, { cb: () => setInView(true), margin });
+    observer.observe(el);
+
+    return () => {
+      observer.unobserve(el);
+      observedCallbacks.delete(el);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return inView;
+}
+
+/* ── Reveal (single section fade-in) ── */
 
 type Props = {
   children: ReactNode;
@@ -12,7 +62,8 @@ type Props = {
 
 export function Reveal({ children, className, delay = 0, y = 40 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const inView = useSharedInView(ref, "-80px");
+
   return (
     <motion.div
       ref={ref}
@@ -26,18 +77,36 @@ export function Reveal({ children, className, delay = 0, y = 40 }: Props) {
   );
 }
 
+/* ── Stagger (container + item) ── */
+
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.15 } },
-};
-const itemVariants: Variants = {
-  hidden: { opacity: 0, filter: "blur(8px)", y: 20 },
-  visible: { opacity: 1, filter: "blur(0px)", y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1, delayChildren: 0.15 },
+  },
 };
 
-export function StaggerContainer({ children, className }: { children: ReactNode; className?: string }) {
+const itemVariants: Variants = {
+  hidden: { opacity: 0, filter: "blur(8px)", y: 20 },
+  visible: {
+    opacity: 1,
+    filter: "blur(0px)",
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" },
+  },
+};
+
+export function StaggerContainer({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-50px" });
+  const inView = useSharedInView(ref, "-50px");
+
   return (
     <motion.div
       ref={ref}
@@ -51,7 +120,13 @@ export function StaggerContainer({ children, className }: { children: ReactNode;
   );
 }
 
-export function StaggerItem({ children, className }: { children: ReactNode; className?: string }) {
+export function StaggerItem({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
   return (
     <motion.div variants={itemVariants} className={className}>
       {children}
@@ -59,9 +134,18 @@ export function StaggerItem({ children, className }: { children: ReactNode; clas
   );
 }
 
-export function RevealText({ children, className }: { children: ReactNode; className?: string }) {
+/* ── RevealText (clip-path reveal) ── */
+
+export function RevealText({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const inView = useSharedInView(ref, "-80px");
+
   return (
     <motion.div
       ref={ref}

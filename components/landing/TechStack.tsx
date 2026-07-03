@@ -14,7 +14,7 @@ const categories: Category[] = [
   {
     label: "Mobile",
     icon: Smartphone,
-    accent: "#F59E0B",
+    accent: "#D97706",
     items: [
       { name: "React Native", slug: "react", color: "61DAFB" },
       { name: "Flutter", slug: "flutter", color: "02569B" },
@@ -26,7 +26,7 @@ const categories: Category[] = [
   {
     label: "Blockchain",
     icon: Link2,
-    accent: "#FCD34D",
+    accent: "#D97706",
     items: [
       { name: "Solidity", slug: "solidity", color: "363636" },
       { name: "Ethereum", slug: "ethereum", color: "3C3C3D" },
@@ -39,7 +39,7 @@ const categories: Category[] = [
   {
     label: "Backend",
     icon: Server,
-    accent: "#94A3B8",
+    accent: "#64748B",
     items: [
       { name: "Node.js", slug: "nodedotjs", color: "5FA04E" },
       { name: "NestJS", slug: "nestjs", color: "E0234E" },
@@ -52,7 +52,7 @@ const categories: Category[] = [
   {
     label: "Cloud & DevOps",
     icon: Cloud,
-    accent: "#CBD5E1",
+    accent: "#64748B",
     items: [
       { name: "AWS", slug: "amazonwebservices", color: "FF9900" },
       { name: "Docker", slug: "docker", color: "2496ED" },
@@ -85,25 +85,28 @@ export function TechStack() {
   return (
     <section
       id="tech-stack"
-      className="dark relative overflow-hidden border-y border-white/5 bg-bg-elevated py-24 text-foreground md:py-32"
+      className="relative overflow-hidden border-y border-border bg-bg-elevated py-24 md:py-32"
     >
+      {/* Radial glow */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
         style={{
-          background:
-            "radial-gradient(ellipse 80% 50% at 50% 50%, rgba(245,158,11,0.06), transparent 70%)",
+          background: "radial-gradient(ellipse 80% 50% at 50% 50%, rgba(217,119,6,0.08), transparent 70%)",
         }}
       />
 
       <div className="container relative mx-auto max-w-[85vw] px-6">
         {/* Header */}
         <div className="mx-auto max-w-2xl text-center">
-          <p className="font-mono text-xs uppercase tracking-[0.2em] text-amber-base">Under the Hood</p>
-          <h2 className="mt-4 font-bold tracking-tight text-white" style={{ fontSize: "clamp(2.25rem, 4vw, 3.5rem)", lineHeight: 1.05 }}>
+          <div className="inline-flex items-center gap-2 rounded-full bg-amber-glow/50 px-3.5 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-amber-base">
+            <span className="h-1.5 w-1.5 rounded-full bg-amber-base" />
+            Under the Hood
+          </div>
+          <h2 className="mt-5 font-bold tracking-tight text-text-primary" style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)", lineHeight: 1.05 }}>
             Battle-Tested <span className="text-gradient">Stack.</span>
           </h2>
-          <p className="mt-5 text-base text-silver-base md:text-lg">
+          <p className="mt-4 text-base leading-relaxed text-text-secondary md:text-lg">
             Every tool chosen for performance, security, and scale.
           </p>
         </div>
@@ -118,11 +121,9 @@ export function TechStack() {
                 className="flex flex-col gap-4"
                 style={{ animation: `tech-in 0.6s ${ci * 0.1}s ease-out both` }}
               >
-                <div
-                  className="inline-flex w-fit items-center gap-2 rounded-full border border-amber-border bg-amber-glow px-4 py-2"
-                >
-                  <Icon className="h-3.5 w-3.5" style={{ color: cat.accent }} />
-                  <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-silver-light">
+                <div className="inline-flex w-fit items-center gap-2 rounded-full border border-amber-border bg-amber-glow px-3.5 py-1.5">
+                  <Icon className="h-3.5 w-3.5 text-amber-base" />
+                  <span className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-silver-light">
                     {cat.label}
                   </span>
                 </div>
@@ -130,16 +131,15 @@ export function TechStack() {
                   {cat.items.map((item, ii) => (
                     <li
                       key={item.name}
-                      className="group flex items-center gap-3 rounded-xl border border-white/5 bg-white/2 px-3.5 py-2.5 text-sm text-silver-bright transition-all hover:-translate-y-0.5 hover:border-amber-border hover:bg-amber-glow"
+                      className="group flex items-center gap-3 rounded-xl border border-border bg-surface px-3.5 py-2.5 text-sm font-medium text-text-secondary transition-all hover:-translate-y-0.5 hover:border-amber-border hover:bg-amber-glow/30 hover:text-text-primary"
                       style={{
                         animation: `tech-in 0.4s ${ci * 0.1 + ii * 0.04}s ease-out both`,
                       }}
                     >
                       <span
-                        className="grid h-7 w-7 shrink-0 place-items-center rounded-lg"
+                        className="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-surface"
                         style={{
-                          background: `${cat.accent}18`,
-                          border: `1px solid ${cat.accent}33`,
+                          border: `1px solid ${cat.accent}40`,
                         }}
                       >
                         <img
@@ -149,7 +149,7 @@ export function TechStack() {
                           className="h-4 w-4"
                         />
                       </span>
-                      <span className="font-medium">{item.name}</span>
+                      <span>{item.name}</span>
                     </li>
                   ))}
                 </ul>
@@ -165,9 +165,9 @@ export function TechStack() {
         </div>
 
         {/* Trust line */}
-        <div className="mt-12 flex items-center justify-center gap-2 text-center">
+        <div className="mt-10 flex items-center justify-center gap-2 text-center">
           <ShieldCheck className="h-4 w-4 text-amber-base" />
-          <p className="text-sm font-medium text-silver-mid">
+          <p className="text-sm font-medium text-text-muted">
             All blockchain code undergoes third-party security audits before deployment.
           </p>
         </div>
@@ -175,8 +175,7 @@ export function TechStack() {
 
       <style>{`
         @keyframes tech-in { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
-        @media (prefers-reduced-motion: reduce) { #tech-stack * { animation: none !important; transition: none !important; }
-        }
+        @media (prefers-reduced-motion: reduce) { #tech-stack * { animation: none !important; transition: none !important; } }
       `}</style>
     </section>
   );
@@ -191,18 +190,13 @@ function Marquee({ items, reverse }: { items: string[]; reverse: boolean }) {
     >
       <div
         className={`flex w-max gap-8 whitespace-nowrap ${reverse ? "animate-marquee-right" : "animate-marquee-left"}`}
-        style={{
-          animationDuration: "40s",
-        }}
+        style={{ animationDuration: "40s" }}
         onMouseEnter={(e) => (e.currentTarget.style.animationPlayState = "paused")}
         onMouseLeave={(e) => (e.currentTarget.style.animationPlayState = "running")}
       >
         {doubled.map((t, i) => (
-          <span
-            key={i}
-            className="text-xs font-semibold uppercase tracking-widest text-silver-dim"
-          >
-            {t} <span className="ml-8 text-silver-dim/50">·</span>
+          <span key={i} className="text-xs font-semibold uppercase tracking-widest text-silver-dim">
+            {t} <span className="ml-8 text-silver-dim/30">/</span>
           </span>
         ))}
       </div>
