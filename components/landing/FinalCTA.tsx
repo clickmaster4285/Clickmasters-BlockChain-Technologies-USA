@@ -54,7 +54,7 @@ export function FinalCTA() {
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
           <a
-            href="mailto:sale@clickmastersblockchaindevelopmentcompany.com"
+            href="mailto:sales@clickmastersdigitalmarketing.com"
             className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-amber-dim shadow-lg transition-all hover:-translate-y-0.5 hover:shadow-xl active:scale-[0.98]"
           >
             <Mail className="h-4 w-4" /> Email us

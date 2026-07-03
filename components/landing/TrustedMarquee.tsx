@@ -45,9 +45,9 @@ function LogoCloud({ reverse }: { reverse?: boolean }) {
             className="flex h-10 w-28 shrink-0 items-center justify-center"
           >
             <img
-              src={`https://cdn.simpleicons.org/${logo.slug}/${logo.color}/a0aec0`}
+              src={`https://cdn.simpleicons.org/${logo.slug}/${logo.color}`}
               alt={logo.name}
-              className="h-9 w-auto transition-all duration-500 hover:scale-110"
+              className="h-9 w-auto opacity-60 transition-all duration-500 hover:scale-110 hover:opacity-100"
               loading="lazy"
             />
           </div>
