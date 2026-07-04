@@ -8,9 +8,9 @@ const MD = path.join(__dirname, '..', 'md', 'services');
 const OUT = path.join(__dirname, '..', 'data', 'md-services.js');
 
 function S(f) { return f.replace(/\.md$/i,'').replace(/^\d+[_\-]\s*/,'').replace(/^\d+_to_\d+[_\-]\s*/,'').trim(); }
-function T(c) { const m=c.match(/^#\s+(.+)$/m); return m?m[1].trim():'Untitled'; }
+function T(c) { const m=c.match(/^#\s+(.+)$/m); if(m)return m[1].trim(); const h=c.match(/^##\s*H1:\s*(.+)$/mi); return h?h[1].trim():'Untitled'; }
 function F(c,n) {
-  const p=new RegExp(`\\*\\*${n.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}:\\*\\*\\s*([^\\n]+(?:\\n(?!\\s*\\*\\*|\\s*---|\\s*$)[^\\n]+)*)`,'m');
+  const p=new RegExp(`\\*\\*${n.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}:\\*\\*\\s*([^\\n]+(?:\\n(?!\\s*(?:-\\s+)?\\*\\*|\\s*---|\\s*$)[^\\n]+)*)`,'m');
   const m=c.match(p); return m?m[1].trim().replace(/`/g,'').trim():undefined;
 }
 function SS(c) {
@@ -18,7 +18,7 @@ function SS(c) {
   for(let i=1;i<p.length;i+=2){const h=p[i]?.trim()||'',b=p[i+1]?.trim()||'';if(!h||h.startsWith('---'))continue;if(h.toLowerCase().includes('faq')||h.toLowerCase().includes('frequently asked'))continue;if(h.toLowerCase().includes('cta')||h.toLowerCase().includes('ready to'))continue;const bl=[];let m;const br=/(?:^|\n)[*-]\s+(.+)/g;while((m=br.exec(b))!==null)bl.push(m[1].trim());const cc=b.replace(/[*-]\s+[^\n]+(\n|$)/g,'').replace(/\*\*([^*]+)\*\*/g,'$1').replace(/\n{3,}/g,'\n\n').trim();r.push({heading:h,content:cc||b.substring(0,300).trim(),bullets:bl.length>0?bl:undefined});}return r;
 }
 function FA(c) { const r=[];const s=c.split(/^##\s+.+(?:faq|frequently asked|questions answered)/im);let t='';if(s.length>1){for(let i=1;i<s.length;i++){const x=s[i];const e=x.search(/^##\s/m);t+=(e>0?x.substring(0,e):x)+'\n';}}else t=c;const q=/\*\*(.+?\?)\*\*\s*([\s\S]*?)(?=\n\*\*|$)/g;let m;while((m=q.exec(t))!==null){const qn=m[1].trim(),a=m[2].trim().replace(/\n{2,}/g,'\n').trim();if(qn&&a&&a.length>10)r.push({question:qn,answer:a});}return r;}
-function CT(c) { const r=[];const q=/\[BUTTON\s*[—–-]\s*(PRIMARY|SECONDARY)\]\s*([^\n→]*)(?:→)?/g;let m;while((m=q.exec(c))!==null)r.push({text:m[2].trim(),href:'#',primary:m[1]==='PRIMARY'});return r; }
+function CT(c) { const r=[];const q=/\[BUTTON\s*[—–-]\s*(PRIMARY|SECONDARY)\]\s*([^\n→]*)(?:→)?/g;let m;while((m=q.exec(c))!==null){const t=m[2].trim();const l=t.match(/\[([^\]]*)\]\(([^)]+)\)/);r.push({text:l?t.replace(/\[([^\]]*)\]\([^)]+\)/g,'$1').trim():t,href:l?l[2].trim():'#',primary:m[1]==='PRIMARY'});}return r; }
 function TI(c) { const r=[];const rx=/[✦✓]\s*(.+)/g;let m;while((m=rx.exec(c))!==null)r.push(m[1].trim());return r; }
 function TG(c,m){const t=[];if(m.primaryKeyword)t.push(m.primaryKeyword);['Service','Blockchain','DeFi','NFT','Smart Contract','Wallet','Exchange','Development','Enterprise','GameFi','Web3','Tokenization'].forEach(k=>{if(m.title.toLowerCase().includes(k.toLowerCase()))t.push(k);});return[...new Set(t)].slice(0,10);}
 
@@ -33,6 +33,7 @@ if(!fs.existsSync(MD)){console.error('  ❌ not found');process.exit(1);}
 const files=fs.readdirSync(MD).filter(f=>f.endsWith('.md'));
 console.log(`  Found ${files.length} service files\n`);
 const items=[];for(const f of files){const p=P(path.join(MD,f));if(p)items.push(p);}
+const seen=new Set();const dd=[];for(const i of items){if(!seen.has(i.slug)){seen.add(i.slug);dd.push(i);}}items.length=0;items.push(...dd);
 items.sort((a,b)=>a.slug.localeCompare(b.slug));
 console.log(`  Processed ${items.length} service pages`);
 

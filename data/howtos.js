@@ -73,7 +73,7 @@ const howtos=[
     "slug": "loyalty_vrf_automation_launchpad_multichain",
     "meta": {
       "url": "/how-to-build-blockchain-loyalty-program/",
-      "title": "Untitled",
+      "title": "How to Build a Blockchain Loyalty Program — Technical Implementation Guide",
       "secondaryKeywords": [],
       "schema": "HowTo, FAQPage, BreadcrumbList",
       "wordCount": 2708
@@ -160,7 +160,10 @@ const howtos=[
         "primary": true
       }
     ],
-    "tags": [],
+    "tags": [
+      "Guide",
+      "Blockchain"
+    ],
     "category": "howto"
   },
   {

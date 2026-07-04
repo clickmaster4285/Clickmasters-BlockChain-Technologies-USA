@@ -3,7 +3,7 @@ const partners=[
     "slug": "audit_legal_infra_partners",
     "meta": {
       "url": "/partners/trail-of-bits/",
-      "title": "Untitled",
+      "title": "Trail of Bits Partnership — Smart Contract Security Audit Integration",
       "secondaryKeywords": [],
       "schema": "Article, BreadcrumbList",
       "wordCount": 1406
@@ -85,7 +85,9 @@ const partners=[
         "primary": true
       }
     ],
-    "tags": [],
+    "tags": [
+      "Partner"
+    ],
     "category": "partner"
   },
   {

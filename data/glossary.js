@@ -110,7 +110,7 @@ const glossary=[
     "slug": "crypto_solidity_glossary_rwa_deployment_faq",
     "meta": {
       "url": "/blockchain-glossary/cryptography-fundamentals/",
-      "title": "Untitled",
+      "title": "Cryptography and Security Fundamentals Glossary — 30 Core Terms",
       "secondaryKeywords": [],
       "schema": "Article, BreadcrumbList",
       "wordCount": 2742
@@ -217,14 +217,16 @@ const glossary=[
         "primary": true
       }
     ],
-    "tags": [],
+    "tags": [
+      "Glossary"
+    ],
     "category": "glossary"
   },
   {
     "slug": "ecosystem_regulatory_ai_blockchain_news",
     "meta": {
       "url": "/blockchain-glossary/ecosystem/",
-      "title": "Untitled",
+      "title": "Blockchain Ecosystem Glossary — 40 Protocol and Network Terms",
       "secondaryKeywords": [],
       "schema": "Article, BreadcrumbList",
       "wordCount": 2202
@@ -266,58 +268,17 @@ const glossary=[
         "primary": true
       }
     ],
-    "tags": [],
-    "category": "glossary"
-  },
-  {
-    "slug": "ecosystem_regulatory_ai_blockchain_news",
-    "meta": {
-      "url": "/blockchain-news/ai-blockchain-convergence/",
-      "title": "Untitled",
-      "secondaryKeywords": [],
-      "schema": "Article, BreadcrumbList",
-      "wordCount": 312
-    },
-    "sections": [
-      {
-        "heading": "H1: Blockchain News: AI-Blockchain Convergence — Verified Inference and Decentralized Compute",
-        "content": "URL:*Schema:***Internal Links:*\nZK-proven AI inference allows smart contracts to use AI model outputs as trustless inputs, opening new design space for AI-augmented DeFi and autonomous agents. Decentralized compute networks (Bittensor, Render Network, Akash) use blockchain token incentives to coordinate GPU compute for AI workloads. Model provenance via blockchain timestamping addresses AI copyright and safety audit requirements emerging in new AI regulations.\n\n**[BUTTON — PRIMARY] Book a Free Strategy Call →*"
-      },
-      {
-        "heading": "H1: Web3 User Experience Glossary — Terms Every dApp Builder Should Know",
-        "content": "URL:*Schema:***Internal Links:*\nEssential Web3 UX terms for builders: Token Approval (spending permission), Bridging (cross-chain asset transfer), Gas Estimation (predicted transaction cost), Nonce (sequential transaction number), Pending Transaction (awaiting block inclusion), Seed Phrase (12/24-word wallet backup), Self-Custody (direct wallet control), Signature (cryptographic authorization proof), Slippage (execution price deviation), Smart Account (contract-controlled wallet with recovery features), TxHash (transaction identifier), WalletConnect (multi-wallet protocol), ENS (Ethereum Name Service). Designing UX that explains these concepts clearly — with actionable guidance when something goes wrong — is what separates excellent Web3 apps from frustrating ones.\n\n**[BUTTON — PRIMARY] Book a Free Strategy Call →*"
-      },
-      {
-        "heading": "H1: CBDC and Stablecoin Regulation — Global Digital Currency Status",
-        "content": "URL:*Schema:***Internal Links:*\nDigital Yuan (e-CNY) leads CBDC deployment with 200M+ wallets; EU Digital Euro in preparation phase; US most cautious on retail CBDC with focus on wholesale settlement research. MiCA in full effect across EU requiring CASP registration. US stablecoin legislation (GENIUS Act, STABLE Act) moving through Congress. Builder implications: design stablecoin integrations with regulatory contingency — the ability to add/remove specific stablecoins as regulatory clarity evolves is essential for long-term protocol resilience.\n\n[BUTTON — PRIMARY] Book a Free Strategy Call →"
-      }
+    "tags": [
+      "Glossary",
+      "Blockchain"
     ],
-    "faq": [],
-    "ctas": [
-      {
-        "text": "Book a Free Strategy Call",
-        "href": "#",
-        "primary": true
-      },
-      {
-        "text": "Book a Free Strategy Call",
-        "href": "#",
-        "primary": true
-      },
-      {
-        "text": "Book a Free Strategy Call",
-        "href": "#",
-        "primary": true
-      }
-    ],
-    "tags": [],
     "category": "glossary"
   },
   {
     "slug": "enterprise_regulatory_terms_news",
     "meta": {
       "url": "/blockchain-glossary/enterprise-regulatory/",
-      "title": "Untitled",
+      "title": "Blockchain Glossary — 50 Enterprise and Regulatory Terms",
       "secondaryKeywords": [],
       "schema": "Article, BreadcrumbList",
       "wordCount": 2184
@@ -354,7 +315,10 @@ const glossary=[
         "primary": true
       }
     ],
-    "tags": [],
+    "tags": [
+      "Glossary",
+      "Blockchain"
+    ],
     "category": "glossary"
   },
   {
@@ -484,7 +448,7 @@ const glossary=[
     "slug": "security_glossary_incident_response_pm",
     "meta": {
       "url": "/blockchain-glossary/defi-security/",
-      "title": "Untitled",
+      "title": "Blockchain DeFi Security Glossary — 40 Security Terms Every Developer Must Know",
       "secondaryKeywords": [],
       "schema": "Article, BreadcrumbList",
       "wordCount": 2472
@@ -594,69 +558,11 @@ const glossary=[
         "primary": true
       }
     ],
-    "tags": [],
-    "category": "glossary"
-  },
-  {
-    "slug": "security_glossary_incident_response_pm",
-    "meta": {
-      "url": "/blockchain-glossary/security-incident-response/",
-      "title": "Untitled",
-      "secondaryKeywords": [],
-      "schema": "Article, BreadcrumbList",
-      "wordCount": 2173
-    },
-    "sections": [
-      {
-        "heading": "H1: Security Glossary — Incident Response and Smart Contract Attack Terms",
-        "content": "URL:*Schema:***Internal Links:*\n**Access Control Vulnerability:*\n**Attack Vector:*\n**Audit Trail:*\n**Backdoor:*\n**Bug Bounty Triage:*\n**Business Logic Vulnerability:*\n**Circuit Breaker:*\n**Dependency Risk:*\n**Draining Attack:*\n**Emergency Response Team:*\n**Exploit:*\n**Flash Loan Attack:*\n**Front-End Hijacking:*\n**Gas Griefing:*\n**Governance Attack:*\n**Hot Patch:*\n**Incident Report:*\n**Logic Bomb:*\n**Minimum Viable Pause:*\n**Post-Mortem:*\n**Price Oracle Manipulation:*\n**Protocol Pause:*\n**Re-entrancy Guard:*\n**Responsible Disclosure:*\n**Sandwich Attack:*\n**Slippage Attack:*\n**Upgrade Key Compromise:*\n**Vulnerability Disclosure Window:*\n**War Room:*\n**White Hat:*\n**[BUTTON — PRIMARY] Book a Free Strategy Call →*"
-      },
-      {
-        "heading": "H1: Blockchain News: Ethereum's Pectra Upgrade — Account Abstraction and Validator Improvements",
-        "content": "URL:*Schema:***Internal Links:*\nEthereum's Pectra upgrade (EIP-7702 and related EIPs) represents a significant improvement to validator operations and native account abstraction capabilities, building on the Dencun upgrade's blob transaction improvements.\n\n### Key Pectra Improvements\n\n**EIP-7702 (Set EOA Account Code):*\n**Validator operation improvements:*\n**Blob count expansion (EIP-7691):*\n### Builder Implications\n\nEIP-7702 opens a middle path between full smart account adoption (requires new wallet infrastructure) and continuing with pure EOA transactions (no advanced features). Wallets can implement EIP-7702 support to offer users batching and sponsorship features from their existing seed-phrase-managed accounts, potentially accelerating account abstraction feature adoption in existing wallet user bases.\n\n**[BUTTON — PRIMARY] Book a Free Strategy Call →*"
-      },
-      {
-        "heading": "H1: Blockchain Glossary — DeFi Protocol Terms for Builders and Investors",
-        "content": "URL:*Schema:***Internal Links:*\n**Basis Trade:*\n**Bribing (Gauge Bribing):*\n**Carry Trade:*\n**Delta Neutral:*\n**Dynamic Fees:*\n**Fee Switch:*\n**Funding Rate:*\n**Gauge (Curve/Balancer):*\n**Haircut:*\n**Health Factor:*\n**Impermanent Loss (IL):*\n**Interest Rate Model:*\n**LMSR (Logarithmic Market Scoring Rule):*\n**Maturity Mismatch:*\n**MEV Arbitrage:*\n**Peg Stability Module (PSM):*\n**Pool 2:*\n**Price Impact:*\n**Real Yield:*\n**Rebalancing Bot:*\n**Rehypothecation:*\n**Reserve Factor:*\n**Slippage Tolerance:*\n**Soft Liquidation:*\n**Staking Derivative:*\n**Time-Weighted Average Price (TWAP):*\n**Total Value Locked (TVL):*\n**Utilization Rate:*\n**Vampire Attack:*\n**veToken (Vote-Escrowed Token):*\n**[BUTTON — PRIMARY] Book a Free Strategy Call →*"
-      },
-      {
-        "heading": "H1: Blockchain Security Audit Preparation Guide — 30-Day Pre-Audit Checklist",
-        "content": "URL:*Schema:***Internal Links:*\n**Days 30-21: Codebase Cleanup*\n**Days 21-14: Documentation Preparation*\n**Days 14-7: Test Quality Audit*\n**Days 7-0: Final Submission Preparation*\n**The Audit Submission Package:*\n[BUTTON — PRIMARY] Book a Free Strategy Call →",
-        "bullets": [
-          "Architecture document with system diagram",
-          "Threat model (who might attack, what they'd target)",
-          "Invariants list (mathematical properties that must always hold)",
-          "Known issues document",
-          "Deployment plan (how and in what order contracts will be deployed)",
-          "Previous audit reports (if any)",
-          "Test coverage report"
-        ]
-      }
+    "tags": [
+      "Glossary",
+      "Blockchain",
+      "DeFi"
     ],
-    "faq": [],
-    "ctas": [
-      {
-        "text": "Book a Free Strategy Call",
-        "href": "#",
-        "primary": true
-      },
-      {
-        "text": "Book a Free Strategy Call",
-        "href": "#",
-        "primary": true
-      },
-      {
-        "text": "Book a Free Strategy Call",
-        "href": "#",
-        "primary": true
-      },
-      {
-        "text": "Book a Free Strategy Call",
-        "href": "#",
-        "primary": true
-      }
-    ],
-    "tags": [],
     "category": "glossary"
   },
   {

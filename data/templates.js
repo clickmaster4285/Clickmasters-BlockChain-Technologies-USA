@@ -513,7 +513,7 @@ const templates=[
     "slug": "specification_tokenomics_news",
     "meta": {
       "url": "/tools/smart-contract-specification-template/",
-      "title": "Untitled",
+      "title": "Smart Contract Specification Template — Define Before You Code",
       "secondaryKeywords": [],
       "schema": "Article, BreadcrumbList",
       "wordCount": 2544
@@ -596,14 +596,16 @@ const templates=[
         "primary": true
       }
     ],
-    "tags": [],
+    "tags": [
+      "Template"
+    ],
     "category": "template"
   },
   {
     "slug": "whitepaper_onepager_pitchdeck",
     "meta": {
       "url": "/tools/blockchain-whitepaper-template/",
-      "title": "Untitled",
+      "title": "Blockchain Whitepaper Template — Structure and Content Guide",
       "secondaryKeywords": [],
       "schema": "Article, BreadcrumbList",
       "wordCount": 1186
@@ -635,7 +637,10 @@ const templates=[
         "primary": true
       }
     ],
-    "tags": [],
+    "tags": [
+      "Template",
+      "Whitepaper"
+    ],
     "category": "template"
   },
   {

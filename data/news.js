@@ -3,7 +3,7 @@ const news=[
     "slug": "audit_glossary_funds_restaking_nft_tax_faq",
     "meta": {
       "url": "/blockchain-glossary/auditing-terms/",
-      "title": "Untitled",
+      "title": "Smart Contract Auditing Glossary — 30 Terms for Security Researchers",
       "secondaryKeywords": [],
       "schema": "Article, BreadcrumbList",
       "wordCount": 1848
@@ -293,7 +293,7 @@ const news=[
     "slug": "ethereum_roadmap_tokenized_funds_crosschain_defi_regs",
     "meta": {
       "url": "/blockchain-news/ethereum-roadmap-2025/",
-      "title": "Untitled",
+      "title": "Blockchain News: Ethereum Roadmap 2025–2026 — The Verge and Purge Phases",
       "secondaryKeywords": [],
       "schema": "Article, BreadcrumbList",
       "wordCount": 2589
@@ -451,7 +451,11 @@ const news=[
         "primary": true
       }
     ],
-    "tags": [],
+    "tags": [
+      "News",
+      "Blockchain",
+      "Ethereum"
+    ],
     "category": "news"
   },
   {
@@ -621,7 +625,7 @@ const news=[
     "slug": "fabric3_layer3_cftc_solana_mobile",
     "meta": {
       "url": "/blockchain-news/hyperledger-fabric-3-2025/",
-      "title": "Untitled",
+      "title": "Blockchain News: Hyperledger Fabric 3.0 — What Changed for Enterprise Deployments",
       "secondaryKeywords": [],
       "schema": "Article, BreadcrumbList",
       "wordCount": 2907
@@ -835,14 +839,17 @@ const news=[
         "primary": true
       }
     ],
-    "tags": [],
+    "tags": [
+      "News",
+      "Blockchain"
+    ],
     "category": "news"
   },
   {
     "slug": "mica_staking_ma_bitcoin_l2_glossary_schema",
     "meta": {
       "url": "/blockchain-news/mica-eu-regulation-2025/",
-      "title": "Untitled",
+      "title": "Blockchain News: MiCA Regulation Implementation — EU Digital Asset Framework 2025",
       "secondaryKeywords": [],
       "schema": "Article, BreadcrumbList",
       "wordCount": 2622
@@ -901,7 +908,11 @@ const news=[
         "primary": true
       }
     ],
-    "tags": [],
+    "tags": [
+      "News",
+      "Blockchain",
+      "Regulation"
+    ],
     "category": "news"
   },
   {
@@ -1179,7 +1190,7 @@ const news=[
     "slug": "zk_stablecoins_enterprise_social_news",
     "meta": {
       "url": "/blockchain-news/zk-proofs-applications-2025/",
-      "title": "Untitled",
+      "title": "ZK Proofs Applications 2025 — Beyond Rollups: Identity, Gaming, and Enterprise",
       "secondaryKeywords": [],
       "schema": "Article, BreadcrumbList",
       "wordCount": 2497

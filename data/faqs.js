@@ -8,7 +8,7 @@ const faqHubs = [
     "slug": "defi_development_faq_calculators",
     "meta": {
       "url": "/tools/blockchain-development-cost-calculator/",
-      "title": "Untitled",
+      "title": "Blockchain Development Cost Calculator — Estimate Your Project Budget",
       "secondaryKeywords": [],
       "schema": "Article, BreadcrumbList",
       "wordCount": 2788
@@ -180,14 +180,17 @@ const faqHubs = [
         "primary": true
       }
     ],
-    "tags": [],
+    "tags": [
+      "Blockchain",
+      "Development"
+    ],
     "category": "faq"
   },
   {
     "slug": "defi_enterprise_faq_hubs",
     "meta": {
       "url": "/faq/defi-protocol/",
-      "title": "Untitled",
+      "title": "DeFi Protocol FAQ Hub — 25 Questions Developers and Investors Ask",
       "secondaryKeywords": [],
       "schema": "FAQPage, BreadcrumbList",
       "wordCount": 2549
@@ -407,7 +410,10 @@ const faqHubs = [
         "primary": true
       }
     ],
-    "tags": [],
+    "tags": [
+      "FAQ",
+      "DeFi"
+    ],
     "category": "faq"
   },
   {
@@ -633,7 +639,7 @@ const faqHubs = [
     "slug": "enterprise_consulting_glossary_faq",
     "meta": {
       "url": "/blockchain-mental-health-privacy/",
-      "title": "Untitled",
+      "title": "Blockchain Development for Mental Health Platforms — Privacy-First Data Architecture",
       "secondaryKeywords": [],
       "schema": "Service, FAQPage, BreadcrumbList",
       "wordCount": 2946
@@ -778,14 +784,17 @@ const faqHubs = [
         "primary": true
       }
     ],
-    "tags": [],
+    "tags": [
+      "Blockchain",
+      "Development"
+    ],
     "category": "faq"
   },
   {
     "slug": "exchange_faq_news_partners",
     "meta": {
       "url": "/faq/crypto-exchange/",
-      "title": "Untitled",
+      "title": "Blockchain Exchange FAQ — 20 Questions Before Building a Crypto Exchange",
       "secondaryKeywords": [],
       "schema": "FAQPage, BreadcrumbList",
       "wordCount": 1584
@@ -905,7 +914,10 @@ const faqHubs = [
         "primary": true
       }
     ],
-    "tags": [],
+    "tags": [
+      "FAQ",
+      "Blockchain"
+    ],
     "category": "faq"
   },
   {
@@ -1325,7 +1337,7 @@ const faqHubs = [
     "slug": "final_faq_news_resources",
     "meta": {
       "url": "/blockchain-development-company-fort-collins/",
-      "title": "Untitled",
+      "title": "Blockchain Development Company in Fort Collins, Colorado — CleanTech and AgTech",
       "secondaryKeywords": [],
       "schema": "LocalBusiness, FAQPage, BreadcrumbList",
       "wordCount": 1736
@@ -1483,14 +1495,17 @@ const faqHubs = [
         "primary": true
       }
     ],
-    "tags": [],
+    "tags": [
+      "Blockchain",
+      "Development"
+    ],
     "category": "faq"
   },
   {
     "slug": "nft_faq_tokenomics_glossary_calculator",
     "meta": {
       "url": "/faq/nft-development/",
-      "title": "Untitled",
+      "title": "NFT Development FAQ — 20 Questions Answered",
       "secondaryKeywords": [],
       "schema": "FAQPage, BreadcrumbList",
       "wordCount": 2354
@@ -1604,7 +1619,11 @@ const faqHubs = [
         "primary": true
       }
     ],
-    "tags": [],
+    "tags": [
+      "FAQ",
+      "NFT",
+      "Development"
+    ],
     "category": "faq"
   },
   {
@@ -2707,7 +2726,7 @@ const faqHubs = [
     "slug": "tokenization_faq_case_studies",
     "meta": {
       "url": "/faq/asset-tokenization/",
-      "title": "Untitled",
+      "title": "Tokenization FAQ Hub — 25 Questions About Real-World Asset Tokenization",
       "secondaryKeywords": [],
       "schema": "FAQPage, BreadcrumbList",
       "wordCount": 2133
@@ -2850,7 +2869,9 @@ const faqHubs = [
         "primary": true
       }
     ],
-    "tags": [],
+    "tags": [
+      "FAQ"
+    ],
     "category": "faq"
   },
   {

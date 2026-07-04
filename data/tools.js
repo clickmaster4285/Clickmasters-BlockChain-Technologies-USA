@@ -425,7 +425,7 @@ const tools=[
     "slug": "due_diligence_erc20_analytics",
     "meta": {
       "url": "/tools/blockchain-technical-due-diligence/",
-      "title": "Untitled",
+      "title": "Blockchain Technical Due Diligence Checklist — For Investors and Acquirers",
       "secondaryKeywords": [],
       "schema": "Article, BreadcrumbList",
       "wordCount": 1734
@@ -511,14 +511,17 @@ const tools=[
         "primary": true
       }
     ],
-    "tags": [],
+    "tags": [
+      "Checklist",
+      "Blockchain"
+    ],
     "category": "tool"
   },
   {
     "slug": "security_checklist_launch_comparison_scope",
     "meta": {
       "url": "/tools/smart-contract-security-checklist/",
-      "title": "Untitled",
+      "title": "Smart Contract Pre-Launch Security Checklist — 50-Point Audit Readiness Tool",
       "secondaryKeywords": [],
       "schema": "Article, BreadcrumbList",
       "wordCount": 2391
@@ -697,7 +700,11 @@ const tools=[
         "primary": true
       }
     ],
-    "tags": [],
+    "tags": [
+      "Tool",
+      "Checklist",
+      "Security"
+    ],
     "category": "tool"
   }
 ];

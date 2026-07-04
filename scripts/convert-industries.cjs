@@ -17,11 +17,14 @@ function mdToSlug(fileName) {
 
 function extractTitle(content) {
   const match = content.match(/^#\s+(.+)$/m);
-  return match ? match[1].trim() : 'Untitled';
+  if (match) return match[1].trim();
+  const h1Match = content.match(/^##\s*H1:\s*(.+)$/mi);
+  return h1Match ? h1Match[1].trim() : 'Untitled';
 }
 
 function extractField(content, fieldName) {
-  const pattern = new RegExp(`\\*\\*${fieldName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}:\\*\\*\\s*([^\\n]+(?:\\n(?!\\s*\\*\\*|\\s*---|\\s*$)[^\\n]+)*)`, 'm');
+  // Multi-line: captures continuation lines but stops at `**Field:` or `- **Field:` boundaries
+  const pattern = new RegExp(`\\*\\*${fieldName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}:\\*\\*\\s*([^\\n]+(?:\\n(?!\\s*(?:-\\s+)?\\*\\*|\\s*---|\\s*$)[^\\n]+)*)`, 'm');
   const match = content.match(pattern);
   if (match) return match[1].trim().replace(/`/g, '').trim();
   const simple = new RegExp(`-\\s*\\*\\*${fieldName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}:\\*\\*\\s*([^\\n]+)`, 'm');
@@ -73,7 +76,15 @@ function extractCtas(content) {
   const ctas = [];
   const ctaRegex = /\[BUTTON\s*[—–-]\s*(PRIMARY|SECONDARY)\]\s*([^\n→]*)(?:→)?/g;
   let m;
-  while ((m = ctaRegex.exec(content)) !== null) ctas.push({ text: m[2].trim(), href: '#', primary: m[1] === 'PRIMARY' });
+  while ((m = ctaRegex.exec(content)) !== null) {
+    const btnText = m[2].trim();
+    const linkMatch = btnText.match(/\[([^\]]*)\]\(([^)]+)\)/);
+    ctas.push({
+      text: linkMatch ? btnText.replace(/\[([^\]]*)\]\([^)]+\)/g, '$1').trim() : btnText,
+      href: linkMatch ? linkMatch[2].trim() : '#',
+      primary: m[1] === 'PRIMARY',
+    });
+  }
   return ctas;
 }
 
@@ -83,18 +94,6 @@ function extractTags(content, meta) {
   const keywords = ['Finance', 'Real Estate', 'Healthcare', 'Supply Chain', 'Gaming', 'Retail', 'Education', 'Government', 'Energy', 'Logistics'];
   for (const kw of keywords) if (meta.title.toLowerCase().includes(kw.toLowerCase())) tags.push(kw);
   return [...new Set(tags)].slice(0, 10);
-}
-
-function extractUseCases(content) {
-  const useCases = [];
-  const lines = content.split('\n');
-  for (const line of lines) {
-    const trimmed = line.trim();
-    if ((trimmed.startsWith('- **') || trimmed.startsWith('* **')) && trimmed.includes('**')) {
-      useCases.push(trimmed.replace(/^[-*]\s*\*\*/, '').replace(/\*\*.*$/, '').trim());
-    }
-  }
-  return useCases.slice(0, 10);
 }
 
 function parseMdFile(filePath) {
@@ -113,8 +112,7 @@ function parseMdFile(filePath) {
   const faq = extractFaq(content);
   const ctas = extractCtas(content);
   const tags = extractTags(content, meta);
-  const useCases = extractUseCases(content);
-  return { slug, meta, sections, faq, ctas, tags, category: 'industry', useCases };
+  return { slug, meta, sections, faq, ctas, tags, category: 'industry' };
 }
 
 function convertIndustries() {
@@ -124,6 +122,16 @@ function convertIndustries() {
   console.log(`  Found ${files.length} industry pages\n`);
   const items = [];
   for (const file of files) { const parsed = parseMdFile(path.join(MD_DIR, file)); if (parsed) items.push(parsed); }
+  // Deduplicate by slug (first occurrence wins)
+  const seenSlugs = new Set();
+  const deduped = [];
+  for (const item of items) {
+    if (!seenSlugs.has(item.slug)) {
+      seenSlugs.add(item.slug);
+      deduped.push(item);
+    }
+  }
+  items.length = 0; items.push(...deduped);
   items.sort((a, b) => a.slug.localeCompare(b.slug));
   console.log(`  Processed ${items.length} industry pages`);
 

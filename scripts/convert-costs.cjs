@@ -23,12 +23,15 @@ function mdToSlug(fileName) {
 
 function extractTitle(content) {
   const match = content.match(/^#\s+(.+)$/m);
-  return match ? match[1].trim() : 'Untitled';
+  if (match) return match[1].trim();
+  const h1Match = content.match(/^##\s*H1:\s*(.+)$/mi);
+  return h1Match ? h1Match[1].trim() : 'Untitled';
 }
 
 function extractField(content, fieldName) {
+  // Multi-line: captures continuation lines but stops at `**Field:` or `- **Field:` boundaries
   const pattern = new RegExp(
-    `\\*\\*${escapeRegex(fieldName)}:\\*\\*\\s*([^\\n]+(?:\\n(?!\\s*\\*\\*|\\s*---|\\s*$)[^\\n]+)*)`,
+    `\\*\\*${escapeRegex(fieldName)}:\\*\\*\\s*([^\\n]+(?:\\n(?!\\s*(?:-\\s+)?\\*\\*|\\s*---|\\s*$)[^\\n]+)*)`,
     'm'
   );
   const match = content.match(pattern);
@@ -111,7 +114,13 @@ function extractCtas(content) {
   const ctaRegex = /\[BUTTON\s*[—–-]\s*(PRIMARY|SECONDARY)\]\s*([^\n→]*)(?:→)?/g;
   let m;
   while ((m = ctaRegex.exec(content)) !== null) {
-    ctas.push({ text: m[2].trim(), href: '#', primary: m[1] === 'PRIMARY' });
+    const btnText = m[2].trim();
+    const linkMatch = btnText.match(/\[([^\]]*)\]\(([^)]+)\)/);
+    ctas.push({
+      text: linkMatch ? btnText.replace(/\[([^\]]*)\]\([^)]+\)/g, '$1').trim() : btnText,
+      href: linkMatch ? linkMatch[2].trim() : '#',
+      primary: m[1] === 'PRIMARY',
+    });
   }
   return ctas;
 }
@@ -178,6 +187,18 @@ function convertCosts() {
     const parsed = parseMdFile(path.join(MD_DIR, file));
     if (parsed) items.push(parsed);
   }
+
+  // Deduplicate by slug (first occurrence wins)
+  const seenSlugs = new Set();
+  const deduped = [];
+  for (const item of items) {
+    if (!seenSlugs.has(item.slug)) {
+      seenSlugs.add(item.slug);
+      deduped.push(item);
+    }
+  }
+  items.length = 0;
+  items.push(...deduped);
 
   // Sort by slug
   items.sort((a, b) => a.slug.localeCompare(b.slug));

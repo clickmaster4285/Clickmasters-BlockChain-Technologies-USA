@@ -3,7 +3,7 @@ const resources=[
     "slug": "audit_prep_gtm_hiring_schemas",
     "meta": {
       "url": "/resources/smart-contract-audit-preparation/",
-      "title": "Untitled",
+      "title": "Smart Contract Audit Preparation Checklist — Maximize Audit Value",
       "secondaryKeywords": [],
       "schema": "Article, BreadcrumbList",
       "wordCount": 1762
@@ -433,7 +433,7 @@ const resources=[
     "slug": "case_study_grants_schemas",
     "meta": {
       "url": "/resources/blockchain-case-study-template/",
-      "title": "Untitled",
+      "title": "Blockchain Case Study Template — Document Your Implementation Results",
       "secondaryKeywords": [],
       "schema": "Article, BreadcrumbList",
       "wordCount": 1666
@@ -502,14 +502,16 @@ const resources=[
         "primary": true
       }
     ],
-    "tags": [],
+    "tags": [
+      "Blockchain"
+    ],
     "category": "resource"
   },
   {
     "slug": "developer_path_enterprise_guide_audit",
     "meta": {
       "url": "/resources/blockchain-developer-learning-path/",
-      "title": "Untitled",
+      "title": "Blockchain Developer Learning Path — From Solidity Beginner to Senior Engineer",
       "secondaryKeywords": [],
       "schema": "Article, BreadcrumbList",
       "wordCount": 1940
@@ -582,7 +584,9 @@ const resources=[
         "primary": true
       }
     ],
-    "tags": [],
+    "tags": [
+      "Blockchain"
+    ],
     "category": "resource"
   },
   {
@@ -793,7 +797,7 @@ const resources=[
     "slug": "sequencer_communities_mica_standards",
     "meta": {
       "url": "/blockchain-news/ethereum-sequencer-decentralization-2025/",
-      "title": "Untitled",
+      "title": "Blockchain News: Ethereum's Road to Decentralizing the Sequencer — 2025 Update",
       "secondaryKeywords": [],
       "schema": "Article, BreadcrumbList",
       "wordCount": 411
@@ -839,7 +843,9 @@ const resources=[
         "primary": true
       }
     ],
-    "tags": [],
+    "tags": [
+      "Blockchain"
+    ],
     "category": "resource"
   }
 ];

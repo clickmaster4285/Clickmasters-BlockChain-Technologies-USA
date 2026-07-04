@@ -7,9 +7,9 @@ const MD_DIR = path.join(__dirname, '..', 'md', 'faq_hubs');
 const OUTPUT = path.join(__dirname, '..', 'data', 'faqs.js');
 
 function slugify(f) { return f.replace(/\.md$/i,'').replace(/^\d+[_\-]\s*/,'').replace(/^\d+_to_\d+[_\-]\s*/,'').trim(); }
-function title(c) { const m=c.match(/^#\s+(.+)$/m); return m?m[1].trim():'Untitled'; }
+function title(c) { const m=c.match(/^#\s+(.+)$/m); if(m)return m[1].trim(); const h=c.match(/^##\s*H1:\s*(.+)$/mi); return h?h[1].trim():'Untitled'; }
 function field(c, n) {
-  const p=new RegExp(`\\*\\*${n.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}:\\*\\*\\s*([^\\n]+(?:\\n(?!\\s*\\*\\*|\\s*---|\\s*$)[^\\n]+)*)`,'m');
+  const p=new RegExp(`\\*\\*${n.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}:\\*\\*\\s*([^\\n]+(?:\\n(?!\\s*(?:-\\s+)?\\*\\*|\\s*---|\\s*$)[^\\n]+)*)`,'m');
   const m=c.match(p); if(m)return m[1].trim().replace(/`/g,'').trim();
   const s=new RegExp(`-\\s*\\*\\*${n.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}:\\*\\*\\s*([^\\n]+)`,'m');
   const sm=c.match(s); return sm?sm[1].trim():undefined;
@@ -33,7 +33,7 @@ function faq(c) {
   const q=/\*\*(.+?\?)\*\*\s*([\s\S]*?)(?=\n\*\*|$)/g;let m;while((m=q.exec(t))!==null){const qn=m[1].trim(),a=m[2].trim().replace(/\n{2,}/g,'\n').trim();if(qn&&a&&a.length>10)r.push({question:qn,answer:a});}
   return r;
 }
-function ctas(c){const r=[];const q=/\[BUTTON\s*[—–-]\s*(PRIMARY|SECONDARY)\]\s*([^\n→]*)(?:→)?/g;let m;while((m=q.exec(c))!==null)r.push({text:m[2].trim(),href:'#',primary:m[1]==='PRIMARY'});return r;}
+function ctas(c){const r=[];const q=/\[BUTTON\s*[—–-]\s*(PRIMARY|SECONDARY)\]\s*([^\n→]*)(?:→)?/g;let m;while((m=q.exec(c))!==null){const t=m[2].trim();const l=t.match(/\[([^\]]*)\]\(([^)]+)\)/);r.push({text:l?t.replace(/\[([^\]]*)\]\([^)]+\)/g,'$1').trim():t,href:l?l[2].trim():'#',primary:m[1]==='PRIMARY'});}return r;}
 function tags(c,m){const t=[];if(m.primaryKeyword)t.push(m.primaryKeyword);if(m.secondaryKeywords)m.secondaryKeywords.slice(0,5).forEach(x=>t.push(x));
 ['FAQ','Blockchain','DeFi','NFT','Web3','Development','Enterprise'].forEach(k=>{if(m.title.toLowerCase().includes(k.toLowerCase()))t.push(k);});
 return[...new Set(t)].slice(0,10);}
@@ -48,6 +48,7 @@ function convert(){console.log('Converting md/faq_hubs/ → data/faqs.js\n');
 if(!fs.existsSync(MD_DIR)){console.error('  ❌ md/faq_hubs/ not found');process.exit(1);}
 const files=fs.readdirSync(MD_DIR).filter(f=>f.endsWith('.md'));console.log(`  Found ${files.length} FAQ hubs\n`);
 const items=[];for(const f of files){const p=parse(path.join(MD_DIR,f));if(p)items.push(p);}
+const seen=new Set();const dd=[];for(const i of items){if(!seen.has(i.slug)){seen.add(i.slug);dd.push(i);}}items.length=0;items.push(...dd);
 items.sort((a,b)=>a.slug.localeCompare(b.slug));console.log(`  Processed ${items.length} FAQ hubs`);
 
 const o=`/**

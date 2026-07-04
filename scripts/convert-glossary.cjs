@@ -7,7 +7,7 @@ const MD = path.join(__dirname, '..', 'md', 'glossary');
 const OUT = path.join(__dirname, '..', 'data', 'glossary.js');
 
 function S(f) { return f.replace(/\.md$/i,'').replace(/^\d+[_\-]\s*/,'').replace(/^\d+_to_\d+[_\-]\s*/,'').trim(); }
-function T(c) { const m=c.match(/^#\s+(.+)$/m); return m?m[1].trim():'Untitled'; }
+function T(c) { const m=c.match(/^#\s+(.+)$/m); if(m)return m[1].trim(); const h=c.match(/^##\s*H1:\s*(.+)$/mi); return h?h[1].trim():'Untitled'; }
 function F(c,n) {
   const p=new RegExp(`\\*\\*${n.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}:\\*\\*\\s*([^\\n]+)`,'m');
   const m=c.match(p); return m?m[1].trim().replace(/`/g,'').trim():undefined;
@@ -28,7 +28,7 @@ function FA(c) {
   const q=/\*\*(.+?\?)\*\*\s*([\s\S]*?)(?=\n\*\*|$)/g;let m;while((m=q.exec(t))!==null){const qn=m[1].trim(),a=m[2].trim().replace(/\n{2,}/g,'\n').trim();if(qn&&a&&a.length>10)r.push({question:qn,answer:a});}
   return r;
 }
-function CT(c) { const r=[];const q=/\[BUTTON\s*[—–-]\s*(PRIMARY|SECONDARY)\]\s*([^\n→]*)(?:→)?/g;let m;while((m=q.exec(c))!==null)r.push({text:m[2].trim(),href:'#',primary:m[1]==='PRIMARY'});return r; }
+function CT(c) { const r=[];const q=/\[BUTTON\s*[—–-]\s*(PRIMARY|SECONDARY)\]\s*([^\n→]*)(?:→)?/g;let m;while((m=q.exec(c))!==null){const t=m[2].trim();const l=t.match(/\[([^\]]*)\]\(([^)]+)\)/);r.push({text:l?t.replace(/\[([^\]]*)\]\([^)]+\)/g,'$1').trim():t,href:l?l[2].trim():'#',primary:m[1]==='PRIMARY'});}return r; }
 function TG(c,m){const t=[];if(m.primaryKeyword)t.push(m.primaryKeyword);['Glossary','Blockchain','DeFi','NFT','Web3'].forEach(k=>{if(m.title.toLowerCase().includes(k.toLowerCase()))t.push(k);});return[...new Set(t)].slice(0,10);}
 
 function P(fp){const c=fs.readFileSync(fp,'utf-8');if(!c)return null;
@@ -41,6 +41,7 @@ console.log('Converting md/glossary/ → data/glossary.js\n');
 if(!fs.existsSync(MD)){console.error('  ❌ md/glossary/ not found');process.exit(1);}
 const files=fs.readdirSync(MD).filter(f=>f.endsWith('.md'));console.log(`  Found ${files.length} glossary files\n`);
 const items=[];for(const f of files){const p=P(path.join(MD,f));if(p)items.push(p);}
+const seen=new Set();const dd=[];for(const i of items){if(!seen.has(i.slug)){seen.add(i.slug);dd.push(i);}}items.length=0;items.push(...dd);
 items.sort((a,b)=>a.slug.localeCompare(b.slug));
 const o=`const glossary=${JSON.stringify(items,null,2)};
 function getGlossaryBySlug(slug){return glossary.find(i=>i.slug===slug);}

@@ -59,7 +59,7 @@ const schemas=[
     "slug": "services_schema_startup_guide_news",
     "meta": {
       "url": "/schema/blockchain-development-services/",
-      "title": "Untitled",
+      "title": "Blockchain Development Services Schema — Main Services Page Markup",
       "secondaryKeywords": [],
       "schema": "Service, FAQPage, BreadcrumbList",
       "wordCount": 1527
@@ -118,14 +118,17 @@ const schemas=[
         "primary": true
       }
     ],
-    "tags": [],
+    "tags": [
+      "Schema",
+      "Blockchain"
+    ],
     "category": "schema"
   },
   {
     "slug": "service_schema_templates",
     "meta": {
       "url": "/schema/smart-contract-development/",
-      "title": "Untitled",
+      "title": "Smart Contract Development Schema Markup Template",
       "secondaryKeywords": [],
       "schema": "Service, FAQPage, BreadcrumbList",
       "wordCount": 1407
@@ -158,7 +161,9 @@ const schemas=[
     ],
     "faq": [],
     "ctas": [],
-    "tags": [],
+    "tags": [
+      "Schema"
+    ],
     "category": "schema"
   },
   {
@@ -238,7 +243,7 @@ const schemas=[
     "slug": "final_schema_service_overview",
     "meta": {
       "url": "/blockchain-development-company-greensboro/",
-      "title": "Untitled",
+      "title": "Blockchain Development Company in Greensboro, North Carolina — Textiles and Manufacturing",
       "secondaryKeywords": [],
       "schema": "LocalBusiness, FAQPage, BreadcrumbList",
       "wordCount": 760
@@ -329,7 +334,9 @@ const schemas=[
         "primary": true
       }
     ],
-    "tags": [],
+    "tags": [
+      "Blockchain"
+    ],
     "category": "schema"
   },
   {

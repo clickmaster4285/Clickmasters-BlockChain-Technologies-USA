@@ -1,4 +1,4 @@
-const calculators=[
+const calculators = [
   {
     "slug": "blockchain_calculators",
     "meta": {
@@ -536,7 +536,7 @@ const calculators=[
     "slug": "nft_cost_defi_checklist_glossary_onboarding",
     "meta": {
       "url": "/tools/nft-launch-cost-calculator/",
-      "title": "Untitled",
+      "title": "NFT Launch Cost Calculator — Estimate Your Collection Budget",
       "secondaryKeywords": [],
       "schema": "Article, BreadcrumbList",
       "wordCount": 2641
@@ -665,7 +665,9 @@ const calculators=[
         "primary": true
       }
     ],
-    "tags": [],
+    "tags": [
+      "Calculator"
+    ],
     "category": "calculator"
   },
   {
@@ -731,10 +733,12 @@ const calculators=[
     "category": "calculator"
   }
 ];
-function getCalculatorBySlug(slug){return calculators.find(i=>i.slug===slug);}
-function getCalculatorCards(o2){let c=calculators.map(i=>({slug:i.slug,title:i.meta.title,description:i.sections[0]?.content?.substring(0,200)||i.meta.title,category:'calculator',tags:i.tags,url:i.meta.url}));
-if(o2?.tag)c=c.filter(x=>x.tags?.includes(o2.tag));if(o2?.search){const q=o2.search.toLowerCase();c=c.filter(x=>x.title.toLowerCase().includes(q)||x.description.toLowerCase().includes(q));}
-if(o2?.offset)c=c.slice(o2.offset);if(o2?.limit)c=c.slice(0,o2.limit);return c;}
-function getCalculatorsByTag(t){return calculators.filter(i=>i.tags?.includes(t));}
-function searchCalculators(q2){const q=q2.toLowerCase();return calculators.filter(i=>i.meta.title.toLowerCase().includes(q)||i.slug.toLowerCase().includes(q));}
-module.exports={calculators,getCalculatorBySlug,getCalculatorCards,getCalculatorsByTag,searchCalculators};
+function getCalculatorBySlug(slug) { return calculators.find(i => i.slug === slug); }
+function getCalculatorCards(o2) {
+  let c = calculators.map(i => ({ slug: i.slug, title: i.meta.title, description: i.sections[0]?.content?.substring(0, 200) || i.meta.title, category: 'calculator', tags: i.tags, url: i.meta.url }));
+  if (o2?.tag) c = c.filter(x => x.tags?.includes(o2.tag)); if (o2?.search) { const q = o2.search.toLowerCase(); c = c.filter(x => x.title.toLowerCase().includes(q) || x.description.toLowerCase().includes(q)); }
+  if (o2?.offset) c = c.slice(o2.offset); if (o2?.limit) c = c.slice(0, o2.limit); return c;
+}
+function getCalculatorsByTag(t) { return calculators.filter(i => i.tags?.includes(t)); }
+function searchCalculators(q2) { const q = q2.toLowerCase(); return calculators.filter(i => i.meta.title.toLowerCase().includes(q) || i.slug.toLowerCase().includes(q)); }
+module.exports = { calculators, getCalculatorBySlug, getCalculatorCards, getCalculatorsByTag, searchCalculators };

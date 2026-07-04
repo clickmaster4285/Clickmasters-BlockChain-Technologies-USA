@@ -3,7 +3,7 @@ const comparisons=[
     "slug": "blockchain_comparisons_batch2",
     "meta": {
       "url": "/solidity-vs-vyper/",
-      "title": "Untitled",
+      "title": "Solidity vs Vyper — Which Language for Your Smart Contract?",
       "secondaryKeywords": [],
       "schema": "Article, FAQPage, BreadcrumbList",
       "wordCount": 1893
@@ -106,7 +106,7 @@ const comparisons=[
     "slug": "fabric_ethereum_solana_government_media",
     "meta": {
       "url": "/hyperledger-fabric-vs-ethereum/",
-      "title": "Untitled",
+      "title": "Hyperledger Fabric vs Ethereum: Enterprise Blockchain Comparison 2025",
       "secondaryKeywords": [],
       "schema": "Article, FAQPage, BreadcrumbList",
       "wordCount": 2251
@@ -224,7 +224,11 @@ const comparisons=[
         "primary": true
       }
     ],
-    "tags": [],
+    "tags": [
+      "Comparison",
+      "Blockchain",
+      "Ethereum"
+    ],
     "category": "comparison"
   },
   {
@@ -323,7 +327,7 @@ const comparisons=[
     "slug": "l2_zk_roi_token_certs_vulns",
     "meta": {
       "url": "/arbitrum-vs-optimism-vs-base/",
-      "title": "Untitled",
+      "title": "Arbitrum vs Optimism vs Base — Layer 2 Blockchain Comparison 2025",
       "secondaryKeywords": [],
       "schema": "Article, FAQPage, BreadcrumbList",
       "wordCount": 2283
@@ -400,7 +404,10 @@ const comparisons=[
         "primary": true
       }
     ],
-    "tags": [],
+    "tags": [
+      "Comparison",
+      "Blockchain"
+    ],
     "category": "comparison"
   },
   {

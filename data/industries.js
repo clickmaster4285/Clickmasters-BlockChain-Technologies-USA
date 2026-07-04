@@ -9,7 +9,7 @@ const industries = [
     "slug": "aerospace_art_codereview_calculator_music_custody",
     "meta": {
       "url": "/blockchain-aerospace-defense-manufacturing/",
-      "title": "Untitled",
+      "title": "Blockchain for Aerospace and Defense Manufacturing — AS9100 Compliance Chain",
       "secondaryKeywords": [],
       "schema": "Service, FAQPage, BreadcrumbList",
       "wordCount": 2369
@@ -159,8 +159,7 @@ const industries = [
       }
     ],
     "tags": [],
-    "category": "industry",
-    "useCases": []
+    "category": "industry"
   },
   {
     "slug": "blockchain-development-finance",
@@ -273,8 +272,7 @@ const industries = [
       "financial blockchain platform",
       "DeFi for institutions"
     ],
-    "category": "industry",
-    "useCases": []
+    "category": "industry"
   },
   {
     "slug": "blockchain-development-real-estate",
@@ -389,14 +387,13 @@ const industries = [
       "blockchain title transfer",
       "Real Estate"
     ],
-    "category": "industry",
-    "useCases": []
+    "category": "industry"
   },
   {
     "slug": "coworking_rental_naming_cooperatives_photography",
     "meta": {
       "url": "/blockchain-development-coworking-property-management/",
-      "title": "Untitled",
+      "title": "Blockchain Development for Co-working Spaces and Real Estate Management",
       "secondaryKeywords": [],
       "schema": "Service, FAQPage, BreadcrumbList",
       "wordCount": 2035
@@ -516,15 +513,16 @@ const industries = [
         "primary": true
       }
     ],
-    "tags": [],
-    "category": "industry",
-    "useCases": []
+    "tags": [
+      "Real Estate"
+    ],
+    "category": "industry"
   },
   {
     "slug": "franchise_events_affiliate_dtc_background",
     "meta": {
       "url": "/blockchain-development-franchises/",
-      "title": "Untitled",
+      "title": "Blockchain Development for Franchises — Multi-Location Royalty and Compliance Tracking",
       "secondaryKeywords": [],
       "schema": "Service, FAQPage, BreadcrumbList",
       "wordCount": 2058
@@ -643,14 +641,13 @@ const industries = [
       }
     ],
     "tags": [],
-    "category": "industry",
-    "useCases": []
+    "category": "industry"
   },
   {
     "slug": "freight_warehouse_pharmacy_fitness",
     "meta": {
       "url": "/blockchain-freight-trucking/",
-      "title": "Untitled",
+      "title": "Blockchain Development for Freight Brokers and Trucking Companies",
       "secondaryKeywords": [],
       "schema": "Service, FAQPage, BreadcrumbList",
       "wordCount": 1816
@@ -743,14 +740,13 @@ const industries = [
       }
     ],
     "tags": [],
-    "category": "industry",
-    "useCases": []
+    "category": "industry"
   },
   {
     "slug": "nonprofits_construction_logistics_automotive_legal",
     "meta": {
       "url": "/blockchain-development-nonprofits/",
-      "title": "Untitled",
+      "title": "Blockchain Development for Nonprofits — Donation Transparency and Impact Verification",
       "secondaryKeywords": [],
       "schema": "Service, FAQPage, BreadcrumbList",
       "wordCount": 2389
@@ -888,14 +884,13 @@ const industries = [
       }
     ],
     "tags": [],
-    "category": "industry",
-    "useCases": []
+    "category": "industry"
   },
   {
     "slug": "talent_vending_research_storage",
     "meta": {
       "url": "/blockchain-talent-agencies-influencer-marketing/",
-      "title": "Untitled",
+      "title": "Blockchain Development for Talent Agencies and Influencer Marketing",
       "secondaryKeywords": [],
       "schema": "Service, FAQPage, BreadcrumbList",
       "wordCount": 1597
@@ -993,14 +988,13 @@ const industries = [
       }
     ],
     "tags": [],
-    "category": "industry",
-    "useCases": []
+    "category": "industry"
   },
   {
     "slug": "telecom_education_logistics_listicle_howto",
     "meta": {
       "url": "/blockchain-development-telecommunications/",
-      "title": "Untitled",
+      "title": "Blockchain Development for Telecommunications — Network Sharing and Roaming Settlement",
       "secondaryKeywords": [],
       "schema": "Service, FAQPage, BreadcrumbList",
       "wordCount": 2136
@@ -1128,8 +1122,7 @@ const industries = [
       }
     ],
     "tags": [],
-    "category": "industry",
-    "useCases": []
+    "category": "industry"
   },
   {
     "slug": "to_10_industries",
@@ -1608,8 +1601,7 @@ const industries = [
       "blockchain provenance tracking",
       "Supply Chain"
     ],
-    "category": "industry",
-    "useCases": []
+    "category": "industry"
   },
   {
     "slug": "to_20_industries",
@@ -2050,8 +2042,7 @@ const industries = [
       "build DeFi protocol startup",
       "launch DeFi platform"
     ],
-    "category": "industry",
-    "useCases": []
+    "category": "industry"
   },
   {
     "slug": "to_20_industry_ext",
@@ -2659,8 +2650,7 @@ const industries = [
       "shipping blockchain",
       "Logistics"
     ],
-    "category": "industry",
-    "useCases": []
+    "category": "industry"
   },
   {
     "slug": "to_40_industry_ext",
@@ -2833,8 +2823,7 @@ const industries = [
       "blockchain for financial technology",
       "DeFi fintech integration"
     ],
-    "category": "industry",
-    "useCases": []
+    "category": "industry"
   },
   {
     "slug": "utilities_education_tracker_prediction_gating",
@@ -2970,14 +2959,13 @@ const industries = [
       }
     ],
     "tags": [],
-    "category": "industry",
-    "useCases": []
+    "category": "industry"
   },
   {
     "slug": "veterinary_travel_recruiting_subscription_solar",
     "meta": {
       "url": "/blockchain-development-veterinary/",
-      "title": "Untitled",
+      "title": "Blockchain for Veterinary and Animal Health — Livestock Traceability and Pet Identity",
       "secondaryKeywords": [],
       "schema": "Service, FAQPage, BreadcrumbList",
       "wordCount": 2043
@@ -3093,14 +3081,13 @@ const industries = [
       }
     ],
     "tags": [],
-    "category": "industry",
-    "useCases": []
+    "category": "industry"
   },
   {
     "slug": "wine_pawn_childcare_conference",
     "meta": {
       "url": "/blockchain-development-wine-spirits/",
-      "title": "Untitled",
+      "title": "Blockchain Development for Wine and Spirits Industry — Authentication and Provenance",
       "secondaryKeywords": [],
       "schema": "Service, FAQPage, BreadcrumbList",
       "wordCount": 1569
@@ -3193,8 +3180,7 @@ const industries = [
       }
     ],
     "tags": [],
-    "category": "industry",
-    "useCases": []
+    "category": "industry"
   }
 ];
 

@@ -1,9 +1,9 @@
-const caseStudies=[
+const caseStudies = [
   {
     "slug": "locations_comparisons_case_studies",
     "meta": {
       "url": "/blockchain-development-company-chicago/",
-      "title": "Untitled",
+      "title": "Blockchain Development Company in Chicago — DeFi and Enterprise Blockchain Services",
       "secondaryKeywords": [],
       "schema": "LocalBusiness, FAQPage, BreadcrumbList",
       "wordCount": 2493
@@ -132,14 +132,18 @@ const caseStudies=[
         "primary": true
       }
     ],
-    "tags": [],
+    "tags": [
+      "Blockchain",
+      "DeFi",
+      "Enterprise"
+    ],
     "category": "case-study"
   },
   {
     "slug": "specialty_coffee_events_payments_luxury",
     "meta": {
       "url": "/case-study/supply-chain-transparency-coffee/",
-      "title": "Untitled",
+      "title": "Case Study: Supply Chain Transparency for Premium Coffee — Single-Origin Traceability",
       "secondaryKeywords": [],
       "schema": "Article, BreadcrumbList",
       "wordCount": 1560
@@ -215,7 +219,9 @@ const caseStudies=[
         "primary": true
       }
     ],
-    "tags": [],
+    "tags": [
+      "Case Study"
+    ],
     "category": "case-study"
   },
   {
@@ -1077,10 +1083,12 @@ const caseStudies=[
     "category": "case-study"
   }
 ];
-function getCaseStudyBySlug(slug){return caseStudies.find(i=>i.slug===slug);}
-function getCaseStudyCards(o2){let c=caseStudies.map(i=>({slug:i.slug,title:i.meta.title,description:i.sections[0]?.content?.substring(0,200)||i.meta.title,category:'case-study',tags:i.tags,url:i.meta.url}));
-if(o2?.tag)c=c.filter(x=>x.tags?.includes(o2.tag));if(o2?.search){const q=o2.search.toLowerCase();c=c.filter(x=>x.title.toLowerCase().includes(q)||x.description.toLowerCase().includes(q));}
-if(o2?.offset)c=c.slice(o2.offset);if(o2?.limit)c=c.slice(0,o2.limit);return c;}
-function getCaseStudiesByTag(t){return caseStudies.filter(i=>i.tags?.includes(t));}
-function searchCaseStudies(q2){const q=q2.toLowerCase();return caseStudies.filter(i=>i.meta.title.toLowerCase().includes(q)||i.slug.toLowerCase().includes(q));}
-module.exports={caseStudies,getCaseStudyBySlug,getCaseStudyCards,getCaseStudiesByTag,searchCaseStudies};
+function getCaseStudyBySlug(slug) { return caseStudies.find(i => i.slug === slug); }
+function getCaseStudyCards(o2) {
+  let c = caseStudies.map(i => ({ slug: i.slug, title: i.meta.title, description: i.sections[0]?.content?.substring(0, 200) || i.meta.title, category: 'case-study', tags: i.tags, url: i.meta.url }));
+  if (o2?.tag) c = c.filter(x => x.tags?.includes(o2.tag)); if (o2?.search) { const q = o2.search.toLowerCase(); c = c.filter(x => x.title.toLowerCase().includes(q) || x.description.toLowerCase().includes(q)); }
+  if (o2?.offset) c = c.slice(o2.offset); if (o2?.limit) c = c.slice(0, o2.limit); return c;
+}
+function getCaseStudiesByTag(t) { return caseStudies.filter(i => i.tags?.includes(t)); }
+function searchCaseStudies(q2) { const q = q2.toLowerCase(); return caseStudies.filter(i => i.meta.title.toLowerCase().includes(q) || i.slug.toLowerCase().includes(q)); }
+module.exports = { caseStudies, getCaseStudyBySlug, getCaseStudyCards, getCaseStudiesByTag, searchCaseStudies };
