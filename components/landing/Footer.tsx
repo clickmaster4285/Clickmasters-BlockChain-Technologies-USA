@@ -39,8 +39,10 @@ export function Footer() {
           <div>
             <p className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">Contact</p>
             <ul className="mt-4 space-y-2 text-sm">
-              <li><a href="mailto:sale@clickmastersblockchaindevelopmentcompany.com" className="break-all text-foreground/80 hover:text-primary">sale@clickmastersblockchaindevelopmentcompany.com</a></li>
-              <li><a href="tel:+13252024074" className="text-foreground/80 hover:text-primary">+1 325 202 4074</a></li>
+              <li><a href="mailto:sales@clickmastersdigitalmarketing.com" className="break-all text-foreground/80 hover:text-primary">sales@clickmastersdigitalmarketing.com</a></li>
+              <li><a href="tel:+447988576086" className="text-foreground/80 hover:text-primary">+44 7988 576086</a> <span className="text-xs text-muted-foreground">UK</span></li>
+              <li><a href="tel:+13252024074" className="text-foreground/80 hover:text-primary">+1 325 202 4074</a> <span className="text-xs text-muted-foreground">US</span></li>
+              <li><a href="tel:+923325394285" className="text-foreground/80 hover:text-primary">+92 332 5394285</a> <span className="text-xs text-muted-foreground">PK</span></li>
             </ul>
           </div>
         </div>

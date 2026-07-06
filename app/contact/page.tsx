@@ -70,7 +70,7 @@ export default function ContactPage() {
 
             <div className="space-y-4">
               <a
-                href="mailto:web3@clickmasters.com"
+                href="mailto:sales@clickmastersdigitalmarketing.com"
                 className="flex items-center gap-4 rounded-2xl border border-border bg-surface p-5 transition-colors hover:border-primary"
               >
                 <span className="grid h-11 w-11 place-items-center rounded-xl bg-primary/10 text-primary">
@@ -78,7 +78,19 @@ export default function ContactPage() {
                 </span>
                 <div>
                   <p className="font-semibold">Email</p>
-                  <p className="text-sm text-muted-foreground">web3@clickmasters.com</p>
+                  <p className="text-sm text-muted-foreground">sales@clickmastersdigitalmarketing.com</p>
+                </div>
+              </a>
+              <a
+                href="tel:+447988576086"
+                className="flex items-center gap-4 rounded-2xl border border-border bg-surface p-5 transition-colors hover:border-primary"
+              >
+                <span className="grid h-11 w-11 place-items-center rounded-xl bg-primary/10 text-primary">
+                  <Phone className="h-5 w-5" />
+                </span>
+                <div>
+                  <p className="font-semibold">UK</p>
+                  <p className="text-sm text-muted-foreground">+44 7988 576086</p>
                 </div>
               </a>
               <a
@@ -89,8 +101,20 @@ export default function ContactPage() {
                   <Phone className="h-5 w-5" />
                 </span>
                 <div>
-                  <p className="font-semibold">Phone</p>
+                  <p className="font-semibold">US</p>
                   <p className="text-sm text-muted-foreground">+1 325 202 4074</p>
+                </div>
+              </a>
+              <a
+                href="tel:+923325394285"
+                className="flex items-center gap-4 rounded-2xl border border-border bg-surface p-5 transition-colors hover:border-primary"
+              >
+                <span className="grid h-11 w-11 place-items-center rounded-xl bg-primary/10 text-primary">
+                  <Phone className="h-5 w-5" />
+                </span>
+                <div>
+                  <p className="font-semibold">Pakistan</p>
+                  <p className="text-sm text-muted-foreground">+92 332 5394285</p>
                 </div>
               </a>
               <a

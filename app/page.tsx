@@ -18,6 +18,7 @@ import { FinalCTA } from "@/components/landing/FinalCTA";
 import { Footer } from "@/components/landing/Footer";
 import { Reveal } from "@/components/landing/Reveal";
 import { WhatsAppFAB } from "@/components/landing/WhatsAppFAB";
+import { BackToTop } from "@/components/landing/BackToTop";
 
 const heroVideo = "/media/hero-bg.mp4";
 const heroSide = "/media/cta-bg.png";
@@ -66,6 +67,7 @@ export default function Index() {
       </main>
       <Footer />
       <WhatsAppFAB />
+      <BackToTop />
     </div>
   );
 }

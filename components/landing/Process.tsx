@@ -6,32 +6,32 @@ import { Rocket, Map, Wand2, Cog, Sparkles } from "lucide-react";
 const steps = [
   {
     icon: Rocket,
-    title: "Discovery Call",
-    desc: "We learn your vision, market, and goals. No jargon, just clarity.",
+    title: "S - Scope & Discovery",
+    desc: "We learn your market, user base, and regulatory constraints. Deliverable: Discovery Document with technical scope and cost estimate.",
     duration: "~1 week",
   },
   {
     icon: Map,
-    title: "Strategy & Architecture",
-    desc: "We map the tech stack, blockchain layer, and UX wireframes.",
+    title: "P - Plan & Architecture",
+    desc: "We map the tech stack, chain selection rationale, data flow diagrams, and UX wireframes. Deliverable: Architecture Decision Record (ADR).",
     duration: "~2 weeks",
   },
   {
     icon: Wand2,
-    title: "Design & Prototype",
-    desc: "High-fidelity Figma prototypes with your brand baked in.",
+    title: "E - Engineer & Prototype",
+    desc: "High-fidelity Figma prototypes, smart contract stubs, and API schemas. Deliverable: Interactive prototype + contract interface specs.",
     duration: "~2 weeks",
   },
   {
     icon: Cog,
-    title: "Build & Integrate",
-    desc: "Full-stack development: mobile app + smart contracts + backend.",
+    title: "C - Code & Integrate",
+    desc: "Full-stack development: mobile app + smart contracts + backend. Weekly demo builds. Deliverable: Staging environment with CI/CD.",
     duration: "~4-8 weeks",
   },
   {
     icon: Sparkles,
-    title: "Launch & Scale",
-    desc: "App Store deployment, smart contract audit, growth support.",
+    title: "BUILD-HARDEN - Audit & Launch",
+    desc: "Third-party security audit, formal verification, App Store deployment, post-launch monitoring. Deliverable: Audited contracts + production deployment.",
     duration: "Ongoing",
   },
 ];
@@ -59,35 +59,38 @@ export function Process() {
     <section
       id="process"
       ref={sectionRef}
-      className="dark relative overflow-hidden bg-bg-elevated py-24 text-foreground md:py-32"
+      className="relative overflow-hidden bg-bg-elevated py-24 md:py-32"
     >
-      {/* star field */}
-      <div className="pointer-events-none absolute inset-0 opacity-50">
+      {/* Star field */}
+      <div className="pointer-events-none absolute inset-0 opacity-40">
         <StarField />
       </div>
-      <div className="pointer-events-none absolute -left-32 top-1/4 h-100 w-100 rounded-full bg-amber-glow opacity-30 blur-3xl" />
-      <div className="pointer-events-none absolute -right-32 bottom-1/4 h-100 w-100 rounded-full bg-amber-glow opacity-25 blur-3xl" />
+      <div className="pointer-events-none absolute -left-32 top-1/4 h-[26rem] w-[26rem] rounded-full bg-amber-glow blur-[100px]" />
+      <div className="pointer-events-none absolute -right-32 bottom-1/4 h-[26rem] w-[26rem] rounded-full bg-amber-glow blur-[100px]" />
 
-      <div className="container relative mx-auto max-w-6xl px-6">
+      <div className="container relative mx-auto max-w-[85vw] px-6">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="font-mono text-xs uppercase tracking-[0.2em] text-amber-base">Our Process</p>
-          <h2 className="mt-4 font-bold tracking-tight text-white" style={{ fontSize: "clamp(2.5rem, 5vw, 3.75rem)", lineHeight: 1.05 }}>
-            Your App's Journey to the <span className="text-gradient">Stars.</span>
+          <div className="inline-flex items-center gap-2 rounded-full bg-amber-glow/50 px-3.5 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-amber-base">
+            <span className="h-1.5 w-1.5 rounded-full bg-amber-base" />
+            Our Process
+          </div>
+          <h2 className="mt-5 font-bold tracking-tight text-text-primary" style={{ fontSize: "clamp(2.25rem, 5vw, 3.75rem)", lineHeight: 1.05 }}>
+            Your App's Journey to the <span className="text-gradient">Stars</span>
           </h2>
-          <p className="mt-5 text-base text-silver-base md:text-lg">
-            From first call to App Store launch — a proven 5-phase mission.
+          <p className="mt-4 text-base leading-relaxed text-text-secondary md:text-lg">
+            From discovery to mainnet - our SPEC-BUILD-HARDEN methodology across 5 phases.
           </p>
         </div>
 
         {/* Timeline */}
         <div className="relative mt-20">
-          {/* Spine (desktop: centered, mobile: left) */}
+          {/* Spine */}
           <div
             aria-hidden="true"
-            className="absolute top-0 left-6 h-full w-0.5 -translate-x-1/2 overflow-hidden md:left-1/2 bg-white/6"
+            className="absolute left-6 top-0 h-full w-0.5 -translate-x-1/2 overflow-hidden bg-border md:left-1/2"
           >
             <div
-              className="origin-top h-full w-full bg-linear-to-b from-amber-base via-amber-light to-silver-light"
+              className="h-full w-full origin-top bg-linear-to-b from-amber-base via-amber-light to-silver-light"
               style={{
                 transform: `scaleY(${progress})`,
                 transformOrigin: "top",
@@ -105,55 +108,43 @@ export function Process() {
                   key={s.title}
                   className="relative grid grid-cols-[3rem_1fr] gap-4 md:grid-cols-2 md:gap-0"
                 >
-                  {/* milestone dot */}
+                  {/* Milestone dot */}
                   <div className="relative md:col-span-2 md:flex md:justify-center">
                     <span
                       aria-hidden="true"
                       className="absolute left-6 top-6 -translate-x-1/2 md:left-1/2 md:top-1/2 md:-translate-y-1/2"
                     >
-                      <span
-                        className="block h-3 w-3 rounded-full bg-amber-base"
-                        style={{
-                          boxShadow: "0 0 0 4px rgba(245,158,11,0.2), 0 0 20px rgba(245,158,11,0.6)",
-                        }}
-                      />
+                      <span className="block h-3 w-3 rounded-full bg-amber-base shadow-[0_0_0_4px_rgba(217,119,6,0.25),0_0_20px_rgba(217,119,6,0.35)]" />
                     </span>
                   </div>
 
-                  <div className={`relative ${right ? "md:col-start-2 md:pl-12" : "md:col-start-1 md:pr-12"} col-start-2`}
+                  <div
+                    className={`relative col-start-2 ${right ? "md:col-start-2 md:pl-12" : "md:col-start-1 md:pr-12"}`}
                     style={{
                       animation: `journey-in 0.7s ${i * 0.1}s ease-out both`,
-                      animationFillMode: "both",
                     }}
                   >
-                    <article
-                      className="relative overflow-hidden rounded-3xl border border-white/5 bg-white/3 p-7 backdrop-blur md:p-8"
-                    >
-                      {/* ghosted step number */}
+                    <article className="relative overflow-hidden rounded-2xl border border-border bg-surface p-6 shadow-soft md:p-8">
+                      {/* Ghosted step number */}
                       <span
                         aria-hidden="true"
-                        className="pointer-events-none absolute -right-2 -top-6 font-bold leading-none text-white/4"
+                        className="pointer-events-none absolute -right-2 -top-6 font-bold leading-none text-silver-dim/50"
                         style={{ fontSize: "8rem" }}
                       >
                         0{i + 1}
                       </span>
 
-                      <div
-                        className="grid h-12 w-12 place-items-center rounded-2xl bg-amber-glow text-amber-base"
-                        style={{ border: "1px solid rgba(245,158,11,0.25)" }}
-                      >
+                      <div className="grid h-12 w-12 place-items-center rounded-xl border border-amber-border bg-amber-glow text-amber-base">
                         <Icon className="h-5 w-5" />
                       </div>
 
-                      <h3 className="mt-4 text-xl font-bold tracking-tight text-white md:text-2xl">
+                      <h3 className="mt-4 text-xl font-bold tracking-tight text-text-primary md:text-2xl">
                         {s.title}
                       </h3>
-                      <p className="mt-2 text-sm leading-relaxed text-silver-base md:text-[0.9375rem]">
+                      <p className="mt-2 text-sm leading-relaxed text-text-secondary md:text-[0.9375rem]">
                         {s.desc}
                       </p>
-                      <span
-                        className="mt-4 inline-block rounded-full border border-amber-border bg-amber-glow px-3 py-1 text-xs font-medium text-silver-light"
-                      >
+                      <span className="mt-4 inline-block rounded-full border border-border bg-surface px-3 py-1 font-mono text-xs font-medium text-text-muted">
                         {s.duration}
                       </span>
                     </article>
@@ -184,7 +175,7 @@ function StarField() {
   return (
     <svg className="h-full w-full" preserveAspectRatio="none" viewBox="0 0 100 100">
       {dots.map((d, i) => (
-        <circle key={i} cx={d.x} cy={d.y} r={d.s * 0.08} fill="white" opacity={d.o} />
+        <circle key={i} cx={d.x} cy={d.y} r={d.s * 0.08} fill="#64748B" opacity={d.o * 0.6} />
       ))}
     </svg>
   );

@@ -262,7 +262,7 @@ export const services: Service[] = [
     ],
     sidebar: [
       { title: "Token Standards", items: ["ERC-20 (Fungible)", "ERC-721 (NFT)", "ERC-1155 (Multi)", "ERC-4626 (Vault)"] },
-      { title: "Launch Tools", items: ["Merkle airdrop", "Vesting contracts", "DEX liquidity", "Governance setup"] },
+      { title: "Launch Tools", items: ["Merkle airdrop", "Merkle airdrop", "DEX liquidity", "Governance setup"] },
     ],
   },
 ];
@@ -274,4 +274,3 @@ export function getServiceBySlug(slug: string) {
 export function getAllServiceSlugs() {
   return services.map((s) => s.slug);
 }
-

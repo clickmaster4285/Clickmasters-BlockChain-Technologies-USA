@@ -25,8 +25,8 @@ export function CursorGlow() {
     <div
       ref={ref}
       aria-hidden
-      className="pointer-events-none fixed left-0 top-0 z-[55] h-[300px] w-[300px] rounded-full opacity-40 mix-blend-screen"
-      style={{ background: "radial-gradient(circle, rgba(245,158,11,0.35), rgba(245,158,11,0.08) 40%, transparent 70%)" }}
+      className="pointer-events-none fixed left-0 top-0 z-[55] h-[300px] w-[300px] rounded-full opacity-30 hidden md:block"
+      style={{ background: "radial-gradient(circle, rgba(217,119,6,0.25), rgba(217,119,6,0.05) 40%, transparent 70%)" }}
     />
   );
 }

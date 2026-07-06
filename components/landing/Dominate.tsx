@@ -2,11 +2,12 @@
 
 import { ArrowRight } from "lucide-react";
 import { Counter } from "./Counter";
+import { StaggerContainer, StaggerItem } from "./Reveal";
 
 const stats = [
   { value: 50, suffix: "+", label: "Apps Delivered" },
   { value: 98, suffix: "%", label: "Client Retention" },
-  { value: 2, prefix: "$", suffix: "M+", label: "Revenue Generated" },
+  { value: 2, prefix: "$", suffix: "M+", label: "Revenue Driven" },
   { value: 4.9, suffix: "★", label: "Client Rating", decimals: 1 },
 ];
 
@@ -23,61 +24,63 @@ export function Dominate() {
   return (
     <section
       id="dominate"
-      className="dark relative overflow-hidden border-y border-white/5 bg-bg-elevated py-24 text-foreground md:py-32"
+      className="relative overflow-hidden border-y border-border bg-bg-surface py-24 md:py-32"
     >
-      {/* atmospheric orbs */}
-      <div className="pointer-events-none absolute -top-32 left-1/4 h-105 w-105 rounded-full bg-amber-glow opacity-40 blur-3xl animate-orb" />
-      <div className="pointer-events-none absolute -bottom-32 right-1/5 h-115 w-115 rounded-full bg-amber-glow opacity-30 blur-3xl animate-orb" style={{ animationDelay: "-6s" }} />
-      <div className="bg-dots-light pointer-events-none absolute inset-0 opacity-30 mask-[radial-gradient(ellipse_at_center,black,transparent_75%)]" />
+      {/* Atmospheric orbs */}
+      <div className="pointer-events-none absolute -top-32 left-1/4 h-[30rem] w-[30rem] animate-orb rounded-full bg-amber-glow blur-[120px]" />
+      <div
+        className="pointer-events-none absolute -bottom-32 right-1/5 h-[32rem] w-[32rem] animate-orb rounded-full bg-emerald-glow blur-[120px]"
+        style={{ animationDelay: "-6s" }}
+      />
+      <div className="bg-dots pointer-events-none absolute inset-0 opacity-25 [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
 
       <div className="container relative mx-auto max-w-[85vw] px-6">
-        {/* Row 1 — header */}
+        {/* Header */}
         <div className="mx-auto max-w-2xl text-center">
-          <p className="font-mono text-xs uppercase tracking-[0.2em] text-amber-base">
+          <div className="inline-flex items-center gap-2 rounded-full bg-amber-glow/50 px-3.5 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-amber-base">
+            <span className="h-1.5 w-1.5 rounded-full bg-amber-base" />
             Why Choose ClickMasters
-          </p>
-          <h2 className="mt-4 font-bold tracking-tight text-white" style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", lineHeight: 1.05 }}>
+          </div>
+          <h2 className="mt-5 font-bold tracking-tight text-text-primary" style={{ fontSize: "clamp(2.25rem, 5vw, 3.75rem)", lineHeight: 1.05 }}>
             Built to <span className="text-gradient">Dominate.</span>
           </h2>
-          <p className="mx-auto mt-5 max-w-130 text-base text-silver-base md:text-lg">
-            We don't just build apps. We build market leaders.
+          <p className="mx-auto mt-4 max-w-lg text-base leading-relaxed text-text-secondary md:text-lg">
+            4.9 star client rating across 50+ delivered Web3 apps with 98% retention.
           </p>
         </div>
 
-        {/* Row 2 — stat grid */}
-        <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {stats.map((s, idx) => (
-            <div
-              key={s.label}
-              className="group relative overflow-hidden rounded-3xl border border-white/5 bg-white/3 p-8 backdrop-blur transition-all hover:-translate-y-1"
-              style={{
-                animation: `dominate-rise 0.7s ${idx * 0.08}s ease-out both`,
-              }}
-            >
-              <p className="font-bold tracking-tight text-gradient">
-                <Counter value={s.value} prefix={s.prefix} suffix={s.suffix} decimals={s.decimals} />
-              </p>
-              <p className="mt-3 text-xs font-medium uppercase tracking-[0.15em] text-silver-base">
-                {s.label}
-              </p>
-              <span
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-x-6 bottom-0 h-0.5 rounded-full bg-linear-to-r from-amber-base to-silver-light opacity-70"
-              />
-            </div>
-          ))}
-        </div>
+        {/* Stats grid */}
+        <StaggerContainer>
+          <div className="mt-14 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
+            {stats.map((s) => (
+              <StaggerItem key={s.label}>
+                <div className="group relative overflow-hidden bg-bg-base p-8 transition-colors hover:bg-surface">
+                  {/* Top accent line */}
+                  <span className="pointer-events-none absolute inset-x-0 top-0 h-0.5 bg-linear-to-r from-amber-base via-emerald-base to-amber-base opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                  <div className="relative">
+                    <p className="text-3xl font-bold tracking-tight text-gradient md:text-4xl">
+                      <Counter value={s.value} prefix={s.prefix} suffix={s.suffix} decimals={s.decimals} />
+                    </p>
+                    <p className="mt-2 text-sm font-medium uppercase tracking-[0.15em] text-text-muted">
+                      {s.label}
+                    </p>
+                  </div>
+                </div>
+              </StaggerItem>
+            ))}
+          </div>
+        </StaggerContainer>
 
-        {/* Row 3 — proof strip */}
-        <div className="mt-16 text-center">
-          <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-silver-dim">
+        {/* Trusted Technologies strip */}
+        <div className="mt-14 text-center">
+          <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-text-muted">
             Trusted Technologies
           </p>
-          <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
+          <div className="mt-5 flex flex-wrap items-center justify-center gap-2">
             {techPills.map((t) => (
               <span
                 key={t}
-                className="rounded-full border border-amber-border bg-amber-glow px-4 py-2 text-sm font-medium text-silver-light transition-all hover:shadow-[0_0_12px_rgba(245,158,11,0.3)]"
+                className="rounded-full border border-border bg-surface px-3.5 py-1.5 text-sm font-medium text-text-secondary transition-all hover:border-amber-border/50 hover:bg-amber-glow/30 hover:text-amber-base"
               >
                 {t}
               </span>
@@ -85,37 +88,25 @@ export function Dominate() {
           </div>
         </div>
 
-        {/* Row 4 — CTA banner */}
-        <div
-          className="mt-14 flex flex-col items-start gap-6 rounded-3xl border border-amber-border bg-amber-glow p-8 md:flex-row md:items-center md:justify-between md:p-10"
-        >
+        {/* CTA banner */}
+        <div className="mt-14 flex flex-col items-start gap-6 rounded-2xl border border-amber-border/40 bg-linear-to-br from-amber-glow via-emerald-glow/20 to-surface p-8 md:flex-row md:items-center md:justify-between md:p-10">
           <div className="max-w-xl">
-            <h3 className="text-2xl font-bold text-white md:text-3xl">
-              Ready to dominate your market?
+            <h3 className="text-xl font-bold text-text-primary md:text-2xl">
+              Ready to scope your blockchain project?
             </h3>
-            <p className="mt-2 text-sm text-silver-light md:text-base">
-              Let's scope your blockchain app — free 30-min strategy call.
+            <p className="mt-2 text-sm leading-relaxed text-text-secondary">
+              Free 30-min strategy call. NDA signed before the first meeting.
             </p>
           </div>
           <a
-            href="#contact"
-            className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-linear-to-r from-amber-base to-amber-light px-7 py-3.5 text-sm font-semibold text-bg-base transition-all hover:-translate-y-0.5 hover:shadow-[0_12px_40px_rgba(245,158,11,0.5)] md:w-auto"
+            href="/contact"
+            className="group inline-flex w-full shrink-0 items-center justify-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-glow transition-all hover:-translate-y-0.5 hover:shadow-[0_12px_40px_rgba(217,119,6,0.35)] md:w-auto"
           >
-            Book Free Call
+            Book a Strategy Call
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </a>
         </div>
       </div>
-
-      <style>{`
-        @keyframes dominate-rise {
-          from { opacity: 0; transform: translateY(24px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        @media (prefers-reduced-motion: reduce) {
-          #dominate * { animation: none !important; transition: none !important; }
-        }
-      `}</style>
     </section>
   );
 }
