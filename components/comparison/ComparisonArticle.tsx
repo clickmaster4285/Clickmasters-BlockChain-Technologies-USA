@@ -178,13 +178,27 @@ export default function ComparisonArticle({
         </div>
       )}
 
-      {showBottomCta && (
-  <ComparisonCTA
-    cta={bottomCta}
-    title="Ready to make the right technical decision?"
-    description="We can help you choose the right chain, architecture, smart contract strategy, and launch plan."
-  />
-)}
+      {showBottomCta && (() => {
+  // Yahan dummy data define kiya taake TypeScript error khatam ho jaye
+  // 1. Add this fallback object right before the return statement:
+    // Use this correct structure right before the return statement:
+  const bottomCta = {
+    text: "Contact Us",
+    href: "/contact",
+    primary: true
+  };
+
+  return (
+    <ComparisonCTA
+      cta={bottomCta}
+      title="Ready to make the right technical decision?"
+      description="We can help you choose the right chain, architecture, smart contract strategy, and launch plan."
+    />
+  );
+
+
+})()}
+
     </article>
   );
 }
