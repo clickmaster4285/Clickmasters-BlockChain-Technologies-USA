@@ -51,5 +51,50 @@ if(o2?.tag)c=c.filter(x=>x.tags?.includes(o2.tag));if(o2?.search){const q=o2.sea
 if(o2?.offset)c=c.slice(o2.offset);if(o2?.limit)c=c.slice(0,o2.limit);return c;}
 function getComparisonsByTag(t){return comparisons.filter(i=>i.tags?.includes(t));}
 function searchComparisons(q2){const q=q2.toLowerCase();return comparisons.filter(i=>i.meta.title.toLowerCase().includes(q)||i.slug.toLowerCase().includes(q));}
-module.exports={comparisons,getComparisonBySlug,getComparisonCards,getComparisonsByTag,searchComparisons};`;
+export { comparisons };
+
+export function getComparisonBySlug(slug) {
+  return comparisons.find((i) => i.slug === slug);
+}
+
+export function getComparisonCards(o2) {
+  let c = comparisons.map((i) => ({
+    slug: i.slug,
+    title: i.meta.title,
+    description: i.sections[0]?.content?.substring(0, 200) || i.meta.title,
+    category: "comparison",
+    tags: i.tags,
+    url: i.meta.url,
+  }));
+
+  if (o2?.tag) c = c.filter((x) => x.tags?.includes(o2.tag));
+
+  if (o2?.search) {
+    const q = o2.search.toLowerCase();
+    c = c.filter(
+      (x) =>
+        x.title.toLowerCase().includes(q) ||
+        x.description.toLowerCase().includes(q)
+    );
+  }
+
+  if (o2?.offset) c = c.slice(o2.offset);
+  if (o2?.limit) c = c.slice(0, o2.limit);
+
+  return c;
+}
+
+export function getComparisonsByTag(t) {
+  return comparisons.filter((i) => i.tags?.includes(t));
+}
+
+export function searchComparisons(q2) {
+  const q = q2.toLowerCase();
+
+  return comparisons.filter(
+    (i) =>
+      i.meta.title.toLowerCase().includes(q) ||
+      i.slug.toLowerCase().includes(q)
+  );
+}`
 fs.writeFileSync(OUT,o,'utf-8');console.log(`  ✅ Written to data/comparisons.js (${items.length} files)`);

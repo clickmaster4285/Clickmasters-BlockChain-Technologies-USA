@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowRight, ShieldCheck, Star, TrendingUp } from "lucide-react";
 import { useEffect, useState } from "react";
 import { BlockchainNetwork } from "./BlockchainNetwork";
+import { HeroBlockchainVisual } from "./HeroBlockchainVisual";
 
 const heroBgPng = "/media/hero-bg.png";
 const walletMock = "/media/wallet-mock.jpeg";
@@ -138,8 +139,10 @@ export function Hero() {
                 {/* Gradient veil */}
                 <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-bg-surface/60 via-transparent to-transparent" />
 
+                <HeroBlockchainVisual />
+
                 {/* Floating wallet mockup */}
-                <div className="pointer-events-none absolute right-5 top-22 h-28 w-22 md:h-32 md:w-26">
+                <div className="pointer-events-none absolute right-5 top-22 z-20 h-28 w-22 md:h-32 md:w-26">
                   <Image
                     src={walletMock}
                     alt=""
@@ -150,7 +153,7 @@ export function Hero() {
                 </div>
 
                 {/* Dashboard content */}
-                <div className="pointer-events-none absolute inset-0 flex flex-col p-5">
+                <div className="pointer-events-none absolute inset-0 z-20 flex flex-col p-5">
                   {/* Top bar */}
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
