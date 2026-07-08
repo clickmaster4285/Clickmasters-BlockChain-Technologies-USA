@@ -21,7 +21,7 @@ export default function HowToCTA({
   return (
     <section
       className={`relative overflow-hidden rounded-[2rem] bg-gradient-to-r from-amber-base via-amber-light to-amber-base text-bg-base ${
-        compact ? "p-6 md:p-8" : "p-10 md:p-14"
+        compact ? "p-6 sm:p-8" : "p-8 sm:p-10 md:p-14"
       }`}
     >
       {/* Background Glow */}
@@ -52,10 +52,10 @@ export default function HowToCTA({
           {cta.description || description}
         </p>
 
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+        <div className="mt-8 flex w-full flex-col items-stretch justify-center gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:gap-4">
           <Link
             href={cta.href}
-            className="inline-flex items-center gap-2 rounded-full bg-bg-base px-7 py-3.5 text-sm font-bold text-amber-base transition-transform hover:-translate-y-0.5"
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-bg-base px-7 py-3.5 text-sm font-bold text-amber-base transition-transform hover:-translate-y-0.5"
           >
             {cta.primaryText}
             <ArrowRight className="h-4 w-4" />
@@ -64,7 +64,7 @@ export default function HowToCTA({
           {cta.secondaryText && (
             <Link
               href="/howto"
-              className="inline-flex items-center gap-2 rounded-full border border-white/30 px-7 py-3.5 text-sm font-semibold text-bg-base transition-colors hover:bg-white/10"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/30 px-7 py-3.5 text-sm font-semibold text-bg-base transition-colors hover:bg-white/10"
             >
               {cta.secondaryText}
             </Link>

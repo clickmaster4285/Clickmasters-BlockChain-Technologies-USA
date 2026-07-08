@@ -65,7 +65,7 @@ export default async function SingleComparisonPage({
         <div className="pointer-events-none absolute left-[-14rem] top-[-10rem] h-[32rem] w-[32rem] rounded-full bg-amber-base/10 blur-3xl" />
         <div className="pointer-events-none absolute right-[-12rem] top-80 h-[28rem] w-[28rem] rounded-full bg-amber-base/10 blur-3xl" />
 
-        <section className="container relative mx-auto max-w-7xl px-6">
+        <section className="site-container relative px-6">
           <nav className="mb-6 flex flex-wrap items-center gap-2 text-sm text-silver">
             <Link href="/" className="hover:text-amber-base">
               Home

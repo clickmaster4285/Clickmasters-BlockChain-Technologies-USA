@@ -53,7 +53,7 @@ export default async function ComparisonPage({
         <div className="pointer-events-none absolute left-[-12rem] top-[-8rem] h-[28rem] w-[28rem] rounded-full bg-amber-base/10 blur-3xl" />
         <div className="pointer-events-none absolute right-[-10rem] top-60 h-[26rem] w-[26rem] rounded-full bg-amber-base/10 blur-3xl" />
 
-        <section className="container relative mx-auto max-w-7xl px-6">
+        <section className="site-container relative px-6">
           <div className="relative overflow-hidden rounded-[2.2rem] border border-white/10 bg-bg-base/70 p-6 shadow-[0_30px_100px_rgba(0,0,0,0.45)] backdrop-blur-2xl md:p-10">
             <div className="absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-amber-base/80 to-transparent" />
             <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full bg-amber-base/15 blur-3xl" />

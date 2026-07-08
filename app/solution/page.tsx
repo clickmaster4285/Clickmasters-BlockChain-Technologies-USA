@@ -13,7 +13,7 @@ export default function SolutionPage() {
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
       <main className="pt-32 pb-24">
-        <section className="container mx-auto max-w-6xl px-6">
+        <section className="site-container px-6">
           <p className="font-mono text-xs uppercase tracking-[0.3em] text-primary">Solution</p>
           <h1 className="mt-4 text-4xl font-bold tracking-tight md:text-5xl">
             Production Web3 Solutions

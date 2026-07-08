@@ -17,7 +17,7 @@ export default function HowToContent({
   const blocks = item.content || [];
 
   return (
-    <article className="space-y-10">
+    <article className="space-y-8 overflow-x-hidden sm:space-y-10">
 
       {/* CTA #1 */}
 
@@ -47,7 +47,7 @@ export default function HowToContent({
                 return (
                   <div
                     key={index}
-                    className="rounded-3xl border border-amber-base/20 bg-amber-base/10 p-7"
+                    className="rounded-3xl border border-amber-base/20 bg-amber-base/10 p-5 sm:p-7"
                   >
                     <div className="flex items-start gap-4">
                       <Lightbulb className="mt-1 h-6 w-6 text-amber-base" />
@@ -57,7 +57,7 @@ export default function HowToContent({
                           Quick Answer
                         </p>
 
-                        <p className="mt-3 text-lg leading-8 text-silver">
+                        <p className="mt-3 text-base leading-7 text-silver sm:text-lg sm:leading-8">
                           {block.text}
                         </p>
                       </div>
@@ -69,7 +69,7 @@ export default function HowToContent({
                 return (
                   <h2
                     key={index}
-                    className="border-l-4 border-amber-base pl-5 text-3xl font-black"
+                    className="border-l-4 border-amber-base pl-4 text-2xl font-black sm:pl-5 sm:text-3xl"
                   >
                     {block.text}
                   </h2>
@@ -79,7 +79,7 @@ export default function HowToContent({
                 return (
                   <p
                     key={index}
-                    className="text-base leading-8 text-silver md:text-lg"
+                    className="text-sm leading-7 text-silver sm:text-base sm:leading-8 md:text-lg"
                   >
                     {block.text}
                   </p>
@@ -89,11 +89,11 @@ export default function HowToContent({
                 return (
                   <div
                     key={index}
-                    className="rounded-3xl border border-white/10 bg-bg-base/60 p-7"
+                    className="rounded-3xl border border-white/10 bg-bg-base/60 p-5 sm:p-7"
                   >
                     <Quote className="mb-4 h-8 w-8 text-amber-base" />
 
-                    <p className="text-lg italic leading-8 text-silver">
+                    <p className="text-base italic leading-7 text-silver sm:text-lg sm:leading-8">
                       {block.text}
                     </p>
                   </div>
@@ -112,11 +112,11 @@ export default function HowToContent({
                       {block.items.map((item: string) => (
                         <div
                           key={item}
-                          className="flex gap-4 rounded-2xl border border-white/10 bg-bg-base/40 p-5"
+                          className="flex gap-3 rounded-2xl border border-white/10 bg-bg-base/40 p-4 sm:gap-4 sm:p-5"
                         >
                           <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-amber-base" />
 
-                          <p className="text-sm leading-7 text-silver">
+                          <p className="text-sm leading-7 break-words text-silver">
                             {item}
                           </p>
                         </div>
@@ -128,7 +128,7 @@ export default function HowToContent({
               case "steps":
                 return (
                   <div key={index}>
-                    <h3 className="mb-6 flex items-center gap-3 text-2xl font-black">
+                    <h3 className="mb-6 flex items-center gap-3 text-xl font-black sm:text-2xl">
                       <ListChecks className="text-amber-base" />
                       {block.title}
                     </h3>
@@ -137,7 +137,7 @@ export default function HowToContent({
                       {block.items.map((step: any, i: number) => (
                         <div
                           key={i}
-                          className="rounded-3xl border border-white/10 bg-bg-base/40 p-6"
+                          className="rounded-3xl border border-white/10 bg-bg-base/40 p-5 sm:p-6"
                         >
                           <div className="mb-4 flex items-center gap-4">
                             <div className="grid h-10 w-10 place-items-center rounded-full bg-amber-base font-bold text-bg-base">
@@ -149,7 +149,7 @@ export default function HowToContent({
                             </h4>
                           </div>
 
-                          <p className="leading-7 text-silver">
+                          <p className="leading-7 break-words text-silver">
                             {step.description}
                           </p>
                         </div>
@@ -212,7 +212,7 @@ export default function HowToContent({
                       Example
                     </div>
 
-                    <pre className="overflow-x-auto p-6 text-sm leading-7 text-silver">
+                    <pre className="overflow-x-auto whitespace-pre-wrap break-words p-4 text-sm leading-7 text-silver sm:p-6">
                       <code>{block.code}</code>
                     </pre>
                   </div>

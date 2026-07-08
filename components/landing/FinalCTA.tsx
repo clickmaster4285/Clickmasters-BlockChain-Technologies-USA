@@ -38,7 +38,7 @@ export function FinalCTA() {
         ))}
       </div>
 
-      <div className="container relative mx-auto max-w-[85vw] px-6 text-center">
+      <div className="site-container relative px-6 text-center">
         <p className="font-display text-3xl italic tracking-tight md:text-4xl" style={{ color: "rgba(255,255,255,0.8)" }}>
           build the future on-chain
         </p>

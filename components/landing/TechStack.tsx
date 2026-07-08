@@ -96,7 +96,7 @@ export function TechStack() {
         }}
       />
 
-      <div className="container relative mx-auto max-w-[85vw] px-6">
+      <div className="site-container relative px-6">
         {/* Header */}
         <div className="mx-auto max-w-2xl text-center">
           <div className="inline-flex items-center gap-2 rounded-full bg-amber-glow/50 px-3.5 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-amber-base">

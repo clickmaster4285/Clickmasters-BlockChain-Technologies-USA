@@ -62,7 +62,7 @@ export function TrustedMarquee() {
     <section className="relative overflow-hidden border-y border-border bg-bg-surface py-16">
       <div className="bg-dots pointer-events-none absolute inset-0 opacity-30" />
 
-      <div className="container relative mx-auto max-w-[85vw] px-6">
+      <div className="site-container relative px-6">
         <div className="mx-auto mb-10 max-w-lg text-center">
           <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-text-muted">
             Trusted Across the Ecosystem

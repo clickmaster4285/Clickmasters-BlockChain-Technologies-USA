@@ -46,7 +46,7 @@ export function Portfolio() {
       <div className="bg-neon-grid pointer-events-none absolute inset-0 opacity-40 [mask-image:radial-gradient(ellipse_at_center,black,transparent_80%)]" />
       <div className="pointer-events-none absolute left-1/2 top-1/4 h-[30rem] w-[30rem] -translate-x-1/2 animate-orb rounded-full bg-emerald-glow blur-[120px]" />
 
-      <div className="container relative mx-auto max-w-[85vw] px-6">
+      <div className="site-container relative px-6">
         {/* Section header with CTA */}
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
