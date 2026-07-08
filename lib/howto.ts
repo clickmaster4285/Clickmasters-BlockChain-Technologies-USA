@@ -1,7 +1,7 @@
-import { howtos } from "@/data/howtos";
+import { howTos } from "@/data/howtos";
 
 export function getAllHowTos() {
-  return howtos || [];
+  return howTos || [];
 }
 
 export function getHowToBySlug(slug: string) {

@@ -2,10 +2,10 @@ export default function ServicePageSkeleton() {
   return (
     <div className="min-h-screen bg-background text-foreground animate-pulse">
       {/* Navbar placeholder */}
-      <div className="fixed top-4 left-1/2 -translate-x-1/2 w-[85vw] h-14 rounded-full bg-surface border border-border z-50" />
+      <div className="fixed top-4 left-1/2 site-container -translate-x-1/2 h-14 rounded-full bg-surface border border-border z-50" />
 
       <main className="pt-32 pb-24">
-        <section className="container mx-auto max-w-5xl px-6">
+        <section className="site-container px-6">
           {/* Breadcrumbs */}
           <div className="mb-6 flex gap-2">
             <div className="h-4 w-16 bg-surface rounded" />

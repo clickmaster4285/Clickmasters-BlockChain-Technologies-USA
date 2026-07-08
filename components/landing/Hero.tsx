@@ -35,7 +35,7 @@ export function Hero() {
       {/* ── Layer 3: Hero beam (diagonal accent light) ── */}
       <div className="pointer-events-none absolute -top-32 right-0 h-[500px] w-[500px] origin-top-right rotate-12 bg-linear-to-l from-primary/[0.04] to-transparent blur-3xl" />
 
-      <div className="container relative mx-auto max-w-[85vw] px-6">
+      <div className="site-container relative px-6">
         <div className="grid items-center gap-14 md:grid-cols-[1.3fr_1fr] lg:gap-20">
           {/* ══════════════ LEFT: Content ══════════════ */}
           <div>
@@ -130,7 +130,7 @@ export function Hero() {
                   alt=""
                   fill
                   className="object-cover opacity-80"
-                  sizes="(max-width: 768px) 85vw, 40vw"
+                  sizes="(max-width: 768px) 97vw, 40vw"
                 />
 
                 {/* Animated blockchain network */}

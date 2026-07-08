@@ -46,7 +46,7 @@ export default async function ServicePage({ params }: { params: any }) {
         <svg className="pointer-events-none absolute right-8 top-40 opacity-40 animate-blob" width="360" height="220" viewBox="0 0 360 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M0 80 C 80 0, 160 160, 240 80 C 320 0, 360 160, 360 80 L360 220 L0 220 Z" fill="var(--amber-base)" opacity="0.06" />
         </svg>
-        <section className="container mx-auto max-w-5xl px-6">
+        <section className="site-container px-6">
           {/* Breadcrumbs */}
           <nav className="mb-6 flex items-center gap-2 text-sm text-silver-mid" aria-label="Breadcrumb">
             <Link href="/" className="hover:text-amber-base transition-colors">Home</Link>

@@ -151,9 +151,9 @@ export function Navbar() {
   }, []);
 
   return (
-    <header className="fixed inset-x-0 top-4 z-50 flex justify-center px-4">
+    <header className="fixed inset-x-0 top-4 z-50 flex justify-center">
       <nav
-        className={`flex w-full max-w-[85vw] items-center justify-between gap-6 rounded-full border border-border bg-bg-base/5 px-3 py-3 backdrop-blur-xl transition-shadow ${
+        className={`site-container flex items-center justify-between gap-6 rounded-full border border-border bg-bg-base/5 px-3 py-3 backdrop-blur-xl transition-shadow ${
           scrolled ? "shadow-soft" : ""
         }`}
       >

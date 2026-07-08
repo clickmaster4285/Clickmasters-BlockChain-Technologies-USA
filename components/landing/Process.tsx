@@ -68,7 +68,7 @@ export function Process() {
       <div className="pointer-events-none absolute -left-32 top-1/4 h-[26rem] w-[26rem] rounded-full bg-amber-glow blur-[100px]" />
       <div className="pointer-events-none absolute -right-32 bottom-1/4 h-[26rem] w-[26rem] rounded-full bg-amber-glow blur-[100px]" />
 
-      <div className="container relative mx-auto max-w-[85vw] px-6">
+      <div className="site-container relative px-6">
         <div className="mx-auto max-w-2xl text-center">
           <div className="inline-flex items-center gap-2 rounded-full bg-amber-glow/50 px-3.5 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-amber-base">
             <span className="h-1.5 w-1.5 rounded-full bg-amber-base" />

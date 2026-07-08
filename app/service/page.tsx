@@ -19,7 +19,7 @@ export default function ServicesIndex() {
         <svg className="pointer-events-none absolute right-0 top-36 opacity-45 animate-blob" width="420" height="220" viewBox="0 0 420 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M0 80 C 80 0, 160 160, 240 80 C 320 0, 400 160, 420 80 L420 220 L0 220 Z" fill="var(--amber-base)" opacity="0.08" />
         </svg>
-        <section className="container mx-auto max-w-6xl px-6">
+        <section className="site-container px-6">
           {/* Hero */}
           <div className="rounded-3xl overflow-hidden p-8 shadow-glow bg-gradient-to-r from-surface/80 via-bg-base to-amber-base/60">
             <div className="md:flex md:items-center md:justify-between gap-8">
