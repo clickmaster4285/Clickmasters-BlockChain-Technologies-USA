@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -347,15 +348,16 @@ export function Navbar() {
           scrolled ? "shadow-soft" : ""
         }`}
       >
-        <Link href="/" className="flex items-center gap-2 pl-2">
-          <span className="grid h-8 w-8 place-items-center rounded-lg bg-amber-glow text-amber-base">
-            <Hexagon className="h-4 w-4" strokeWidth={2} />
-          </span>
-
-          <span className="font-display text-base font-bold tracking-tight text-text-primary">
-            CLICK<span className="text-amber-base">MASTERS</span>
-          </span>
-        </Link>
+       <Link href="/" className="flex items-center gap-3 pl-2">
+  <Image
+    src="/media/logo.webp"
+    alt="ClickMasters Logo"
+    width={170}
+    height={45}
+    priority
+    className="h-10 w-auto object-contain transition-transform duration-300 hover:scale-105"
+  />
+</Link>
 
         <ul className="hidden items-center gap-7 md:flex">
           {links.map((l) => (

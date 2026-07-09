@@ -4,11 +4,10 @@ import {
   Lightbulb,
   ListChecks,
   Quote,
-  Star,
 } from "lucide-react";
-import ListicleCTA from "./ListicleCTA";
+import NewsCTA from "./NewsCTA";
 
-export default function ListicleContent({
+export default function NewsContent({
   item,
   cta,
 }: {
@@ -19,20 +18,20 @@ export default function ListicleContent({
 
   return (
     <article className="space-y-10">
-      <ListicleCTA
+      <NewsCTA
         compact
         cta={cta}
-        title="Need help choosing the best option?"
-        description="Talk with our experts and get a clear recommendation based on your project goals."
+        title="Need help understanding this update?"
+        description="Talk with our experts and understand how this blockchain news affects your roadmap."
       />
 
       <section
-        id="listicle"
+        id="news"
         className="overflow-hidden rounded-[1.5rem] border border-white/10 bg-surface/80 md:rounded-[2rem]"
       >
         <div className="border-b border-white/10 bg-white/[0.03] px-6 py-5 md:px-10">
           <p className="text-xs font-bold uppercase tracking-[0.22em] text-amber-base">
-            Curated List
+            Full Story
           </p>
         </div>
 
@@ -47,10 +46,12 @@ export default function ListicleContent({
                   >
                     <div className="flex items-start gap-4">
                       <Lightbulb className="mt-1 h-6 w-6 shrink-0 text-amber-base" />
+
                       <div>
                         <p className="text-xs font-bold uppercase tracking-[0.18em] text-amber-base">
-                          Quick Take
+                          Key Insight
                         </p>
+
                         <p className="mt-3 text-base leading-8 text-silver md:text-lg">
                           {block.text}
                         </p>
@@ -86,6 +87,7 @@ export default function ListicleContent({
                     className="rounded-3xl border border-white/10 bg-bg-base/60 p-6 md:p-7"
                   >
                     <Quote className="mb-4 h-8 w-8 text-amber-base" />
+
                     <p className="text-base italic leading-8 text-silver md:text-lg">
                       {block.text}
                     </p>
@@ -108,43 +110,10 @@ export default function ListicleContent({
                           key={`${listItem}-${i}`}
                           className="flex gap-4 rounded-2xl border border-white/10 bg-bg-base/40 p-5"
                         >
-                          <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-amber-base text-sm font-black text-bg-base">
-                            {i + 1}
-                          </span>
+                          <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-amber-base" />
+
                           <p className="text-sm leading-7 text-silver">
                             {listItem}
-                          </p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                );
-
-              case "steps":
-                return (
-                  <div key={index}>
-                    <h3 className="mb-6 flex items-center gap-3 text-2xl font-black">
-                      <ListChecks className="text-amber-base" />
-                      {block.title}
-                    </h3>
-
-                    <div className="space-y-5">
-                      {block.items.map((step: any, i: number) => (
-                        <div
-                          key={i}
-                          className="rounded-3xl border border-white/10 bg-bg-base/40 p-6"
-                        >
-                          <div className="mb-4 flex items-center gap-4">
-                            <div className="grid h-10 w-10 place-items-center rounded-full bg-amber-base font-bold text-bg-base">
-                              {i + 1}
-                            </div>
-                            <h4 className="text-lg font-black">
-                              {step.title}
-                            </h4>
-                          </div>
-
-                          <p className="leading-7 text-silver">
-                            {step.description}
                           </p>
                         </div>
                       ))}
@@ -206,52 +175,6 @@ export default function ListicleContent({
                     <pre className="max-w-full overflow-x-auto p-4 text-xs leading-6 text-silver sm:p-6 sm:text-sm">
                       <code>{block.code}</code>
                     </pre>
-                  </div>
-                );
-
-              case "rankedItem":
-                return (
-                  <div
-                    key={index}
-                    className="rounded-3xl border border-white/10 bg-bg-base/50 p-6 transition-all hover:border-amber-base/25"
-                  >
-                    <div className="mb-4 flex items-start gap-4">
-                      <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-amber-base text-base font-black text-bg-base">
-                        {block.rank || index + 1}
-                      </span>
-
-                      <div>
-                        <h3 className="text-2xl font-black text-text-primary">
-                          {block.title}
-                        </h3>
-
-                        {block.subtitle && (
-                          <p className="mt-2 text-sm font-semibold text-amber-base">
-                            {block.subtitle}
-                          </p>
-                        )}
-                      </div>
-                    </div>
-
-                    {block.text && (
-                      <p className="text-base leading-8 text-silver">
-                        {block.text}
-                      </p>
-                    )}
-
-                    {block.points?.length > 0 && (
-                      <div className="mt-5 grid gap-3">
-                        {block.points.map((point: string) => (
-                          <div
-                            key={point}
-                            className="flex gap-3 rounded-2xl border border-white/10 bg-white/[0.03] p-4 text-sm leading-6 text-silver"
-                          >
-                            <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-amber-base" />
-                            <span>{point}</span>
-                          </div>
-                        ))}
-                      </div>
-                    )}
                   </div>
                 );
 
