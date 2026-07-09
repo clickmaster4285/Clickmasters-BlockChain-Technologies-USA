@@ -227,7 +227,6 @@ export default function HowToContent({
 
       {/* CTA #2 */}
 
-      <HowToCTA cta={cta} />
     </article>
   );
 }

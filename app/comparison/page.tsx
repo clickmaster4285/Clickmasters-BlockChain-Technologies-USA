@@ -120,7 +120,7 @@ export default async function ComparisonPage({
       alt="Blockchain comparison visual"
       fill
       priority
-      className="object-cover object-center transition-transform duration-[3500ms] ease-out hover:scale-120"
+      className="object-cover object-center transition-transform duration-[3500ms] ease-out hover:scale-105"
     />
   </div>
 </div>
