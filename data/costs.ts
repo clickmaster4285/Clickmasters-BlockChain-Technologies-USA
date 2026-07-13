@@ -3,8 +3,8 @@
  * Generated from 10 .md files in md/cost/
  * Run `node scripts/convert-costs.js` to regenerate
  */
-
-const costs = [
+import type { CostItem, CostCard, CostCardOptions } from '@/lib/cost-type';
+export const costs = [
   {
     "slug": "asset-tokenization-cost",
     "meta": {
@@ -1609,28 +1609,27 @@ const costs = [
 ];
 
 // ─── Utility Functions ──────────────────────────────────────────────
-
-function getCostBySlug(slug) {
-  return costs.find(item => item.slug === slug);
+export function getCostBySlug(slug: string): CostItem | undefined {
+  return costs.find((item) => item.slug === slug);
 }
 
-function getCostCards(options) {
-  let cards = costs.map(item => ({
+export function getCostCards(options?: CostCardOptions): CostCard[] {
+  let cards: CostCard[] = costs.map((item) => ({
     slug: item.slug,
     title: item.meta.title,
-    description: item.sections[0]?.content?.substring(0, 200) || item.meta.title,
-    category: 'cost',
+    description: item.sections[0]?.bullets?.[0] || item.meta.title,
+    category: item.category ?? 'cost',
     tags: item.tags,
     url: item.meta.url,
   }));
 
   if (options?.tag) {
-    cards = cards.filter(c => c.tags?.includes(options.tag));
+    cards = cards.filter((c) => c.tags?.includes(options.tag as string));
   }
   if (options?.search) {
     const q = options.search.toLowerCase();
-    cards = cards.filter(c =>
-      c.title.toLowerCase().includes(q) || c.description.toLowerCase().includes(q)
+    cards = cards.filter(
+      (c) => c.title.toLowerCase().includes(q) || c.description.toLowerCase().includes(q)
     );
   }
   if (options?.offset) cards = cards.slice(options.offset);
@@ -1639,16 +1638,16 @@ function getCostCards(options) {
   return cards;
 }
 
-function getCostsByTag(tag) {
-  return costs.filter(item => item.tags?.includes(tag));
+export function getCostsByTag(tag: string): CostItem[] {
+  return costs.filter((item) => item.tags?.includes(tag));
 }
 
-function searchCosts(query) {
+export function searchCosts(query: string): CostItem[] {
   const q = query.toLowerCase();
-  return costs.filter(item =>
-    item.meta.title.toLowerCase().includes(q) ||
-    item.slug.toLowerCase().includes(q)
+  return costs.filter(
+    (item) =>
+      item.meta.title.toLowerCase().includes(q) ||
+      item.slug.toLowerCase().includes(q) ||
+      item.meta.primaryKeyword.toLowerCase().includes(q)
   );
 }
-
-module.exports = { costs, getCostBySlug, getCostCards, getCostsByTag, searchCosts };

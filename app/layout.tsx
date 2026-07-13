@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ViewTransitions } from "next-view-transitions";
 import { SmoothScroll } from "@/components/landing/SmoothScroll";
 import { Providers } from "./providers";
 import "./styles.css";
@@ -26,10 +27,12 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <Providers>
-          <SmoothScroll />
-          {children}
-        </Providers>
+        <ViewTransitions>
+          <Providers>
+            <SmoothScroll />
+            {children}
+          </Providers>
+        </ViewTransitions>
       </body>
     </html>
   );
