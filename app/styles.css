@@ -856,3 +856,25 @@
   50% { transform: translateX(-50%) translate(0, 10px); }
 }
 .animate-float-g { animation: float-g 9s ease-in-out infinite; animation-delay: 0.8s; }
+
+@keyframes glossary-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-14px) rotate(1deg);
+  }
+}
+
+.animate-glossary-float {
+  animation: glossary-float 5.5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-glossary-float {
+    animation: none;
+  }
+}
+

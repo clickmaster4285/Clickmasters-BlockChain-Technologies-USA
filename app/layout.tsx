@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   description:
     "Premium blockchain and Web3 development agency. Smart contracts, DApps, NFT marketplaces, crypto wallets — engineered with enterprise-grade security.",
   authors: [{ name: "ClickMasters" }],
+  verification: {
+    google: "OTGeetIUGUb8E8ejJ8bHzYUfGlYl6SlUGa6-FdtJ82E",
+  },
 };
 
 export default function RootLayout({
