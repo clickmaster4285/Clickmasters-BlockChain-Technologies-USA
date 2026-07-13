@@ -140,16 +140,16 @@ const blogFeatured: Record<string, any[]> = {
 const resourceFeatured: Record<string, any[]> = {
   Glossary: [
     {
-      title: "Blockchain Glossary",
-      desc: "Simple explanations of Web3 and blockchain terminology.",
-      href: "/glossary",
-      badge: "Glossary",
+      title: "Advanced Blockchain Glossary",
+      desc: "Explore 50 advanced technical terms used in DeFi, smart contracts, EVM development, and production blockchain systems.",
+      href: "/glossary/advanced-blockchain-glossary",
+      badge: "Developer Glossary",
     },
     {
-      title: "Smart Contract Terms",
-      desc: "Understand the core language of blockchain development.",
-      href: "/glossary",
-      badge: "Terms",
+      title: "Enterprise & Regulatory Glossary",
+      desc: "Understand enterprise blockchain, compliance, regulatory, identity, custody, and institutional terminology.",
+      href: "/glossary/enterprise-regulatory-glossary",
+      badge: "Enterprise Glossary",
     },
   ],
   Tools: [

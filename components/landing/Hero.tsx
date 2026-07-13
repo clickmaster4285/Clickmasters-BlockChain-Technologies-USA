@@ -133,13 +133,7 @@ export function Hero() {
                   sizes="(max-width: 768px) 97vw, 40vw"
                 />
 
-                {/* Animated blockchain network */}
-                <BlockchainNetwork className="absolute inset-0 h-full w-full opacity-35" />
-
-                {/* Gradient veil */}
-                <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-bg-surface/60 via-transparent to-transparent" />
-
-                <HeroBlockchainVisual />
+          
 
                 {/* Floating wallet mockup */}
                 <div className="pointer-events-none absolute right-5 top-22 z-20 h-28 w-22 md:h-32 md:w-26">
@@ -207,9 +201,8 @@ export function Hero() {
                           {m.value}
                         </p>
                         <span
-                          className={`font-mono text-[9px] font-medium ${
-                            m.up ? "text-emerald-base" : "text-amber-base"
-                          }`}
+                          className={`font-mono text-[9px] font-medium ${m.up ? "text-emerald-base" : "text-amber-base"
+                            }`}
                         >
                           {m.change}
                         </span>
