@@ -153,19 +153,19 @@ const resourceFeatured: Record<string, any[]> = {
     },
   ],
   Tools: [
-    {
-      title: "Blockchain Cost Calculator",
-      desc: "Estimate project budget, timelines, and technical scope.",
-      href: "/tools",
-      badge: "Tool",
-    },
-    {
-      title: "Security Checklist",
-      desc: "Plan safer launches with practical audit preparation tools.",
-      href: "/tools",
-      badge: "Checklist",
-    },
-  ],
+  {
+    title: "Token Launch Checklist",
+    desc: "Token launches that fail — exploited contracts, death spirals...",
+    href: "/tools/token-launch-checklist",
+    badge: "Checklist",
+  },
+  {
+    title: "NFT Project Launch Checklist",
+    desc: "The most common NFT project failures are preventable. ..",
+    href: "/tools/nft-launch-checklist",
+    badge: "Checklist",
+  },
+],
   Templates: [
     {
       title: "Tokenomics Template",

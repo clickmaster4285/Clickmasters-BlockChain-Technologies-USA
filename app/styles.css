@@ -877,4 +877,224 @@
     animation: none;
   }
 }
+@keyframes tools-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
 
+  50% {
+    transform: translateY(-16px) rotate(1deg);
+  }
+}
+
+.animate-tools-float {
+  animation: tools-float 5.5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-tools-float {
+    animation: none;
+  }
+}
+@keyframes tools-main-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-18px) rotate(1.5deg);
+  }
+}
+
+.animate-tools-main-float {
+  animation: tools-main-float 5.5s ease-in-out infinite;
+}
+
+@keyframes tools-float-small {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-12px) rotate(5deg);
+  }
+}
+
+.animate-tools-float-small {
+  animation: tools-float-small 4.5s ease-in-out infinite;
+}
+
+.animate-tools-float-delayed {
+  animation: tools-float-small 5s ease-in-out infinite;
+  animation-delay: -2s;
+}
+
+@keyframes tools-orbit {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-tools-orbit {
+  animation: tools-orbit 22s linear infinite;
+}
+
+.animate-tools-orbit-reverse {
+  animation: tools-orbit 17s linear infinite reverse;
+}
+
+@keyframes tools-particle {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateY(-14px) scale(1.5);
+  }
+}
+
+.animate-tools-particle {
+  animation: tools-particle 4s ease-in-out infinite;
+}
+
+.animate-tools-particle-delayed {
+  animation: tools-particle 5s ease-in-out infinite;
+  animation-delay: -2s;
+}
+
+@keyframes tools-line {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.animate-tools-line {
+  animation: tools-line 1.2s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-tools-main-float,
+  .animate-tools-float-small,
+  .animate-tools-float-delayed,
+  .animate-tools-orbit,
+  .animate-tools-orbit-reverse,
+  .animate-tools-particle,
+  .animate-tools-particle-delayed,
+  .animate-tools-line {
+    animation: none;
+  }
+}
+@keyframes template-paper-one {
+  0%,
+  100% {
+    transform: translateY(0) rotate(6deg);
+  }
+
+  50% {
+    transform: translateY(-12px) rotate(9deg);
+  }
+}
+
+.animate-template-paper-one {
+  animation: template-paper-one 5s ease-in-out infinite;
+}
+
+@keyframes template-paper-two {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-6deg);
+  }
+
+  50% {
+    transform: translateY(10px) rotate(-10deg);
+  }
+}
+
+.animate-template-paper-two {
+  animation: template-paper-two 5.5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-template-paper-one,
+  .animate-template-paper-two {
+    animation: none;
+  }
+}
+@keyframes template-main-paper {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-14px) rotate(1deg);
+  }
+}
+
+.animate-template-main-paper {
+  animation: template-main-paper 5.5s ease-in-out infinite;
+}
+
+@keyframes template-ring {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-template-ring {
+  animation: template-ring 24s linear infinite;
+}
+
+.animate-template-ring-reverse {
+  animation: template-ring 18s linear infinite reverse;
+}
+
+@keyframes template-particle {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateY(-12px) scale(1.5);
+  }
+}
+
+.animate-template-particle {
+  animation: template-particle 4s ease-in-out infinite;
+}
+
+.animate-template-particle-delayed {
+  animation: template-particle 5s ease-in-out infinite;
+  animation-delay: -2s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-template-main-paper,
+  .animate-template-ring,
+  .animate-template-ring-reverse,
+  .animate-template-particle,
+  .animate-template-particle-delayed {
+    animation: none;
+  }
+}
