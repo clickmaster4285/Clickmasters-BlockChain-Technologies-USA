@@ -5949,10 +5949,10 @@ mythril analyze src/LendingPool.sol --execution-timeout 900
       {
         type: "list",
         items: [
-          "☐ Multi-sig configured as admin (no single-key admin)",
-          "☐ TimelockController with 48-hour minimum delay",
-          "☐ Oracle staleness parameters verified on mainnet oracle addresses",
-          "☐ TVL cap enforced in contract or at entry points",
+          "  Multi-sig configured as admin (no single-key admin)",
+          "  TimelockController with 48-hour minimum delay",
+          "  Oracle staleness parameters verified on mainnet oracle addresses",
+          "  TVL cap enforced in contract or at entry points",
           "☐ Monitoring alerts confirmed firing on test event",
         ],
       },
