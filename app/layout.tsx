@@ -5,6 +5,7 @@ import { Providers } from "./providers";
 import "./styles.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://clickmastersblockchaintechnologies.com"),
   title: "ClickMasters Blockchain & Web3 Development Company",
   description:
     "Premium blockchain and Web3 development agency. Smart contracts, DApps, NFT marketplaces, crypto wallets — engineered with enterprise-grade security.",

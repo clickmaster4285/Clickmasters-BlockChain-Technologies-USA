@@ -1,0 +1,11 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /api
+Disallow: /login
+
+
+
+# Sitemaps
+Sitemap: https://clickmastersblockchaintechnologies.com/sitemap.xml
