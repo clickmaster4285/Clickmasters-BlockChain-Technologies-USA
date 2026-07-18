@@ -4,16 +4,39 @@ import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import BackToTop from "@/components/ui/BackToTop";
 import ListicleCard from "@/components/listicles/ListicleCard";
+import { createMetadata } from "@/config/metadata";
 import { getListicleCards } from "@/lib/listicles";
+import { getPageHref } from "@/lib/pagination";
 import Image from "next/image";
 
 const PER_PAGE = 9;
 
+type ListiclesPageProps = {
+  searchParams?: Promise<{ page?: string }>;
+};
+
+function getRequestedPage(page?: string) {
+  const parsedPage = Number(page || 1);
+  return Number.isFinite(parsedPage) && parsedPage > 0 ? parsedPage : 1;
+}
+
+export async function generateMetadata({
+  searchParams,
+}: ListiclesPageProps) {
+  const resolvedSearchParams = await searchParams;
+  const currentPage = getRequestedPage(resolvedSearchParams?.page);
+
+  return createMetadata({
+    title: "Curated Web3 Lists",
+    description:
+      "Explore curated rankings, expert picks, useful tools, practical recommendations, and Web3 ideas selected for founders, developers, and enterprise teams.",
+    path: getPageHref("/listicles", currentPage),
+  });
+}
+
 export default async function ListiclesPage({
   searchParams,
-}: {
-  searchParams?: Promise<{ page?: string }>;
-}) {
+}: ListiclesPageProps) {
   const resolvedSearchParams = await searchParams;
   const currentPage = Math.max(Number(resolvedSearchParams?.page || 1), 1);
 
@@ -161,7 +184,7 @@ export default async function ListiclesPage({
               <div className="mt-16 flex flex-wrap items-center justify-center gap-3">
                 {safeCurrentPage > 1 ? (
                   <Link
-                    href={`/listicles?page=${safeCurrentPage - 1}#listicles`}
+                    href={getPageHref("/listicles", safeCurrentPage - 1)}
                     className="inline-flex h-11 items-center gap-2 rounded-full border border-white/10 bg-surface px-5 text-sm font-bold text-silver transition-all hover:border-amber-base/40 hover:text-amber-base"
                   >
                     <ChevronLeft className="h-4 w-4" />
@@ -188,7 +211,7 @@ export default async function ListiclesPage({
                   return (
                     <Link
                       key={pageNumber}
-                      href={`/listicles?page=${pageNumber}#listicles`}
+                      href={getPageHref("/listicles", pageNumber)}
                       className={`grid h-11 w-11 place-items-center rounded-full border text-sm font-black transition-all ${
                         isActive
                           ? "border-amber-base bg-amber-base text-bg-base shadow-glow"
@@ -202,7 +225,7 @@ export default async function ListiclesPage({
 
                 {safeCurrentPage < totalPages ? (
                   <Link
-                    href={`/listicles?page=${safeCurrentPage + 1}#listicles`}
+                    href={getPageHref("/listicles", safeCurrentPage + 1)}
                     className="inline-flex h-11 items-center gap-2 rounded-full bg-amber-base px-5 text-sm font-bold text-bg-base transition-transform hover:-translate-y-0.5"
                   >
                     Next

@@ -1,6 +1,6 @@
 import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
-import type { Metadata } from "next";
+import { createMetadata } from "@/config/metadata";
 import { notFound } from "next/navigation";
 import { costs, getCostBySlug } from "@/data/costs";
 import Breadcrumb from "@/components/cost/BreadCrumb";
@@ -16,15 +16,21 @@ export async function generateMetadata({
   params,
 }: {
   params: Promise<{ slug: string }>;
-}): Promise<Metadata> {
+}) {
   const { slug } = await params;
   const cost = getCostBySlug(slug);
   if (!cost) return {};
-  return {
+
+  return createMetadata({
     title: cost.meta.title,
-    description: cost.sections[0]?.bullets?.[0],
+    description:
+      cost.sections[0]?.bullets?.[0] ||
+      cost.meta.primaryKeyword ||
+      cost.meta.title,
     keywords: [cost.meta.primaryKeyword, ...cost.meta.secondaryKeywords],
-  };
+    path: `/cost/${cost.slug}`,
+    type: "article",
+  });
 }
 
 export default async function CostDetailPage({

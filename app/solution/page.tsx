@@ -2,11 +2,13 @@ import Link from "next/link";
 import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import { Box, Layers, Rocket } from "lucide-react";
+import { createMetadata } from "@/config/metadata";
 
-export const metadata = {
+export const metadata = createMetadata({
   title: "Solution — ClickMasters",
   description: "Solutions: audited smart contracts, modular DApps, and production-ready Web3 infrastructure.",
-};
+  path: "/solution",
+});
 
 export default function SolutionPage() {
   return (

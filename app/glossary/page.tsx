@@ -14,6 +14,8 @@ import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import BackToTop from "@/components/ui/BackToTop";
 import GlossaryCard from "@/components/glossary/GlossaryCard";
+import { createMetadata } from "@/config/metadata";
+import { getPageHref } from "@/lib/pagination";
 import {
   getAvailableGlossaryLetters,
   getGlossaryCards,
@@ -21,15 +23,36 @@ import {
 
 const PER_PAGE = 9;
 
-export default async function GlossaryPage({
-  searchParams,
-}: {
+type GlossaryPageProps = {
   searchParams?: Promise<{
     page?: string;
     letter?: string;
     search?: string;
   }>;
-}) {
+};
+
+function getRequestedPage(page?: string) {
+  const parsedPage = Number(page || 1);
+  return Number.isFinite(parsedPage) && parsedPage > 0 ? parsedPage : 1;
+}
+
+export async function generateMetadata({
+  searchParams,
+}: GlossaryPageProps) {
+  const resolvedSearchParams = await searchParams;
+  const currentPage = getRequestedPage(resolvedSearchParams?.page);
+
+  return createMetadata({
+    title: "Blockchain Glossary",
+    description:
+      "Explore simple definitions, practical examples, technical explanations, and real-world uses of blockchain, crypto, Web3, DeFi, smart-contract, and enterprise terminology.",
+    path: getPageHref("/glossary", currentPage),
+  });
+}
+
+export default async function GlossaryPage({
+  searchParams,
+}: GlossaryPageProps) {
   const resolvedSearchParams = await searchParams;
 
   const requestedPage = Number(resolvedSearchParams?.page || 1);
@@ -83,19 +106,10 @@ export default async function GlossaryPage({
   );
 
   function createPageHref(page: number) {
-    const params = new URLSearchParams();
-
-    params.set("page", String(page));
-
-    if (selectedLetter !== "ALL") {
-      params.set("letter", selectedLetter);
-    }
-
-    if (searchQuery) {
-      params.set("search", searchQuery);
-    }
-
-    return `/glossary?${params.toString()}#terms`;
+    return getPageHref("/glossary", page, {
+      letter: selectedLetter !== "ALL" ? selectedLetter : undefined,
+      search: searchQuery || undefined,
+    });
   }
 
   return (
@@ -272,7 +286,7 @@ export default async function GlossaryPage({
                 </p>
 
                 <Link
-                  href="/glossary#terms"
+                  href="/glossary"
                   className="mt-6 inline-flex rounded-full bg-amber-base px-6 py-3 text-sm font-black text-bg-base"
                 >
                   View All Terms

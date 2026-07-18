@@ -1,11 +1,19 @@
 import Link from "next/link";
 import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
+import { createMetadata } from "@/config/metadata";
 import { services } from "@/data/services";
 import ServiceCard from "@/components/service/ServiceCard";
 import CaseStudyCarousel from '@/components/service/CaseStudyCarousel';
 import { Process } from '@/components/landing/Process';
 import BackToTop from '@/components/ui/BackToTop';
+
+export const metadata = createMetadata({
+  title: "Blockchain Development Services",
+  description:
+    "End-to-end blockchain engineering and product teams that ship secure, performant systems: smart contracts, indexers, wallets, and Web3 UX.",
+  path: "/service",
+});
 
 export default function ServicesIndex() {
   return (

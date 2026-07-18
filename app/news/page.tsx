@@ -11,15 +11,38 @@ import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import BackToTop from "@/components/ui/BackToTop";
 import NewsCard from "@/components/news/NewsCard";
+import { createMetadata } from "@/config/metadata";
 import { getNewsCards } from "@/lib/news";
+import { getPageHref } from "@/lib/pagination";
 
 const PER_PAGE = 9;
 
+type NewsPageProps = {
+  searchParams?: Promise<{ page?: string }>;
+};
+
+function getRequestedPage(page?: string) {
+  const parsedPage = Number(page || 1);
+  return Number.isFinite(parsedPage) && parsedPage > 0 ? parsedPage : 1;
+}
+
+export async function generateMetadata({
+  searchParams,
+}: NewsPageProps) {
+  const resolvedSearchParams = await searchParams;
+  const currentPage = getRequestedPage(resolvedSearchParams?.page);
+
+  return createMetadata({
+    title: "Blockchain News",
+    description:
+      "Follow the latest blockchain updates, Web3 infrastructure news, enterprise adoption, crypto regulation, and market-moving technical developments.",
+    path: getPageHref("/news", currentPage),
+  });
+}
+
 export default async function NewsPage({
   searchParams,
-}: {
-  searchParams?: Promise<{ page?: string }>;
-}) {
+}: NewsPageProps) {
   const resolvedSearchParams = await searchParams;
   const currentPage = Math.max(Number(resolvedSearchParams?.page || 1), 1);
 
@@ -189,7 +212,7 @@ export default async function NewsPage({
               <div className="mt-16 flex flex-wrap items-center justify-center gap-3">
                 {safeCurrentPage > 1 ? (
                   <Link
-                    href={`/news?page=${safeCurrentPage - 1}#latest-news`}
+                    href={getPageHref("/news", safeCurrentPage - 1)}
                     className="inline-flex h-11 items-center gap-2 rounded-full border border-white/10 bg-surface px-5 text-sm font-bold text-silver transition-all hover:border-amber-base/40 hover:text-amber-base"
                   >
                     <ChevronLeft className="h-4 w-4" />
@@ -216,7 +239,7 @@ export default async function NewsPage({
                   return (
                     <Link
                       key={pageNumber}
-                      href={`/news?page=${pageNumber}#latest-news`}
+                      href={getPageHref("/news", pageNumber)}
                       className={`grid h-11 w-11 place-items-center rounded-full border text-sm font-black transition-all ${
                         isActive
                           ? "border-amber-base bg-amber-base text-bg-base shadow-glow"
@@ -230,7 +253,7 @@ export default async function NewsPage({
 
                 {safeCurrentPage < totalPages ? (
                   <Link
-                    href={`/news?page=${safeCurrentPage + 1}#latest-news`}
+                    href={getPageHref("/news", safeCurrentPage + 1)}
                     className="inline-flex h-11 items-center gap-2 rounded-full bg-amber-base px-5 text-sm font-bold text-bg-base transition-transform hover:-translate-y-0.5"
                   >
                     Next

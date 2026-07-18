@@ -8,6 +8,7 @@ import ListicleContent from "@/components/listicles/ListicleContent";
 import ListicleFAQ from "@/components/listicles/ListicleFAQ";
 import ListicleCTA from "@/components/listicles/ListicleCTA";
 import ListicleSidebar from "@/components/listicles/ListicleSidebar";
+import { createMetadata } from "@/config/metadata";
 import {
   estimateListicleReadTime,
   getAllListicles,
@@ -32,14 +33,12 @@ export async function generateMetadata({
 
   if (!item) return {};
 
-  return {
-    title: `${item.title} — ClickMasters`,
+  return createMetadata({
+    title: item.title,
     description: item.excerpt || item.hero?.description || item.title,
-    openGraph: {
-      title: `${item.title} — ClickMasters`,
-      description: item.excerpt || item.hero?.description || item.title,
-    },
-  };
+    path: `/listicles/${item.slug || slug}`,
+    type: "article",
+  });
 }
 
 export default async function SingleListiclePage({
