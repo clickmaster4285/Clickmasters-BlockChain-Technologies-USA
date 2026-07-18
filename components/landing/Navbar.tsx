@@ -168,15 +168,15 @@ const resourceFeatured: Record<string, any[]> = {
 ],
   Templates: [
     {
-      title: "Tokenomics Template",
-      desc: "Plan supply, vesting, emissions, and launch structure.",
-      href: "/templates",
+      title: "Blockchain Industry News Hub",
+      desc: "We track US regulatory developments, DeFi security incidents, enterprise blockchain deployments...",
+      href: "/templates/blockchain-news-us-businesses",
       badge: "Template",
     },
     {
-      title: "Project Scope Template",
-      desc: "Document features, architecture, milestones, and budget.",
-      href: "/templates",
+      title: "Blockchain Technology Partner Program",
+      desc: "We partner with consulting firms, systems integrators, law firms, and technology companies who serve clients needing ...",
+      href: "/templates/blockchain-technology-partner-program",
       badge: "Docs",
     },
   ],
@@ -374,15 +374,18 @@ export function Navbar() {
           <DesktopDropdown label="Blog" items={blogLinks} />
           <DesktopDropdown label="Resources" items={resourceLinks} />
         </ul>
+<div className="hidden lg:block"> 
+  <Link 
+    href="#contact" 
+    className="inline-flex items-center gap-2 rounded-full bg-amber-base px-4 py-2.5 text-sm font-semibold text-bg-base transition-all duration-200 ease-in-out hover:-translate-y-0.5 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-base whitespace-nowrap"
+    aria-label="Book a free strategy call"
+  > 
+    Book a Free Strategy Call 
+  </Link> 
+</div>
 
-        <div className="hidden md:block">
-          <Link
-            href="#contact"
-            className="inline-flex items-center gap-2 rounded-full bg-amber-base px-4 py-2.5 text-sm font-semibold text-bg-base transition-transform hover:-translate-y-0.5"
-          >
-            Book a Free Strategy Call
-          </Link>
-        </div>
+
+
 
         <button
           aria-label="Toggle menu"

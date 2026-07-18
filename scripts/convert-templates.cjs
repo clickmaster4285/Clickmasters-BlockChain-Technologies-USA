@@ -17,5 +17,5 @@ if(o2?.tag)c=c.filter(x=>x.tags?.includes(o2.tag));if(o2?.search){const q=o2.sea
 if(o2?.offset)c=c.slice(o2.offset);if(o2?.limit)c=c.slice(0,o2.limit);return c;}
 function getTemplatesByTag(t){return templates.filter(i=>i.tags?.includes(t));}
 function searchTemplates(q2){const q=q2.toLowerCase();return templates.filter(i=>i.meta.title.toLowerCase().includes(q)||i.slug.toLowerCase().includes(q));}
-module.exports={templates,getTemplateBySlug,getTemplateCards,getTemplatesByTag,searchTemplates};`;
+export{templates,getTemplateBySlug,getTemplateCards,getTemplatesByTag,searchTemplates};`;
 fs.writeFileSync(OUT,o,'utf-8');console.log(`  ✅ Written to data/templates.js (${items.length} files)`);

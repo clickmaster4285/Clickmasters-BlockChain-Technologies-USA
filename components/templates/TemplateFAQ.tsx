@@ -1,31 +1,24 @@
 "use client";
 
 import { useState } from "react";
-import {
-  ChevronDown,
-  HelpCircle,
-} from "lucide-react";
+import { ChevronDown, HelpCircle } from "lucide-react";
 
 type FAQItem = {
   question: string;
   answer: string;
 };
 
-export default function TemplateFAQ({
-  item,
-}: {
-  item: any;
-}) {
+export default function TemplateFAQ({ item }: { item: any }) {
   const faqs: FAQItem[] = item?.faqs || item?.faq || [];
 
   const [activeIndex, setActiveIndex] = useState<number | null>(
-    faqs.length ? 0 : null
+    faqs.length ? 0 : null,
   );
 
   if (!faqs.length) return null;
 
   return (
-    <section className="mt-10 rounded-[2rem] border border-[#273449] bg-[#101827] p-5 shadow-[0_26px_80px_rgba(0,0,0,0.34)] sm:p-7 md:p-9">
+    <section className="mt-10 rounded-[2rem] border border-border-default bg-bg-surface/90 p-5 sm:p-7 md:p-9">
       {/* Header */}
       <div className="mb-6 flex items-center justify-between gap-4">
         <div className="flex items-center gap-3">
@@ -38,7 +31,7 @@ export default function TemplateFAQ({
               FAQ
             </p>
 
-            <h2 className="mt-1 text-2xl font-black text-white md:text-3xl">
+            <h2 className="mt-1 text-2xl font-black text-text-primary md:text-3xl">
               Common Questions
             </h2>
           </div>
@@ -59,15 +52,13 @@ export default function TemplateFAQ({
               key={`${faq.question}-${index}`}
               className={`overflow-hidden rounded-2xl border transition-all duration-300 ${
                 isOpen
-                  ? "border-amber-base/45 bg-[#172033]"
-                  : "border-[#273449] bg-[#0c1422] hover:-translate-y-0.5 hover:border-amber-base/30"
+                  ? "border-amber-base/45 bg-amber-base/[0.06]"
+                  : "border-border-default bg-bg-base hover:-translate-y-0.5 hover:border-amber-base/30"
               }`}
             >
               <button
                 type="button"
-                onClick={() =>
-                  setActiveIndex(isOpen ? null : index)
-                }
+                onClick={() => setActiveIndex(isOpen ? null : index)}
                 aria-expanded={isOpen}
                 className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
               >
@@ -76,7 +67,7 @@ export default function TemplateFAQ({
                     className={`grid h-9 w-9 shrink-0 place-items-center rounded-xl text-xs font-black transition-all duration-300 ${
                       isOpen
                         ? "bg-amber-base text-[#101827]"
-                        : "border border-[#334155] bg-[#172033] text-amber-base"
+                        : "border border-border-default bg-bg-surface text-amber-base"
                     }`}
                   >
                     {String(index + 1).padStart(2, "0")}
@@ -84,9 +75,7 @@ export default function TemplateFAQ({
 
                   <h3
                     className={`text-sm font-bold leading-6 transition-colors sm:text-base ${
-                      isOpen
-                        ? "text-amber-base"
-                        : "text-white"
+                      isOpen ? "text-amber-base" : "text-text-primary"
                     }`}
                   >
                     {faq.question}
@@ -97,7 +86,7 @@ export default function TemplateFAQ({
                   className={`grid h-9 w-9 shrink-0 place-items-center rounded-full border transition-all duration-300 ${
                     isOpen
                       ? "rotate-180 border-amber-base bg-amber-base text-[#101827]"
-                      : "border-[#334155] bg-[#172033] text-[#94a3b8]"
+                      : "border-border-default bg-bg-surface text-text-secondary"
                   }`}
                 >
                   <ChevronDown className="h-4 w-4" />
@@ -112,7 +101,7 @@ export default function TemplateFAQ({
                 }`}
               >
                 <div className="overflow-hidden">
-                  <p className="border-t border-[#273449] px-5 py-5 text-sm leading-7 text-[#b7c2d2] sm:pl-[4.75rem] md:text-base md:leading-8">
+                  <p className="border-t border-border-default px-5 py-5 text-sm leading-7 text-text-secondary sm:pl-[4.75rem] md:text-base md:leading-8">
                     {faq.answer}
                   </p>
                 </div>

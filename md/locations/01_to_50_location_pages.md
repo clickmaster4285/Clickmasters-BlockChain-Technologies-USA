@@ -40,7 +40,7 @@ New York's financial services ecosystem — Wall Street institutions, hedge fund
 
 ## New York–Specific Regulatory Considerations
 
-**NYDFS BitLicense:** Required for any company engaged in "virtual currency business activity" with New York residents. The most demanding state crypto license in the US — requires dedicated compliance officer, cybersecurity program meeting NYDFS standards, consumer protection policies, and significant ongoing reporting. Our exchange and wallet builds for NY-facing businesses are designed to be BitLicense-ready from the architecture phase.
+**NYDFS BitLicense:** Required for any company engaged in "virtual currency business activity" with New York residents. The most demanding state crypto license in the US — requires dedicatelg:blockd compliance officer, cybersecurity program meeting NYDFS standards, consumer protection policies, and significant ongoing reporting. Our exchange and wallet builds for NY-facing businesses are designed to be BitLicense-ready from the architecture phase.
 
 **NYDFS Part 200:** The regulation governing virtual currency businesses in New York. We design AML programs, cybersecurity frameworks, and operational policies that align with Part 200 requirements.
 
@@ -79,7 +79,7 @@ Yes. We have delivered projects for New York financial institutions, CRE firms, 
 
 ## H1: Blockchain Development Company Serving San Francisco and the Bay Area
 
-**H2: San Francisco and Silicon Valley are home to the highest concentration of Web3 startups, crypto funds, and blockchain-native talent in the US. We serve Bay Area founders, VCs, and enterprises building on-chain infrastructure since 2014.**
+**H2: San Francisco and Silicon Valley are home to the highest concentration of Web3 startups, crypto funds, and blockchain-native talent in the US. We serve Bay Area founders, VCs, and elg:blocknterprises building on-chain infrastructure since 2014.**
 
 The Bay Area blockchain ecosystem is distinct: product-first thinking, aggressive growth timelines, and a talent pool with the highest concentration of blockchain engineers in the US. We work with Bay Area startups from pre-seed (strategy and MVP) through Series B+ (production protocol development and ongoing engineering).
 
@@ -102,7 +102,7 @@ The Bay Area blockchain ecosystem is distinct: product-first thinking, aggressiv
 ## Bay Area Blockchain Ecosystem Context
 
 San Francisco hosts: Coinbase (HQ), Ripple (HQ), Kraken (founded SF), Protocol Labs/Filecoin (SF), Andreessen Horowitz crypto fund (Menlo Park), and hundreds of Web3 startups funded through a16z, Paradigm, Polychain Capital, and other Bay Area crypto funds. The proximity to top-tier blockchain engineering talent is both an advantage and a challenge — talent is expensive ($250,000–$450,000/year for senior blockchain engineers) and competitive.
-
+lg:block
 ---
 
 ## Frequently Asked Questions
@@ -129,7 +129,7 @@ Yes. Our minimum engagement is a strategy and specification session ($15,000–$
 
 ---
 
-## H1: Blockchain Development Company Serving Chicago — Financial Services, Real Estate, and Enterprise
+## H1: Blockchain Developmentlg:block Company Serving Chicago — Financial Services, Real Estate, and Enterprise
 
 **H2: Chicago is a hub for derivatives trading, commodities markets, and Midwest financial services. We serve Chicago-based financial institutions, real estate firms, and enterprise businesses with blockchain infrastructure since 2014.**
 
