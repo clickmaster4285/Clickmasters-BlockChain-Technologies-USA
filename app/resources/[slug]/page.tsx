@@ -21,6 +21,7 @@ import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import BackToTop from "@/components/ui/BackToTop";
 import ResourceCard from "@/components/resources/ResourceCard";
+import { createMetadata } from "@/config/metadata";
 import {
   estimateResourceReadTime,
   getAllResources,
@@ -296,24 +297,15 @@ export async function generateMetadata({
 
   if (!item) return {};
 
-  return {
-    title: `${item.title} | ClickMasters Resources`,
+  return createMetadata({
+    title: item.title,
     description:
       item.excerpt ||
       item.hero?.description ||
       "Explore this practical blockchain resource from ClickMasters.",
-    alternates: {
-      canonical: `/resources/${item.slug}`,
-    },
-    openGraph: {
-      title: `${item.title} | ClickMasters Resources`,
-      description:
-        item.excerpt ||
-        item.hero?.description ||
-        "Explore this practical blockchain resource from ClickMasters.",
-      type: "article",
-    },
-  };
+    path: `/resources/${item.slug || slug}`,
+    type: "article",
+  });
 }
 
 export default async function SingleResourcePage({

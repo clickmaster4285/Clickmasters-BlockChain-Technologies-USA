@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -16,13 +15,9 @@ import {
 import { Footer } from "@/components/landing/Footer";
 import { Navbar } from "@/components/landing/Navbar";
 import BackToTop from "@/components/ui/BackToTop";
+import { createMetadata } from "@/config/metadata";
 import { caseStudies } from "@/data/case-studies";
-
-export const metadata: Metadata = {
-  title: "Case Studies | ClickMasters",
-  description:
-    "Explore blockchain case studies from ClickMasters across DeFi, tokenization, supply chain, payments, smart contracts, and enterprise blockchain.",
-};
+import { getPageHref } from "@/lib/pagination";
 
 type CaseStudiesPageProps = {
   searchParams?: Promise<{
@@ -32,15 +27,25 @@ type CaseStudiesPageProps = {
 
 const cardsPerPage = 9;
 
-function getPageHref(page: number) {
-  return page <= 1 ? "/case-studies" : `/case-studies?page=${page}`;
-}
-
 function getCurrentPage(page?: string | string[]) {
   const rawPage = Array.isArray(page) ? page[0] : page;
   const parsedPage = Number.parseInt(rawPage || "1", 10);
 
   return Number.isFinite(parsedPage) && parsedPage > 0 ? parsedPage : 1;
+}
+
+export async function generateMetadata({
+  searchParams,
+}: CaseStudiesPageProps) {
+  const resolvedSearchParams = await searchParams;
+  const requestedPage = getCurrentPage(resolvedSearchParams?.page);
+
+  return createMetadata({
+    title: "Case Studies",
+    description:
+      "Explore blockchain case studies from ClickMasters across DeFi, tokenization, supply chain, payments, smart contracts, and enterprise blockchain.",
+    path: getPageHref("/case-studies", requestedPage),
+  });
 }
 
 export default async function CaseStudiesPage({
@@ -355,7 +360,10 @@ export default async function CaseStudiesPage({
 
                 <div className="flex flex-wrap items-center justify-center gap-2">
                   <Link
-                    href={getPageHref(Math.max(1, currentPage - 1))}
+                    href={getPageHref(
+                      "/case-studies",
+                      Math.max(1, currentPage - 1)
+                    )}
                     aria-disabled={currentPage === 1}
                     className={`inline-flex min-h-10 items-center justify-center gap-2 rounded-full border px-4 py-2 text-sm font-black transition-all ${
                       currentPage === 1
@@ -373,7 +381,7 @@ export default async function CaseStudiesPage({
                     return (
                       <Link
                         key={page}
-                        href={getPageHref(page)}
+                        href={getPageHref("/case-studies", page)}
                         aria-current={isActive ? "page" : undefined}
                         className={`grid h-10 w-10 place-items-center rounded-full border text-sm font-black transition-all ${
                           isActive
@@ -387,7 +395,10 @@ export default async function CaseStudiesPage({
                   })}
 
                   <Link
-                    href={getPageHref(Math.min(totalPages, currentPage + 1))}
+                    href={getPageHref(
+                      "/case-studies",
+                      Math.min(totalPages, currentPage + 1)
+                    )}
                     aria-disabled={currentPage === totalPages}
                     className={`inline-flex min-h-10 items-center justify-center gap-2 rounded-full border px-4 py-2 text-sm font-black transition-all ${
                       currentPage === totalPages

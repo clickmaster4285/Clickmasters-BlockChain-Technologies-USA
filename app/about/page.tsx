@@ -2,17 +2,14 @@ import Link from "next/link";
 import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import { ShieldCheck, Sparkles, Users } from "lucide-react";
+import { createMetadata } from "@/config/metadata";
 
-export const metadata = {
+export const metadata = createMetadata({
   title: "About ClickMasters — Blockchain & Web3 Agency",
   description:
     "Founded in 2021, ClickMasters has shipped 50+ Web3 projects and secured $100M+ on-chain. Meet the team behind decentralized infrastructure.",
-  openGraph: {
-    title: "About ClickMasters — Blockchain & Web3 Agency",
-    description:
-      "50+ Web3 projects, $100M+ secured on-chain. Our mission: secure, scalable, decentralized infrastructure.",
-  },
-};
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (

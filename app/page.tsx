@@ -19,29 +19,18 @@ import { Footer } from "@/components/landing/Footer";
 import { Reveal } from "@/components/landing/Reveal";
 import { WhatsAppFAB } from "@/components/landing/WhatsAppFAB";
 import { BackToTop } from "@/components/landing/BackToTop";
+import { createMetadata } from "@/config/metadata";
 
 const heroVideo = "/media/hero-bg.mp4";
 const heroSide = "/media/cta-bg.png";
 
-export const metadata = {
+export const metadata = createMetadata({
   title: "ClickMasters — Blockchain & Web3 Development Company",
   description:
     "Premium blockchain & Web3 development agency. Smart contracts, DApps, NFT marketplaces, and crypto wallets — engineered with enterprise-grade security.",
-  openGraph: {
-    title: "ClickMasters — Blockchain & Web3 Development",
-    description:
-      "Securing $100M+ on-chain. Smart contracts, DApps, wallets and NFT marketplaces built by senior Web3 engineers.",
-    images: [heroSide],
-  },
-  twitter: {
-    images: [heroSide],
-  },
-  alternates: {
-    types: {
-      "application/json": [],
-    },
-  },
-};
+  path: "/",
+  image: heroSide,
+});
 
 export default function Index() {
   return (

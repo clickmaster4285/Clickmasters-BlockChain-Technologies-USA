@@ -15,6 +15,8 @@ import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import BackToTop from "@/components/ui/BackToTop";
 import TemplateCard from "@/components/templates/TemplateCard";
+import { createMetadata } from "@/config/metadata";
+import { getPageHref } from "@/lib/pagination";
 
 import {
   getFeaturedTemplates,
@@ -42,15 +44,36 @@ const heroBenefits = [
   },
 ];
 
-export default async function TemplatesPage({
-  searchParams,
-}: {
+type TemplatesPageProps = {
   searchParams?: Promise<{
     page?: string;
     category?: string;
     search?: string;
   }>;
-}) {
+};
+
+function getRequestedPage(page?: string) {
+  const parsedPage = Number(page || 1);
+  return Number.isFinite(parsedPage) && parsedPage > 0 ? parsedPage : 1;
+}
+
+export async function generateMetadata({
+  searchParams,
+}: TemplatesPageProps) {
+  const resolvedSearchParams = await searchParams;
+  const currentPage = getRequestedPage(resolvedSearchParams?.page);
+
+  return createMetadata({
+    title: "Blockchain Templates",
+    description:
+      "Use practical templates for blockchain planning, project documentation, technical architecture, security, tokenomics, proposals, and enterprise delivery.",
+    path: getPageHref("/templates", currentPage),
+  });
+}
+
+export default async function TemplatesPage({
+  searchParams,
+}: TemplatesPageProps) {
   const resolvedSearchParams = await searchParams;
 
   const requestedPage = Math.max(
@@ -107,19 +130,13 @@ export default async function TemplatesPage({
   );
 
   function createPageHref(page: number) {
-    const params = new URLSearchParams();
-
-    params.set("page", String(page));
-
-    if (selectedCategory.toLowerCase() !== "all") {
-      params.set("category", selectedCategory);
-    }
-
-    if (searchQuery) {
-      params.set("search", searchQuery);
-    }
-
-    return `/templates?${params.toString()}#template-library`;
+    return getPageHref("/templates", page, {
+      category:
+        selectedCategory.toLowerCase() !== "all"
+          ? selectedCategory
+          : undefined,
+      search: searchQuery || undefined,
+    });
   }
 
   function createCategoryHref(category: string) {
@@ -135,9 +152,7 @@ export default async function TemplatesPage({
 
     const query = params.toString();
 
-    return query
-      ? `/templates?${query}#template-library`
-      : "/templates#template-library";
+    return query ? `/templates?${query}` : "/templates";
   }
 
   return (
@@ -414,7 +429,7 @@ export default async function TemplatesPage({
                   {(searchQuery ||
                     selectedCategory.toLowerCase() !== "all") && (
                     <Link
-                      href="/templates#template-library"
+                      href="/templates"
                       className="inline-flex h-13 items-center justify-center rounded-full border border-border-default bg-bg-base px-7 text-sm font-bold text-text-secondary transition-all hover:border-amber-base/30 hover:text-amber-base"
                     >
                       Clear
@@ -505,7 +520,7 @@ export default async function TemplatesPage({
                   </p>
 
                   <Link
-                    href="/templates#template-library"
+                    href="/templates"
                     className="mt-7 inline-flex rounded-full bg-amber-base px-7 py-3 text-sm font-black text-[#101827]"
                   >
                     View All Templates

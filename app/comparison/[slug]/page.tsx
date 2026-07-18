@@ -8,6 +8,7 @@ import ComparisonArticle from "@/components/comparison/ComparisonArticle";
 import ComparisonSidebar from "@/components/comparison/ComparisonSidebar";
 import ComparisonCTA from "@/components/comparison/ComparisonCTA";
 import ComparisonFAQ from "@/components/comparison/ComparisonFAQ";
+import { createMetadata } from "@/config/metadata";
 import {
   estimateReadTime,
   getAllComparisonArticles,
@@ -33,14 +34,15 @@ export async function generateMetadata({
 
   if (!article) return {};
 
-  return {
-    title: `${article.title} — ClickMasters`,
-    description: article.excerpt || article.hero?.description || "Blockchain comparison and decision guide.",
-    openGraph: {
-      title: `${article.title} — ClickMasters`,
-      description: article.excerpt || article.hero?.description || "Blockchain comparison and decision guide.",
-    },
-  };
+  return createMetadata({
+    title: article.title,
+    description:
+      article.excerpt ||
+      article.hero?.description ||
+      "Blockchain comparison and decision guide.",
+    path: `/comparison/${article.slug || slug}`,
+    type: "article",
+  });
 }
 
 export default async function SingleComparisonPage({

@@ -20,6 +20,7 @@ import {
 import { Footer } from "@/components/landing/Footer";
 import { Navbar } from "@/components/landing/Navbar";
 import BackToTop from "@/components/ui/BackToTop";
+import { createMetadata } from "@/config/metadata";
 import { caseStudies } from "@/data/case-studies";
 
 type CaseStudyPageProps = {
@@ -219,15 +220,21 @@ export async function generateMetadata({ params }: CaseStudyPageProps) {
   const caseStudy = caseStudies.find((item) => item.slug === slug);
 
   if (!caseStudy) {
-    return {
+    return createMetadata({
       title: "Case Study Not Found | ClickMasters",
-    };
+      description: "The requested blockchain case study could not be found.",
+      path: `/case-studies/${slug}`,
+      noIndex: true,
+    });
   }
 
-  return {
-    title: `${caseStudy.title} | ClickMasters`,
+  return createMetadata({
+    title: caseStudy.title,
     description: caseStudy.excerpt,
-  };
+    path: `/case-studies/${caseStudy.slug || slug}`,
+    image: caseStudy.image,
+    type: "article",
+  });
 }
 
 export default async function CaseStudyPage({ params }: CaseStudyPageProps) {

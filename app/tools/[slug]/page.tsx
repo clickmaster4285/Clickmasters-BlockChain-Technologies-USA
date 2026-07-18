@@ -10,6 +10,7 @@ import ToolContent from "@/components/tools/ToolContent";
 import ToolSidebar from "@/components/tools/ToolSidebar";
 import ToolFAQ from "@/components/tools/ToolFAQ";
 import ToolCTA from "@/components/tools/ToolCTA";
+import { createMetadata } from "@/config/metadata";
 
 import {
   estimateToolReadTime,
@@ -55,29 +56,13 @@ export async function generateMetadata({
     item?.image ||
     "/assets/tools-hero.png";
 
-  return {
-    title: `${title} — ClickMasters`,
+  return createMetadata({
+    title,
     description,
-
-    openGraph: {
-      title: `${title} — ClickMasters`,
-      description,
-      type: "article",
-      images: [
-        {
-          url: image,
-          alt: title,
-        },
-      ],
-    },
-
-    twitter: {
-      card: "summary_large_image",
-      title: `${title} — ClickMasters`,
-      description,
-      images: [image],
-    },
-  };
+    path: `/tools/${item.slug || slug}`,
+    image,
+    type: "article",
+  });
 }
 
 export default async function SingleToolPage({

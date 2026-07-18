@@ -8,6 +8,7 @@ import HowToContent from "@/components/howto/HowToContent";
 import HowToFAQ from "@/components/howto/HowToFAQ";
 import HowToCTA from "@/components/howto/HowToCTA";
 import HowToSidebar from "@/components/howto/HowToSidebar";
+import { createMetadata } from "@/config/metadata";
 import {
   estimateHowToReadTime,
   getAllHowTos,
@@ -32,14 +33,12 @@ export async function generateMetadata({
 
   if (!item) return {};
 
-  return {
-    title: `${item.title} — ClickMasters`,
+  return createMetadata({
+    title: item.title,
     description: item.excerpt || item.hero?.description || item.title,
-    openGraph: {
-      title: `${item.title} — ClickMasters`,
-      description: item.excerpt || item.hero?.description || item.title,
-    },
-  };
+    path: `/howto/${item.slug || slug}`,
+    type: "article",
+  });
 }
 
 export default async function SingleHowToPage({

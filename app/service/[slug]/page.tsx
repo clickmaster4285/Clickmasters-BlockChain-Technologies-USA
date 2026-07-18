@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
+import { createMetadata } from "@/config/metadata";
 import { getServiceBySlug, getAllServiceSlugs } from "@/data/services";
 import Hero from "@/components/service/Hero";
 import StickyCTA from "@/components/service/StickyCTA";
@@ -17,17 +18,21 @@ export async function generateStaticParams() {
   return getAllServiceSlugs().map((slug) => ({ slug }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const svc = getServiceBySlug(params.slug);
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const svc = getServiceBySlug(slug);
   if (!svc) return {};
-  return {
-    title: `${svc.title} — ClickMasters`,
+
+  return createMetadata({
+    title: svc.title,
     description: svc.description ?? svc.hero.blurb,
-    openGraph: {
-      title: `${svc.title} — ClickMasters`,
-      description: svc.description ?? svc.hero.blurb,
-    },
-  };
+    path: `/service/${slug}`,
+    type: "article",
+  });
 }
 
 export default async function ServicePage({ params }: { params: any }) {

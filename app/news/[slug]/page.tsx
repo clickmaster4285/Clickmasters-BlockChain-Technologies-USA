@@ -8,6 +8,7 @@ import NewsContent from "@/components/news/NewsContent";
 import NewsSidebar from "@/components/news/NewsSidebar";
 import NewsFAQ from "@/components/news/NewsFAQ";
 import NewsCTA from "@/components/news/NewsCTA";
+import { createMetadata } from "@/config/metadata";
 import {
   estimateNewsReadTime,
   getAllNews,
@@ -32,14 +33,12 @@ export async function generateMetadata({
 
   if (!item) return {};
 
-  return {
-    title: `${item.title} — ClickMasters`,
+  return createMetadata({
+    title: item.title,
     description: item.excerpt || item.hero?.description || item.title,
-    openGraph: {
-      title: `${item.title} — ClickMasters`,
-      description: item.excerpt || item.hero?.description || item.title,
-    },
-  };
+    path: `/news/${item.slug || slug}`,
+    type: "article",
+  });
 }
 
 export default async function SingleNewsPage({

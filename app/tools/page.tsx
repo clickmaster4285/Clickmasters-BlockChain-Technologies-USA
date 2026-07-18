@@ -18,6 +18,8 @@ import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import BackToTop from "@/components/ui/BackToTop";
 import ToolCard from "@/components/tools/ToolCard";
+import { createMetadata } from "@/config/metadata";
+import { getPageHref } from "@/lib/pagination";
 
 import {
   getToolCards,
@@ -44,15 +46,36 @@ const heroFeatures = [
   },
 ];
 
-export default async function ToolsPage({
-  searchParams,
-}: {
+type ToolsPageProps = {
   searchParams?: Promise<{
     page?: string;
     category?: string;
     search?: string;
   }>;
-}) {
+};
+
+function getRequestedPage(page?: string) {
+  const parsedPage = Number(page || 1);
+  return Number.isFinite(parsedPage) && parsedPage > 0 ? parsedPage : 1;
+}
+
+export async function generateMetadata({
+  searchParams,
+}: ToolsPageProps) {
+  const resolvedSearchParams = await searchParams;
+  const currentPage = getRequestedPage(resolvedSearchParams?.page);
+
+  return createMetadata({
+    title: "Blockchain Tools",
+    description:
+      "Use focused blockchain calculators, security frameworks, architecture planners, and technical decision tools built for founders, developers, and enterprise teams.",
+    path: getPageHref("/tools", currentPage),
+  });
+}
+
+export default async function ToolsPage({
+  searchParams,
+}: ToolsPageProps) {
   const resolvedSearchParams = await searchParams;
 
   const requestedPage = Number(resolvedSearchParams?.page || 1);
@@ -99,19 +122,13 @@ export default async function ToolsPage({
   );
 
   function createPageHref(page: number) {
-    const params = new URLSearchParams();
-
-    params.set("page", String(page));
-
-    if (selectedCategory.toLowerCase() !== "all") {
-      params.set("category", selectedCategory);
-    }
-
-    if (searchQuery) {
-      params.set("search", searchQuery);
-    }
-
-    return `/tools?${params.toString()}#tools-grid`;
+    return getPageHref("/tools", page, {
+      category:
+        selectedCategory.toLowerCase() !== "all"
+          ? selectedCategory
+          : undefined,
+      search: searchQuery || undefined,
+    });
   }
 
   function createCategoryHref(category: string) {
@@ -127,9 +144,7 @@ export default async function ToolsPage({
 
     const query = params.toString();
 
-    return query
-      ? `/tools?${query}#tools-grid`
-      : "/tools#tools-grid";
+    return query ? `/tools?${query}` : "/tools";
   }
 
   return (
@@ -343,7 +358,7 @@ export default async function ToolsPage({
                   </p>
 
                   <Link
-                    href="/tools#tools-grid"
+                    href="/tools"
                     className="mt-7 inline-flex rounded-full bg-amber-base px-7 py-3 text-sm font-black text-bg-base"
                   >
                     View All Tools

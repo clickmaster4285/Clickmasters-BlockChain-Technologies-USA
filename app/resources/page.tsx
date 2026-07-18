@@ -1,10 +1,9 @@
-import type { Metadata } from "next";
-
 import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import BackToTop from "@/components/ui/BackToTop";
 import ResourceLibrary from "@/components/resources/ResourceLibrary";
 import ResourceCTA from "@/components/resources/ResourceCTA";
+import { createMetadata } from "@/config/metadata";
 
 import {
   getAllResources,
@@ -12,33 +11,13 @@ import {
   getResourceCategories,
 } from "@/lib/resources";
 
-export const metadata: Metadata = {
+export const metadata = createMetadata({
   title:
     "Resources | Guides, Research and Practical Insights | ClickMasters",
-
   description:
     "Explore practical guides, reports, strategic frameworks, technical resources, and expert insights from ClickMasters.",
-
-  alternates: {
-    canonical: "/resources",
-  },
-
-  openGraph: {
-    title: "ClickMasters Resources",
-    description:
-      "Explore practical guides, research, frameworks, and expert insights.",
-    url: "/resources",
-    siteName: "ClickMasters",
-    type: "website",
-  },
-
-  twitter: {
-    card: "summary_large_image",
-    title: "ClickMasters Resources",
-    description:
-      "Explore practical resources, reports, and strategic insights.",
-  },
-};
+  path: "/resources",
+});
 
 type ResourcesPageProps = {
   searchParams: Promise<{

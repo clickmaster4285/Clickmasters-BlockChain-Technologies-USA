@@ -6,6 +6,7 @@ import { ChevronRight, FileText, Home, Sparkles } from "lucide-react";
 import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import BackToTop from "@/components/ui/BackToTop";
+import { createMetadata } from "@/config/metadata";
 
 import TemplateHero from "@/components/templates/TemplateHero";
 import TemplateContent from "@/components/templates/TemplateContent";
@@ -78,29 +79,13 @@ export async function generateMetadata({
   const image =
     item?.seo?.image || item?.image || "/assets/templates-hero.webp";
 
-  return {
-    title: `${title} | ClickMasters`,
+  return createMetadata({
+    title,
     description,
-
-    openGraph: {
-      title: `${title} | ClickMasters`,
-      description,
-      type: "article",
-      images: [
-        {
-          url: image,
-          alt: title,
-        },
-      ],
-    },
-
-    twitter: {
-      card: "summary_large_image",
-      title: `${title} | ClickMasters`,
-      description,
-      images: [image],
-    },
-  };
+    path: `/templates/${item.slug || slug}`,
+    image,
+    type: "article",
+  });
 }
 
 /*

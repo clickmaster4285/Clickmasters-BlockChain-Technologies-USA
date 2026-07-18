@@ -8,6 +8,7 @@ import GlossaryContent from "@/components/glossary/GlossaryContent";
 import GlossarySidebar from "@/components/glossary/GlossarySidebar";
 import GlossaryFAQ from "@/components/glossary/GlossaryFAQ";
 import GlossaryCTA from "@/components/glossary/GlossaryCTA";
+import { createMetadata } from "@/config/metadata";
 import {
   estimateGlossaryReadTime,
   getAllGlossaryTerms,
@@ -48,15 +49,12 @@ export async function generateMetadata({
     item.hero?.description ||
     `Learn what ${item.term || item.title} means and how it is used in blockchain and Web3.`;
 
-  return {
-    title: `${title} — ClickMasters`,
+  return createMetadata({
+    title,
     description,
-    openGraph: {
-      title: `${title} — ClickMasters`,
-      description,
-      type: "article",
-    },
-  };
+    path: `/glossary/${item.slug || slug}`,
+    type: "article",
+  });
 }
 
 export default async function SingleGlossaryPage({
