@@ -41,7 +41,7 @@ function getHeadingClasses(
   switch (level) {
     case 3:
       return [
-        "mt-12",
+        "mt-9",
         "scroll-mt-32",
         "text-2xl",
         "font-black",
@@ -53,7 +53,7 @@ function getHeadingClasses(
 
     case 4:
       return [
-        "mt-9",
+        "mt-7",
         "scroll-mt-32",
         "text-xl",
         "font-black",
@@ -66,11 +66,11 @@ function getHeadingClasses(
     case 2:
     default:
       return [
-        "mt-16",
+        "mt-11",
         "scroll-mt-32",
         "border-t",
         "border-white/[0.08]",
-        "pt-12",
+        "pt-8",
         "text-3xl",
         "font-black",
         "leading-tight",
@@ -91,7 +91,7 @@ function FeaturedAnswer({
   text: string;
 }) {
   return (
-    <aside className="relative my-10 overflow-hidden rounded-[1.75rem] border border-amber-base/25 bg-amber-base/[0.055] p-6 sm:p-8">
+    <aside className="relative my-8 overflow-hidden rounded-[1.75rem] border border-amber-base/25 bg-amber-base/[0.055] p-6 sm:p-8">
       <div className="pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-amber-base/[0.12] blur-3xl" />
 
       <div className="relative flex items-start gap-4">
@@ -172,7 +172,7 @@ function ArticleParagraph({
   text: string;
 }) {
   return (
-    <p className="mt-6 text-[15px] leading-8 text-silver sm:text-base sm:leading-8">
+    <p className="mt-5 text-[15px] leading-8 text-silver sm:text-base sm:leading-8">
       {text}
     </p>
   );
@@ -188,7 +188,7 @@ function ArticleList({
   items: string[];
 }) {
   return (
-    <ul className="mt-7 space-y-4">
+    <ul className="mt-5 space-y-3">
       {items.map((item, index) => (
         <li
           key={`${item}-${index}`}
@@ -222,7 +222,7 @@ function ArticleTable({
   );
 
   return (
-    <div className="my-9 overflow-hidden rounded-[1.5rem] border border-white/[0.09] bg-surface">
+    <div className="my-7 overflow-hidden rounded-[1.5rem] border border-white/[0.09] bg-surface">
       <div className="overflow-x-auto">
         <table className="min-w-full border-collapse text-left">
           {headers &&

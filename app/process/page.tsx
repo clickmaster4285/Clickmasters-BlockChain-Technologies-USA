@@ -193,7 +193,7 @@ export default async function ProcessPage({
             Hero
         ================================================== */}
 
-        <section className="relative isolate border-b border-white/[0.07] px-5 pb-24 pt-36 sm:px-8 lg:px-12 lg:pb-32 lg:pt-44">
+        <section className="relative isolate border-b border-white/[0.07] pb-24 pt-36 lg:pb-32 lg:pt-44">
           {/* Background */}
 
           <div className="pointer-events-none absolute inset-0 -z-20 bg-bg-base" />
@@ -213,7 +213,7 @@ export default async function ProcessPage({
             }}
           />
 
-          <div className="mx-auto max-w-7xl">
+          <div className="site-container relative px-6">
             {/* Breadcrumb */}
 
             <nav
@@ -330,8 +330,8 @@ export default async function ProcessPage({
             Benefits
         ================================================== */}
 
-        <section className="border-b border-white/[0.07] px-5 py-12 sm:px-8 lg:px-12">
-          <div className="mx-auto grid max-w-7xl gap-5 md:grid-cols-3">
+        <section className="border-b border-white/[0.07] py-12">
+          <div className="site-container relative grid gap-5 px-6 md:grid-cols-3">
             {processBenefits.map(
               ({
                 icon: Icon,
@@ -363,8 +363,8 @@ export default async function ProcessPage({
             Listing
         ================================================== */}
 
-        <section className="px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
-          <div className="mx-auto max-w-7xl">
+        <section className="py-20 lg:py-28">
+          <div className="site-container relative px-6">
             {/* Section Heading */}
 
             <div className="flex flex-col justify-between gap-6 border-b border-white/[0.08] pb-8 md:flex-row md:items-end">
@@ -443,8 +443,9 @@ export default async function ProcessPage({
             Bottom CTA
         ================================================== */}
 
-        <section className="px-5 pb-24 sm:px-8 lg:px-12 lg:pb-32">
-          <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[2.4rem] border border-amber-base/25 bg-surface px-7 py-12 sm:px-10 lg:px-16 lg:py-16">
+        <section className="pb-24 lg:pb-32">
+          <div className="site-container relative px-6">
+            <div className="relative overflow-hidden rounded-[2.4rem] border border-amber-base/25 bg-surface px-7 py-12 sm:px-10 lg:px-16 lg:py-16">
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(225,157,45,0.18),transparent_35%),radial-gradient(circle_at_90%_70%,rgba(225,157,45,0.08),transparent_30%)]" />
 
             <div className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full border border-amber-base/[0.08]" />
@@ -476,6 +477,7 @@ export default async function ProcessPage({
 
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
+            </div>
             </div>
           </div>
         </section>
