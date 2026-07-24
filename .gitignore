@@ -8,6 +8,12 @@ next-env.d.ts
 dist
 dist-ssr
 
+# Generated data files (from md/ conversion scripts)
+data/*.js
+
+# Generated sitemaps
+public/sitemap*.xml
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
