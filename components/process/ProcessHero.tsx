@@ -133,7 +133,7 @@ export default function ProcessHero({
     process.hero.image || process.image;
 
   return (
-    <section className="relative isolate overflow-hidden border-b border-white/[0.07] px-5 pb-16 pt-32 sm:px-8 lg:px-12 lg:pb-24 lg:pt-40">
+    <section className="relative isolate overflow-hidden border-b border-white/[0.07] pb-16 pt-32 lg:pb-24 lg:pt-40">
       {/* =====================================================
           Background
       ====================================================== */}
@@ -162,7 +162,7 @@ export default function ProcessHero({
         ].join(" ")}
       />
 
-      <div className="mx-auto max-w-7xl">
+      <div className="site-container relative px-6">
         {/* =================================================
             Breadcrumb
         ================================================== */}

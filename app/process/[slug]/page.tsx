@@ -84,8 +84,8 @@ export default async function ProcessSlugPage({
       <main className="overflow-hidden bg-bg-base">
         <ProcessHero process={process} />
 
-        <section className="px-5 py-16 sm:px-8 lg:px-12 lg:py-24">
-          <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start">
+        <section className="py-12 lg:py-16">
+          <div className="site-container relative grid gap-10 px-6 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start">
             <ProcessArticleContent
               content={process.content}
               className="rounded-[2rem] border border-white/[0.08] bg-surface/70 p-6 sm:p-8 lg:p-10"
@@ -130,8 +130,8 @@ export default async function ProcessSlugPage({
           </div>
         </section>
 
-        <section className="px-5 pb-16 sm:px-8 lg:px-12 lg:pb-24">
-          <div className="mx-auto max-w-7xl space-y-10">
+        <section className="pb-12 lg:pb-16">
+          <div className="site-container relative space-y-8 px-6">
             <ProcessFAQ faqs={process.faqs} />
 
             <ProcessCTA cta={process.cta} />
@@ -139,8 +139,8 @@ export default async function ProcessSlugPage({
         </section>
 
         {relatedProcesses.length > 0 && (
-          <section className="border-t border-white/[0.07] px-5 py-16 sm:px-8 lg:px-12 lg:py-24">
-            <div className="mx-auto max-w-7xl">
+          <section className="border-t border-white/[0.07] py-12 lg:py-16">
+            <div className="site-container relative px-6">
               <div className="max-w-3xl">
                 <p className="text-xs font-black uppercase tracking-[0.18em] text-amber-base">
                   Related Guides
@@ -151,7 +151,7 @@ export default async function ProcessSlugPage({
                 </h2>
               </div>
 
-              <div className="mt-10 grid gap-7 md:grid-cols-2 xl:grid-cols-3">
+              <div className="mt-8 grid gap-7 md:grid-cols-2 xl:grid-cols-3">
                 {relatedProcesses.map(
                   (relatedProcess) => (
                     <ProcessCard
