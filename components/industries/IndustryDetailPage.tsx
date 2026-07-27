@@ -1521,7 +1521,7 @@ function IndustryCTA({
               </Link>
 
               <Link
-                href="/services"
+                href="/service"
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/[0.035] px-8 py-4 text-sm font-bold text-text-primary transition-all hover:-translate-y-1 hover:border-amber-base/30 hover:bg-amber-base/[0.05] hover:text-amber-base"
               >
                 {cta.secondaryText}

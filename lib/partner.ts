@@ -257,7 +257,7 @@ function normalizePartner(
       secondaryLink:
         normalizeText(
           partner.cta?.secondaryLink,
-        ) || "/services",
+        ) || "/service",
     },
   };
 }

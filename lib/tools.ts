@@ -1,291 +1,536 @@
-import * as toolsData from "@/data/tools";
+import { tools } from "@/data/tools";
 
-function resolveToolsData() {
-  const source = toolsData as Record<string, any>;
+/* =========================================================
+   Local Types
+========================================================= */
 
-  return (
-    source.tools ||
-    source.toolItems ||
-    source.blockchainTools ||
-    source.resources ||
-    source.default ||
-    []
+type UnknownRecord = Record<string, unknown>;
+
+export type ToolType =
+  | "calculator"
+  | "template"
+  | "checklist"
+  | "guide"
+  | "document"
+  | "utility"
+  | "tool";
+
+export type ToolCardData = {
+  slug: string;
+  title: string;
+  description: string;
+  excerpt: string;
+  category: string;
+  type: ToolType;
+  href: string;
+  tags: string[];
+  badge: string;
+  featured: boolean;
+  readTime: string;
+  status: string;
+};
+
+export type ToolData = UnknownRecord & {
+  id?: string | number;
+  slug: string;
+  title?: string;
+  name?: string;
+  description?: string;
+  excerpt?: string;
+  summary?: string;
+  category?: string;
+  type?: ToolType | string;
+  tags?: string[];
+  featured?: boolean;
+  readTime?: string;
+  status?: string;
+  image?: string;
+
+  cta?: {
+    title?: string;
+    description?: string;
+    primaryText?: string;
+    secondaryText?: string;
+    href?: string;
+    secondaryHref?: string;
+  };
+
+  seo?: {
+    title?: string;
+    description?: string;
+    image?: string;
+    url?: string;
+    primaryKeyword?: string;
+    secondaryKeywords?: string[];
+    schema?: string[];
+  };
+
+  meta?: {
+    title?: string;
+    description?: string;
+    image?: string;
+    url?: string;
+    primaryKeyword?: string;
+    secondaryKeywords?: string[];
+    schema?: string[];
+  };
+
+  hero?: {
+    badge?: string;
+    eyebrow?: string;
+    title?: string;
+    heading?: string;
+    description?: string;
+  };
+
+  faqs?: Array<{
+    question: string;
+    answer: string;
+  }>;
+
+  internalLinks?: Array<
+    | string
+    | {
+        label?: string;
+        title?: string;
+        href: string;
+      }
+  >;
+};
+
+/* =========================================================
+   Safe Helpers
+========================================================= */
+
+function normalizeText(value: unknown): string {
+  if (typeof value !== "string") {
+    return "";
+  }
+
+  return value.trim();
+}
+
+function normalizeSlug(value: unknown): string {
+  return normalizeText(value)
+    .toLowerCase()
+    .replace(/^\/+|\/+$/g, "")
+    .replace(/^tools\//, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+function normalizeTags(value: unknown): string[] {
+  if (!Array.isArray(value)) {
+    return [];
+  }
+
+  return Array.from(
+    new Set(
+      value
+        .map((item) => normalizeText(item))
+        .filter(Boolean),
+    ),
   );
 }
 
-export function getAllTools() {
-  const items = resolveToolsData();
+function normalizeToolType(value: unknown): ToolType {
+  const type = normalizeText(value).toLowerCase();
 
-  return Array.isArray(items) ? items : [];
+  const supportedTypes: ToolType[] = [
+    "calculator",
+    "template",
+    "checklist",
+    "guide",
+    "document",
+    "utility",
+    "tool",
+  ];
+
+  if (supportedTypes.includes(type as ToolType)) {
+    return type as ToolType;
+  }
+
+  return "tool";
 }
 
-export function getToolBySlug(slug: string) {
-  return getAllTools().find(
-    (item: any) => item?.slug === slug
+function createReadableLabel(value: string): string {
+  return value
+    .replace(/[-_]+/g, " ")
+    .replace(/\b\w/g, (letter) => letter.toUpperCase());
+}
+
+function getToolTitle(tool: ToolData): string {
+  return (
+    normalizeText(tool.hero?.title) ||
+    normalizeText(tool.hero?.heading) ||
+    normalizeText(tool.title) ||
+    normalizeText(tool.name) ||
+    normalizeText(tool.seo?.title) ||
+    normalizeText(tool.meta?.title) ||
+    createReadableLabel(tool.slug)
+  );
+}
+
+function getToolDescription(tool: ToolData): string {
+  return (
+    normalizeText(tool.hero?.description) ||
+    normalizeText(tool.description) ||
+    normalizeText(tool.excerpt) ||
+    normalizeText(tool.summary) ||
+    normalizeText(tool.seo?.description) ||
+    normalizeText(tool.meta?.description) ||
+    "Explore this practical blockchain resource from ClickMasters."
+  );
+}
+
+function getToolCategory(tool: ToolData): string {
+  const category = normalizeText(tool.category);
+
+  if (category) {
+    return category;
+  }
+
+  const type = normalizeToolType(tool.type);
+
+  const categoryMap: Record<ToolType, string> = {
+    calculator: "Calculators",
+    template: "Templates",
+    checklist: "Checklists",
+    guide: "Guides",
+    document: "Documents",
+    utility: "Utilities",
+    tool: "Blockchain Tools",
+  };
+
+  return categoryMap[type];
+}
+
+function getToolBadge(tool: ToolData): string {
+  return (
+    normalizeText(tool.hero?.badge) ||
+    normalizeText(tool.hero?.eyebrow) ||
+    getToolCategory(tool)
+  );
+}
+
+function getToolHref(tool: ToolData): string {
+  const seoUrl =
+    normalizeText(tool.seo?.url) ||
+    normalizeText(tool.meta?.url);
+
+  if (seoUrl) {
+    const normalizedUrl = `/${seoUrl.replace(/^\/+|\/+$/g, "")}`;
+
+    if (normalizedUrl.startsWith("/tools/")) {
+      return normalizedUrl;
+    }
+  }
+
+  return `/tools/${normalizeSlug(tool.slug)}`;
+}
+
+function getToolSearchText(tool: ToolData): string {
+  const secondaryKeywords = [
+    ...(tool.seo?.secondaryKeywords || []),
+    ...(tool.meta?.secondaryKeywords || []),
+  ];
+
+  return [
+    getToolTitle(tool),
+    getToolDescription(tool),
+    getToolCategory(tool),
+    normalizeText(tool.type),
+    normalizeText(tool.seo?.primaryKeyword),
+    normalizeText(tool.meta?.primaryKeyword),
+    ...secondaryKeywords,
+    ...(tool.tags || []),
+  ]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+}
+
+function getToolReadTime(tool: ToolData): string {
+  const explicitReadTime = normalizeText(tool.readTime);
+
+  if (explicitReadTime) {
+    return explicitReadTime;
+  }
+
+  const content = Array.isArray(tool.content)
+    ? tool.content
+    : [];
+
+  const wordCount = content.reduce((total, block) => {
+    if (!block || typeof block !== "object") {
+      return total;
+    }
+
+    const record = block as UnknownRecord;
+    const text = normalizeText(record.text);
+    const items = Array.isArray(record.items)
+      ? record.items
+      : [];
+
+    const itemWords = items.reduce((itemTotal, item) => {
+      if (typeof item === "string") {
+        return itemTotal + item.split(/\s+/).filter(Boolean).length;
+      }
+
+      if (item && typeof item === "object") {
+        return (
+          itemTotal +
+          Object.values(item as UnknownRecord)
+            .map((value) => normalizeText(value))
+            .join(" ")
+            .split(/\s+/)
+            .filter(Boolean).length
+        );
+      }
+
+      return itemTotal;
+    }, 0);
+
+    return (
+      total +
+      text.split(/\s+/).filter(Boolean).length +
+      itemWords
+    );
+  }, 0);
+
+  const minutes = Math.max(3, Math.ceil(wordCount / 220));
+
+  return `${minutes} min read`;
+}
+
+/* =========================================================
+   Normalized Data
+========================================================= */
+
+const rawTools: unknown[] = Array.isArray(tools)
+  ? (tools as unknown[])
+  : [];
+
+const normalizedTools: ToolData[] = rawTools
+  .filter(
+    (tool): tool is ToolData =>
+      Boolean(
+        tool &&
+          typeof tool === "object" &&
+          normalizeText((tool as ToolData).slug),
+      ),
+  )
+  .map((tool) => ({
+    ...tool,
+    slug: normalizeSlug(tool.slug),
+    type: normalizeToolType(tool.type),
+    category: getToolCategory(tool),
+    tags: normalizeTags(tool.tags),
+  }));
+
+/* =========================================================
+   Public Tool Functions
+========================================================= */
+
+export function getAllTools(): ToolData[] {
+  return [...normalizedTools];
+}
+
+export function getToolBySlug(
+  slug: string,
+): ToolData | undefined {
+  const normalizedSlug = normalizeSlug(slug);
+
+  return normalizedTools.find(
+    (tool) => tool.slug === normalizedSlug,
+  );
+}
+
+export function getToolCards(): ToolCardData[] {
+  return normalizedTools.map((tool) => {
+    const description = getToolDescription(tool);
+
+    return {
+      slug: tool.slug,
+      title: getToolTitle(tool),
+      description,
+      excerpt: description,
+      category: getToolCategory(tool),
+      type: normalizeToolType(tool.type),
+      href: getToolHref(tool),
+      tags: normalizeTags(tool.tags),
+      badge: getToolBadge(tool),
+      featured: Boolean(tool.featured),
+      readTime: getToolReadTime(tool),
+      status: normalizeText(tool.status) || "Available",
+    };
+  });
+}
+
+export function getToolCategories(): string[] {
+  return Array.from(
+    new Set(
+      normalizedTools
+        .map((tool) => getToolCategory(tool))
+        .filter(Boolean),
+    ),
+  ).sort((first, second) =>
+    first.localeCompare(second),
+  );
+}
+
+export function getToolsByCategory(
+  category: string,
+): ToolData[] {
+  const normalizedCategory = normalizeText(category).toLowerCase();
+
+  if (!normalizedCategory || normalizedCategory === "all") {
+    return getAllTools();
+  }
+
+  return normalizedTools.filter(
+    (tool) =>
+      getToolCategory(tool).toLowerCase() ===
+      normalizedCategory,
+  );
+}
+
+export function getToolsByType(
+  type: ToolType,
+): ToolData[] {
+  return normalizedTools.filter(
+    (tool) => normalizeToolType(tool.type) === type,
+  );
+}
+
+export function getFeaturedTools(
+  limit?: number,
+): ToolData[] {
+  const featuredTools = normalizedTools.filter(
+    (tool) => Boolean(tool.featured),
+  );
+
+  if (typeof limit === "number" && limit > 0) {
+    return featuredTools.slice(0, limit);
+  }
+
+  return featuredTools;
+}
+
+export function searchTools(
+  query: string,
+): ToolData[] {
+  const normalizedQuery = normalizeText(query).toLowerCase();
+
+  if (!normalizedQuery) {
+    return getAllTools();
+  }
+
+  return normalizedTools.filter((tool) =>
+    getToolSearchText(tool).includes(normalizedQuery),
   );
 }
 
 export function getRelatedTools(
-  slug: string,
-  limit = 4
-) {
-  const currentTool = getToolBySlug(slug);
+  currentSlug: string,
+  limit = 3,
+): ToolCardData[] {
+  const currentTool = getToolBySlug(currentSlug);
 
-  if (!currentTool) return [];
-
-  const currentCategory =
-    currentTool.category ||
-    currentTool.type ||
-    currentTool.group;
-
-  const sameCategory = getAllTools().filter(
-    (item: any) =>
-      item?.slug !== slug &&
-      currentCategory &&
-      (
-        item.category === currentCategory ||
-        item.type === currentCategory ||
-        item.group === currentCategory
-      )
-  );
-
-  const remaining = getAllTools().filter(
-    (item: any) =>
-      item?.slug !== slug &&
-      !sameCategory.some(
-        (relatedItem: any) =>
-          relatedItem.slug === item.slug
-      )
-  );
-
-  return [...sameCategory, ...remaining].slice(0, limit);
-}
-
-export function estimateToolReadTime(item: any) {
-  if (item?.readTime) {
-    return item.readTime;
+  if (!currentTool) {
+    return [];
   }
 
-  const contentText =
-    item?.content
-      ?.map((block: any) => {
-        if (block?.text) return block.text;
-        if (block?.description) return block.description;
+  const currentCategory =
+    getToolCategory(currentTool).toLowerCase();
 
-        if (Array.isArray(block?.items)) {
-          return block.items
-            .map((entry: any) =>
-              typeof entry === "string"
-                ? entry
-                : `${entry?.title || ""} ${
-                    entry?.description ||
-                    entry?.text ||
-                    ""
-                  }`
-            )
-            .join(" ");
-        }
+  const currentTags = new Set(
+    normalizeTags(currentTool.tags).map((tag) =>
+      tag.toLowerCase(),
+    ),
+  );
 
-        if (Array.isArray(block?.rows)) {
-          return block.rows.flat().join(" ");
-        }
+  return normalizedTools
+    .filter((tool) => tool.slug !== currentTool.slug)
+    .map((tool) => {
+      const sameCategory =
+        getToolCategory(tool).toLowerCase() ===
+        currentCategory;
 
-        if (block?.code) return block.code;
+      const sharedTags = normalizeTags(tool.tags).filter(
+        (tag) => currentTags.has(tag.toLowerCase()),
+      ).length;
 
-        return "";
-      })
-      .join(" ") || "";
+      const score =
+        (sameCategory ? 10 : 0) +
+        sharedTags * 3 +
+        (tool.featured ? 1 : 0);
 
-  const fallbackText = [
-    item?.title,
-    item?.excerpt,
-    item?.description,
-    item?.hero?.description,
-    contentText,
-  ]
-    .filter(Boolean)
-    .join(" ");
+      return {
+        tool,
+        score,
+      };
+    })
+    .sort((first, second) => second.score - first.score)
+    .slice(0, Math.max(limit, 0))
+    .map(({ tool }) => {
+      const description = getToolDescription(tool);
 
-  const words = fallbackText
-    .split(/\s+/)
-    .filter(Boolean).length;
-
-  return `${Math.max(
-    2,
-    Math.ceil(words / 220)
-  )} min read`;
+      return {
+        slug: tool.slug,
+        title: getToolTitle(tool),
+        description,
+        excerpt: description,
+        category: getToolCategory(tool),
+        type: normalizeToolType(tool.type),
+        href: getToolHref(tool),
+        tags: normalizeTags(tool.tags),
+        badge: getToolBadge(tool),
+        featured: Boolean(tool.featured),
+        readTime: getToolReadTime(tool),
+        status: normalizeText(tool.status) || "Available",
+      };
+    });
 }
 
-export function getToolCTA(item: any) {
+export function estimateToolReadTime(tool: ToolData): string {
+  return getToolReadTime(tool);
+}
+
+export function getToolCTA(tool: ToolData): {
+  title?: string;
+  description?: string;
+  primaryText: string;
+  secondaryText?: string;
+  href: string;
+  secondaryHref?: string;
+} {
   return {
     title:
-      item?.cta?.title ||
-      "Need help using this tool for your project?",
-
+      normalizeText(tool.cta?.title) ||
+      `Need help with ${getToolTitle(tool)}?`,
     description:
-      item?.cta?.description ||
-      "Talk with ClickMasters and get expert guidance tailored to your blockchain product, architecture, timeline, and business goals.",
-
+      normalizeText(tool.cta?.description) ||
+      "Talk with ClickMasters and get expert guidance tailored to your product, architecture, budget, timeline, and technical goals.",
     primaryText:
-      item?.cta?.primaryText ||
+      normalizeText(tool.cta?.primaryText) ||
       "Book a Free Strategy Call",
-
-    secondaryText:
-      item?.cta?.secondaryText ||
-      "Explore More Tools",
-
-    href:
-      item?.cta?.primaryHref ||
-      item?.cta?.href ||
-      "/contact",
-
+    secondaryText: normalizeText(tool.cta?.secondaryText),
+    href: normalizeText(tool.cta?.href) || "/contact",
     secondaryHref:
-      item?.cta?.secondaryHref ||
+      normalizeText(tool.cta?.secondaryHref) ||
       "/tools",
   };
 }
 
-export function getToolCards() {
-  return getAllTools()
-    .filter(
-      (item: any) =>
-        item &&
-        (
-          item.slug ||
-          item.title
-        )
-    )
-    .map((item: any, index: number) => ({
-      id: item.id || index + 1,
-
-      slug:
-        item.slug ||
-        String(item.title || `tool-${index + 1}`)
-          .toLowerCase()
-          .replace(/[^a-z0-9]+/g, "-")
-          .replace(/^-+|-+$/g, ""),
-
-      title:
-        item.title ||
-        item.name ||
-        "Blockchain Tool",
-
-      excerpt:
-        item.excerpt ||
-        item.description ||
-        item.hero?.description ||
-        "Use this practical blockchain tool to plan, calculate, analyze, or improve your project.",
-
-      category:
-        item.category ||
-        item.type ||
-        item.group ||
-        "Blockchain Tool",
-
-      badge:
-        item.hero?.badge ||
-        item.badge ||
-        "TOOL",
-
-      icon:
-        item.icon,
-
-      image:
-        item.image,
-
-      readTime:
-        estimateToolReadTime(item),
-
-      status:
-        item.status ||
-        "Available",
-
-      featured:
-        Boolean(item.featured),
-
-      tags:
-        item.tags ||
-        item.credibility ||
-        [],
-    }));
+export function getToolStaticParams(): Array<{
+  slug: string;
+}> {
+  return normalizedTools.map((tool) => ({
+    slug: tool.slug,
+  }));
 }
 
-export function searchTools(query: string) {
-  const normalizedQuery = query
-    .trim()
-    .toLowerCase();
-
-  if (!normalizedQuery) {
-    return getToolCards();
-  }
-
-  return getToolCards().filter(
-    (item: any) =>
-      item.title
-        ?.toLowerCase()
-        .includes(normalizedQuery) ||
-      item.excerpt
-        ?.toLowerCase()
-        .includes(normalizedQuery) ||
-      item.category
-        ?.toLowerCase()
-        .includes(normalizedQuery) ||
-      item.tags?.some((tag: any) =>
-        String(tag)
-          .toLowerCase()
-          .includes(normalizedQuery)
-      )
-  );
-}
-
-export function getToolCategories() {
-  return Array.from(
-    new Set(
-      getToolCards()
-        .map((item: any) => item.category)
-        .filter(Boolean)
-    )
-  ).sort();
-}
-
-export function filterToolsByCategory(
-  category: string
-) {
-  const normalizedCategory =
-    category?.trim().toLowerCase();
-
-  if (
-    !normalizedCategory ||
-    normalizedCategory === "all"
-  ) {
-    return getToolCards();
-  }
-
-  return getToolCards().filter(
-    (item: any) =>
-      item.category
-        ?.toLowerCase() === normalizedCategory
-  );
-}
-
-export function getFeaturedTools(limit = 3) {
-  const cards = getToolCards();
-
-  const featured = cards.filter(
-    (item: any) => item.featured
-  );
-
-  if (featured.length >= limit) {
-    return featured.slice(0, limit);
-  }
-
-  const remaining = cards.filter(
-    (item: any) =>
-      !featured.some(
-        (featuredItem: any) =>
-          featuredItem.slug === item.slug
-      )
-  );
-
-  return [...featured, ...remaining].slice(0, limit);
+export function toolExists(slug: string): boolean {
+  return Boolean(getToolBySlug(slug));
 }

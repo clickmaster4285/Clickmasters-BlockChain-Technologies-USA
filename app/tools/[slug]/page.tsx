@@ -54,7 +54,7 @@ export async function generateMetadata({
   const image =
     item?.seo?.image ||
     item?.image ||
-    "/assets/tools-hero.png";
+    "/media/tools-hero.png";
 
   return createMetadata({
     title,
@@ -99,7 +99,7 @@ export default async function SingleToolPage({
 
         <div className="pointer-events-none absolute left-1/2 top-[48rem] h-[24rem] w-[24rem] -translate-x-1/2 rounded-full bg-amber-base/5 blur-3xl" />
 
-        <section className="container relative mx-auto max-w-7xl px-4 sm:px-6">
+        <section className="site-container relative px-6">
           {/* Breadcrumb */}
           <nav
             className="mb-6 flex min-w-0 flex-wrap items-center gap-2 text-sm text-silver"

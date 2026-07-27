@@ -254,27 +254,27 @@ def calculate_recommended_ltv(
     Real implementations should use more sophisticated risk models
     (similar to those used by Gauntlet, Chaos Labs, or other DeFi risk firms).
     """
-    
+  
     # Base LTV starts high for stable, liquid, well-understood assets
     base_ltv = 0.85
-    
+  
     # Penalize for volatility
     volatility_penalty = min(0.40, asset_volatility_30d * 2)
-    
+  
     # Penalize for low liquidity (harder to liquidate without slippage)
     liquidity_penalty = 0.20 if asset_liquidity_depth_usd < 1_000_000 else (
         0.10 if asset_liquidity_depth_usd < 10_000_000 else 0
     )
-    
+  
     # Penalize for unreliable oracle
     oracle_penalty = (1 - oracle_reliability_score) * 0.15
-    
+  
     recommended_ltv = base_ltv - volatility_penalty - liquidity_penalty - oracle_penalty
     recommended_ltv = max(0.10, min(0.85, recommended_ltv))  # Bound between 10-85%
-    
+  
     # Liquidation threshold typically 5-10% above LTV
     liquidation_threshold = min(0.90, recommended_ltv + 0.05)
-    
+  
     return {
         "recommended_ltv": recommended_ltv,
         "liquidation_threshold": liquidation_threshold,

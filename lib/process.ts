@@ -163,7 +163,7 @@ const DEFAULT_CTA: ProcessCTA = {
   primaryText: "Book a Free Strategy Call",
   primaryLink: "/contact",
   secondaryText: "Explore Our Services",
-  secondaryLink: "/services",
+  secondaryLink: "/service",
 };
 
 /* =========================================================
