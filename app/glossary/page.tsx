@@ -1,8 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-
-
-
 import {
   ArrowRight,
   BookOpen,
@@ -30,12 +27,10 @@ type GlossaryPageProps = {
     search?: string;
   }>;
 };
-
 function getRequestedPage(page?: string) {
   const parsedPage = Number(page || 1);
   return Number.isFinite(parsedPage) && parsedPage > 0 ? parsedPage : 1;
 }
-
 export async function generateMetadata({
   searchParams,
 }: GlossaryPageProps) {
