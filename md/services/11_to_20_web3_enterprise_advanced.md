@@ -1,6 +1,7 @@
 # Account Abstraction ERC-4337 — Production Implementation Guide | Clickmasters
 
 ---
+
 **URL:** /erc-4337-account-abstraction-implementation/
 **Primary KW:** ERC-4337 account abstraction implementation
 **Secondary KWs:** account abstraction production, ERC-4337 development, UserOperation implementation, smart account development
@@ -49,44 +50,44 @@ import "@openzeppelin/contracts/utils/cryptography/MessageHashUtils.sol";
 contract SimpleSmartAccount is BaseAccount {
     using ECDSA for bytes32;
     using MessageHashUtils for bytes32;
-    
+  
     address public owner;
     IEntryPoint private immutable _entryPoint;
-    
+  
     constructor(IEntryPoint anEntryPoint, address anOwner) {
         _entryPoint = anEntryPoint;
         owner = anOwner;
     }
-    
+  
     // ============================================
     // VALIDATION — Called by EntryPoint
     // ============================================
-    
+  
     function _validateSignature(
         PackedUserOperation calldata userOp,
         bytes32 userOpHash
     ) internal override returns (uint256 validationData) {
         bytes32 hash = userOpHash.toEthSignedMessageHash();
         address recovered = hash.recover(userOp.signature);
-        
+      
         if (recovered != owner) {
             return SIG_VALIDATION_FAILED; // = 1
         }
-        
+      
         return SIG_VALIDATION_SUCCESS; // = 0
     }
-    
+  
     // ============================================
     // EXECUTION — Called after validation passes
     // ============================================
-    
+  
     function execute(
         address target,
         uint256 value,
         bytes calldata data
     ) external {
         _requireFromEntryPointOrOwner();
-        
+      
         (bool success, bytes memory result) = target.call{value: value}(data);
         if (!success) {
             assembly {
@@ -94,7 +95,7 @@ contract SimpleSmartAccount is BaseAccount {
             }
         }
     }
-    
+  
     // Batch execute multiple operations in a single UserOperation
     function executeBatch(
         address[] calldata targets,
@@ -103,7 +104,7 @@ contract SimpleSmartAccount is BaseAccount {
     ) external {
         _requireFromEntryPointOrOwner();
         require(targets.length == values.length && targets.length == datas.length, "Length mismatch");
-        
+      
         for (uint256 i = 0; i < targets.length; i++) {
             (bool success, bytes memory result) = targets[i].call{value: values[i]}(datas[i]);
             if (!success) {
@@ -111,18 +112,18 @@ contract SimpleSmartAccount is BaseAccount {
             }
         }
     }
-    
+  
     function entryPoint() public view override returns (IEntryPoint) {
         return _entryPoint;
     }
-    
+  
     function _requireFromEntryPointOrOwner() internal view {
         require(
             msg.sender == address(_entryPoint) || msg.sender == owner,
             "Not authorized"
         );
     }
-    
+  
     receive() external payable {}
 }
 ```
@@ -135,17 +136,17 @@ contract SimpleSmartAccount is BaseAccount {
 contract SponsoringPaymaster is BasePaymaster {
     mapping(address => bool) public sponsoredAccounts;
     uint256 public maxSponsoredGasPerOp = 200000; // Maximum gas we'll sponsor per UserOp
-    
+  
     constructor(IEntryPoint _entryPoint, address initialOwner) 
         BasePaymaster(_entryPoint) 
         Ownable(initialOwner)
     {}
-    
+  
     // Add accounts we want to sponsor (e.g., new user onboarding)
     function addSponsoredAccount(address account) external onlyOwner {
         sponsoredAccounts[account] = true;
     }
-    
+  
     // Called by EntryPoint: do we sponsor this operation?
     function _validatePaymasterUserOp(
         PackedUserOperation calldata userOp,
@@ -153,21 +154,21 @@ contract SponsoringPaymaster is BasePaymaster {
         uint256 maxCost
     ) internal view override returns (bytes memory context, uint256 validationData) {
         address account = userOp.sender;
-        
+      
         // Only sponsor approved accounts
         if (!sponsoredAccounts[account]) {
             return ("", _packValidationData(false, 0, 0)); // Reject
         }
-        
+      
         // Limit gas we'll sponsor
         uint256 gasLimit = uint256(uint128(userOp.accountGasLimits));
         if (gasLimit > maxSponsoredGasPerOp) {
             return ("", _packValidationData(false, 0, 0)); // Too expensive
         }
-        
+      
         return (abi.encode(account, maxCost), _packValidationData(true, 0, 0)); // Accept
     }
-    
+  
     // Called after execution: finalize payment
     function _postOp(
         PostOpMode mode,
@@ -179,7 +180,7 @@ contract SponsoringPaymaster is BasePaymaster {
         // Log sponsored gas for accounting
         emit GasSponsored(account, actualGasCost, block.timestamp);
     }
-    
+  
     event GasSponsored(address indexed account, uint256 gasCost, uint256 timestamp);
 }
 ```
@@ -204,11 +205,11 @@ async function sendGaslessTransaction(
         transport: http('https://api.pimlico.io/v2/arbitrum/rpc?apikey=YOUR_KEY'),
     }).extend(bundlerActions(ENTRYPOINT_ADDRESS_V07))
       .extend(pimlicoBundlerActions(ENTRYPOINT_ADDRESS_V07));
-    
+  
     // Get gas prices from bundler
     const { fast: { maxFeePerGas, maxPriorityFeePerGas } } = 
         await bundlerClient.getUserOperationGasPrice();
-    
+  
     // Estimate gas
     const { callGasLimit, verificationGasLimit, preVerificationGas } = 
         await bundlerClient.estimateUserOperationGas({
@@ -223,7 +224,7 @@ async function sendGaslessTransaction(
             maxPriorityFeePerGas,
             paymasterAndData: await getPaymasterData(smartAccountAddress)
         });
-    
+  
     // Send UserOperation
     const userOpHash = await bundlerClient.sendUserOperation({
         sender: smartAccountAddress,
@@ -241,7 +242,7 @@ async function sendGaslessTransaction(
         paymasterAndData: await getPaymasterData(smartAccountAddress),
         signature: await signUserOperation(userOp)
     });
-    
+  
     // Wait for inclusion
     const receipt = await bundlerClient.waitForUserOperationReceipt({ hash: userOpHash });
     return receipt;
@@ -258,11 +259,13 @@ Yes. Over 20 million smart accounts have been deployed using ERC-4337. Major app
 **[BUTTON — PRIMARY] Book a Free Strategy Call →**
 
 ---
+
 ---
 
 # Web3 dApp Architecture — Frontend to Blockchain Full Stack | Clickmasters
 
 ---
+
 **URL:** /web3-dapp-architecture/
 **Primary KW:** Web3 dApp architecture
 **Secondary KWs:** dApp full stack architecture, blockchain application architecture, how to build dApp
@@ -387,7 +390,7 @@ function useDeposit() {
 
 function DepositButton({ amount }: { amount: bigint }) {
     const { writeContract, isPending, isSuccess, error } = useDeposit();
-    
+  
     return (
         <button
             onClick={() => writeContract({
@@ -413,20 +416,20 @@ function DepositButton({ amount }: { amount: bigint }) {
 function TransactionFlow({ txConfig }) {
     const { writeContract, data: txHash, isPending: isSubmitting } = useWriteContract();
     const { isLoading: isConfirming, isSuccess } = useWaitForTransactionReceipt({ hash: txHash });
-    
+  
     // Four UI states to handle:
     const state = isSubmitting ? 'SUBMITTING'    // Waiting for wallet signature
                : isConfirming ? 'CONFIRMING'     // Waiting for blockchain confirmation
                : isSuccess    ? 'SUCCESS'         // Confirmed
                :                'IDLE';
-    
+  
     const messages = {
         IDLE: 'Deposit',
         SUBMITTING: '⏳ Sign in your wallet...',   // User action required
         CONFIRMING: '⏳ Confirming on-chain...',   // No user action, just wait
         SUCCESS: '✅ Transaction confirmed!'
     };
-    
+  
     return (
         <div>
             <button 
@@ -435,7 +438,7 @@ function TransactionFlow({ txConfig }) {
             >
                 {messages[state]}
             </button>
-            
+          
             {txHash && (
                 <a href={`https://arbiscan.io/tx/${txHash}`} target="_blank">
                     View on Arbiscan →
@@ -456,11 +459,13 @@ Alchemy's Token API and NFT API handle the most common portfolio queries efficie
 **[BUTTON — PRIMARY] Book a Free Strategy Call →**
 
 ---
+
 ---
 
 # Hyperledger Fabric Chaincode Best Practices | Clickmasters
 
 ---
+
 **URL:** /hyperledger-fabric-chaincode-best-practices/
 **Primary KW:** Hyperledger Fabric chaincode best practices
 **Secondary KWs:** Fabric chaincode development guide, Go chaincode patterns, Fabric smart contract best practices
@@ -493,7 +498,7 @@ func (cc *Chaincode) CreateAsset(ctx contractapi.TransactionContextInterface, id
     if err != nil {
         return fmt.Errorf("failed to get transaction timestamp: %v", err)
     }
-    
+  
     asset := Asset{
         ID: id,
         CreatedAt: timestamp.Seconds,
@@ -530,20 +535,20 @@ func (cc *Chaincode) QueryByStatus(
         "sort": [{"timestamp": "desc"}],
         "limit": 100
     }`, status)
-    
+  
     resultsIterator, err := ctx.GetStub().GetQueryResult(queryString)
     if err != nil {
         return nil, fmt.Errorf("GetQueryResult failed: %v", err)
     }
     defer resultsIterator.Close()
-    
+  
     var assets []*Asset
     for resultsIterator.HasNext() {
         queryResponse, err := resultsIterator.Next()
         if err != nil {
             return nil, err
         }
-        
+      
         var asset Asset
         err = json.Unmarshal(queryResponse.Value, &asset)
         if err != nil {
@@ -551,7 +556,7 @@ func (cc *Chaincode) QueryByStatus(
         }
         assets = append(assets, &asset)
     }
-    
+  
     return assets, nil
 }
 ```
@@ -566,32 +571,32 @@ For querying "all shipments from manufacturer X":
 // Create composite key for efficient querying
 func (cc *Chaincode) CreateShipment(ctx contractapi.TransactionContextInterface, 
     shipmentID string, manufacturer string, status string) error {
-    
+  
     // Primary key: shipmentID
     asset := Shipment{
         ID: shipmentID, 
         Manufacturer: manufacturer,
         Status: status,
     }
-    
+  
     assetJSON, err := json.Marshal(asset)
     if err != nil {
         return err
     }
-    
+  
     // Store with primary key
     err = ctx.GetStub().PutState(shipmentID, assetJSON)
     if err != nil {
         return err
     }
-    
+  
     // Create composite key for manufacturer-based lookup
     manufacturerIndex, err := ctx.GetStub().CreateCompositeKey("manufacturer~shipment", 
         []string{manufacturer, shipmentID})
     if err != nil {
         return err
     }
-    
+  
     // Value is empty — composite key itself is the index
     err = ctx.GetStub().PutState(manufacturerIndex, []byte{0x00})
     return err
@@ -600,7 +605,7 @@ func (cc *Chaincode) CreateShipment(ctx contractapi.TransactionContextInterface,
 // Query by manufacturer using composite key index
 func (cc *Chaincode) GetShipmentsByManufacturer(ctx contractapi.TransactionContextInterface,
     manufacturer string) ([]*Shipment, error) {
-    
+  
     resultsIterator, err := ctx.GetStub().GetStateByPartialCompositeKey(
         "manufacturer~shipment", 
         []string{manufacturer},
@@ -609,37 +614,37 @@ func (cc *Chaincode) GetShipmentsByManufacturer(ctx contractapi.TransactionConte
         return nil, err
     }
     defer resultsIterator.Close()
-    
+  
     var shipments []*Shipment
     for resultsIterator.HasNext() {
         responseRange, err := resultsIterator.Next()
         if err != nil {
             return nil, err
         }
-        
+      
         // Extract shipmentID from composite key
         _, compositeKeyParts, err := ctx.GetStub().SplitCompositeKey(responseRange.Key)
         if err != nil {
             return nil, err
         }
-        
+      
         shipmentID := compositeKeyParts[1]
-        
+      
         // Retrieve the actual shipment
         shipmentBytes, err := ctx.GetStub().GetState(shipmentID)
         if err != nil {
             return nil, err
         }
-        
+      
         var shipment Shipment
         err = json.Unmarshal(shipmentBytes, &shipment)
         if err != nil {
             return nil, err
         }
-        
+      
         shipments = append(shipments, &shipment)
     }
-    
+  
     return shipments, nil
 }
 ```
@@ -652,26 +657,26 @@ func (cc *Chaincode) GetShipmentsByManufacturer(ctx contractapi.TransactionConte
 // GetHistoryForKey returns all historical values of a world state key
 func (cc *Chaincode) GetAssetHistory(ctx contractapi.TransactionContextInterface,
     assetID string) ([]HistoryRecord, error) {
-    
+  
     resultsIterator, err := ctx.GetStub().GetHistoryForKey(assetID)
     if err != nil {
         return nil, err
     }
     defer resultsIterator.Close()
-    
+  
     var history []HistoryRecord
     for resultsIterator.HasNext() {
         modification, err := resultsIterator.Next()
         if err != nil {
             return nil, err
         }
-        
+      
         record := HistoryRecord{
             TxID:      modification.TxId,
             Timestamp: modification.Timestamp.Seconds,
             IsDeleted: modification.IsDelete,
         }
-        
+      
         if !modification.IsDelete {
             var asset Asset
             err = json.Unmarshal(modification.Value, &asset)
@@ -680,10 +685,10 @@ func (cc *Chaincode) GetAssetHistory(ctx contractapi.TransactionContextInterface
             }
             record.Value = asset
         }
-        
+      
         history = append(history, record)
     }
-    
+  
     return history, nil
 }
 ```

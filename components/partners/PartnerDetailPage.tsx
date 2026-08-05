@@ -1158,7 +1158,7 @@ export default function PartnerDetailPage({
                   <Link
                     href={
                       partner.cta.secondaryLink ||
-                      "/services"
+                      "/service"
                     }
                     className="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/[0.035] px-8 py-4 text-sm font-bold text-text-primary transition-all duration-300 hover:-translate-y-1 hover:border-amber-base/30 hover:text-amber-base"
                   >

@@ -88,6 +88,16 @@ function generateSitemapIndexXml(sitemapUrls) {
   return xml;
 }
 
+function dedupeUrls(urls) {
+  const seen = new Set();
+
+  return urls.filter((url) => {
+    if (seen.has(url.loc)) return false;
+    seen.add(url.loc);
+    return true;
+  });
+}
+
 function buildUrl(pathname) {
   return `${BASE_URL}${pathname.replace(/^\//, '')}`;
 }
@@ -389,11 +399,13 @@ function run() {
       }
     }
 
-    if (urls.length > 0) {
+    const uniqueUrls = dedupeUrls(urls);
+
+    if (uniqueUrls.length > 0) {
       const filename = `sitemap-${cat.key}.xml`;
-      fs.writeFileSync(path.join(PUBLIC_DIR, filename), generateSitemapXml(urls));
+      fs.writeFileSync(path.join(PUBLIC_DIR, filename), generateSitemapXml(uniqueUrls));
       activeSitemaps.push(`${BASE_URL}${filename}`);
-      console.log(`✅ ${filename} — ${urls.length} urls (from ${cat.file})`);
+      console.log(`✅ ${filename} — ${uniqueUrls.length} urls (from ${cat.file})`);
     }
   }
 

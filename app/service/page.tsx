@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import { createMetadata } from "@/config/metadata";
@@ -7,15 +8,39 @@ import ServiceCard from "@/components/service/ServiceCard";
 import CaseStudyCarousel from '@/components/service/CaseStudyCarousel';
 import { Process } from '@/components/landing/Process';
 import BackToTop from '@/components/ui/BackToTop';
+import { getPageHref } from "@/lib/pagination";
 
-export const metadata = createMetadata({
-  title: "Blockchain Development Services",
-  description:
-    "End-to-end blockchain engineering and product teams that ship secure, performant systems: smart contracts, indexers, wallets, and Web3 UX.",
-  path: "/service",
-});
+const ITEMS_PER_PAGE = 12;
 
-export default function ServicesIndex() {
+type ServicesIndexProps = {
+  searchParams?: Promise<{ page?: string }>;
+};
+
+function getRequestedPage(page?: string) {
+  const parsedPage = Number(page || 1);
+  return Number.isFinite(parsedPage) && parsedPage > 0 ? parsedPage : 1;
+}
+
+export async function generateMetadata({ searchParams }: ServicesIndexProps) {
+  const resolvedSearchParams = await searchParams;
+  const currentPage = getRequestedPage(resolvedSearchParams?.page);
+
+  return createMetadata({
+    title: "Blockchain Development Services",
+    description:
+      "End-to-end blockchain engineering and product teams that ship secure, performant systems: smart contracts, indexers, wallets, and Web3 UX.",
+    path: getPageHref("/service", currentPage),
+  });
+}
+
+export default async function ServicesIndex({ searchParams }: ServicesIndexProps) {
+  const resolvedSearchParams = await searchParams;
+  const requestedPage = getRequestedPage(resolvedSearchParams?.page);
+  const totalPages = Math.max(Math.ceil(services.length / ITEMS_PER_PAGE), 1);
+  const safeCurrentPage = Math.min(requestedPage, totalPages);
+  const start = (safeCurrentPage - 1) * ITEMS_PER_PAGE;
+  const paginatedServices = services.slice(start, start + ITEMS_PER_PAGE);
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
@@ -81,11 +106,81 @@ export default function ServicesIndex() {
           </div>
 
           {/* Service Cards */}
-          <div id="services" className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((s, i) => (
+          <div className="mt-16 flex flex-col justify-between gap-4 md:flex-row md:items-end">
+            <div>
+              <p className="font-mono text-xs uppercase tracking-[0.3em] text-amber-base">Service Library</p>
+              <h2 className="mt-3 text-3xl font-bold tracking-tight md:text-4xl">Explore our services</h2>
+            </div>
+            <p className="max-w-xl text-sm leading-6 text-silver-base">
+              Showing {paginatedServices.length} of {services.length} services. Open any service to view the full scope.
+            </p>
+          </div>
+
+          <div id="services" className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {paginatedServices.map((s, i) => (
               <ServiceCard key={s.slug} service={s} index={i} />
             ))}
           </div>
+
+          {totalPages > 1 && (
+            <div className="mt-12 flex flex-wrap items-center justify-center gap-3">
+              {safeCurrentPage > 1 ? (
+                <Link
+                  href={getPageHref("/service", safeCurrentPage - 1)}
+                  className="inline-flex h-11 items-center gap-2 rounded-full border border-white/10 bg-surface px-5 text-sm font-bold text-silver-base transition-all hover:border-amber-base/40 hover:text-amber-base"
+                >
+                  <ChevronLeft className="h-4 w-4" />
+                  Back
+                </Link>
+              ) : (
+                <span className="inline-flex h-11 cursor-not-allowed items-center gap-2 rounded-full border border-white/5 bg-white/[0.02] px-5 text-sm font-bold text-silver-base/40">
+                  <ChevronLeft className="h-4 w-4" />
+                  Back
+                </span>
+              )}
+
+              {Array.from({ length: Math.min(3, totalPages) }).map((_, i) => {
+                const paginationStart =
+                  safeCurrentPage >= totalPages - 1
+                    ? Math.max(totalPages - 2, 1)
+                    : safeCurrentPage;
+                const pageNumber = paginationStart + i;
+                const isActive = pageNumber === safeCurrentPage;
+
+                if (pageNumber > totalPages) return null;
+
+                return (
+                  <Link
+                    key={pageNumber}
+                    href={getPageHref("/service", pageNumber)}
+                    className={`grid h-11 w-11 place-items-center rounded-full border text-sm font-black transition-all ${
+                      isActive
+                        ? "border-amber-base bg-amber-base text-bg-base shadow-glow"
+                        : "border-white/10 bg-surface text-silver-base hover:border-amber-base/40 hover:text-amber-base"
+                    }`}
+                    aria-current={isActive ? "page" : undefined}
+                  >
+                    {pageNumber}
+                  </Link>
+                );
+              })}
+
+              {safeCurrentPage < totalPages ? (
+                <Link
+                  href={getPageHref("/service", safeCurrentPage + 1)}
+                  className="inline-flex h-11 items-center gap-2 rounded-full bg-amber-base px-5 text-sm font-bold text-bg-base transition-transform hover:-translate-y-0.5"
+                >
+                  Next
+                  <ChevronRight className="h-4 w-4" />
+                </Link>
+              ) : (
+                <span className="inline-flex h-11 cursor-not-allowed items-center gap-2 rounded-full bg-amber-base/30 px-5 text-sm font-bold text-bg-base/50">
+                  Next
+                  <ChevronRight className="h-4 w-4" />
+                </span>
+              )}
+            </div>
+          )}
 
           {/* Process Section */}
           <div className="mt-20">

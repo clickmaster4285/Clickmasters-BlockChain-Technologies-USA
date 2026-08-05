@@ -159,7 +159,7 @@ export default async function ToolsPage({
 
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:72px_72px] [mask-image:linear-gradient(to_bottom,black,transparent_80%)]" />
 
-        <section className="container relative mx-auto max-w-7xl px-4 sm:px-6">
+        <section className="site-container relative px-6">
           {/* Premium hero */}
           <section className="group/hero relative overflow-hidden rounded-[2rem] border border-white/10 bg-bg-base/75 p-6 shadow-[0_40px_140px_rgba(0,0,0,0.48)] backdrop-blur-2xl md:rounded-[2.75rem] md:p-10 lg:p-14">
             {/* Hero decorative effects */}
@@ -306,6 +306,64 @@ export default async function ToolsPage({
 
           {/* Search and filters */}
           <section id="tools-grid" className="scroll-mt-28 pt-16">
+            <div className="rounded-[2rem] border border-white/10 bg-surface/80 p-4 shadow-[0_20px_70px_rgba(0,0,0,0.16)] backdrop-blur-xl sm:p-5 md:p-6">
+              <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
+                <form
+                  action="/tools"
+                  className="relative"
+                >
+                  {selectedCategory.toLowerCase() !== "all" && (
+                    <input
+                      type="hidden"
+                      name="category"
+                      value={selectedCategory}
+                    />
+                  )}
+
+                  <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-amber-base" />
+
+                  <input
+                    type="search"
+                    name="search"
+                    defaultValue={searchQuery}
+                    placeholder="Search tools by topic, checklist, calculator, audit..."
+                    className="min-h-12 w-full rounded-xl border border-white/10 bg-bg-base/70 pl-11 pr-4 text-sm font-medium text-text-primary outline-none transition-all placeholder:text-silver/70 focus:border-amber-base/40 focus:bg-bg-base"
+                  />
+                </form>
+
+                {(searchQuery ||
+                  selectedCategory.toLowerCase() !== "all") && (
+                  <Link
+                    href="/tools"
+                    className="inline-flex min-h-12 items-center justify-center rounded-xl border border-white/10 bg-white/[0.025] px-5 text-sm font-black text-silver transition-all duration-300 hover:border-amber-base/35 hover:bg-amber-base/[0.06] hover:text-amber-base"
+                  >
+                    Clear filters
+                  </Link>
+                )}
+              </div>
+
+              <div className="mt-5 flex flex-wrap gap-2">
+                {["All", ...categories].map((category) => {
+                  const isActive =
+                    selectedCategory.toLowerCase() ===
+                    category.toLowerCase();
+
+                  return (
+                    <Link
+                      key={category}
+                      href={createCategoryHref(category)}
+                      className={`rounded-full border px-4 py-2 text-xs font-black uppercase tracking-[0.14em] transition-all duration-300 ${
+                        isActive
+                          ? "border-amber-base bg-amber-base text-bg-base shadow-glow"
+                          : "border-white/10 bg-white/[0.025] text-silver hover:border-amber-base/35 hover:bg-amber-base/[0.06] hover:text-amber-base"
+                      }`}
+                    >
+                      {category}
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
 
             {/* Section heading */}
             <div className="mb-9 mt-16 flex flex-col justify-between gap-4 md:flex-row md:items-end">

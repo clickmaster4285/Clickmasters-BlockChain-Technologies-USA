@@ -28,7 +28,7 @@ export default function CaseStudiesCTA({
   primaryLabel = "Start Your Project",
   primaryHref = "/contact",
   secondaryLabel = "Explore Our Services",
-  secondaryHref = "/services",
+  secondaryHref = "/service",
 }: CaseStudiesCTAProps) {
   return (
     <section className="relative overflow-hidden bg-[#07101d] px-4 py-24 sm:px-6 sm:py-28 lg:py-36">

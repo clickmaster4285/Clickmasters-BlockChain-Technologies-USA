@@ -1,6 +1,7 @@
 # Blockchain Gas Cost Calculator | Clickmasters
 
 ---
+
 **URL:** /tools/blockchain-gas-calculator/
 **Primary KW:** blockchain gas cost calculator
 **Secondary KWs:** Ethereum gas fee calculator, smart contract gas cost, calculate blockchain transaction cost
@@ -21,57 +22,59 @@
 
 ### Ethereum L1 (Typical Gas: 15–50 Gwei)
 
-| Operation | Gas Used | Cost @ 20 Gwei + $3,000 ETH |
-|---|---|---|
-| Simple ETH transfer | 21,000 gas | $1.26 |
-| ERC-20 transfer | 50,000–65,000 gas | $3.00–$3.90 |
-| ERC-20 approve | 45,000 gas | $2.70 |
-| Uniswap V3 swap | 120,000–180,000 gas | $7.20–$10.80 |
-| NFT mint (ERC-721A, 1 token) | 60,000–80,000 gas | $3.60–$4.80 |
-| NFT mint (ERC-721A, 5 tokens) | 80,000–100,000 gas | $4.80–$6.00 |
-| Aave deposit | 200,000–250,000 gas | $12.00–$15.00 |
-| Contract deployment (simple) | 500,000–800,000 gas | $30.00–$48.00 |
-| Contract deployment (DeFi) | 3,000,000–8,000,000 gas | $180–$480 |
+| Operation                     | Gas Used                 | Cost @ 20 Gwei + $3,000 ETH |
+| ----------------------------- | ------------------------ | --------------------------- |
+| Simple ETH transfer           | 21,000 gas               | $1.26                       |
+| ERC-20 transfer               | 50,000–65,000 gas       | $3.00–$3.90                |
+| ERC-20 approve                | 45,000 gas               | $2.70                       |
+| Uniswap V3 swap               | 120,000–180,000 gas     | $7.20–$10.80               |
+| NFT mint (ERC-721A, 1 token)  | 60,000–80,000 gas       | $3.60–$4.80                |
+| NFT mint (ERC-721A, 5 tokens) | 80,000–100,000 gas      | $4.80–$6.00                |
+| Aave deposit                  | 200,000–250,000 gas     | $12.00–$15.00              |
+| Contract deployment (simple)  | 500,000–800,000 gas     | $30.00–$48.00              |
+| Contract deployment (DeFi)    | 3,000,000–8,000,000 gas | $180–$480                  |
 
 ### Arbitrum One (Typical: $0.01–$0.50)
 
-| Operation | Typical Cost |
-|---|---|
-| ETH transfer | $0.02–$0.08 |
-| ERC-20 transfer | $0.03–$0.15 |
-| Uniswap V3 swap | $0.10–$0.50 |
-| NFT mint | $0.05–$0.25 |
-| Contract deployment (simple) | $0.50–$2.00 |
-| Contract deployment (DeFi) | $5.00–$25.00 |
+| Operation                    | Typical Cost  |
+| ---------------------------- | ------------- |
+| ETH transfer                 | $0.02–$0.08  |
+| ERC-20 transfer              | $0.03–$0.15  |
+| Uniswap V3 swap              | $0.10–$0.50  |
+| NFT mint                     | $0.05–$0.25  |
+| Contract deployment (simple) | $0.50–$2.00  |
+| Contract deployment (DeFi)   | $5.00–$25.00 |
 
 ### Polygon PoS (Typical: $0.001–$0.10)
 
-| Operation | Typical Cost |
-|---|---|
-| MATIC transfer | $0.001–$0.005 |
-| USDC transfer | $0.002–$0.01 |
-| NFT mint | $0.005–$0.05 |
-| Batch payroll (340 recipients) | $0.05–$0.15 |
-| Contract deployment (simple) | $0.05–$0.30 |
+| Operation                      | Typical Cost   |
+| ------------------------------ | -------------- |
+| MATIC transfer                 | $0.001–$0.005 |
+| USDC transfer                  | $0.002–$0.01  |
+| NFT mint                       | $0.005–$0.05  |
+| Batch payroll (340 recipients) | $0.05–$0.15   |
+| Contract deployment (simple)   | $0.05–$0.30   |
 
 ### Solana (Fixed pricing)
 
-| Operation | Typical Cost |
-|---|---|
-| SOL transfer | ~$0.00025 |
-| SPL token transfer | ~$0.00025 |
-| NFT mint | ~$0.01–$0.05 |
+| Operation          | Typical Cost  |
+| ------------------ | ------------- |
+| SOL transfer       | ~$0.00025     |
+| SPL token transfer | ~$0.00025     |
+| NFT mint           | ~$0.01–$0.05 |
 
 ---
 
 ## Gas Cost Impact on Protocol Design
 
 **High gas impact operations (avoid on L1):**
+
 - Loops over user arrays (scales with users)
 - Complex state updates in single transactions
 - Storing large amounts of data on-chain
 
 **Gas-efficient patterns:**
+
 - ERC-721A for batch NFT minting (5 tokens ≈ 1 token cost)
 - MerkleProof for allowlists (O(log n) vs O(n))
 - Calldata over memory for read-only parameters
@@ -90,11 +93,13 @@ Concentrated liquidity requires maintaining tick data structures — significant
 **[BUTTON — PRIMARY] Book a Free Strategy Call →**
 
 ---
+
 ---
 
 # DeFi Yield Calculator — Estimate Returns on DeFi Positions | Clickmasters
 
 ---
+
 **URL:** /tools/defi-yield-calculator/
 **Primary KW:** DeFi yield calculator
 **Secondary KWs:** DeFi APY calculator, crypto yield calculator, calculate DeFi returns, staking yield calculator
@@ -115,27 +120,27 @@ Concentrated liquidity requires maintaining tick data structures — significant
 
 ### Lending Protocol Yields (Stablecoin Deposits)
 
-| Protocol | Chain | Current Range | Risk Profile |
-|---|---|---|---|
-| Aave V3 (USDC) | Arbitrum | 4–8% APY | Low (blue chip) |
-| Compound V3 (USDC) | Ethereum | 4–7% APY | Low (blue chip) |
-| Morpho (USDC) | Ethereum | 5–9% APY | Low-medium |
-| Spark Protocol (DAI) | Ethereum | 5–8% APY | Low (MakerDAO) |
+| Protocol             | Chain    | Current Range | Risk Profile    |
+| -------------------- | -------- | ------------- | --------------- |
+| Aave V3 (USDC)       | Arbitrum | 4–8% APY     | Low (blue chip) |
+| Compound V3 (USDC)   | Ethereum | 4–7% APY     | Low (blue chip) |
+| Morpho (USDC)        | Ethereum | 5–9% APY     | Low-medium      |
+| Spark Protocol (DAI) | Ethereum | 5–8% APY     | Low (MakerDAO)  |
 
 ### AMM LP Yields (ETH/USDC)
 
-| Protocol | Fee Tier | Typical APY | Impermanent Loss Risk |
-|---|---|---|---|
-| Uniswap V3 (narrow range) | 0.05% | 15–40% | High |
-| Uniswap V3 (wide range) | 0.30% | 5–15% | Medium |
-| Curve (stablecoin pair) | 0.04% | 3–8% | Very Low |
+| Protocol                  | Fee Tier | Typical APY | Impermanent Loss Risk |
+| ------------------------- | -------- | ----------- | --------------------- |
+| Uniswap V3 (narrow range) | 0.05%    | 15–40%     | High                  |
+| Uniswap V3 (wide range)   | 0.30%    | 5–15%      | Medium                |
+| Curve (stablecoin pair)   | 0.04%    | 3–8%       | Very Low              |
 
 ### Liquid Staking Yields
 
-| Protocol | Asset | Current APY | Risk |
-|---|---|---|---|
-| Lido (stETH) | ETH | ~3.5% | Low (consensus layer) |
-| Rocket Pool (rETH) | ETH | ~3.8% | Low (decentralized) |
+| Protocol           | Asset | Current APY | Risk                  |
+| ------------------ | ----- | ----------- | --------------------- |
+| Lido (stETH)       | ETH   | ~3.5%       | Low (consensus layer) |
+| Rocket Pool (rETH) | ETH   | ~3.8%       | Low (decentralized)   |
 
 ---
 
@@ -155,12 +160,12 @@ Final Amount = $10,000 × (1 + 0.06/365)^(365×2) = $10,000 × 1.1275 = **$11,27
 
 ## Risk-Adjusted Yield Comparison
 
-| Strategy | Nominal APY | Risk Factor | Risk-Adjusted APY |
-|---|---|---|---|
-| Aave USDC (Arbitrum) | 6% | 0.98 (audited, 2yr history) | 5.88% |
-| New protocol USDC | 25% | 0.60 (unaudited, <6mo old) | 15% |
-| ETH staking | 3.5% | 0.99 (protocol consensus) | 3.47% |
-| Uniswap V3 ETH/USDC | 20% | 0.85 (IL risk + protocol risk) | 17% |
+| Strategy             | Nominal APY | Risk Factor                    | Risk-Adjusted APY |
+| -------------------- | ----------- | ------------------------------ | ----------------- |
+| Aave USDC (Arbitrum) | 6%          | 0.98 (audited, 2yr history)    | 5.88%             |
+| New protocol USDC    | 25%         | 0.60 (unaudited, <6mo old)     | 15%               |
+| ETH staking          | 3.5%        | 0.99 (protocol consensus)      | 3.47%             |
+| Uniswap V3 ETH/USDC  | 20%         | 0.85 (IL risk + protocol risk) | 17%               |
 
 Risk factor: 1.0 = zero risk of loss (theoretical), 0.0 = certain loss. Multiply nominal yield by risk factor to compare strategies on equal footing.
 
@@ -174,11 +179,13 @@ APR (Annual Percentage Rate): simple interest without compounding. APY (Annual P
 **[BUTTON — PRIMARY] Book a Free Strategy Call →**
 
 ---
+
 ---
 
 # NFT Rarity Score Calculator — Trait Rarity Analysis | Clickmasters
 
 ---
+
 **URL:** /tools/nft-rarity-calculator/
 **Primary KW:** NFT rarity score calculator
 **Secondary KWs:** calculate NFT rarity, NFT trait rarity, how to calculate NFT rarity, rarity score NFT collection
@@ -196,14 +203,17 @@ APR (Annual Percentage Rate): simple interest without compounding. APY (Annual P
 ## The Three Rarity Score Methodologies
 
 ### Method 1: Trait Count Score (Simplest)
+
 Score = number of traits the NFT has. NFTs with fewer traits are rarer (they have more "none" or empty trait slots).
 
 **Problem:** Does not account for trait rarity within each category.
 
 ### Method 2: Inverse Frequency Score (Most Common)
+
 For each trait the NFT has: add `1 / trait_frequency` to the rarity score.
 
 **Example:**
+
 ```
 NFT #1234 traits:
 - Background: Blue (30% of collection) → adds 1/0.30 = 3.33
@@ -217,6 +227,7 @@ Total rarity score = 3.33 + 50.00 + 20.00 + 4.00 = 77.33
 A higher score = rarer NFT. This is the standard used by Rarity.tools and most rarity trackers.
 
 ### Method 3: Statistical Rarity (Most Sophisticated)
+
 Multiply trait frequencies: P(NFT #1234) = 0.30 × 0.02 × 0.05 × 0.25 = 0.0000075 (0.00075%)
 
 Lower probability = rarer. Does not handle "none" traits well but is statistically rigorous.
@@ -226,12 +237,12 @@ Lower probability = rarer. Does not handle "none" traits well but is statistical
 ## Rarity Distribution for a 10,000 PFP Collection
 
 | Rarity Tier | Count | Score Range | % of Collection |
-|---|---|---|---|
-| Common | 5,000 | 20–50 | 50% |
-| Uncommon | 3,000 | 50–100 | 30% |
-| Rare | 1,500 | 100–200 | 15% |
-| Epic | 400 | 200–500 | 4% |
-| Legendary | 100 | 500+ | 1% |
+| ----------- | ----- | ----------- | --------------- |
+| Common      | 5,000 | 20–50      | 50%             |
+| Uncommon    | 3,000 | 50–100     | 30%             |
+| Rare        | 1,500 | 100–200    | 15%             |
+| Epic        | 400   | 200–500    | 4%              |
+| Legendary   | 100   | 500+        | 1%              |
 
 ---
 
@@ -253,11 +264,13 @@ The creator sets the trait frequencies during collection design. Rarity trackers
 **[BUTTON — PRIMARY] Book a Free Strategy Call →**
 
 ---
+
 ---
 
 # Blockchain Project Scope Document Template | Clickmasters
 
 ---
+
 **URL:** /tools/blockchain-scope-document-template/
 **Primary KW:** blockchain project scope document
 **Schema:** Article, BreadcrumbList
@@ -294,16 +307,16 @@ The creator sets the trait frequencies during collection design. Rarity trackers
 
 **List every smart contract or chaincode to be developed:**
 
-| Contract Name | Primary Function | Chain/Platform | Estimated Complexity |
-|---|---|---|---|
-| [Name] | [What it does] | [Chain] | [Simple/Medium/Complex] |
+| Contract Name | Primary Function | Chain/Platform | Estimated Complexity    |
+| ------------- | ---------------- | -------------- | ----------------------- |
+| [Name]        | [What it does]   | [Chain]        | [Simple/Medium/Complex] |
 
 **For each contract, list every function:**
 
 **Contract: [Name]**
 
-| Function | Who Calls It | What It Does | State Changes |
-|---|---|---|---|
+| Function         | Who Calls It                       | What It Does    | State Changes           |
+| ---------------- | ---------------------------------- | --------------- | ----------------------- |
 | [functionName()] | [Owner / Any user / Specific role] | [Plain English] | [What variables change] |
 
 ---
@@ -320,9 +333,9 @@ The creator sets the trait frequencies during collection design. Rarity trackers
 
 **For each interface, list the key screens/pages:**
 
-| Screen/Page | Primary User Action | Data Displayed | Data Input |
-|---|---|---|---|
-| [Screen name] | [What user does] | [What user sees] | [What user enters] |
+| Screen/Page   | Primary User Action | Data Displayed   | Data Input         |
+| ------------- | ------------------- | ---------------- | ------------------ |
+| [Screen name] | [What user does]    | [What user sees] | [What user enters] |
 
 ---
 
@@ -330,10 +343,10 @@ The creator sets the trait frequencies during collection design. Rarity trackers
 
 **Systems that must integrate:**
 
-| System | Direction | Events/Data Flowing | Integration Method |
-|---|---|---|---|
-| SAP S/4HANA | ERP → Blockchain | Goods receipt, shipment | SAP Integration Suite webhook |
-| [Other system] | [Direction] | [Data] | [Method] |
+| System         | Direction         | Events/Data Flowing     | Integration Method            |
+| -------------- | ----------------- | ----------------------- | ----------------------------- |
+| SAP S/4HANA    | ERP → Blockchain | Goods receipt, shipment | SAP Integration Suite webhook |
+| [Other system] | [Direction]       | [Data]                  | [Method]                      |
 
 ---
 
@@ -351,12 +364,12 @@ The creator sets the trait frequencies during collection design. Rarity trackers
 
 *How will you know this project is complete? Make these testable.*
 
-| Deliverable | Acceptance Criterion | Test Method |
-|---|---|---|
-| Smart contracts | All functions pass specified test cases with 95%+ coverage | Foundry test report |
-| Security audit | All Critical and High findings remediated; published report | Audit report link |
-| Performance | [Specific query] responds in [X] seconds | Load test results |
-| Integration | ERP event triggers blockchain transaction within [Y] seconds | End-to-end test |
+| Deliverable     | Acceptance Criterion                                         | Test Method         |
+| --------------- | ------------------------------------------------------------ | ------------------- |
+| Smart contracts | All functions pass specified test cases with 95%+ coverage   | Foundry test report |
+| Security audit  | All Critical and High findings remediated; published report  | Audit report link   |
+| Performance     | [Specific query] responds in [X] seconds                     | Load test results   |
+| Integration     | ERP event triggers blockchain transaction within [Y] seconds | End-to-end test     |
 
 ---
 
@@ -378,11 +391,13 @@ Changes are not authorized until step 3 is complete.
 **[BUTTON — PRIMARY] Book a Free Strategy Call →**
 
 ---
+
 ---
 
 # Blockchain Smart Contract Audit Preparation Guide | Clickmasters
 
 ---
+
 **URL:** /tools/smart-contract-audit-preparation/
 **Primary KW:** smart contract audit preparation
 **Schema:** Article, BreadcrumbList
@@ -403,6 +418,7 @@ Changes are not authorized until step 3 is complete.
 The most important document. Auditors check code against specification — without it, they cannot identify logic errors (code that compiles but does wrong thing).
 
 **Required sections:**
+
 - Protocol overview (what does this system do, in one page)
 - Contract system map (which contracts, how they interact, what data flows between them)
 - For each function: purpose, who can call it, input validation, state changes, events emitted, edge cases

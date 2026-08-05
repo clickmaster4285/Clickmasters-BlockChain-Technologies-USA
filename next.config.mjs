@@ -1,6 +1,20 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   allowedDevOrigins: ['192.168.88.62'],
+  async redirects() {
+    return [
+      {
+        source: '/services',
+        destination: '/service',
+        permanent: true,
+      },
+      {
+        source: '/services/:slug',
+        destination: '/service/:slug',
+        permanent: true,
+      },
+    ];
+  },
   images: {
     remotePatterns: [
       {
