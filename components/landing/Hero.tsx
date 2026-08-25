@@ -3,22 +3,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ShieldCheck, Star, TrendingUp } from "lucide-react";
-import { useEffect, useState } from "react";
 import { BlockchainNetwork } from "./BlockchainNetwork";
 import { HeroBlockchainVisual } from "./HeroBlockchainVisual";
 
 const heroBgPng = "/media/hero-bg.png";
 const walletMock = "/media/wallet-mock.jpeg";
 
-const ROTATING = ["DeFi protocols", "NFT marketplaces", "DAOs", "Crypto wallets", "L2 chains"];
-
 export function Hero() {
-  const [i, setI] = useState(0);
-  useEffect(() => {
-    const t = setInterval(() => setI((v) => (v + 1) % ROTATING.length), 2200);
-    return () => clearInterval(t);
-  }, []);
-
   return (
     <section className="relative min-h-[100dvh] overflow-hidden bg-bg-base pt-28 pb-16 md:pt-36 md:pb-24">
       {/* ── Layer 1: Background textures ── */}
@@ -45,25 +36,29 @@ export function Hero() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-base opacity-40" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-base" />
               </span>
-              NDA before the first call
+              Blockchain Development Company in US
             </div>
 
             {/* Headline */}
             <h1 className="mt-7 text-5xl font-bold leading-[1.06] tracking-tight text-text-primary md:text-6xl lg:text-7xl">
-              <span className="block">1,000+ Blockchain</span>
-              <span className="block text-gradient">Projects Since 2014</span>
+              <span className="block">Blockchain Development Company</span>
+              <span className="block text-gradient">Building Secure, Scalable Web3 Products</span>
             </h1>
 
             {/* Subtext with rotating badge */}
             <p className="mt-6 max-w-xl text-base leading-relaxed text-text-secondary md:text-lg">
-              We engineer SEC-grade smart contracts, production DApps and Web3 infrastructure for{" "}
-              <span
-                key={i}
-                className="inline-flex animate-fade-in items-center rounded-full bg-amber-glow/70 px-2.5 py-0.5 font-semibold text-amber-base"
-              >
-                {ROTATING[i]}
-              </span>
-              . Enterprise security, zero jargon.
+              Clickmasters is a blockchain development company based in the United States,
+              working with startups, protocols, and enterprises that need technology they can
+              actually put into production. Our blockchain development services cover everything
+              from the first architecture decision to the smart contract that goes live on mainnet
+              — planned, engineered, and tested by people who have shipped this kind of software
+              before.
+            </p>
+            <p className="mt-4 max-w-xl text-base leading-relaxed text-text-secondary md:text-lg">
+              Whether you're exploring your first blockchain application or scaling an existing
+              platform, our team acts as your blockchain development agency of record: one point
+              of contact, one accountable team, and a build process designed to protect your
+              budget and your users.
             </p>
 
             {/* CTA — Button-in-button architecture */}
@@ -72,7 +67,7 @@ export function Hero() {
                 href="/contact"
                 className="group relative inline-flex h-12 items-center gap-3 rounded-full bg-primary pl-6 pr-1.5 text-sm font-semibold text-primary-foreground shadow-glow transition-all duration-400 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-0.5 hover:shadow-[0_12px_40px_rgba(217,119,6,0.35)] active:scale-[0.98]"
               >
-                <span>Book a Strategy Call</span>
+                <span>Book a Free Strategy Call</span>
                 <span className="flex h-9 w-9 items-center justify-center rounded-full bg-amber-light/20 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:scale-105">
                   <ArrowRight className="h-4 w-4" />
                 </span>
@@ -81,7 +76,7 @@ export function Hero() {
                 href="/service"
                 className="group inline-flex h-12 items-center gap-2 rounded-full border border-border bg-surface px-6 text-sm font-medium text-text-secondary transition-all duration-300 hover:border-amber-border/50 hover:text-text-primary active:scale-[0.98]"
               >
-                View Services
+                View Our Services
                 <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
               </Link>
             </div>
@@ -119,7 +114,7 @@ export function Hero() {
           </div>
 
           {/* ══════════════ RIGHT: Web3 Command Center ══════════════ */}
-          <div className="relative">
+          <div className="relative md:translate-y-[12%]">
             {/* Outer shell (double-bezel) */}
             <div className="rounded-2xl bg-bg-elevated p-1.5 shadow-soft ring-1 ring-black/[0.03]">
               {/* Inner core */}

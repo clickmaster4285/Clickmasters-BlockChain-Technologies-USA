@@ -1,84 +1,131 @@
 "use client";
 
-import { Smartphone, Link2, Server, Cloud, ShieldCheck } from "lucide-react";
+import { Cloud, Code2, Link2, Server, ShieldCheck } from "lucide-react";
 
-type TechItem = { name: string; slug: string; color: string };
+type Logo = { slug: string; color: string };
+type TechItem = { name: string; logos: Logo[] };
 type Category = {
   label: string;
-  icon: typeof Smartphone;
+  icon: typeof Code2;
   accent: string;
   items: TechItem[];
 };
 
 const categories: Category[] = [
   {
-    label: "Mobile",
-    icon: Smartphone,
-    accent: "#D97706",
-    items: [
-      { name: "React Native", slug: "react", color: "61DAFB" },
-      { name: "Flutter", slug: "flutter", color: "02569B" },
-      { name: "Expo", slug: "expo", color: "FFFFFF" },
-      { name: "Swift", slug: "swift", color: "F05138" },
-      { name: "Kotlin", slug: "kotlin", color: "7F52FF" },
-    ],
-  },
-  {
-    label: "Blockchain",
+    label: "Blockchain Networks",
     icon: Link2,
     accent: "#D97706",
     items: [
-      { name: "Solidity", slug: "solidity", color: "363636" },
-      { name: "Ethereum", slug: "ethereum", color: "3C3C3D" },
-      { name: "Polygon", slug: "polygon", color: "7B3FE4" },
-      { name: "Solana", slug: "solana", color: "9945FF" },
-      { name: "Ethers.js", slug: "ethers", color: "2535A0" },
-      { name: "Hardhat", slug: "hardhat", color: "FFF100" },
+      { name: "Ethereum and EVM-compatible chains", logos: [{ slug: "ethereum", color: "3C3C3D" }] },
+      { name: "Polygon", logos: [{ slug: "polygon", color: "7B3FE4" }] },
+      { name: "Solana", logos: [{ slug: "solana", color: "9945FF" }] },
+      {
+        name: "Avalanche, Arbitrum, Optimism, Base",
+        logos: [
+          { slug: "avalanche", color: "E84142" },
+          { slug: "arbitrum", color: "28A0F0" },
+          { slug: "optimism", color: "FF0420" },
+          { slug: "base", color: "0052FF" },
+        ],
+      },
+      { name: "Enterprise/permissioned ledger frameworks", logos: [{ slug: "hyperledger", color: "2F3134" }] },
     ],
   },
   {
-    label: "Backend",
+    label: "Smart Contract Development",
+    icon: Code2,
+    accent: "#D97706",
+    items: [
+      { name: "Solidity", logos: [{ slug: "solidity", color: "363636" }] },
+      { name: "Vyper", logos: [{ slug: "vyper", color: "3775A9" }] },
+      {
+        name: "Hardhat and Foundry",
+        logos: [
+          { slug: "hardhat", color: "FFF100" },
+          { slug: "foundry", color: "FFFFFF" },
+        ],
+      },
+      { name: "OpenZeppelin standards", logos: [{ slug: "openzeppelin", color: "4E5EE4" }] },
+    ],
+  },
+  {
+    label: "Application & Integration Layer",
     icon: Server,
     accent: "#64748B",
     items: [
-      { name: "Node.js", slug: "nodedotjs", color: "5FA04E" },
-      { name: "NestJS", slug: "nestjs", color: "E0234E" },
-      { name: "GraphQL", slug: "graphql", color: "E10098" },
-      { name: "PostgreSQL", slug: "postgresql", color: "4169E1" },
-      { name: "Redis", slug: "redis", color: "FF4438" },
-      { name: "IPFS", slug: "ipfs", color: "65C2CB" },
+      {
+        name: "React and Next.js",
+        logos: [
+          { slug: "react", color: "61DAFB" },
+          { slug: "nextdotjs", color: "FFFFFF" },
+        ],
+      },
+      {
+        name: "Ethers.js and Web3 libraries",
+        logos: [
+          { slug: "ethers", color: "2535A0" },
+          { slug: "web3dotjs", color: "F16822" },
+        ],
+      },
+      {
+        name: "Node.js and REST/GraphQL APIs",
+        logos: [
+          { slug: "nodedotjs", color: "5FA04E" },
+          { slug: "graphql", color: "E10098" },
+        ],
+      },
+      { name: "IPFS and decentralized storage", logos: [{ slug: "ipfs", color: "65C2CB" }] },
     ],
   },
   {
-    label: "Cloud & DevOps",
+    label: "Infrastructure",
     icon: Cloud,
     accent: "#64748B",
     items: [
-      { name: "AWS", slug: "amazonwebservices", color: "FF9900" },
-      { name: "Docker", slug: "docker", color: "2496ED" },
-      { name: "GitHub Actions", slug: "githubactions", color: "2088FF" },
-      { name: "Firebase", slug: "firebase", color: "DD2C00" },
-      { name: "Vercel", slug: "vercel", color: "FFFFFF" },
+      { name: "AWS", logos: [{ slug: "amazonwebservices", color: "FF9900" }] },
+      {
+        name: "Docker and CI/CD pipelines",
+        logos: [
+          { slug: "docker", color: "2496ED" },
+          { slug: "githubactions", color: "2088FF" },
+        ],
+      },
+      {
+        name: "PostgreSQL and Redis",
+        logos: [
+          { slug: "postgresql", color: "4169E1" },
+          { slug: "redis", color: "FF4438" },
+        ],
+      },
     ],
   },
 ];
 
 const marqueeRow = [
-  "Solidity",
-  "React Native",
   "Ethereum",
   "Polygon",
+  "Solana",
+  "Avalanche",
+  "Arbitrum",
+  "Optimism",
+  "Base",
+  "Solidity",
+  "Vyper",
   "Hardhat",
+  "Foundry",
+  "OpenZeppelin",
+  "React",
+  "Next.js",
+  "Ethers.js",
+  "Web3 libraries",
   "IPFS",
   "Node.js",
   "GraphQL",
   "AWS",
   "Docker",
-  "Solana",
-  "Flutter",
-  "Ethers.js",
   "PostgreSQL",
-  "Firebase",
+  "Redis",
 ];
 
 export function TechStack() {
@@ -101,13 +148,15 @@ export function TechStack() {
         <div className="mx-auto max-w-2xl text-center">
           <div className="inline-flex items-center gap-2 rounded-full bg-amber-glow/50 px-3.5 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-amber-base">
             <span className="h-1.5 w-1.5 rounded-full bg-amber-base" />
-            Under the Hood
+            Technologies We Work With
           </div>
           <h2 className="mt-5 font-bold tracking-tight text-text-primary" style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)", lineHeight: 1.05 }}>
-            Battle-Tested <span className="text-gradient">Stack.</span>
+            Blockchain technology paired with a solid{" "}
+            <span className="text-gradient">application layer</span>
           </h2>
           <p className="mt-4 text-base leading-relaxed text-text-secondary md:text-lg">
-            Every tool chosen for performance, security, and scale.
+            Blockchain technology in web development only works well when it's paired with a
+            solid application layer. Our stack spans both sides of that equation:
           </p>
         </div>
 
@@ -142,12 +191,17 @@ export function TechStack() {
                           border: `1px solid ${cat.accent}40`,
                         }}
                       >
-                        <img
-                          src={`https://cdn.simpleicons.org/${item.slug}/${item.color}`}
-                          alt=""
-                          loading="lazy"
-                          className="h-4 w-4"
-                        />
+                        <span className="flex -space-x-1">
+                          {item.logos.map((logo) => (
+                            <img
+                              key={logo.slug}
+                              src={`https://cdn.simpleicons.org/${logo.slug}/${logo.color}`}
+                              alt=""
+                              loading="lazy"
+                              className="h-4 w-4 rounded-sm bg-surface"
+                            />
+                          ))}
+                        </span>
                       </span>
                       <span>{item.name}</span>
                     </li>
@@ -168,7 +222,7 @@ export function TechStack() {
         <div className="mt-10 flex items-center justify-center gap-2 text-center">
           <ShieldCheck className="h-4 w-4 text-amber-base" />
           <p className="text-sm font-medium text-text-muted">
-            All blockchain code undergoes third-party security audits before deployment.
+            All blockchain code undergoes security review before launch.
           </p>
         </div>
       </div>

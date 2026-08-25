@@ -12,7 +12,7 @@ export default function CalculatorCta({ cta }: CalculatorCtaProps) {
   const primaryHref = cta.primaryHref || "/contact";
 
   const secondaryHref = cta.secondaryHref || "/service";
-
+ 
   return (
     <section>
       <div>
@@ -56,7 +56,7 @@ export default function CalculatorCta({ cta }: CalculatorCtaProps) {
     </section>
   );
 }
-
+  
 /* =========================================================
    CTA Link
 ========================================================= */

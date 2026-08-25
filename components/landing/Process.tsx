@@ -1,38 +1,32 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Rocket, Map, Wand2, Cog, Sparkles } from "lucide-react";
+import { Rocket, Map, Wand2, Cog } from "lucide-react";
 
 const steps = [
   {
     icon: Rocket,
-    title: "S - Scope & Discovery",
-    desc: "We learn your market, user base, and regulatory constraints. Deliverable: Discovery Document with technical scope and cost estimate.",
-    duration: "~1 week",
+    title: "1. Discovery & Consulting",
+    desc: "We start with your business goals, not the tech stack. Through our blockchain consulting services, we map requirements, choose the right chain, and define a scope and cost estimate before any development begins.",
+    duration: "Discovery",
   },
   {
     icon: Map,
-    title: "P - Plan & Architecture",
-    desc: "We map the tech stack, chain selection rationale, data flow diagrams, and UX wireframes. Deliverable: Architecture Decision Record (ADR).",
-    duration: "~2 weeks",
+    title: "2. Architecture & Design",
+    desc: "We document the technical architecture, data flow, and smart contract structure, and build wireframes or prototypes so you can see the product before it's fully built.",
+    duration: "Architecture",
   },
   {
     icon: Wand2,
-    title: "E - Engineer & Prototype",
-    desc: "High-fidelity Figma prototypes, smart contract stubs, and API schemas. Deliverable: Interactive prototype + contract interface specs.",
-    duration: "~2 weeks",
+    title: "3. Development & Testing",
+    desc: "Our engineers build the application and smart contracts in parallel, with regular check-ins and staged testing rather than one long build with no visibility.",
+    duration: "Build & test",
   },
   {
     icon: Cog,
-    title: "C - Code & Integrate",
-    desc: "Full-stack development: mobile app + smart contracts + backend. Weekly demo builds. Deliverable: Staging environment with CI/CD.",
-    duration: "~4-8 weeks",
-  },
-  {
-    icon: Sparkles,
-    title: "BUILD-HARDEN - Audit & Launch",
-    desc: "Third-party security audit, formal verification, App Store deployment, post-launch monitoring. Deliverable: Audited contracts + production deployment.",
-    duration: "Ongoing",
+    title: "4. Launch & Support",
+    desc: "Before launch, contracts and code go through a security review. After launch, we monitor performance and remain available for updates, scaling, or new features.",
+    duration: "Launch & support",
   },
 ];
 
@@ -75,10 +69,11 @@ export function Process() {
             Our Process
           </div>
           <h2 className="mt-5 font-bold tracking-tight text-text-primary" style={{ fontSize: "clamp(2.25rem, 5vw, 3.75rem)", lineHeight: 1.05 }}>
-            Your App's Journey to the <span className="text-gradient">Stars</span>
+            Our Blockchain Development <span className="text-gradient">Process</span>
           </h2>
           <p className="mt-4 text-base leading-relaxed text-text-secondary md:text-lg">
-            From discovery to mainnet - our SPEC-BUILD-HARDEN methodology across 5 phases.
+            A clear process is part of what makes a blockchain development company easy to work
+            with. Here's how a project with Clickmasters moves from idea to production:
           </p>
         </div>
 

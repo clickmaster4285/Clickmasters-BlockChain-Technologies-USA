@@ -169,7 +169,7 @@ const resourceFeatured: Record<string, any[]> = {
   Templates: [
     {
       title: "Blockchain Industry News Hub",
-      desc: "We track US regulatory developments, DeFi security incidents, enterprise blockchain deployments...",
+      desc: "We track US regulatory developments, DeFi security incidents, and enterprise blockchain launches...",
       href: "/templates/blockchain-news-us-businesses",
       badge: "Template",
     },
