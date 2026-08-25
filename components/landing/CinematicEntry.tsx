@@ -10,10 +10,6 @@ export function CinematicEntry() {
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    if (sessionStorage.getItem("cm-intro-played")) {
-      setDone(true);
-      return;
-    }
     const timers = [
       setTimeout(() => setStage(1), 300),
       setTimeout(() => setStage(2), 800),
@@ -21,10 +17,7 @@ export function CinematicEntry() {
       setTimeout(() => setStage(4), 1800),
       setTimeout(() => setStage(5), 2500),
       setTimeout(() => setStage(6), 3000),
-      setTimeout(() => {
-        sessionStorage.setItem("cm-intro-played", "1");
-        setDone(true);
-      }, 4000),
+      setTimeout(() => setDone(true), 4000),
     ];
     return () => timers.forEach(clearTimeout);
   }, []);

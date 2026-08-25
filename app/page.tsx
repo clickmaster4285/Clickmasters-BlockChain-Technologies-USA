@@ -4,8 +4,11 @@ import { ScrollProgress } from "@/components/landing/ScrollProgress";
 import { CursorGlow } from "@/components/landing/CursorGlow";
 import { Hero } from "@/components/landing/Hero";
 import { TrustedMarquee } from "@/components/landing/TrustedMarquee";
+import { ProductionIntro } from "@/components/landing/ProductionIntro";
 import { Services } from "@/components/landing/Services";
 import { Dominate } from "@/components/landing/Dominate";
+import { Benefits } from "@/components/landing/Benefits";
+import { WhyChooseAgency } from "@/components/landing/WhyChooseAgency";
 import { Portfolio } from "@/components/landing/Portfolio";
 import { Process } from "@/components/landing/Process";
 import { Comparison } from "@/components/landing/Comparison";
@@ -25,9 +28,9 @@ const heroVideo = "/media/hero-bg.mp4";
 const heroSide = "/media/cta-bg.png";
 
 export const metadata = createMetadata({
-  title: "ClickMasters — Blockchain & Web3 Development Company",
+  title: "Blockchain Development Company in US | Clickmasters",
   description:
-    "Premium blockchain & Web3 development agency. Smart contracts, DApps, NFT marketplaces, and crypto wallets — engineered with enterprise-grade security.",
+    "Clickmasters is a blockchain development company offering custom blockchain development services, smart contracts, DApps, and Web3 solutions for U.S. businesses.",
   path: "/",
   image: heroSide,
 });
@@ -42,12 +45,15 @@ export default function Index() {
       <main>
         <Hero />
         <TrustedMarquee />
+        <Reveal><ProductionIntro /></Reveal>
         <Reveal><Services /></Reveal>
         <Reveal><Dominate /></Reveal>
+        <Reveal><Benefits /></Reveal>
+        <Reveal><WhyChooseAgency /></Reveal>
+        <Reveal><Audience /></Reveal>
         <Reveal><Portfolio /></Reveal>
         <Reveal><Process /></Reveal>
         <Reveal><Comparison /></Reveal>
-        <Reveal><Audience /></Reveal>
         <Reveal><Testimonials /></Reveal>
         <Reveal><TechStack /></Reveal>
         <Reveal><Awards /></Reveal>

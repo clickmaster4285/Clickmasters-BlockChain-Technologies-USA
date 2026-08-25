@@ -4,28 +4,46 @@ import { Star } from "lucide-react";
 
 const testimonials = [
   {
-    quote: "They audited our DeFi protocol and found zero critical issues post-deploy. Best security team we've worked with in Web3.",
-    name: "Marcus Chen",
-    role: "Founder, Aurora Finance",
-    initials: "MC",
+    quote: "We searched for a blockchain development company near me in Austin and ended up talking to Clickmasters instead — best decision we made. They scoped our lending contracts properly, caught two issues in review before we ever got close to mainnet, and kept us updated every week.",
+    name: "Ryan Coleman",
+    role: "Founder, a DeFi lending startup — Austin, TX",
+    initials: "RC",
     gradient: "linear-gradient(135deg, #D97706, #F59E0B)",
-    category: "DeFi Protocol",
   },
   {
-    quote: "Shipped our NFT marketplace in 12 weeks with cross-chain support. 10K+ daily users in the first month.",
-    name: "Lina Park",
-    role: "Product Lead, Stratos",
-    initials: "LP",
+    quote: "I wasn't sure a blockchain development agency outside Miami could really understand our compliance needs, but Clickmasters asked sharper questions than the local firms we met with. Our fractional ownership platform launched on time and passed audit on the first pass.",
+    name: "Alicia Fernandez",
+    role: "COO, a real estate tokenization platform — Miami, FL",
+    initials: "AF",
     gradient: "linear-gradient(135deg, #64748B, #D97706)",
-    category: "NFT Marketplace",
   },
   {
-    quote: "Engineering quality is enterprise-grade. Our smart contracts have been processing $80M+ for 18 months with zero downtime.",
-    name: "Jonas Weber",
-    role: "CTO, Quorum DAO",
-    initials: "JW",
+    quote: "We'd been burned by an agency before, so we were cautious going in. Clickmasters' process was completely different — documented architecture, weekly demos, no surprises. It's rare to find a blockchain development company that actually explains what they're doing and why.",
+    name: "Daniel Osei",
+    role: "CTO, a supply chain tech company — New York, NY",
+    initials: "DO",
     gradient: "linear-gradient(135deg, #F59E0B, #CBD5E1)",
-    category: "DAO Infrastructure",
+  },
+  {
+    quote: "Our marketplace needed gasless minting and royalty enforcement that actually worked at scale. The team at Clickmasters got it right, and post-launch support has been just as responsive as the build phase.",
+    name: "Priya Nair",
+    role: "Product Lead, an NFT gaming studio — San Francisco, CA",
+    initials: "PN",
+    gradient: "linear-gradient(135deg, #D97706, #64748B)",
+  },
+  {
+    quote: "We looked at a couple of blockchain development companies near Chicago before deciding to go with Clickmasters remotely, and it paid off. They integrated our tracking system with an on-chain ledger without disrupting our existing software — exactly what we needed.",
+    name: "Marcus Whitfield",
+    role: "VP Engineering, a mid-size logistics firm — Chicago, IL",
+    initials: "MW",
+    gradient: "linear-gradient(135deg, #64748B, #10B981)",
+  },
+  {
+    quote: "What stood out was how seriously they took security. Every contract went through review before we touched mainnet, and they were upfront about tradeoffs instead of just telling us what we wanted to hear.",
+    name: "Sarah Kim",
+    role: "Founder, a Web3 wallet startup — Denver, CO",
+    initials: "SK",
+    gradient: "linear-gradient(135deg, #10B981, #D97706)",
   },
 ];
 
@@ -47,24 +65,20 @@ export function Testimonials() {
         <div className="mx-auto max-w-3xl text-center">
           <div className="inline-flex items-center gap-2 rounded-full bg-amber-glow/50 px-3.5 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-amber-base">
             <span className="h-1.5 w-1.5 rounded-full bg-amber-base" />
-            Testimonials
+            Success Stories
           </div>
           <h2 className="mt-5 text-4xl font-bold tracking-tight text-text-primary md:text-5xl">
-            Founders and protocols trust us with{" "}
-            <span className="text-gradient">mission-critical</span> infra
+            Success Stories
           </h2>
         </div>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
+        <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((t) => (
             <figure
               key={t.name}
               className="flex flex-col rounded-2xl border border-border bg-elevated p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-border/40 hover:shadow-soft"
             >
-              <span className="inline-flex w-fit items-center rounded-full border border-border bg-surface px-3 py-1 font-mono text-[10px] uppercase tracking-[0.15em] text-text-muted">
-                {t.category}
-              </span>
-              <div className="mt-4 flex gap-0.5">
+              <div className="flex gap-0.5">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star key={i} className="h-4 w-4 fill-amber-base text-amber-base" />
                 ))}

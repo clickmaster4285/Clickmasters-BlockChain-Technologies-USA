@@ -1,11 +1,12 @@
-import { Coins, Image as ImageIcon, Users, Rocket, Building2 } from "lucide-react";
+import { Building2, Coins, HeartPulse, Image as ImageIcon, ShoppingBag, Truck } from "lucide-react";
 
 const audiences = [
-  { icon: Coins, title: "DeFi Protocols", desc: "Lending, borrowing, DEX aggregation - secure DeFi infrastructure built to scale TVL." },
-  { icon: ImageIcon, title: "NFT Projects", desc: "PFP collections, gaming assets, marketplaces - minting, trading, royalty enforcement." },
-  { icon: Users, title: "DAOs", desc: "Governance modules, treasury management, proposal systems and on-chain voting." },
-  { icon: Rocket, title: "Web3 Startups", desc: "From idea to token launch - full-stack Web3 product development and growth." },
-  { icon: Building2, title: "Enterprises", desc: "Private blockchains, supply chain, tokenization of real-world assets." },
+  { icon: Coins, title: "Finance & DeFi", desc: "Lending platforms, decentralized exchanges, and asset management tools built with security and transaction integrity as top priorities." },
+  { icon: Building2, title: "Real Estate", desc: "Tokenization of property assets and fractional ownership platforms that make investment access simpler and more transparent." },
+  { icon: Truck, title: "Supply Chain & Logistics", desc: "Traceability and verification systems that give every party in a supply chain a shared, tamper-resistant source of truth." },
+  { icon: HeartPulse, title: "Healthcare", desc: "Secure, permissioned data-sharing systems that keep sensitive patient information under the right access controls." },
+  { icon: ImageIcon, title: "Gaming & NFTs", desc: "In-game assets, marketplaces, and reward systems built on token standards that support real ownership and trading." },
+  { icon: ShoppingBag, title: "Retail & E-commerce", desc: "Loyalty programs, provenance verification, and payment infrastructure that bring blockchain technology into everyday transactions." },
 ];
 
 export function Audience() {
@@ -23,14 +24,19 @@ export function Audience() {
         <div className="mx-auto max-w-3xl text-center">
           <div className="inline-flex items-center gap-2 rounded-full bg-amber-glow/50 px-3.5 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-amber-base">
             <span className="h-1.5 w-1.5 rounded-full bg-amber-base" />
-            Who we serve
+            Industries We Serve
           </div>
           <h2 className="mt-5 text-4xl font-bold tracking-tight text-text-primary md:text-5xl">
-            Built for the teams shaping <span className="text-gradient">Web3</span>
+            Blockchain implementation services shaped around{" "}
+            <span className="text-gradient">real industry use cases</span>
           </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-text-secondary md:text-lg">
+            Our blockchain implementation services are shaped around how different industries
+            actually use this technology:
+          </p>
         </div>
 
-        <div className="mt-14 grid gap-5 md:grid-cols-3 lg:grid-cols-5">
+        <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {audiences.map((a) => (
             <article
               key={a.title}

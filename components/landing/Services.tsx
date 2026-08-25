@@ -33,12 +33,14 @@ export function Services() {
             Services
           </div>
           <h2 className="mt-5 text-4xl font-bold tracking-tight text-text-primary md:text-5xl">
-            Full-spectrum{" "}
-            <span className="text-gradient">blockchain engineering</span>
+            Our Blockchain{" "}
+            <span className="text-gradient">Development Services</span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-text-secondary md:text-lg">
-            From Solidity protocol design to mainnet launch — we build EVM-compatible
-            infrastructure for DeFi, NFT, and DAO platforms.
+            Clickmasters offers full-spectrum blockchain development services for teams
+            building on-chain products from the ground up, and for organizations adding
+            blockchain technology into systems that already exist. Below is an overview of
+            the core blockchain development solutions we deliver.
           </p>
         </div>
 
@@ -54,13 +56,18 @@ export function Services() {
                 {/* Hover glow */}
                 <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-amber-glow opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100" />
                 <div className="relative">
-                  <div className={`mb-5 inline-flex h-14 w-14 items-center justify-center rounded-xl border ${accentMap[s.accent]}`}>
-                    <Icon className="h-7 w-7" strokeWidth={1.5} />
+                  <div className="mb-5 flex items-center justify-between gap-4">
+                    <div className={`inline-flex h-14 w-14 items-center justify-center rounded-xl border ${accentMap[s.accent]}`}>
+                      <Icon className="h-7 w-7" strokeWidth={1.5} />
+                    </div>
+                    <span className="font-mono text-xs font-semibold text-text-muted">
+                      0{blockchainServices.findIndex((item) => item.slug === s.slug) + 1}
+                    </span>
                   </div>
                   <h3 className="text-xl font-semibold text-text-primary md:text-2xl">{s.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-text-secondary">{s.fullDescription}</p>
                   <div className="mt-5 flex flex-wrap gap-2">
-                    {s.technologies.map((t) => (
+                    {s.benefits.map((t) => (
                       <span
                         key={t}
                         className="rounded-full border border-border bg-bg-base/50 px-2.5 py-0.5 font-mono text-[11px] text-text-muted"
@@ -74,7 +81,7 @@ export function Services() {
                     className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-amber-base opacity-0 transition-all group-hover:opacity-100 group-focus-visible:opacity-100"
                     tabIndex={-1}
                   >
-                    Book a Strategy Call
+                    Discuss this service
                     <ArrowRight className="h-3.5 w-3.5" />
                   </Link>
                 </div>
@@ -94,13 +101,18 @@ export function Services() {
               >
                 <div className="pointer-events-none absolute -right-12 -top-12 h-36 w-36 rounded-full bg-amber-glow opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100" />
                 <div className="relative">
-                  <div className={`mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg border ${accentMap[s.accent]}`}>
-                    <Icon className="h-5 w-5" strokeWidth={1.5} />
+                  <div className="mb-4 flex items-center justify-between gap-4">
+                    <div className={`inline-flex h-11 w-11 items-center justify-center rounded-lg border ${accentMap[s.accent]}`}>
+                      <Icon className="h-5 w-5" strokeWidth={1.5} />
+                    </div>
+                    <span className="font-mono text-[11px] font-semibold text-text-muted">
+                      {String(blockchainServices.findIndex((item) => item.slug === s.slug) + 1).padStart(2, "0")}
+                    </span>
                   </div>
                   <h3 className="text-lg font-semibold text-text-primary">{s.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-text-secondary">{s.fullDescription}</p>
                   <div className="mt-4 flex flex-wrap gap-1.5">
-                    {s.technologies.slice(0, 4).map((t) => (
+                    {s.benefits.slice(0, 3).map((t) => (
                       <span
                         key={t}
                         className="rounded-full border border-border bg-bg-base/50 px-2 py-0.5 font-mono text-[10px] text-text-muted"
@@ -114,7 +126,7 @@ export function Services() {
                     className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-amber-base opacity-0 transition-all group-hover:opacity-100 group-focus-visible:opacity-100"
                     tabIndex={-1}
                   >
-                    Book a Strategy Call
+                    Discuss this service
                     <ArrowRight className="h-3.5 w-3.5" />
                   </Link>
                 </div>

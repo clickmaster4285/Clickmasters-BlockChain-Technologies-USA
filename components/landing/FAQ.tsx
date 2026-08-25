@@ -4,36 +4,36 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 
 const faqs = [
   {
-    q: "Which blockchains do you support?",
-    a: "Ethereum, Polygon, Solana, BNB Chain, Avalanche, Arbitrum, Optimism, Base, and more - both EVM and non-EVM ecosystems.",
+    q: "What does a blockchain development company actually do?",
+    a: "A blockchain development company designs, builds, and secures software that runs on a blockchain — including smart contracts, decentralized applications, wallets, and the systems that connect them to a business's existing tools. At Clickmasters, that also includes the planning and security work that happens before and after the build.",
   },
   {
-    q: "Do you audit smart contracts?",
-    a: "Yes - we provide formal verification in-house plus third-party audits from partners like CertiK and Hacken before mainnet deploy.",
+    q: "How much do blockchain development services cost?",
+    a: "Cost depends on scope: a single audited smart contract is a much smaller project than a full platform with a custom token and mobile app. Most engagements are priced after a short discovery phase, once requirements are clear, so you get a fixed quote instead of an open-ended estimate.",
   },
   {
-    q: "Can you build cross-chain DApps?",
-    a: "Absolutely. We integrate LayerZero, Wormhole, Chainlink CCIP and native bridges depending on your security and latency requirements.",
+    q: "How long does it take to build a blockchain application?",
+    a: "A focused smart contract or MVP can often be delivered in a matter of weeks, while a full platform with multiple integrations typically takes a few months. Timelines are set during the discovery phase based on your specific requirements.",
   },
   {
-    q: "What's your typical timeline for a DApp?",
-    a: "MVP DApps ship in 8-12 weeks. Larger protocols with custom tokenomics and multi-chain support typically run 12-16 weeks.",
+    q: "Which blockchains do you build on?",
+    a: "We primarily work with Ethereum and EVM-compatible networks such as Polygon, Arbitrum, and Base, along with Solana and enterprise ledger frameworks for permissioned use cases. Chain selection is part of our consulting process.",
   },
   {
-    q: "Do you provide post-launch support?",
-    a: "Yes - 24/7 on-chain monitoring, incident response, maintenance plans, and contract upgrade paths via proxy patterns.",
+    q: "Do you offer custom blockchain development, or only pre-built templates?",
+    a: "Both, depending on what fits the project. Many products can launch faster on proven, audited standards, but when a business model needs something a template can't support, our custom blockchain development team builds it from the ground up.",
   },
   {
-    q: "How do you handle security?",
-    a: "Defense in depth: multiple audits, fuzz testing, bug bounties, multi-sig wallets, time-locks, and continuous on-chain alerting.",
+    q: "Is blockchain technology only for finance and crypto companies?",
+    a: "No. While DeFi is a common use case, blockchain technology solutions are increasingly used in supply chain tracking, healthcare data sharing, real estate tokenization, gaming, and loyalty programs — anywhere verified, tamper-resistant records add value.",
   },
   {
-    q: "How much does blockchain development cost?",
-    a: "Smart contracts start at $8,000. Full DeFi protocols range from $150,000 to $500,000 depending on scope. We provide a fixed-price quote after the discovery phase - no hourly surprises.",
+    q: "Do you handle security audits for smart contracts?",
+    a: "Yes. Every contract we write goes through internal security review before launch, and we can also review and audit smart contracts from an existing codebase as a standalone engagement.",
   },
   {
-    q: "Do you sign NDAs before the first call?",
-    a: "Yes - a mutual NDA is signed before any discovery call. All case studies are anonymized. Your project details, architecture, and code remain confidential.",
+    q: "Do you provide support after the project launches?",
+    a: "Yes. Blockchain products need ongoing monitoring, updates, and occasional scaling work, and our team stays engaged after launch rather than handing off the project and moving on.",
   },
 ];
 
@@ -48,10 +48,11 @@ export function FAQ() {
             FAQ
           </div>
           <h2 className="mt-5 text-4xl font-bold tracking-tight text-text-primary md:text-5xl">
-            Answers before you ask
+            Frequently Asked Questions
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-text-secondary">
-            Everything founders and protocols ask us before kicking off a Web3 engagement.
+            Straight answers to the questions we hear most often from clients evaluating a
+            blockchain development company.
           </p>
         </div>
 

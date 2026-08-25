@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Mail, Phone, MessageCircle } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { VideoWithFallback } from "@/components/media/VideoWithFallback";
 
 const ctaVideo = "/media/cta.mp4";
@@ -39,46 +39,21 @@ export function FinalCTA() {
       </div>
 
       <div className="site-container relative px-6 text-center">
-        <p className="font-display text-3xl italic tracking-tight md:text-4xl" style={{ color: "rgba(255,255,255,0.8)" }}>
-          build the future on-chain
-        </p>
-        <h2 className="mt-3 text-3xl font-bold tracking-tight text-white md:text-5xl lg:text-6xl">
+        <h2 className="text-3xl font-bold tracking-tight text-white md:text-5xl lg:text-6xl">
           Start Your Blockchain Project
         </h2>
         <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed md:text-lg" style={{ color: "rgba(255,255,255,0.8)" }}>
-          Tell us about your protocol, product or DAO. Our engineers will reply within 24 hours with a scoped plan.
-        </p>
-        <p className="mt-3 text-sm" style={{ color: "rgba(255,255,255,0.65)" }}>
-          Mutual NDA signed before the first call. Fixed-price quotes after discovery.
+          Tell us about your product, protocol, or platform idea. Our team will respond with
+          a scoped plan and honest read on timeline and cost — no pressure, no jargon.
         </p>
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
           <a
-            href="mailto:sales@clickmastersdigitalmarketing.com"
+            href="/contact"
             className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-amber-dim shadow-lg transition-all hover:-translate-y-0.5 hover:shadow-xl active:scale-[0.98]"
           >
-            <Mail className="h-4 w-4" /> Email us
+            Book a Free Strategy Call
             <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
-          </a>
-          <a
-            href="tel:+13252024074"
-            className="inline-flex items-center gap-2 rounded-full border px-6 py-3 text-sm font-semibold text-white backdrop-blur transition-all hover:-translate-y-0.5 active:scale-[0.98]"
-            style={{
-              borderColor: "rgba(255,255,255,0.3)",
-              background: "rgba(255,255,255,0.1)",
-            }}
-            onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.2)" }}
-            onMouseLeave={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.1)" }}
-          >
-            <Phone className="h-4 w-4" /> +1 325 202 4074
-          </a>
-          <a
-            href="https://wa.me/13252024074"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-6 py-3 text-sm font-semibold text-white shadow-lg transition-all hover:-translate-y-0.5 hover:shadow-xl active:scale-[0.98]"
-          >
-            <MessageCircle className="h-4 w-4" /> WhatsApp
           </a>
         </div>
       </div>
