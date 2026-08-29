@@ -102,7 +102,7 @@ export default function ContactPage() {
 
     try {
       const response = await fetch(
-        "https://crm.clickmasters.pk/api/leads",
+        "/api/contact",
         {
           method: "POST",
 
@@ -129,7 +129,7 @@ export default function ContactPage() {
       form.reset();
     } catch (error) {
       console.error(
-        "CRM lead submission failed:",
+        "Contact form submission failed:",
         error,
       );
 
