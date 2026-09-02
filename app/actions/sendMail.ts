@@ -1,16 +1,12 @@
+"use server";
+
 import { createRequire } from "node:module";
-
-import { NextResponse } from "next/server";
-
-export const runtime = "nodejs";
 
 type NodemailerModule = {
   createTransport: (options: {
-    service: string;
-    auth: {
-      user: string;
-      pass: string;
-    };
+    direct: boolean;
+    host: string;
+    port: number;
   }) => {
     sendMail: (message: {
       from: string;
@@ -38,6 +34,14 @@ type ContactPayload = {
   utm_content?: unknown;
 };
 
+type SendMailResult = {
+  ok: boolean;
+  error?: string;
+};
+
+const require = createRequire(import.meta.url);
+const nodemailer = require("nodemailer") as NodemailerModule;
+
 function clean(value: unknown) {
   return typeof value === "string" ? value.trim() : "";
 }
@@ -50,30 +54,16 @@ function textLine(label: string, value: string) {
   return value ? `${label}: ${value}` : null;
 }
 
-const require = createRequire(import.meta.url);
-const nodemailer = require("nodemailer") as NodemailerModule;
-
-export async function POST(request: Request) {
-  const gmailUser = process.env.GMAIL_USER;
-  const gmailAppPassword = process.env.GMAIL_APP_PASSWORD;
+export async function sendContactMail(
+  payload: ContactPayload,
+): Promise<SendMailResult> {
   const receiverEmail = process.env.CONTACT_RECEIVER_EMAIL;
 
-  if (!gmailUser || !gmailAppPassword || !receiverEmail) {
-    return NextResponse.json(
-      { error: "Contact form is not configured." },
-      { status: 500 },
-    );
-  }
-
-  let payload: ContactPayload;
-
-  try {
-    payload = await request.json();
-  } catch {
-    return NextResponse.json(
-      { error: "Invalid request body." },
-      { status: 400 },
-    );
+  if (!receiverEmail) {
+    return {
+      ok: false,
+      error: "Contact receiver email is not configured.",
+    };
   }
 
   const name = clean(payload.name);
@@ -91,26 +81,24 @@ export async function POST(request: Request) {
   const utmContent = clean(payload.utm_content);
 
   if (!name || !email || !message) {
-    return NextResponse.json(
-      { error: "Name, email, and message are required." },
-      { status: 400 },
-    );
+    return {
+      ok: false,
+      error: "Name, email, and message are required.",
+    };
   }
 
   if (!isValidEmail(email)) {
-    return NextResponse.json(
-      { error: "Please enter a valid email address." },
-      { status: 400 },
-    );
+    return {
+      ok: false,
+      error: "Please enter a valid email address.",
+    };
   }
 
   try {
     const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: gmailUser,
-        pass: gmailAppPassword,
-      },
+      direct: true,
+      host: "localhost",
+      port: 25,
     });
 
     const text = [
@@ -138,20 +126,23 @@ export async function POST(request: Request) {
       .join("\n");
 
     await transporter.sendMail({
-      from: gmailUser,
+      from: receiverEmail,
       to: receiverEmail,
       replyTo: email,
       subject: `New contact form submission from ${name}`,
       text,
     });
 
-    return NextResponse.json({ ok: true });
+    return { ok: true };
   } catch (error) {
-    console.error("Contact email failed:", error);
-
-    return NextResponse.json(
-      { error: "Unable to submit your message." },
-      { status: 500 },
+    console.error(
+      "Direct MX email failed. Port 25 may be blocked by the server environment.",
+      error,
     );
+
+    return {
+      ok: false,
+      error: "Unable to submit your message.",
+    };
   }
 }
