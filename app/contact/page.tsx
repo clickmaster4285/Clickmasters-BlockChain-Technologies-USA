@@ -14,6 +14,7 @@ import {
 
 import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
+import { sendContactMail } from "@/app/actions/sendMail";
 
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -101,26 +102,11 @@ export default function ContactPage() {
     };
 
     try {
-      const response = await fetch(
-        "/api/contact",
-        {
-          method: "POST",
+      const result = await sendContactMail(payload);
 
-          headers: {
-            "Content-Type": "application/json",
-          },
-
-          body: JSON.stringify(payload),
-        },
-      );
-
-      const responseData = await response
-        .json()
-        .catch(() => null);
-
-      if (!response.ok) {
+      if (!result.ok) {
         throw new Error(
-          responseData?.error ||
+          result.error ||
             "Unable to submit your message.",
         );
       }
