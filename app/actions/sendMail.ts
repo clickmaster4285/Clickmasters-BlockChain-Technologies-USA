@@ -54,6 +54,53 @@ function textLine(label: string, value: string) {
   return value ? `${label}: ${value}` : null;
 }
 
+const CRM_LEAD_ENDPOINT =
+  process.env.CRM_LEAD_ENDPOINT || "https://crm.clickmasters.pk/api/leads";
+
+type CrmLead = {
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
+  website: string;
+  service: string;
+  landingPage: string;
+  referrer: string;
+  utm_source: string;
+  utm_medium: string;
+  utm_campaign: string;
+  utm_term: string;
+  utm_content: string;
+};
+
+async function submitLeadToCrm(lead: CrmLead): Promise<boolean> {
+  try {
+    const response = await fetch(CRM_LEAD_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(lead),
+      cache: "no-store",
+      signal: AbortSignal.timeout(10_000),
+    });
+
+    if (!response.ok) {
+      const detail = await response.text().catch(() => "");
+
+      console.error(
+        `CRM lead submission failed (${response.status}): ${detail}`,
+      );
+
+      return false;
+    }
+
+    return true;
+  } catch (error) {
+    console.error("CRM lead submission failed:", error);
+
+    return false;
+  }
+}
+
 export async function sendContactMail(
   payload: ContactPayload,
 ): Promise<SendMailResult> {
@@ -95,50 +142,81 @@ export async function sendContactMail(
   }
 
   try {
-    const transporter = nodemailer.createTransport({
-      direct: true,
-      host: "localhost",
-      port: 25,
-    });
-
-    const text = [
-      "New contact form submission",
-      "",
-      textLine("Name", name),
-      textLine("Email", email),
-      textLine("Phone", phone),
-      textLine("Service", service),
-      textLine("Website", website),
-      "",
-      "Message:",
+    const crmSubmitted = await submitLeadToCrm({
+      name,
+      email,
+      phone,
       message,
-      "",
-      "Submission context:",
-      textLine("Landing Page", landingPage),
-      textLine("Referrer", referrer),
-      textLine("UTM Source", utmSource),
-      textLine("UTM Medium", utmMedium),
-      textLine("UTM Campaign", utmCampaign),
-      textLine("UTM Term", utmTerm),
-      textLine("UTM Content", utmContent),
-    ]
-      .filter((line) => line !== null)
-      .join("\n");
-
-    await transporter.sendMail({
-      from: receiverEmail,
-      to: receiverEmail,
-      replyTo: email,
-      subject: `New contact form submission from ${name}`,
-      text,
+      website,
+      service,
+      landingPage,
+      referrer,
+      utm_source: utmSource,
+      utm_medium: utmMedium,
+      utm_campaign: utmCampaign,
+      utm_term: utmTerm,
+      utm_content: utmContent,
     });
+
+    try {
+      const transporter = nodemailer.createTransport({
+        direct: true,
+        host: "localhost",
+        port: 25,
+      });
+
+      const text = [
+        "New contact form submission",
+        "",
+        textLine("Name", name),
+        textLine("Email", email),
+        textLine("Phone", phone),
+        textLine("Service", service),
+        textLine("Website", website),
+        "",
+        "Message:",
+        message,
+        "",
+        "Submission context:",
+        textLine("Landing Page", landingPage),
+        textLine("Referrer", referrer),
+        textLine("UTM Source", utmSource),
+        textLine("UTM Medium", utmMedium),
+        textLine("UTM Campaign", utmCampaign),
+        textLine("UTM Term", utmTerm),
+        textLine("UTM Content", utmContent),
+      ]
+        .filter((line) => line !== null)
+        .join("\n");
+
+      await transporter.sendMail({
+        from: receiverEmail,
+        to: receiverEmail,
+        replyTo: email,
+        subject: `New contact form submission from ${name}`,
+        text,
+      });
+    } catch (error) {
+      console.error(
+        "Direct MX email failed. Port 25 may be blocked by the server environment.",
+        error,
+      );
+
+      if (crmSubmitted) {
+        return { ok: true };
+      }
+    }
+
+    if (!crmSubmitted) {
+      return {
+        ok: false,
+        error: "Unable to submit your message.",
+      };
+    }
 
     return { ok: true };
   } catch (error) {
-    console.error(
-      "Direct MX email failed. Port 25 may be blocked by the server environment.",
-      error,
-    );
+    console.error("Contact form submission failed:", error);
 
     return {
       ok: false,
