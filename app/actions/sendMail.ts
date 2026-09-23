@@ -55,7 +55,7 @@ function textLine(label: string, value: string) {
 }
 
 const CRM_LEAD_ENDPOINT =
-  process.env.CRM_LEAD_ENDPOINT || "https://crm.clickmasters.pk/api/leads";
+  process.env.CRM_LEAD_ENDPOINT || "https://apierp.clickmasters.pk/public/web-leads";
 
 type CrmLead = {
   name: string;
@@ -77,7 +77,7 @@ async function submitLeadToCrm(lead: CrmLead): Promise<boolean> {
   try {
     const response = await fetch(CRM_LEAD_ENDPOINT, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json" , "X-Website-Key": "wl_45bdfa9c0016ea666a27b597aef89f7482d7c51506cdbe51" },
       body: JSON.stringify(lead),
       cache: "no-store",
       signal: AbortSignal.timeout(10_000),
