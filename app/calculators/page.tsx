@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import {
   ArrowRight,
   BarChart3,
@@ -106,7 +107,18 @@ const resourceSymbols: Record<CalculatorResourceType, string> = {
    Main Page
 ========================================================= */
 
-export default function CalculatorsPage() {
+export default async function CalculatorsPage({
+  searchParams,
+}: {
+  searchParams?: Promise<{ page?: string }>;
+}) {
+  const params = searchParams ? await searchParams : {};
+  const requestedPage = Number(params.page || "1");
+
+  if (Number.isInteger(requestedPage) && requestedPage > 1) {
+    redirect(CALCULATORS_BASE_PATH);
+  }
+
   const calculators = getCalculatorCards();
 
   const interactiveResources = calculators.filter(

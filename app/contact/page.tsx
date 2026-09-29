@@ -157,7 +157,13 @@ export default function ContactPage() {
               onSubmit={handleSubmit}
               className="rounded-3xl border border-border bg-surface p-6 md:p-8"
             >
-              <div className="grid gap-5">
+              <h2 className="text-2xl font-bold tracking-tight text-text-primary">
+                Send a project brief
+              </h2>
+              <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                Share the product, timeline, and chain so we can reply with a scoped plan.
+              </p>
+              <div className="mt-6 grid gap-5">
                 <div className="grid gap-2">
                   <Label htmlFor="name">
                     Name
@@ -350,6 +356,9 @@ export default function ContactPage() {
             </form>
 
             <div className="space-y-4">
+              <h2 className="text-2xl font-bold tracking-tight text-text-primary">
+                Talk to the team
+              </h2>
               <a
                 href="mailto:sales@clickmastersdigitalmarketing.com"
                 className="flex items-center gap-4 rounded-2xl border border-border bg-surface p-5 transition-colors hover:border-primary"

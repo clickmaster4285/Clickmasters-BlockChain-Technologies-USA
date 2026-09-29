@@ -151,7 +151,14 @@ export default async function HowToPage({
 
           <section id="guides" className="mt-20">
 
-            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            <h2 className="max-w-3xl text-3xl font-black leading-tight text-text-primary md:text-4xl">
+              Implementation guides
+            </h2>
+            <p className="mt-3 max-w-2xl text-base leading-7 text-silver">
+              Step-by-step blockchain tutorials for founders, developers, and enterprise teams.
+            </p>
+
+            <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
 
               {guides.map((guide, index) => (
                 <HowToCard

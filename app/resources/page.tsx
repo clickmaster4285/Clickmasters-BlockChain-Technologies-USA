@@ -1,3 +1,5 @@
+import { redirect } from "next/navigation";
+
 import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import BackToTop from "@/components/ui/BackToTop";
@@ -16,6 +18,7 @@ type ResourcesPageProps = {
   searchParams: Promise<{
     search?: string;
     category?: string;
+    page?: string;
   }>;
 };
 
@@ -41,6 +44,17 @@ export default async function ResourcesPage({
   searchParams,
 }: ResourcesPageProps) {
   const params = await searchParams;
+  const requestedPage = Number(params.page || "1");
+
+  if (Number.isInteger(requestedPage) && requestedPage > 1) {
+    redirect(
+      getPageHref("/resources", 1, {
+        search: typeof params.search === "string" ? params.search : undefined,
+        category:
+          typeof params.category === "string" ? params.category : undefined,
+      }),
+    );
+  }
 
   const initialSearch =
     typeof params.search === "string"
