@@ -128,9 +128,9 @@ export default function ResourceCard({
             {item.category || "Resource"}
           </p>
 
-          <h3 className="line-clamp-2 text-sm font-black leading-6 text-slate-100 transition-colors duration-300 group-hover:text-amber-100">
+          <h2 className="line-clamp-2 text-sm font-black leading-6 text-slate-100 transition-colors duration-300 group-hover:text-amber-100">
             {item.title}
-          </h3>
+          </h2>
         </div>
 
         <ArrowUpRight className="relative mt-1 h-4 w-4 shrink-0 text-slate-400 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-amber-base" />
@@ -181,9 +181,9 @@ export default function ResourceCard({
               )}
             </div>
 
-            <h3 className="max-w-3xl text-3xl font-black leading-tight text-white sm:text-4xl">
+            <h2 className="max-w-3xl text-3xl font-black leading-tight text-white sm:text-4xl">
               {item.title}
-            </h3>
+            </h2>
 
             {item.excerpt && (
               <p className="mt-5 max-w-2xl line-clamp-3 text-sm font-medium leading-7 text-slate-300 sm:text-base">
@@ -238,9 +238,9 @@ export default function ResourceCard({
               )}
             </div>
 
-            <h3 className="line-clamp-3 text-xl font-black leading-7 text-white transition-colors duration-300 group-hover:text-amber-100">
+            <h2 className="line-clamp-3 text-xl font-black leading-7 text-white transition-colors duration-300 group-hover:text-amber-100">
               {item.title}
-            </h3>
+            </h2>
           </div>
 
           <ResourceVisual

@@ -113,9 +113,9 @@ export default function CaseStudiesCTA({
                       Typical engagement
                     </p>
 
-                    <h3 className="mt-2 text-xl font-black text-white">
+                    <h2 className="mt-2 text-xl font-black text-white">
                       From challenge to impact
-                    </h3>
+                    </h2>
                   </div>
 
                   <span className="grid h-11 w-11 place-items-center rounded-2xl border border-amber-400/20 bg-amber-400/[0.08] text-amber-400">
@@ -159,9 +159,9 @@ export default function CaseStudiesCTA({
                       </span>
 
                       <div>
-                        <h4 className="text-sm font-black text-white">
+                        <h2 className="text-sm font-black text-white">
                           {step.title}
-                        </h4>
+                        </h2>
 
                         <p className="mt-1 text-xs font-medium leading-5 text-[#758398]">
                           {step.description}

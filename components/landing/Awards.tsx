@@ -75,9 +75,9 @@ export function Awards() {
                     {a.year}
                   </span>
                 </div>
-                <h3 className="relative mt-5 text-base font-bold leading-tight text-text-primary">
+                <h2 className="relative mt-5 text-base font-bold leading-tight text-text-primary">
                   {a.title}
-                </h3>
+                </h2>
                 <p className="relative mt-1.5 font-mono text-[11px] uppercase tracking-wider text-text-secondary">
                   by {a.body}
                 </p>

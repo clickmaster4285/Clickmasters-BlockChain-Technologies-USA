@@ -81,9 +81,9 @@ export default function CTABand({ ctas, title }: { ctas: CostCTAItem[]; title: s
                 <div className="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-amber-base/20 via-emerald-base/20 to-amber-base/20 opacity-50 blur-sm" />
                 
                 <div className="relative">
-                  <h3 className="mb-6 text-xl font-semibold text-text-primary">
+                  <h2 className="mb-6 text-xl font-semibold text-text-primary">
                     Request a Web3 Development Proposal
-                  </h3>
+                  </h2>
                   
                   <form onSubmit={handleSubmit} className="space-y-4">
                     <div className="group">

@@ -159,9 +159,9 @@ export default function CaseStudyResults({
                     {result.value}
                   </p>
 
-                  <h3 className="mt-4 text-base font-black text-white">
+                  <h2 className="mt-4 text-base font-black text-white">
                     {result.label}
-                  </h3>
+                  </h2>
 
                   <p className="mt-3 text-sm font-medium leading-6 text-[#8492a6]">
                     {result.description}
@@ -191,9 +191,9 @@ export default function CaseStudyResults({
                 How we measure success
               </p>
 
-              <h3 className="mt-4 text-2xl font-black tracking-[-0.03em] text-white sm:text-3xl">
+              <h2 className="mt-4 text-2xl font-black tracking-[-0.03em] text-white sm:text-3xl">
                 Every decision connects back to a measurable objective.
-              </h3>
+              </h2>
 
               <p className="mt-4 text-sm font-medium leading-7 text-[#8896aa]">
                 From acquisition and conversion to retention and revenue, every
@@ -230,9 +230,9 @@ export default function CaseStudyResults({
                       <Icon className="h-4 w-4" />
                     </span>
 
-                    <h4 className="mt-4 text-sm font-black text-white">
+                    <h2 className="mt-4 text-sm font-black text-white">
                       {item.title}
-                    </h4>
+                    </h2>
 
                     <p className="mt-2 text-xs font-medium leading-5 text-[#748196]">
                       {item.description}

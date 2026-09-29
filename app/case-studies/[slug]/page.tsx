@@ -126,9 +126,9 @@ function ContentRenderer({ blocks }: { blocks: ContentBlock[] }) {
             return (
               <div key={index} className="grid gap-3">
                 {block.title && (
-                  <h3 className="text-xl font-black text-text-primary">
+                  <h2 className="text-xl font-black text-text-primary">
                     {block.title}
-                  </h3>
+                  </h2>
                 )}
 
                 {block.items?.map((item, itemIndex) => (
@@ -560,9 +560,9 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                       <p className="text-xs font-black uppercase tracking-[0.16em] text-amber-base">
                         {item.industry}
                       </p>
-                      <h3 className="mt-3 line-clamp-2 text-lg font-black leading-snug text-text-primary">
+                      <h2 className="mt-3 line-clamp-2 text-lg font-black leading-snug text-text-primary">
                         {item.title}
-                      </h3>
+                      </h2>
                       <p className="mt-3 line-clamp-3 text-sm leading-7 text-text-secondary">
                         {item.excerpt}
                       </p>

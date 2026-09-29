@@ -41,7 +41,10 @@ export async function generateMetadata({
     title: "Blockchain Glossary",
     description:
       "Explore simple definitions, practical examples, technical explanations, and real-world uses of blockchain, crypto, Web3, DeFi, smart-contract, and enterprise terminology.",
-    path: getPageHref("/glossary", currentPage),
+    path: getPageHref("/glossary", currentPage, {
+      letter: resolvedSearchParams?.letter,
+      search: resolvedSearchParams?.search,
+    }),
   });
 }
 
@@ -271,9 +274,9 @@ export default async function GlossaryPage({
               <div className="rounded-[2rem] border border-white/10 bg-surface/80 p-10 text-center md:p-16">
                 <BookOpen className="mx-auto h-12 w-12 text-amber-base" />
 
-                <h3 className="mt-5 text-2xl font-black text-text-primary">
+                <h2 className="mt-5 text-2xl font-black text-text-primary">
                   No glossary terms found
-                </h3>
+                </h2>
 
                 <p className="mx-auto mt-3 max-w-xl text-sm leading-7 text-silver">
                   Try another search phrase or choose a different letter from

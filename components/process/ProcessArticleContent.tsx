@@ -132,23 +132,23 @@ function ArticleHeading({
 
   if (level === 4) {
     return (
-      <h4
+      <h2
         id={headingId}
         className={classes}
       >
         {block.text}
-      </h4>
+      </h2>
     );
   }
 
   if (level === 3) {
     return (
-      <h3
+      <h2
         id={headingId}
         className={classes}
       >
         {block.text}
-      </h3>
+      </h2>
     );
   }
 

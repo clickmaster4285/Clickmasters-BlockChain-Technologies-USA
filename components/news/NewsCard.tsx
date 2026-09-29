@@ -44,13 +44,13 @@ export default function NewsCard({
           </span>
         </div>
 
-        <h3
+        <h2
           className={`font-black leading-tight text-text-primary transition-colors duration-300 group-hover:text-amber-base ${
             featured ? "text-2xl md:text-3xl" : "text-xl"
           }`}
         >
           {item.title}
-        </h3>
+        </h2>
 
         <p className="mt-4 flex-1 text-sm leading-7 text-silver">
           {item.excerpt}

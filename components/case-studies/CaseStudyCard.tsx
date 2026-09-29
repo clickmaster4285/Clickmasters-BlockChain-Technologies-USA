@@ -100,9 +100,9 @@ export default function CaseStudyCard({
                 </span>
               </div>
 
-              <h3 className="mt-6 text-3xl font-black leading-[1.08] tracking-[-0.04em] text-white sm:text-4xl">
+              <h2 className="mt-6 text-3xl font-black leading-[1.08] tracking-[-0.04em] text-white sm:text-4xl">
                 {item.title}
-              </h3>
+              </h2>
 
               <p className="mt-5 text-sm font-medium leading-7 text-[#8d9aae] sm:text-base">
                 {item.excerpt}
@@ -170,9 +170,9 @@ export default function CaseStudyCard({
             {item.industry || "Case Study"}
           </p>
 
-          <h3 className="mt-2 line-clamp-2 text-sm font-black leading-5 text-white">
+          <h2 className="mt-2 line-clamp-2 text-sm font-black leading-5 text-white">
             {item.title}
-          </h3>
+          </h2>
 
           {item.result && (
             <p className="mt-2 text-xs font-bold text-emerald-300">
@@ -264,9 +264,9 @@ export default function CaseStudyCard({
             )}
           </div>
 
-          <h3 className="mt-4 text-xl font-black leading-[1.2] tracking-[-0.025em] text-white transition-colors duration-300 group-hover:text-amber-300 sm:text-2xl">
+          <h2 className="mt-4 text-xl font-black leading-[1.2] tracking-[-0.025em] text-white transition-colors duration-300 group-hover:text-amber-300 sm:text-2xl">
             {item.title}
-          </h3>
+          </h2>
 
           <p className="mt-4 line-clamp-3 text-sm font-medium leading-6 text-[#8592a6]">
             {item.excerpt}

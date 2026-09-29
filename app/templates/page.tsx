@@ -67,7 +67,10 @@ export async function generateMetadata({
     title: "Blockchain Templates",
     description:
       "Use practical templates for blockchain planning, project documentation, technical architecture, security, tokenomics, proposals, and enterprise delivery.",
-    path: getPageHref("/templates", currentPage),
+    path: getPageHref("/templates", currentPage, {
+      category: resolvedSearchParams?.category,
+      search: resolvedSearchParams?.search,
+    }),
   });
 }
 
@@ -81,7 +84,7 @@ export default async function TemplatesPage({
     1
   );
 
-  const selectedCategory =
+  const requestedCategory =
     resolvedSearchParams?.category?.trim() || "All";
 
   const searchQuery =
@@ -89,6 +92,14 @@ export default async function TemplatesPage({
 
   const allTemplates = getTemplateCards();
   const categories = getTemplateCategories();
+  const selectedCategory =
+    categories.find(
+      (category: string) =>
+        category.toLowerCase() === requestedCategory.toLowerCase()
+    ) ||
+    (requestedCategory.toLowerCase() === "all"
+      ? "All"
+      : requestedCategory);
   const featuredTemplates = getFeaturedTemplates(3);
 
   const normalizedSearch = searchQuery.toLowerCase();
@@ -140,19 +151,10 @@ export default async function TemplatesPage({
   }
 
   function createCategoryHref(category: string) {
-    const params = new URLSearchParams();
-
-    if (category.toLowerCase() !== "all") {
-      params.set("category", category);
-    }
-
-    if (searchQuery) {
-      params.set("search", searchQuery);
-    }
-
-    const query = params.toString();
-
-    return query ? `/templates?${query}` : "/templates";
+    return getPageHref("/templates", 1, {
+      category: category.toLowerCase() !== "all" ? category : undefined,
+      search: searchQuery || undefined,
+    });
   }
 
   return (
@@ -246,9 +248,9 @@ export default async function TemplatesPage({
                             </span>
                           </div>
 
-                          <h3 className="mt-4 text-sm font-black text-text-primary">
+                          <h2 className="mt-4 text-sm font-black text-text-primary">
                             {benefit.title}
-                          </h3>
+                          </h2>
 
                           <p className="mt-2 text-xs leading-5 text-text-secondary">
                             {benefit.description}
@@ -322,9 +324,9 @@ export default async function TemplatesPage({
                       </span>
                     </div>
 
-                    <h3 className="mt-7 text-2xl font-black leading-tight text-text-primary">
+                    <h2 className="mt-7 text-2xl font-black leading-tight text-text-primary">
                       Project-ready documentation
-                    </h3>
+                    </h2>
 
                     <div className="mt-6 space-y-3">
                       <div className="h-2.5 w-full rounded-full bg-silver-dim/55" />
@@ -510,9 +512,9 @@ export default async function TemplatesPage({
                     <FileText className="h-9 w-9" />
                   </span>
 
-                  <h3 className="mt-6 text-2xl font-black text-text-primary">
+                  <h2 className="mt-6 text-2xl font-black text-text-primary">
                     No templates found
-                  </h3>
+                  </h2>
 
                   <p className="mx-auto mt-3 max-w-xl text-sm leading-7 text-text-secondary">
                     Try another search phrase or choose a different template

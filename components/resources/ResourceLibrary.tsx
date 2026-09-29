@@ -545,9 +545,9 @@ export default function ResourceLibrary({
               <Search className="h-7 w-7" />
             </div>
 
-            <h3 className="mt-6 text-2xl font-black text-text-primary">
+            <h2 className="mt-6 text-2xl font-black text-text-primary">
               No resources found
-            </h3>
+            </h2>
 
             <p className="mx-auto mt-3 max-w-lg text-sm leading-7 text-silver">
               Try a broader keyword or reset the filters to

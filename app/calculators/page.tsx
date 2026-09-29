@@ -469,12 +469,12 @@ function ResourceGroup({
               {resourceSymbols[resourceType]}
             </span>
 
-            <h3
+            <h2
               id={`resource-${resourceType}`}
               className="text-2xl font-black tracking-tight text-text-primary sm:text-3xl"
             >
               {title}
-            </h3>
+            </h2>
           </div>
 
           <p className="mt-4 text-sm leading-7 text-silver sm:text-base">
@@ -530,9 +530,9 @@ function FeaturedCalculatorCard({
             </span>
           </div>
 
-          <h3 className="mt-10 text-2xl font-black leading-tight text-text-primary transition-all duration-300 group-hover:translate-x-1 group-hover:text-amber-base">
+          <h2 className="mt-10 text-2xl font-black leading-tight text-text-primary transition-all duration-300 group-hover:translate-x-1 group-hover:text-amber-base">
             {calculator.title}
-          </h3>
+          </h2>
 
           <p className="mt-4 line-clamp-4 flex-1 text-sm leading-7 text-silver">
             {calculator.excerpt}
@@ -599,9 +599,9 @@ function CalculatorCard({ calculator }: { calculator: CalculatorCardData }) {
         </span>
       </div>
 
-      <h4 className="relative mt-8 text-xl font-black leading-snug text-text-primary transition-all duration-300 group-hover:translate-x-1 group-hover:text-amber-base">
+      <h2 className="relative mt-8 text-xl font-black leading-snug text-text-primary transition-all duration-300 group-hover:translate-x-1 group-hover:text-amber-base">
         {calculator.title}
-      </h4>
+      </h2>
 
       <p className="relative mt-4 line-clamp-4 text-sm leading-7 text-silver">
         {calculator.excerpt}
@@ -646,9 +646,9 @@ function EmptyState() {
         ∑
       </div>
 
-      <h3 className="mt-6 text-xl font-black text-text-primary">
+      <h2 className="mt-6 text-xl font-black text-text-primary">
         No calculators are available yet
-      </h3>
+      </h2>
 
       <p className="mt-3 text-sm leading-7 text-silver">
         Add calculator objects to{" "}

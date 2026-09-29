@@ -177,9 +177,9 @@ function FAQCard({
       </div>
 
       <div className="flex flex-1 flex-col p-5">
-        <h3 className="line-clamp-3 text-xl font-black leading-7 tracking-tight text-text-primary transition group-hover:text-amber-base">
+        <h2 className="line-clamp-3 text-xl font-black leading-7 tracking-tight text-text-primary transition group-hover:text-amber-base">
           {faq.hero?.title || faq.title}
-        </h3>
+        </h2>
 
         <p className="mt-4 line-clamp-4 text-sm font-medium leading-7 text-text-secondary">
           {faq.excerpt || faq.hero?.description}

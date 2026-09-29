@@ -1,6 +1,7 @@
 // components/partners/PartnerPagination.tsx
 
 import Link from "next/link";
+import { getPageHref } from "@/lib/pagination";
 
 import {
   ArrowLeft,
@@ -68,9 +69,7 @@ function getVisiblePages(
 }
 
 function createPageHref(page: number): string {
-  return page === 1
-    ? "/partners"
-    : `/partners?page=${page}`;
+  return getPageHref("/partners", page);
 }
 
 /* =========================================================

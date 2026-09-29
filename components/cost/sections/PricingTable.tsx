@@ -287,7 +287,7 @@ export default function PricingTableSection({
                   <div className="flex h-8 w-8 items-center justify-center rounded-full bg-amber-glow/20">
                     <span className="text-lg">💡</span>
                   </div>
-                  <h4 className="text-sm font-semibold text-amber-base">Key Insights</h4>
+                  <h2 className="text-sm font-semibold text-amber-base">Key Insights</h2>
                 </div>
                 
                 <div className="grid grid-cols-1 gap-3 md:grid-cols-2">

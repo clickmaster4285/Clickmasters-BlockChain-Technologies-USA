@@ -178,7 +178,7 @@ export default async function ComparisonPage({
                   <span className="grid h-12 w-12 place-items-center rounded-2xl bg-amber-base/10 text-amber-base">
                     <Icon className="h-6 w-6" />
                   </span>
-                  <h3 className="mt-5 text-xl font-bold">{item.title}</h3>
+                  <h2 className="mt-5 text-xl font-bold">{item.title}</h2>
                   <p className="mt-3 text-sm leading-6 text-silver">
                     {item.desc}
                   </p>
@@ -226,9 +226,9 @@ export default async function ComparisonPage({
                       </span>
                     </div>
 
-                    <h3 className="min-h-[72px] text-xl font-black leading-tight text-text-primary transition-colors group-hover:text-amber-base">
+                    <h2 className="min-h-[72px] text-xl font-black leading-tight text-text-primary transition-colors group-hover:text-amber-base">
                       {item.title}
-                    </h3>
+                    </h2>
 
                     <p className="mt-4 min-h-[96px] text-sm leading-6 text-silver">
                       {item.excerpt}
@@ -321,9 +321,9 @@ export default async function ComparisonPage({
 
           <section className="mt-20">
             <div className="overflow-hidden rounded-[2rem] border border-amber-base/20 bg-gradient-to-r from-amber-base via-amber-light to-surface p-10 text-center text-bg-base md:p-14">
-              <h3 className="text-3xl font-black md:text-5xl">
+              <h2 className="text-3xl font-black md:text-5xl">
                 Need help choosing the right blockchain stack?
-              </h3>
+              </h2>
               <p className="mx-auto mt-4 max-w-2xl text-bg-base/80">
                 Get a technical recommendation based on your product, budget,
                 timeline, compliance needs, and scale requirements.

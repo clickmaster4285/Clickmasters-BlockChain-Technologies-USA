@@ -41,9 +41,9 @@ export default function GlossaryCard({
         </div>
 
         {/* Title */}
-        <h3 className="text-2xl font-black leading-tight text-text-primary transition-colors duration-300 group-hover:text-amber-base">
+        <h2 className="text-2xl font-black leading-tight text-text-primary transition-colors duration-300 group-hover:text-amber-base">
           {item.term || item.title}
-        </h3>
+        </h2>
 
         {/* Definition */}
         <p className="mt-5 flex-1 text-sm leading-7 text-silver">

@@ -85,9 +85,9 @@ export function Benefits() {
                       {String(index + 1).padStart(2, "0")}
                     </span>
                   </div>
-                  <h3 className="mt-5 text-xl font-semibold text-text-primary">
+                  <h2 className="mt-5 text-xl font-semibold text-text-primary">
                     {benefit.title}
-                  </h3>
+                  </h2>
                   <p className="mt-3 text-sm leading-relaxed text-text-secondary">
                     {benefit.text}
                   </p>

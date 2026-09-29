@@ -145,9 +145,9 @@ export default function CaseStudyTestimonial({
                         Engagement Impact
                       </p>
 
-                      <h3 className="mt-2 text-xl font-black tracking-[-0.03em] text-white">
+                      <h2 className="mt-2 text-xl font-black tracking-[-0.03em] text-white">
                         Results the team could measure
-                      </h3>
+                      </h2>
                     </div>
 
                     <span className="grid h-11 w-11 place-items-center rounded-2xl border border-emerald-400/20 bg-emerald-400/[0.08] text-emerald-300">

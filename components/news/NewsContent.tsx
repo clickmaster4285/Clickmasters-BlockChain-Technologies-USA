@@ -98,10 +98,10 @@ export default function NewsContent({
                 return (
                   <div key={index}>
                     {block.title && (
-                      <h3 className="mb-5 flex items-center gap-3 text-2xl font-black">
+                      <h2 className="mb-5 flex items-center gap-3 text-2xl font-black">
                         <ListChecks className="h-6 w-6 text-amber-base" />
                         {block.title}
-                      </h3>
+                      </h2>
                     )}
 
                     <div className="grid gap-4">

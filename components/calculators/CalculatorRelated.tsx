@@ -71,9 +71,9 @@ function RelatedCard({ calculator }: { calculator: CalculatorCardData }) {
           <ResourceIcon type={calculator.resourceType} />
         </div>
 
-        <h3 className="mt-7 text-xl font-black leading-snug text-text-primary transition-all duration-300 group-hover:translate-x-1 group-hover:text-amber-base">
+        <h2 className="mt-7 text-xl font-black leading-snug text-text-primary transition-all duration-300 group-hover:translate-x-1 group-hover:text-amber-base">
           {calculator.title}
-        </h3>
+        </h2>
 
         <p className="mt-4 line-clamp-4 text-sm leading-7 text-silver">
           {calculator.excerpt}

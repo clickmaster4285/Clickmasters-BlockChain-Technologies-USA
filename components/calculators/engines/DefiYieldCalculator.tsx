@@ -300,9 +300,9 @@ function CalculatorHeader({
           Yield projection tool
         </span>
 
-        <h3 className="mt-2 text-2xl font-semibold tracking-[-0.03em] text-white">
+        <h2 className="mt-2 text-2xl font-semibold tracking-[-0.03em] text-white">
           {title}
-        </h3>
+        </h2>
       </div>
 
       <button
@@ -926,9 +926,9 @@ function InvalidResult() {
         !
       </span>
 
-      <h4 className="mt-5 text-xl font-semibold text-white">
+      <h2 className="mt-5 text-xl font-semibold text-white">
         Enter valid values
-      </h4>
+      </h2>
 
       <p className="mt-3 text-sm leading-7 text-white/50">
         The investment duration must be greater than zero. Deposits, rates,

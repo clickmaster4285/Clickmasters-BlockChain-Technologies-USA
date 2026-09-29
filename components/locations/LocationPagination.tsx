@@ -1,6 +1,7 @@
 // components/locations/LocationPagination.tsx
 
 import Link from "next/link";
+import { getPageHref } from "@/lib/pagination";
 
 import {
   ArrowLeft,
@@ -68,9 +69,7 @@ function getVisiblePages(
 }
 
 function createPageHref(page: number): string {
-  return page === 1
-    ? "/locations"
-    : `/locations?page=${page}`;
+  return getPageHref("/locations", page);
 }
 
 /* =========================================================

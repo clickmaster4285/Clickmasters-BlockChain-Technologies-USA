@@ -150,12 +150,12 @@ function ContentHeading({
 
   if (level === 3) {
     return (
-      <h3
+      <h2
         id={id}
         className="scroll-mt-28 border-l-4 border-amber-base pl-4 pt-1 text-2xl font-black leading-tight text-text-primary sm:text-3xl"
       >
         {block.text}
-      </h3>
+      </h2>
     );
   }
 

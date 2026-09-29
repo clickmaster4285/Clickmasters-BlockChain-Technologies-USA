@@ -94,12 +94,12 @@ export default function GlossaryContent({
 
               case "subheading":
                 return (
-                  <h3
+                  <h2
                     key={index}
                     className="text-xl font-black leading-tight text-text-primary sm:text-2xl"
                   >
                     {block.text}
-                  </h3>
+                  </h2>
                 );
 
               case "paragraph":
@@ -149,10 +149,10 @@ export default function GlossaryContent({
                 return (
                   <div key={index}>
                     {block.title && (
-                      <h3 className="mb-5 flex items-center gap-3 text-xl font-black text-text-primary sm:text-2xl">
+                      <h2 className="mb-5 flex items-center gap-3 text-xl font-black text-text-primary sm:text-2xl">
                         <ListChecks className="h-6 w-6 shrink-0 text-amber-base" />
                         {block.title}
-                      </h3>
+                      </h2>
                     )}
 
                     <div className="grid gap-4">
@@ -179,9 +179,9 @@ export default function GlossaryContent({
 
                               <div>
                                 {title && (
-                                  <h4 className="font-black text-text-primary">
+                                  <h2 className="font-black text-text-primary">
                                     {title}
-                                  </h4>
+                                  </h2>
                                 )}
 
                                 <p
@@ -204,10 +204,10 @@ export default function GlossaryContent({
                 return (
                   <div key={index}>
                     {block.title && (
-                      <h3 className="mb-6 flex items-center gap-3 text-xl font-black text-text-primary sm:text-2xl">
+                      <h2 className="mb-6 flex items-center gap-3 text-xl font-black text-text-primary sm:text-2xl">
                         <ListChecks className="h-6 w-6 text-amber-base" />
                         {block.title}
-                      </h3>
+                      </h2>
                     )}
 
                     <div className="space-y-5">
@@ -223,10 +223,10 @@ export default function GlossaryContent({
                               </span>
 
                               <div>
-                                <h4 className="text-lg font-black text-text-primary">
+                                <h2 className="text-lg font-black text-text-primary">
                                   {step.title ||
                                     `Step ${stepIndex + 1}`}
-                                </h4>
+                                </h2>
 
                                 <p className="mt-3 text-sm leading-7 text-silver md:text-base">
                                   {step.description ||
@@ -249,9 +249,9 @@ export default function GlossaryContent({
                   >
                     {block.title && (
                       <div className="border-b border-white/10 bg-white/[0.03] px-5 py-4">
-                        <h3 className="font-black text-text-primary">
+                        <h2 className="font-black text-text-primary">
                           {block.title}
-                        </h3>
+                        </h2>
                       </div>
                     )}
 
@@ -330,9 +330,9 @@ export default function GlossaryContent({
                     </p>
 
                     {block.title && (
-                      <h3 className="mt-3 text-xl font-black text-text-primary">
+                      <h2 className="mt-3 text-xl font-black text-text-primary">
                         {block.title}
-                      </h3>
+                      </h2>
                     )}
 
                     <p className="mt-3 text-sm leading-7 text-silver md:text-base">

@@ -1,6 +1,7 @@
 // components/process/ProcessPagination.tsx
 
 import Link from "next/link";
+import { getPageHref } from "@/lib/pagination";
 
 import {
   ArrowLeft,
@@ -32,11 +33,7 @@ function createPageHref(
   basePath: string,
   page: number,  
 ): string {
-  if (page <= 1) {
-    return basePath;
-  }
-
-  return `${basePath}?page=${page}`;
+  return getPageHref(basePath, page);
 }
 
 function createPaginationItems(

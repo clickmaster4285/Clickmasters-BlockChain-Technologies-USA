@@ -82,9 +82,9 @@ export default function ToolHero({
 
             <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
               <ShieldCheck className="h-6 w-6 text-amber-base" />
-              <h4 className="mt-3 font-black">
+              <h2 className="mt-3 font-black">
                 Enterprise Ready
-              </h4>
+              </h2>
               <p className="mt-2 text-sm text-silver">
                 Built for production environments.
               </p>
@@ -92,9 +92,9 @@ export default function ToolHero({
 
             <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
               <Zap className="h-6 w-6 text-amber-base" />
-              <h4 className="mt-3 font-black">
+              <h2 className="mt-3 font-black">
                 Fast Results
-              </h4>
+              </h2>
               <p className="mt-2 text-sm text-silver">
                 Save hours of manual planning.
               </p>
@@ -102,9 +102,9 @@ export default function ToolHero({
 
             <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
               <Sparkles className="h-6 w-6 text-amber-base" />
-              <h4 className="mt-3 font-black">
+              <h2 className="mt-3 font-black">
                 Professional
-              </h4>
+              </h2>
               <p className="mt-2 text-sm text-silver">
                 Trusted by blockchain teams.
               </p>
@@ -156,9 +156,9 @@ export default function ToolHero({
 
             </div>
 
-            <h3 className="mt-8 text-center text-2xl font-black">
+            <h2 className="mt-8 text-center text-2xl font-black">
               Blockchain Tool
-            </h3>
+            </h2>
 
             <p className="mt-4 text-center text-sm leading-7 text-silver">
               Interactive planning, estimation,

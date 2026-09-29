@@ -21,6 +21,7 @@ import BackToTop from "@/components/ui/BackToTop";
 
 import ProcessCard from "@/components/process/ProcessCard";
 import ProcessPagination from "@/components/process/ProcessPagination";
+import { getPageHref } from "@/lib/pagination";
 
 import {
   getProcessCards,
@@ -32,7 +33,14 @@ import {
    Metadata
 ========================================================= */
 
-export const metadata: Metadata = {
+export async function generateMetadata({
+  searchParams,
+}: ProcessPageProps): Promise<Metadata> {
+  const resolvedSearchParams = await searchParams;
+  const currentPage = parsePageNumber(resolvedSearchParams?.page);
+  const path = getPageHref("/process", currentPage);
+
+  return {
   title:
     "Blockchain Development Process & Technical Guides | ClickMasters",
 
@@ -40,7 +48,7 @@ export const metadata: Metadata = {
     "Explore detailed blockchain development processes, security audit workflows, DeFi architecture, crypto exchange infrastructure, wallet security, DAO governance, tokenization, and enterprise blockchain guides.",
 
   alternates: {
-    canonical: "/process",
+    canonical: path,
   },
 
   openGraph: {
@@ -50,7 +58,7 @@ export const metadata: Metadata = {
     description:
       "Detailed blockchain process guides covering smart contract audits, DeFi security, architecture, exchange infrastructure, wallets, tokenization, governance, bridges, and oracle integration.",
 
-    url: "/process",
+    url: path,
     type: "website",
   },
 
@@ -68,7 +76,8 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-};
+  };
+}
 
 /* =========================================================
    Constants

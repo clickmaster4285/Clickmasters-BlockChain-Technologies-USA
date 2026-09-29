@@ -20,7 +20,7 @@ export default function ServiceSidebar({ items }: Props) {
           transition={{ duration: 0.5, delay: gi * 0.1 }}
           className="rounded-2xl border border-border bg-surface p-6"
         >
-          <h4 className="font-semibold text-sm uppercase tracking-wider text-amber-base">{group.title}</h4>
+          <h2 className="font-semibold text-sm uppercase tracking-wider text-amber-base">{group.title}</h2>
           <ul className="mt-3 space-y-2">
             {group.items.map((item) => (
               <li key={item} className="flex items-center gap-2 text-sm text-silver-base">

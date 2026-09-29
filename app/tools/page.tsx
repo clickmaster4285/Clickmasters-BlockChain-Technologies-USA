@@ -69,7 +69,10 @@ export async function generateMetadata({
     title: "Blockchain Tools",
     description:
       "Use focused blockchain calculators, security frameworks, architecture planners, and technical decision tools built for founders, developers, and enterprise teams.",
-    path: getPageHref("/tools", currentPage),
+    path: getPageHref("/tools", currentPage, {
+      category: resolvedSearchParams?.category,
+      search: resolvedSearchParams?.search,
+    }),
   });
 }
 
@@ -79,11 +82,16 @@ export default async function ToolsPage({
   const resolvedSearchParams = await searchParams;
 
   const requestedPage = Number(resolvedSearchParams?.page || 1);
-  const selectedCategory = resolvedSearchParams?.category || "All";
+  const requestedCategory = resolvedSearchParams?.category || "All";
   const searchQuery = resolvedSearchParams?.search?.trim() || "";
 
   const allTools = getToolCards();
   const categories = getToolCategories();
+  const selectedCategory =
+    categories.find(
+      (category: string) =>
+        category.toLowerCase() === requestedCategory.toLowerCase()
+    ) || (requestedCategory.toLowerCase() === "all" ? "All" : requestedCategory);
 
   const filteredTools = allTools.filter((item: any) => {
     const matchesCategory =
@@ -132,19 +140,10 @@ export default async function ToolsPage({
   }
 
   function createCategoryHref(category: string) {
-    const params = new URLSearchParams();
-
-    if (category.toLowerCase() !== "all") {
-      params.set("category", category);
-    }
-
-    if (searchQuery) {
-      params.set("search", searchQuery);
-    }
-
-    const query = params.toString();
-
-    return query ? `/tools?${query}` : "/tools";
+    return getPageHref("/tools", 1, {
+      category: category.toLowerCase() !== "all" ? category : undefined,
+      search: searchQuery || undefined,
+    });
   }
 
   return (
@@ -238,9 +237,9 @@ export default async function ToolsPage({
                             </span>
                           </div>
 
-                          <h3 className="mt-4 text-sm font-black text-text-primary">
+                          <h2 className="mt-4 text-sm font-black text-text-primary">
                             {feature.title}
-                          </h3>
+                          </h2>
 
                           <p className="mt-2 text-xs leading-5 text-silver">
                             {feature.description}
@@ -406,9 +405,9 @@ export default async function ToolsPage({
                     <Wrench className="h-9 w-9" />
                   </span>
 
-                  <h3 className="mt-6 text-2xl font-black text-text-primary">
+                  <h2 className="mt-6 text-2xl font-black text-text-primary">
                     No tools found
-                  </h3>
+                  </h2>
 
                   <p className="mx-auto mt-3 max-w-xl text-sm leading-7 text-silver">
                     Try another search phrase or select a different tool

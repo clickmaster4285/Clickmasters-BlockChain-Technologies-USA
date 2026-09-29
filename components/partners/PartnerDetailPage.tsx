@@ -772,9 +772,9 @@ export default function PartnerDetailPage({
                         <Icon className="h-6 w-6" />
                       </span>
 
-                      <h3 className="mt-8 text-xl font-black text-text-primary">
+                      <h2 className="mt-8 text-xl font-black text-text-primary">
                         {card.title}
-                      </h3>
+                      </h2>
 
                       <p className="mt-4 text-sm leading-7 text-silver">
                         {card.description}
@@ -833,9 +833,9 @@ export default function PartnerDetailPage({
                           </span>
                         </div>
 
-                        <h3 className="mt-8 text-2xl font-black leading-tight tracking-[-0.025em] text-text-primary transition-colors duration-300 group-hover:text-amber-base">
+                        <h2 className="mt-8 text-2xl font-black leading-tight tracking-[-0.025em] text-text-primary transition-colors duration-300 group-hover:text-amber-base">
                           {capability.title}
-                        </h3>
+                        </h2>
 
                         <p className="mt-4 text-sm leading-7 text-silver">
                           {
@@ -958,9 +958,9 @@ export default function PartnerDetailPage({
                       </span>
 
                       <div>
-                        <h3 className="text-2xl font-black text-text-primary">
+                        <h2 className="text-2xl font-black text-text-primary">
                           Partner Content Required
-                        </h3>
+                        </h2>
 
                         <p className="mt-4 text-sm leading-7 text-silver">
                           Add content blocks for this
@@ -1017,9 +1017,9 @@ export default function PartnerDetailPage({
                         </span>
                       </div>
 
-                      <h3 className="mt-7 text-xl font-black text-text-primary">
+                      <h2 className="mt-7 text-xl font-black text-text-primary">
                         {step.title}
-                      </h3>
+                      </h2>
 
                       <p className="mt-4 text-sm leading-7 text-silver">
                         {step.description}
@@ -1482,17 +1482,17 @@ function ContentBlockRenderer({
   if (block.type === "heading") {
     if (block.level === 4) {
       return (
-        <h4 className="pt-3 text-xl font-black text-text-primary">
+        <h2 className="pt-3 text-xl font-black text-text-primary">
           {block.text}
-        </h4>
+        </h2>
       );
     }
 
     if (block.level === 3) {
       return (
-        <h3 className="pt-5 text-2xl font-black tracking-[-0.025em] text-text-primary md:text-3xl">
+        <h2 className="pt-5 text-2xl font-black tracking-[-0.025em] text-text-primary md:text-3xl">
           {block.text}
-        </h3>
+        </h2>
       );
     }
 
@@ -1726,9 +1726,9 @@ function RelatedPartnerCard({
           Technology Integration
         </p>
 
-        <h3 className="mt-4 text-xl font-black leading-snug text-text-primary transition-colors duration-300 group-hover:text-amber-base">
+        <h2 className="mt-4 text-xl font-black leading-snug text-text-primary transition-colors duration-300 group-hover:text-amber-base">
           {partner.title}
-        </h3>
+        </h2>
 
         <p className="mt-4 line-clamp-3 text-sm leading-7 text-silver">
           {partner.excerpt}

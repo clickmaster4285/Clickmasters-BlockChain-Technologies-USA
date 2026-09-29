@@ -379,9 +379,9 @@ function NestedFAQs({
             key={item.question}
             className="rounded-xl border border-border-default bg-white p-4"
           >
-            <h3 className="font-black text-text-primary">
+            <h2 className="font-black text-text-primary">
               {item.question}
-            </h3>
+            </h2>
             <p className="mt-2 text-sm leading-7 text-text-secondary">
               {item.answer}
             </p>
@@ -402,9 +402,9 @@ function RelatedFAQCard({ faq }: { faq: FAQItem }) {
         {faq.category}
       </span>
 
-      <h3 className="mt-4 line-clamp-3 text-lg font-black leading-7 text-text-primary transition group-hover:text-amber-base">
+      <h2 className="mt-4 line-clamp-3 text-lg font-black leading-7 text-text-primary transition group-hover:text-amber-base">
         {faq.title}
-      </h3>
+      </h2>
 
       <p className="mt-3 line-clamp-3 text-sm leading-7 text-text-secondary">
         {faq.excerpt}

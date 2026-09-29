@@ -165,9 +165,9 @@ export default function ComparisonSection({
                         </div>
                         
                         {/* Title */}
-                        <h3 className={`font-display text-xl font-bold text-slate-800`}>
+                        <h2 className={`font-display text-xl font-bold text-slate-800`}>
                           {cleanInlineMarks(cleanLabel)}
-                        </h3>
+                        </h2>
                         
                         {/* Description with bullet points */}
                         <div className="mt-3">

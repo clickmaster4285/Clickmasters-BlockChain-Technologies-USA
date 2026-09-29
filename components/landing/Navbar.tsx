@@ -401,9 +401,9 @@ function DesktopSimpleDropdown({
                 <p className="mt-5 text-[11px] font-black uppercase tracking-[0.22em] text-amber-base">
                   Explore
                 </p>
-                <h3 className="mt-2 font-display text-2xl font-black leading-tight text-text-primary">
+                <p className="mt-2 font-display text-2xl font-black leading-tight text-text-primary">
                   {activeItem?.label}
-                </h3>
+                </p>
                 <p className="mt-3 text-sm leading-6 text-silver">
                   {activeItem?.desc}
                 </p>
@@ -497,9 +497,9 @@ function DesktopDropdown({
                   <p className="text-[11px] font-black uppercase tracking-[0.24em] text-amber-base">
                     Featured in {active}
                   </p>
-                  <h3 className="mt-1 font-display text-xl font-black text-text-primary">
+                  <p className="mt-1 font-display text-xl font-black text-text-primary">
                     Latest picks
-                  </h3>
+                  </p>
                 </div>
 
                 <Link
@@ -525,9 +525,9 @@ function DesktopDropdown({
                           {card.badge}
                         </span>
 
-                        <h4 className="mt-4 text-lg font-black leading-tight text-text-primary transition-colors group-hover/card:text-amber-base">
+                        <p className="mt-4 text-lg font-black leading-tight text-text-primary transition-colors group-hover/card:text-amber-base">
                           {card.title}
-                        </h4>
+                        </p>
 
                         <p className="mt-3 text-sm leading-6 text-silver">
                           {card.desc}

@@ -243,9 +243,9 @@ export default async function TechnologyDetailPage({
                     key={item.title}
                     className="rounded-[1.5rem] border border-white/[0.08] bg-surface p-6"
                   >
-                    <h3 className="text-xl font-black tracking-[-0.02em] text-text-primary">
+                    <h2 className="text-xl font-black tracking-[-0.02em] text-text-primary">
                       {item.title}
-                    </h3>
+                    </h2>
 
                     <p className="mt-4 text-sm leading-7 text-silver">
                       {item.description}
@@ -271,9 +271,9 @@ export default async function TechnologyDetailPage({
                     </span>
 
                     <div>
-                      <h3 className="text-lg font-black text-text-primary">
+                      <h2 className="text-lg font-black text-text-primary">
                         {item.title}
-                      </h3>
+                      </h2>
 
                       <p className="mt-3 text-sm leading-7 text-silver">
                         {item.description}
@@ -295,10 +295,10 @@ export default async function TechnologyDetailPage({
                     key={item.title}
                     className="rounded-[1.5rem] border border-white/[0.08] bg-surface p-6"
                   >
-                    <h3 className="flex items-center gap-3 text-lg font-black text-text-primary">
+                    <h2 className="flex items-center gap-3 text-lg font-black text-text-primary">
                       <ShieldCheck className="h-5 w-5 text-amber-base" />
                       {item.title}
-                    </h3>
+                    </h2>
 
                     <p className="mt-3 text-sm leading-7 text-silver">
                       {item.description}

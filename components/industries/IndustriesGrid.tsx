@@ -74,9 +74,9 @@ export default function IndustriesGrid({
           </div>
         ) : (
           <div className="mt-14 rounded-[28px] border border-white/[0.08] bg-white/[0.025] px-6 py-16 text-center">
-            <h3 className="text-2xl font-semibold text-white">
+            <h2 className="text-2xl font-semibold text-white">
               No industries available
-            </h3>
+            </h2>
 
             <p className="mx-auto mt-3 max-w-xl text-sm leading-7 text-slate-400">
               Industry content has not been added yet. Please check

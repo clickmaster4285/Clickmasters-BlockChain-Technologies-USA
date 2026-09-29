@@ -86,7 +86,7 @@ export function Portfolio() {
                   </span>
                 </div>
 
-                <h3 className="mt-4 text-xl font-semibold text-text-primary md:text-2xl">{p.title}</h3>
+                <h2 className="mt-4 text-xl font-semibold text-text-primary md:text-2xl">{p.title}</h2>
                 <p className="mt-2 text-sm leading-relaxed text-text-secondary">{p.description}</p>
 
                 {/* Metrics */}

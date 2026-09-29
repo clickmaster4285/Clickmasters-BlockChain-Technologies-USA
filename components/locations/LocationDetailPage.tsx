@@ -733,9 +733,9 @@ export default function LocationDetailPage({
                         <Icon className="h-6 w-6" />
                       </span>
 
-                      <h3 className="mt-8 text-xl font-black text-text-primary">
+                      <h2 className="mt-8 text-xl font-black text-text-primary">
                         {card.title}
-                      </h3>
+                      </h2>
 
                       <p className="mt-4 text-sm leading-7 text-silver">
                         {card.description}
@@ -793,9 +793,9 @@ export default function LocationDetailPage({
                         </span>
                       </div>
 
-                      <h3 className="mt-8 text-2xl font-black leading-tight tracking-[-0.025em] text-text-primary transition-colors duration-300 group-hover:text-amber-base">
+                      <h2 className="mt-8 text-2xl font-black leading-tight tracking-[-0.025em] text-text-primary transition-colors duration-300 group-hover:text-amber-base">
                         {service.title}
-                      </h3>
+                      </h2>
 
                       <p className="mt-4 text-sm leading-7 text-silver">
                         {service.shortDescription}
@@ -916,9 +916,9 @@ export default function LocationDetailPage({
                       </span>
 
                       <div>
-                        <h3 className="text-2xl font-black text-text-primary">
+                        <h2 className="text-2xl font-black text-text-primary">
                           Location Content Required
-                        </h3>
+                        </h2>
 
                         <p className="mt-4 text-sm leading-7 text-silver">
                           Add content blocks to this location
@@ -975,9 +975,9 @@ export default function LocationDetailPage({
                         </span>
                       </div>
 
-                      <h3 className="mt-7 text-xl font-black text-text-primary">
+                      <h2 className="mt-7 text-xl font-black text-text-primary">
                         {step.title}
-                      </h3>
+                      </h2>
 
                       <p className="mt-4 text-sm leading-7 text-silver">
                         {step.description}
@@ -1437,17 +1437,17 @@ function ContentBlockRenderer({
   if (block.type === "heading") {
     if (block.level === 4) {
       return (
-        <h4 className="pt-3 text-xl font-black text-text-primary">
+        <h2 className="pt-3 text-xl font-black text-text-primary">
           {block.text}
-        </h4>
+        </h2>
       );
     }
 
     if (block.level === 3) {
       return (
-        <h3 className="pt-5 text-2xl font-black tracking-[-0.025em] text-text-primary md:text-3xl">
+        <h2 className="pt-5 text-2xl font-black tracking-[-0.025em] text-text-primary md:text-3xl">
           {block.text}
-        </h3>
+        </h2>
       );
     }
 
@@ -1679,9 +1679,9 @@ function RelatedLocationCard({
           Blockchain Development
         </p>
 
-        <h3 className="mt-4 text-xl font-black leading-snug text-text-primary transition-colors duration-300 group-hover:text-amber-base">
+        <h2 className="mt-4 text-xl font-black leading-snug text-text-primary transition-colors duration-300 group-hover:text-amber-base">
           {location.title}
-        </h3>
+        </h2>
 
         <p className="mt-4 line-clamp-3 text-sm leading-7 text-silver">
           {location.excerpt}

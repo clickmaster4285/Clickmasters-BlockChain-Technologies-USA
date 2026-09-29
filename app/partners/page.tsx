@@ -32,6 +32,7 @@ import { Footer } from "@/components/landing/Footer";
 import BackToTop from "@/components/ui/BackToTop";
 
 import PartnerPagination from "@/components/partners/PartnerPagination";
+import { getPageHref } from "@/lib/pagination";
 
 import {
   getPartnerCards,
@@ -42,7 +43,18 @@ import {
    Metadata
 ========================================================= */
 
-export const metadata: Metadata = {
+export async function generateMetadata({
+  searchParams,
+}: PartnersPageProps): Promise<Metadata> {
+  const resolvedSearchParams = await searchParams;
+  const requestedPage = Number(resolvedSearchParams?.page ?? "1");
+  const currentPage =
+    Number.isInteger(requestedPage) && requestedPage > 0
+      ? requestedPage
+      : 1;
+  const path = getPageHref("/partners", currentPage);
+
+  return {
   title:
     "Blockchain Technology and Integration Partners | ClickMasters",
 
@@ -50,7 +62,7 @@ export const metadata: Metadata = {
     "Explore the blockchain security, infrastructure, legal, custody, oracle, wallet, cloud, and development technologies integrated into ClickMasters solutions.",
 
   alternates: {
-    canonical: "/partners",
+    canonical: path,
   },
 
   openGraph: {
@@ -60,7 +72,7 @@ export const metadata: Metadata = {
     description:
       "Discover the blockchain security, cloud, infrastructure, custody, wallet, oracle, and smart contract technologies used across our development projects.",
 
-    url: "/partners",
+    url: path,
 
     type: "website",
   },
@@ -79,7 +91,8 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-};
+  };
+}
 
 /* =========================================================
    Static Content
@@ -211,7 +224,7 @@ export default async function PartnersPage({
     redirect(
       totalPages === 1
         ? "/partners"
-        : `/partners?page=${totalPages}`,
+        : getPageHref("/partners", totalPages),
     );
   }
 
@@ -566,9 +579,9 @@ export default async function PartnersPage({
                       <Icon className="h-6 w-6" />
                     </span>
 
-                    <h3 className="mt-7 text-xl font-black text-text-primary">
+                    <h2 className="mt-7 text-xl font-black text-text-primary">
                       {benefit.title}
-                    </h3>
+                    </h2>
 
                     <p className="mt-4 text-sm leading-7 text-silver">
                       {benefit.description}
@@ -701,9 +714,9 @@ export default async function PartnersPage({
                               </span>
                             </div>
 
-                            <h3 className="mt-4 text-2xl font-black leading-[1.2] tracking-[-0.025em] text-text-primary transition-colors duration-300 group-hover:text-amber-base">
+                            <h2 className="mt-4 text-2xl font-black leading-[1.2] tracking-[-0.025em] text-text-primary transition-colors duration-300 group-hover:text-amber-base">
                               {partner.title}
-                            </h3>
+                            </h2>
 
                             <p className="mt-4 line-clamp-3 text-sm leading-7 text-silver">
                               {partner.excerpt}
@@ -754,9 +767,9 @@ export default async function PartnersPage({
                   <Handshake className="h-7 w-7" />
                 </span>
 
-                <h3 className="mt-5 text-2xl font-black text-text-primary">
+                <h2 className="mt-5 text-2xl font-black text-text-primary">
                   No partner entries found
-                </h3>
+                </h2>
 
                 <p className="mx-auto mt-3 max-w-lg text-sm leading-7 text-silver">
                   Confirm that your partner entries include a
@@ -810,9 +823,9 @@ export default async function PartnersPage({
                         </span>
                       </div>
 
-                      <h3 className="mt-6 text-xl font-black text-text-primary">
+                      <h2 className="mt-6 text-xl font-black text-text-primary">
                         {step.title}
-                      </h3>
+                      </h2>
 
                       <p className="mt-3 text-sm leading-7 text-silver">
                         {step.description}

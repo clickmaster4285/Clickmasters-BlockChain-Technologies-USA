@@ -27,9 +27,9 @@ export default function HowToCard({
           </span>
         </div>
 
-        <h3 className="min-h-[78px] text-xl font-black leading-tight text-text-primary transition-colors group-hover:text-amber-base">
+        <h2 className="min-h-[78px] text-xl font-black leading-tight text-text-primary transition-colors group-hover:text-amber-base">
           {item.title}
-        </h3>
+        </h2>
 
         <p className="mt-4 min-h-[96px] text-sm leading-6 text-silver">
           {item.excerpt}

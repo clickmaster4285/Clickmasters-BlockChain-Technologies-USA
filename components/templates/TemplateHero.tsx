@@ -227,9 +227,9 @@ export default function TemplateHero({
               </span>
             </div>
 
-            <h3 className="mt-7 text-2xl font-black leading-tight text-neutral-100">
+            <h2 className="mt-7 text-2xl font-black leading-tight text-neutral-100">
               Ready-to-use project structure
-            </h3>
+            </h2>
 
             <div className="mt-6 space-y-3">
               <div className="h-2.5 w-full rounded-full bg-neutral-800" />

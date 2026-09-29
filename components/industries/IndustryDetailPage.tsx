@@ -773,9 +773,9 @@ function TableOfContents({
               <Sparkles className="h-5 w-5" />
             </span>
 
-            <h3 className="mt-5 text-lg font-black text-text-primary">
+            <h2 className="mt-5 text-lg font-black text-text-primary">
               Have a similar challenge?
-            </h3>
+            </h2>
 
             <p className="mt-2 text-xs leading-6 text-silver">
               Discuss your use case, architecture and delivery
@@ -1439,9 +1439,9 @@ function RelatedIndustries({
               </div>
 
               <div className="flex flex-1 flex-col p-6">
-                <h3 className="text-xl font-black leading-snug text-text-primary transition-colors group-hover:text-amber-base">
+                <h2 className="text-xl font-black leading-snug text-text-primary transition-colors group-hover:text-amber-base">
                   {industry.title}
-                </h3>
+                </h2>
 
                 <p className="mt-3 line-clamp-3 text-sm leading-7 text-silver">
                   {industry.excerpt}

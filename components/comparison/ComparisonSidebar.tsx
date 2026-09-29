@@ -25,9 +25,9 @@ export default function ComparisonSidebar({
             Expert Help
           </p>
 
-          <h3 className="mt-3 text-2xl font-black leading-tight">
+          <h2 className="mt-3 text-2xl font-black leading-tight">
             Need help choosing the right stack?
-          </h3>
+          </h2>
 
           <p className="mt-3 text-sm leading-6 text-silver">
             Get a practical technical recommendation based on your use case,

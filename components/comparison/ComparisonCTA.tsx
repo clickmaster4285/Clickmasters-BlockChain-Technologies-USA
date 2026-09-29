@@ -26,13 +26,13 @@ export default function ComparisonCTA({
       <div className="absolute -bottom-20 -left-20 h-44 w-44 rounded-full bg-bg-base/15 blur-3xl" />
 
       <div className="relative">
-        <h3
+        <h2
           className={`font-black leading-tight ${
             compact ? "text-2xl md:text-3xl" : "text-3xl md:text-5xl"
           }`}
         >
           {title}
-        </h3>
+        </h2>
 
         <p
           className={`mt-4 max-w-2xl text-bg-base/80 ${

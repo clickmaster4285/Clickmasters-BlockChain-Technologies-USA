@@ -564,9 +564,9 @@ export default async function HireDetailPage({
                       <Users className="h-6 w-6" />
                     </span>
 
-                    <h3 className="mt-5 text-xl font-black text-text-primary">
+                    <h2 className="mt-5 text-xl font-black text-text-primary">
                       Need this expertise?
-                    </h3>
+                    </h2>
 
                     <p className="mt-3 text-sm leading-7 text-silver">
                       Share your requirements and receive a
@@ -762,9 +762,9 @@ export default async function HireDetailPage({
                         <Code2 className="h-5 w-5" />
                       </span>
 
-                      <h3 className="mt-6 text-xl font-black leading-tight text-text-primary transition-colors group-hover:text-amber-base">
+                      <h2 className="mt-6 text-xl font-black leading-tight text-text-primary transition-colors group-hover:text-amber-base">
                         {item.title}
-                      </h3>
+                      </h2>
 
                       <p className="mt-4 line-clamp-3 text-sm leading-7 text-silver">
                         {item.excerpt}

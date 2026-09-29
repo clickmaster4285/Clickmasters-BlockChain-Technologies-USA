@@ -96,10 +96,10 @@ export default function ListicleContent({
                 return (
                   <div key={index}>
                     {block.title && (
-                      <h3 className="mb-5 flex items-center gap-3 text-2xl font-black">
+                      <h2 className="mb-5 flex items-center gap-3 text-2xl font-black">
                         <ListChecks className="h-6 w-6 text-amber-base" />
                         {block.title}
-                      </h3>
+                      </h2>
                     )}
 
                     <div className="grid gap-4">
@@ -123,10 +123,10 @@ export default function ListicleContent({
               case "steps":
                 return (
                   <div key={index}>
-                    <h3 className="mb-6 flex items-center gap-3 text-2xl font-black">
+                    <h2 className="mb-6 flex items-center gap-3 text-2xl font-black">
                       <ListChecks className="text-amber-base" />
                       {block.title}
-                    </h3>
+                    </h2>
 
                     <div className="space-y-5">
                       {block.items.map((step: any, i: number) => (
@@ -138,9 +138,9 @@ export default function ListicleContent({
                             <div className="grid h-10 w-10 place-items-center rounded-full bg-amber-base font-bold text-bg-base">
                               {i + 1}
                             </div>
-                            <h4 className="text-lg font-black">
+                            <h2 className="text-lg font-black">
                               {step.title}
-                            </h4>
+                            </h2>
                           </div>
 
                           <p className="leading-7 text-silver">
@@ -221,9 +221,9 @@ export default function ListicleContent({
                       </span>
 
                       <div>
-                        <h3 className="text-2xl font-black text-text-primary">
+                        <h2 className="text-2xl font-black text-text-primary">
                           {block.title}
-                        </h3>
+                        </h2>
 
                         {block.subtitle && (
                           <p className="mt-2 text-sm font-semibold text-amber-base">

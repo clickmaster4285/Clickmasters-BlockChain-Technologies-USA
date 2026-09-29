@@ -183,10 +183,10 @@ export default function CaseStudySection({
                       <div className="relative p-5 md:p-6">
                         {/* Header with label */}
                         <div className="flex items-center justify-between">
-                          <h3 className="flex items-center gap-2 font-display text-sm font-semibold uppercase tracking-wide text-emerald-dim">
+                          <h2 className="flex items-center gap-2 font-display text-sm font-semibold uppercase tracking-wide text-emerald-dim">
                             <span className="text-lg">✦</span>
                             {cleanInlineMarks(g.label.replace(/:$/, ""))}
-                          </h3>
+                          </h2>
                           {g.isList && (
                             <span className={`rounded-full px-2.5 py-0.5 text-[10px] font-medium transition-all duration-300 ${
                               isHovered 

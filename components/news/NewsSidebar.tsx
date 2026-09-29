@@ -26,9 +26,9 @@ export default function NewsSidebar({
             Strategic Analysis
           </p>
 
-          <h3 className="mt-3 text-2xl font-black leading-tight">
+          <h2 className="mt-3 text-2xl font-black leading-tight">
             Need help acting on this update?
-          </h3>
+          </h2>
 
           <p className="mt-3 text-sm leading-6 text-silver">
             Understand what this news means for your product, roadmap,

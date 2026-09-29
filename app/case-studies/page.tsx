@@ -312,9 +312,9 @@ export default async function CaseStudiesPage({
                       </span>
                     </div>
 
-                    <h3 className="mt-4 line-clamp-2 text-xl font-black leading-snug text-text-primary">
+                    <h2 className="mt-4 line-clamp-2 text-xl font-black leading-snug text-text-primary">
                       {caseStudy.title}
-                    </h3>
+                    </h2>
 
                     <p className="mt-3 line-clamp-3 text-sm leading-7 text-text-secondary">
                       {caseStudy.excerpt}

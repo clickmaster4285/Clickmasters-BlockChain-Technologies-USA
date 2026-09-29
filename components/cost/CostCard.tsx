@@ -31,9 +31,9 @@ export default function CostCard({ card, index }: { card: CostCardType; index: n
             </span>
           </div>
 
-          <h3 className="relative mt-5 text-left font-display text-xl font-semibold leading-snug text-text-primary">
+          <h2 className="relative mt-5 text-left font-display text-xl font-semibold leading-snug text-text-primary">
             {cleanTitle}
-          </h3>
+          </h2>
 
           <p className="relative mt-3 line-clamp-3 flex-1 text-left text-sm leading-relaxed text-text-secondary">
             {cleanInlineMarks(card.description)}

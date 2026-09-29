@@ -46,7 +46,7 @@ export function Audience() {
               <span className="relative grid h-11 w-11 place-items-center rounded-xl bg-amber-glow text-amber-base">
                 <a.icon className="h-5 w-5" />
               </span>
-              <h3 className="relative mt-4 text-lg font-semibold text-text-primary">{a.title}</h3>
+              <h2 className="relative mt-4 text-lg font-semibold text-text-primary">{a.title}</h2>
               <p className="relative mt-2 text-sm leading-relaxed text-text-secondary">{a.desc}</p>
             </article>
           ))}

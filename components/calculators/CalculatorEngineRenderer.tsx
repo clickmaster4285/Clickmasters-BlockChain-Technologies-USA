@@ -168,7 +168,7 @@ function UnsupportedCalculatorEngine({ title }: { title: string }) {
             Calculator unavailable
           </p>
 
-          <h3 className="mt-3 text-2xl font-black text-white">{title}</h3>
+          <h2 className="mt-3 text-2xl font-black text-white">{title}</h2>
 
           <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-400 sm:text-base">
             The interactive engine for this resource has not been configured.

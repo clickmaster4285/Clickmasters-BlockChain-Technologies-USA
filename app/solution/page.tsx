@@ -48,7 +48,7 @@ export default function SolutionPage() {
                 <span className="grid h-12 w-12 place-items-center rounded-xl bg-primary/10 text-primary">
                   <c.icon className="h-5 w-5" />
                 </span>
-                <h3 className="mt-4 text-2xl font-semibold">{c.title}</h3>
+                <h2 className="mt-4 text-2xl font-semibold">{c.title}</h2>
                 <p className="mt-2 text-sm text-muted-foreground">{c.desc}</p>
                 <Link
                   href="/contact"

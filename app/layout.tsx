@@ -7,12 +7,14 @@ import { siteConfig } from "@/config/site";
 import { Providers } from "./providers";
 import "./styles.css";
 
+const { alternates: _rootCanonical, ...rootMetadata } = createMetadata({
+  title: siteConfig.name,
+  description: siteConfig.description,
+  path: "/",
+});
+
 export const metadata: Metadata = {
-  ...createMetadata({
-    title: siteConfig.name,
-    description: siteConfig.description,
-    path: "/",
-  }),
+  ...rootMetadata,
   metadataBase: new URL(siteConfig.url),
   applicationName: siteConfig.name,
   authors: [

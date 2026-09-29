@@ -54,9 +54,9 @@ export default function HowToFAQ({ item }: { item: any }) {
 
               <div className="min-w-0 flex-1">
                 <div className="flex items-start justify-between gap-4">
-                  <h3 className="text-base font-black leading-7 text-text-primary sm:text-lg md:text-xl">
+                  <h2 className="text-base font-black leading-7 text-text-primary sm:text-lg md:text-xl">
                     {faq.question}
-                  </h3>
+                  </h2>
 
                   <span className="hidden h-8 w-8 shrink-0 place-items-center rounded-full border border-white/10 text-amber-base transition-transform group-hover:rotate-45 md:grid">
                     <Plus className="h-4 w-4" />

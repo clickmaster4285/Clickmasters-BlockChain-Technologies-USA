@@ -137,7 +137,7 @@ export const CALCULATORS_BASE_PATH = "/calculators";
 
 export const CALCULATORS_SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/+$/, "") ||
-  "https://clickmasters.com";
+  "https://clickmastersblockchaintechnologies.com";
 
 const calculatorEngineMap: Record<
   string,

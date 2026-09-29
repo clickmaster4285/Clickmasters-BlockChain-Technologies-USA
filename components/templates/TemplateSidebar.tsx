@@ -43,9 +43,9 @@ export default function TemplateSidebar({
               Custom Template
             </div>
 
-            <h3 className="mt-4 text-2xl font-black leading-tight text-text-primary">
+            <h2 className="mt-4 text-2xl font-black leading-tight text-text-primary">
               Need this adapted to your project?
-            </h3>
+            </h2>
 
             <p className="mt-3 text-sm leading-7 text-text-secondary">
               Get a professionally customized version for your blockchain
@@ -74,9 +74,9 @@ export default function TemplateSidebar({
                 Template Summary
               </p>
 
-              <h3 className="mt-1 text-lg font-black text-text-primary">
+              <h2 className="mt-1 text-lg font-black text-text-primary">
                 Quick details
-              </h3>
+              </h2>
             </div>
           </div>
 
@@ -163,9 +163,9 @@ export default function TemplateSidebar({
                 Continue Exploring
               </p>
 
-              <h3 className="mt-2 text-xl font-black text-text-primary">
+              <h2 className="mt-2 text-xl font-black text-text-primary">
                 Related Templates
-              </h3>
+              </h2>
             </div>
 
             <Link

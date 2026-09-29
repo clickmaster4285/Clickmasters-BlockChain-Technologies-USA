@@ -87,9 +87,9 @@ export default function TemplateCard({
           </div>
 
           {/* Title */}
-          <h3 className="mt-5 text-2xl font-black leading-tight text-text-primary transition-all duration-300 group-hover:translate-x-1 group-hover:text-amber-base">
+          <h2 className="mt-5 text-2xl font-black leading-tight text-text-primary transition-all duration-300 group-hover:translate-x-1 group-hover:text-amber-base">
             {item.title}
-          </h3>
+          </h2>
 
           {/* Description */}
           <p className="mt-4 line-clamp-4 flex-1 text-sm leading-7 text-text-secondary">

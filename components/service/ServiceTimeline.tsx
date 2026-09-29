@@ -36,7 +36,7 @@ export default function ServiceTimeline({ phases }: Props) {
               {/* Content */}
               <div className="flex-1 pb-2">
                 <div className="flex flex-wrap items-baseline gap-2">
-                  <h3 className="font-semibold">{p.phase}</h3>
+                  <h2 className="font-semibold">{p.phase}</h2>
                   <span className="text-xs font-mono text-amber-base bg-amber-glow px-2 py-0.5 rounded-full">{p.duration}</span>
                 </div>
                 <p className="mt-1 text-sm text-silver-base">{p.description}</p>

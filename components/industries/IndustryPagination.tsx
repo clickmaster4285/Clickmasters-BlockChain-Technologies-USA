@@ -1,6 +1,7 @@
 // components/industries/IndustryPagination.tsx
 
 import Link from "next/link";
+import { getPageHref } from "@/lib/pagination";
 import {
   ArrowLeft,
   ArrowRight,
@@ -63,11 +64,7 @@ export default function IndustryPagination({
     totalPages,
   );
 
-  const createPageLink = (page: number) => {
-    return page === 1
-      ? "/industries"
-      : `/industries?page=${page}`;
-  };
+  const createPageLink = (page: number) => getPageHref("/industries", page);
 
   return (
     <nav

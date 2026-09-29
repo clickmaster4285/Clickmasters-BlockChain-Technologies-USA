@@ -73,7 +73,7 @@ export default function ToolFAQ({ item }: { item: any }) {
                     {String(index + 1).padStart(2, "0")}
                   </span>
 
-                  <h3
+                  <h2
                     className={`text-sm font-bold leading-6 sm:text-base ${
                       isOpen
                         ? "text-amber-base"
@@ -81,7 +81,7 @@ export default function ToolFAQ({ item }: { item: any }) {
                     }`}
                   >
                     {faq.question}
-                  </h3>
+                  </h2>
                 </div>
 
                 <span

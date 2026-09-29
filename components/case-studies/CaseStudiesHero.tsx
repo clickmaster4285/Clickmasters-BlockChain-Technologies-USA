@@ -368,9 +368,9 @@ export default function CaseStudiesHero({
                         {project.category}
                       </p>
 
-                      <h3 className="mt-2 text-sm font-black text-white">
+                      <h2 className="mt-2 text-sm font-black text-white">
                         {project.client}
-                      </h3>
+                      </h2>
                     </div>
 
                     <TrendingUp className="h-4 w-4 text-emerald-300" />

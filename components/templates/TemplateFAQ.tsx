@@ -73,13 +73,13 @@ export default function TemplateFAQ({ item }: { item: any }) {
                     {String(index + 1).padStart(2, "0")}
                   </span>
 
-                  <h3
+                  <h2
                     className={`text-sm font-bold leading-6 transition-colors sm:text-base ${
                       isOpen ? "text-amber-base" : "text-text-primary"
                     }`}
                   >
                     {faq.question}
-                  </h3>
+                  </h2>
                 </div>
 
                 <span

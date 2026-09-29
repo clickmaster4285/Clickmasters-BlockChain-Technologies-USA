@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { getPageHref } from "@/lib/pagination";
 import {
   ArrowUpRight,
   BookOpen,
@@ -285,9 +286,9 @@ export default function ResourceCategories({
             return (
               <Link
                 key={category}
-                href={`/resources?category=${encodeURIComponent(
-                  category
-                )}`}
+                href={getPageHref("/resources", 1, {
+                  category,
+                })}
                 className={`animate-resource-category-reveal group relative min-h-[290px] overflow-hidden rounded-[1.75rem] border border-white/[0.07] bg-[#101b2c]/75 p-5 opacity-0 backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:bg-[#122033] sm:p-6 ${colors.border}`}
                 style={{
                   animationDelay: `${index * 80}ms`,
@@ -336,11 +337,11 @@ export default function ResourceCategories({
                       <Sparkles className="h-3 w-3 text-amber-base/70" />
                     </div>
 
-                    <h3
+                    <h2
                       className={`text-xl font-black tracking-[-0.025em] text-white transition-colors duration-300 ${colors.text}`}
                     >
                       {category}
-                    </h3>
+                    </h2>
 
                     <p className="mt-3 line-clamp-3 text-sm font-medium leading-6 text-[#8391a6]">
                       {visual.description}

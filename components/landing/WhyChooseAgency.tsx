@@ -69,9 +69,9 @@ export function WhyChooseAgency() {
                         <span className="font-mono text-[11px] font-semibold text-text-muted">
                           {String(index + 1).padStart(2, "0")}
                         </span>
-                        <h3 className="text-lg font-semibold text-text-primary md:text-xl">
+                        <h2 className="text-lg font-semibold text-text-primary md:text-xl">
                           {reason.title}
-                        </h3>
+                        </h2>
                       </div>
                       <p className="mt-2 text-sm leading-relaxed text-text-secondary">
                         {reason.text}

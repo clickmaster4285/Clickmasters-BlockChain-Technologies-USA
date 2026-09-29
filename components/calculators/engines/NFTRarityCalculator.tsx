@@ -269,9 +269,9 @@ function CalculatorHeader({
           Trait rarity analyzer
         </span>
 
-        <h3 className="mt-2 text-2xl font-semibold tracking-[-0.03em] text-white">
+        <h2 className="mt-2 text-2xl font-semibold tracking-[-0.03em] text-white">
           {title}
-        </h3>
+        </h2>
       </div>
 
       <button
@@ -834,9 +834,9 @@ function InvalidResult() {
         !
       </span>
 
-      <h4 className="mt-5 text-xl font-semibold text-white">
+      <h2 className="mt-5 text-xl font-semibold text-white">
         Add valid trait data
-      </h4>
+      </h2>
 
       <p className="mt-3 text-sm leading-7 text-white/50">
         Collection size must be greater than zero. Each included trait must

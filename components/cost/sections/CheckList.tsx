@@ -55,9 +55,9 @@ export default function ChecklistSection({
         <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
           {good && (
             <RevealGroup className="rounded-2xl border border-emerald-border bg-emerald-glow p-6">
-              <h3 className="font-display text-base font-semibold text-emerald-dim">
+              <h2 className="font-display text-base font-semibold text-emerald-dim">
                 {cleanInlineMarks(good.label.replace(/:$/, ""))}
-              </h3>
+              </h2>
               <ul className="mt-4 space-y-2.5">
                 {good.items.map((it, i) => (
                   <li
@@ -74,9 +74,9 @@ export default function ChecklistSection({
           )}
           {bad && (
             <RevealGroup className="rounded-2xl border border-red-600/20 bg-red-600/5 p-6">
-              <h3 className="font-display text-base font-semibold text-red-700">
+              <h2 className="font-display text-base font-semibold text-red-700">
                 {cleanInlineMarks(bad.label.replace(/:$/, ""))}
-              </h3>
+              </h2>
               <ul className="mt-4 space-y-2.5">
                 {bad.items.map((it, i) => (
                   <li

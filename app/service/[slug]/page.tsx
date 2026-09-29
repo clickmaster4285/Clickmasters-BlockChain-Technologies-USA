@@ -73,7 +73,7 @@ export default async function ServicePage({ params }: { params: any }) {
 
               {/* Technical deliverables */}
               <div className="rounded-2xl border border-border bg-surface p-6">
-                <h3 className="text-lg font-semibold">Technical deliverables</h3>
+                <h2 className="text-lg font-semibold">Technical deliverables</h2>
                 <ul className="mt-3 text-sm text-silver-base space-y-2">
                   <li className="flex items-start gap-2"><span className="text-amber-base mt-0.5">›</span> Auditable smart contract source code (verifiable)</li>
                   <li className="flex items-start gap-2"><span className="text-amber-base mt-0.5">›</span> Test suite with CI integration</li>
@@ -84,14 +84,14 @@ export default async function ServicePage({ params }: { params: any }) {
 
               {/* Integrations */}
               <div className="rounded-2xl border border-border bg-surface p-6">
-                <h3 className="text-lg font-semibold">Integrations</h3>
+                <h2 className="text-lg font-semibold">Integrations</h2>
                 <p className="mt-2 text-sm text-silver-base">Common integrations: The Graph, Alchemy/Infura, OpenZeppelin Defender, and popular wallet providers.</p>
               </div>
 
               {/* Case studies */}
               {service.caseStudy && (
                 <div className="rounded-2xl border border-border bg-surface p-6">
-                  <h3 className="text-lg font-semibold">Case studies</h3>
+                  <h2 className="text-lg font-semibold">Case studies</h2>
                   <div className="mt-3">
                     {/* @ts-ignore */}
                     <CaseStudyCarousel slides={[{ title: service.caseStudy.title, blurb: service.caseStudy.blurb, image: service.caseStudy.image }]} />
@@ -120,7 +120,7 @@ export default async function ServicePage({ params }: { params: any }) {
 
           {/* Bottom CTA */}
           <div className="mt-16 rounded-3xl p-10 md:p-14 bg-gradient-to-r from-amber-base via-amber-light to-surface text-bg-base text-center">
-            <h3 className="text-3xl md:text-4xl font-bold">Ready to talk?</h3>
+            <h2 className="text-3xl md:text-4xl font-bold">Ready to talk?</h2>
             <p className="mt-3 text-bg-base/80 max-w-xl mx-auto">Schedule a discovery call and receive a tailored scope and estimate. No commitment required.</p>
             <div className="mt-6">
               <Link href="/contact" className="inline-flex items-center gap-2 rounded-full bg-bg-base px-8 py-3.5 text-sm font-semibold text-amber-base shadow-glow hover:-translate-y-0.5 transition-transform">Contact us</Link>

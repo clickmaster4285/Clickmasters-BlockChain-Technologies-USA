@@ -170,7 +170,7 @@ export default function ComparisonArticle({
                 key={item.question}
                 className="rounded-2xl border border-white/10 bg-bg-base/50 p-5 transition-colors hover:border-amber-base/25"
               >
-                <h3 className="font-bold text-text-primary">{item.question}</h3>
+                <h2 className="font-bold text-text-primary">{item.question}</h2>
                 <p className="mt-3 text-sm leading-7 text-silver">{item.answer}</p>
               </div>
             ))}

@@ -168,11 +168,11 @@ export default function FeatureGridSection({
                     </div>
 
                     {/* Title - made bolder */}
-                    <h3 className={`mt-4 font-display text-base font-bold transition-all duration-300 ${
+                    <h2 className={`mt-4 font-display text-base font-bold transition-all duration-300 ${
                       isHovered ? "text-amber-600" : "text-slate-800"
                     }`}>
                       {cleanInlineMarks(item.label)}
-                    </h3>
+                    </h2>
 
                     {/* Description */}
                     <p className={`mt-2 text-sm leading-relaxed transition-all duration-300 ${

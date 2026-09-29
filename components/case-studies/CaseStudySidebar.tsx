@@ -107,9 +107,9 @@ export default function CaseStudySidebar({
                   Project Details
                 </p>
 
-                <h3 className="mt-2 text-xl font-black tracking-[-0.025em] text-white">
+                <h2 className="mt-2 text-xl font-black tracking-[-0.025em] text-white">
                   Engagement overview
-                </h3>
+                </h2>
               </div>
 
               <span className="grid h-11 w-11 place-items-center rounded-2xl border border-amber-400/20 bg-amber-400/[0.08] text-amber-400">
@@ -208,9 +208,9 @@ export default function CaseStudySidebar({
               <CheckCircle2 className="h-5 w-5" />
             </span>
 
-            <h3 className="mt-5 text-lg font-black text-white">
+            <h2 className="mt-5 text-lg font-black text-white">
               Results built for long-term growth
-            </h3>
+            </h2>
 
             <p className="mt-3 text-xs font-medium leading-6 text-[#8290a4]">
               Every engagement is designed around measurable outcomes,

@@ -224,9 +224,9 @@ export default function TemplatePreview({ item }: { item: any }) {
                   Professional Template
                 </div>
 
-                <h3 className="mt-4 max-w-2xl text-2xl font-black leading-tight text-text-primary md:text-3xl">
+                <h2 className="mt-4 max-w-2xl text-2xl font-black leading-tight text-text-primary md:text-3xl">
                   {itemTitle}
-                </h3>
+                </h2>
 
                 <p className="mt-3 max-w-2xl text-sm leading-7 text-text-secondary">
                   {itemDescription}
@@ -287,9 +287,9 @@ export default function TemplatePreview({ item }: { item: any }) {
                         </span>
 
                         <div className="min-w-0 flex-1">
-                          <h4 className="text-lg font-black text-text-primary transition-colors group-hover/section:text-amber-base">
+                          <h2 className="text-lg font-black text-text-primary transition-colors group-hover/section:text-amber-base">
                             {title}
-                          </h4>
+                          </h2>
 
                           {description && (
                             <p className="mt-3 text-sm leading-7 text-text-secondary">

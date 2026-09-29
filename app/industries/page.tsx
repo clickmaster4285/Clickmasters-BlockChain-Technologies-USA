@@ -33,18 +33,30 @@ import { Footer } from "@/components/landing/Footer";
 import BackToTop from "@/components/ui/BackToTop";
 
 import { createMetadata } from "@/config/metadata";
+import { getPageHref } from "@/lib/pagination";
 import { getIndustryCards } from "@/lib/industry";
 
 /* =========================================================
    Metadata
 ========================================================= */
 
-export const metadata = createMetadata({
-  title: "Blockchain Solutions for Global Industries",
-  description:
-    "Explore secure and scalable blockchain solutions for finance, healthcare, supply chain, real estate, insurance, energy, gaming, government, and enterprise operations.",
-  path: "/industries",
-});
+export async function generateMetadata({
+  searchParams,
+}: IndustriesPageProps) {
+  const resolvedSearchParams = await searchParams;
+  const requestedPage = Number(resolvedSearchParams?.page || "1");
+  const currentPage =
+    Number.isInteger(requestedPage) && requestedPage > 0
+      ? requestedPage
+      : 1;
+
+  return createMetadata({
+    title: "Blockchain Solutions for Global Industries",
+    description:
+      "Explore secure and scalable blockchain solutions for finance, healthcare, supply chain, real estate, insurance, energy, gaming, government, and enterprise operations.",
+    path: getPageHref("/industries", currentPage),
+  });
+}
 
 /* =========================================================
    Static Content
@@ -249,7 +261,7 @@ export default async function IndustriesPage({
     redirect(
       totalPages === 1
         ? "/industries"
-        : `/industries?page=${totalPages}`,
+        : getPageHref("/industries", totalPages),
     );
   }
 
@@ -535,9 +547,9 @@ export default async function IndustriesPage({
                         </span>
                       </div>
 
-                      <h3 className="mt-6 text-xl font-black text-text-primary">
+                      <h2 className="mt-6 text-xl font-black text-text-primary">
                         {item.title}
-                      </h3>
+                      </h2>
 
                       <p className="mt-3 text-sm leading-7 text-silver">
                         {item.description}
@@ -655,9 +667,9 @@ export default async function IndustriesPage({
                         </span>
                       </div>
 
-                      <h3 className="mt-4 text-2xl font-black leading-[1.2] tracking-[-0.025em] text-text-primary transition-colors duration-300 group-hover:text-amber-base">
+                      <h2 className="mt-4 text-2xl font-black leading-[1.2] tracking-[-0.025em] text-text-primary transition-colors duration-300 group-hover:text-amber-base">
                         {industry.title}
-                      </h3>
+                      </h2>
 
                       <p className="mt-4 line-clamp-3 text-sm leading-7 text-silver">
                         {industry.excerpt}
@@ -705,9 +717,9 @@ export default async function IndustriesPage({
                   <Building2 className="h-7 w-7" />
                 </span>
 
-                <h3 className="mt-5 text-2xl font-black text-text-primary">
+                <h2 className="mt-5 text-2xl font-black text-text-primary">
                   No industry pages found
-                </h3>
+                </h2>
 
                 <p className="mx-auto mt-3 max-w-lg text-sm leading-7 text-silver">
                   Confirm that your industry entries contain all
@@ -772,9 +784,9 @@ export default async function IndustriesPage({
                             {layer.label}
                           </p>
 
-                          <h3 className="mt-2 text-xl font-black text-text-primary">
+                          <h2 className="mt-2 text-xl font-black text-text-primary">
                             {layer.title}
-                          </h3>
+                          </h2>
 
                           <p className="mt-2 max-w-xl text-sm leading-6 text-silver">
                             {layer.description}
@@ -845,9 +857,9 @@ export default async function IndustriesPage({
                       {outcome.metric}
                     </p>
 
-                    <h3 className="relative mt-2 text-lg font-black text-text-primary">
+                    <h2 className="relative mt-2 text-lg font-black text-text-primary">
                       {outcome.title}
-                    </h3>
+                    </h2>
 
                     <p className="relative mt-4 text-sm leading-7 text-silver">
                       {outcome.description}
@@ -899,9 +911,9 @@ export default async function IndustriesPage({
                         <Icon className="h-6 w-6" />
                       </span>
 
-                      <h3 className="relative mt-7 text-xl font-black text-text-primary">
+                      <h2 className="relative mt-7 text-xl font-black text-text-primary">
                         {advantage.title}
-                      </h3>
+                      </h2>
 
                       <p className="relative mt-4 text-sm leading-7 text-silver">
                         {advantage.description}

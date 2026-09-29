@@ -76,7 +76,7 @@ export default function CaseStudyCarousel({ slides }: { slides: Slide[] }) {
                     <Image src={s.image} alt={s.title} width={800} height={420} className="w-full h-auto object-cover" />
                   </div>
                 )}
-                <h4 className="font-semibold mt-3">{s.title}</h4>
+                <h2 className="font-semibold mt-3">{s.title}</h2>
                 <p className="mt-2 text-sm text-muted-foreground">{s.blurb}</p>
                 <div className="mt-4">
                   <Link href="/contact" className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground">Talk to us</Link>

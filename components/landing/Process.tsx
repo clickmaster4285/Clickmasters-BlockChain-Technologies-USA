@@ -133,9 +133,9 @@ export function Process() {
                         <Icon className="h-5 w-5" />
                       </div>
 
-                      <h3 className="mt-4 text-xl font-bold tracking-tight text-text-primary md:text-2xl">
+                      <h2 className="mt-4 text-xl font-bold tracking-tight text-text-primary md:text-2xl">
                         {s.title}
-                      </h3>
+                      </h2>
                       <p className="mt-2 text-sm leading-relaxed text-text-secondary md:text-[0.9375rem]">
                         {s.desc}
                       </p>

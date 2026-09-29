@@ -141,12 +141,12 @@ export default function TemplateContent({ item }: { item: any }) {
 
               case "subheading":
                 return (
-                  <h3
+                  <h2
                     key={index}
                     className="text-xl font-black leading-tight text-text-primary sm:text-2xl"
                   >
                     {block.text}
-                  </h3>
+                  </h2>
                 );
 
               case "paragraph":
@@ -206,9 +206,9 @@ export default function TemplateContent({ item }: { item: any }) {
                             Included Details
                           </p>
 
-                          <h3 className="mt-1 text-xl font-black text-text-primary sm:text-2xl">
+                          <h2 className="mt-1 text-xl font-black text-text-primary sm:text-2xl">
                             {block.title}
-                          </h3>
+                          </h2>
                         </div>
                       </div>
                     )}
@@ -240,9 +240,9 @@ export default function TemplateContent({ item }: { item: any }) {
 
                                 <div className="min-w-0 flex-1">
                                   {title && (
-                                    <h4 className="font-black text-text-primary transition-colors group-hover:text-amber-base">
+                                    <h2 className="font-black text-text-primary transition-colors group-hover:text-amber-base">
                                       {title}
-                                    </h4>
+                                    </h2>
                                   )}
 
                                   <p
@@ -278,9 +278,9 @@ export default function TemplateContent({ item }: { item: any }) {
                             Step by Step
                           </p>
 
-                          <h3 className="mt-1 text-xl font-black text-text-primary sm:text-2xl">
+                          <h2 className="mt-1 text-xl font-black text-text-primary sm:text-2xl">
                             {block.title}
-                          </h3>
+                          </h2>
                         </div>
                       </div>
                     )}
@@ -298,9 +298,9 @@ export default function TemplateContent({ item }: { item: any }) {
                               </span>
 
                               <div>
-                                <h4 className="text-lg font-black text-text-primary transition-colors group-hover:text-amber-base">
+                                <h2 className="text-lg font-black text-text-primary transition-colors group-hover:text-amber-base">
                                   {step.title || `Step ${stepIndex + 1}`}
-                                </h4>
+                                </h2>
 
                                 <p className="mt-3 text-sm leading-7 text-text-secondary md:text-base">
                                   {step.description || step.text}
@@ -318,9 +318,9 @@ export default function TemplateContent({ item }: { item: any }) {
                 return (
                   <section key={index}>
                     {block.title && (
-                      <h3 className="mb-5 text-xl font-black text-text-primary sm:text-2xl">
+                      <h2 className="mb-5 text-xl font-black text-text-primary sm:text-2xl">
                         {block.title}
-                      </h3>
+                      </h2>
                     )}
 
                     {/* Desktop table */}
@@ -428,9 +428,9 @@ export default function TemplateContent({ item }: { item: any }) {
                     </p>
 
                     {block.title && (
-                      <h3 className="mt-3 text-xl font-black text-text-primary">
+                      <h2 className="mt-3 text-xl font-black text-text-primary">
                         {block.title}
-                      </h3>
+                      </h2>
                     )}
 
                     <p className="mt-3 text-sm leading-7 text-text-secondary md:text-base">

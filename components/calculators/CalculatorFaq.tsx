@@ -55,7 +55,7 @@ export default function CalculatorFaq({
               key={`${faq.question}-${index}`}
               className="group overflow-hidden rounded-[1.5rem] border border-white/10 bg-surface/80 shadow-[0_14px_45px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-1 hover:border-amber-base/30 hover:bg-bg-base"
             >
-              <h3>
+              <h2>
                 <button
                   id={triggerId}
                   type="button"
@@ -80,7 +80,7 @@ export default function CalculatorFaq({
                     +
                   </span>
                 </button>
-              </h3>
+              </h2>
 
               <div
                 id={panelId}

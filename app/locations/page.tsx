@@ -31,6 +31,7 @@ import { Footer } from "@/components/landing/Footer";
 import BackToTop from "@/components/ui/BackToTop";
 
 import LocationPagination from "@/components/locations/LocationPagination";
+import { getPageHref } from "@/lib/pagination";
 
 import {
   getLocationCards,
@@ -41,7 +42,18 @@ import {
    Metadata
 ========================================================= */
 
-export const metadata: Metadata = {
+export async function generateMetadata({
+  searchParams,
+}: LocationsPageProps): Promise<Metadata> {
+  const resolvedSearchParams = await searchParams;
+  const requestedPage = Number(resolvedSearchParams?.page ?? "1");
+  const currentPage =
+    Number.isInteger(requestedPage) && requestedPage > 0
+      ? requestedPage
+      : 1;
+  const path = getPageHref("/locations", currentPage);
+
+  return {
   title:
     "Global Blockchain Development Locations | ClickMasters",
 
@@ -49,7 +61,7 @@ export const metadata: Metadata = {
     "Explore ClickMasters blockchain development services across major cities, countries, and technology markets worldwide.",
 
   alternates: {
-    canonical: "/locations",
+    canonical: path,
   },
 
   openGraph: {
@@ -59,11 +71,12 @@ export const metadata: Metadata = {
     description:
       "Explore blockchain development services, regional expertise, enterprise solutions, and technology delivery across global markets.",
 
-    url: "/locations",
+    url: path,
 
     type: "website",
   },
-};
+  };
+}
 
 /* =========================================================
    Static Content
@@ -192,7 +205,7 @@ export default async function LocationsPage({
     redirect(
       totalPages === 1
         ? "/locations"
-        : `/locations?page=${totalPages}`,
+        : getPageHref("/locations", totalPages),
     );
   }
 
@@ -539,9 +552,9 @@ export default async function LocationsPage({
                       <Icon className="h-6 w-6" />
                     </span>
 
-                    <h3 className="mt-7 text-xl font-black text-text-primary">
+                    <h2 className="mt-7 text-xl font-black text-text-primary">
                       {benefit.title}
-                    </h3>
+                    </h2>
 
                     <p className="mt-4 text-sm leading-7 text-silver">
                       {benefit.description}
@@ -680,9 +693,9 @@ export default async function LocationsPage({
                               </span>
                             </div>
 
-                            <h3 className="mt-4 text-2xl font-black leading-[1.2] tracking-[-0.025em] text-text-primary transition-colors duration-300 group-hover:text-amber-base">
+                            <h2 className="mt-4 text-2xl font-black leading-[1.2] tracking-[-0.025em] text-text-primary transition-colors duration-300 group-hover:text-amber-base">
                               {location.title}
-                            </h3>
+                            </h2>
 
                             <p className="mt-4 line-clamp-3 text-sm leading-7 text-silver">
                               {location.excerpt}
@@ -734,9 +747,9 @@ export default async function LocationsPage({
                   <MapPin className="h-7 w-7" />
                 </span>
 
-                <h3 className="mt-5 text-2xl font-black text-text-primary">
+                <h2 className="mt-5 text-2xl font-black text-text-primary">
                   No location pages found
-                </h3>
+                </h2>
 
                 <p className="mx-auto mt-3 max-w-lg text-sm leading-7 text-silver">
                   Confirm that your location entries include a
@@ -791,9 +804,9 @@ export default async function LocationsPage({
                         </span>
                       </div>
 
-                      <h3 className="mt-6 text-xl font-black text-text-primary">
+                      <h2 className="mt-6 text-xl font-black text-text-primary">
                         {step.title}
-                      </h3>
+                      </h2>
 
                       <p className="mt-3 text-sm leading-7 text-silver">
                         {step.description}

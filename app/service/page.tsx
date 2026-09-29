@@ -205,7 +205,7 @@ export default async function ServicesIndex({ searchParams }: ServicesIndexProps
               { title: "Production ops", desc: "We don't just ship code. We set up monitoring, alerting, runbooks, and handoff documentation for your team." },
             ].map((item) => (
               <div key={item.title} className="rounded-2xl border border-border bg-surface p-6 card">
-                <h4 className="font-semibold text-lg">{item.title}</h4>
+                <h2 className="font-semibold text-lg">{item.title}</h2>
                 <p className="mt-3 text-sm text-silver-base leading-relaxed">{item.desc}</p>
               </div>
             ))}
@@ -214,7 +214,7 @@ export default async function ServicesIndex({ searchParams }: ServicesIndexProps
           {/* CTA */}
           <section className="mt-20">
             <div className="rounded-3xl p-10 md:p-14 bg-gradient-to-r from-amber-base via-amber-light to-surface text-bg-base text-center">
-              <h3 className="text-3xl md:text-4xl font-bold">Ready to launch?</h3>
+              <h2 className="text-3xl md:text-4xl font-bold">Ready to launch?</h2>
               <p className="mt-3 text-bg-base/80 max-w-xl mx-auto">Get a detailed roadmap and fixed-scope estimate for your product. No commitment, no pressure.</p>
               <div className="mt-6">
                 <Link href="/contact" className="inline-flex items-center gap-2 rounded-full bg-bg-base px-8 py-3.5 text-sm font-semibold text-amber-base shadow-glow hover:-translate-y-0.5 transition-transform">Request a proposal</Link>

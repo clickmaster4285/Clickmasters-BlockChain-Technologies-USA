@@ -41,7 +41,7 @@ export default function ServiceSection({ section, index }: Props) {
 
         {/* Content */}
         <div className="flex-1 min-w-0">
-          <h3 className="text-xl font-semibold">{section.heading}</h3>
+          <h2 className="text-xl font-semibold">{section.heading}</h2>
           <p className="mt-2 text-sm text-silver-base leading-relaxed">{section.content}</p>
           <ul className="mt-4 space-y-2">
             {section.bullets.map((bullet) => (

@@ -40,9 +40,9 @@ export default function GlossarySidebar({
             Expert Help
           </p>
 
-          <h3 className="mt-3 text-2xl font-black leading-tight text-text-primary">
+          <h2 className="mt-3 text-2xl font-black leading-tight text-text-primary">
             Need help applying this concept?
-          </h3>
+          </h2>
 
           <p className="mt-3 text-sm leading-7 text-silver">
             Get practical guidance on how this blockchain term applies to your
@@ -150,9 +150,9 @@ export default function GlossarySidebar({
                 Continue Learning
               </p>
 
-              <h3 className="mt-2 text-xl font-black text-text-primary">
+              <h2 className="mt-2 text-xl font-black text-text-primary">
                 Related Terms
-              </h3>
+              </h2>
             </div>
 
             <Link

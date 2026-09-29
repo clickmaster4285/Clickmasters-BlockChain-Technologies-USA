@@ -235,9 +235,9 @@ export default function TechnologiesPage() {
                       Technology {String(index + 1).padStart(2, "0")}
                     </p>
 
-                    <h3 className="mt-3 text-2xl font-black leading-tight tracking-[-0.025em] text-text-primary transition-colors duration-300 group-hover:text-amber-base">
+                    <h2 className="mt-3 text-2xl font-black leading-tight tracking-[-0.025em] text-text-primary transition-colors duration-300 group-hover:text-amber-base">
                       {technology.name}
-                    </h3>
+                    </h2>
                   </div>
 
                   <div className="relative flex flex-1 flex-col p-7">

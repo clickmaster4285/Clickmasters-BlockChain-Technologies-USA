@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { getPageHref } from "@/lib/pagination";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -110,9 +111,9 @@ function buildCollectionsFromResources(
           : index === 1
             ? "Explore relevant insights, guides, and frameworks organized into one easy-to-follow resource collection."
             : "Discover carefully selected resources designed to provide clarity, practical knowledge, and actionable next steps.",
-      href: `/resources?category=${encodeURIComponent(
-        category
-      )}`,
+      href: getPageHref("/resources", 1, {
+        category,
+      }),
       icon:
         index === 0
           ? "book"
@@ -275,9 +276,9 @@ export default function ResourceCollections({
                     </div>
 
                     {/* Title */}
-                    <h3 className="mt-8 text-2xl font-black leading-tight tracking-[-0.035em] text-white transition-colors duration-300 group-hover:text-amber-50 sm:text-[1.7rem]">
+                    <h2 className="mt-8 text-2xl font-black leading-tight tracking-[-0.035em] text-white transition-colors duration-300 group-hover:text-amber-50 sm:text-[1.7rem]">
                       {collection.title}
-                    </h3>
+                    </h2>
 
                     {collection.description && (
                       <p className="mt-4 text-sm font-medium leading-7 text-[#8997ab]">
@@ -414,9 +415,9 @@ export default function ResourceCollections({
                   Personalized Learning
                 </p>
 
-                <h3 className="mt-2 text-xl font-black text-white sm:text-2xl">
+                <h2 className="mt-2 text-xl font-black text-white sm:text-2xl">
                   Build your own resource journey
-                </h3>
+                </h2>
 
                 <p className="mt-2 max-w-2xl text-sm font-medium leading-6 text-[#8c99ac]">
                   Combine guides, reports, technical

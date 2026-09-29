@@ -293,7 +293,7 @@ function HeroFeature({
           <Icon className="h-5 w-5" />
         </span>
 
-        <h3 className="mt-4 text-sm font-black text-text-primary">{title}</h3>
+        <h2 className="mt-4 text-sm font-black text-text-primary">{title}</h2>
 
         <p className="mt-2 text-xs leading-5 text-silver">{description}</p>
       </div>

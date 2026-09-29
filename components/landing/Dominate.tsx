@@ -91,9 +91,9 @@ export function Dominate() {
         {/* CTA banner */}
         <div className="mt-14 flex flex-col items-start gap-6 rounded-2xl border border-amber-border/40 bg-linear-to-br from-amber-glow via-emerald-glow/20 to-surface p-8 md:flex-row md:items-center md:justify-between md:p-10">
           <div className="max-w-xl">
-            <h3 className="text-xl font-bold text-text-primary md:text-2xl">
+            <h2 className="text-xl font-bold text-text-primary md:text-2xl">
               Ready to scope your blockchain project?
-            </h3>
+            </h2>
             <p className="mt-2 text-sm leading-relaxed text-text-secondary">
               Free 30-min strategy call. NDA signed before the first meeting.
             </p>

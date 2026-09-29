@@ -203,9 +203,9 @@ export default function ResourceSpotlight({
                 </span>
               </div>
 
-              <h3 className="mt-7 text-3xl font-black leading-[1.06] tracking-[-0.04em] text-white sm:text-4xl lg:text-[3.4rem]">
+              <h2 className="mt-7 text-3xl font-black leading-[1.06] tracking-[-0.04em] text-white sm:text-4xl lg:text-[3.4rem]">
                 {item.title}
-              </h3>
+              </h2>
 
               {item.excerpt && (
                 <p className="mt-6 max-w-2xl text-base font-medium leading-8 text-[#9aa8ba] lg:text-lg">

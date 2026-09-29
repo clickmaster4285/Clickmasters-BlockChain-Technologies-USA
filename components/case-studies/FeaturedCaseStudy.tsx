@@ -152,9 +152,9 @@ export default function FeaturedCaseStudy({
                   {client}
                 </p>
 
-                <h3 className="mt-6 text-3xl font-black leading-[1.08] tracking-[-0.04em] text-white sm:text-4xl xl:text-5xl">
+                <h2 className="mt-6 text-3xl font-black leading-[1.08] tracking-[-0.04em] text-white sm:text-4xl xl:text-5xl">
                   {title}
-                </h3>
+                </h2>
 
                 <p className="mt-6 text-sm font-medium leading-7 text-[#8f9caf] sm:text-base sm:leading-8">
                   {description}

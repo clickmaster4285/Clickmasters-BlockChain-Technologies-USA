@@ -54,9 +54,9 @@ export function CinematicEntry() {
             <Hexagon className="h-12 w-12 text-primary" strokeWidth={1.5} />
           </div>
         </div>
-        <h1 className={`text-5xl font-bold tracking-tight transition-all duration-700 md:text-7xl ${stage >= 3 ? "opacity-100 scale-100" : "opacity-0 scale-90"}`}>
+        <p className={`text-5xl font-bold tracking-tight transition-all duration-700 md:text-7xl ${stage >= 3 ? "opacity-100 scale-100" : "opacity-0 scale-90"}`}>
           <span className="text-gradient">CLICKMASTERS</span>
-        </h1>
+        </p>
         <p className={`font-mono text-sm tracking-[0.3em] text-secondary transition-all duration-500 md:text-base ${stage >= 4 ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}`}>
           BLOCKCHAIN &amp; WEB3
         </p>

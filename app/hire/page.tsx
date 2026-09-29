@@ -496,9 +496,9 @@ export default async function HirePage({
 
                     <div className="relative flex min-h-[260px] flex-col p-7">
 
-                      <h3 className="mt-7 text-2xl font-black leading-tight text-text-primary transition-colors group-hover:text-amber-base">
+                      <h2 className="mt-7 text-2xl font-black leading-tight text-text-primary transition-colors group-hover:text-amber-base">
                         {item.title}
-                      </h3>
+                      </h2>
 
                       <p className="mt-4 line-clamp-3 text-sm leading-7 text-silver">
                         {item.excerpt}
@@ -612,9 +612,9 @@ export default async function HirePage({
                           </span>
                         </div>
 
-                        <h3 className="mt-6 text-xl font-black leading-tight text-text-primary transition-colors group-hover:text-amber-base">
+                        <h2 className="mt-6 text-xl font-black leading-tight text-text-primary transition-colors group-hover:text-amber-base">
                           {item.title}
-                        </h3>
+                        </h2>
 
                         <p className="mt-4 line-clamp-4 text-sm leading-7 text-silver">
                           {item.excerpt}
@@ -646,9 +646,9 @@ export default async function HirePage({
               </div>
             ) : (
               <div className="rounded-3xl border border-white/10 bg-surface/70 p-10 text-center">
-                <h3 className="text-2xl font-black text-text-primary">
+                <h2 className="text-2xl font-black text-text-primary">
                   No hiring guides found
-                </h3>
+                </h2>
 
                 <p className="mt-3 text-sm text-silver">
                   Please check that your Hire entries use the
@@ -772,9 +772,9 @@ export default async function HirePage({
                       </span>
                     </div>
 
-                    <h3 className="mt-6 text-2xl font-black leading-tight text-text-primary">
+                    <h2 className="mt-6 text-2xl font-black leading-tight text-text-primary">
                       {model.title}
-                    </h3>
+                    </h2>
 
                     <p className="mt-4 text-sm leading-7 text-silver">
                       {model.description}
@@ -842,9 +842,9 @@ export default async function HirePage({
                         <Icon className="h-5 w-5" />
                       </span>
 
-                      <h3 className="mt-5 text-lg font-black text-text-primary">
+                      <h2 className="mt-5 text-lg font-black text-text-primary">
                         {item.title}
-                      </h3>
+                      </h2>
 
                       <p className="mt-3 text-sm leading-6 text-silver">
                         {item.description}
@@ -889,9 +889,9 @@ export default async function HirePage({
                         <Icon className="h-6 w-6" />
                       </span>
 
-                      <h3 className="mt-5 text-xl font-black text-text-primary">
+                      <h2 className="mt-5 text-xl font-black text-text-primary">
                         {reason.title}
-                      </h3>
+                      </h2>
 
                       <p className="mt-3 text-sm leading-7 text-silver">
                         {reason.description}

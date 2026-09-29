@@ -47,9 +47,9 @@ export default function ToolSidebar({
               Expert Support
             </div>
 
-            <h3 className="mt-4 text-2xl font-black leading-tight text-text-primary">
+            <h2 className="mt-4 text-2xl font-black leading-tight text-text-primary">
               Need help applying this tool?
-            </h3>
+            </h2>
 
             <p className="mt-3 text-sm leading-7 text-silver">
               Get practical guidance on how to use the results for your
@@ -79,9 +79,9 @@ export default function ToolSidebar({
                 Tool Summary
               </p>
 
-              <h3 className="mt-1 text-lg font-black text-text-primary">
+              <h2 className="mt-1 text-lg font-black text-text-primary">
                 Quick details
-              </h3>
+              </h2>
             </div>
           </div>
 
@@ -183,9 +183,9 @@ export default function ToolSidebar({
                 Continue Exploring
               </p>
 
-              <h3 className="mt-2 text-xl font-black text-text-primary">
+              <h2 className="mt-2 text-xl font-black text-text-primary">
                 Related Tools
-              </h3>
+              </h2>
             </div>
 
             <Link

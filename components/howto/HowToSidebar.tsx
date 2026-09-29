@@ -26,9 +26,9 @@ export default function HowToSidebar({
             Expert Help
           </p>
 
-          <h3 className="mt-3 text-2xl font-black leading-tight">
+          <h2 className="mt-3 text-2xl font-black leading-tight">
             Need help implementing this?
-          </h3>
+          </h2>
 
           <p className="mt-3 text-sm leading-6 text-silver">
             Get practical engineering guidance for turning this guide into a

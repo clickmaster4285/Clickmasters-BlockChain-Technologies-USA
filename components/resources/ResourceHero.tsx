@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
+import { getPageHref } from "@/lib/pagination";
 import {
   ArrowRight,
   BookOpen,
@@ -79,9 +80,9 @@ export default function ResourceHero({
     }
 
     router.push(
-      `/resources?search=${encodeURIComponent(
-        normalizedQuery
-      )}`
+      getPageHref("/resources", 1, {
+        search: normalizedQuery,
+      })
     );
   }
 
@@ -215,9 +216,9 @@ export default function ResourceHero({
                   type="button"
                   onClick={() =>
                     router.push(
-                      `/resources?category=${encodeURIComponent(
-                        category
-                      )}`
+                      getPageHref("/resources", 1, {
+                        category,
+                      })
                     )
                   }
                   className="rounded-full border border-white/[0.08] bg-white/[0.025] px-3.5 py-2 text-[11px] font-bold text-[#9ca9bb] transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-base/25 hover:bg-amber-base/[0.07] hover:text-amber-base"

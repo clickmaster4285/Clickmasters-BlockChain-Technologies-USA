@@ -127,9 +127,9 @@ export default function ResourceCTA({
               </span>
             </div>
 
-            <h3 className="mt-6 text-2xl font-black text-text-primary">
+            <h2 className="mt-6 text-2xl font-black text-text-primary">
               Get the best resources in your inbox
-            </h3>
+            </h2>
 
             <p className="mt-3 text-sm font-medium leading-6 text-silver">
               Receive carefully selected guides, frameworks,

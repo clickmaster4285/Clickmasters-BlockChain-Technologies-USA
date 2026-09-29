@@ -103,9 +103,9 @@ export default function HowToContent({
                 return (
                   <div key={index}>
                     {block.title && (
-                      <h3 className="mb-5 text-2xl font-black">
+                      <h2 className="mb-5 text-2xl font-black">
                         {block.title}
-                      </h3>
+                      </h2>
                     )}
 
                     <div className="grid gap-4">
@@ -128,10 +128,10 @@ export default function HowToContent({
               case "steps":
                 return (
                   <div key={index}>
-                    <h3 className="mb-6 flex items-center gap-3 text-xl font-black sm:text-2xl">
+                    <h2 className="mb-6 flex items-center gap-3 text-xl font-black sm:text-2xl">
                       <ListChecks className="text-amber-base" />
                       {block.title}
-                    </h3>
+                    </h2>
 
                     <div className="space-y-5">
                       {block.items.map((step: any, i: number) => (
@@ -144,9 +144,9 @@ export default function HowToContent({
                               {i + 1}
                             </div>
 
-                            <h4 className="text-lg font-black">
+                            <h2 className="text-lg font-black">
                               {step.title}
-                            </h4>
+                            </h2>
                           </div>
 
                           <p className="leading-7 break-words text-silver">

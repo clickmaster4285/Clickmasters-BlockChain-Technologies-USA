@@ -232,9 +232,9 @@ export default function CaseStudiesGrid({
                   <SearchX className="h-7 w-7" />
                 </span>
 
-                <h3 className="mt-6 text-2xl font-black tracking-[-0.03em] text-white sm:text-3xl">
+                <h2 className="mt-6 text-2xl font-black tracking-[-0.03em] text-white sm:text-3xl">
                   No matching case studies
-                </h3>
+                </h2>
 
                 <p className="mt-4 text-sm font-medium leading-7 text-[#8592a6]">
                   We could not find a project matching your

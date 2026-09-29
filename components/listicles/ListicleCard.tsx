@@ -37,9 +37,9 @@ export default function ListicleCard({
 
         {/* Title */}
 
-        <h3 className="min-h-[82px] text-2xl font-black leading-tight text-text-primary transition-colors duration-300 group-hover:text-amber-base">
+        <h2 className="min-h-[82px] text-2xl font-black leading-tight text-text-primary transition-colors duration-300 group-hover:text-amber-base">
           {item.title}
-        </h3>
+        </h2>
 
         {/* Description */}
 

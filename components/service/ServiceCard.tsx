@@ -20,7 +20,7 @@ export default function ServiceCard({ service, index }: { service: Service; inde
         className="flex h-full flex-col rounded-2xl border border-border bg-surface p-6 card tilt-card"
       >
         <p className="font-mono text-xs text-primary">{service.hero.eyebrow}</p>
-        <h3 className="mt-3 text-xl font-semibold">{service.title}</h3>
+        <h2 className="mt-3 text-xl font-semibold">{service.title}</h2>
         <p className="mt-3 text-sm text-muted-foreground">{service.short}</p>
         <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
           {service.sections.slice(0, 2).map((ss) => (

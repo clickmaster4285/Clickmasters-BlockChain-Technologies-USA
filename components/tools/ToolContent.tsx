@@ -118,12 +118,12 @@ export default function ToolContent({
 
               case "subheading":
                 return (
-                  <h3
+                  <h2
                     key={index}
                     className="text-xl font-black leading-tight text-text-primary sm:text-2xl"
                   >
                     {block.text}
-                  </h3>
+                  </h2>
                 );
 
               case "paragraph":
@@ -183,9 +183,9 @@ export default function ToolContent({
               Key Details
             </p>
 
-            <h3 className="mt-1 text-xl font-black text-text-primary sm:text-2xl">
+            <h2 className="mt-1 text-xl font-black text-text-primary sm:text-2xl">
               {block.title}
-            </h3>
+            </h2>
           </div>
         </div>
       )}
@@ -225,9 +225,9 @@ export default function ToolContent({
 
                     <div className="min-w-0 flex-1">
                       {itemTitle && (
-                        <h4 className="text-base font-black text-text-primary transition-colors duration-300 group-hover:text-amber-base sm:text-lg">
+                        <h2 className="text-base font-black text-text-primary transition-colors duration-300 group-hover:text-amber-base sm:text-lg">
                           {itemTitle}
-                        </h4>
+                        </h2>
                       )}
 
                       <p
@@ -264,9 +264,9 @@ export default function ToolContent({
               Key Details
             </p>
 
-            <h3 className="mt-1 text-xl font-black text-white sm:text-2xl">
+            <h2 className="mt-1 text-xl font-black text-white sm:text-2xl">
               {block.title}
-            </h3>
+            </h2>
           </div>
         </div>
       )}
@@ -307,9 +307,9 @@ export default function ToolContent({
 
                   <div className="min-w-0 flex-1">
                     {itemTitle && (
-                      <h4 className="text-base font-black text-white transition-colors duration-300 group-hover:text-[#fbbf24] sm:text-lg">
+                      <h2 className="text-base font-black text-white transition-colors duration-300 group-hover:text-[#fbbf24] sm:text-lg">
                         {itemTitle}
-                      </h4>
+                      </h2>
                     )}
 
                     <p
@@ -346,9 +346,9 @@ export default function ToolContent({
               Comparison Data
             </p>
 
-            <h3 className="mt-1 text-xl font-black text-white sm:text-2xl">
+            <h2 className="mt-1 text-xl font-black text-white sm:text-2xl">
               {block.title}
-            </h3>
+            </h2>
           </div>
         </div>
       )}
@@ -479,9 +479,9 @@ export default function ToolContent({
                     </p>
 
                     {block.title && (
-                      <h3 className="mt-3 text-xl font-black text-text-primary">
+                      <h2 className="mt-3 text-xl font-black text-text-primary">
                         {block.title}
-                      </h3>
+                      </h2>
                     )}
 
                     <p className="mt-3 text-sm leading-7 text-silver md:text-base">

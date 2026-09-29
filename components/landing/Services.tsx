@@ -64,7 +64,7 @@ export function Services() {
                       0{blockchainServices.findIndex((item) => item.slug === s.slug) + 1}
                     </span>
                   </div>
-                  <h3 className="text-xl font-semibold text-text-primary md:text-2xl">{s.title}</h3>
+                  <h2 className="text-xl font-semibold text-text-primary md:text-2xl">{s.title}</h2>
                   <p className="mt-2 text-sm leading-relaxed text-text-secondary">{s.fullDescription}</p>
                   <div className="mt-5 flex flex-wrap gap-2">
                     {s.benefits.map((t) => (
@@ -109,7 +109,7 @@ export function Services() {
                       {String(blockchainServices.findIndex((item) => item.slug === s.slug) + 1).padStart(2, "0")}
                     </span>
                   </div>
-                  <h3 className="text-lg font-semibold text-text-primary">{s.title}</h3>
+                  <h2 className="text-lg font-semibold text-text-primary">{s.title}</h2>
                   <p className="mt-2 text-sm leading-relaxed text-text-secondary">{s.fullDescription}</p>
                   <div className="mt-4 flex flex-wrap gap-1.5">
                     {s.benefits.slice(0, 3).map((t) => (
