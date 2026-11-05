@@ -32,7 +32,7 @@ import {
   getFeaturedHirePages,
   getHireCards,
 } from "@/lib/hire";
-import { getPageHref } from "@/lib/pagination";
+import { getPageHref, withPageContext } from "@/lib/pagination";
 
 const ITEMS_PER_PAGE = 12;
 
@@ -54,28 +54,40 @@ export async function generateMetadata({
   searchParams,
 }: HirePageProps) {
   const resolvedSearchParams = await searchParams;
-  const currentPage = getRequestedPage(resolvedSearchParams?.page);
+  const hirePages = getHireCards();
+  const totalPages = Math.max(
+    Math.ceil(hirePages.length / ITEMS_PER_PAGE),
+    1,
+  );
+  const currentPage = Math.min(
+    getRequestedPage(resolvedSearchParams?.page),
+    totalPages,
+  );
+  const metadata = withPageContext(
+    "Hire Blockchain Developers",
+    "Find blockchain, Solidity, smart contract, Web3, DeFi, exchange, NFT, and enterprise development roles for product teams.",
+    currentPage,
+    totalPages,
+  );
 
   return createMetadata({
-    title: "Hire Blockchain Developers",
-    description:
-      "Hire experienced blockchain, Solidity, smart contract, Web3, DeFi, exchange, NFT, and enterprise developers for secure and scalable product development.",
+    ...metadata,
     path: getPageHref("/hire", currentPage),
   });
 }
 
 const trustStats = [
   {
-    value: "50+",
-    label: "Blockchain specialists",
-  },
-  {
-    value: "24–72h",
-    label: "Expert matching",
-  },
-  {
     value: "Flexible",
-    label: "Hiring models",
+    label: "Engagement models",
+  },
+  {
+    value: "Project-based",
+    label: "Scope and delivery",
+  },
+  {
+    value: "Web3",
+    label: "Technical focus",
   },
 ];
 
@@ -267,10 +279,9 @@ export default async function HirePage({
                 </div>
 
                 <h1 className="mt-7 max-w-4xl font-display text-4xl font-black leading-[1.08] tracking-tight text-text-primary md:text-6xl xl:text-7xl">
-                  Build Your Product With{" "}
-                  <span className="text-amber-base">
-                    Proven Blockchain Developers
-                  </span>
+                  Hire Blockchain Developers
+                  {safeCurrentPage > 1 &&
+                    ` — Page ${safeCurrentPage} of ${totalPages}`}
                 </h1>
 
                 <p className="mt-6 max-w-2xl text-base leading-8 text-silver md:text-lg">
@@ -337,7 +348,7 @@ export default async function HirePage({
                 <div className="relative overflow-hidden rounded-[2.2rem] border border-white/10 bg-surface/80 p-3 shadow-[0_30px_100px_rgba(0,0,0,0.45)]">
                   <div className="relative aspect-[4/4.2] overflow-hidden rounded-[1.75rem]">
                     <Image
-                      src="/media/blockchain.png"
+                      src="/media/blockchain.webp"
                       alt="Hire experienced blockchain developers"
                       fill
                       priority

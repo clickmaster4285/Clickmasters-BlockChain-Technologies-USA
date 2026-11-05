@@ -38,9 +38,9 @@ export default function CostIndexPage() {
               </RevealOnScroll>
               <RevealOnScroll effect="slide-left" delay={140}>
                 <p className="mt-5 text-pretty text-base leading-relaxed text-text-secondary md:text-lg">
-                  Real ranges from 1,000+ delivered projects — smart contracts, DeFi,
-                  NFTs, exchanges, wallets, tokenization, and more. Pick a category
-                  below for the full breakdown.
+                  Explore indicative ranges for smart contracts, DeFi, NFTs, exchanges, wallets,
+                  tokenization, and more. Pick a category below for a breakdown of the factors
+                  that affect project scope and cost.
                 </p>
               </RevealOnScroll>
             </div>

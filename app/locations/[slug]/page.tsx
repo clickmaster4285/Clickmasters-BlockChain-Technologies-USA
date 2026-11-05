@@ -5,6 +5,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import LocationDetailPage from "@/components/locations/LocationDetailPage";
+import RelatedLinks from "@/components/RelatedLinks";
+import { createMetadata } from "@/config/metadata";
 
 import {
   getLocationBySlug,
@@ -75,50 +77,15 @@ export async function generateMetadata({
   const socialImage =
     location.hero?.image ||
     location.image ||
-    "/media/blockchain.png";
+    "/media/blockchain.webp";
 
-  return {
-    title: `${pageTitle} | ClickMasters`,
-
+  return createMetadata({
+    title: pageTitle,
     description: pageDescription,
-
-    alternates: {
-      canonical: canonicalPath,
-    },
-
-    openGraph: {
-      title: `${pageTitle} | ClickMasters`,
-
-      description: pageDescription,
-
-      url: canonicalPath,
-
-      type: "article",
-
-      images: [
-        {
-          url: socialImage,
-
-          alt: pageTitle,
-        },
-      ],
-    },
-
-    twitter: {
-      card: "summary_large_image",
-
-      title: `${pageTitle} | ClickMasters`,
-
-      description: pageDescription,
-
-      images: [socialImage],
-    },
-
-    robots: {
-      index: true,
-      follow: true,
-    },
-  };
+    path: canonicalPath,
+    image: socialImage,
+    type: "article",
+  });
 }
 
 /* =========================================================
@@ -145,6 +112,9 @@ export default async function LocationSlugPage({
     <LocationDetailPage
       location={location}
       relatedLocations={relatedLocations}
+      relatedLinks={
+        <RelatedLinks type="locations" slug={location.slug} />
+      }
     />
   );
 }

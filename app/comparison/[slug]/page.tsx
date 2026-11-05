@@ -15,6 +15,9 @@ import {
   getComparisonArticleBySlug,
   getRelatedComparisons,
 } from "@/lib/comparison";
+import RelatedLinks from "@/components/RelatedLinks";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { faqPageSchema } from "@/lib/structured-data";
 
 export const dynamicParams = true;
 
@@ -62,6 +65,9 @@ export default async function SingleComparisonPage({
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
+      <JsonLd
+        data={faqPageSchema(article.faqs)}
+      />
 
       <main className="relative overflow-hidden bg-gradient-to-b from-bg-base via-surface/40 to-bg-base pt-32 pb-24">
         <div className="pointer-events-none absolute left-[-14rem] top-[-10rem] h-[32rem] w-[32rem] rounded-full bg-amber-base/10 blur-3xl" />
@@ -115,6 +121,7 @@ export default async function SingleComparisonPage({
 </div>
 
         </section>
+        <RelatedLinks type="comparison" slug={slug} />
       </main>
 
       <Footer />

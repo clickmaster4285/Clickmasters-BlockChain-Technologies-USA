@@ -19,7 +19,12 @@ import { Footer } from "@/components/landing/Footer";
 import BackToTop from "@/components/ui/BackToTop";
 import ToolCard from "@/components/tools/ToolCard";
 import { createMetadata } from "@/config/metadata";
-import { getPageHref } from "@/lib/pagination";
+import {
+  getPageHref,
+  resolveListingCategory,
+  slugifyCategory,
+  withPageContext,
+} from "@/lib/pagination";
 
 import {
   getToolCards,
@@ -59,19 +64,61 @@ function getRequestedPage(page?: string) {
   return Number.isFinite(parsedPage) && parsedPage > 0 ? parsedPage : 1;
 }
 
+function getCategoryDescription(category: string) {
+  if (category.toLowerCase() === "all") {
+    return "Use focused blockchain calculators, security frameworks, architecture planners, and technical decision tools built for founders, developers, and enterprise teams.";
+  }
+  if (category.toLowerCase() === "checklist") {
+    return "Use blockchain checklists to plan token launches, security reviews, deployment readiness, and compliance.";
+  }
+  return `Explore ${category.toLowerCase()} tools for blockchain teams making technical and business decisions.`;
+}
+
 export async function generateMetadata({
   searchParams,
 }: ToolsPageProps) {
   const resolvedSearchParams = await searchParams;
-  const currentPage = getRequestedPage(resolvedSearchParams?.page);
+  const categories = getToolCategories();
+  const selectedCategory = resolveListingCategory(
+    categories,
+    resolvedSearchParams?.category,
+  );
+  const searchQuery = resolvedSearchParams?.search?.trim() || "";
+  const normalizedSearch = searchQuery.toLowerCase();
+  const filteredCount = getToolCards().filter((item: any) => {
+    const matchesCategory =
+      selectedCategory.toLowerCase() === "all" ||
+      item.category?.toLowerCase() === selectedCategory.toLowerCase();
+    const matchesSearch =
+      !normalizedSearch ||
+      item.title?.toLowerCase().includes(normalizedSearch) ||
+      item.excerpt?.toLowerCase().includes(normalizedSearch) ||
+      item.category?.toLowerCase().includes(normalizedSearch) ||
+      item.tags?.some((tag: any) =>
+        String(tag).toLowerCase().includes(normalizedSearch)
+      );
+
+    return matchesCategory && matchesSearch;
+  }).length;
+  const totalPages = Math.max(Math.ceil(filteredCount / PER_PAGE), 1);
+  const currentPage = Math.min(
+    getRequestedPage(resolvedSearchParams?.page),
+    totalPages,
+  );
+  const metadata = withPageContext(
+    selectedCategory.toLowerCase() === "all"
+      ? "Blockchain Tools"
+      : `Blockchain ${selectedCategory} Tools`,
+    getCategoryDescription(selectedCategory),
+    currentPage,
+    totalPages,
+  );
 
   return createMetadata({
-    title: "Blockchain Tools",
-    description:
-      "Use focused blockchain calculators, security frameworks, architecture planners, and technical decision tools built for founders, developers, and enterprise teams.",
+    ...metadata,
     path: getPageHref("/tools", currentPage, {
-      category: resolvedSearchParams?.category,
-      search: resolvedSearchParams?.search,
+      category: selectedCategory,
+      search: searchQuery,
     }),
   });
 }
@@ -82,16 +129,15 @@ export default async function ToolsPage({
   const resolvedSearchParams = await searchParams;
 
   const requestedPage = Number(resolvedSearchParams?.page || 1);
-  const requestedCategory = resolvedSearchParams?.category || "All";
   const searchQuery = resolvedSearchParams?.search?.trim() || "";
 
   const allTools = getToolCards();
   const categories = getToolCategories();
-  const selectedCategory =
-    categories.find(
-      (category: string) =>
-        category.toLowerCase() === requestedCategory.toLowerCase()
-    ) || (requestedCategory.toLowerCase() === "all" ? "All" : requestedCategory);
+  const selectedCategory = resolveListingCategory(
+    categories,
+    resolvedSearchParams?.category,
+  );
+  const categoryDescription = getCategoryDescription(selectedCategory);
 
   const filteredTools = allTools.filter((item: any) => {
     const matchesCategory =
@@ -184,17 +230,33 @@ export default async function ToolsPage({
                 </div>
 
                 <h1 className="mt-7 max-w-4xl font-display text-4xl font-black leading-[1.05] tracking-tight text-text-primary sm:text-5xl md:text-6xl lg:text-7xl">
-                  Build smarter with{" "}
-                  <span className="relative inline-block text-amber-base">
-                    practical tools
-                    <span className="absolute -bottom-2 left-0 h-[3px] w-full origin-left animate-tools-line rounded-full bg-gradient-to-r from-amber-base to-transparent" />
-                  </span>
+                  {selectedCategory.toLowerCase() === "all" ? (
+                    <>
+                      Build smarter with{" "}
+                      <span className="relative inline-block text-amber-base">
+                        practical tools
+                        <span className="absolute -bottom-2 left-0 h-[3px] w-full origin-left animate-tools-line rounded-full bg-gradient-to-r from-amber-base to-transparent" />
+                      </span>
+                    </>
+                  ) : (
+                    <>
+                      {selectedCategory.toLowerCase() === "checklist"
+                        ? "Blockchain "
+                        : ""}
+                      <span className="relative inline-block text-amber-base">
+                        {selectedCategory.toLowerCase() === "checklist"
+                          ? "checklists"
+                          : `${selectedCategory} tools`}
+                        <span className="absolute -bottom-2 left-0 h-[3px] w-full origin-left animate-tools-line rounded-full bg-gradient-to-r from-amber-base to-transparent" />
+                      </span>
+                    </>
+                  )}
+                  {safeCurrentPage > 1 &&
+                    ` — Page ${safeCurrentPage} of ${totalPages}`}
                 </h1>
 
                 <p className="mt-7 max-w-2xl text-base leading-8 text-silver md:text-lg">
-                  Use focused blockchain calculators, security frameworks,
-                  architecture planners, and technical decision tools built for
-                  founders, developers, and enterprise teams.
+                  {categoryDescription}
                 </p>
 
                 <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
@@ -279,7 +341,7 @@ export default async function ToolsPage({
                 <div className="relative z-10 w-full max-w-[300px]">
                   <div className="relative aspect-square w-full">
                     <Image
-                      src="/media/tools-hero.png"
+                      src="/media/tools-hero.webp"
                       alt="Blockchain tools and analytics illustration"
                       fill
                       priority
@@ -303,6 +365,33 @@ export default async function ToolsPage({
             </div>
           </section>
 
+          {selectedCategory.toLowerCase() !== "all" && (
+            <section className="mt-8 rounded-3xl border border-white/10 bg-surface/70 p-6 md:p-8">
+              <h2 className="text-xl font-bold text-text-primary">
+                Using blockchain {selectedCategory.toLowerCase()} tools
+              </h2>
+              <div className="mt-3 grid gap-4 text-sm leading-7 text-silver md:grid-cols-2">
+                <p>
+                  Start by identifying the question the tool should help
+                  answer, then provide inputs that reflect your product,
+                  network, users, and operating assumptions. Review the
+                  definitions and scope of each input before relying on an
+                  output. If an estimate or checklist highlights a gap, record
+                  the assumption and confirm it with the person responsible for
+                  that area.
+                </p>
+                <p>
+                  Tool outputs are planning aids, not guarantees, audits, or
+                  legal, financial, and security advice. Network fees,
+                  protocol behavior, and regulatory requirements can change.
+                  Verify important results against primary sources and project
+                  evidence, and involve qualified specialists before making
+                  production or compliance decisions.
+                </p>
+              </div>
+            </section>
+          )}
+
           {/* Search and filters */}
           <section id="tools-grid" className="scroll-mt-28 pt-16">
             <div className="rounded-[2rem] border border-white/10 bg-surface/80 p-4 shadow-[0_20px_70px_rgba(0,0,0,0.16)] backdrop-blur-xl sm:p-5 md:p-6">
@@ -315,7 +404,7 @@ export default async function ToolsPage({
                     <input
                       type="hidden"
                       name="category"
-                      value={selectedCategory}
+                      value={slugifyCategory(selectedCategory)}
                     />
                   )}
 

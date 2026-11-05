@@ -1,12 +1,10 @@
 import Link from "next/link";
-import {
-  ArrowUpRight,
-  Clock3,
-  FileText,
-  Layers3,
-  Sparkles,
-} from "lucide-react";
 
+/*
+ * Styling lives in app/styles.css (.tpl-card*, .mask-icon). The card renders
+ * many times per listing page, so named classes, pseudo-element decorations
+ * and CSS mask icons keep each page's HTML and RSC payload small.
+ */
 export default function TemplateCard({
   item,
   index,
@@ -15,53 +13,36 @@ export default function TemplateCard({
   index: number;
 }) {
   return (
-    <Link
-      href={`/templates/${item.slug}`}
-      className="group relative block h-full rounded-[2rem] p-[1px] transition-all duration-500 hover:-translate-y-3 hover:scale-[1.015]"
-    >
-      {/* Animated border */}
-      <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-border-default via-border-default to-border-default transition-all duration-500 group-hover:from-amber-base/80 group-hover:via-amber-base/10 group-hover:to-emerald-base/30" />
+    <Link href={`/templates/${item.slug}`} className="tpl-card">
+      <div className="tpl-card__halo" />
 
-      {/* Outer glow */}
-      <div className="pointer-events-none absolute inset-5 rounded-[2rem] bg-amber-base/0 blur-3xl transition-all duration-500 group-hover:bg-amber-base/12" />
+      <article className="tpl-card__body">
+        <div className="tpl-card__glow" />
+        <div className="tpl-card__light" />
 
-      <article className="relative flex h-full min-h-[460px] flex-col overflow-hidden rounded-[calc(2rem-1px)] bg-gradient-to-br from-bg-base via-bg-base to-bg-surface p-6 transition-all duration-500">
-        {/* Grid */}
-        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(100,116,139,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(100,116,139,0.055)_1px,transparent_1px)] bg-[size:32px_32px] opacity-50" />
-
-        {/* Moving glows */}
-        <div className="pointer-events-none absolute -right-24 -top-24 h-56 w-56 rounded-full bg-amber-base/8 blur-3xl transition-all duration-700 group-hover:right-[-2rem] group-hover:top-[-2rem] group-hover:scale-125 group-hover:bg-amber-base/18" />
-
-        <div className="pointer-events-none absolute -bottom-20 -left-20 h-44 w-44 rounded-full bg-emerald-base/5 blur-3xl transition-all duration-700 group-hover:scale-125 group-hover:bg-emerald-base/10" />
-
-        {/* Top light */}
-        <div className="pointer-events-none absolute inset-x-8 top-0 h-px origin-left scale-x-0 bg-gradient-to-r from-transparent via-amber-base to-transparent transition-transform duration-700 group-hover:scale-x-100" />
-
-        <div className="relative flex h-full flex-col">
+        <div className="tpl-card__content">
           {/* Top row */}
           <div className="flex items-start justify-between gap-4">
-            <span className="inline-flex items-center gap-2 rounded-full border border-amber-base/20 bg-amber-base/10 px-3.5 py-2 text-[10px] font-black uppercase tracking-[0.2em] text-amber-base transition-all duration-300 group-hover:border-amber-base/40 group-hover:bg-amber-base/15">
-              <Sparkles className="h-3.5 w-3.5 transition-transform duration-500 group-hover:rotate-12 group-hover:scale-110" />
+            <span className="tpl-card__badge">
+              <span className="mask-icon icon-sparkles" aria-hidden="true" />
               {item.badge || "Template"}
             </span>
 
-            <span className="font-mono text-xs font-bold text-text-muted transition-colors duration-300 group-hover:text-amber-base">
+            <span className="tpl-card__index">
               {String(index + 1).padStart(2, "0")}
             </span>
           </div>
 
           {/* Document preview */}
-          <div className="relative mt-7 flex h-[150px] items-center justify-center">
-            <div className="absolute h-28 w-24 -rotate-6 rounded-2xl border border-border-default bg-bg-surface transition-all duration-500 group-hover:-translate-x-2 group-hover:-rotate-12" />
+          <div className="relative mt-7 flex h-[150px] items-center justify-center" aria-hidden="true">
+            <div className="tpl-card__sheet tpl-card__sheet--left" />
+            <div className="tpl-card__sheet tpl-card__sheet--right" />
 
-            <div className="absolute h-28 w-24 rotate-6 rounded-2xl border border-border-default bg-bg-surface transition-all duration-500 group-hover:translate-x-2 group-hover:rotate-12" />
-
-            <div className="relative z-10 h-32 w-28 overflow-hidden rounded-2xl border border-amber-base/25 bg-gradient-to-br from-bg-base to-bg-surface p-4 transition-all duration-500 group-hover:-translate-y-2 group-hover:rotate-1 group-hover:border-amber-base/50">
+            <div className="tpl-card__doc">
               <div className="flex items-center justify-between">
                 <span className="grid h-8 w-8 place-items-center rounded-lg bg-amber-base/10 text-amber-base">
-                  <FileText className="h-4 w-4" />
+                  <span className="mask-icon icon-file-text h-4 w-4" />
                 </span>
-
                 <span className="h-2 w-8 rounded-full bg-amber-base/40" />
               </div>
 
@@ -80,18 +61,14 @@ export default function TemplateCard({
 
           {/* Category */}
           <div className="mt-5">
-            <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-text-muted transition-colors duration-300 group-hover:text-amber-base">
-              <Layers3 className="h-4 w-4 text-amber-base" />
+            <span className="tpl-card__category">
+              <span className="mask-icon icon-layers h-4 w-4 text-amber-base" aria-hidden="true" />
               {item.category || "Blockchain Template"}
             </span>
           </div>
 
-          {/* Title */}
-          <h2 className="mt-5 text-2xl font-black leading-tight text-text-primary transition-all duration-300 group-hover:translate-x-1 group-hover:text-amber-base">
-            {item.title}
-          </h2>
+          <h2 className="tpl-card__title">{item.title}</h2>
 
-          {/* Description */}
           <p className="mt-4 line-clamp-4 flex-1 text-sm leading-7 text-text-secondary">
             {item.excerpt}
           </p>
@@ -99,20 +76,20 @@ export default function TemplateCard({
           {/* Meta */}
           <div className="mt-6 flex flex-wrap gap-2">
             {item.format && (
-              <span className="inline-flex items-center gap-2 rounded-full border border-border-default bg-bg-surface px-3 py-1.5 text-xs text-text-secondary transition-colors duration-300 group-hover:border-amber-base/20 group-hover:bg-amber-base/5">
-                <FileText className="h-3.5 w-3.5 text-amber-base" />
+              <span className="tpl-card__chip">
+                <span className="mask-icon icon-file-text h-3.5 w-3.5 text-amber-base" aria-hidden="true" />
                 {item.format}
               </span>
             )}
 
-            <span className="inline-flex items-center gap-2 rounded-full border border-border-default bg-bg-surface px-3 py-1.5 text-xs text-text-secondary transition-colors duration-300 group-hover:border-amber-base/20 group-hover:bg-amber-base/5">
-              <Layers3 className="h-3.5 w-3.5 text-amber-base" />
+            <span className="tpl-card__chip">
+              <span className="mask-icon icon-layers h-3.5 w-3.5 text-amber-base" aria-hidden="true" />
               {item.sections || "Complete"} sections
             </span>
 
             {item.readTime && (
-              <span className="inline-flex items-center gap-2 rounded-full border border-border-default bg-bg-surface px-3 py-1.5 text-xs text-text-secondary transition-colors duration-300 group-hover:border-amber-base/20 group-hover:bg-amber-base/5">
-                <Clock3 className="h-3.5 w-3.5 text-amber-base" />
+              <span className="tpl-card__chip">
+                <span className="mask-icon icon-clock h-3.5 w-3.5 text-amber-base" aria-hidden="true" />
                 {item.readTime}
               </span>
             )}
@@ -120,12 +97,10 @@ export default function TemplateCard({
 
           {/* Footer */}
           <div className="mt-7 flex items-center justify-between border-t border-border-default pt-5">
-            <span className="text-sm font-black text-amber-base">
-              View Template
-            </span>
+            <span className="text-sm font-black text-amber-base">View Template</span>
 
-            <span className="grid h-11 w-11 place-items-center rounded-full border border-border-default bg-bg-surface text-text-secondary transition-all duration-500 group-hover:rotate-6 group-hover:border-amber-base group-hover:bg-amber-base group-hover:text-[#101827]">
-              <ArrowUpRight className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            <span className="tpl-card__arrow">
+              <span className="mask-icon icon-arrow-up-right" aria-hidden="true" />
             </span>
           </div>
         </div>

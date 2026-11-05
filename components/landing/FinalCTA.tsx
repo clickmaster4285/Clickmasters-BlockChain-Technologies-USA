@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { VideoWithFallback } from "@/components/media/VideoWithFallback";
 
 const ctaVideo = "/media/cta.mp4";
-const ctaPoster = "/media/cta-bg.png";
+const ctaPoster = "/media/cta-bg.webp";
 
 export function FinalCTA() {
   return (

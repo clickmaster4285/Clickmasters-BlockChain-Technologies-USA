@@ -1,6 +1,9 @@
 "use client";
 
-import { Star } from "lucide-react";
+// One shared star path, referenced with <use> instead of 5 inline icons per
+// card — keeps the homepage HTML (and RSC payload) smaller.
+const STAR_PATH =
+  "M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z";
 
 const testimonials = [
   {
@@ -73,16 +76,30 @@ export function Testimonials() {
         </div>
 
         <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <svg width="0" height="0" className="absolute" aria-hidden="true">
+            <defs>
+              <path id="testimonial-star" d={STAR_PATH} />
+            </defs>
+          </svg>
           {testimonials.map((t) => (
             <figure
               key={t.name}
               className="flex flex-col rounded-2xl border border-border bg-elevated p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-border/40 hover:shadow-soft"
             >
-              <div className="flex gap-0.5">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className="h-4 w-4 fill-amber-base text-amber-base" />
+              <svg
+                viewBox="0 0 132 24"
+                className="h-4 w-[88px] text-amber-base"
+                fill="currentColor"
+                stroke="currentColor"
+                strokeWidth={2}
+                strokeLinejoin="round"
+                role="img"
+                aria-label="Rated 5 out of 5"
+              >
+                {[0, 27, 54, 81, 108].map((x) => (
+                  <use key={x} href="#testimonial-star" x={x} />
                 ))}
-              </div>
+              </svg>
               <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-text-primary/80">
                 &ldquo;{t.quote}&rdquo;
               </blockquote>

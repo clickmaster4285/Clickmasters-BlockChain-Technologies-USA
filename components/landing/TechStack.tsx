@@ -4,6 +4,25 @@ import { Cloud, Code2, Link2, Server, ShieldCheck } from "lucide-react";
 
 type Logo = { slug: string; color: string };
 type TechItem = { name: string; logos: Logo[] };
+const logoNames: Record<string, string> = {
+  ethereum: "Ethereum",
+  polygon: "Polygon",
+  solana: "Solana",
+  optimism: "Optimism",
+  solidity: "Solidity",
+  openzeppelin: "OpenZeppelin",
+  react: "React",
+  nextdotjs: "Next.js",
+  ethers: "Ethers.js",
+  web3dotjs: "Web3.js",
+  nodedotjs: "Node.js",
+  graphql: "GraphQL",
+  ipfs: "IPFS",
+  docker: "Docker",
+  githubactions: "GitHub Actions",
+  postgresql: "PostgreSQL",
+  redis: "Redis",
+};
 type Category = {
   label: string;
   icon: typeof Code2;
@@ -23,13 +42,10 @@ const categories: Category[] = [
       {
         name: "Avalanche, Arbitrum, Optimism, Base",
         logos: [
-          { slug: "avalanche", color: "E84142" },
-          { slug: "arbitrum", color: "28A0F0" },
           { slug: "optimism", color: "FF0420" },
-          { slug: "base", color: "0052FF" },
         ],
       },
-      { name: "Enterprise/permissioned ledger frameworks", logos: [{ slug: "hyperledger", color: "2F3134" }] },
+      { name: "Enterprise/permissioned ledger frameworks", logos: [] },
     ],
   },
   {
@@ -38,14 +54,8 @@ const categories: Category[] = [
     accent: "#D97706",
     items: [
       { name: "Solidity", logos: [{ slug: "solidity", color: "363636" }] },
-      { name: "Vyper", logos: [{ slug: "vyper", color: "3775A9" }] },
-      {
-        name: "Hardhat and Foundry",
-        logos: [
-          { slug: "hardhat", color: "FFF100" },
-          { slug: "foundry", color: "FFFFFF" },
-        ],
-      },
+      { name: "Vyper", logos: [] },
+      { name: "Hardhat and Foundry", logos: [] },
       { name: "OpenZeppelin standards", logos: [{ slug: "openzeppelin", color: "4E5EE4" }] },
     ],
   },
@@ -83,7 +93,7 @@ const categories: Category[] = [
     icon: Cloud,
     accent: "#64748B",
     items: [
-      { name: "AWS", logos: [{ slug: "amazonwebservices", color: "FF9900" }] },
+      { name: "AWS", logos: [] },
       {
         name: "Docker and CI/CD pipelines",
         logos: [
@@ -191,17 +201,23 @@ export function TechStack() {
                           border: `1px solid ${cat.accent}40`,
                         }}
                       >
-                        <span className="flex -space-x-1">
-                          {item.logos.map((logo) => (
-                            <img
-                              key={logo.slug}
-                              src={`https://cdn.simpleicons.org/${logo.slug}/${logo.color}`}
-                              alt=""
-                              loading="lazy"
-                              className="h-4 w-4 rounded-sm bg-surface"
-                            />
-                          ))}
-                        </span>
+                        {item.logos.length > 0 ? (
+                          <span className="flex -space-x-1">
+                            {item.logos.map((logo) => (
+                              <img
+                                key={logo.slug}
+                                src={`/media/logos/${logo.slug}.svg`}
+                                alt={`${logoNames[logo.slug] ?? logo.slug} logo`}
+                                width={16}
+                                height={16}
+                                loading="lazy"
+                                className="h-4 w-4 rounded-sm bg-surface"
+                              />
+                            ))}
+                          </span>
+                        ) : (
+                          <Icon aria-hidden="true" className="h-4 w-4 text-amber-base" />
+                        )}
                       </span>
                       <span>{item.name}</span>
                     </li>
@@ -243,15 +259,13 @@ function Marquee({ items, reverse }: { items: string[]; reverse: boolean }) {
       style={{ maskImage: "linear-gradient(90deg, transparent, black 10%, black 90%, transparent)" }}
     >
       <div
-        className={`flex w-max gap-8 whitespace-nowrap ${reverse ? "animate-marquee-right" : "animate-marquee-left"}`}
+        className={`tech-marquee flex w-max gap-8 whitespace-nowrap ${reverse ? "animate-marquee-right" : "animate-marquee-left"}`}
         style={{ animationDuration: "40s" }}
         onMouseEnter={(e) => (e.currentTarget.style.animationPlayState = "paused")}
         onMouseLeave={(e) => (e.currentTarget.style.animationPlayState = "running")}
       >
         {doubled.map((t, i) => (
-          <span key={i} className="text-xs font-semibold uppercase tracking-widest text-silver-dim">
-            {t} <span className="ml-8 text-silver-dim/30">/</span>
-          </span>
+          <span key={i}>{t}</span>
         ))}
       </div>
     </div>

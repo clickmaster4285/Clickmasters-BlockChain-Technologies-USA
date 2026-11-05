@@ -18,6 +18,9 @@ import {
   getProcessSlugs,
   getRelatedProcesses,
 } from "@/lib/process";
+import RelatedLinks from "@/components/RelatedLinks";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { faqPageSchema } from "@/lib/structured-data";
 
 type ProcessSlugPageProps = {
   params: Promise<{
@@ -80,6 +83,9 @@ export default async function ProcessSlugPage({
   return (
     <div className="min-h-screen bg-bg-base text-text-primary">
       <Navbar />
+      <JsonLd
+        data={faqPageSchema(process.faqs)}
+      />
 
       <main className="overflow-hidden bg-bg-base">
         <ProcessHero process={process} />
@@ -164,6 +170,7 @@ export default async function ProcessSlugPage({
             </div>
           </section>
         )}
+        <RelatedLinks type="process" slug={slug} />
       </main>
 
       <Footer />

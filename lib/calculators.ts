@@ -1,4 +1,5 @@
 import { calculators } from "@/data/calculators";
+import { createMetadata } from "@/config/metadata";
 
 /* =========================================================
    Core Content Types
@@ -590,44 +591,19 @@ export function getCalculatorStaticParams(): Array<{
 export function getCalculatorMetadata(calculator: CalculatorData) {
   const slug = normalizeCalculatorSlug(calculator.slug);
 
-  const title = calculator.title;
   const description = calculator.excerpt || calculator.hero.description;
-
   const canonical = getCalculatorHref(slug);
-  const absoluteUrl = getCalculatorAbsoluteUrl(slug);
-
-  return {
-    title,
+  const metadata = createMetadata({
+    title: calculator.title,
     description,
+    path: canonical,
+    image: calculator.image,
+    type: "article",
+    publishedTime: calculator.date || undefined,
+    authors: [calculator.author],
+  });
 
-    alternates: {
-      canonical,
-    },
-
-    openGraph: {
-      title,
-      description,
-      type: "article" as const,
-      url: absoluteUrl,
-      publishedTime: calculator.date || undefined,
-      authors: [calculator.author],
-      images: calculator.image
-        ? [
-            {
-              url: calculator.image,
-              alt: calculator.title,
-            },
-          ]
-        : undefined,
-    },
-
-    twitter: {
-      card: "summary_large_image" as const,
-      title,
-      description,
-      images: calculator.image ? [calculator.image] : undefined,
-    },
-  };
+  return metadata;
 }
 
 /* =========================================================

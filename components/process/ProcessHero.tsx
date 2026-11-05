@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 
 import type { NormalizedProcessEntry } from "@/lib/process";
+import { splitHeading } from "@/lib/seo";
 
 /* =========================================================
    Types
@@ -132,6 +133,8 @@ export default function ProcessHero({
   const heroImage =
     process.hero.image || process.image;
 
+  const { heading, continuation } = splitHeading(process.hero.title);
+
   return (
     <section className="relative isolate overflow-hidden border-b border-white/[0.07] pb-16 pt-32 lg:pb-24 lg:pt-40">
       {/* =====================================================
@@ -224,13 +227,15 @@ export default function ProcessHero({
             {/* Title */}
 
             <h1 className="mt-7 text-4xl font-black leading-[1.08] tracking-[-0.045em] text-text-primary sm:text-5xl lg:text-[4.2rem]">
-              {process.hero.title}
+              {heading}
             </h1>
 
             {/* Description */}
 
             <p className="mt-7 max-w-3xl text-base leading-8 text-silver sm:text-lg">
-              {process.hero.description}
+              {[continuation, process.hero.description]
+                .filter(Boolean)
+                .join(" — ")}
             </p>
 
             {/* Meta */}

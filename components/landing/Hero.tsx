@@ -2,12 +2,12 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ShieldCheck, Star, TrendingUp } from "lucide-react";
+import { ArrowRight, TrendingUp } from "lucide-react";
 import { BlockchainNetwork } from "./BlockchainNetwork";
 import { HeroBlockchainVisual } from "./HeroBlockchainVisual";
 
-const heroBgPng = "/media/hero-bg.png";
-const walletMock = "/media/wallet-mock.jpeg";
+const heroBgPng = "/media/hero-bg.webp";
+const walletMock = "/media/wallet-mock.webp";
 
 export function Hero() {
   return (
@@ -36,7 +36,7 @@ export function Hero() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-base opacity-40" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-base" />
               </span>
-              Blockchain Development Company in US
+              Blockchain Development
             </div>
 
             {/* Headline */}
@@ -47,18 +47,15 @@ export function Hero() {
 
             {/* Subtext with rotating badge */}
             <p className="mt-6 max-w-xl text-base leading-relaxed text-text-secondary md:text-lg">
-              Clickmasters is a blockchain development company based in the United States,
-              working with startups, protocols, and enterprises that need technology they can
-              actually put into production. Our blockchain development services cover everything
-              from the first architecture decision to the smart contract that goes live on mainnet
-              — planned, engineered, and tested by people who have shipped this kind of software
-              before.
+              Explore blockchain development services for startups, protocols, and enterprises
+              planning a product or improving an existing platform. Work can span architecture,
+              smart contracts, decentralized applications, and the supporting infrastructure
+              needed for a production deployment.
             </p>
             <p className="mt-4 max-w-xl text-base leading-relaxed text-text-secondary md:text-lg">
-              Whether you're exploring your first blockchain application or scaling an existing
-              platform, our team acts as your blockchain development agency of record: one point
-              of contact, one accountable team, and a build process designed to protect your
-              budget and your users.
+              From an early product concept to an established application, the service pages
+              describe common implementation options, security considerations, and delivery
+              choices. Share your requirements to discuss an appropriate project scope.
             </p>
 
             {/* CTA — Button-in-button architecture */}
@@ -81,31 +78,27 @@ export function Hero() {
               </Link>
             </div>
 
-            {/* Trust metrics */}
+            {/* Service capabilities */}
             <div className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-border bg-border md:grid-cols-4">
               {[
-                { icon: Star, value: "4.9", label: "Clutch Rating", color: "text-amber-base" },
-                { icon: ShieldCheck, value: "50+", label: "Smart Contracts", color: "text-emerald-base" },
-                { icon: TrendingUp, value: "$100M+", label: "On-Chain Value", color: "text-amber-base" },
-                { value: "1,000+", label: "Projects Live", color: "text-amber-base", noIcon: true },
-              ].map((m) => (
+                { value: "Security", label: "Considerations" },
+                { value: "Smart contracts", label: "Development" },
+                { value: "Web3 products", label: "Architecture and delivery" },
+                { value: "Blockchain", label: "Infrastructure" },
+              ].map((item) => (
                 <div
-                  key={m.label}
+                  key={item.label}
                   className="flex items-center gap-3 bg-bg-base p-4 transition-colors hover:bg-surface"
                 >
-                  {m.icon && !m.noIcon ? (
-                    <m.icon className={`h-5 w-5 shrink-0 ${m.color}`} />
-                  ) : (
-                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-amber-glow">
-                      <span className="h-1.5 w-1.5 rounded-full bg-amber-base" />
-                    </span>
-                  )}
+                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-amber-glow">
+                    <span className="h-1.5 w-1.5 rounded-full bg-amber-base" />
+                  </span>
                   <div>
-                    <p className={`text-lg font-bold leading-none tracking-tight text-text-primary ${m.color}`}>
-                      {m.value}
+                    <p className="text-sm font-bold leading-tight tracking-tight text-text-primary">
+                      {item.value}
                     </p>
                     <p className="mt-0.5 text-[11px] font-medium uppercase tracking-wider text-text-muted">
-                      {m.label}
+                      {item.label}
                     </p>
                   </div>
                 </div>
@@ -122,10 +115,11 @@ export function Hero() {
                 {/* Background photo */}
                 <Image
                   src={heroBgPng}
-                  alt=""
+                  alt="Abstract blockchain network illustration"
                   fill
                   className="object-cover opacity-80"
                   sizes="(max-width: 768px) 97vw, 40vw"
+                  priority
                 />
 
           
@@ -134,7 +128,7 @@ export function Hero() {
                 <div className="pointer-events-none absolute right-5 top-22 z-20 h-28 w-22 md:h-32 md:w-26">
                   <Image
                     src={walletMock}
-                    alt=""
+                    alt="Illustrative cryptocurrency wallet interface"
                     fill
                     className="rounded-lg object-cover shadow-soft ring-1 ring-black/[0.06]"
                     sizes="120px"
@@ -151,29 +145,29 @@ export function Hero() {
                         <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-base" />
                       </span>
                       <span className="font-mono text-[10px] font-medium uppercase tracking-[0.15em] text-emerald-base">
-                        Live mainnet
+                        Illustrative interface
                       </span>
                     </div>
                     <div className="rounded-md border border-amber-border/40 bg-amber-glow/40 px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.18em] text-amber-base">
-                      Secured
+                      Example
                     </div>
                   </div>
 
                   {/* Center: Hero metric */}
                   <div className="mt-auto mb-4">
                     <p className="font-mono text-[10px] uppercase tracking-[0.15em] text-primary-foreground">
-                      Total Value Locked
+                      Portfolio overview
                     </p>
                     <p className="mt-1 text-3xl font-bold tracking-tight text-gradient md:text-4xl">
-                      $104.2M
+                      Example data
                     </p>
                     <div className="mt-2 flex items-center gap-3">
                       <span className="inline-flex items-center gap-1 rounded-full bg-emerald-light px-2 py-1 font-mono text-xs font-medium text-primary-foreground">
                         <TrendingUp className="h-3 w-3" />
-                        +12.4% this quarter
+                        Illustrative
                       </span>
                       <span className="font-mono text-[10px] text-primary-foreground">
-                        audited by CertiK
+                        Sample display
                       </span>
                     </div>
                   </div>
@@ -181,9 +175,9 @@ export function Hero() {
                   {/* Bottom: Mini metrics grid */}
                   <div className="grid grid-cols-3 gap-2">
                     {[
-                      { label: "Avg Gas", value: "18 gwei", change: "-12%", up: false },
-                      { label: "Block Height", value: "19.4M", change: "+2.1K", up: true },
-                      { label: "Active Wallets", value: "847K", change: "+8.3%", up: true },
+                      { label: "Gas usage", value: "Example", change: "Sample data", up: false },
+                      { label: "Block height", value: "Example", change: "Sample data", up: true },
+                      { label: "Wallet activity", value: "Example", change: "Sample data", up: true },
                     ].map((m) => (
                       <div
                         key={m.label}
@@ -213,8 +207,8 @@ export function Hero() {
 
             {/* Decorative terminal tag */}
             <div className="mt-3 flex items-center justify-between px-1 font-mono text-[9px] uppercase tracking-[0.18em] text-text-muted">
-              <span>node://mainnet.ethereum</span>
-              <span>block #19,482,113</span>
+              <span>Illustrative dashboard</span>
+              <span>Sample data</span>
             </div>
           </div>
         </div>

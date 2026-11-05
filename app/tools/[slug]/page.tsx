@@ -19,6 +19,9 @@ import {
   getToolBySlug,
   getToolCTA,
 } from "@/lib/tools";
+import RelatedLinks from "@/components/RelatedLinks";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { faqPageSchema } from "@/lib/structured-data";
 
 export async function generateStaticParams() {
   return getAllTools()
@@ -54,7 +57,7 @@ export async function generateMetadata({
   const image =
     item?.seo?.image ||
     item?.image ||
-    "/media/tools-hero.png";
+    "/media/tools-hero.webp";
 
   return createMetadata({
     title,
@@ -90,6 +93,9 @@ export default async function SingleToolPage({
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
+      <JsonLd
+        data={faqPageSchema(item?.faqs || item?.faq)}
+      />
 
       <main className="relative overflow-hidden bg-gradient-to-b from-bg-base via-surface/40 to-bg-base pb-24 pt-32">
         {/* Background decoration */}
@@ -174,6 +180,7 @@ export default async function SingleToolPage({
             />
           </div>
         </section>
+        <RelatedLinks type="tools" slug={slug} />
       </main>
 
       <Footer />

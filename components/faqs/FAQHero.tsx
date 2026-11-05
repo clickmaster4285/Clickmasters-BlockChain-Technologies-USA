@@ -3,9 +3,13 @@ import { ArrowDown, BadgeCheck, BookOpenCheck, MessageCircleQuestion } from "luc
 
 interface FAQHeroProps {
   totalQuestions: number;
+  pageContext?: string;
 }
 
-export default function FAQHero({ totalQuestions }: FAQHeroProps) {
+export default function FAQHero({
+  totalQuestions,
+  pageContext,
+}: FAQHeroProps) {
   return (
     <section
       className="relative overflow-hidden bg-gradient-to-b from-bg-base via-amber-base/5 to-bg-base pb-14 pt-28 sm:pt-32"
@@ -27,7 +31,8 @@ export default function FAQHero({ totalQuestions }: FAQHeroProps) {
               id="faq-hero-title"
               className="mt-7 max-w-5xl text-4xl font-black leading-[1.05] tracking-tight text-text-primary sm:text-5xl lg:text-7xl"
             >
-              Clear answers for blockchain projects, from idea to launch.
+              Blockchain project FAQs
+              {pageContext && ` — ${pageContext}`}
             </h1>
 
             <p className="mt-6 max-w-3xl text-base font-medium leading-8 text-text-secondary sm:text-lg">

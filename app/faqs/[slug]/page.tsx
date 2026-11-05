@@ -21,6 +21,8 @@ import {
   getFAQBySlug,
   getRelatedFAQs,
 } from "@/lib/faqs";
+import RelatedLinks from "@/components/RelatedLinks";
+import { splitHeading } from "@/lib/seo";
 
 interface FAQDetailPageProps {
   params: Promise<{
@@ -67,6 +69,17 @@ export default async function FAQDetailPage({
   if (!faq) {
     notFound();
   }
+  const addFaqContext = [
+    "blockchain-content-library",
+    "blockchain-development-company-augusta",
+    "blockchain-development-company-fort-collins",
+    "blockchain-development-company-huntsville",
+  ].includes(faq.slug);
+  const faqTitle = faq.hero?.title || faq.title;
+  const faqHeading = splitHeading(
+    faqTitle,
+    addFaqContext ? 66 : 70,
+  );
 
   const relatedFAQs = getRelatedFAQs(faq.slug, faq.category, 3);
 
@@ -149,11 +162,17 @@ export default async function FAQDetailPage({
               </div>
 
               <h1 className="mt-7 max-w-5xl text-4xl font-black leading-[1.05] tracking-tight text-text-primary sm:text-5xl lg:text-6xl">
-                {faq.hero?.title || faq.title}
+                {faqHeading.heading}
+                {addFaqContext && " FAQ"}
               </h1>
 
               <p className="mt-6 max-w-3xl text-base font-medium leading-8 text-text-secondary sm:text-lg">
-                {faq.hero?.description || faq.excerpt}
+                {[
+                  faqHeading.continuation,
+                  faq.hero?.description || faq.excerpt,
+                ]
+                  .filter(Boolean)
+                  .join(" — ")}
               </p>
 
               <div className="mt-6 flex flex-wrap gap-2">
@@ -251,6 +270,7 @@ export default async function FAQDetailPage({
         </section>
 
         <FAQDetailCTA faq={faq} />
+        <RelatedLinks type="faqs" slug={slug} />
       </main>
 
       <Footer />

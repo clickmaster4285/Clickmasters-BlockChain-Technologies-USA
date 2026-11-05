@@ -5,6 +5,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import PartnerDetailPage from "@/components/partners/PartnerDetailPage";
+import RelatedLinks from "@/components/RelatedLinks";
+import { createMetadata } from "@/config/metadata";
 
 import {
   getPartnerBySlug,
@@ -69,57 +71,15 @@ export async function generateMetadata({
   const image =
     partner.hero?.image || partner.image;
 
-  return {
-    title: `${pageTitle} | ClickMasters`,
-
+  return createMetadata({
+    title: pageTitle,
     description: pageDescription,
-
-    alternates: {
-      canonical: canonicalUrl,
-    },
-
-    openGraph: {
-      title: `${pageTitle} | ClickMasters`,
-
-      description: pageDescription,
-
-      url: canonicalUrl,
-
-      type: "article",
-
-      publishedTime:
-        partner.date || undefined,
-
-      authors: partner.author
-        ? [partner.author]
-        : undefined,
-
-      images: image
-        ? [
-            {
-              url: image,
-
-              alt: pageTitle,
-            },
-          ]
-        : undefined,
-    },
-
-    twitter: {
-      card: "summary_large_image",
-
-      title: `${pageTitle} | ClickMasters`,
-
-      description: pageDescription,
-
-      images: image ? [image] : undefined,
-    },
-
-    robots: {
-      index: true,
-      follow: true,
-    },
-  };
+    path: canonicalUrl,
+    image,
+    type: "article",
+    publishedTime: partner.date || undefined,
+    authors: partner.author ? [partner.author] : undefined,
+  });
 }
 
 /* =========================================================
@@ -144,6 +104,9 @@ export default async function PartnerPage({
     <PartnerDetailPage
       partner={partner}
       relatedPartners={relatedPartners}
+      relatedLinks={
+        <RelatedLinks type="partners" slug={partner.slug} />
+      }
     />
   );
 }

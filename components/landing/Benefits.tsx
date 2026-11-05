@@ -73,9 +73,8 @@ export function Benefits() {
             return (
               <article
                 key={benefit.title}
-                className="group relative overflow-hidden rounded-2xl border border-border bg-surface p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-border/40 hover:shadow-soft"
+                className="group glow-card"
               >
-                <div className="pointer-events-none absolute -right-14 -top-14 h-40 w-40 rounded-full bg-amber-glow opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100" />
                 <div className="relative">
                   <div className="flex items-center justify-between gap-4">
                     <span className="grid h-12 w-12 place-items-center rounded-xl border border-amber-border/40 bg-amber-glow text-amber-base">

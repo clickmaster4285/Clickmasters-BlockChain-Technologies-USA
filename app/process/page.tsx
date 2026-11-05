@@ -1,7 +1,5 @@
 // app/process/page.tsx
 
-import type { Metadata } from "next";
-
 import Link from "next/link";
 
 import {
@@ -21,7 +19,8 @@ import BackToTop from "@/components/ui/BackToTop";
 
 import ProcessCard from "@/components/process/ProcessCard";
 import ProcessPagination from "@/components/process/ProcessPagination";
-import { getPageHref } from "@/lib/pagination";
+import { createMetadata } from "@/config/metadata";
+import { getPageHref, withPageContext } from "@/lib/pagination";
 
 import {
   getProcessCards,
@@ -35,48 +34,27 @@ import {
 
 export async function generateMetadata({
   searchParams,
-}: ProcessPageProps): Promise<Metadata> {
+}: ProcessPageProps) {
   const resolvedSearchParams = await searchParams;
-  const currentPage = parsePageNumber(resolvedSearchParams?.page);
-  const path = getPageHref("/process", currentPage);
+  const totalPages = Math.max(
+    Math.ceil(getProcessCount() / PROCESSES_PER_PAGE),
+    1,
+  );
+  const currentPage = Math.min(
+    parsePageNumber(resolvedSearchParams?.page),
+    totalPages,
+  );
+  const metadata = withPageContext(
+    "Blockchain Development Process",
+    "Explore blockchain architecture, smart contract security, DeFi, wallet infrastructure, exchanges, tokenization, governance, and deployment guides.",
+    currentPage,
+    totalPages,
+  );
 
-  return {
-  title:
-    "Blockchain Development Process & Technical Guides | ClickMasters",
-
-  description:
-    "Explore detailed blockchain development processes, security audit workflows, DeFi architecture, crypto exchange infrastructure, wallet security, DAO governance, tokenization, and enterprise blockchain guides.",
-
-  alternates: {
-    canonical: path,
-  },
-
-  openGraph: {
-    title:
-      "Blockchain Development Process & Technical Guides | ClickMasters",
-
-    description:
-      "Detailed blockchain process guides covering smart contract audits, DeFi security, architecture, exchange infrastructure, wallets, tokenization, governance, bridges, and oracle integration.",
-
-    url: path,
-    type: "website",
-  },
-
-  twitter: {
-    card: "summary_large_image",
-
-    title:
-      "Blockchain Development Process & Technical Guides",
-
-    description:
-      "Explore professional blockchain development, security, architecture, and implementation processes.",
-  },
-
-  robots: {
-    index: true,
-    follow: true,
-  },
-  };
+  return createMetadata({
+    ...metadata,
+    path: getPageHref("/process", currentPage),
+  });
 }
 
 /* =========================================================
@@ -257,8 +235,9 @@ export default async function ProcessPage({
                 </div>
 
                 <h1 className="mt-7 max-w-5xl text-4xl font-black leading-[1.08] tracking-[-0.045em] text-text-primary sm:text-5xl lg:text-7xl">
-                  The processes behind reliable
-                  blockchain systems.
+                  Blockchain Development Process
+                  {currentPage > 1 &&
+                    ` — Page ${currentPage} of ${totalPages}`}
                 </h1>
 
                 <p className="mt-7 max-w-3xl text-base leading-8 text-silver sm:text-lg">

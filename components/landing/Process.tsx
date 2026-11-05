@@ -56,9 +56,11 @@ export function Process() {
       className="relative overflow-hidden bg-bg-elevated py-24 md:py-32"
     >
       {/* Star field */}
-      <div className="pointer-events-none absolute inset-0 opacity-40">
-        <StarField />
-      </div>
+      {/* Static file (public/media/starfield.svg) instead of 80 inline <circle>s */}
+      <div
+        className="pointer-events-none absolute inset-0 bg-[url('/media/starfield.svg')] bg-size-[100%_100%] bg-no-repeat opacity-40"
+        aria-hidden="true"
+      />
       <div className="pointer-events-none absolute -left-32 top-1/4 h-[26rem] w-[26rem] rounded-full bg-amber-glow blur-[100px]" />
       <div className="pointer-events-none absolute -right-32 bottom-1/4 h-[26rem] w-[26rem] rounded-full bg-amber-glow blur-[100px]" />
 
@@ -156,22 +158,5 @@ export function Process() {
         @media (prefers-reduced-motion: reduce) { #process * { animation: none !important; transition: none !important; } }
       `}</style>
     </section>
-  );
-}
-
-function StarField() {
-  const dots = Array.from({ length: 80 }, (_, i) => {
-    const x = ((i * 9301 + 49297) % 233280) / 2332.8;
-    const y = ((i * 1597 + 51749) % 233280) / 2332.8;
-    const s = 0.5 + ((i * 7) % 15) / 10;
-    const o = 0.2 + ((i * 13) % 60) / 100;
-    return { x, y, s, o };
-  });
-  return (
-    <svg className="h-full w-full" preserveAspectRatio="none" viewBox="0 0 100 100">
-      {dots.map((d, i) => (
-        <circle key={i} cx={d.x} cy={d.y} r={d.s * 0.08} fill="#64748B" opacity={d.o * 0.6} />
-      ))}
-    </svg>
   );
 }

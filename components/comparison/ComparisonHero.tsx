@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowRight, GitCompare } from "lucide-react";
+import { splitHeading } from "@/lib/seo";
 
 export default function ComparisonHero({
   article,
@@ -8,6 +9,17 @@ export default function ComparisonHero({
   article: any;
   readTime: number;
 }) {
+  const contextSuffix =
+    article.slug === "blockchain-media-entertainment" ? " Comparison" : "";
+  const { heading, continuation } = splitHeading(
+    article.hero?.title || article.title,
+    70 - contextSuffix.length,
+  );
+  const description =
+    [continuation, article.hero?.description || article.excerpt]
+      .filter(Boolean)
+      .join(" — ");
+
   return (
     <section className="rounded-[2.5rem] border border-white/10 bg-surface/80 px-6 py-10 shadow-[0_30px_100px_rgba(0,0,0,0.22)] backdrop-blur-2xl md:px-12 md:py-14">
       <div className="grid gap-10 lg:grid-cols-[1.3fr_0.7fr]">
@@ -19,10 +31,11 @@ export default function ComparisonHero({
 
           <div>
             <h1 className="text-4xl font-black leading-tight tracking-tight text-text-primary md:text-5xl">
-              {article.hero?.title || article.title}
+              {heading}
+              {contextSuffix}
             </h1>
             <p className="mt-5 max-w-3xl text-lg leading-8 text-silver">
-              {article.hero?.description || article.excerpt}
+              {description}
             </p>
           </div>
 

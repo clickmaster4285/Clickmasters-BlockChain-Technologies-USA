@@ -331,91 +331,99 @@ function DesktopSimpleDropdown({
   items: NavItem[];
 }) {
   const [active, setActive] = useState(items[0]?.label);
+  const [mounted, setMounted] = useState(false);
   const activeItem = items.find((item) => item.label === active) || items[0];
   const ActiveIcon = activeItem?.icon || Hexagon;
 
   return (
-    <li className="group relative">
+    <li
+      className="group relative"
+      onPointerEnter={() => setMounted(true)}
+      onFocus={() => setMounted(true)}
+    >
       <button className="inline-flex items-center gap-1.5 text-sm font-medium text-silver transition-colors hover:text-silver-light xl:text-base">
         {label}
         <ChevronDown className="h-4 w-4 transition-transform duration-300 group-hover:rotate-180" />
       </button>
 
-      <div className="pointer-events-none absolute left-1/2 top-full z-50 mt-5 w-[760px] -translate-x-1/2 translate-y-4 opacity-0 transition-all duration-300 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100">
-        <div className="absolute -top-5 left-0 h-5 w-full" />
+      {/* Panel is mounted on first hover/focus so its markup isn't shipped in every page's HTML. */}
+      {mounted && (
+        <div className="pointer-events-none absolute left-1/2 top-full z-50 mt-5 w-[760px] -translate-x-1/2 translate-y-4 opacity-0 transition-all duration-300 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100">
+          <div className="absolute -top-5 left-0 h-5 w-full" />
 
-        <div className="relative overflow-hidden rounded-[26px] border border-white/10 bg-bg-base/95 p-4 shadow-[0_30px_100px_rgba(0,0,0,0.6)] backdrop-blur-2xl">
-          <div className="absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-amber-base/80 to-transparent" />
-          <div className="absolute -left-20 -bottom-20 h-60 w-60 rounded-full bg-amber-base/10 blur-3xl" />
+          <div className="relative overflow-hidden rounded-[26px] border border-white/10 bg-bg-base/95 p-4 shadow-[0_30px_100px_rgba(0,0,0,0.6)] backdrop-blur-2xl">
+            <div className="absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-amber-base/80 to-transparent" />
+            <div className="absolute -left-20 -bottom-20 h-60 w-60 rounded-full bg-amber-base/10 blur-3xl" />
 
-          <div className="relative grid gap-4 lg:grid-cols-[1fr_250px]">
-            <div>
-              <p className="px-2 pb-3 text-[11px] font-black uppercase tracking-[0.24em] text-amber-base">
-                {label}
-              </p>
+            <div className="relative grid gap-4 lg:grid-cols-[1fr_250px]">
+              <div>
+                <p className="px-2 pb-3 text-[11px] font-black uppercase tracking-[0.24em] text-amber-base">
+                  {label}
+                </p>
 
-              <div className="grid grid-cols-2 gap-2">
-                {items.map((item) => {
-                  const Icon = item.icon;
-                  const isActive = active === item.label;
+                <div className="grid grid-cols-2 gap-2">
+                  {items.map((item) => {
+                    const Icon = item.icon;
+                    const isActive = active === item.label;
 
-                  return (
-                    <div key={item.label} onMouseEnter={() => setActive(item.label)}>
-                      <NavEntry
-                        item={item}
-                        className={`group/item flex min-h-[86px] w-full items-start gap-3 rounded-2xl border p-3 text-left transition-all ${
-                          isActive
-                            ? "border-amber-base/35 bg-amber-base/10"
-                            : "border-white/5 bg-white/[0.025] hover:border-amber-base/25 hover:bg-amber-base/10"
-                        }`}
-                      >
-                        <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-amber-base/10 text-amber-base transition-transform group-hover/item:scale-110">
-                          <Icon className="h-5 w-5" />
-                        </span>
-
-                        <span className="min-w-0">
-                          <span
-                            className={`block text-sm font-black leading-tight ${
-                              isActive ? "text-amber-base" : "text-text-primary"
-                            }`}
-                          >
-                            {item.label}
+                    return (
+                      <div key={item.label} onMouseEnter={() => setActive(item.label)}>
+                        <NavEntry
+                          item={item}
+                          className={`group/item flex min-h-[86px] w-full items-start gap-3 rounded-2xl border p-3 text-left transition-all ${
+                            isActive
+                              ? "border-amber-base/35 bg-amber-base/10"
+                              : "border-white/5 bg-white/[0.025] hover:border-amber-base/25 hover:bg-amber-base/10"
+                          }`}
+                        >
+                          <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-amber-base/10 text-amber-base transition-transform group-hover/item:scale-110">
+                            <Icon className="h-5 w-5" />
                           </span>
-                          <span className="mt-1 line-clamp-2 block text-xs leading-5 text-silver">
-                            {item.desc}
+
+                          <span className="min-w-0">
+                            <span
+                              className={`block text-sm font-black leading-tight ${
+                                isActive ? "text-amber-base" : "text-text-primary"
+                              }`}
+                            >
+                              {item.label}
+                            </span>
+                            <span className="mt-1 line-clamp-2 block text-xs leading-5 text-silver">
+                              {item.desc}
+                            </span>
                           </span>
-                        </span>
-                      </NavEntry>
-                    </div>
-                  );
-                })}
+                        </NavEntry>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
-            </div>
 
-            <div className="relative overflow-hidden rounded-[22px] border border-white/10 bg-white/[0.035] p-5">
-              <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-amber-base/15 blur-2xl" />
-              <div className="relative">
-                <span className="grid h-12 w-12 place-items-center rounded-2xl bg-amber-base text-bg-base">
-                  <ActiveIcon className="h-6 w-6" />
-                </span>
-                <p className="mt-5 text-[11px] font-black uppercase tracking-[0.22em] text-amber-base">
-                  Explore
-                </p>
-                <p className="mt-2 font-display text-2xl font-black leading-tight text-text-primary">
-                  {activeItem?.label}
-                </p>
-                <p className="mt-3 text-sm leading-6 text-silver">
-                  {activeItem?.desc}
-                </p>
-                <div className="mt-6 h-px bg-gradient-to-r from-amber-base/60 to-transparent" />
-                <p className="mt-4 text-xs leading-5 text-silver">
-                  Pages will be connected here as each section is finalized.
-                </p>
+              <div className="relative overflow-hidden rounded-[22px] border border-white/10 bg-white/[0.035] p-5">
+                <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-amber-base/15 blur-2xl" />
+                <div className="relative">
+                  <span className="grid h-12 w-12 place-items-center rounded-2xl bg-amber-base text-bg-base">
+                    <ActiveIcon className="h-6 w-6" />
+                  </span>
+                  <p className="mt-5 text-[11px] font-black uppercase tracking-[0.22em] text-amber-base">
+                    Explore
+                  </p>
+                  <p className="mt-2 font-display text-2xl font-black leading-tight text-text-primary">
+                    {activeItem?.label}
+                  </p>
+                  <p className="mt-3 text-sm leading-6 text-silver">
+                    {activeItem?.desc}
+                  </p>
+                  <div className="mt-6 h-px bg-gradient-to-r from-amber-base/60 to-transparent" />
+                  <p className="mt-4 text-xs leading-5 text-silver">
+                    Pages will be connected here as each section is finalized.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </li>
   );
 }
@@ -430,121 +438,129 @@ function DesktopDropdown({
   const isBlog = label.toLowerCase() === "blog";
   const featuredMap = isBlog ? blogFeatured : resourceFeatured;
   const [active, setActive] = useState(items[0]?.label);
+  const [mounted, setMounted] = useState(false);
 
   const activeCards = featuredMap[active] || [];
 
   return (
-    <li className="group relative">
+    <li
+      className="group relative"
+      onPointerEnter={() => setMounted(true)}
+      onFocus={() => setMounted(true)}
+    >
       <button className="inline-flex items-center gap-1.5 text-sm font-medium text-silver transition-colors hover:text-silver-light xl:text-base">
         {label}
         <ChevronDown className="h-4 w-4 transition-transform duration-300 group-hover:rotate-180" />
       </button>
 
-      <div className="pointer-events-none absolute left-1/2 top-full z-50 mt-5 w-[850px] -translate-x-1/2 translate-y-4 opacity-0 transition-all duration-300 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100">
-        <div className="absolute -top-5 left-0 h-5 w-full" />
+      {/* Panel is mounted on first hover/focus so its markup isn't shipped in every page's HTML. */}
+      {mounted && (
+        <div className="pointer-events-none absolute left-1/2 top-full z-50 mt-5 w-[850px] -translate-x-1/2 translate-y-4 opacity-0 transition-all duration-300 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100">
+          <div className="absolute -top-5 left-0 h-5 w-full" />
 
-        <div className="relative overflow-hidden rounded-[30px] border border-white/10 bg-bg-base/95 p-4 shadow-[0_30px_100px_rgba(0,0,0,0.6)] backdrop-blur-2xl">
-          <div className="absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-amber-base/80 to-transparent" />
-          <div className="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-amber-base/15 blur-3xl" />
+          <div className="relative overflow-hidden rounded-[30px] border border-white/10 bg-bg-base/95 p-4 shadow-[0_30px_100px_rgba(0,0,0,0.6)] backdrop-blur-2xl">
+            <div className="absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-amber-base/80 to-transparent" />
+            <div className="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-amber-base/15 blur-3xl" />
 
-          <div className="relative grid gap-4 lg:grid-cols-[300px_1fr]">
-            <div className="rounded-[24px] border border-white/10 bg-white/[0.03] p-4">
-              <p className="px-2 pb-3 text-[11px] font-black uppercase tracking-[0.24em] text-amber-base">
-                {isBlog ? "Blog Categories" : "Resource Categories"}
-              </p>
+            <div className="relative grid gap-4 lg:grid-cols-[300px_1fr]">
+              <div className="rounded-[24px] border border-white/10 bg-white/[0.03] p-4">
+                <p className="px-2 pb-3 text-[11px] font-black uppercase tracking-[0.24em] text-amber-base">
+                  {isBlog ? "Blog Categories" : "Resource Categories"}
+                </p>
 
-              <div className="space-y-2">
-                {items.map((item) => {
-                  const Icon = item.icon;
-                  const isActive = active === item.label;
+                <div className="space-y-2">
+                  {items.map((item) => {
+                    const Icon = item.icon;
+                    const isActive = active === item.label;
 
-                  return (
-                    <Link
-                      key={item.href}
-                      href={item.href || "#"}
-                      onMouseEnter={() => setActive(item.label)}
-                      className={`group/item flex items-center gap-3 rounded-2xl border p-3 transition-all ${
-                        isActive
-                          ? "border-amber-base/35 bg-amber-base/10"
-                          : "border-transparent hover:border-amber-base/25 hover:bg-amber-base/10"
-                      }`}
-                    >
-                      <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-amber-base/10 text-amber-base transition-transform group-hover/item:scale-110">
-                        <Icon className="h-5 w-5" />
-                      </span>
-
-                      <span className="min-w-0">
-                        <span
-                          className={`block text-sm font-black ${
-                            isActive ? "text-amber-base" : "text-text-primary"
-                          }`}
-                        >
-                          {item.label}
+                    return (
+                      <Link
+                        key={item.href}
+                        href={item.href || "#"}
+                        onMouseEnter={() => setActive(item.label)}
+                        className={`group/item flex items-center gap-3 rounded-2xl border p-3 transition-all ${
+                          isActive
+                            ? "border-amber-base/35 bg-amber-base/10"
+                            : "border-transparent hover:border-amber-base/25 hover:bg-amber-base/10"
+                        }`}
+                      >
+                        <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-amber-base/10 text-amber-base transition-transform group-hover/item:scale-110">
+                          <Icon className="h-5 w-5" />
                         </span>
-                        <span className="line-clamp-1 block text-xs leading-5 text-silver">
-                          {item.desc}
+
+                        <span className="min-w-0">
+                          <span
+                            className={`block text-sm font-black ${
+                              isActive ? "text-amber-base" : "text-text-primary"
+                            }`}
+                          >
+                            {item.label}
+                          </span>
+                          <span className="line-clamp-1 block text-xs leading-5 text-silver">
+                            {item.desc}
+                          </span>
                         </span>
-                      </span>
-                    </Link>
-                  );
-                })}
+                      </Link>
+                    );
+                  })}
+                </div>
               </div>
-            </div>
 
-            <div className="rounded-[24px] border border-white/10 bg-white/[0.025] p-4">
-              <div className="mb-4 flex items-center justify-between">
-                <div>
-                  <p className="text-[11px] font-black uppercase tracking-[0.24em] text-amber-base">
-                    Featured in {active}
-                  </p>
-                  <p className="mt-1 font-display text-xl font-black text-text-primary">
-                    Latest picks
-                  </p>
+              <div className="rounded-[24px] border border-white/10 bg-white/[0.025] p-4">
+                <div className="mb-4 flex items-center justify-between">
+                  <div>
+                    <p className="text-[11px] font-black uppercase tracking-[0.24em] text-amber-base">
+                      Featured in {active}
+                    </p>
+                    <p className="mt-1 font-display text-xl font-black text-text-primary">
+                      Latest picks
+                    </p>
+                  </div>
+
+                  <Link
+                    href={items.find((i) => i.label === active)?.href || "#"}
+                    className="rounded-full border border-white/10 px-4 py-2 text-xs font-bold text-silver transition-colors hover:border-amber-base/30 hover:text-amber-base"
+                  >
+                    View all
+                  </Link>
                 </div>
 
-                <Link
-                  href={items.find((i) => i.label === active)?.href || "#"}
-                  className="rounded-full border border-white/10 px-4 py-2 text-xs font-bold text-silver transition-colors hover:border-amber-base/30 hover:text-amber-base"
-                >
-                  View all
-                </Link>
-              </div>
+                <div className="grid grid-cols-2 gap-3">
+                  {activeCards.map((card) => (
+                    <Link
+                      key={card.title}
+                      href={card.href}
+                      className="group/card relative min-h-[210px] overflow-hidden rounded-[24px] border border-white/10 bg-gradient-to-br from-white/[0.06] via-white/[0.03] to-amber-base/10 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-amber-base/35"
+                    >
+                      <div className="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-amber-base/15 blur-2xl opacity-0 transition-opacity group-hover/card:opacity-100" />
 
-              <div className="grid grid-cols-2 gap-3">
-                {activeCards.map((card) => (
-                  <Link
-                    key={card.title}
-                    href={card.href}
-                    className="group/card relative min-h-[210px] overflow-hidden rounded-[24px] border border-white/10 bg-gradient-to-br from-white/[0.06] via-white/[0.03] to-amber-base/10 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-amber-base/35"
-                  >
-                    <div className="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-amber-base/15 blur-2xl opacity-0 transition-opacity group-hover/card:opacity-100" />
+                      <div className="relative flex h-full flex-col justify-between">
+                        <div>
+                          <span className="inline-flex rounded-full bg-amber-base/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-amber-base">
+                            {card.badge}
+                          </span>
 
-                    <div className="relative flex h-full flex-col justify-between">
-                      <div>
-                        <span className="inline-flex rounded-full bg-amber-base/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-amber-base">
-                          {card.badge}
+                          <p className="mt-4 text-lg font-black leading-tight text-text-primary transition-colors group-hover/card:text-amber-base">
+                            {card.title}
+                          </p>
+
+                          <p className="mt-3 text-sm leading-6 text-silver">
+                            {card.desc}
+                          </p>
+                        </div>
+
+                        <span className="mt-5 text-sm font-black text-amber-base">
+                          Read more →
                         </span>
-
-                        <p className="mt-4 text-lg font-black leading-tight text-text-primary transition-colors group-hover/card:text-amber-base">
-                          {card.title}
-                        </p>
-
-                        <p className="mt-3 text-sm leading-6 text-silver">
-                          {card.desc}
-                        </p>
                       </div>
-
-                      <span className="mt-5 text-sm font-black text-amber-base">
-                        Read more →
-                      </span>
-                    </div>
-                  </Link>
-                ))}
+                    </Link>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </li>
   );
 }

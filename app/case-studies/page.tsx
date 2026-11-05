@@ -17,7 +17,7 @@ import { Navbar } from "@/components/landing/Navbar";
 import BackToTop from "@/components/ui/BackToTop";
 import { createMetadata } from "@/config/metadata";
 import { caseStudies } from "@/data/case-studies";
-import { getPageHref } from "@/lib/pagination";
+import { getPageHref, withPageContext } from "@/lib/pagination";
 
 type CaseStudiesPageProps = {
   searchParams?: Promise<{
@@ -38,13 +38,29 @@ export async function generateMetadata({
   searchParams,
 }: CaseStudiesPageProps) {
   const resolvedSearchParams = await searchParams;
-  const requestedPage = getCurrentPage(resolvedSearchParams?.page);
+  const featuredCaseStudy =
+    caseStudies.find((caseStudy) => caseStudy.featured) ?? caseStudies[0];
+  const remainingCaseStudies = featuredCaseStudy
+    ? caseStudies.filter((caseStudy) => caseStudy.slug !== featuredCaseStudy.slug)
+    : caseStudies;
+  const totalPages = Math.max(
+    1,
+    Math.ceil(remainingCaseStudies.length / cardsPerPage),
+  );
+  const currentPage = Math.min(
+    getCurrentPage(resolvedSearchParams?.page),
+    totalPages,
+  );
+  const metadata = withPageContext(
+    "Blockchain Case Studies",
+    "Explore blockchain case studies across DeFi, tokenization, supply chain, payments, smart contracts, and enterprise systems.",
+    currentPage,
+    totalPages,
+  );
 
   return createMetadata({
-    title: "Case Studies",
-    description:
-      "Explore blockchain case studies from ClickMasters across DeFi, tokenization, supply chain, payments, smart contracts, and enterprise blockchain.",
-    path: getPageHref("/case-studies", requestedPage),
+    ...metadata,
+    path: getPageHref("/case-studies", currentPage),
   });
 }
 
@@ -136,7 +152,8 @@ export default async function CaseStudiesPage({
               </div>
 
               <h1 className="mt-7 max-w-5xl text-4xl font-black leading-[1.05] tracking-[-0.04em] text-text-primary sm:text-5xl lg:text-7xl">
-                Real blockchain outcomes, shown project by project.
+                Blockchain case studies
+                {currentPage > 1 && ` — Page ${currentPage} of ${totalPages}`}
               </h1>
 
               <p className="mt-6 max-w-3xl text-base font-medium leading-8 text-text-secondary sm:text-lg">

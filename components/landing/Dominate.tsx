@@ -1,14 +1,13 @@
 "use client";
 
 import { ArrowRight } from "lucide-react";
-import { Counter } from "./Counter";
 import { StaggerContainer, StaggerItem } from "./Reveal";
 
-const stats = [
-  { value: 50, suffix: "+", label: "Apps Delivered" },
-  { value: 98, suffix: "%", label: "Client Retention" },
-  { value: 2, prefix: "$", suffix: "M+", label: "Revenue Driven" },
-  { value: 4.9, suffix: "★", label: "Client Rating", decimals: 1 },
+const capabilities = [
+  { title: "Product planning", description: "Architecture and scope" },
+  { title: "Smart contracts", description: "Design and implementation" },
+  { title: "Security", description: "Risk-aware development" },
+  { title: "Web3 applications", description: "Product and infrastructure" },
 ];
 
 const techPills = [
@@ -45,24 +44,24 @@ export function Dominate() {
             Built to <span className="text-gradient">Dominate.</span>
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-base leading-relaxed text-text-secondary md:text-lg">
-            4.9 star client rating across 50+ delivered Web3 apps with 98% retention.
+            Review the capabilities and technology areas covered by our blockchain services.
           </p>
         </div>
 
-        {/* Stats grid */}
+        {/* Capabilities grid */}
         <StaggerContainer>
           <div className="mt-14 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
-            {stats.map((s) => (
-              <StaggerItem key={s.label}>
+            {capabilities.map((capability) => (
+              <StaggerItem key={capability.title}>
                 <div className="group relative overflow-hidden bg-bg-base p-8 transition-colors hover:bg-surface">
                   {/* Top accent line */}
                   <span className="pointer-events-none absolute inset-x-0 top-0 h-0.5 bg-linear-to-r from-amber-base via-emerald-base to-amber-base opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                   <div className="relative">
                     <p className="text-3xl font-bold tracking-tight text-gradient md:text-4xl">
-                      <Counter value={s.value} prefix={s.prefix} suffix={s.suffix} decimals={s.decimals} />
+                      {capability.title}
                     </p>
                     <p className="mt-2 text-sm font-medium uppercase tracking-[0.15em] text-text-muted">
-                      {s.label}
+                      {capability.description}
                     </p>
                   </div>
                 </div>

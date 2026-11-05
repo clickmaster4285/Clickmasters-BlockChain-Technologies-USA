@@ -321,7 +321,9 @@ export default function ResourceLibrary({
             </div>
 
             <h1 className="mt-5 text-4xl font-black leading-tight text-text-primary sm:text-5xl lg:text-6xl">
-              Guides, checklists, and playbooks
+              {selectedCategory === "All"
+                ? "Guides, checklists, and playbooks"
+                : `${selectedCategory} blockchain resources`}
             </h1>
 
             <p className="mt-4 max-w-2xl text-sm font-medium leading-7 text-silver sm:text-base">
@@ -341,6 +343,31 @@ export default function ResourceLibrary({
             </p>
           </div>
         </div>
+
+        {selectedCategory !== "All" && (
+          <section className="mb-8 rounded-2xl border border-white/10 bg-surface/60 p-6 sm:p-8">
+            <h2 className="text-xl font-bold text-text-primary">
+              Using these {selectedCategory.toLowerCase()} resources
+            </h2>
+            <div className="mt-3 grid gap-4 text-sm leading-7 text-silver md:grid-cols-2">
+              <p>
+                Start with the resource that matches your current decision:
+                defining a use case, comparing an architecture, planning
+                delivery, or preparing a review. Check each item&apos;s scope
+                and intended audience, then adapt its questions and
+                recommendations to your product, users, and technical
+                constraints.
+              </p>
+              <p>
+                Treat examples and planning material as starting points, not
+                guarantees or legal, financial, or security advice. Verify
+                changing protocol details against primary documentation, and
+                validate assumptions with the people responsible for
+                implementation, operations, and compliance before acting.
+              </p>
+            </div>
+          </section>
+        )}
 
         <div className="mb-5 grid gap-3 rounded-[1.5rem] border border-white/10 bg-bg-base/80 p-3 shadow-[0_24px_70px_rgba(15,23,42,0.08)] backdrop-blur-xl sm:p-4 lg:grid-cols-[minmax(0,1fr)_210px]">
           <label className="group relative min-w-0">

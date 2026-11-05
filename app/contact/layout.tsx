@@ -1,9 +1,9 @@
 import { createMetadata } from "@/config/metadata";
 
 export const metadata = createMetadata({
-  title: "Contact ClickMasters — Build Your Web3 Project",
+  title: "Contact ClickMasters",
   description:
-    "Tell us about your DeFi, NFT, DAO or Web3 project. Senior blockchain engineers reply within 24 hours with a scoped plan.",
+    "Share your DeFi, NFT, DAO, or Web3 project goals and technical requirements to start a discussion about possible next steps.",
   path: "/contact",
 });
 

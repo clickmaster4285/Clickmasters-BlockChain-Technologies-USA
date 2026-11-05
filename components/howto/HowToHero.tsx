@@ -8,6 +8,7 @@ import {
   PenTool,
   Sparkles,
 } from "lucide-react";
+import { splitHeading } from "@/lib/seo";
 
 export default function HowToHero({
   item,
@@ -16,6 +17,17 @@ export default function HowToHero({
   item: any;
   readTime: string;
 }) {
+  const contextSuffix =
+    item.slug === "how-to-choose-blockchain-development-company" ? " Guide" : "";
+  const { heading, continuation } = splitHeading(
+    item.hero?.title || item.title,
+    70 - contextSuffix.length,
+  );
+  const description =
+    [continuation, item.hero?.description || item.excerpt]
+      .filter(Boolean)
+      .join(" — ");
+
   return (
     <section className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-bg-base/70 p-5 shadow-[0_35px_120px_rgba(0,0,0,.45)] backdrop-blur-xl sm:p-7 md:p-10 lg:p-12">
       <div className="absolute -right-28 -top-28 h-96 w-96 rounded-full bg-amber-base/10 blur-3xl" />
@@ -50,11 +62,12 @@ export default function HowToHero({
         </div>
 
         <h1 className="mt-7 max-w-5xl font-display text-3xl font-black leading-tight tracking-tight text-text-primary sm:text-4xl md:text-5xl lg:text-6xl">
-          {item.hero?.title || item.title}
+          {heading}
+          {contextSuffix}
         </h1>
 
         <p className="mt-6 max-w-3xl text-base leading-7 text-silver sm:text-lg sm:leading-8">
-          {item.hero?.description || item.excerpt}
+          {description}
         </p>
 
         <div className="mt-8 flex flex-wrap gap-3">

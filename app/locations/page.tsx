@@ -1,7 +1,5 @@
 // app/locations/page.tsx
 
-import type { Metadata } from "next";
-
 import Image from "next/image";
 import Link from "next/link";
 
@@ -31,7 +29,8 @@ import { Footer } from "@/components/landing/Footer";
 import BackToTop from "@/components/ui/BackToTop";
 
 import LocationPagination from "@/components/locations/LocationPagination";
-import { getPageHref } from "@/lib/pagination";
+import { createMetadata } from "@/config/metadata";
+import { getPageHref, withPageContext } from "@/lib/pagination";
 
 import {
   getLocationCards,
@@ -42,40 +41,34 @@ import {
    Metadata
 ========================================================= */
 
+const LOCATIONS_PER_PAGE = 9;
+
 export async function generateMetadata({
   searchParams,
-}: LocationsPageProps): Promise<Metadata> {
+}: LocationsPageProps) {
   const resolvedSearchParams = await searchParams;
   const requestedPage = Number(resolvedSearchParams?.page ?? "1");
-  const currentPage =
+  const totalPages = Math.max(
+    Math.ceil(getLocationCards().length / LOCATIONS_PER_PAGE),
+    1,
+  );
+  const currentPage = Math.min(
     Number.isInteger(requestedPage) && requestedPage > 0
       ? requestedPage
-      : 1;
-  const path = getPageHref("/locations", currentPage);
+      : 1,
+    totalPages,
+  );
+  const metadata = withPageContext(
+    "Blockchain Development Locations",
+    "Explore blockchain development topics for cities and regional markets, including local industries, regulations, integrations, and project requirements.",
+    currentPage,
+    totalPages,
+  );
 
-  return {
-  title:
-    "Global Blockchain Development Locations | ClickMasters",
-
-  description:
-    "Explore ClickMasters blockchain development services across major cities, countries, and technology markets worldwide.",
-
-  alternates: {
-    canonical: path,
-  },
-
-  openGraph: {
-    title:
-      "Global Blockchain Development Locations | ClickMasters",
-
-    description:
-      "Explore blockchain development services, regional expertise, enterprise solutions, and technology delivery across global markets.",
-
-    url: path,
-
-    type: "website",
-  },
-  };
+  return createMetadata({
+    ...metadata,
+    path: getPageHref("/locations", currentPage),
+  });
 }
 
 /* =========================================================
@@ -184,7 +177,7 @@ export default async function LocationsPage({
 
   const totalLocations = getLocationsCount();
 
-  const cardsPerPage = 9;
+  const cardsPerPage = LOCATIONS_PER_PAGE;
 
   const requestedPage = Number(
     resolvedSearchParams.page ?? "1",
@@ -302,6 +295,8 @@ export default async function LocationsPage({
                   <span className="bg-gradient-to-r from-amber-base via-amber-light to-amber-base bg-clip-text text-transparent">
                     Global Markets
                   </span>
+                  {currentPage > 1 &&
+                    ` — Page ${currentPage} of ${totalPages}`}
                 </h1>
 
                 <p className="mt-7 max-w-2xl text-base leading-8 text-silver md:text-lg">

@@ -92,11 +92,11 @@ type RawHirePage = Partial<HirePage> & {
 };
 
 const hireVisuals = [
-  "/media/blockchain.png",
-  "/media/services-bg.jpeg",
-  "/media/hero-bg.png",
-  "/media/hero.jpg",
-  "/media/tools-hero.png",
+  "/media/blockchain.webp",
+  "/media/services-bg.webp",
+  "/media/hero-bg.webp",
+  "/media/hero.webp",
+  "/media/tools-hero.webp",
 ];
 
 export function getHireVisual(slug = ""): string {

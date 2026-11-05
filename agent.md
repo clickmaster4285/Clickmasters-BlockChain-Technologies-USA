@@ -60,7 +60,7 @@ All `.asset.json` sidecar imports replaced with direct URL strings:
 - `Hero.tsx` — `"/media/hero-bg.mp4"`, `"/media/cta-bg.png"` (5 occurrences)
 - `FinalCTA.tsx` — `"/media/cta.mp4"`, `"/media/cta-bg.png"`
 - `Services.tsx` — `"/media/services-bg.jpeg"`
-- `Portfolio.tsx` — `"/media/portfolio-bg.jpeg"`
+- `Portfolio.tsx` — `"/media/portfolio-bg.webp"`
 - `Testimonials.tsx` — `"/media/testimonials-bg.jpg"`
 
 ### 7. `'use client'` Directives Added (17 files)

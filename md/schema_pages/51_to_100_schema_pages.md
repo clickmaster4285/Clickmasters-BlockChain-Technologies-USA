@@ -453,7 +453,7 @@ The games thriving in 2025 share one characteristic: they are genuinely fun to p
 
 ## Implementation Notes
 
-These schema templates are used across the full 1,331-page site. Key implementation points:
+Use these schema templates only on pages whose visible content supports the markup. Key implementation points:
 
 1. **BreadcrumbList on every page** — helps Google understand site hierarchy
 2. **FAQPage on every page with a FAQ section** — FAQ rich results are high-value SERP features

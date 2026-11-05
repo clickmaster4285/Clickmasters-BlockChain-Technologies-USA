@@ -13,6 +13,9 @@ import ServiceTimeline from '@/components/service/ServiceTimeline';
 import ServiceTestimonials from '@/components/service/ServiceTestimonials';
 import ServiceFAQ from '@/components/service/ServiceFAQ';
 import ServiceSidebar from '@/components/service/ServiceSidebar';
+import RelatedLinks from "@/components/RelatedLinks";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { faqPageSchema, serviceSchema } from "@/lib/structured-data";
 
 const contentLibraryTopics = [
   {
@@ -78,9 +81,9 @@ function ContentLibraryPage({ title }: { title: string }) {
 
             <div className="mt-10 grid gap-4 sm:grid-cols-3">
               {[
-                ["1,331", "pages of blockchain content"],
-                ["50+", "industry verticals covered"],
-                ["5", "core resource areas"],
+                ["Services", "blockchain development topics"],
+                ["Guides", "technical and planning resources"],
+                ["Tools", "calculators and checklists"],
               ].map(([value, label]) => (
                 <div
                   key={label}
@@ -185,7 +188,7 @@ export async function generateMetadata({
     title: svc.title,
     description:
       slug === "resources/blockchain-content-library"
-        ? "Explore 1,331 pages of blockchain development resources covering services, industry applications, technical guides, compliance, and practical tools."
+        ? "Browse blockchain development resources covering services, industry applications, technical guides, compliance, and practical tools."
         : svc.description ?? svc.hero.blurb,
     path: `/service/${slug}`,
     type: "article",
@@ -207,6 +210,18 @@ export default async function ServicePage({
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
+      <JsonLd
+        data={[
+          serviceSchema({
+            name: service.title,
+            description: service.description ?? service.hero.blurb,
+            path: `/service/${slug}`,
+            serviceType: service.category,
+            image: service.image,
+          }),
+          faqPageSchema(service.faq),
+        ]}
+      />
       <main className="pt-32 pb-24 bg-gradient-to-b from-surface/30 to-bg-base relative overflow-hidden">
         {/* Decorative SVG waves */}
         <svg className="pointer-events-none absolute -left-20 -top-10 opacity-70 animate-wave" width="840" height="420" viewBox="0 0 840 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -291,6 +306,7 @@ export default async function ServicePage({
             </div>
           </div>
         </section>
+        <RelatedLinks type="service" slug={slug} />
       </main>
       <Footer />
       <BackToTop />

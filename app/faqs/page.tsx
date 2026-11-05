@@ -7,7 +7,7 @@ import { Footer } from "@/components/landing/Footer";
 import { Navbar } from "@/components/landing/Navbar";
 import { createMetadata } from "@/config/metadata";
 import { getAllFAQs } from "@/lib/faqs";
-import { getPageHref } from "@/lib/pagination";
+import { getPageHref, withPageContext } from "@/lib/pagination";
 
 type FAQsPageProps = {
   searchParams?: Promise<{
@@ -15,7 +15,7 @@ type FAQsPageProps = {
   }>;
 };
 
-const CARDS_PER_PAGE = 9;
+const CARDS_PER_PAGE = 12;
 
 function getCurrentPage(page?: string | string[]) {
   const rawPage = Array.isArray(page) ? page[0] : page;
@@ -28,12 +28,24 @@ export async function generateMetadata({
   searchParams,
 }: FAQsPageProps): Promise<Metadata> {
   const resolvedSearchParams = await searchParams;
-  const currentPage = getCurrentPage(resolvedSearchParams?.page);
+  const faqs = getAllFAQs();
+  const totalPages = Math.max(
+    Math.ceil(faqs.length / CARDS_PER_PAGE),
+    1,
+  );
+  const currentPage = Math.min(
+    getCurrentPage(resolvedSearchParams?.page),
+    totalPages,
+  );
+  const metadata = withPageContext(
+    "Blockchain FAQs",
+    "Find answers about blockchain services, development workflows, project pricing, technology choices, delivery, maintenance, and support.",
+    currentPage,
+    totalPages,
+  );
 
   return createMetadata({
-    title: "Frequently Asked Questions",
-    description:
-      "Find answers about our services, development process, project pricing, technology, delivery timelines, maintenance, and ongoing support.",
+    ...metadata,
     path: getPageHref("/faqs", currentPage),
   });
 }
@@ -60,7 +72,14 @@ export default async function FAQsPage({
       <Navbar />
 
       <main className="min-h-screen bg-bg-base text-text-primary">
-        <FAQHero totalQuestions={faqs.length} />
+        <FAQHero
+          totalQuestions={faqs.length}
+          pageContext={
+            currentPage > 1
+              ? `Page ${currentPage} of ${totalPages}`
+              : undefined
+          }
+        />
 
         <FAQsClient
           items={paginatedFAQs}

@@ -21,6 +21,9 @@ import {
   getTemplateBySlug,
   getTemplateCTA,
 } from "@/lib/templates";
+import RelatedLinks from "@/components/RelatedLinks";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { faqPageSchema } from "@/lib/structured-data";
 
 type TemplatePageProps = {
   params: Promise<{
@@ -118,6 +121,9 @@ export default async function TemplateSlugPage({ params }: TemplatePageProps) {
   return (
     <div className="min-h-screen overflow-x-hidden bg-background text-foreground">
       <Navbar />
+      <JsonLd
+        data={faqPageSchema(item?.faqs || item?.faq)}
+      />
 
       <main className="relative overflow-hidden bg-gradient-to-b from-bg-base via-amber-base/5 to-bg-base pb-24 pt-28 sm:pt-32">
         {/* Main background grid */}
@@ -249,6 +255,7 @@ export default async function TemplateSlugPage({ params }: TemplatePageProps) {
             </div>
           </section>
         </div>
+        <RelatedLinks type="templates" slug={slug} />
       </main>
 
       <Footer />

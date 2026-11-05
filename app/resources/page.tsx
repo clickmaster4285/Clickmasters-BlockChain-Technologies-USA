@@ -6,7 +6,7 @@ import BackToTop from "@/components/ui/BackToTop";
 import ResourceLibrary from "@/components/resources/ResourceLibrary";
 import ResourceCTA from "@/components/resources/ResourceCTA";
 import { createMetadata } from "@/config/metadata";
-import { getPageHref } from "@/lib/pagination";
+import { getPageHref, resolveListingCategory } from "@/lib/pagination";
 
 import {
   getAllResources,
@@ -26,16 +26,25 @@ export async function generateMetadata({
   searchParams,
 }: ResourcesPageProps) {
   const params = await searchParams;
+  const categories = getResourceCategories(getAllResources());
+  const selectedCategory = resolveListingCategory(
+    categories,
+    typeof params?.category === "string" ? params.category : "",
+    "",
+  );
+  const title = selectedCategory
+    ? `${selectedCategory} Blockchain Resources`
+    : "Blockchain Resources";
+  const description = selectedCategory
+    ? `Explore blockchain ${selectedCategory.toLowerCase()} resources, with practical guidance for evaluating requirements, implementation choices, and project risks.`
+    : "Explore practical blockchain guides, reports, strategic frameworks, technical resources, and project planning insights.";
 
   return createMetadata({
-    title:
-      "Resources | Guides, Research and Practical Insights | ClickMasters",
-    description:
-      "Explore practical guides, reports, strategic frameworks, technical resources, and expert insights from ClickMasters.",
+    title,
+    description,
     path: getPageHref("/resources", 1, {
       search: typeof params?.search === "string" ? params.search : undefined,
-      category:
-        typeof params?.category === "string" ? params.category : undefined,
+      category: selectedCategory || undefined,
     }),
   });
 }
@@ -61,20 +70,15 @@ export default async function ResourcesPage({
       ? params.search
       : "";
 
-  const requestedCategory =
-    typeof params.category === "string"
-      ? params.category
-      : "";
-
   const allResources = getAllResources();
   const resourceCards = getResourceCards(allResources);
   const categories =
     getResourceCategories(allResources);
-  const initialCategory =
-    categories.find(
-      (category) =>
-        category.toLowerCase() === requestedCategory.toLowerCase()
-    ) || requestedCategory;
+  const initialCategory = resolveListingCategory(
+    categories,
+    typeof params.category === "string" ? params.category : "",
+    "",
+  );
 
   return (
     <div className="min-h-screen bg-background text-foreground">

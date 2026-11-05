@@ -57,6 +57,7 @@ import type {
   LocationContentBlock,
   LocationEntry,
 } from "@/lib/location";
+import { splitHeading } from "@/lib/seo";
 
 /* =========================================================
    Types
@@ -65,6 +66,8 @@ import type {
 type LocationDetailPageProps = {
   location: LocationEntry;
   relatedLocations: LocationEntry[];
+  /** Server-rendered contextual cross-links (Related services / guides). */
+  relatedLinks?: ReactNode;
 };
 
 type SectionId =
@@ -319,6 +322,7 @@ const expertiseCards = [
 export default function LocationDetailPage({
   location,
   relatedLocations,
+  relatedLinks,
 }: LocationDetailPageProps) {
   const [readingProgress, setReadingProgress] =
     useState(0);
@@ -335,6 +339,8 @@ export default function LocationDetailPage({
   const heroDescription =
     location.hero?.description ||
     location.excerpt;
+  const { heading: heroHeading, continuation: heroContinuation } =
+    splitHeading(heroTitle);
 
   const heroBadge =
     location.hero?.badge ||
@@ -555,11 +561,13 @@ export default function LocationDetailPage({
                   </div>
 
                   <h1 className="mt-8 max-w-4xl font-display text-4xl font-black leading-[1.03] tracking-[-0.045em] text-text-primary sm:text-5xl md:text-6xl xl:text-[4.4rem]">
-                    {heroTitle}
+                    {heroHeading}
                   </h1>
 
                   <p className="mt-7 max-w-2xl text-base leading-8 text-silver md:text-lg">
-                    {heroDescription}
+                    {[heroContinuation, heroDescription]
+                      .filter(Boolean)
+                      .join(" — ")}
                   </p>
 
                   <div className="mt-9 flex flex-wrap gap-3">
@@ -1132,6 +1140,7 @@ export default function LocationDetailPage({
             </div>
           </section>
         </div>
+        {relatedLinks}
       </main>
 
       <Footer />

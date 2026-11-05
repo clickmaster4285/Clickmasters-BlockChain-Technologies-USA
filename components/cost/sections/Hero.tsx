@@ -5,6 +5,7 @@ import { cleanInlineMarks } from "@/lib/parse-cost-content";
 import RevealOnScroll from "@/components/cost/RevealOnScroll";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { splitHeading } from "@/lib/seo";
 
 export default function HeroSection({
   section,
@@ -15,6 +16,7 @@ export default function HeroSection({
 }) {
   const h1 = section.content.match(/#{1,3}\s*H1:\s*(.+)/)?.[1]?.trim() ?? meta.title;
   const h2 = section.content.match(/\*\*H2:\s*([\s\S]+?)\*\n/)?.[1]?.trim();
+  const { heading, continuation } = splitHeading(h1);
 
   const bullets = section.bullets ?? [];
   const lead = bullets[0];
@@ -26,10 +28,10 @@ export default function HeroSection({
   const [imageError, setImageError] = useState(false);
 
   const trustItems = [
-    "Web3 development since 2014",
-    "1,000+ blockchain projects across finance, real estate, gaming, and enterprise",
-    "Full-stack delivery: smart contracts, indexing, API, front-end, wallet integration",
-    "US regulatory compliance architecture on every regulated build"
+    "Blockchain architecture and implementation",
+    "Smart contracts, APIs, and wallet integrations",
+    "Security and operational considerations",
+    "Compliance requirements vary by project and jurisdiction"
   ];
 
   useEffect(() => {
@@ -64,14 +66,14 @@ export default function HeroSection({
 
             <RevealOnScroll effect="slide-left" delay={100}>
               <h1 className="text-balance font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.08] text-[var(--text-primary)]">
-                {h1}
+                {heading}
               </h1>
             </RevealOnScroll>
 
-            {h2 && (
+            {(continuation || h2) && (
               <RevealOnScroll effect="slide-left" delay={200}>
                 <p className="mt-4 md:mt-6 max-w-2xl text-pretty text-sm md:text-base lg:text-lg leading-relaxed text-[var(--text-secondary)]">
-                  {h2}
+                  {[continuation, h2].filter(Boolean).join(" — ")}
                 </p>
               </RevealOnScroll>
             )}
@@ -106,7 +108,7 @@ export default function HeroSection({
               {!imageError ? (
                 <div className="relative w-full h-full z-10 overflow-hidden rounded-xl md:rounded-2xl">
                   <Image
-                    src="/media/hero.jpg"
+                    src="/media/hero.webp"
                     alt="Blockchain development illustration"
                     fill
                     className="object-cover scale-105"

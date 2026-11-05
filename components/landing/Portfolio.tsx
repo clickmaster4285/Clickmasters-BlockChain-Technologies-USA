@@ -5,29 +5,25 @@ const projects = [
   {
     title: "Aurora Lending Protocol",
     category: "DeFi",
-    description: "Decentralized lending platform with cross-chain collateral. $50M TVL within 60 days of launch.",
-    metrics: [{ k: "TVL", v: "$50M" }, { k: "Chains", v: "4" }, { k: "Audits", v: "3" }],
+    description: "Illustrative example of a decentralized lending platform with cross-chain collateral.",
     accent: "primary",
   },
   {
     title: "Stratos NFT Marketplace",
     category: "NFT",
-    description: "Multi-chain NFT marketplace with gasless minting and on-chain royalty enforcement.",
-    metrics: [{ k: "NFTs minted", v: "1M+" }, { k: "Daily users", v: "10K+" }, { k: "Volume", v: "$8M" }],
+    description: "Illustrative example of a multi-chain NFT marketplace with gasless minting and on-chain royalty enforcement.",
     accent: "tertiary",
   },
   {
     title: "Nexus Wallet",
     category: "Wallet",
-    description: "Non-custodial mobile wallet with hardware integration across 8 EVM and non-EVM chains.",
-    metrics: [{ k: "Downloads", v: "500K+" }, { k: "Chains", v: "8" }, { k: "Rating", v: "4.8★" }],
+    description: "Illustrative example of a non-custodial mobile wallet with hardware integration across EVM and non-EVM chains.",
     accent: "secondary",
   },
   {
     title: "Quorum DAO Platform",
     category: "DAO",
-    description: "Modular governance suite powering token-weighted voting and treasury management for 50+ DAOs.",
-    metrics: [{ k: "DAOs", v: "50+" }, { k: "Proposals", v: "1.2K" }, { k: "Treasury", v: "$80M" }],
+    description: "Illustrative example of a modular governance suite for token-weighted voting and treasury management.",
     accent: "success",
   },
 ];
@@ -55,8 +51,8 @@ export function Portfolio() {
               Selected Work
             </div>
             <h2 className="mt-4 max-w-2xl text-4xl font-bold tracking-tight text-text-primary md:text-5xl">
-              Protocols and products shipped to{" "}
-              <span className="text-gradient">production</span>
+              Illustrative blockchain product{" "}
+              <span className="text-gradient">examples</span>
             </h2>
           </div>
           <Link
@@ -66,6 +62,10 @@ export function Portfolio() {
             Book a Strategy Call <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
           </Link>
         </div>
+
+        <p className="mt-8 text-sm text-text-muted">
+          The projects below are illustrative examples, not verified client case studies.
+        </p>
 
         {/* Projects grid */}
         <div className="mt-14 grid gap-6 md:grid-cols-2">
@@ -89,15 +89,6 @@ export function Portfolio() {
                 <h2 className="mt-4 text-xl font-semibold text-text-primary md:text-2xl">{p.title}</h2>
                 <p className="mt-2 text-sm leading-relaxed text-text-secondary">{p.description}</p>
 
-                {/* Metrics */}
-                <dl className="mt-6 grid grid-cols-3 gap-4 border-t border-border pt-5">
-                  {p.metrics.map((m) => (
-                    <div key={m.k}>
-                      <dt className="font-mono text-[9px] uppercase tracking-widest text-text-muted">{m.k}</dt>
-                      <dd className="mt-1 text-lg font-bold tracking-tight text-amber-base">{m.v}</dd>
-                    </div>
-                  ))}
-                </dl>
               </div>
             </article>
           ))}

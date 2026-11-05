@@ -5,6 +5,10 @@ import { notFound } from "next/navigation";
 
 import industriesData from "@/data/industries";
 import IndustryDetailPage from "@/components/industries/IndustryDetailPage";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { faqPageSchema } from "@/lib/structured-data";
+import RelatedLinks from "@/components/RelatedLinks";
+import { createMetadata } from "@/config/metadata";
 
 type ContentBlock =
   | {
@@ -91,30 +95,13 @@ export async function generateMetadata({
     };
   }
 
-  return {
+  return createMetadata({
     title: industry.title,
     description: industry.excerpt,
-    alternates: {
-      canonical: `/industries/${industry.slug}`,
-    },
-    openGraph: {
-      title: industry.title,
-      description: industry.excerpt,
-      type: "article",
-      images: [
-        {
-          url: industry.image,
-          alt: industry.title,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: industry.title,
-      description: industry.excerpt,
-      images: [industry.image],
-    },
-  };
+    path: `/industries/${industry.slug}`,
+    image: industry.image,
+    type: "article",
+  });
 }
 
 export default async function IndustrySlugPage({
@@ -143,13 +130,19 @@ export default async function IndustrySlugPage({
     .slice(0, 3);
 
   return (
-    <IndustryDetailPage
+    <>
+      <JsonLd data={faqPageSchema(industry.faqs)} />
+      <IndustryDetailPage
       industry={industry}
       relatedIndustries={
         relatedIndustries.length > 0
           ? relatedIndustries
           : fallbackRelated
       }
+      relatedLinks={
+        <RelatedLinks type="industries" slug={industry.slug} />
+      }
     />
+    </>
   );
 }

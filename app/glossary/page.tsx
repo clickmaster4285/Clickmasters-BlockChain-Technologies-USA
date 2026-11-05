@@ -12,7 +12,7 @@ import { Footer } from "@/components/landing/Footer";
 import BackToTop from "@/components/ui/BackToTop";
 import GlossaryCard from "@/components/glossary/GlossaryCard";
 import { createMetadata } from "@/config/metadata";
-import { getPageHref } from "@/lib/pagination";
+import { getPageHref, withPageContext } from "@/lib/pagination";
 import {
   getAvailableGlossaryLetters,
   getGlossaryCards,
@@ -35,15 +35,43 @@ export async function generateMetadata({
   searchParams,
 }: GlossaryPageProps) {
   const resolvedSearchParams = await searchParams;
-  const currentPage = getRequestedPage(resolvedSearchParams?.page);
+  const selectedLetter = (
+    resolvedSearchParams?.letter || "ALL"
+  ).toUpperCase();
+  const searchQuery = resolvedSearchParams?.search?.trim() || "";
+  const normalizedSearch = searchQuery.toLowerCase();
+  const filteredTerms = getGlossaryCards().filter((item: any) => {
+    const matchesLetter =
+      selectedLetter === "ALL" || item.letter === selectedLetter;
+    const matchesSearch =
+      !normalizedSearch ||
+      item.title?.toLowerCase().includes(normalizedSearch) ||
+      item.term?.toLowerCase().includes(normalizedSearch) ||
+      item.definition?.toLowerCase().includes(normalizedSearch) ||
+      item.category?.toLowerCase().includes(normalizedSearch);
+
+    return matchesLetter && matchesSearch;
+  });
+  const totalPages = Math.max(
+    Math.ceil(filteredTerms.length / PER_PAGE),
+    1,
+  );
+  const currentPage = Math.min(
+    getRequestedPage(resolvedSearchParams?.page),
+    totalPages,
+  );
+  const metadata = withPageContext(
+    "Blockchain Glossary",
+    "Explore clear definitions, practical examples, and technical explanations of blockchain, crypto, Web3, DeFi, smart-contract, and enterprise terminology.",
+    currentPage,
+    totalPages,
+  );
 
   return createMetadata({
-    title: "Blockchain Glossary",
-    description:
-      "Explore simple definitions, practical examples, technical explanations, and real-world uses of blockchain, crypto, Web3, DeFi, smart-contract, and enterprise terminology.",
+    ...metadata,
     path: getPageHref("/glossary", currentPage, {
-      letter: resolvedSearchParams?.letter,
-      search: resolvedSearchParams?.search,
+      letter: selectedLetter !== "ALL" ? selectedLetter : undefined,
+      search: searchQuery || undefined,
     }),
   });
 }
@@ -133,6 +161,8 @@ export default async function GlossaryPage({
 
                 <h1 className="mt-6 max-w-4xl font-display text-4xl font-black leading-tight tracking-tight text-text-primary md:text-6xl">
                   Understand Blockchain and Web3 Terms Clearly
+                  {safeCurrentPage > 1 &&
+                    ` — Page ${safeCurrentPage} of ${totalPages}`}
                 </h1>
 
                 <p className="mt-5 max-w-2xl text-base leading-8 text-silver md:text-lg">
@@ -198,7 +228,7 @@ export default async function GlossaryPage({
     {/* Main image area */}
     <div className="relative aspect-[4/3] w-full overflow-hidden">
       <Image
-        src="/media/glossary-hero.png"
+        src="/media/glossary-hero.webp"
         alt="Blockchain and Web3 glossary illustration"
         fill
         priority
@@ -363,6 +393,35 @@ export default async function GlossaryPage({
                 )}
               </div>
             )}
+          </section>
+          <section className="mt-12 rounded-2xl border border-white/10 bg-surface/70 p-6 sm:p-8">
+            <h2 className="text-xl font-bold text-text-primary">
+              Read definitions in context
+            </h2>
+            <div className="mt-3 grid gap-4 text-sm leading-7 text-silver md:grid-cols-2">
+              <p>
+                Blockchain terminology often depends on the network,
+                application, or governance model being discussed. A token
+                standard, consensus mechanism, or custody term may have
+                different implications across systems. Use each definition as
+                an orientation, then follow technical material and protocol
+                documentation for implementation details.
+              </p>
+              <p>
+                When comparing concepts, note who controls keys, how state is
+                validated, where data is stored, and what assumptions users
+                must trust. For decisions involving contracts, financial
+                assets, or compliance, confirm the meaning with current
+                primary sources and qualified reviewers rather than relying on
+                a glossary entry alone.
+              </p>
+              <p>
+                Search results and letter filters can help locate related
+                vocabulary, but a term by itself rarely describes an entire
+                architecture. Consider how components interact and document
+                which interpretation applies to your project.
+              </p>
+            </div>
           </section>
         </section>
       </main>

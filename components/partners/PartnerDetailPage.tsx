@@ -54,6 +54,7 @@ import type {
   NormalizedPartnerEntry,
   PartnerContentBlock,
 } from "@/lib/partner";
+import { splitHeading } from "@/lib/seo";
 
 /* =========================================================
    Types
@@ -62,6 +63,8 @@ import type {
 type PartnerDetailPageProps = {
   partner: NormalizedPartnerEntry;
   relatedPartners: NormalizedPartnerEntry[];
+  /** Server-rendered contextual cross-links (Related services / guides). */
+  relatedLinks?: ReactNode;
 };
 
 type SectionId =
@@ -347,6 +350,7 @@ const expertiseCards = [
 export default function PartnerDetailPage({
   partner,
   relatedPartners,
+  relatedLinks,
 }: PartnerDetailPageProps) {
   const [readingProgress, setReadingProgress] =
     useState(0);
@@ -365,6 +369,8 @@ export default function PartnerDetailPage({
   const heroDescription =
     partner.hero?.description ||
     partner.excerpt;
+  const { heading: heroHeading, continuation: heroContinuation } =
+    splitHeading(heroTitle);
 
   const heroBadge =
     partner.hero?.badge ||
@@ -588,11 +594,13 @@ export default function PartnerDetailPage({
                   </div>
 
                   <h1 className="mt-8 max-w-4xl font-display text-4xl font-black leading-[1.03] tracking-[-0.045em] text-text-primary sm:text-5xl md:text-6xl xl:text-[4.2rem]">
-                    {heroTitle}
+                    {heroHeading}
                   </h1>
 
                   <p className="mt-7 max-w-2xl text-base leading-8 text-silver md:text-lg">
-                    {heroDescription}
+                    {[heroContinuation, heroDescription]
+                      .filter(Boolean)
+                      .join(" — ")}
                   </p>
 
                   <div className="mt-9 flex flex-wrap gap-3">
@@ -1171,6 +1179,7 @@ export default function PartnerDetailPage({
             </div>
           </section>
         </div>
+        {relatedLinks}
       </main>
 
       <Footer />

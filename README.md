@@ -399,9 +399,9 @@ Clickmasters-BlockChain-Technologies-USA
 │     ├─ cta.mp4
 │     ├─ dominate-bg.jpeg
 │     ├─ hero-bg.mp4
-│     ├─ hero-bg.png
+│     ├─ hero-bg.webp
 │     ├─ intro.mp4
-│     ├─ portfolio-bg.jpeg
+│     ├─ portfolio-bg.webp
 │     ├─ services-bg.jpeg
 │     ├─ testimonials-bg.jpg
 │     └─ wallet-mock.jpeg
@@ -844,9 +844,9 @@ Clickmasters-BlockChain-Technologies-USA
 │     ├─ cta.mp4
 │     ├─ dominate-bg.jpeg
 │     ├─ hero-bg.mp4
-│     ├─ hero-bg.png
+│     ├─ hero-bg.webp
 │     ├─ intro.mp4
-│     ├─ portfolio-bg.jpeg
+│     ├─ portfolio-bg.webp
 │     ├─ services-bg.jpeg
 │     ├─ testimonials-bg.jpg
 │     └─ wallet-mock.jpeg
@@ -1432,20 +1432,20 @@ Clickmasters-BlockChain-Technologies-USA
 ├─ public
 │  └─ media
 │     ├─ Data_packet_traveling_blockchain…_202606091628.mp4
-│     ├─ blockchain.png
+│     ├─ blockchain.webp
 │     ├─ cta-bg.png
 │     ├─ cta.mp4
 │     ├─ dominate-bg.jpeg
 │     ├─ glossary-hero.png
 │     ├─ hero-bg.mp4
-│     ├─ hero-bg.png
+│     ├─ hero-bg.webp
 │     ├─ hero.jpg
 │     ├─ howto-hero.webp
 │     ├─ intro.mp4
 │     ├─ listicles-hero.webp
 │     ├─ logo.webp
 │     ├─ news-hero.png
-│     ├─ portfolio-bg.jpeg
+│     ├─ portfolio-bg.webp
 │     ├─ robots.txt
 │     ├─ services-bg.jpeg
 │     ├─ testimonials-bg.jpg
@@ -2144,20 +2144,20 @@ Clickmasters-BlockChain-Technologies-USA
 │  │  └─ trail-of-bits-partner.webp
 │  ├─ media
 │  │  ├─ Data_packet_traveling_blockchain…_202606091628.mp4
-│  │  ├─ blockchain.png
+│  │  ├─ blockchain.webp
 │  │  ├─ cta-bg.png
 │  │  ├─ cta.mp4
 │  │  ├─ dominate-bg.jpeg
 │  │  ├─ glossary-hero.png
 │  │  ├─ hero-bg.mp4
-│  │  ├─ hero-bg.png
+│  │  ├─ hero-bg.webp
 │  │  ├─ hero.jpg
 │  │  ├─ howto-hero.webp
 │  │  ├─ intro.mp4
 │  │  ├─ listicles-hero.webp
 │  │  ├─ logo.webp
 │  │  ├─ news-hero.png
-│  │  ├─ portfolio-bg.jpeg
+│  │  ├─ portfolio-bg.webp
 │  │  ├─ robots.txt
 │  │  ├─ services-bg.jpeg
 │  │  ├─ testimonials-bg.jpg
@@ -2879,20 +2879,20 @@ Clickmasters-BlockChain-Technologies-USA
 │  │  └─ trail-of-bits-partner.webp
 │  ├─ media
 │  │  ├─ Data_packet_traveling_blockchain…_202606091628.mp4
-│  │  ├─ blockchain.png
+│  │  ├─ blockchain.webp
 │  │  ├─ cta-bg.png
 │  │  ├─ cta.mp4
 │  │  ├─ dominate-bg.jpeg
 │  │  ├─ glossary-hero.png
 │  │  ├─ hero-bg.mp4
-│  │  ├─ hero-bg.png
+│  │  ├─ hero-bg.webp
 │  │  ├─ hero.jpg
 │  │  ├─ howto-hero.webp
 │  │  ├─ intro.mp4
 │  │  ├─ listicles-hero.webp
 │  │  ├─ logo.webp
 │  │  ├─ news-hero.png
-│  │  ├─ portfolio-bg.jpeg
+│  │  ├─ portfolio-bg.webp
 │  │  ├─ robots.txt
 │  │  ├─ services-bg.jpeg
 │  │  ├─ testimonials-bg.jpg

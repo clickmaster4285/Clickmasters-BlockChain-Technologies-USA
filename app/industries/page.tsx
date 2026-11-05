@@ -33,7 +33,7 @@ import { Footer } from "@/components/landing/Footer";
 import BackToTop from "@/components/ui/BackToTop";
 
 import { createMetadata } from "@/config/metadata";
-import { getPageHref } from "@/lib/pagination";
+import { getPageHref, withPageContext } from "@/lib/pagination";
 import { getIndustryCards } from "@/lib/industry";
 
 /* =========================================================
@@ -45,15 +45,27 @@ export async function generateMetadata({
 }: IndustriesPageProps) {
   const resolvedSearchParams = await searchParams;
   const requestedPage = Number(resolvedSearchParams?.page || "1");
-  const currentPage =
+  const cardsPerPage = 9;
+  const industryCards = getIndustryCards();
+  const totalPages = Math.max(
+    Math.ceil(industryCards.length / cardsPerPage),
+    1,
+  );
+  const currentPage = Math.min(
     Number.isInteger(requestedPage) && requestedPage > 0
       ? requestedPage
-      : 1;
+      : 1,
+    totalPages,
+  );
+  const metadata = withPageContext(
+    "Blockchain Solutions by Industry",
+    "Explore blockchain applications across finance, healthcare, supply chain, real estate, insurance, energy, gaming, government, and enterprise operations.",
+    currentPage,
+    totalPages,
+  );
 
   return createMetadata({
-    title: "Blockchain Solutions for Global Industries",
-    description:
-      "Explore secure and scalable blockchain solutions for finance, healthcare, supply chain, real estate, insurance, energy, gaming, government, and enterprise operations.",
+    ...metadata,
     path: getPageHref("/industries", currentPage),
   });
 }
@@ -330,10 +342,9 @@ export default async function IndustriesPage({
                 </div>
 
                 <h1 className="mt-8 max-w-4xl font-display text-4xl font-black leading-[1.04] tracking-[-0.04em] text-text-primary sm:text-5xl md:text-6xl xl:text-[4.5rem]">
-                  Blockchain Solutions Built for{" "}
-                  <span className="bg-gradient-to-r from-amber-base via-amber-light to-amber-base bg-clip-text text-transparent">
-                    Real-World Industries
-                  </span>
+                  Blockchain Solutions for Industries
+                  {currentPage > 1 &&
+                    ` — Page ${currentPage} of ${totalPages}`}
                 </h1>
 
                 <p className="mt-7 max-w-2xl text-base leading-8 text-silver md:text-lg">
@@ -402,7 +413,7 @@ export default async function IndustriesPage({
                   <div className="relative overflow-hidden rounded-[2.35rem] border border-white/10 bg-surface p-3 shadow-[0_35px_110px_rgba(0,0,0,0.32)]">
                     <div className="relative aspect-[4/4.45] overflow-hidden rounded-[1.85rem]">
                       <Image
-                        src="/media/blockchain.png"
+                        src="/media/blockchain.webp"
                         alt="Blockchain technology for global industries"
                         fill
                         priority

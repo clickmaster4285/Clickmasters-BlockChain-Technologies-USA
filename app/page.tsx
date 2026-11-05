@@ -14,23 +14,21 @@ import { Process } from "@/components/landing/Process";
 import { Comparison } from "@/components/landing/Comparison";
 import { Testimonials } from "@/components/landing/Testimonials";
 import { TechStack } from "@/components/landing/TechStack";
-import { Awards } from "@/components/landing/Awards";
 import { Audience } from "@/components/landing/Audience";
 import { FAQ } from "@/components/landing/FAQ";
 import { FinalCTA } from "@/components/landing/FinalCTA";
 import { Footer } from "@/components/landing/Footer";
 import { Reveal } from "@/components/landing/Reveal";
-import { WhatsAppFAB } from "@/components/landing/WhatsAppFAB";
 import { BackToTop } from "@/components/landing/BackToTop";
 import { createMetadata } from "@/config/metadata";
 
 const heroVideo = "/media/hero-bg.mp4";
-const heroSide = "/media/cta-bg.png";
+const heroSide = "/media/cta-bg.webp";
 
 export const metadata = createMetadata({
-  title: "Blockchain Development Company in US | Clickmasters",
+  title: "Blockchain Development Company | Clickmasters",
   description:
-    "Clickmasters is a blockchain development company offering custom blockchain development services, smart contracts, DApps, and Web3 solutions for U.S. businesses.",
+    "Explore blockchain development services for smart contracts, decentralized applications, and Web3 products.",
   path: "/",
   image: heroSide,
 });
@@ -56,12 +54,10 @@ export default function Index() {
         <Reveal><Comparison /></Reveal>
         <Reveal><Testimonials /></Reveal>
         <Reveal><TechStack /></Reveal>
-        <Reveal><Awards /></Reveal>
         <Reveal><FAQ /></Reveal>
         <Reveal><FinalCTA /></Reveal>
       </main>
       <Footer />
-      <WhatsAppFAB />
       <BackToTop />
     </div>
   );

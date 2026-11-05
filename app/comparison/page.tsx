@@ -14,19 +14,18 @@ import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import BackToTop from "@/components/ui/BackToTop";
 import { createMetadata } from "@/config/metadata";
-import { comparisons } from "@/data/comparisons";
-import { getPageHref } from "@/lib/pagination";
+import { getAllComparisonArticles } from "@/lib/comparison";
+import { getPageHref, withPageContext } from "@/lib/pagination";
 
-const ITEMS_PER_PAGE = 12;
+const ITEMS_PER_PAGE = 24;
 
-const comparisonCards =
-  comparisons?.map((item: any) => ({
-    title: item.title,
-    slug: item.slug,
-    excerpt: item.excerpt || item.description || "",
-    parentSlug: item.slug,
-    readTime: item.readTime,
-  })) || [];
+const comparisonCards = getAllComparisonArticles().map((item: any) => ({
+  title: item.title,
+  slug: item.slug,
+  excerpt: item.excerpt || item.description || "",
+  parentSlug: item.slug,
+  readTime: item.readTime,
+}));
 
 type ComparisonPageProps = {
   searchParams?: Promise<{ page?: string }>;
@@ -41,12 +40,23 @@ export async function generateMetadata({
   searchParams,
 }: ComparisonPageProps) {
   const resolvedSearchParams = await searchParams;
-  const currentPage = getRequestedPage(resolvedSearchParams?.page);
+  const totalPages = Math.max(
+    Math.ceil(comparisonCards.length / ITEMS_PER_PAGE),
+    1,
+  );
+  const currentPage = Math.min(
+    getRequestedPage(resolvedSearchParams?.page),
+    totalPages,
+  );
+  const metadata = withPageContext(
+    "Blockchain Comparisons",
+    "Compare blockchain choices before you build with practical decision guides for chains, smart contracts, DeFi, enterprise systems, and Web3 architecture.",
+    currentPage,
+    totalPages,
+  );
 
   return createMetadata({
-    title: "Blockchain Comparisons",
-    description:
-      "Compare blockchain choices before you build with practical decision guides for chains, smart contracts, DeFi, enterprise systems, and Web3 architecture.",
+    ...metadata,
     path: getPageHref("/comparison", currentPage),
   });
 }
@@ -90,6 +100,8 @@ export default async function ComparisonPage({
 
                 <h1 className="mt-6 max-w-3xl font-display text-4xl font-black leading-tight tracking-tight text-text-primary md:text-6xl">
                   Compare Blockchain Choices Before You Build
+                  {safeCurrentPage > 1 &&
+                    ` — Page ${safeCurrentPage} of ${totalPages}`}
                 </h1>
 
                 <p className="mt-5 max-w-2xl text-lg leading-8 text-silver">
@@ -139,7 +151,7 @@ export default async function ComparisonPage({
            <div className="relative">
   <div className="relative aspect-[3/3] overflow-hidden rounded-[2rem]">
     <Image
-      src="/media/blockchain.png"
+      src="/media/blockchain.webp"
       alt="Blockchain comparison visual"
       fill
       priority

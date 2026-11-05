@@ -20,6 +20,7 @@ import CalculatorEngineRenderer from "@/components/calculators/CalculatorEngineR
 import CalculatorFaq from "@/components/calculators/CalculatorFaq";
 import CalculatorHero from "@/components/calculators/CalculatorHero";
 import CalculatorRelated from "@/components/calculators/CalculatorRelated";
+import RelatedLinks from "@/components/RelatedLinks";
 
 type CalculatorPageProps = {
   params: Promise<{
@@ -90,12 +91,6 @@ export default async function CalculatorPage({ params }: CalculatorPageProps) {
         }}
       />
 
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(schemas.breadcrumbSchema),
-        }}
-      />
 
       {schemas.faqSchema && (
         <script
@@ -158,6 +153,7 @@ export default async function CalculatorPage({ params }: CalculatorPageProps) {
             </div>
           </div>
         </section>
+        <RelatedLinks type="calculators" slug={slug} />
       </main>
 
       <Footer />
