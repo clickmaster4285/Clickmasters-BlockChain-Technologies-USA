@@ -9,7 +9,7 @@ import { getListicleCards } from "@/lib/listicles";
 import { getPageHref } from "@/lib/pagination";
 import Image from "next/image";
 
-const PER_PAGE = 9;
+const PER_PAGE = 18;
 
 type ListiclesPageProps = {
   searchParams?: Promise<{ page?: string }>;

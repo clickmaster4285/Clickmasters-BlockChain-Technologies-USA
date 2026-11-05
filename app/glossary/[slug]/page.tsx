@@ -16,6 +16,7 @@ import {
   getGlossaryTermBySlug,
   getRelatedGlossaryTerms,
 } from "@/lib/glossary";
+import RelatedLinks from "@/components/RelatedLinks";
 
 export async function generateStaticParams() {
   return getAllGlossaryTerms()
@@ -135,6 +136,7 @@ export default async function SingleGlossaryPage({
 
           
         </section>
+        <RelatedLinks type="glossary" slug={slug} />
       </main>
 
       <Footer />

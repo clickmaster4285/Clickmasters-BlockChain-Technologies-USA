@@ -30,6 +30,7 @@ import {
   getResourceCards,
   getResourceCTA,
 } from "@/lib/resources";
+import RelatedLinks from "@/components/RelatedLinks";
 
 type ResourcePageProps = {
   params: Promise<{
@@ -499,6 +500,7 @@ export default async function SingleResourcePage({
             </section>
           )}
         </section>
+        <RelatedLinks type="resources" slug={slug} />
       </main>
 
       <Footer />

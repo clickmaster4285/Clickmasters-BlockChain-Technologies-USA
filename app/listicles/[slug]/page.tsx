@@ -16,6 +16,7 @@ import {
   getListicleCta,
   getRelatedListicles,
 } from "@/lib/listicles";
+import RelatedLinks from "@/components/RelatedLinks";
 
 export async function generateStaticParams() {
   return getAllListicles().map((item: any) => ({
@@ -99,6 +100,7 @@ export default async function SingleListiclePage({
             />
           </div>
         </section>
+        <RelatedLinks type="listicles" slug={slug} />
       </main>
 
       <Footer />

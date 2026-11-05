@@ -17,7 +17,7 @@ import { createMetadata } from "@/config/metadata";
 import { comparisons } from "@/data/comparisons";
 import { getPageHref } from "@/lib/pagination";
 
-const ITEMS_PER_PAGE = 12;
+const ITEMS_PER_PAGE = 24;
 
 const comparisonCards =
   comparisons?.map((item: any) => ({

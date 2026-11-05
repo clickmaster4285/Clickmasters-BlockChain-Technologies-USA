@@ -21,6 +21,7 @@ import {
   getTemplateBySlug,
   getTemplateCTA,
 } from "@/lib/templates";
+import RelatedLinks from "@/components/RelatedLinks";
 
 type TemplatePageProps = {
   params: Promise<{
@@ -249,6 +250,7 @@ export default async function TemplateSlugPage({ params }: TemplatePageProps) {
             </div>
           </section>
         </div>
+        <RelatedLinks type="templates" slug={slug} />
       </main>
 
       <Footer />

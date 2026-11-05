@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import LocationDetailPage from "@/components/locations/LocationDetailPage";
+import RelatedLinks from "@/components/RelatedLinks";
 
 import {
   getLocationBySlug,
@@ -145,6 +146,9 @@ export default async function LocationSlugPage({
     <LocationDetailPage
       location={location}
       relatedLocations={relatedLocations}
+      relatedLinks={
+        <RelatedLinks type="locations" slug={location.slug} />
+      }
     />
   );
 }

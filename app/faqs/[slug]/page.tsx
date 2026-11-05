@@ -21,6 +21,7 @@ import {
   getFAQBySlug,
   getRelatedFAQs,
 } from "@/lib/faqs";
+import RelatedLinks from "@/components/RelatedLinks";
 
 interface FAQDetailPageProps {
   params: Promise<{
@@ -251,6 +252,7 @@ export default async function FAQDetailPage({
         </section>
 
         <FAQDetailCTA faq={faq} />
+        <RelatedLinks type="faqs" slug={slug} />
       </main>
 
       <Footer />

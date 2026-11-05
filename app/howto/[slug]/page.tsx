@@ -16,6 +16,7 @@ import {
   getHowToCta,
   getRelatedHowTos,
 } from "@/lib/howto";
+import RelatedLinks from "@/components/RelatedLinks";
 
 export async function generateStaticParams() {
   return getAllHowTos().map((item: any) => ({
@@ -99,6 +100,7 @@ export default async function SingleHowToPage({
             />
           </div>
         </section>
+        <RelatedLinks type="howto" slug={slug} />
       </main>
 
       <Footer />

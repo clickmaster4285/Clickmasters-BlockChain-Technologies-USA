@@ -19,6 +19,7 @@ import {
   getToolBySlug,
   getToolCTA,
 } from "@/lib/tools";
+import RelatedLinks from "@/components/RelatedLinks";
 
 export async function generateStaticParams() {
   return getAllTools()
@@ -174,6 +175,7 @@ export default async function SingleToolPage({
             />
           </div>
         </section>
+        <RelatedLinks type="tools" slug={slug} />
       </main>
 
       <Footer />

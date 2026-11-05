@@ -15,6 +15,7 @@ import {
   getComparisonArticleBySlug,
   getRelatedComparisons,
 } from "@/lib/comparison";
+import RelatedLinks from "@/components/RelatedLinks";
 
 export const dynamicParams = true;
 
@@ -115,6 +116,7 @@ export default async function SingleComparisonPage({
 </div>
 
         </section>
+        <RelatedLinks type="comparison" slug={slug} />
       </main>
 
       <Footer />

@@ -22,6 +22,7 @@ import { Navbar } from "@/components/landing/Navbar";
 import BackToTop from "@/components/ui/BackToTop";
 import { createMetadata } from "@/config/metadata";
 import { caseStudies } from "@/data/case-studies";
+import RelatedLinks from "@/components/RelatedLinks";
 
 type CaseStudyPageProps = {
   params: Promise<{
@@ -597,6 +598,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
             </div>
           </section>
         </div>
+        <RelatedLinks type="case-studies" slug={slug} />
       </main>
 
       <Footer />

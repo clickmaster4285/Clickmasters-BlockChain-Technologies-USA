@@ -16,6 +16,7 @@ import {
   getNewsCta,
   getRelatedNews,
 } from "@/lib/news";
+import RelatedLinks from "@/components/RelatedLinks";
 
 export async function generateStaticParams() {
   return getAllNews().map((item: any) => ({
@@ -98,6 +99,7 @@ export default async function SingleNewsPage({
             />
           </div>
         </section>
+        <RelatedLinks type="news" slug={slug} />
       </main>
 
       <Footer />

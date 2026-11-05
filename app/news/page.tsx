@@ -15,7 +15,7 @@ import { createMetadata } from "@/config/metadata";
 import { getNewsCards } from "@/lib/news";
 import { getPageHref } from "@/lib/pagination";
 
-const PER_PAGE = 9;
+const PER_PAGE = 18;
 
 type NewsPageProps = {
   searchParams?: Promise<{ page?: string }>;

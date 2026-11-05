@@ -29,6 +29,7 @@ import {
   getRelatedHirePages,
   type HireContentBlock,
 } from "@/lib/hire";
+import RelatedLinks from "@/components/RelatedLinks";
 
 type HireDetailPageProps = {
   params: Promise<{
@@ -806,6 +807,7 @@ export default async function HireDetailPage({
             </Link>
           </div>
         </div>
+        <RelatedLinks type="hire" slug={slug} />
       </main>
 
       <Footer />

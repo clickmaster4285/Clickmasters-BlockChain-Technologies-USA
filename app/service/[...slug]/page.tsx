@@ -13,6 +13,7 @@ import ServiceTimeline from '@/components/service/ServiceTimeline';
 import ServiceTestimonials from '@/components/service/ServiceTestimonials';
 import ServiceFAQ from '@/components/service/ServiceFAQ';
 import ServiceSidebar from '@/components/service/ServiceSidebar';
+import RelatedLinks from "@/components/RelatedLinks";
 
 const contentLibraryTopics = [
   {
@@ -291,6 +292,7 @@ export default async function ServicePage({
             </div>
           </div>
         </section>
+        <RelatedLinks type="service" slug={slug} />
       </main>
       <Footer />
       <BackToTop />

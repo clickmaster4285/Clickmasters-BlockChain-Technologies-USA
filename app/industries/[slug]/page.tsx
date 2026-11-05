@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 
 import industriesData from "@/data/industries";
 import IndustryDetailPage from "@/components/industries/IndustryDetailPage";
+import RelatedLinks from "@/components/RelatedLinks";
 
 type ContentBlock =
   | {
@@ -149,6 +150,9 @@ export default async function IndustrySlugPage({
         relatedIndustries.length > 0
           ? relatedIndustries
           : fallbackRelated
+      }
+      relatedLinks={
+        <RelatedLinks type="industries" slug={industry.slug} />
       }
     />
   );

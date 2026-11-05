@@ -18,6 +18,7 @@ import {
   getProcessSlugs,
   getRelatedProcesses,
 } from "@/lib/process";
+import RelatedLinks from "@/components/RelatedLinks";
 
 type ProcessSlugPageProps = {
   params: Promise<{
@@ -164,6 +165,7 @@ export default async function ProcessSlugPage({
             </div>
           </section>
         )}
+        <RelatedLinks type="process" slug={slug} />
       </main>
 
       <Footer />

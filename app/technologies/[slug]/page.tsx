@@ -16,6 +16,7 @@ import { Navbar } from "@/components/landing/Navbar";
 import BackToTop from "@/components/ui/BackToTop";
 import { createMetadata } from "@/config/metadata";
 import { technologies } from "@/data/technologies";
+import RelatedLinks from "@/components/RelatedLinks";
 
 type TechnologyPageProps = {
   params: Promise<{
@@ -435,6 +436,7 @@ export default async function TechnologyDetailPage({
             </div>
           </div>
         </section>
+        <RelatedLinks type="technologies" slug={slug} />
       </main>
 
       <Footer />

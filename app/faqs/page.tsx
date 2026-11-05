@@ -15,7 +15,7 @@ type FAQsPageProps = {
   }>;
 };
 
-const CARDS_PER_PAGE = 9;
+const CARDS_PER_PAGE = 12;
 
 function getCurrentPage(page?: string | string[]) {
   const rawPage = Array.isArray(page) ? page[0] : page;

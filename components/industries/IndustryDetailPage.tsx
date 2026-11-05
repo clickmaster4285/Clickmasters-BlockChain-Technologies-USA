@@ -55,6 +55,8 @@ import type { IndustryData } from "@/app/industries/[slug]/page";
 type IndustryDetailPageProps = {
   industry: IndustryData;
   relatedIndustries: IndustryData[];
+  /** Server-rendered contextual cross-links (Related services / guides). */
+  relatedLinks?: ReactNode;
 };
 
 type RevealProps = {
@@ -1543,6 +1545,7 @@ function IndustryCTA({
 export default function IndustryDetailPage({
   industry,
   relatedIndustries,
+  relatedLinks,
 }: IndustryDetailPageProps) {
   const { tocItems, headingMap } = useMemo(() => {
     const generatedItems: TocItem[] = [];
@@ -1636,6 +1639,7 @@ export default function IndustryDetailPage({
 
             <IndustryCTA cta={industry.cta} />
           </section>
+          {relatedLinks}
         </main>
 
         <div className="h-24 bg-background" />

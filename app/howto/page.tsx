@@ -7,7 +7,7 @@ import { getHowToCards } from "@/lib/howto";
 import { getPageHref } from "@/lib/pagination";
 import Link from "next/link";
 
-const PER_PAGE = 12;
+const PER_PAGE = 24;
 
 type HowToPageProps = {
   searchParams: Promise<{ page?: string }>;

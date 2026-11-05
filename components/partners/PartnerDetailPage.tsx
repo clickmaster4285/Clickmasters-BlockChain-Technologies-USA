@@ -62,6 +62,8 @@ import type {
 type PartnerDetailPageProps = {
   partner: NormalizedPartnerEntry;
   relatedPartners: NormalizedPartnerEntry[];
+  /** Server-rendered contextual cross-links (Related services / guides). */
+  relatedLinks?: ReactNode;
 };
 
 type SectionId =
@@ -347,6 +349,7 @@ const expertiseCards = [
 export default function PartnerDetailPage({
   partner,
   relatedPartners,
+  relatedLinks,
 }: PartnerDetailPageProps) {
   const [readingProgress, setReadingProgress] =
     useState(0);
@@ -1171,6 +1174,7 @@ export default function PartnerDetailPage({
             </div>
           </section>
         </div>
+        {relatedLinks}
       </main>
 
       <Footer />

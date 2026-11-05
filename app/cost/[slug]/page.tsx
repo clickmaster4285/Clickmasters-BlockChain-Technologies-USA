@@ -7,6 +7,7 @@ import Breadcrumb from "@/components/cost/BreadCrumb";
 import SectionRenderer from "@/components/cost/SectionRenderer";
 import FAQAccordion from "@/components/cost/FAQ";
 import CTABand from "@/components/cost/CTABand";
+import RelatedLinks from "@/components/RelatedLinks";
 
 export function generateStaticParams() {
   return costs.map((c) => ({ slug: c.slug }));
@@ -55,6 +56,7 @@ export default async function CostDetailPage({
           <SectionRenderer cost={cost} />
           <FAQAccordion faq={cost.faq} />
           <CTABand ctas={cost.ctas} title={title} />
+          <RelatedLinks type="cost" slug={slug} />
         </main>
         <Footer />
       </div>

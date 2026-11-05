@@ -24,7 +24,7 @@ import {
   getTemplateCategories,
 } from "@/lib/templates";
 
-const PER_PAGE = 9;
+const PER_PAGE = 18;
 
 const heroBenefits = [
   {

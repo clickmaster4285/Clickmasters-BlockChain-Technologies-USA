@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import PartnerDetailPage from "@/components/partners/PartnerDetailPage";
+import RelatedLinks from "@/components/RelatedLinks";
 
 import {
   getPartnerBySlug,
@@ -144,6 +145,9 @@ export default async function PartnerPage({
     <PartnerDetailPage
       partner={partner}
       relatedPartners={relatedPartners}
+      relatedLinks={
+        <RelatedLinks type="partners" slug={partner.slug} />
+      }
     />
   );
 }

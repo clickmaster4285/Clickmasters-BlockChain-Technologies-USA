@@ -65,6 +65,8 @@ import type {
 type LocationDetailPageProps = {
   location: LocationEntry;
   relatedLocations: LocationEntry[];
+  /** Server-rendered contextual cross-links (Related services / guides). */
+  relatedLinks?: ReactNode;
 };
 
 type SectionId =
@@ -319,6 +321,7 @@ const expertiseCards = [
 export default function LocationDetailPage({
   location,
   relatedLocations,
+  relatedLinks,
 }: LocationDetailPageProps) {
   const [readingProgress, setReadingProgress] =
     useState(0);
@@ -1132,6 +1135,7 @@ export default function LocationDetailPage({
             </div>
           </section>
         </div>
+        {relatedLinks}
       </main>
 
       <Footer />

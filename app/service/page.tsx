@@ -9,8 +9,11 @@ import CaseStudyCarousel from '@/components/service/CaseStudyCarousel';
 import { Process } from '@/components/landing/Process';
 import BackToTop from '@/components/ui/BackToTop';
 import { getPageHref } from "@/lib/pagination";
+import { getServiceHubGroups } from "@/lib/related-links";
 
-const ITEMS_PER_PAGE = 12;
+// Kept high so paginated listing pages stay shallow; the category hub below
+// links every service directly from page 1 as well.
+const ITEMS_PER_PAGE = 24;
 
 type ServicesIndexProps = {
   searchParams?: Promise<{ page?: string }>;
@@ -139,15 +142,10 @@ export default async function ServicesIndex({ searchParams }: ServicesIndexProps
                 </span>
               )}
 
-              {Array.from({ length: Math.min(3, totalPages) }).map((_, i) => {
-                const paginationStart =
-                  safeCurrentPage >= totalPages - 1
-                    ? Math.max(totalPages - 2, 1)
-                    : safeCurrentPage;
-                const pageNumber = paginationStart + i;
+              {/* Link every page number so no listing page is more than one hop from page 1. */}
+              {Array.from({ length: totalPages }).map((_, i) => {
+                const pageNumber = i + 1;
                 const isActive = pageNumber === safeCurrentPage;
-
-                if (pageNumber > totalPages) return null;
 
                 return (
                   <Link
@@ -181,6 +179,40 @@ export default async function ServicesIndex({ searchParams }: ServicesIndexProps
               )}
             </div>
           )}
+
+          {/* Category hub: every service, grouped under its core service */}
+          <section className="mt-20" aria-labelledby="service-categories-heading">
+            <p className="font-mono text-xs uppercase tracking-[0.3em] text-amber-base">Browse by category</p>
+            <h2 id="service-categories-heading" className="mt-3 text-3xl font-bold tracking-tight md:text-4xl">
+              All services by category
+            </h2>
+            <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {getServiceHubGroups().map((group) => (
+                <nav
+                  key={group.href}
+                  aria-label={group.label}
+                  className="rounded-2xl border border-border bg-surface p-6"
+                >
+                  <h3 className="text-lg font-semibold">
+                    <Link href={group.href} className="hover:text-amber-base">
+                      {group.label}
+                    </Link>
+                  </h3>
+                  {group.items.length > 0 && (
+                    <ul className="mt-3 space-y-1.5 text-sm">
+                      {group.items.map((item) => (
+                        <li key={item.href}>
+                          <Link href={item.href} title={item.title} className="text-silver-base hover:text-amber-base">
+                            {item.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </nav>
+              ))}
+            </div>
+          </section>
 
           {/* Process Section */}
           <div className="mt-20">
