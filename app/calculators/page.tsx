@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -15,6 +14,7 @@ import {
 import BackToTop from "@/components/ui/BackToTop";
 import { Footer } from "@/components/landing/Footer";
 import { Navbar } from "@/components/landing/Navbar";
+import { createMetadata } from "@/config/metadata";
 import {
   CALCULATORS_BASE_PATH,
   CALCULATORS_SITE_URL,
@@ -28,12 +28,11 @@ import {
    Metadata
 ========================================================= */
 
-export const metadata: Metadata = {
-  title: "Blockchain Calculators, Simulators & Planning Tools | ClickMasters",
-
+export const metadata = createMetadata({
+  title: "Blockchain Calculators, Simulators & Planning Tools",
   description:
     "Use free blockchain calculators, DeFi yield tools, gas estimators, tokenomics simulators, ROI calculators, templates, and smart contract planning guides.",
-
+  path: CALCULATORS_BASE_PATH,
   keywords: [
     "blockchain calculator",
     "Ethereum gas calculator",
@@ -44,26 +43,7 @@ export const metadata: Metadata = {
     "crypto exchange calculator",
     "smart contract tools",
   ],
-
-  alternates: {
-    canonical: CALCULATORS_BASE_PATH,
-  },
-
-  openGraph: {
-    title: "Blockchain Calculators, Simulators & Planning Tools",
-    description:
-      "Free blockchain calculators, simulators, templates, checklists, and planning resources for Web3 projects.",
-    type: "website",
-    url: `${CALCULATORS_SITE_URL}${CALCULATORS_BASE_PATH}`,
-  },
-
-  twitter: {
-    card: "summary_large_image",
-    title: "Blockchain Calculators, Simulators & Planning Tools",
-    description:
-      "Estimate gas costs, DeFi returns, token economics, exchange revenue, and blockchain ROI.",
-  },
-};
+});
 
 /* =========================================================
    Page Constants
@@ -128,12 +108,6 @@ export default function CalculatorsPage() {
         }}
       />
 
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(schemas.breadcrumbSchema),
-        }}
-      />
 
       <Navbar />
 

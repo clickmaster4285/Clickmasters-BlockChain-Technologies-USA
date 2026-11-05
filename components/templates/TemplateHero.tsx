@@ -11,6 +11,7 @@ import {
   Layers3,
   Sparkles,
 } from "lucide-react";
+import { splitHeading } from "@/lib/seo";
 
 export default function TemplateHero({
   item,
@@ -38,6 +39,7 @@ export default function TemplateHero({
     item?.description ||
     sectionDescription ||
     "A practical professional template designed to help blockchain teams plan, document, and execute projects faster.";
+  const { heading, continuation } = splitHeading(title);
 
   const format = item?.format || item?.fileType || "Document";
 
@@ -117,7 +119,7 @@ export default function TemplateHero({
             variants={fadeInUpVariants}
             className="mt-8 max-w-5xl font-display text-4xl font-black leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl"
           >
-            {title}
+            {heading}
           </motion.h1>
 
           {/* Description Paragraph */}
@@ -125,7 +127,7 @@ export default function TemplateHero({
             variants={fadeInUpVariants}
             className="mt-6 max-w-3xl text-base leading-8 text-neutral-400 md:text-lg"
           >
-            {description}
+            {[continuation, description].filter(Boolean).join(" — ")}
           </motion.p>
 
           {/* Features / Meta Grid Cards */}

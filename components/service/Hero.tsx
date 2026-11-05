@@ -3,12 +3,19 @@
 import { motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import type { Service } from "@/data/services";
+import { splitHeading } from "@/lib/seo";
 
 export default function Hero({ service }: { service: Service }) {
   const reduce = useReducedMotion();
   const waveFast = reduce ? "" : "animate-wave-fast";
   const waveMid = reduce ? "" : "animate-wave";
   const waveSlow = reduce ? "" : "animate-wave-slow";
+  const contextSuffix =
+    service.slug === "blockchain-development-media" ? " Services" : "";
+  const { heading, continuation } = splitHeading(
+    service.hero.title,
+    70 - contextSuffix.length,
+  );
 
   return (
     <motion.header
@@ -20,8 +27,8 @@ export default function Hero({ service }: { service: Service }) {
       <div className="md:flex md:items-center md:justify-between gap-8">
         <div className="md:w-1/2">
           <p className="font-mono text-xs uppercase tracking-[0.3em] text-primary">{service.hero.eyebrow}</p>
-          <h1 className="mt-4 text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">{service.hero.title}</h1>
-          <p className="mt-4 text-lg text-muted-foreground max-w-xl">{service.hero.blurb}</p>
+          <h1 className="mt-4 text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">{heading}{contextSuffix}</h1>
+          <p className="mt-4 text-lg text-muted-foreground max-w-xl">{[continuation, service.hero.blurb].filter(Boolean).join(" — ")}</p>
 
           <div className="mt-6 flex flex-wrap gap-3 items-center">
             <Link href="/contact" className="inline-flex items-center gap-2 rounded-full bg-amber-base px-6 py-3 text-sm font-semibold text-bg-base shadow-md">Get a quote</Link>
@@ -32,18 +39,18 @@ export default function Hero({ service }: { service: Service }) {
             )}
           </div>
 
-          <div className="mt-6 flex gap-4 text-sm text-muted-foreground" aria-hidden>
+          <div className="mt-6 flex gap-4 text-sm text-muted-foreground" aria-hidden="true">
             <div className="flex flex-col">
-              <span className="text-2xl font-bold">50+</span>
-              <span className="text-xs">Contracts shipped</span>
+              <span className="text-2xl font-bold">Design</span>
+              <span className="text-xs">Architecture planning</span>
             </div>
             <div className="flex flex-col">
-              <span className="text-2xl font-bold">$100M+</span>
-              <span className="text-xs">Secured on-chain</span>
+              <span className="text-2xl font-bold">Build</span>
+              <span className="text-xs">Implementation</span>
             </div>
             <div className="flex flex-col">
-              <span className="text-2xl font-bold">Enterprise</span>
-              <span className="text-xs">Ready</span>
+              <span className="text-2xl font-bold">Review</span>
+              <span className="text-xs">Security considerations</span>
             </div>
           </div>
         </div>

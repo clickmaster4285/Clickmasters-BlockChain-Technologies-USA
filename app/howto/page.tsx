@@ -1,10 +1,11 @@
+import Image from "next/image";
 import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import BackToTop from "@/components/ui/BackToTop";
 import HowToCard from "@/components/howto/HowToCard";
 import { createMetadata } from "@/config/metadata";
 import { getHowToCards } from "@/lib/howto";
-import { getPageHref } from "@/lib/pagination";
+import { getPageHref, withPageContext } from "@/lib/pagination";
 import Link from "next/link";
 
 const PER_PAGE = 24;
@@ -22,12 +23,18 @@ export async function generateMetadata({
   searchParams,
 }: HowToPageProps) {
   const { page } = await searchParams;
-  const currentPage = getRequestedPage(page);
+  const guides = getHowToCards();
+  const totalPages = Math.max(Math.ceil(guides.length / PER_PAGE), 1);
+  const currentPage = Math.min(getRequestedPage(page), totalPages);
+  const metadata = withPageContext(
+    "Blockchain How-To Guides",
+    "Production-ready blockchain implementation guides for founders, developers, and enterprises.",
+    currentPage,
+    totalPages,
+  );
 
   return createMetadata({
-    title: "How-To Guides",
-    description:
-      "Production-ready blockchain implementation guides for founders, developers, and enterprises.",
+    ...metadata,
     path: getPageHref("/howto", currentPage),
   });
 }
@@ -70,9 +77,8 @@ export default async function HowToPage({
                 </span>
 
                 <h1 className="mt-6 text-5xl font-black leading-tight md:text-6xl">
-                  Learn Blockchain
-                  <br />
-                  Step by Step
+                  Learn Blockchain Step by Step
+                  {currentPage > 1 && ` — Page ${currentPage} of ${totalPages}`}
                 </h1>
 
                 <p className="mt-6 max-w-2xl text-lg leading-8 text-silver">
@@ -135,9 +141,13 @@ export default async function HowToPage({
 
             <div className="flex justify-center">
   {/* Replace later with your image */}
-  <img
+  <Image
     src="/media/howto-hero.webp"
-    alt="How To"
+    alt="Step-by-step blockchain how-to guides"
+    width={320}
+    height={459}
+    sizes="320px"
+    priority
     className="w-full max-w-[320px] h-auto object-contain animate-float transition-all duration-500 ease-out hover:scale-105 hover:rotate-1 hover:drop-shadow-[0_0_20px_rgba(59,130,246,0.5)]"
   />
 </div>

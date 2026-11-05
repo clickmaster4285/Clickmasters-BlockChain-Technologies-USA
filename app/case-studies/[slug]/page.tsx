@@ -23,6 +23,7 @@ import BackToTop from "@/components/ui/BackToTop";
 import { createMetadata } from "@/config/metadata";
 import { caseStudies } from "@/data/case-studies";
 import RelatedLinks from "@/components/RelatedLinks";
+import { splitHeading } from "@/lib/seo";
 
 type CaseStudyPageProps = {
   params: Promise<{
@@ -311,7 +312,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
               <ChevronRight className="h-4 w-4 shrink-0 text-text-muted" />
 
               <span className="min-w-0 truncate font-bold text-text-primary">
-                {caseStudy.title}
+                {splitHeading(caseStudy.title).heading}
               </span>
             </div>
           </nav>
@@ -343,11 +344,20 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
               </div>
 
               <h1 className="mt-7 max-w-5xl text-4xl font-black leading-[1.05] tracking-[-0.04em] text-text-primary sm:text-5xl lg:text-6xl">
-                {caseStudy.title}
+                {splitHeading(caseStudy.title).heading}
               </h1>
 
               <p className="mt-6 max-w-3xl text-base font-medium leading-8 text-text-secondary sm:text-lg">
-                {caseStudy.excerpt}
+                {[
+                  splitHeading(caseStudy.title).continuation,
+                  caseStudy.excerpt,
+                ]
+                  .filter(Boolean)
+                  .join(" — ")}
+              </p>
+              <p className="mt-5 max-w-3xl rounded-xl border border-amber-base/20 bg-amber-base/5 px-4 py-3 text-sm leading-6 text-text-secondary">
+                Illustrative case study: this scenario and its reported metrics
+                are examples only and are not verified client results.
               </p>
             </div>
 

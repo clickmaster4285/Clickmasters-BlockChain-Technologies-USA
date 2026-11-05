@@ -10,6 +10,7 @@ import {
   ShieldCheck,
   Zap,
 } from "lucide-react";
+import { splitHeading } from "@/lib/seo";
 
 import {
   getCalculatorResourceLabel,
@@ -30,6 +31,15 @@ export default function CalculatorHero({
   isInteractive,
 }: CalculatorHeroProps) {
   const resourceLabel = getCalculatorResourceLabel(resourceType);
+  const { heading, continuation } = splitHeading(
+    calculator.hero.title || calculator.title,
+  );
+  const description = [
+    continuation,
+    calculator.hero.description || calculator.excerpt,
+  ]
+    .filter(Boolean)
+    .join(" — ");
 
   const actionLabel = getPrimaryActionLabel(resourceType, isInteractive);
 
@@ -70,11 +80,11 @@ export default function CalculatorHero({
             </div>
 
             <h1 className="mt-8 max-w-5xl font-display text-4xl font-black leading-tight tracking-tight text-text-primary md:text-6xl">
-              {calculator.hero.title || calculator.title}
+              {heading}
             </h1>
 
             <p className="mt-6 max-w-3xl text-base leading-8 text-silver md:text-lg">
-              {calculator.hero.description || calculator.excerpt}
+              {description}
             </p>
 
             <div className="mt-8 grid gap-4 sm:grid-cols-3">

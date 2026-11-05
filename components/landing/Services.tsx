@@ -51,10 +51,9 @@ export function Services() {
             return (
               <article
                 key={s.slug}
-                className="group relative overflow-hidden rounded-2xl border border-border bg-surface p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-border/50 hover:shadow-soft md:p-8"
+                className="group glow-card glow-card--lg hover:border-amber-border/50 md:p-8"
               >
                 {/* Hover glow */}
-                <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-amber-glow opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100" />
                 <div className="relative">
                   <div className="mb-5 flex items-center justify-between gap-4">
                     <div className={`inline-flex h-14 w-14 items-center justify-center rounded-xl border ${accentMap[s.accent]}`}>
@@ -70,7 +69,7 @@ export function Services() {
                     {s.benefits.map((t) => (
                       <span
                         key={t}
-                        className="rounded-full border border-border bg-bg-base/50 px-2.5 py-0.5 font-mono text-[11px] text-text-muted"
+                        className="tag-chip px-2.5 text-[11px]"
                       >
                         {t}
                       </span>
@@ -97,9 +96,8 @@ export function Services() {
             return (
               <article
                 key={s.slug}
-                className="group relative overflow-hidden rounded-2xl border border-border bg-surface p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-border/40 hover:shadow-soft"
+                className="group glow-card"
               >
-                <div className="pointer-events-none absolute -right-12 -top-12 h-36 w-36 rounded-full bg-amber-glow opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100" />
                 <div className="relative">
                   <div className="mb-4 flex items-center justify-between gap-4">
                     <div className={`inline-flex h-11 w-11 items-center justify-center rounded-lg border ${accentMap[s.accent]}`}>
@@ -115,7 +113,7 @@ export function Services() {
                     {s.benefits.slice(0, 3).map((t) => (
                       <span
                         key={t}
-                        className="rounded-full border border-border bg-bg-base/50 px-2 py-0.5 font-mono text-[10px] text-text-muted"
+                        className="tag-chip"
                       >
                         {t}
                       </span>

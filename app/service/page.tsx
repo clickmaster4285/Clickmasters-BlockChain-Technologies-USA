@@ -8,7 +8,7 @@ import ServiceCard from "@/components/service/ServiceCard";
 import CaseStudyCarousel from '@/components/service/CaseStudyCarousel';
 import { Process } from '@/components/landing/Process';
 import BackToTop from '@/components/ui/BackToTop';
-import { getPageHref } from "@/lib/pagination";
+import { getPageHref, withPageContext } from "@/lib/pagination";
 import { getServiceHubGroups } from "@/lib/related-links";
 
 // Kept high so paginated listing pages stay shallow; the category hub below
@@ -26,12 +26,20 @@ function getRequestedPage(page?: string) {
 
 export async function generateMetadata({ searchParams }: ServicesIndexProps) {
   const resolvedSearchParams = await searchParams;
-  const currentPage = getRequestedPage(resolvedSearchParams?.page);
+  const totalPages = Math.max(Math.ceil(services.length / ITEMS_PER_PAGE), 1);
+  const currentPage = Math.min(
+    getRequestedPage(resolvedSearchParams?.page),
+    totalPages,
+  );
+  const metadata = withPageContext(
+    "Blockchain Development Services",
+    "End-to-end blockchain engineering and product teams that ship secure, performant systems: smart contracts, indexers, wallets, and Web3 UX.",
+    currentPage,
+    totalPages,
+  );
 
   return createMetadata({
-    title: "Blockchain Development Services",
-    description:
-      "End-to-end blockchain engineering and product teams that ship secure, performant systems: smart contracts, indexers, wallets, and Web3 UX.",
+    ...metadata,
     path: getPageHref("/service", currentPage),
   });
 }
@@ -61,7 +69,11 @@ export default async function ServicesIndex({ searchParams }: ServicesIndexProps
             <div className="md:flex md:items-center md:justify-between gap-8">
               <div className="md:w-1/2">
                 <p className="font-mono text-xs uppercase tracking-[0.3em] text-primary">Services</p>
-                <h1 className="mt-4 text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">What we build — production-ready Web3 systems</h1>
+                <h1 className="mt-4 text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
+                  What we build — production-ready Web3 systems
+                  {safeCurrentPage > 1 &&
+                    ` — Page ${safeCurrentPage} of ${totalPages}`}
+                </h1>
                 <p className="mt-4 text-lg text-silver-base max-w-xl">End-to-end blockchain engineering and product teams that ship secure, performant systems—smart contracts, indexers, and wallet UX designed for real users and real scale.</p>
                 <div className="mt-6 flex flex-wrap gap-3 items-center">
                   <a href="/contact" className="inline-flex items-center gap-2 rounded-full bg-amber-base px-6 py-3 text-sm font-semibold text-bg-base shadow-md">Request a consult</a>
@@ -70,16 +82,16 @@ export default async function ServicesIndex({ searchParams }: ServicesIndexProps
 
                 <div className="mt-8 grid grid-cols-3 gap-6 text-sm">
                   <div className="flex flex-col items-center text-center p-4 rounded-2xl border border-border bg-surface/50">
-                    <span className="text-3xl font-bold text-amber-base font-display">50+</span>
-                    <span className="mt-1 text-xs text-silver-base">Contracts shipped</span>
+                    <span className="text-3xl font-bold text-amber-base font-display">Design</span>
+                    <span className="mt-1 text-xs text-silver-base">Architecture planning</span>
                   </div>
                   <div className="flex flex-col items-center text-center p-4 rounded-2xl border border-border bg-surface/50">
-                    <span className="text-3xl font-bold text-amber-base font-display">$100M+</span>
-                    <span className="mt-1 text-xs text-silver-base">Secured on-chain</span>
+                    <span className="text-3xl font-bold text-amber-base font-display">Build</span>
+                    <span className="mt-1 text-xs text-silver-base">Implementation</span>
                   </div>
                   <div className="flex flex-col items-center text-center p-4 rounded-2xl border border-border bg-surface/50">
-                    <span className="text-3xl font-bold text-amber-base font-display">Enterprise</span>
-                    <span className="mt-1 text-xs text-silver-base">Ready</span>
+                    <span className="text-3xl font-bold text-amber-base font-display">Review</span>
+                    <span className="mt-1 text-xs text-silver-base">Security considerations</span>
                   </div>
                 </div>
               </div>
@@ -226,7 +238,7 @@ export default async function ServicesIndex({ searchParams }: ServicesIndexProps
               <h2 className="mt-4 text-3xl md:text-4xl font-bold tracking-tight">Recent work</h2>
             </div>
             {/* @ts-ignore */}
-            <CaseStudyCarousel slides={services.map(s => ({ title: s.title, blurb: s.short, image: s.caseStudy?.image }))} />
+            <CaseStudyCarousel slides={services.slice(0, 8).map(s => ({ title: s.title, blurb: s.short, image: s.caseStudy?.image }))} />
           </section>
 
           {/* Why Us */}

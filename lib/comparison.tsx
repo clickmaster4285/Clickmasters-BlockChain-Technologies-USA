@@ -27,7 +27,9 @@ export function cleanComparisonContent(content: string) {
 }
 
 export function getAllComparisonArticles() {
-  return comparisons || [];
+  return (comparisons || []).filter(
+    (item: any) => item.slug !== "cex-vs-dex-exchange",
+  );
 }
 
 export function getComparisonArticleBySlug(slug: string) {

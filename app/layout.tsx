@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { ViewTransitions } from "next-view-transitions";
 
 import { SmoothScroll } from "@/components/landing/SmoothScroll";
+import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { organizationSchema, websiteSchema } from "@/lib/structured-data";
 import { createMetadata } from "@/config/metadata";
 import { siteConfig } from "@/config/site";
 import { Providers } from "./providers";
@@ -24,7 +27,6 @@ export const metadata: Metadata = {
     },
   ],
   creator: siteConfig.name,
-  publisher: siteConfig.legalName,
   verification: {
     google: "OTGeetIUGUb8E8ejJ8bHzYUfGlYl6SlUGa6-FdtJ82E",
   },
@@ -50,6 +52,8 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <JsonLd data={[organizationSchema(), websiteSchema()]} />
+        <BreadcrumbJsonLd />
         <ViewTransitions>
           <Providers>
             <SmoothScroll />

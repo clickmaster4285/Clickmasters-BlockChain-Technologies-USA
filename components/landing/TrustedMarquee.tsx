@@ -1,30 +1,20 @@
 "use client";
 
+// Logos are self-hosted in /public/media/logos (sourced from Simple Icons).
+// Brands that Simple Icons no longer distributes have been removed.
 const LOGOS = [
   { name: "Ethereum", slug: "ethereum", color: "3C3C3D" },
   { name: "Solana", slug: "solana", color: "9945FF" },
   { name: "Polygon", slug: "polygon", color: "7B3FE4" },
-  { name: "Avalanche", slug: "avalanche", color: "E84142" },
   { name: "Chainlink", slug: "chainlink", color: "375BD2" },
   { name: "Polkadot", slug: "polkadot", color: "E6007A" },
   { name: "Cardano", slug: "cardano", color: "0033AD" },
-  { name: "Arbitrum", slug: "arbitrum", color: "28A0F0" },
   { name: "Optimism", slug: "optimism", color: "FF0420" },
-  { name: "Base", slug: "base", color: "0052FF" },
-  { name: "Uniswap", slug: "uniswap", color: "FF007A" },
-  { name: "Aave", slug: "aave", color: "B6509E" },
-  { name: "Lido", slug: "lido", color: "00A3FF" },
   { name: "OpenSea", slug: "opensea", color: "2081E2" },
-  { name: "MetaMask", slug: "metamask", color: "F6851B" },
-  { name: "Ledger", slug: "ledger", color: "000000" },
   { name: "Coinbase", slug: "coinbase", color: "0052FF" },
   { name: "Binance", slug: "binance", color: "F0B90B" },
   { name: "Near", slug: "near", color: "000000" },
-  { name: "Aptos", slug: "aptos", color: "FFFFFF" },
   { name: "Sui", slug: "sui", color: "4DA2FF" },
-  { name: "The Graph", slug: "thegraph", color: "674C9A" },
-  { name: "ZKsync", slug: "zksync", color: "8C8DFC" },
-  { name: "Starknet", slug: "starknet", color: "070C2A" },
   { name: "IPFS", slug: "ipfs", color: "65C2CB" },
 ];
 
@@ -34,20 +24,18 @@ function LogoCloud({ reverse }: { reverse?: boolean }) {
   return (
     <div className="relative overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_10%,black_90%,transparent)]">
       <div
-        className={`flex w-max items-center gap-14 py-2 ${
+        className={`logo-cloud flex w-max items-center gap-14 py-2 ${
           reverse ? "animate-marquee-right" : "animate-marquee-left"
         } hover:[animation-play-state:paused]`}
         style={{ animationDuration: "25s" }}
       >
         {items.map((logo, i) => (
-          <div
-            key={`${logo.slug}-${i}`}
-            className="flex h-10 w-28 shrink-0 items-center justify-center"
-          >
+          <div key={`${logo.slug}-${i}`}>
             <img
-              src={`https://cdn.simpleicons.org/${logo.slug}/${logo.color}`}
-              alt={logo.name}
-              className="h-9 w-auto opacity-60 transition-all duration-500 hover:scale-110 hover:opacity-100"
+              src={`/media/logos/${logo.slug}.svg`}
+              alt={`${logo.name} logo`}
+              width={36}
+              height={36}
               loading="lazy"
             />
           </div>
@@ -65,7 +53,7 @@ export function TrustedMarquee() {
       <div className="site-container relative px-6">
         <div className="mx-auto mb-10 max-w-lg text-center">
           <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-text-muted">
-            Trusted Across the Ecosystem
+            Networks and protocols
           </p>
           <div className="mx-auto mt-2 h-px w-12 bg-linear-to-r from-transparent via-amber-base/40 to-transparent" />
         </div>

@@ -217,13 +217,13 @@ export PATH=$PATH:$(pwd)/fabric-samples/bin`,
 cat > crypto-config.yaml << 'EOF'
 OrdererOrgs:
   - Name: Orderer
-    Domain: example.com
+    Domain: fabric.test
     Specs:
       - Hostname: orderer
     
 PeerOrgs:
   - Name: Org1
-    Domain: org1.example.com
+    Domain: org1.fabric.test
     EnableNodeOUs: true
     Template:
       Count: 2       # 2 peer nodes for Org1
@@ -231,7 +231,7 @@ PeerOrgs:
       Count: 1       # 1 additional user besides admin
 
   - Name: Org2  
-    Domain: org2.example.com
+    Domain: org2.fabric.test
     EnableNodeOUs: true
     Template:
       Count: 2
@@ -268,7 +268,7 @@ docker-compose -f docker/docker-compose-test-net.yaml up -d
 # Check all containers are running
 docker ps
 
-# Expected: peer0.org1.example.com, peer0.org2.example.com, orderer.example.com`,
+# Expected: peer0.org1.fabric.test, peer0.org2.fabric.test, orderer.fabric.test`,
       },
       {
         type: "heading",
@@ -278,7 +278,7 @@ docker ps
         type: "codeBlock",
         language: "bash",
         code: `# Create channel (only once)
-peer channel create -o orderer.example.com:7050 \
+peer channel create -o orderer.fabric.test:7050 \
   -c mychannel \
   -f ./channel-artifacts/mychannel.tx \
   --tls --cafile $ORDERER_CA
@@ -287,8 +287,8 @@ peer channel create -o orderer.example.com:7050 \
 peer channel join -b mychannel.block
 
 # Switch to Org2 and join
-export CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/fabric/crypto-config/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp
-export CORE_PEER_ADDRESS=peer0.org2.example.com:9051
+export CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/fabric/crypto-config/peerOrganizations/org2.fabric.test/users/Admin@org2.fabric.test/msp
+export CORE_PEER_ADDRESS=peer0.org2.fabric.test:9051
 peer channel join -b mychannel.block`,
       },
       {
@@ -311,7 +311,7 @@ peer lifecycle chaincode install mycc.tar.gz
 
 # Approve for Org1
 peer lifecycle chaincode approveformyorg \
-  -o orderer.example.com:7050 \
+  -o orderer.fabric.test:7050 \
   --channelID mychannel \
   --name mycc \
   --version 1.0 \
@@ -323,14 +323,14 @@ peer lifecycle chaincode approveformyorg ...
 
 # Commit chaincode (after all required orgs have approved)
 peer lifecycle chaincode commit \
-  -o orderer.example.com:7050 \
+  -o orderer.fabric.test:7050 \
   --channelID mychannel \
   --name mycc \
   --version 1.0 \
   --sequence 1 \
   --tls --cafile $ORDERER_CA \
-  --peerAddresses peer0.org1.example.com:7051 \
-  --peerAddresses peer0.org2.example.com:9051`,
+  --peerAddresses peer0.org1.fabric.test:7051 \
+  --peerAddresses peer0.org2.fabric.test:9051`,
       },
       {
         type: "heading",
@@ -341,7 +341,7 @@ peer lifecycle chaincode commit \
         language: "bash",
         code: `# Invoke chaincode function (state-changing)
 peer chaincode invoke \
-  -o orderer.example.com:7050 \
+  -o orderer.fabric.test:7050 \
   --channelID mychannel \
   --name mycc \
   -c '{"function":"createAsset","Args":["asset1","blue","5","Tomoko","300"]}' \
@@ -2414,7 +2414,7 @@ myth analyze src/MyToken.sol`,
       },
       {
         type: "paragraph",
-        text: "Required by FinCEN under the Bank Secrecy Act. Must include: written AML policy, KYC procedures (identity verification for all customers), transaction monitoring, SAR (Suspicious Activity Report) filing capability, compliance officer designation, independent audit (annual).",
+        text: "Required by FinCEN under the Bank Secrecy Act. Must include: written AML policy, KYC procedures (identity verification for all customers), transaction monitoring, SAR (Suspicious Activity Report) filing capability, appointing a compliance officer, and an independent annual audit.",
       },
       {
         type: "paragraph",

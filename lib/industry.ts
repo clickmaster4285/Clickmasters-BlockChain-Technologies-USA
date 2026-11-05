@@ -396,7 +396,7 @@ function normalizeIndustryPage(
 
     image:
       normalizeString(industry.image) ||
-      "/media/blockchain.png",
+      "/media/blockchain.webp",
 
     hero: {
       badge:

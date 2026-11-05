@@ -17,6 +17,9 @@ import BackToTop from "@/components/ui/BackToTop";
 import { createMetadata } from "@/config/metadata";
 import { technologies } from "@/data/technologies";
 import RelatedLinks from "@/components/RelatedLinks";
+import { splitHeading } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { faqPageSchema } from "@/lib/structured-data";
 
 type TechnologyPageProps = {
   params: Promise<{
@@ -73,6 +76,9 @@ export default async function TechnologyDetailPage({
   return (
     <div className="min-h-screen bg-bg-base text-text-primary">
       <Navbar />
+      <JsonLd
+        data={faqPageSchema(technology.faqs)}
+      />
 
       <main className="overflow-hidden bg-bg-base">
         <section className="relative isolate overflow-hidden border-b border-white/[0.07] pb-16 pt-32 lg:pb-24 lg:pt-40">
@@ -130,11 +136,16 @@ export default async function TechnologyDetailPage({
                 </div>
 
                 <h1 className="mt-7 max-w-5xl text-4xl font-black leading-[1.08] tracking-[-0.045em] text-text-primary sm:text-5xl lg:text-[4.2rem]">
-                  {technology.title}
+                  {splitHeading(technology.title).heading}
                 </h1>
 
                 <p className="mt-7 max-w-3xl text-base leading-8 text-silver sm:text-lg">
-                  {technology.description}
+                  {[
+                    splitHeading(technology.title).continuation,
+                    technology.description,
+                  ]
+                    .filter(Boolean)
+                    .join(" — ")}
                 </p>
 
                 <div className="mt-8 flex flex-wrap gap-3">

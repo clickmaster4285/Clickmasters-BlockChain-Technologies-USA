@@ -6,7 +6,7 @@ import BackToTop from "@/components/ui/BackToTop";
 import ListicleCard from "@/components/listicles/ListicleCard";
 import { createMetadata } from "@/config/metadata";
 import { getListicleCards } from "@/lib/listicles";
-import { getPageHref } from "@/lib/pagination";
+import { getPageHref, withPageContext } from "@/lib/pagination";
 import Image from "next/image";
 
 const PER_PAGE = 18;
@@ -24,12 +24,21 @@ export async function generateMetadata({
   searchParams,
 }: ListiclesPageProps) {
   const resolvedSearchParams = await searchParams;
-  const currentPage = getRequestedPage(resolvedSearchParams?.page);
+  const allLists = getListicleCards();
+  const totalPages = Math.max(Math.ceil(allLists.length / PER_PAGE), 1);
+  const currentPage = Math.min(
+    getRequestedPage(resolvedSearchParams?.page),
+    totalPages,
+  );
+  const metadata = withPageContext(
+    "Blockchain Lists",
+    "Explore curated blockchain rankings, useful tools, practical recommendations, and Web3 ideas for founders, developers, and enterprise teams.",
+    currentPage,
+    totalPages,
+  );
 
   return createMetadata({
-    title: "Curated Web3 Lists",
-    description:
-      "Explore curated rankings, expert picks, useful tools, practical recommendations, and Web3 ideas selected for founders, developers, and enterprise teams.",
+    ...metadata,
     path: getPageHref("/listicles", currentPage),
   });
 }
@@ -70,6 +79,8 @@ export default async function ListiclesPage({
 
                 <h1 className="mt-6 max-w-3xl font-display text-4xl font-black leading-tight tracking-tight text-text-primary md:text-6xl">
                   Smart Lists for Better Blockchain Decisions
+                  {safeCurrentPage > 1 &&
+                    ` — Page ${safeCurrentPage} of ${totalPages}`}
                 </h1>
 
                 <p className="mt-5 max-w-2xl text-lg leading-8 text-silver">
@@ -126,6 +137,7 @@ export default async function ListiclesPage({
         alt="Curated blockchain listicles"
         fill
         priority
+        sizes="(max-width: 1024px) 100vw, 45vw"
         className="animate-float object-contain object-center drop-shadow-[0_30px_80px_rgba(0,0,0,0.45)] transition-transform duration-[3500ms] ease-out hover:scale-105"
       />
     </div>

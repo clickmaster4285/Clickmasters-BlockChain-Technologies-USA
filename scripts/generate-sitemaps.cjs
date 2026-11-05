@@ -88,6 +88,10 @@ function generateSitemapIndexXml(sitemapUrls) {
   return xml;
 }
 
+function hasSpaceInUrl(loc) {
+  return /%20|\s/i.test(loc);
+}
+
 function dedupeUrls(urls) {
   const seen = new Set();
 
@@ -134,9 +138,8 @@ const CATEGORIES = [
     file: 'costs.ts',
     varName: 'costs',
     isTs: false,
-    mainPath: null,
-    route: null,
-    useMetaUrl: true,
+    mainPath: '/cost',
+    route: (slug) => `/cost/${slug}`,
   },
   {
     key: 'md-services',
@@ -144,8 +147,7 @@ const CATEGORIES = [
     varName: 'mdServices',
     isTs: false,
     mainPath: null,
-    route: null,
-    useMetaUrl: true,
+    route: (slug) => `/service/${slug}`,
   },
   {
     key: 'industries',
@@ -178,6 +180,7 @@ const CATEGORIES = [
     isTs: false,
     mainPath: '/comparison',
     route: (slug) => `/comparison/${slug}`,
+    excludeSlugs: ['cex-vs-dex-exchange'],
   },
   {
     key: 'faqs',
@@ -272,42 +275,46 @@ const CATEGORIES = [
     file: 'calculators.js',
     varName: 'calculators',
     isTs: false,
-    mainPath: null,
-    route: null,
-    useMetaUrl: true,
+    mainPath: '/calculators',
+    route: (slug) => `/calculators/${slug.replace(/^tools-/, '')}`,
   },
   {
     key: 'technology',
     file: 'technology.js',
-    varName: 'technology',
+    varName: 'technologies',
     isTs: false,
-    mainPath: null,
-    route: null,
-    useMetaUrl: true,
-  },
-  {
-    key: 'schemas',
-    file: 'schemas.js',
-    varName: 'schemas',
-    isTs: false,
-    mainPath: null,
-    route: null,
-    useMetaUrl: true,
+    mainPath: '/technologies',
+    route: (slug) => `/technologies/${slug}`,
   },
 ];
 
 const STATIC_PAGES = [
   { loc: `about`, changefreq: 'monthly', priority: 0.6 },
   { loc: `contact`, changefreq: 'monthly', priority: 0.6 },
-  { loc: `pricing`, changefreq: 'weekly', priority: 0.7 },
-  { loc: `projects`, changefreq: 'weekly', priority: 0.7 },
-  { loc: `solutions`, changefreq: 'weekly', priority: 0.7 },
-  { loc: `testimonials`, changefreq: 'weekly', priority: 0.7 },
-  { loc: `faq`, changefreq: 'weekly', priority: 0.7 },
+  { loc: `solution`, changefreq: 'weekly', priority: 0.7 },
 ];
+
+function getPrerenderedRoutes() {
+  const manifestPath = path.join(__dirname, '..', '.next', 'prerender-manifest.json');
+  if (!fs.existsSync(manifestPath)) {
+    throw new Error(`Build route manifest not found: ${manifestPath}`);
+  }
+
+  const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf-8'));
+  return new Set(Object.keys(manifest.routes).map((route) =>
+    route === '/' ? route : route.replace(/\/+$/, '')
+  ));
+}
+
+function isPrerenderedRoute(url, routes) {
+  const pathname = new URL(url).pathname;
+  const normalizedPath = pathname === '/' ? pathname : pathname.replace(/\/+$/, '');
+  return routes.has(normalizedPath);
+}
 
 function run() {
   console.log('🤖 Generating sitemaps from data/ files...');
+  const prerenderedRoutes = getPrerenderedRoutes();
 
   if (fs.existsSync(PUBLIC_DIR)) {
     const files = fs.readdirSync(PUBLIC_DIR);
@@ -369,6 +376,7 @@ function run() {
     }
 
     const urls = [];
+    let skippedRoutes = 0;
 
     if (cat.mainPath) {
       urls.push({
@@ -380,6 +388,10 @@ function run() {
     }
 
     for (const entry of entries) {
+      if (cat.excludeSlugs && cat.excludeSlugs.includes(entry.slug)) {
+        continue;
+      }
+
       let fullUrl = null;
 
       if (cat.useMetaUrl) {
@@ -390,6 +402,16 @@ function run() {
       }
 
       if (fullUrl) {
+        if (hasSpaceInUrl(fullUrl)) {
+          skippedRoutes++;
+          continue;
+        }
+
+        if (!isPrerenderedRoute(fullUrl, prerenderedRoutes)) {
+          skippedRoutes++;
+          continue;
+        }
+
         urls.push({
           loc: fullUrl,
           changefreq: 'weekly',
@@ -400,6 +422,10 @@ function run() {
     }
 
     const uniqueUrls = dedupeUrls(urls);
+
+    if (skippedRoutes > 0) {
+      console.warn(`  ⚠ ${cat.key}: excluded ${skippedRoutes} URLs without generated pages`);
+    }
 
     if (uniqueUrls.length > 0) {
       const filename = `sitemap-${cat.key}.xml`;

@@ -75,11 +75,11 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'www.magnific.com',
       },
-      {
-        protocol: 'https',
-        hostname: 'cdn.simpleicons.org',
-      },
     ],
+    // Serve modern formats and cap generated widths at 1920px (no 2048/3840
+    // variants), so hero images stay small on every device.
+    formats: ['image/avif', 'image/webp'],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
   },
 };
 

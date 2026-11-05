@@ -454,7 +454,7 @@ const schemas=[
       },
       {
         "heading": "Implementation Notes",
-        "content": "These schema templates are used across the full 1,331-page site. Key implementation points:\n\n1. **BreadcrumbList on every page*2. **FAQPage on every page with a FAQ section*3. **Service schema on all service pages*4. **HowTo schema on how-to guides*5. **Article schema on blog/news/deep-dive pages*6. **WebApplication schema on tool pages*7. **LocalBusiness schema on location pages*"
+        "content": "Use these schema templates where appropriate for the page content. Key implementation points:\n\n1. **BreadcrumbList on every page*2. **FAQPage on every page with a FAQ section*3. **Service schema on all service pages*4. **HowTo schema on how-to guides*5. **Article schema on blog/news/deep-dive pages*6. **WebApplication schema on tool pages*7. **LocalBusiness schema only where a genuine local business address is available*"
       }
     ],
     "faq": [

@@ -16,6 +16,7 @@ import {
   Quote,
   Sparkles,
 } from "lucide-react";
+import { splitHeading } from "@/lib/seo";
 
 import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
@@ -31,6 +32,8 @@ import {
   getResourceCTA,
 } from "@/lib/resources";
 import RelatedLinks from "@/components/RelatedLinks";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { faqPageSchema } from "@/lib/structured-data";
 
 type ResourcePageProps = {
   params: Promise<{
@@ -330,6 +333,9 @@ export default async function SingleResourcePage({
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
+      <JsonLd
+        data={faqPageSchema(resource.faqs)}
+      />
 
       <main className="relative overflow-hidden bg-gradient-to-b from-bg-base via-surface/40 to-bg-base pb-24 pt-32">
         <div className="pointer-events-none absolute left-[-14rem] top-[-10rem] h-[32rem] w-[32rem] rounded-full bg-amber-base/10 blur-3xl" />
@@ -381,11 +387,17 @@ export default async function SingleResourcePage({
               </div>
 
               <h1 className="mt-7 max-w-5xl font-display text-4xl font-black leading-tight tracking-tight text-text-primary md:text-6xl">
-                {resource.hero?.title || resource.title}
+                {splitHeading(resource.hero?.title || resource.title).heading}
               </h1>
 
               <p className="mt-6 max-w-3xl text-lg leading-8 text-silver">
-                {resource.hero?.description || resource.excerpt}
+                {[
+                  splitHeading(resource.hero?.title || resource.title)
+                    .continuation,
+                  resource.hero?.description || resource.excerpt,
+                ]
+                  .filter(Boolean)
+                  .join(" — ")}
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3">

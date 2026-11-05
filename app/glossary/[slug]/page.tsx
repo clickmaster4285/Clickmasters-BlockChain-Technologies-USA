@@ -17,6 +17,8 @@ import {
   getRelatedGlossaryTerms,
 } from "@/lib/glossary";
 import RelatedLinks from "@/components/RelatedLinks";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { faqPageSchema } from "@/lib/structured-data";
 
 export async function generateStaticParams() {
   return getAllGlossaryTerms()
@@ -81,6 +83,9 @@ export default async function SingleGlossaryPage({
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
+      <JsonLd
+        data={faqPageSchema(item.faqs || item.faq)}
+      />
 
       <main className="relative overflow-hidden bg-gradient-to-b from-bg-base via-surface/40 to-bg-base pb-24 pt-32">
         <div className="pointer-events-none absolute left-[-14rem] top-[-10rem] h-[32rem] w-[32rem] rounded-full bg-amber-base/10 blur-3xl" />

@@ -14,16 +14,16 @@ import {
 
 const heroStats = [
   {
-    value: "1,000+",
-    label: "Blockchain projects",
+    value: "Finance",
+    label: "Industry examples",
   },
   {
-    value: "Since 2014",
-    label: "Industry experience",
+    value: "Healthcare",
+    label: "Industry examples",
   },
   {
-    value: "18+",
-    label: "Industries served",
+    value: "Supply chain",
+    label: "Industry examples",
   },
 ];
 

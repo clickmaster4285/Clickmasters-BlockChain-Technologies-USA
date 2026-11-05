@@ -1,7 +1,5 @@
 // app/partners/page.tsx
 
-import type { Metadata } from "next";
-
 import Image from "next/image";
 import Link from "next/link";
 
@@ -32,7 +30,8 @@ import { Footer } from "@/components/landing/Footer";
 import BackToTop from "@/components/ui/BackToTop";
 
 import PartnerPagination from "@/components/partners/PartnerPagination";
-import { getPageHref } from "@/lib/pagination";
+import { createMetadata } from "@/config/metadata";
+import { getPageHref, withPageContext } from "@/lib/pagination";
 
 import {
   getPartnerCards,
@@ -43,55 +42,34 @@ import {
    Metadata
 ========================================================= */
 
+const PARTNERS_PER_PAGE = 9;
+
 export async function generateMetadata({
   searchParams,
-}: PartnersPageProps): Promise<Metadata> {
+}: PartnersPageProps) {
   const resolvedSearchParams = await searchParams;
   const requestedPage = Number(resolvedSearchParams?.page ?? "1");
-  const currentPage =
+  const totalPages = Math.max(
+    Math.ceil(getPartnerCards().length / PARTNERS_PER_PAGE),
+    1,
+  );
+  const currentPage = Math.min(
     Number.isInteger(requestedPage) && requestedPage > 0
       ? requestedPage
-      : 1;
-  const path = getPageHref("/partners", currentPage);
+      : 1,
+    totalPages,
+  );
+  const metadata = withPageContext(
+    "Blockchain Technology Partners",
+    "Explore blockchain security, infrastructure, legal, custody, oracle, wallet, cloud, and development technologies and integration considerations.",
+    currentPage,
+    totalPages,
+  );
 
-  return {
-  title:
-    "Blockchain Technology and Integration Partners | ClickMasters",
-
-  description:
-    "Explore the blockchain security, infrastructure, legal, custody, oracle, wallet, cloud, and development technologies integrated into ClickMasters solutions.",
-
-  alternates: {
-    canonical: path,
-  },
-
-  openGraph: {
-    title:
-      "Blockchain Technology and Integration Partners | ClickMasters",
-
-    description:
-      "Discover the blockchain security, cloud, infrastructure, custody, wallet, oracle, and smart contract technologies used across our development projects.",
-
-    url: path,
-
-    type: "website",
-  },
-
-  twitter: {
-    card: "summary_large_image",
-
-    title:
-      "Blockchain Technology and Integration Partners | ClickMasters",
-
-    description:
-      "Explore the technology platforms and specialist providers integrated into ClickMasters blockchain solutions.",
-  },
-
-  robots: {
-    index: true,
-    follow: true,
-  },
-  };
+  return createMetadata({
+    ...metadata,
+    path: getPageHref("/partners", currentPage),
+  });
 }
 
 /* =========================================================
@@ -201,7 +179,7 @@ export default async function PartnersPage({
 
   const totalPartners = getPartnersCount();
 
-  const cardsPerPage = 9;
+  const cardsPerPage = PARTNERS_PER_PAGE;
 
   const requestedPage = Number(
     resolvedSearchParams.page ?? "1",
@@ -324,10 +302,9 @@ export default async function PartnersPage({
                 </div>
 
                 <h1 className="mt-8 max-w-4xl font-display text-4xl font-black leading-[1.04] tracking-[-0.04em] text-text-primary sm:text-5xl md:text-6xl xl:text-[4.5rem]">
-                  Technology Integrations for{" "}
-                  <span className="bg-gradient-to-r from-amber-base via-amber-light to-amber-base bg-clip-text text-transparent">
-                    Production-Ready Blockchain Products
-                  </span>
+                  Blockchain Technology Partners
+                  {currentPage > 1 &&
+                    ` — Page ${currentPage} of ${totalPages}`}
                 </h1>
 
                 <p className="mt-7 max-w-2xl text-base leading-8 text-silver md:text-lg">

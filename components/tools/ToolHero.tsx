@@ -9,6 +9,7 @@ import {
   ShieldCheck,
   Zap,
 } from "lucide-react";
+import { splitHeading } from "@/lib/seo";
 
 export default function ToolHero({
   item,
@@ -27,6 +28,7 @@ export default function ToolHero({
     item?.excerpt ||
     item?.description ||
     "Professional blockchain tool for developers, startups and enterprises.";
+  const { heading, continuation } = splitHeading(title);
 
   return (
     <section className="relative overflow-hidden rounded-[2.5rem] border border-white/10 bg-bg-base/70 p-6 shadow-[0_35px_120px_rgba(0,0,0,.45)] backdrop-blur-xl md:p-12">
@@ -69,11 +71,11 @@ export default function ToolHero({
           </div>
 
           <h1 className="mt-8 max-w-5xl font-display text-4xl font-black leading-tight tracking-tight text-text-primary md:text-6xl">
-            {title}
+            {heading}
           </h1>
 
           <p className="mt-6 max-w-3xl text-lg leading-8 text-silver">
-            {description}
+            {[continuation, description].filter(Boolean).join(" — ")}
           </p>
 
           {/* Features */}

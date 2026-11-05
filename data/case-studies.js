@@ -2146,18 +2146,18 @@ export const comparisons = [
 ];
 
 const caseStudyImages = [
-  "/media/portfolio-bg.jpeg",
-  "/media/services-bg.jpeg",
-  "/media/blockchain.png",
-  "/media/wallet-mock.jpeg",
-  "/media/cta-bg.png",
-  "/media/hero-bg.png",
-  "/media/glossary-hero.png",
-  "/media/tools-hero.png",
+  "/media/portfolio-bg.webp",
+  "/media/services-bg.webp",
+  "/media/blockchain.webp",
+  "/media/wallet-mock.webp",
+  "/media/cta-bg.webp",
+  "/media/hero-bg.webp",
+  "/media/glossary-hero.webp",
+  "/media/tools-hero.webp",
   "/media/listicles-hero.webp",
-  "/media/news-hero.png",
+  "/media/news-hero.webp",
   "/media/howto-hero.webp",
-  "/media/testimonials-bg.jpg",
+  "/media/testimonials-bg.webp",
 ];
 
 function cleanTitle(title) {

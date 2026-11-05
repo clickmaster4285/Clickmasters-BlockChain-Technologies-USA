@@ -1909,3 +1909,258 @@
     filter: none;
   }
 }
+/* ------------------------------------------------------------------
+   Repeated content cards
+   These cards render dozens of times per page. Keeping their styling
+   in named classes (instead of long utility strings and empty
+   decorative elements) keeps page HTML and the RSC payload small.
+------------------------------------------------------------------- */
+@layer components {
+  .checklist-card {
+    @apply relative overflow-hidden rounded-[1.4rem] border border-white/10 bg-bg-base/45 p-[1px] transition-all duration-500;
+  }
+  .checklist-card:hover {
+    @apply -translate-y-1.5 border-amber-base/40 shadow-[0_20px_60px_rgba(0,0,0,0.3)];
+  }
+  /* Hover gradient border */
+  .checklist-card::before {
+    content: "";
+    @apply pointer-events-none absolute inset-0 bg-linear-to-r from-amber-base/50 via-transparent to-amber-base/20 opacity-0 transition-opacity duration-500;
+  }
+  .checklist-card:hover::before {
+    @apply opacity-100;
+  }
+  .checklist-card__inner {
+    @apply relative overflow-hidden rounded-[calc(1.4rem-1px)] bg-linear-to-br from-bg-base via-bg-base to-surface/60 p-5 sm:p-6;
+  }
+  /* Moving glow */
+  .checklist-card__inner::before {
+    content: "";
+    @apply pointer-events-none absolute -right-16 -top-16 h-36 w-36 rounded-full bg-amber-base/0 blur-3xl transition-all duration-700;
+  }
+  .checklist-card:hover .checklist-card__inner::before {
+    @apply scale-125 bg-amber-base/15;
+  }
+  .checklist-card__row {
+    @apply relative flex items-start gap-4;
+  }
+  .checklist-card__num {
+    @apply grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-amber-base/20 bg-amber-base/10 text-sm font-black text-amber-base transition-all duration-500;
+  }
+  .checklist-card:hover .checklist-card__num {
+    @apply rotate-3 scale-110 border-amber-base bg-amber-base text-bg-base shadow-[0_12px_35px_rgba(245,158,11,0.2)];
+  }
+  .checklist-card__title {
+    @apply text-base font-black text-text-primary transition-colors duration-300 sm:text-lg;
+  }
+  .checklist-card:hover .checklist-card__title {
+    @apply text-amber-base;
+  }
+  .checklist-card__text {
+    @apply text-sm leading-7 transition-colors duration-300 md:text-base;
+  }
+  .checklist-card:hover .checklist-card__text {
+    @apply text-silver-light;
+  }
+  /* Lucide "circle-check" drawn with a CSS mask instead of an inline SVG */
+  .checklist-card__check {
+    @apply mt-1 h-5 w-5 shrink-0 bg-amber-base opacity-60 transition-all duration-300;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='m9 12 2 2 4-4'/%3E%3C/svg%3E")
+      center / contain no-repeat;
+  }
+  .checklist-card:hover .checklist-card__check {
+    @apply scale-110 opacity-100;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Mask icons: Lucide shapes drawn with CSS (colour = currentColor).
+   Used in cards that repeat many times per page, where inline <svg>
+   icons would add several KB of HTML and RSC payload per card.
+------------------------------------------------------------------- */
+@layer components {
+  .mask-icon {
+    display: inline-block;
+    flex-shrink: 0;
+    background-color: currentColor;
+    mask: var(--icon) center / contain no-repeat;
+  }
+  .icon-sparkles { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z'/%3E%3Cpath d='M20 2v4'/%3E%3Cpath d='M22 4h-4'/%3E%3Ccircle cx='4' cy='20' r='2'/%3E%3C/svg%3E"); }
+  .icon-file-text { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z'/%3E%3Cpath d='M14 2v5a1 1 0 0 0 1 1h5'/%3E%3Cpath d='M10 9H8'/%3E%3Cpath d='M16 13H8'/%3E%3Cpath d='M16 17H8'/%3E%3C/svg%3E"); }
+  .icon-layers { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z'/%3E%3Cpath d='M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12'/%3E%3Cpath d='M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17'/%3E%3C/svg%3E"); }
+  .icon-clock { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M12 6v6h4'/%3E%3C/svg%3E"); }
+  .icon-arrow-up-right { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 7h10v10'/%3E%3Cpath d='M7 17 17 7'/%3E%3C/svg%3E"); }
+}
+
+/* Template listing card (components/templates/TemplateCard.tsx) */
+@layer components {
+  .tpl-card {
+    @apply relative block h-full rounded-[2rem] p-[1px] transition-all duration-500;
+  }
+  .tpl-card:hover {
+    @apply -translate-y-3 scale-[1.015];
+  }
+  /* Animated border */
+  .tpl-card::before {
+    content: "";
+    @apply absolute inset-0 rounded-[2rem] bg-linear-to-br from-border-default via-border-default to-border-default transition-all duration-500;
+  }
+  .tpl-card:hover::before {
+    @apply from-amber-base/80 via-amber-base/10 to-emerald-base/30;
+  }
+  .tpl-card__halo {
+    @apply pointer-events-none absolute inset-5 rounded-[2rem] bg-amber-base/0 blur-3xl transition-all duration-500;
+  }
+  .tpl-card:hover .tpl-card__halo {
+    @apply bg-amber-base/12;
+  }
+  .tpl-card__body {
+    @apply relative flex h-full min-h-[460px] flex-col overflow-hidden rounded-[calc(2rem-1px)] bg-linear-to-br from-bg-base via-bg-base to-bg-surface p-6 transition-all duration-500;
+  }
+  /* Grid texture */
+  .tpl-card__body::before {
+    content: "";
+    @apply pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(100,116,139,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(100,116,139,0.055)_1px,transparent_1px)] bg-size-[32px_32px] opacity-50;
+  }
+  /* Top-right glow */
+  .tpl-card__body::after {
+    content: "";
+    @apply pointer-events-none absolute -right-24 -top-24 h-56 w-56 rounded-full bg-amber-base/8 blur-3xl transition-all duration-700;
+  }
+  .tpl-card:hover .tpl-card__body::after {
+    @apply -right-8 -top-8 scale-125 bg-amber-base/18;
+  }
+  .tpl-card__glow {
+    @apply pointer-events-none absolute -bottom-20 -left-20 h-44 w-44 rounded-full bg-emerald-base/5 blur-3xl transition-all duration-700;
+  }
+  .tpl-card:hover .tpl-card__glow {
+    @apply scale-125 bg-emerald-base/10;
+  }
+  .tpl-card__light {
+    @apply pointer-events-none absolute inset-x-8 top-0 h-px origin-left scale-x-0 bg-linear-to-r from-transparent via-amber-base to-transparent transition-transform duration-700;
+  }
+  .tpl-card:hover .tpl-card__light {
+    @apply scale-x-100;
+  }
+  /* z-index keeps content above the ::after glow, matching the original layering */
+  .tpl-card__content {
+    @apply relative z-[1] flex h-full flex-col;
+  }
+  .tpl-card__badge {
+    @apply inline-flex items-center gap-2 rounded-full border border-amber-base/20 bg-amber-base/10 px-3.5 py-2 text-[10px] font-black uppercase tracking-[0.2em] text-amber-base transition-all duration-300;
+  }
+  .tpl-card:hover .tpl-card__badge {
+    @apply border-amber-base/40 bg-amber-base/15;
+  }
+  .tpl-card__badge .mask-icon {
+    @apply h-3.5 w-3.5 transition-transform duration-500;
+  }
+  .tpl-card:hover .tpl-card__badge .mask-icon {
+    @apply rotate-12 scale-110;
+  }
+  .tpl-card__index {
+    @apply font-mono text-xs font-bold text-text-muted transition-colors duration-300;
+  }
+  .tpl-card:hover .tpl-card__index,
+  .tpl-card:hover .tpl-card__category {
+    @apply text-amber-base;
+  }
+  .tpl-card__sheet {
+    @apply absolute h-28 w-24 rounded-2xl border border-border-default bg-bg-surface transition-all duration-500;
+  }
+  .tpl-card__sheet--left {
+    @apply -rotate-6;
+  }
+  .tpl-card:hover .tpl-card__sheet--left {
+    @apply -translate-x-2 -rotate-12;
+  }
+  .tpl-card__sheet--right {
+    @apply rotate-6;
+  }
+  .tpl-card:hover .tpl-card__sheet--right {
+    @apply translate-x-2 rotate-12;
+  }
+  .tpl-card__doc {
+    @apply relative z-10 h-32 w-28 overflow-hidden rounded-2xl border border-amber-base/25 bg-linear-to-br from-bg-base to-bg-surface p-4 transition-all duration-500;
+  }
+  .tpl-card:hover .tpl-card__doc {
+    @apply -translate-y-2 rotate-1 border-amber-base/50;
+  }
+  .tpl-card__category {
+    @apply inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-text-muted transition-colors duration-300;
+  }
+  .tpl-card__title {
+    @apply mt-5 text-2xl font-black leading-tight text-text-primary transition-all duration-300;
+  }
+  .tpl-card:hover .tpl-card__title {
+    @apply translate-x-1 text-amber-base;
+  }
+  .tpl-card__chip {
+    @apply inline-flex items-center gap-2 rounded-full border border-border-default bg-bg-surface px-3 py-1.5 text-xs text-text-secondary transition-colors duration-300;
+  }
+  .tpl-card:hover .tpl-card__chip {
+    @apply border-amber-base/20 bg-amber-base/5;
+  }
+  .tpl-card__arrow {
+    @apply grid h-11 w-11 place-items-center rounded-full border border-border-default bg-bg-surface text-text-secondary transition-all duration-500;
+  }
+  .tpl-card:hover .tpl-card__arrow {
+    @apply rotate-6 border-amber-base bg-amber-base text-[#101827];
+  }
+  .tpl-card__arrow .mask-icon {
+    @apply h-4 w-4 transition-transform duration-500;
+  }
+  .tpl-card:hover .tpl-card__arrow .mask-icon {
+    @apply translate-x-0.5 -translate-y-0.5;
+  }
+}
+
+
+/* TechStack text marquee items (styled here, not per <span>, to keep HTML small) */
+@layer components {
+  .tech-marquee > span {
+    @apply text-xs font-semibold uppercase tracking-widest text-silver-dim;
+  }
+  .tech-marquee > span::after {
+    content: "\00a0/";
+    @apply ml-8 text-silver-dim/30;
+  }
+}
+
+/* Trusted-by logo marquee items (styled on the parent to keep HTML small) */
+@layer components {
+  .logo-cloud > div {
+    @apply flex h-10 w-28 shrink-0 items-center justify-center;
+  }
+  .logo-cloud img {
+    @apply h-9 w-auto opacity-60 transition-all duration-500;
+  }
+  .logo-cloud img:hover {
+    @apply scale-110 opacity-100;
+  }
+}
+
+/* Homepage feature cards (Audience, Benefits, Services) */
+@layer components {
+  .glow-card {
+    @apply relative overflow-hidden rounded-2xl border border-border bg-surface p-6 transition-all duration-300;
+  }
+  .glow-card:hover {
+    @apply -translate-y-0.5 border-amber-border/40;
+    box-shadow: var(--shadow-soft);
+  }
+  /* Hover glow (was an empty decorative <div> in every card) */
+  .glow-card::before {
+    content: "";
+    @apply pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-amber-glow opacity-0 blur-3xl transition-opacity duration-500;
+  }
+  .glow-card:hover::before {
+    @apply opacity-100;
+  }
+  .glow-card--lg::before {
+    @apply -right-16 -top-16 h-48 w-48;
+  }
+  .tag-chip {
+    @apply rounded-full border border-border bg-bg-base/50 px-2 py-0.5 font-mono text-[10px] text-text-muted;
+  }
+}

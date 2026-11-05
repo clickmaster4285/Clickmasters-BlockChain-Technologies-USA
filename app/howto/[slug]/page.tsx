@@ -17,6 +17,8 @@ import {
   getRelatedHowTos,
 } from "@/lib/howto";
 import RelatedLinks from "@/components/RelatedLinks";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { articleSchema, faqPageSchema } from "@/lib/structured-data";
 
 export async function generateStaticParams() {
   return getAllHowTos().map((item: any) => ({
@@ -60,6 +62,20 @@ export default async function SingleHowToPage({
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
+      <JsonLd
+        data={[
+          articleSchema({
+            headline: item.title,
+            description: item.excerpt || item.hero?.description,
+            path: `/howto/${item.slug || slug}`,
+            image: item.image,
+            datePublished: item.date,
+            dateModified: item.date,
+            author: item.author,
+          }),
+          faqPageSchema(item.faqs),
+        ]}
+      />
 
       <main className="relative overflow-hidden bg-gradient-to-b from-bg-base via-surface/40 to-bg-base pt-24 pb-16 sm:pt-28 sm:pb-20 lg:pt-32 lg:pb-24">
         <div className="pointer-events-none absolute left-[-14rem] top-[-10rem] h-[32rem] w-[32rem] rounded-full bg-amber-base/10 blur-3xl" />

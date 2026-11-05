@@ -4,8 +4,6 @@ import { useState } from "react";
 
 import {
   Mail,
-  MessageCircle,
-  Phone,
   Send,
   LoaderCircle,
   CircleCheckBig,
@@ -147,9 +145,9 @@ export default function ContactPage() {
           </h1>
 
           <p className="mt-6 max-w-2xl text-lg text-muted-foreground">
-            Tell us about your protocol, product, or
-            DAO. Our engineers reply within 24 hours
-            with a scoped plan and timeline.
+            Tell us about your protocol, product, or DAO. Share your goals and constraints so we
+            can discuss a suitable next step. Include relevant technical constraints, timelines,
+            existing systems, or stakeholder requirements.
           </p>
 
           <div className="mt-12 grid gap-10 md:grid-cols-[1.2fr_1fr]">
@@ -351,7 +349,7 @@ export default function ContactPage() {
 
             <div className="space-y-4">
               <a
-                href="mailto:sales@clickmastersdigitalmarketing.com"
+                href="mailto:sales@clickmastersblockchaintechnologies.com"
                 className="flex items-center gap-4 rounded-2xl border border-border bg-surface p-5 transition-colors hover:border-primary"
               >
                 <span className="grid h-11 w-11 place-items-center rounded-xl bg-primary/10 text-primary">
@@ -369,96 +367,69 @@ export default function ContactPage() {
                 </div>
               </a>
 
-              <a
-                href="tel:+447988576086"
-                className="flex items-center gap-4 rounded-2xl border border-border bg-surface p-5 transition-colors hover:border-primary"
-              >
-                <span className="grid h-11 w-11 place-items-center rounded-xl bg-primary/10 text-primary">
-                  <Phone className="h-5 w-5" />
-                </span>
-
-                <div>
-                  <p className="font-semibold">
-                    UK
-                  </p>
-
-                  <p className="text-sm text-muted-foreground">
-                    +44 7988 576086
-                  </p>
-                </div>
-              </a>
-
-              <a
-                href="tel:+92 33325394285"
-                className="flex items-center gap-4 rounded-2xl border border-border bg-surface p-5 transition-colors hover:border-primary"
-              >
-                <span className="grid h-11 w-11 place-items-center rounded-xl bg-primary/10 text-primary">
-                  <Phone className="h-5 w-5" />
-                </span>
-
-                <div>
-                  <p className="font-semibold">
-                    PK
-                  </p>
-
-                  <p className="text-sm text-muted-foreground">
-                    +92 33325394285
-                  </p>
-                </div>
-              </a>
-
-              <a
-                href="tel:+923325394285"
-                className="flex items-center gap-4 rounded-2xl border border-border bg-surface p-5 transition-colors hover:border-primary"
-              >
-                <span className="grid h-11 w-11 place-items-center rounded-xl bg-primary/10 text-primary">
-                  <Phone className="h-5 w-5" />
-                </span>
-
-                <div>
-                  <p className="font-semibold">
-                    Pakistan
-                  </p>
-
-                  <p className="text-sm text-muted-foreground">
-                    +92 332 5394285
-                  </p>
-                </div>
-              </a>
-
-              <a
-                href="https://wa.me/13252024074"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-4 rounded-2xl border border-border bg-surface p-5 transition-colors hover:border-primary"
-              >
-                <span className="grid h-11 w-11 place-items-center rounded-xl bg-[#25D366]/10 text-[#25D366]">
-                  <MessageCircle className="h-5 w-5" />
-                </span>
-
-                <div>
-                  <p className="font-semibold">
-                    WhatsApp
-                  </p>
-
-                  <p className="text-sm text-muted-foreground">
-                    Chat with our team
-                  </p>
-                </div>
-              </a>
-
               <div className="rounded-2xl border border-dashed border-border p-5">
                 <p className="font-semibold">
-                  Free 30-min consultation
+                  Project discussion
                 </p>
 
                 <p className="mt-1 text-sm text-muted-foreground">
-                  Book a strategy call to scope your
-                  blockchain project.
+                  Share your goals and questions so the right topics can be
+                  covered in a follow-up conversation.
                 </p>
               </div>
             </div>
           </div>
+
+          <section className="mt-12 grid gap-6 md:grid-cols-3">
+            <article className="rounded-2xl border border-border bg-surface p-6">
+              <h2 className="text-xl font-semibold">Describe the problem</h2>
+              <p className="mt-3 text-sm leading-7 text-muted-foreground">
+                Explain what the product should help people do, who will use it,
+                and which process or trust issue it addresses. If you are still
+                exploring an idea, describe the decision you need to make
+                rather than committing to a particular blockchain or token.
+              </p>
+            </article>
+            <article className="rounded-2xl border border-border bg-surface p-6">
+              <h2 className="text-xl font-semibold">Share the constraints</h2>
+              <p className="mt-3 text-sm leading-7 text-muted-foreground">
+                Useful context can include target networks, existing systems,
+                user roles, data privacy needs, compliance considerations,
+                expected launch timing, and any technical documentation you
+                already have. Avoid sending passwords, private keys, seed
+                phrases, or other credentials through the form.
+              </p>
+            </article>
+            <article className="rounded-2xl border border-border bg-surface p-6">
+              <h2 className="text-xl font-semibold">Plan a useful discussion</h2>
+              <p className="mt-3 text-sm leading-7 text-muted-foreground">
+                A first project conversation can focus on feasibility, scope,
+                architecture options, integration dependencies, security
+                responsibilities, and open questions. The right next step
+                depends on the information available; no delivery estimate or
+                outcome is implied before requirements are reviewed.
+              </p>
+            </article>
+          </section>
+
+          <section className="mt-8 rounded-2xl border border-border bg-surface p-6 md:p-8">
+            <h2 className="text-xl font-semibold">What happens after you reach out?</h2>
+            <p className="mt-3 max-w-4xl text-sm leading-7 text-muted-foreground">
+              The information in your message helps determine whether the
+              question is about product discovery, a technical design,
+              implementation, or an existing system. If important details are
+              missing, they can be clarified before discussing scope. For an
+              existing application, describe the affected component and the
+              behavior you are trying to change without including confidential
+              customer data or access credentials.
+            </p>
+            <p className="mt-3 max-w-4xl text-sm leading-7 text-muted-foreground">
+              You can also use the service pages, technical guides, tools, and
+              checklists to prepare questions in advance. A clear description
+              of the intended outcome, constraints, and unresolved decisions
+              makes a project conversation more useful for everyone involved.
+            </p>
+          </section>
         </section>
       </main>
 

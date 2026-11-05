@@ -47,6 +47,7 @@ import { Footer } from "@/components/landing/Footer";
 import BackToTop from "@/components/ui/BackToTop";
 
 import type { IndustryData } from "@/app/industries/[slug]/page";
+import { splitHeading } from "@/lib/seo";
 
 /* =========================================================
    Types
@@ -439,11 +440,17 @@ function IndustryHero({
             </div>
 
             <h1 className="industry-hero-entry industry-hero-entry-two mt-7 max-w-4xl font-display text-4xl font-black leading-[1.04] tracking-[-0.045em] text-text-primary sm:text-5xl md:text-6xl xl:text-[4.35rem]">
-              {industry.hero.title || industry.title}
+              {splitHeading(industry.hero.title || industry.title).heading}
             </h1>
 
             <p className="industry-hero-entry industry-hero-entry-three mt-7 max-w-3xl text-base leading-8 text-silver md:text-lg">
-              {industry.hero.description || industry.excerpt}
+              {[
+                splitHeading(industry.hero.title || industry.title)
+                  .continuation,
+                industry.hero.description || industry.excerpt,
+              ]
+                .filter(Boolean)
+                .join(" — ")}
             </p>
 
             <div className="industry-hero-entry industry-hero-entry-four mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-xs text-silver">

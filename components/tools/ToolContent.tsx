@@ -208,38 +208,25 @@ export default function ToolContent({
             return (
               <div
                 key={`${itemDescription}-${itemIndex}`}
-                className="group relative overflow-hidden rounded-[1.4rem] border border-white/10 bg-bg-base/45 p-[1px] transition-all duration-500 hover:-translate-y-1.5 hover:border-amber-base/40 hover:shadow-[0_20px_60px_rgba(0,0,0,0.3)]"
+                className="checklist-card"
               >
-                {/* Hover gradient border */}
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-amber-base/50 via-transparent to-amber-base/20 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-
-                <div className="relative overflow-hidden rounded-[calc(1.4rem-1px)] bg-gradient-to-br from-bg-base via-bg-base to-surface/60 p-5 sm:p-6">
-                  {/* Moving glow */}
-                  <div className="pointer-events-none absolute -right-16 -top-16 h-36 w-36 rounded-full bg-amber-base/0 blur-3xl transition-all duration-700 group-hover:bg-amber-base/15 group-hover:scale-125" />
-
-                  <div className="relative flex items-start gap-4">
-                    {/* Number */}
-                    <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-amber-base/20 bg-amber-base/10 text-sm font-black text-amber-base transition-all duration-500 group-hover:rotate-3 group-hover:scale-110 group-hover:border-amber-base group-hover:bg-amber-base group-hover:text-bg-base group-hover:shadow-[0_12px_35px_rgba(245,158,11,0.2)]">
+                <div className="checklist-card__inner">
+                  <div className="checklist-card__row">
+                    <span className="checklist-card__num">
                       {String(itemIndex + 1).padStart(2, "0")}
                     </span>
 
                     <div className="min-w-0 flex-1">
                       {itemTitle && (
-                        <h2 className="text-base font-black text-text-primary transition-colors duration-300 group-hover:text-amber-base sm:text-lg">
-                          {itemTitle}
-                        </h2>
+                        <h2 className="checklist-card__title">{itemTitle}</h2>
                       )}
 
-                      <p
-                        className={`text-sm leading-7 text-silver transition-colors duration-300 group-hover:text-silver-light md:text-base ${
-                          itemTitle ? "mt-2" : ""
-                        }`}
-                      >
+                      <p className={`checklist-card__text${itemTitle ? " mt-2" : ""}`}>
                         {itemDescription}
                       </p>
                     </div>
 
-                    <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-amber-base opacity-60 transition-all duration-300 group-hover:scale-110 group-hover:opacity-100" />
+                    <span className="checklist-card__check" aria-hidden="true" />
                   </div>
                 </div>
               </div>

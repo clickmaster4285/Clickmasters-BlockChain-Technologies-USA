@@ -30,6 +30,7 @@ import {
   type HireContentBlock,
 } from "@/lib/hire";
 import RelatedLinks from "@/components/RelatedLinks";
+import { splitHeading } from "@/lib/seo";
 
 type HireDetailPageProps = {
   params: Promise<{
@@ -369,12 +370,20 @@ export default async function HireDetailPage({
                 </div>
 
                 <h1 className="mt-6 max-w-4xl font-display text-4xl font-black leading-[1.08] tracking-tight text-text-primary md:text-6xl">
-                  {hirePage.hero?.title || hirePage.title}
+                  {splitHeading(
+                    hirePage.hero?.title || hirePage.title,
+                  ).heading}
                 </h1>
 
                 <p className="mt-6 max-w-2xl text-base leading-8 text-silver md:text-lg">
-                  {hirePage.hero?.description ||
-                    hirePage.excerpt}
+                  {[
+                    splitHeading(
+                      hirePage.hero?.title || hirePage.title,
+                    ).continuation,
+                    hirePage.hero?.description || hirePage.excerpt,
+                  ]
+                    .filter(Boolean)
+                    .join(" — ")}
                 </p>
 
                 <div className="mt-8 flex flex-wrap gap-3">

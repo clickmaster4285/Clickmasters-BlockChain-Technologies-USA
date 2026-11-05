@@ -9,6 +9,7 @@ import {
   Sparkles,
   TrendingUp,
 } from "lucide-react";
+import { splitHeading } from "@/lib/seo";
 
 export default function NewsHero({
   item,
@@ -17,6 +18,10 @@ export default function NewsHero({
   item: any;
   readTime: string;
 }) {
+  const { heading, continuation } = splitHeading(
+    item.hero?.title || item.title,
+  );
+
   return (
     <section className="relative overflow-hidden rounded-[2.5rem] border border-white/10 bg-bg-base/70 p-6 shadow-[0_35px_120px_rgba(0,0,0,.45)] backdrop-blur-xl md:p-12">
       {/* Background Glow */}
@@ -55,12 +60,14 @@ export default function NewsHero({
 
         {/* Title */}
         <h1 className="mt-7 max-w-5xl font-display text-4xl font-black leading-tight tracking-tight text-text-primary md:text-6xl">
-          {item.hero?.title || item.title}
+          {heading}
         </h1>
 
         {/* Description */}
         <p className="mt-6 max-w-3xl text-lg leading-8 text-silver">
-          {item.hero?.description || item.excerpt}
+          {[continuation, item.hero?.description || item.excerpt]
+            .filter(Boolean)
+            .join(" — ")}
         </p>
 
         {/* Author */}

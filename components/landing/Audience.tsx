@@ -40,9 +40,8 @@ export function Audience() {
           {audiences.map((a) => (
             <article
               key={a.title}
-              className="group relative overflow-hidden rounded-2xl border border-border bg-surface p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-border/40 hover:shadow-soft"
+              className="group glow-card"
             >
-              <div className="pointer-events-none absolute -right-10 -top-10 h-36 w-36 rounded-full bg-amber-glow opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100" />
               <span className="relative grid h-11 w-11 place-items-center rounded-xl bg-amber-glow text-amber-base">
                 <a.icon className="h-5 w-5" />
               </span>

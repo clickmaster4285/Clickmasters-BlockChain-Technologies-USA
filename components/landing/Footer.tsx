@@ -34,7 +34,7 @@ const RESOURCE_HUB_LINKS = [
   ["Tools", "/tools"],
   ["Templates", "/templates"],
   ["Resources", "/resources"],
-  ["Content Library", "/service/resources/blockchain-content-library"],
+  ["Blockchain Content Library", "/service/resources/blockchain-content-library"],
   ["Best-Of Lists", "/listicles"],
   ["Glossary", "/glossary"],
   ["FAQs", "/faqs"],
@@ -86,15 +86,12 @@ export function Footer() {
           <div>
             <p className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">Contact</p>
             <ul className="mt-4 space-y-2 text-sm">
-              <li><a href="mailto:sales@clickmastersdigitalmarketing.com" className="break-all text-foreground/80 hover:text-primary">sales@clickmastersdigitalmarketing.com</a></li>
-              <li><a href="tel:+447988576086" className="text-foreground/80 hover:text-primary">+44 7988 576086</a> <span className="text-xs text-muted-foreground">UK</span></li>
-              <li><a href="tel:+13252024074" className="text-foreground/80 hover:text-primary">+1 325 202 4074</a> <span className="text-xs text-muted-foreground">US</span></li>
-              <li><a href="tel:+923325394285" className="text-foreground/80 hover:text-primary">+92 332 5394285</a> <span className="text-xs text-muted-foreground">PK</span></li>
+              <li><a href="mailto:sales@clickmastersblockchaintechnologies.com" className="break-all text-foreground/80 hover:text-primary">sales@clickmastersblockchaintechnologies.com</a></li>
             </ul>
           </div>
         </div>
         <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t border-border pt-6 text-xs text-muted-foreground md:flex-row md:items-center">
-          <p>© {new Date().getFullYear()} ClickMasters Blockchain &amp; Web3 Development Company. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} ClickMasters. All rights reserved.</p>
           <p className="font-mono uppercase tracking-widest">Beyond the code — beyond the chain</p>
         </div>
       </div>

@@ -912,7 +912,7 @@ const resources = [
     "faqs": [
       {
         "question": "Which conference is best for meeting blockchain development partners?",
-        "answer": "ETHDenver for technical evaluation — you can assess developers in workshops and hackathons. Consensus for introductions and business discussions. Hyperledger Global Forum for enterprise blockchain partners specifically. None are substitutes for the evaluation process in our [How to Choose a Blockchain Development Company guide](/how-to-choose-blockchain-development-company/)."
+        "answer": "ETHDenver for technical evaluation — you can assess developers in workshops and hackathons. Consensus for introductions and business discussions. Hyperledger Global Forum for enterprise blockchain partners specifically. None are substitutes for the evaluation process in our How to Choose a Blockchain Development Company guide."
       }
     ],
     "cta": {

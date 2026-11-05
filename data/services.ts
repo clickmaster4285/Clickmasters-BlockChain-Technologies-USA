@@ -6028,9 +6028,9 @@ const rawServices: RawService[] = [
     }
   },
   {
-    "title": "Blockchain Content Library — 1,331 Pages of SEO Content Delivered",
+    "title": "Blockchain Content Library",
     "slug": "resources/blockchain-content-library",
-    "url": "/resources/blockchain-content-library/",
+    "url": "/service/resources/blockchain-content-library/",
     "schema": ["Article", "BreadcrumbList"],
     "internalLinks": [
       "/blockchain-development-services/",
@@ -6041,7 +6041,7 @@ const rawServices: RawService[] = [
       {
         "type": "text",
         "heading": "Content Coverage Summary",
-        "content": "The Clickmasters blockchain content library represents the most comprehensive collection of actionable blockchain development resources available from any US blockchain development firm — 1,331 pages covering every aspect of blockchain development, from technical implementation to enterprise strategy, compliance, and industry-specific applications.\n\n**Service Pages:** Smart contract development, DeFi protocols, NFT systems, crypto wallets, exchanges, enterprise blockchain, blockchain consulting — every service Clickmasters offers with detailed technical context.\n\n**Industry Applications:** Healthcare, finance, supply chain, real estate, energy, automotive, aerospace, agriculture, retail, media, gaming, government, legal, manufacturing, and 50+ additional industry verticals — each with specific blockchain use cases, implementation patterns, and FAQ addressing the most common questions in that sector.\n\n**Technical Deep Dives:** Solidity patterns, security vulnerabilities, DeFi mechanism design, tokenomics stress testing, ZK proofs, cross-chain interoperability, Layer 2 development, and more — content that demonstrates Clickmasters' technical depth across the full blockchain stack.\n\n**Regulatory and Compliance:** US regulatory framework (FinCEN, SEC, CFTC), EU MiCA, state-by-state considerations, HIPAA/HITECH for healthcare, ITAR/DFARS for defense — the compliance context that enterprise buyers need.\n\n**Tools and Resources:** ROI calculators, deployment checklists, audit preparation guides, developer learning resources, glossaries — practical tools that create bookmarkable reference value."
+        "content": "Browse practical blockchain development resources covering services, industry applications, technical implementation, regulatory considerations, and planning tools.\n\n**Service Pages:** Smart contract development, DeFi protocols, NFT systems, crypto wallets, exchanges, enterprise blockchain, and blockchain consulting.\n\n**Industry Applications:** Explore blockchain use cases and implementation considerations across finance, healthcare, supply chain, real estate, energy, retail, media, gaming, government, and manufacturing.\n\n**Technical Guides:** Learn about Solidity patterns, security considerations, DeFi design, tokenomics, zero-knowledge proofs, cross-chain interoperability, and Layer 2 development.\n\n**Regulatory and Compliance:** Review topics such as US regulatory frameworks, EU MiCA, healthcare privacy, and defense-sector requirements.\n\n**Tools and Resources:** Use planning guides, ROI calculators, deployment checklists, audit preparation material, developer resources, and glossaries."
       }
     ],
     "cta": {
@@ -6667,7 +6667,7 @@ const rawServices: RawService[] = [
       {
         "type": "text",
         "heading": "AML Program (Month 1–2)",
-        "content": "Written AML policy, compliance officer designation, KYC procedures, transaction monitoring, SAR filing capability. We can provide a template AML program framework ($5,000–$10,000) that your compliance officer adapts and owns."
+        "content": "Written AML policy, appointing a compliance officer, KYC procedures, transaction monitoring, and SAR filing capability. We can provide a template AML program framework ($5,000–$10,000) that your compliance officer adapts and owns."
       },
       {
         "type": "text",
@@ -8835,6 +8835,7 @@ const truncate = (value: string, maxLength = 180) => {
 
 const plainText = (value = "") =>
   value
+    .replace(/example\.com/gi, "fabric.test")
     .replace(/\*\*/g, "")
     .replace(/`/g, "")
     .replace(/\s+/g, " ")

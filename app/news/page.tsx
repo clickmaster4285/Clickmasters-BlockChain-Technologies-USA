@@ -13,7 +13,7 @@ import BackToTop from "@/components/ui/BackToTop";
 import NewsCard from "@/components/news/NewsCard";
 import { createMetadata } from "@/config/metadata";
 import { getNewsCards } from "@/lib/news";
-import { getPageHref } from "@/lib/pagination";
+import { getPageHref, withPageContext } from "@/lib/pagination";
 
 const PER_PAGE = 18;
 
@@ -30,12 +30,21 @@ export async function generateMetadata({
   searchParams,
 }: NewsPageProps) {
   const resolvedSearchParams = await searchParams;
-  const currentPage = getRequestedPage(resolvedSearchParams?.page);
+  const allNews = getNewsCards();
+  const totalPages = Math.max(Math.ceil(allNews.length / PER_PAGE), 1);
+  const currentPage = Math.min(
+    getRequestedPage(resolvedSearchParams?.page),
+    totalPages,
+  );
+  const metadata = withPageContext(
+    "Blockchain News",
+    "Follow blockchain updates, Web3 infrastructure, enterprise adoption, crypto regulation, and market-moving technical developments.",
+    currentPage,
+    totalPages,
+  );
 
   return createMetadata({
-    title: "Blockchain News",
-    description:
-      "Follow the latest blockchain updates, Web3 infrastructure news, enterprise adoption, crypto regulation, and market-moving technical developments.",
+    ...metadata,
     path: getPageHref("/news", currentPage),
   });
 }
@@ -77,6 +86,8 @@ export default async function NewsPage({
 
                 <h1 className="mt-6 max-w-3xl font-display text-4xl font-black leading-tight tracking-tight text-text-primary md:text-6xl">
                   Latest Blockchain, Web3 & Crypto News
+                  {safeCurrentPage > 1 &&
+                    ` — Page ${safeCurrentPage} of ${totalPages}`}
                 </h1>
 
                 <p className="mt-5 max-w-2xl text-lg leading-8 text-silver">
@@ -129,10 +140,11 @@ export default async function NewsPage({
 
     <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem]">
       <Image
-        src="/media/news-hero.png"
+        src="/media/news-hero.webp"
         alt="Blockchain news visual"
         fill
         priority
+        sizes="(max-width: 1024px) 100vw, 45vw"
         className="animate-float object-contain object-center drop-shadow-[0_30px_80px_rgba(0,0,0,0.45)] transition-transform duration-[3500ms] ease-out hover:scale-105"
       />
     </div>

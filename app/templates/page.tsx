@@ -16,7 +16,12 @@ import { Footer } from "@/components/landing/Footer";
 import BackToTop from "@/components/ui/BackToTop";
 import TemplateCard from "@/components/templates/TemplateCard";
 import { createMetadata } from "@/config/metadata";
-import { getPageHref } from "@/lib/pagination";
+import {
+  getPageHref,
+  resolveListingCategory,
+  slugifyCategory,
+  withPageContext,
+} from "@/lib/pagination";
 
 import {
   getFeaturedTemplates,
@@ -57,19 +62,62 @@ function getRequestedPage(page?: string) {
   return Number.isFinite(parsedPage) && parsedPage > 0 ? parsedPage : 1;
 }
 
+function getCategoryDescription(category: string) {
+  if (category.toLowerCase() === "all") {
+    return "Use practical templates for blockchain planning, project documentation, technical architecture, security, tokenomics, proposals, and enterprise delivery.";
+  }
+  if (category.toLowerCase() === "faq") {
+    return "Browse blockchain FAQ templates for clear, consistent answers about project planning, security, compliance, and delivery.";
+  }
+  return `Explore ${category.toLowerCase()} templates for blockchain teams, with structures for planning, documentation, and implementation.`;
+}
+
 export async function generateMetadata({
   searchParams,
 }: TemplatesPageProps) {
   const resolvedSearchParams = await searchParams;
-  const currentPage = getRequestedPage(resolvedSearchParams?.page);
+  const categories = getTemplateCategories();
+  const selectedCategory = resolveListingCategory(
+    categories,
+    resolvedSearchParams?.category,
+  );
+  const searchQuery = resolvedSearchParams?.search?.trim() || "";
+  const normalizedSearch = searchQuery.toLowerCase();
+  const filteredCount = getTemplateCards().filter((item: any) => {
+    const matchesCategory =
+      selectedCategory.toLowerCase() === "all" ||
+      item.category?.toLowerCase() === selectedCategory.toLowerCase();
+    const matchesSearch =
+      !normalizedSearch ||
+      item.title?.toLowerCase().includes(normalizedSearch) ||
+      item.excerpt?.toLowerCase().includes(normalizedSearch) ||
+      item.category?.toLowerCase().includes(normalizedSearch) ||
+      item.format?.toLowerCase().includes(normalizedSearch) ||
+      item.tags?.some((tag: any) =>
+        String(tag).toLowerCase().includes(normalizedSearch)
+      );
+
+    return matchesCategory && matchesSearch;
+  }).length;
+  const totalPages = Math.max(Math.ceil(filteredCount / PER_PAGE), 1);
+  const currentPage = Math.min(
+    getRequestedPage(resolvedSearchParams?.page),
+    totalPages,
+  );
+  const metadata = withPageContext(
+    selectedCategory.toLowerCase() === "all"
+      ? "Blockchain Templates"
+      : `Blockchain ${selectedCategory} Templates`,
+    getCategoryDescription(selectedCategory),
+    currentPage,
+    totalPages,
+  );
 
   return createMetadata({
-    title: "Blockchain Templates",
-    description:
-      "Use practical templates for blockchain planning, project documentation, technical architecture, security, tokenomics, proposals, and enterprise delivery.",
+    ...metadata,
     path: getPageHref("/templates", currentPage, {
-      category: resolvedSearchParams?.category,
-      search: resolvedSearchParams?.search,
+      category: selectedCategory,
+      search: searchQuery,
     }),
   });
 }
@@ -84,22 +132,16 @@ export default async function TemplatesPage({
     1
   );
 
-  const requestedCategory =
-    resolvedSearchParams?.category?.trim() || "All";
-
   const searchQuery =
     resolvedSearchParams?.search?.trim() || "";
 
   const allTemplates = getTemplateCards();
   const categories = getTemplateCategories();
-  const selectedCategory =
-    categories.find(
-      (category: string) =>
-        category.toLowerCase() === requestedCategory.toLowerCase()
-    ) ||
-    (requestedCategory.toLowerCase() === "all"
-      ? "All"
-      : requestedCategory);
+  const selectedCategory = resolveListingCategory(
+    categories,
+    resolvedSearchParams?.category,
+  );
+  const categoryDescription = getCategoryDescription(selectedCategory);
   const featuredTemplates = getFeaturedTemplates(3);
 
   const normalizedSearch = searchQuery.toLowerCase();
@@ -194,17 +236,33 @@ export default async function TemplatesPage({
                 </div>
 
                 <h1 className="mt-7 max-w-4xl font-display text-4xl font-black leading-[1.04] tracking-tight text-text-primary sm:text-5xl md:text-6xl lg:text-7xl">
-                  Plan faster with{" "}
-                  <span className="relative inline-block text-amber-base">
-                    professional templates
-                    <span className="absolute -bottom-2 left-0 h-[3px] w-full origin-left animate-tools-line rounded-full bg-gradient-to-r from-amber-base to-transparent" />
-                  </span>
+                  {selectedCategory.toLowerCase() === "all" ? (
+                    <>
+                      Plan faster with{" "}
+                      <span className="relative inline-block text-amber-base">
+                        professional templates
+                        <span className="absolute -bottom-2 left-0 h-[3px] w-full origin-left animate-tools-line rounded-full bg-gradient-to-r from-amber-base to-transparent" />
+                      </span>
+                    </>
+                  ) : (
+                    <>
+                      {selectedCategory.toLowerCase() === "faq"
+                        ? "Blockchain "
+                        : ""}
+                      <span className="relative inline-block text-amber-base">
+                        {selectedCategory.toLowerCase() === "faq"
+                          ? "FAQ templates"
+                          : `${selectedCategory} templates`}
+                        <span className="absolute -bottom-2 left-0 h-[3px] w-full origin-left animate-tools-line rounded-full bg-gradient-to-r from-amber-base to-transparent" />
+                      </span>
+                    </>
+                  )}
+                  {safeCurrentPage > 1 &&
+                    ` — Page ${safeCurrentPage} of ${totalPages}`}
                 </h1>
 
                 <p className="mt-7 max-w-2xl text-base leading-8 text-text-secondary md:text-lg">
-                  Use practical templates for blockchain planning, project
-                  documentation, technical architecture, security, tokenomics,
-                  proposals, and enterprise delivery.
+                  {categoryDescription}
                 </p>
 
                 <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
@@ -368,6 +426,38 @@ export default async function TemplatesPage({
             </div>
           </section>
 
+          {selectedCategory.toLowerCase() !== "all" && (
+            <section className="mt-8 rounded-3xl border border-border-default bg-bg-surface/80 p-6 md:p-8">
+              <h2 className="text-xl font-bold text-text-primary">
+                Working with {selectedCategory.toLowerCase()} templates
+              </h2>
+              <div className="mt-3 grid gap-4 text-sm leading-7 text-text-secondary md:grid-cols-2">
+                <p>
+                  Use a template to organize a first draft, expose missing
+                  decisions, and make reviews easier to follow. Before adapting
+                  one, identify who will read or approve it, what decision it
+                  must support, and which details are specific to your project.
+                  Replace example values, remove sections that do not apply,
+                  and confirm that requirements and responsibilities are
+                  current.
+                </p>
+                <p>
+                  Templates are starting structures rather than legal,
+                  financial, or security advice. Validate technical statements
+                  against current protocol documentation and have qualified
+                  reviewers check regulated, contractual, or security-sensitive
+                  material. A useful final document should make assumptions,
+                  owners, open questions, and next actions explicit.
+                </p>
+                <p>
+                  For FAQ material, answer the question directly, define
+                  technical terms, and distinguish confirmed facts from
+                  estimates or choices that depend on the project.
+                </p>
+              </div>
+            </section>
+          )}
+
           
           {/* Library */}
           <section
@@ -404,7 +494,7 @@ export default async function TemplatesPage({
                     <input
                       type="hidden"
                       name="category"
-                      value={selectedCategory}
+                      value={slugifyCategory(selectedCategory)}
                     />
                   )}
 

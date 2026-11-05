@@ -192,7 +192,7 @@ Assets were **already in `public/media/`** (not `app/assets/`). The `.asset.json
 | `intro.mp4.asset.json` | `intro.mp4` | `/media/intro.mp4` |
 | `cta.mp4.asset.json` | `cta.mp4` | `/media/cta.mp4` |
 | `services-bg.jpg.asset.json` | `services-bg.jpeg` | `/media/services-bg.jpeg` |
-| `portfolio-bg.jpg.asset.json` | `portfolio-bg.jpeg` | `/media/portfolio-bg.jpeg` |
+| `portfolio-bg.jpg.asset.json` | `portfolio-bg.webp` | `/media/portfolio-bg.webp` |
 | `testimonials-bg.jpg.asset.json` | `testimonials-bg.jpg` | `/media/testimonials-bg.jpg` |
 
 **Note:** Some `.jpg` sidecars referenced `.jpeg` actual files — always verify the actual filename extension on disk.
