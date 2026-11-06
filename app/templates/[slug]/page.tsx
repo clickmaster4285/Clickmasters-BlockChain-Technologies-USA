@@ -39,8 +39,8 @@ type TemplatePageProps = {
 
 export async function generateStaticParams() {
   return getAllTemplates()
-    .filter((item: any) => Boolean(item?.slug))
-    .map((item: any) => ({
+    .filter((item) => Boolean(item?.slug))
+    .map((item) => ({
       slug: item.slug,
     }));
 }

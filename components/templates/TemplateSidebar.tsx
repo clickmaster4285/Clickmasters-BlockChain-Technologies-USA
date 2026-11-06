@@ -7,14 +7,15 @@ import {
   Sparkles,
   Tags,
 } from "lucide-react";
+import type { ContentTag, TemplateItem } from "@/lib/content-types";
 
 export default function TemplateSidebar({
   item,
   related,
   readTime,
 }: {
-  item: any;
-  related: any[];
+  item: TemplateItem;
+  related: TemplateItem[];
   readTime: string;
 }) {
   const category =
@@ -25,7 +26,7 @@ export default function TemplateSidebar({
   const sections =
     item?.sectionsCount ||
     item?.sections?.length ||
-    item?.content?.filter((block: any) => block?.type === "heading").length ||
+    item?.content?.filter((block) => block?.type === "heading").length ||
     0;
 
   const tags = item?.tags || item?.credibility || item?.keywords || [];
@@ -134,7 +135,7 @@ export default function TemplateSidebar({
             </p>
 
             <div className="mt-4 flex flex-wrap gap-2">
-              {tags.slice(0, 10).map((tag: any, index: number) => {
+              {tags.slice(0, 10).map((tag: ContentTag, index: number) => {
                 const text =
                   typeof tag === "string"
                     ? tag
@@ -178,7 +179,7 @@ export default function TemplateSidebar({
 
           {related.length > 0 ? (
             <div className="mt-5 space-y-3">
-              {related.map((template: any) => (
+              {related.map((template: TemplateItem) => (
                 <Link
                   key={template.slug}
                   href={`/templates/${template.slug}`}

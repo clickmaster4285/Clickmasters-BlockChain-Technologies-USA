@@ -1,4 +1,5 @@
 import { comparisons } from "@/data/comparisons";
+import type { ComparisonItem, ContentBlock, ContentCta } from "@/lib/content-types";
 
 export function cleanComparisonTitle(title: string) {
   return title?.replace(/^H1:\s*/i, "")?.trim() || "Comparison Guide";
@@ -27,22 +28,24 @@ export function cleanComparisonContent(content: string) {
 }
 
 export function getAllComparisonArticles() {
-  return (comparisons || []).filter(
-    (item: any) => item.slug !== "cex-vs-dex-exchange",
+  return ((comparisons || []) as ComparisonItem[]).filter(
+    (item) => item.slug !== "cex-vs-dex-exchange",
   );
 }
 
 export function getComparisonArticleBySlug(slug: string) {
-  return getAllComparisonArticles().find((item: any) => item.slug === slug);
+  return getAllComparisonArticles().find((item) => item.slug === slug);
 }
 
 export function getRelatedComparisons(slug: string, limit = 4) {
   return getAllComparisonArticles()
-    .filter((item: any) => item.slug !== slug)
+    .filter((item) => item.slug !== slug)
     .slice(0, limit);
 }
 
-function extractTextFromContent(content: any): string {
+type ComparisonContent = string | Array<string | ContentBlock> | null | undefined;
+
+function extractTextFromContent(content: ComparisonContent): string {
   if (!content) return "";
   if (typeof content === "string") return content;
   if (Array.isArray(content)) {
@@ -50,7 +53,7 @@ function extractTextFromContent(content: any): string {
       .map((block) => {
         if (typeof block === "string") return block;
         if (block.type === "table") {
-          const textRows = block.rows?.flatMap((row: any[]) => row) || [];
+          const textRows = block.rows?.flatMap((row: string[]) => row) || [];
           return textRows.join(" ");
         }
         if (block.type === "list") {
@@ -63,14 +66,14 @@ function extractTextFromContent(content: any): string {
   return String(content);
 }
 
-export function estimateReadTime(content: any) {
+export function estimateReadTime(content: ComparisonContent) {
   const text = extractTextFromContent(content);
   const words = text.split(/\s+/).filter(Boolean).length;
   return Math.max(3, Math.ceil(words / 220));
 }
 
-export function getComparisonCta(article: any) {
-  const cta = article?.cta || {};
+export function getComparisonCta(article: ComparisonItem) {
+  const cta: ContentCta = article?.cta || {};
 
   return {
     text: cta.primaryText || cta.title || "Book a Free Strategy Call",

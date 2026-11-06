@@ -22,9 +22,12 @@ export interface ContentListObject {
 
 export type ContentListEntry = string | ContentListObject;
 
-/** Fields any block may carry; specific block types narrow some of them. */
-interface ContentBlockBase {
-  type: string;
+/**
+ * Fields any block may carry; specific block types narrow some of them.
+ * Declared as type aliases (not interfaces) so blocks stay assignable to
+ * `Record<string, unknown>` for generic helpers.
+ */
+type ContentBlockFields = {
   text?: string;
   title?: string;
   subtitle?: string;
@@ -37,59 +40,51 @@ interface ContentBlockBase {
   rows?: string[][];
   code?: string;
   language?: string;
-}
+};
 
-export interface TextBlock extends ContentBlockBase {
-  type:
-    | "featuredAnswer"
-    | "definition"
-    | "heading"
-    | "subheading"
-    | "paragraph"
-    | "quote"
-    | "note"
-    | "info"
-    | "example"
-    | "result"
-    | "summary"
-    | "code";
-  text: string;
-}
+/** A block of kind `Type` whose `Narrowed` fields replace the generic ones. */
+type BlockOf<Type extends string, Narrowed extends object = object> = Omit<
+  ContentBlockFields,
+  keyof Narrowed
+> & { type: Type } & Narrowed;
 
-export interface CodeBlock extends ContentBlockBase {
-  type: "codeBlock";
-  code: string;
-  language?: string;
-}
+export type TextBlock = BlockOf<
+  | "featuredAnswer"
+  | "definition"
+  | "heading"
+  | "subheading"
+  | "paragraph"
+  | "quote"
+  | "note"
+  | "info"
+  | "example"
+  | "result"
+  | "summary"
+  | "code",
+  { text: string }
+>;
 
-export interface ListBlock extends ContentBlockBase {
-  type: "list";
-  items: string[];
-}
+export type CodeBlock = BlockOf<"codeBlock", { code: string }>;
 
-export interface StepsBlock extends ContentBlockBase {
-  type: "steps";
-  items: ContentListObject[];
-}
+export type ListBlock = BlockOf<"list", { items: string[] }>;
 
-export interface TableBlock extends ContentBlockBase {
-  type: "table";
-  columns: string[];
-  rows: string[][];
-}
+export type StepsBlock = BlockOf<"steps", { items: ContentListObject[] }>;
+
+export type TableBlock = BlockOf<
+  "table",
+  { columns: string[]; rows: string[][] }
+>;
 
 /** Table variant used by `data/resources.js` (`headers` instead of `columns`). */
-export interface HeaderTableBlock extends ContentBlockBase {
-  type: "table";
-  headers: string[];
-  rows: string[][];
-}
+export type HeaderTableBlock = BlockOf<
+  "table",
+  { headers: string[]; rows: string[][] }
+>;
 
-export interface RankedItemBlock extends ContentBlockBase {
-  type: "rankedItem";
-  title: string;
-  points: string[];
-}
+export type RankedItemBlock = BlockOf<
+  "rankedItem",
+  { title: string; points: string[] }
+>;
 
 /** A content block, discriminated by `type`. */
 export type ContentBlock =
@@ -186,7 +181,16 @@ export interface ContentItem<Block = ContentBlock> {
 export type NewsItem = ContentItem;
 export type HowToItem = ContentItem;
 export type ListicleItem = ContentItem;
-export type ComparisonItem = ContentItem;
+
+export interface ComparisonItem extends ContentItem {
+  meta?: ContentMeta & { wordCount?: number | string };
+  /**
+   * Not present in the current data. Typed as required because
+   * ComparisonSidebar guards it with `article.tags?.length > 0`, which only
+   * type-checks when `tags` is non-optional.
+   */
+  tags: string[];
+}
 
 export interface GlossaryItem extends ContentItem {
   term?: string;

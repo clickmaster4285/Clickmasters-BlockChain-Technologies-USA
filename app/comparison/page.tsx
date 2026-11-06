@@ -19,7 +19,7 @@ import { getPageHref, withPageContext } from "@/lib/pagination";
 
 const ITEMS_PER_PAGE = 24;
 
-const comparisonCards = getAllComparisonArticles().map((item: any) => ({
+const comparisonCards = getAllComparisonArticles().map((item) => ({
   title: item.title,
   slug: item.slug,
   excerpt: item.excerpt || item.description || "",
@@ -218,7 +218,7 @@ export default async function ComparisonPage({
             </div>
 
             <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-              {paginatedCards.map((item: any, index: number) => (
+              {paginatedCards.map((item, index: number) => (
                 <Link
                   key={`${item.slug}-${index}`}
                   href={`/comparison/${item.slug}`}

@@ -83,7 +83,7 @@ export async function generateMetadata({
   );
   const searchQuery = resolvedSearchParams?.search?.trim() || "";
   const normalizedSearch = searchQuery.toLowerCase();
-  const filteredCount = getTemplateCards().filter((item: any) => {
+  const filteredCount = getTemplateCards().filter((item) => {
     const matchesCategory =
       selectedCategory.toLowerCase() === "all" ||
       item.category?.toLowerCase() === selectedCategory.toLowerCase();
@@ -93,7 +93,7 @@ export async function generateMetadata({
       item.excerpt?.toLowerCase().includes(normalizedSearch) ||
       item.category?.toLowerCase().includes(normalizedSearch) ||
       item.format?.toLowerCase().includes(normalizedSearch) ||
-      item.tags?.some((tag: any) =>
+      item.tags?.some((tag) =>
         String(tag).toLowerCase().includes(normalizedSearch)
       );
 
@@ -146,7 +146,7 @@ export default async function TemplatesPage({
 
   const normalizedSearch = searchQuery.toLowerCase();
 
-  const filteredTemplates = allTemplates.filter((item: any) => {
+  const filteredTemplates = allTemplates.filter((item) => {
     const matchesCategory =
       selectedCategory.toLowerCase() === "all" ||
       item.category?.toLowerCase() ===
@@ -158,7 +158,7 @@ export default async function TemplatesPage({
       item.excerpt?.toLowerCase().includes(normalizedSearch) ||
       item.category?.toLowerCase().includes(normalizedSearch) ||
       item.format?.toLowerCase().includes(normalizedSearch) ||
-      item.tags?.some((tag: any) =>
+      item.tags?.some((tag) =>
         String(tag).toLowerCase().includes(normalizedSearch)
       );
 
@@ -584,7 +584,7 @@ export default async function TemplatesPage({
             {visibleTemplates.length > 0 ? (
               <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
                 {visibleTemplates.map(
-                  (item: any, index: number) => (
+                  (item, index: number) => (
                     <TemplateCard
                       key={item.slug}
                       item={item}

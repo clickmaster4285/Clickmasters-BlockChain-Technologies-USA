@@ -10,14 +10,16 @@ import {
   Wrench,
   Zap,
 } from "lucide-react";
+import type { ContentTag } from "@/lib/content-types";
+import type { ToolCardData, ToolData } from "@/lib/tools";
 
 export default function ToolSidebar({
   item,
   related,
   readTime,
 }: {
-  item: any;
-  related: any[];
+  item: ToolData;
+  related: Array<ToolCardData & Pick<ToolData, "hero">>;
   readTime: string;
 }) {
   const category =
@@ -152,7 +154,7 @@ export default function ToolSidebar({
             </p>
 
             <div className="mt-4 flex flex-wrap gap-2">
-              {tags.slice(0, 10).map((tag: any, index: number) => {
+              {tags.slice(0, 10).map((tag: ContentTag, index: number) => {
                 const text =
                   typeof tag === "string"
                     ? tag
@@ -198,7 +200,7 @@ export default function ToolSidebar({
 
           {related.length > 0 ? (
             <div className="mt-5 space-y-3">
-              {related.map((tool: any) => (
+              {related.map((tool: ToolCardData & Pick<ToolData, "hero">) => (
                 <Link
                   key={tool.slug}
                   href={`/tools/${tool.slug}`}

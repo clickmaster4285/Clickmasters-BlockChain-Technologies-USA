@@ -1,8 +1,9 @@
 import * as templatesData from "@/data/templates";
+import type { ContentListEntry, TemplateItem } from "@/lib/content-types";
 
 function resolveTemplatesData() {
-  const source = templatesData as Record<string, any>;
-  const defaultSource = source.default as Record<string, any> | undefined;
+  const source = templatesData as Record<string, unknown>;
+  const defaultSource = source.default as Record<string, unknown> | undefined;
 
   return (
     source.templates ||
@@ -18,14 +19,14 @@ function resolveTemplatesData() {
   );
 }
 
-export function getAllTemplates() {
+export function getAllTemplates(): TemplateItem[] {
   const items = resolveTemplatesData();
 
   return Array.isArray(items) ? items : [];
 }
 
 export function getTemplateBySlug(slug: string) {
-  return getAllTemplates().find((item: any) => item?.slug === slug);
+  return getAllTemplates().find((item) => item?.slug === slug);
 }
 
 export function getRelatedTemplates(slug: string, limit = 4) {
@@ -36,7 +37,7 @@ export function getRelatedTemplates(slug: string, limit = 4) {
   const currentCategory = current.category || current.type || current.group;
 
   const sameCategory = getAllTemplates().filter(
-    (item: any) =>
+    (item) =>
       item?.slug !== slug &&
       currentCategory &&
       (item.category === currentCategory ||
@@ -45,26 +46,26 @@ export function getRelatedTemplates(slug: string, limit = 4) {
   );
 
   const remaining = getAllTemplates().filter(
-    (item: any) =>
+    (item) =>
       item?.slug !== slug &&
-      !sameCategory.some((related: any) => related.slug === item.slug),
+      !sameCategory.some((related) => related.slug === item.slug),
   );
 
   return [...sameCategory, ...remaining].slice(0, limit);
 }
 
-export function estimateTemplateReadTime(item: any) {
+export function estimateTemplateReadTime(item: TemplateItem) {
   if (item?.readTime) return item.readTime;
 
   const content =
     item?.content
-      ?.map((block: any) => {
+      ?.map((block) => {
         if (block?.text) return block.text;
         if (block?.description) return block.description;
 
         if (Array.isArray(block?.items)) {
           return block.items
-            .map((entry: any) =>
+            .map((entry: ContentListEntry) =>
               typeof entry === "string"
                 ? entry
                 : `${entry?.title || ""} ${
@@ -97,7 +98,7 @@ export function estimateTemplateReadTime(item: any) {
   return `${Math.max(2, Math.ceil(words / 220))} min read`;
 }
 
-export function getTemplateCTA(item: any) {
+export function getTemplateCTA(item: TemplateItem) {
   return {
     title: item?.cta?.title || "Need a custom version of this template?",
 
@@ -117,8 +118,8 @@ export function getTemplateCTA(item: any) {
 
 export function getTemplateCards() {
   return getAllTemplates()
-    .filter((item: any) => item && (item.slug || item.title))
-    .map((item: any, index: number) => {
+    .filter((item) => item && (item.slug || item.title))
+    .map((item, index: number) => {
       const sectionContent =
         item.sections?.[0]?.content || item.sections?.[0]?.heading || "";
 
@@ -159,7 +160,7 @@ export function getTemplateCards() {
         sections:
           item.sectionsCount ||
           item.sections?.length ||
-          item.content?.filter((block: any) => block?.type === "heading")
+          item.content?.filter((block) => block?.type === "heading")
             .length ||
           0,
 
@@ -180,12 +181,12 @@ export function searchTemplates(query: string) {
   }
 
   return getTemplateCards().filter(
-    (item: any) =>
+    (item) =>
       item.title?.toLowerCase().includes(normalized) ||
       item.excerpt?.toLowerCase().includes(normalized) ||
       item.category?.toLowerCase().includes(normalized) ||
       item.format?.toLowerCase().includes(normalized) ||
-      item.tags?.some((tag: any) =>
+      item.tags?.some((tag) =>
         String(tag).toLowerCase().includes(normalized),
       ),
   );
@@ -195,7 +196,7 @@ export function getTemplateCategories() {
   return Array.from(
     new Set(
       getTemplateCards()
-        .map((item: any) => item.category)
+        .map((item) => item.category)
         .filter(Boolean),
     ),
   ).sort();
@@ -204,16 +205,18 @@ export function getTemplateCategories() {
 export function getFeaturedTemplates(limit = 3) {
   const cards = getTemplateCards();
 
-  const featured = cards.filter((item: any) => item.featured);
+  const featured = cards.filter((item) => item.featured);
 
   if (featured.length >= limit) {
     return featured.slice(0, limit);
   }
 
   const remaining = cards.filter(
-    (item: any) =>
-      !featured.some((featuredItem: any) => featuredItem.slug === item.slug),
+    (item) =>
+      !featured.some((featuredItem) => featuredItem.slug === item.slug),
   );
 
   return [...featured, ...remaining].slice(0, limit);
 }
+
+export type TemplateCardData = ReturnType<typeof getTemplateCards>[number];

@@ -9,13 +9,15 @@ import {
   Wrench,
 } from "lucide-react";
 import ToolCTA from "./ToolCTA";
+import type { ContentBlock, ContentListEntry, ResolvedCta } from "@/lib/content-types";
+import type { ToolData } from "@/lib/tools";
 
 export default function ToolContent({
   item,
   cta,
 }: {
-  item: any;
-  cta: any;
+  item: ToolData;
+  cta: ResolvedCta;
 }) {
   const blocks = item?.content || [];
 
@@ -81,7 +83,7 @@ export default function ToolContent({
             </div>
           )}
 
-          {blocks.map((block: any, index: number) => {
+          {blocks.map((block: ContentBlock, index: number) => {
             switch (block.type) {
               case "featuredAnswer":
               case "result":
@@ -192,7 +194,7 @@ export default function ToolContent({
 
       <div className="grid gap-4">
         {(block.items || []).map(
-          (listItem: any, itemIndex: number) => {
+          (listItem: ContentListEntry, itemIndex: number) => {
             const itemTitle =
               typeof listItem === "string"
                 ? null
@@ -278,7 +280,7 @@ export default function ToolContent({
 
           <tbody>
             {(block.rows || []).map(
-              (row: any[], rowIndex: number) => (
+              (row: string[], rowIndex: number) => (
                 <tr
                   key={rowIndex}
                   className={`group transition-all duration-300 hover:bg-[#172033] ${
@@ -287,7 +289,7 @@ export default function ToolContent({
                       : "bg-[#131c2c]"
                   }`}
                 >
-                  {row.map((cell: any, cellIndex: number) => (
+                  {row.map((cell: string, cellIndex: number) => (
                     <td
                       key={cellIndex}
                       className={`border-b border-[#273449] px-5 py-4 align-top text-sm leading-7 transition-colors duration-300 ${
@@ -309,7 +311,7 @@ export default function ToolContent({
       {/* Mobile card layout */}
       <div className="grid gap-4 md:hidden">
         {(block.rows || []).map(
-          (row: any[], rowIndex: number) => (
+          (row: string[], rowIndex: number) => (
             <article
               key={rowIndex}
               className="group relative overflow-hidden rounded-[1.4rem] border border-[#273449] bg-[#101827] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-amber-base/40 hover:shadow-[0_18px_50px_rgba(0,0,0,0.35)]"
@@ -317,7 +319,7 @@ export default function ToolContent({
               <div className="pointer-events-none absolute -right-14 -top-14 h-32 w-32 rounded-full bg-amber-base/0 blur-3xl transition-all duration-500 group-hover:bg-amber-base/10" />
 
               <div className="relative space-y-4">
-                {row.map((cell: any, cellIndex: number) => {
+                {row.map((cell: string, cellIndex: number) => {
                   const label =
                     block.columns?.[cellIndex] ||
                     `Field ${cellIndex + 1}`;

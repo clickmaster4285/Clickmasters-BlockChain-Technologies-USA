@@ -2,13 +2,14 @@
 
 import { useState } from "react";
 import { ChevronDown, HelpCircle } from "lucide-react";
+import type { ToolData } from "@/lib/tools";
 
 type FAQItem = {
   question: string;
   answer: string;
 };
 
-export default function ToolFAQ({ item }: { item: any }) {
+export default function ToolFAQ({ item }: { item: ToolData }) {
   const faqs: FAQItem[] = item?.faqs || item?.faq || [];
   const [activeIndex, setActiveIndex] = useState<number | null>(
     faqs.length ? 0 : null

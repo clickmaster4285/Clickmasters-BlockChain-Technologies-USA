@@ -7,12 +7,13 @@ import {
   Wrench,
   Zap,
 } from "lucide-react";
+import type { ToolCardData } from "@/lib/tools";
 
 export default function ToolCard({
   item,
   index,
 }: {
-  item: any;
+  item: ToolCardData;
   index: number;
 }) {
   return (

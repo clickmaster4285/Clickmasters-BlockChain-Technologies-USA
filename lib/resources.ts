@@ -1,6 +1,7 @@
 import { resources } from "@/data/resources";
+import type { ContentListEntry, ResourceItem } from "@/lib/content-types";
 
-type ResourceSource = Record<string, any>;
+type ResourceSource = ResourceItem;
 
 function normalizeResourceImage(image?: string) {
   if (!image || image.startsWith("/assets/")) {
@@ -18,18 +19,18 @@ export function getAllResources() {
 
 export function getResourceBySlug(slug: string) {
   return getAllResources().find(
-    (item: any) => item?.slug === slug
+    (item) => item?.slug === slug
   );
 }
 
-export function estimateResourceReadTime(item: any) {
+export function estimateResourceReadTime(item: ResourceItem) {
   if (item?.readTime) {
     return item.readTime;
   }
 
   const contentText =
     item?.content
-      ?.map((block: any) => {
+      ?.map((block) => {
         if (block?.text) return block.text;
         if (block?.description) {
           return block.description;
@@ -37,7 +38,7 @@ export function estimateResourceReadTime(item: any) {
 
         if (Array.isArray(block?.items)) {
           return block.items
-            .map((entry: any) =>
+            .map((entry: ContentListEntry) =>
               typeof entry === "string"
                 ? entry
                 : [
@@ -90,11 +91,11 @@ export function getResourceCards(
 ) {
   return sourceResources
     .filter(
-      (item: any) =>
+      (item) =>
         item &&
         (item.slug || item.title)
     )
-    .map((item: any, index: number) => ({
+    .map((item, index: number) => ({
       id: item?.id || index + 1,
 
       slug:
@@ -169,7 +170,7 @@ export function getResourceCategories(
   return Array.from(
     new Set(
       getResourceCards(sourceResources)
-        .map((item: any) => item.category)
+        .map((item) => item.category)
         .filter(Boolean)
     )
   ).sort();
@@ -190,13 +191,13 @@ export function getFeaturedResources(
   const cards = getResourceCards(sourceResources);
 
   const featured = cards.filter(
-    (item: any) => item.featured
+    (item) => item.featured
   );
 
   const remaining = cards.filter(
-    (item: any) =>
+    (item) =>
       !featured.some(
-        (featuredItem: any) =>
+        (featuredItem) =>
           featuredItem.slug === item.slug
       )
   );
@@ -211,13 +212,13 @@ export function getPopularResources(limit = 6) {
   const cards = getResourceCards();
 
   const popular = cards.filter(
-    (item: any) => item.popular
+    (item) => item.popular
   );
 
   const remaining = cards.filter(
-    (item: any) =>
+    (item) =>
       !popular.some(
-        (popularItem: any) =>
+        (popularItem) =>
           popularItem.slug === item.slug
       )
   );
@@ -230,7 +231,7 @@ export function getPopularResources(limit = 6) {
 
 export function getLatestResources(limit = 6) {
   return [...getResourceCards()]
-    .sort((a: any, b: any) => {
+    .sort((a, b) => {
       const dateA = a.date
         ? new Date(a.date).getTime()
         : 0;
@@ -258,7 +259,7 @@ export function getRelatedResources(
     current?.group;
 
   const sameCategory = getAllResources().filter(
-    (item: any) =>
+    (item) =>
       item?.slug !== slug &&
       currentCategory &&
       (
@@ -269,10 +270,10 @@ export function getRelatedResources(
   );
 
   const remaining = getAllResources().filter(
-    (item: any) =>
+    (item) =>
       item?.slug !== slug &&
       !sameCategory.some(
-        (related: any) =>
+        (related) =>
           related?.slug === item?.slug
       )
   );
@@ -293,7 +294,7 @@ export function searchResources(query: string) {
   }
 
   return getResourceCards().filter(
-    (item: any) =>
+    (item) =>
       item?.title
         ?.toLowerCase()
         .includes(normalized) ||
@@ -306,7 +307,7 @@ export function searchResources(query: string) {
       item?.format
         ?.toLowerCase()
         .includes(normalized) ||
-      item?.tags?.some((tag: any) =>
+      item?.tags?.some((tag) =>
         String(tag)
           .toLowerCase()
           .includes(normalized)
@@ -314,7 +315,7 @@ export function searchResources(query: string) {
   );
 }
 
-export function getResourceCTA(item: any) {
+export function getResourceCTA(item: ResourceItem) {
   return {
     title:
       item?.cta?.title ||

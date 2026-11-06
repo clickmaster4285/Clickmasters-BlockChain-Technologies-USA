@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { TemplateCardData } from "@/lib/templates";
 
 /*
  * Styling lives in app/styles.css (.tpl-card*, .mask-icon). The card renders
@@ -9,7 +10,7 @@ export default function TemplateCard({
   item,
   index,
 }: {
-  item: any;
+  item: TemplateCardData;
   index: number;
 }) {
   return (

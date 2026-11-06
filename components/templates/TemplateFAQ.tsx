@@ -2,13 +2,14 @@
 
 import { useState } from "react";
 import { ChevronDown, HelpCircle } from "lucide-react";
+import type { TemplateItem } from "@/lib/content-types";
 
 type FAQItem = {
   question: string;
   answer: string;
 };
 
-export default function TemplateFAQ({ item }: { item: any }) {
+export default function TemplateFAQ({ item }: { item: TemplateItem }) {
   const faqs: FAQItem[] = item?.faqs || item?.faq || [];
 
   const [activeIndex, setActiveIndex] = useState<number | null>(

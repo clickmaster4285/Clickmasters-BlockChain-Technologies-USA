@@ -22,7 +22,7 @@ import { faqPageSchema } from "@/lib/structured-data";
 export const dynamicParams = true;
 
 export async function generateStaticParams() {
-  return getAllComparisonArticles().map((item: any) => ({
+  return getAllComparisonArticles().map((item) => ({
     slug: item.slug,
   }));
 }

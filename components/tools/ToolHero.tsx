@@ -10,12 +10,13 @@ import {
   Zap,
 } from "lucide-react";
 import { splitHeading } from "@/lib/seo";
+import type { ToolData } from "@/lib/tools";
 
 export default function ToolHero({
   item,
   readTime,
 }: {
-  item: any;
+  item: ToolData;
   readTime: string;
 }) {
   const title =
