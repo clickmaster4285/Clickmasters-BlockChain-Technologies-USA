@@ -10,12 +10,13 @@ import {
   TrendingUp,
 } from "lucide-react";
 import { splitHeading } from "@/lib/seo";
+import type { NewsItem } from "@/lib/content-types";
 
 export default function NewsHero({
   item,
   readTime,
 }: {
-  item: any;
+  item: NewsItem;
   readTime: string;
 }) {
   const { heading, continuation } = splitHeading(

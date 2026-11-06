@@ -9,12 +9,13 @@ import {
   Sparkles,
 } from "lucide-react";
 import { splitHeading } from "@/lib/seo";
+import type { HowToItem } from "@/lib/content-types";
 
 export default function HowToHero({
   item,
   readTime,
 }: {
-  item: any;
+  item: HowToItem;
   readTime: string;
 }) {
   const contextSuffix =

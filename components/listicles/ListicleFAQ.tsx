@@ -1,6 +1,7 @@
 import { HelpCircle, MessageCircleQuestion, Plus } from "lucide-react";
+import type { FAQItem, ListicleItem } from "@/lib/content-types";
 
-export default function ListicleFAQ({ item }: { item: any }) {
+export default function ListicleFAQ({ item }: { item: ListicleItem }) {
   if (!item.faqs?.length) return null;
 
   return (
@@ -42,7 +43,7 @@ export default function ListicleFAQ({ item }: { item: any }) {
       </div>
 
       <div className="grid gap-4 p-6 md:p-10">
-        {item.faqs.map((faq: any) => (
+        {item.faqs.map((faq: FAQItem) => (
           <div
             key={faq.question}
             className="group rounded-3xl border border-white/10 bg-bg-base/50 p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-base/30 hover:bg-bg-base/70 md:p-6"

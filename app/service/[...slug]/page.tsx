@@ -175,6 +175,11 @@ export async function generateStaticParams() {
   return getAllServiceSlugs().map((slug) => ({ slug: slug.split("/") }));
 }
 
+// Every service page is generated above. Unknown slugs must return a real 404:
+// with loading.tsx streaming, a notFound() at request time would otherwise be
+// sent as a soft 404 (HTTP 200 + noindex).
+export const dynamicParams = false;
+
 export async function generateMetadata({
   params,
 }: {
@@ -272,7 +277,6 @@ export default async function ServicePage({
                 <div className="rounded-2xl border border-border bg-surface p-6">
                   <h2 className="text-lg font-semibold">Case studies</h2>
                   <div className="mt-3">
-                    {/* @ts-ignore */}
                     <CaseStudyCarousel slides={[{ title: service.caseStudy.title, blurb: service.caseStudy.blurb, image: service.caseStudy.image }]} />
                   </div>
                 </div>

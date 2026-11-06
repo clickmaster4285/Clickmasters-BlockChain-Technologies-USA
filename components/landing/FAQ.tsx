@@ -2,7 +2,7 @@
 
 import { homeFaqs } from "@/data/home-faqs";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { faqPageSchema } from "@/lib/structured-data";
+import { faqPageSchema } from "@/lib/schema-primitives";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const faqs = homeFaqs;

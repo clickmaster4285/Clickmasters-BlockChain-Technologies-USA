@@ -6,13 +6,14 @@ import {
   Quote,
 } from "lucide-react";
 import NewsCTA from "./NewsCTA";
+import type { ContentBlock, ResolvedCta, NewsItem } from "@/lib/content-types";
 
 export default function NewsContent({
   item,
   cta,
 }: {
-  item: any;
-  cta: any;
+  item: NewsItem;
+  cta: ResolvedCta;
 }) {
   const blocks = item.content || [];
 
@@ -36,7 +37,7 @@ export default function NewsContent({
         </div>
 
         <div className="space-y-7 p-4 sm:p-6 md:p-10">
-          {blocks.map((block: any, index: number) => {
+          {blocks.map((block: ContentBlock, index: number) => {
             switch (block.type) {
               case "featuredAnswer":
                 return (
@@ -143,7 +144,7 @@ export default function NewsContent({
                         </thead>
 
                         <tbody>
-                          {block.rows.map((row: any[], r: number) => (
+                          {block.rows.map((row: string[], r: number) => (
                             <tr key={r} className="border-t border-white/10">
                               {row.map((cell, c) => (
                                 <td

@@ -3,11 +3,12 @@ import {
   MessageCircleQuestion,
   Plus,
 } from "lucide-react";
+import type { FAQItem, GlossaryItem } from "@/lib/content-types";
 
 export default function GlossaryFAQ({
   item,
 }: {
-  item: any;
+  item: GlossaryItem;
 }) {
   const faqs = item?.faqs || item?.faq || [];
 
@@ -53,7 +54,7 @@ export default function GlossaryFAQ({
       </div>
 
       <div className="grid gap-4 p-4 sm:p-6 md:p-10">
-        {faqs.map((faq: any, index: number) => (
+        {faqs.map((faq: FAQItem, index: number) => (
           <div
             key={faq?.question || index}
             className="group rounded-3xl border border-white/10 bg-bg-base/50 p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-base/30 hover:bg-bg-base/70 md:p-6"

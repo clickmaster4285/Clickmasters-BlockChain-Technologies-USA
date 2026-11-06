@@ -7,13 +7,14 @@ import {
   Quote,
 } from "lucide-react";
 import GlossaryCTA from "./GlossaryCTA";
+import type { ContentBlock, ContentListEntry, ContentListObject, GlossaryItem, ResolvedCta } from "@/lib/content-types";
 
 export default function GlossaryContent({
   item,
   cta,
 }: {
-  item: any;
-  cta: any;
+  item: GlossaryItem;
+  cta: ResolvedCta;
 }) {
   const blocks = item?.content || [];
 
@@ -57,7 +58,7 @@ export default function GlossaryContent({
             </div>
           )}
 
-          {blocks.map((block: any, index: number) => {
+          {blocks.map((block: ContentBlock, index: number) => {
             switch (block.type) {
               case "featuredAnswer":
               case "definition":
@@ -157,7 +158,7 @@ export default function GlossaryContent({
 
                     <div className="grid gap-4">
                       {(block.items || []).map(
-                        (listItem: any, itemIndex: number) => {
+                        (listItem: ContentListEntry, itemIndex: number) => {
                           const title =
                             typeof listItem === "string"
                               ? null
@@ -212,7 +213,7 @@ export default function GlossaryContent({
 
                     <div className="space-y-5">
                       {(block.items || []).map(
-                        (step: any, stepIndex: number) => (
+                        (step: ContentListObject, stepIndex: number) => (
                           <div
                             key={stepIndex}
                             className="rounded-3xl border border-white/10 bg-bg-base/40 p-5 sm:p-6"
@@ -274,14 +275,14 @@ export default function GlossaryContent({
 
                         <tbody>
                           {(block.rows || []).map(
-                            (row: any[], rowIndex: number) => (
+                            (row: string[], rowIndex: number) => (
                               <tr
                                 key={rowIndex}
                                 className="border-t border-white/10"
                               >
                                 {row.map(
                                   (
-                                    cell: any,
+                                    cell: string,
                                     cellIndex: number
                                   ) => (
                                     <td

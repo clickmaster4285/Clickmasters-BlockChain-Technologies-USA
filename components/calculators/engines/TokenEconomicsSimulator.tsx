@@ -364,7 +364,7 @@ export default function TokenEconomicsSimulator({
     <div className="overflow-hidden rounded-[30px] border border-white/10 bg-slate-950 text-white shadow-[0_24px_90px_rgba(0,0,0,0.22)]">
       <CalculatorHeader title={title} onReset={handleReset} />
 
-      <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(360px,0.92fr)]">
+      <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(360px,0.92fr)]">
         <div className="border-b border-white/10 p-6 sm:p-8 lg:border-b-0 lg:border-r">
           <div className="grid gap-6 sm:grid-cols-2">
             <div className="sm:col-span-2">

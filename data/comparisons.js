@@ -4952,7 +4952,7 @@ export const comparisons = [
   {
     id: 37,
     slug: "blockchain-oracle-comparison",
-    title: "Chainlink vs Band Protocol vs Pyth — Oracle Comparison | Clickmasters",
+    title: "Blockchain Oracle Comparison — Chainlink, Band Protocol, Pyth, and Chronicle",
     excerpt:
       "An oracle brings off-chain data into smart contracts. The oracle you choose determines the attack surface for your protocol. Here is the production comparison.",
     category: "Blockchain Comparison",
@@ -7716,12 +7716,3 @@ contract EquipmentMaintenanceLedger {
     },
   },
 ];
-
-
-export {
-  comparisons,
-  getComparisonBySlug,
-  getComparisonCards,
-  getComparisonsByTag,
-  searchComparisons,
-};

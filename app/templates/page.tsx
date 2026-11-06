@@ -227,7 +227,7 @@ export default async function TemplatesPage({
 
             <span className="pointer-events-none absolute bottom-[15%] left-[45%] h-1.5 w-1.5 animate-template-particle rounded-full bg-amber-base" />
 
-            <div className="relative grid items-center gap-14 lg:grid-cols-[1.06fr_0.94fr]">
+            <div className="relative grid grid-cols-1 items-center gap-14 lg:grid-cols-[1.06fr_0.94fr]">
               {/* Left */}
               <div>
                 <div className="inline-flex items-center gap-2 rounded-full border border-amber-base/25 bg-amber-base/10 px-4 py-2 text-[10px] font-black uppercase tracking-[0.23em] text-amber-base">

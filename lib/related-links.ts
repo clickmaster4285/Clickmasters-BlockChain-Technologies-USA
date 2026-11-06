@@ -131,7 +131,7 @@ export const CORE_SERVICES: Array<{
   {
     slug: "smart-contract-development",
     label: "Smart Contract Development",
-    topics: ["smart-contract", "security"],
+    topics: ["smart-contract", "security", "ethereum", "solana"],
   },
   {
     slug: "defi-development-company",
@@ -214,6 +214,11 @@ const TOPIC_PATTERNS: Record<string, RegExp> = {
     /\b(layer ?2|l2s?|layer ?3|rollups?|zksync|arbitrum|optimism|base|polygon|scroll|zk(evm)?|scaling)\b/,
   "cross-chain":
     /\b(cross[- ]chain|multi[- ]?chain|bridges?|interoperab(le|ility)|cosmos|polkadot|substrate|appchain)\b/,
+  // Platform topics, so e.g. Ethereum pages link to Ethereum tools and guides
+  // (gas calculator, Solidity, EVM) rather than to unrelated generic pages.
+  ethereum: /\b(ethereum|evm|eth|gwei|gas|solidity|vyper|erc-?\d+|eip-?\d+)\b/,
+  solana: /\b(solana|anchor framework|spl tokens?)\b/,
+  bitcoin: /\b(bitcoin|btc|lightning network|ordinals|taproot)\b/,
   gamefi: /\b(gamefi|gaming|games?|play[- ]to[- ]earn|p2e|metaverse)\b/,
   dao: /\b(daos?|governance|voting)\b/,
   payments:

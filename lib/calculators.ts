@@ -1,5 +1,6 @@
 import { calculators } from "@/data/calculators";
 import { createMetadata } from "@/config/metadata";
+import { articleSchema, faqPageSchema } from "@/lib/structured-data";
 
 /* =========================================================
    Core Content Types
@@ -610,103 +611,30 @@ export function getCalculatorMetadata(calculator: CalculatorData) {
    Schema Helpers
 ========================================================= */
 
+/**
+ * JSON-LD for a calculator / tool page.
+ *
+ * Every page here is a long-form guide (byline, publish date, written content)
+ * with an optional interactive widget, so it is described as an Article.
+ * SoftwareApplication is deliberately not used: Google requires a genuine
+ * aggregateRating or review for that type, and none exist for these tools —
+ * ratings must never be fabricated to satisfy the validator.
+ *
+ * Breadcrumbs are emitted site-wide by <BreadcrumbJsonLd /> in the root layout.
+ */
 export function getCalculatorSchemas(calculator: CalculatorData) {
   const slug = normalizeCalculatorSlug(calculator.slug);
 
-  const url = getCalculatorAbsoluteUrl(slug);
-  const resourceType = getCalculatorResourceType(slug);
-
-  const articleSchema = {
-    "@context": "https://schema.org",
-    "@type":
-      resourceType === "calculator" || resourceType === "simulator"
-        ? "SoftwareApplication"
-        : "Article",
-
-    name: calculator.title,
-    headline: calculator.title,
-    description: calculator.excerpt,
-    url,
-
-    author: {
-      "@type": "Organization",
-      name: calculator.author,
-    },
-
-    publisher: {
-      "@type": "Organization",
-      name: "ClickMasters",
-      url: CALCULATORS_SITE_URL,
-    },
-
-    datePublished: calculator.date || undefined,
-    dateModified: calculator.date || undefined,
-
-    applicationCategory:
-      resourceType === "calculator" || resourceType === "simulator"
-        ? "BusinessApplication"
-        : undefined,
-
-    operatingSystem:
-      resourceType === "calculator" || resourceType === "simulator"
-        ? "Web"
-        : undefined,
-
-    offers:
-      resourceType === "calculator" || resourceType === "simulator"
-        ? {
-            "@type": "Offer",
-            price: "0",
-            priceCurrency: "USD",
-          }
-        : undefined,
-  };
-
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: CALCULATORS_SITE_URL,
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Calculators",
-        item: `${CALCULATORS_SITE_URL}${CALCULATORS_BASE_PATH}`,
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: calculator.title,
-        item: url,
-      },
-    ],
-  };
-
-  const faqSchema =
-    calculator.faqs.length > 0
-      ? {
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: calculator.faqs.map((faq) => ({
-            "@type": "Question",
-            name: faq.question,
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: faq.answer,
-            },
-          })),
-        }
-      : null;
-
   return {
-    articleSchema,
-    breadcrumbSchema,
-    faqSchema,
+    articleSchema: articleSchema({
+      headline: calculator.title,
+      description: calculator.excerpt || calculator.hero.description,
+      path: getCalculatorHref(slug),
+      image: calculator.image,
+      datePublished: calculator.date || undefined,
+      author: calculator.author,
+    }),
+    faqSchema: faqPageSchema(calculator.faqs),
   };
 }
 

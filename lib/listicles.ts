@@ -1,25 +1,26 @@
 import { listicles } from "@/data/listicles";
+import type { ListicleItem } from "@/lib/content-types";
 
-export function getAllListicles() {
-  return listicles || [];
+export function getAllListicles(): ListicleItem[] {
+  return (listicles || []) as ListicleItem[];
 }
 
 export function getListicleBySlug(slug: string) {
-  return getAllListicles().find((item: any) => item.slug === slug);
+  return getAllListicles().find((item) => item.slug === slug);
 }
 
 export function getRelatedListicles(slug: string, limit = 4) {
   return getAllListicles()
-    .filter((item: any) => item.slug !== slug)
+    .filter((item) => item.slug !== slug)
     .slice(0, limit);
 }
 
-export function estimateListicleReadTime(item: any) {
+export function estimateListicleReadTime(item: ListicleItem) {
   if (item.readTime) return item.readTime;
 
   const text =
     item.content
-      ?.map((block: any) => {
+      ?.map((block) => {
         if (block.text) return block.text;
         if (block.items) return block.items.join(" ");
         if (block.rows) return block.rows.flat().join(" ");
@@ -32,7 +33,7 @@ export function estimateListicleReadTime(item: any) {
   return `${Math.max(3, Math.ceil(words / 220))} min read`;
 }
 
-export function getListicleCta(item: any) {
+export function getListicleCta(item: ListicleItem) {
   return {
     title: item.cta?.title || "Need expert help choosing the right option?",
     description:
@@ -45,7 +46,7 @@ export function getListicleCta(item: any) {
 }
 
 export function getListicleCards() {
-  return getAllListicles().map((item: any) => ({
+  return getAllListicles().map((item) => ({
     slug: item.slug,
     title: item.title,
     excerpt: item.excerpt || item.hero?.description || item.title,
@@ -55,3 +56,5 @@ export function getListicleCards() {
     badge: item.hero?.badge || "LIST",
   }));
 }
+
+export type ListicleCardData = ReturnType<typeof getListicleCards>[number];

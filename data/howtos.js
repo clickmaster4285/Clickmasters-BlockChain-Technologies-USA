@@ -7023,7 +7023,6 @@ function searchHowTos(q2) {
 }
 
 export {
-  howTos,
   getHowToBySlug,
   getHowToCards,
   getHowTosByTag,

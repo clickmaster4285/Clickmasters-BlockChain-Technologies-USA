@@ -10,12 +10,13 @@ import {
   Sparkles,
 } from "lucide-react";
 import { splitHeading } from "@/lib/seo";
+import type { ListicleItem } from "@/lib/content-types";
 
 export default function ListicleHero({
   item,
   readTime,
 }: {
-  item: any;
+  item: ListicleItem;
   readTime: string;
 }) {
   const { heading, continuation } = splitHeading(

@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation";
 
 import { JsonLd } from "@/components/seo/JsonLd";
-import { breadcrumbSchema, type BreadcrumbItem } from "@/lib/structured-data";
+import { breadcrumbSchema, type BreadcrumbItem } from "@/lib/schema-primitives";
 
 /**
  * Site-wide BreadcrumbList derived from the URL path.

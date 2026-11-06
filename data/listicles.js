@@ -3686,7 +3686,6 @@ function searchListicles(q2) {
 }
 
 export {
-  listicles,
   getListicleBySlug,
   getListicleCards,
   getListiclesByTag,

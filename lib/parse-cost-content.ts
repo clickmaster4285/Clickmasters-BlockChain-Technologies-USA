@@ -38,7 +38,7 @@ function extractTable(raw: string): { table: ParsedTable | null; without: string
   if (tableLines.length < 2) return { table: null, without: raw };
  
   // contiguous block
-  let start = tableLines[0];
+  const start = tableLines[0];
   let end = tableLines[0];
   for (const idx of tableLines) {
     if (idx === end || idx === end + 1) end = idx;

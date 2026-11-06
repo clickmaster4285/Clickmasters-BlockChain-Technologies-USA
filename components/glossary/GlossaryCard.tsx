@@ -5,12 +5,13 @@ import {
   Clock3,
   Layers3,
 } from "lucide-react";
+import type { GlossaryCardData } from "@/lib/glossary";
 
 export default function GlossaryCard({
   item,
   index,
 }: {
-  item: any;
+  item: GlossaryCardData;
   index: number;
 }) {
   return (

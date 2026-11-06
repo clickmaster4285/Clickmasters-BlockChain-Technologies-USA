@@ -183,7 +183,7 @@ export default async function ListiclesPage({
             </div>
 
             <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-              {lists.map((item: any, index: number) => (
+              {lists.map((item, index: number) => (
                 <ListicleCard
                   key={item.slug}
                   item={item}

@@ -1,25 +1,26 @@
 import { howTos } from "@/data/howtos";
+import type { HowToItem } from "@/lib/content-types";
 
-export function getAllHowTos() {
-  return howTos || [];
+export function getAllHowTos(): HowToItem[] {
+  return (howTos || []) as HowToItem[];
 }
 
 export function getHowToBySlug(slug: string) {
-  return getAllHowTos().find((item: any) => item.slug === slug);
+  return getAllHowTos().find((item) => item.slug === slug);
 }
 
 export function getRelatedHowTos(slug: string, limit = 4) {
   return getAllHowTos()
-    .filter((item: any) => item.slug !== slug)
+    .filter((item) => item.slug !== slug)
     .slice(0, limit);
 }
 
-export function estimateHowToReadTime(item: any) {
+export function estimateHowToReadTime(item: HowToItem) {
   if (item.readTime) return item.readTime;
 
   const text =
     item.content
-      ?.map((block: any) => {
+      ?.map((block) => {
         if (block.text) return block.text;
         if (block.items) return block.items.join(" ");
         if (block.rows) return block.rows.flat().join(" ");
@@ -32,7 +33,7 @@ export function estimateHowToReadTime(item: any) {
   return `${Math.max(3, Math.ceil(words / 220))} min read`;
 }
 
-export function getHowToCta(item: any) {
+export function getHowToCta(item: HowToItem) {
   return {
     title: item.cta?.title || "Need help implementing this?",
     description:
@@ -45,7 +46,7 @@ export function getHowToCta(item: any) {
 }
 
 export function getHowToCards() {
-  return getAllHowTos().map((item: any) => ({
+  return getAllHowTos().map((item) => ({
     slug: item.slug,
     title: item.title,
     excerpt: item.excerpt || item.hero?.description || item.title,
@@ -55,3 +56,5 @@ export function getHowToCards() {
     badge: item.hero?.badge || "GUIDE",
   }));
 }
+
+export type HowToCardData = ReturnType<typeof getHowToCards>[number];

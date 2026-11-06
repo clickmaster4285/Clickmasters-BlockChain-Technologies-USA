@@ -8,14 +8,15 @@ import {
   PenTool,
   Tags,
 } from "lucide-react";
+import type { ListicleItem } from "@/lib/content-types";
 
 export default function ListicleSidebar({
   item,
   related,
   readTime,
 }: {
-  item: any;
-  related: any[];
+  item: ListicleItem;
+  related: ListicleItem[];
   readTime: string;
 }) {
   return (
@@ -128,7 +129,7 @@ export default function ListicleSidebar({
           </p>
 
           <div className="mt-4 space-y-3">
-            {related.map((list: any) => (
+            {related.map((list: ListicleItem) => (
               <Link
                 key={list.slug}
                 href={`/listicles/${list.slug}`}

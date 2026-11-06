@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 
 import { siteConfig } from "@/config/site";
+import { TITLE_OVERRIDES } from "@/config/title-overrides";
+import { resolveSiteImage } from "@/lib/site-image";
 
 type MetadataType = "website" | "article";
 
@@ -16,30 +18,31 @@ type CreateMetadataOptions = {
   noIndex?: boolean;
 };
 
-const TITLE_TOPIC_LIMIT = 45;
 const DESCRIPTION_MIN_LENGTH = 70;
 const DESCRIPTION_MAX_LENGTH = 155;
 const DESCRIPTION_EXTENSION =
   " Explore practical details, options, and key considerations.";
-const ROUTE_LABELS: Record<string, string> = {
-  calculators: "Calculator",
-  comparison: "Compare",
-  cost: "Cost",
-  faqs: "FAQ",
-  glossary: "Glossary",
-  hire: "Hire",
-  howto: "How-to",
-  industries: "Industry",
-  locations: "Location",
-  news: "News",
-  partners: "Partner",
-  process: "Process",
-  resources: "Resource",
-  service: "Service",
-  templates: "Template",
-  technologies: "Technology",
-  tools: "Tool",
-};
+
+/* -------------------------------------------------------------------------
+ * Page titles
+ * ----------------------------------------------------------------------- */
+
+const TITLE_BRAND = " | Clickmasters";
+/** ~600px — roughly what Google shows before truncating a title. */
+const TITLE_MAX = 60;
+/** A complete title may run this much longer rather than lose words. */
+const TITLE_SOFT_OVERFLOW = 5;
+/** Shorter leading phrases ("Case Study") are too generic to stand alone. */
+const TITLE_MIN_PREFIX = 18;
+/** Max characters of title text given up in order to keep the brand suffix. */
+const TITLE_BRAND_TRADE = 6;
+/** Natural breakpoints: "A — B", "A: B", "A | B", "A - B". */
+const TITLE_BREAK = /(\s[—–|]\s|:\s|\s-\s)/;
+/** Weaker breakpoint (list commas), only used when no natural one fits. */
+const TITLE_SOFT_BREAK = /(\s[—–|]\s|:\s|\s-\s|,\s)/;
+/** Words a shortened title must not end on. */
+const TITLE_DANGLING =
+  /\s+(?:and|or|for|the|of|in|to|with|a|an|on|at|by|from|vs\.?|while|which|that|where|when|how|why|&|—|–|-|:|\|)$/i;
 
 // Listing filter / pagination URLs, e.g. /tools/category/analytics or
 // /service/page/8. They are thin views of the main listing, so they are kept
@@ -64,68 +67,88 @@ function absoluteUrl(pathOrUrl: string) {
   return new URL(normalizePath(pathOrUrl), siteConfig.url).toString();
 }
 
-function titleWithBrand(title: string, path: string) {
-  const topicWithContext = title
-    .trim()
-    .replace(/\s*(?:\||—|-)\s*clickmasters(?: blockchain technologies)?\s*$/i, "")
-    .trim();
-  const pageContextMatch = topicWithContext.match(/\s+\|\s+Page \d+ of \d+$/i);
-  const pageContext = pageContextMatch?.[0] ?? "";
-  const topic = pageContext
-    ? topicWithContext.slice(0, -pageContext.length).trimEnd()
-    : topicWithContext;
-  const routeContext =
-    pageContext || !topic || topic.length <= TITLE_TOPIC_LIMIT
-      ? topic.toLowerCase() === "blockchain content library"
-        ? ROUTE_LABELS[path.split("/").filter(Boolean)[0]] ?? ""
-        : ""
-      : getRouteContext(path);
-  const suffix = `${routeContext ? ` — ${routeContext}` : ""}${pageContext}`;
-  const topicLimit = TITLE_TOPIC_LIMIT - suffix.length;
-  const shortenedTopic =
-    topic.length > topicLimit
-      ? `${topic.slice(0, topicLimit - 1).replace(/\s+\S*$/, "").trimEnd()}…`
-      : topic;
-
-  return `${shortenedTopic}${suffix} | Clickmasters`;
+/** Leading prefixes of `topic` that end at a `breakpoint`, longest first. */
+function titlePrefixes(topic: string, breakpoint: RegExp) {
+  const parts = topic.split(breakpoint);
+  const prefixes: string[] = [];
+  let accumulated = "";
+  for (let i = 0; i < parts.length - 2; i += 2) {
+    accumulated += (i ? parts[i - 1] : "") + parts[i];
+    prefixes.unshift(accumulated.trim());
+  }
+  return prefixes;
 }
 
-function getRouteContext(path: string) {
-  const segments = path.split("/").filter(Boolean);
-  const section = segments[0] ?? "";
-  const label = ROUTE_LABELS[section] ?? section;
-  const stopWords = new Set([
-    "and",
-    "best",
-    "blockchain",
-    "case",
-    "company",
-    "development",
-    "for",
-    "how",
-    "in",
-    "our",
-    "partner",
-    "partners",
-    "study",
-    "the",
-    "to",
-    "vs",
-    "glossary",
-  ]);
-  const slugWords = (segments.at(-1) ?? "")
-    .split("-")
-    .filter((word) => word && !stopWords.has(word));
-  const qualifierWords = /^\d{4}$/.test(slugWords.at(-1) ?? "")
-    ? slugWords.slice(-3)
-    : slugWords.slice(-2);
-  const qualifier = qualifierWords.join(" ");
+/**
+ * Builds the <title> for a page from its own (often long) title.
+ *
+ * Long titles are shortened at natural breakpoints ("Ethereum Gas Cost
+ * Calculator — Estimate Transaction Fees…" → "Ethereum Gas Cost Calculator"),
+ * never mid-word and never with an ellipsis. The " | Clickmasters" suffix is
+ * kept when it costs little of the title; otherwise the title text wins.
+ * Pagination context (" | Page 2 of 6") is always preserved. Pages whose
+ * automatic title would collide with another page's use TITLE_OVERRIDES.
+ */
+export function buildPageTitle(title: string, path: string) {
+  const override = TITLE_OVERRIDES[normalizePath(path)];
+  if (override) return override;
 
-  return [label, qualifier].filter(Boolean).join(" ");
+  let topic = title
+    .trim()
+    .replace(/^H1:\s*/i, "")
+    .replace(/\s*(?:\||—|-)\s*clickmasters(?: blockchain technologies)?\s*$/i, "")
+    .trim();
+  const page = topic.match(/\s+\|\s+Page \d+ of \d+$/i)?.[0] ?? "";
+  if (page) topic = topic.slice(0, -page.length).trimEnd();
+
+  // FAQ-section pages are FAQ pages even when their source title does not say
+  // so; labelling them also keeps them distinct from same-topic service pages.
+  if (/^\/faqs\/./.test(normalizePath(path)) && !/\bFAQs?\b/i.test(topic)) {
+    const [head, ...rest] = topic.split(TITLE_BREAK);
+    topic = `${head} FAQ${rest.join("")}`;
+  }
+
+  const room = (withBrand: boolean) =>
+    TITLE_MAX - page.length - (withBrand ? TITLE_BRAND.length : 0);
+  if (topic.length <= room(true)) return `${topic}${page}${TITLE_BRAND}`;
+
+  const hard = titlePrefixes(topic, TITLE_BREAK);
+  const soft = titlePrefixes(topic, TITLE_SOFT_BREAK);
+  const pick = (list: string[], limit: number) =>
+    list.find((p) => p.length >= TITLE_MIN_PREFIX && p.length <= limit);
+  const prefixFor = (limit: number) => pick(hard, limit) ?? pick(soft, limit);
+
+  const branded = prefixFor(room(true));
+
+  // Best brand-free option: the complete title, a breakpoint prefix, the
+  // specific part after a generic lead-in ("Blockchain News: …"), or as a last
+  // resort a cut at a word boundary.
+  let bare =
+    topic.length <= room(false) + TITLE_SOFT_OVERFLOW
+      ? topic
+      : prefixFor(room(false));
+  if (!bare) {
+    const [head, separator, ...rest] = topic.split(TITLE_BREAK);
+    const tail = rest.join("").trim();
+    if (separator && head.length <= 20 && tail.length >= TITLE_MIN_PREFIX) {
+      if (tail.length <= room(true)) return `${tail}${page}${TITLE_BRAND}`;
+      if (tail.length <= room(false) + TITLE_SOFT_OVERFLOW) bare = tail;
+    }
+  }
+  if (!bare) {
+    bare = topic.slice(0, room(false) + 1).replace(/\s+\S*$/, "");
+    while (TITLE_DANGLING.test(bare)) bare = bare.replace(TITLE_DANGLING, "");
+    bare = bare.replace(/[,;:\s]+$/, "");
+  }
+
+  if (branded && bare.length - branded.length <= TITLE_BRAND_TRADE) {
+    return `${branded}${page}${TITLE_BRAND}`;
+  }
+  return `${bare}${page}`;
 }
 
 function normalizeDescription(description: string) {
-  let normalized = description.trim().replace(/\s+/g, " ");
+  const normalized = description.trim().replace(/\s+/g, " ");
   const pageContextMatch = normalized.match(/\s+Page \d+ of \d+\.$/i);
   const pageContext = pageContextMatch?.[0] ?? "";
   let body = pageContext
@@ -158,17 +181,18 @@ export function createMetadata({
   title,
   description,
   path = "/",
-  image = siteConfig.logo,
+  image,
   type = "website",
   publishedTime,
   authors,
   keywords,
   noIndex = false,
 }: CreateMetadataOptions): Metadata {
-  const fullTitle = titleWithBrand(title, path);
+  const fullTitle = buildPageTitle(title, path);
   const metaDescription = normalizeDescription(description);
   const canonicalUrl = absoluteUrl(path);
-  const imageUrl = absoluteUrl(image);
+  const resolvedImage = resolveSiteImage(image);
+  const imageUrl = absoluteUrl(resolvedImage.path);
   const index = !noIndex && !isListingFilterPath(path);
   const follow = !noIndex;
 
@@ -190,8 +214,10 @@ export function createMetadata({
       images: [
         {
           url: imageUrl,
-          width: 1200,
-          height: 630,
+          // Only declare dimensions we actually know (the default share image).
+          ...(resolvedImage.width && resolvedImage.height
+            ? { width: resolvedImage.width, height: resolvedImage.height }
+            : {}),
           alt: title,
         },
       ],

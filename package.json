@@ -8,7 +8,9 @@
     "build": "next build",
     "postbuild": "node scripts/generate-sitemaps.cjs",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint .",
+    "lint:code": "eslint . --rule \"prettier/prettier: off\"",
+    "check:titles": "node scripts/check-titles.cjs",
     "format": "prettier --write ."
   },
   "dependencies": {

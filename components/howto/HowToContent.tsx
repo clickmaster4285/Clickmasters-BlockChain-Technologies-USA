@@ -6,13 +6,14 @@ import {
   Quote,
 } from "lucide-react";
 import HowToCTA from "./HowToCTA";
+import type { ContentBlock, ContentListObject, ResolvedCta, HowToItem } from "@/lib/content-types";
 
 export default function HowToContent({
   item,
   cta,
 }: {
-  item: any;
-  cta: any;
+  item: HowToItem;
+  cta: ResolvedCta;
 }) {
   const blocks = item.content || [];
 
@@ -41,7 +42,7 @@ export default function HowToContent({
         </div>
 
         <div className="space-y-8 p-6 md:p-10">
-          {blocks.map((block: any, index: number) => {
+          {blocks.map((block: ContentBlock, index: number) => {
             switch (block.type) {
               case "featuredAnswer":
                 return (
@@ -134,7 +135,7 @@ export default function HowToContent({
                     </h2>
 
                     <div className="space-y-5">
-                      {block.items.map((step: any, i: number) => (
+                      {block.items.map((step: ContentListObject, i: number) => (
                         <div
                           key={i}
                           className="rounded-3xl border border-white/10 bg-bg-base/40 p-5 sm:p-6"
@@ -180,7 +181,7 @@ export default function HowToContent({
                         </thead>
 
                         <tbody>
-                          {block.rows.map((row: any[], r: number) => (
+                          {block.rows.map((row: string[], r: number) => (
                             <tr
                               key={r}
                               className="border-t border-white/10"

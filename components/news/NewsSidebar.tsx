@@ -8,14 +8,15 @@ import {
   PenTool,
   Tags,
 } from "lucide-react";
+import type { NewsItem } from "@/lib/content-types";
 
 export default function NewsSidebar({
   item,
   related,
   readTime,
 }: {
-  item: any;
-  related: any[];
+  item: NewsItem;
+  related: NewsItem[];
   readTime: string;
 }) {
   return (
@@ -130,7 +131,7 @@ export default function NewsSidebar({
           </p>
 
           <div className="mt-4 space-y-3">
-            {related.map((newsItem: any) => (
+            {related.map((newsItem: NewsItem) => (
               <Link
                 key={newsItem.slug}
                 href={`/news/${newsItem.slug}`}

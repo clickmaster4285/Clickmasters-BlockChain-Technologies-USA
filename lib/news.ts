@@ -1,25 +1,26 @@
 import { news } from "@/data/news";
+import type { NewsItem } from "@/lib/content-types";
 
-export function getAllNews() {
-  return news || [];
+export function getAllNews(): NewsItem[] {
+  return (news || []) as NewsItem[];
 }
 
 export function getNewsBySlug(slug: string) {
-  return getAllNews().find((item: any) => item.slug === slug);
+  return getAllNews().find((item) => item.slug === slug);
 }
 
 export function getRelatedNews(slug: string, limit = 4) {
   return getAllNews()
-    .filter((item: any) => item.slug !== slug)
+    .filter((item) => item.slug !== slug)
     .slice(0, limit);
 }
 
-export function estimateNewsReadTime(item: any) {
+export function estimateNewsReadTime(item: NewsItem) {
   if (item.readTime) return item.readTime;
 
   const text =
     item.content
-      ?.map((block: any) => {
+      ?.map((block) => {
         if (block.text) return block.text;
         if (block.items) return block.items.join(" ");
         if (block.rows) return block.rows.flat().join(" ");
@@ -32,7 +33,7 @@ export function estimateNewsReadTime(item: any) {
   return `${Math.max(3, Math.ceil(words / 220))} min read`;
 }
 
-export function getNewsCta(item: any) {
+export function getNewsCta(item: NewsItem) {
   return {
     title: item.cta?.title || "Need help applying this news to your business?",
     description:
@@ -45,7 +46,7 @@ export function getNewsCta(item: any) {
 }
 
 export function getNewsCards() {
-  return getAllNews().map((item: any) => ({
+  return getAllNews().map((item) => ({
     slug: item.slug,
     title: item.title,
     excerpt: item.excerpt || item.hero?.description || item.title,
@@ -57,3 +58,5 @@ export function getNewsCards() {
     author: item.author,
   }));
 }
+
+export type NewsCardData = ReturnType<typeof getNewsCards>[number];

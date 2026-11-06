@@ -32,7 +32,7 @@ export async function generateMetadata({ searchParams }: ServicesIndexProps) {
     totalPages,
   );
   const metadata = withPageContext(
-    "Blockchain Development Services",
+    "Blockchain & Web3 Development Services",
     "End-to-end blockchain engineering and product teams that ship secure, performant systems: smart contracts, indexers, wallets, and Web3 UX.",
     currentPage,
     totalPages,
@@ -237,7 +237,6 @@ export default async function ServicesIndex({ searchParams }: ServicesIndexProps
               <p className="font-mono text-xs uppercase tracking-[0.3em] text-amber-base">Case Studies</p>
               <h2 className="mt-4 text-3xl md:text-4xl font-bold tracking-tight">Recent work</h2>
             </div>
-            {/* @ts-ignore */}
             <CaseStudyCarousel slides={services.slice(0, 8).map(s => ({ title: s.title, blurb: s.short, image: s.caseStudy?.image }))} />
           </section>
 

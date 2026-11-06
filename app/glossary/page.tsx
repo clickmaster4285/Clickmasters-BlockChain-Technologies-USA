@@ -40,7 +40,7 @@ export async function generateMetadata({
   ).toUpperCase();
   const searchQuery = resolvedSearchParams?.search?.trim() || "";
   const normalizedSearch = searchQuery.toLowerCase();
-  const filteredTerms = getGlossaryCards().filter((item: any) => {
+  const filteredTerms = getGlossaryCards().filter((item) => {
     const matchesLetter =
       selectedLetter === "ALL" || item.letter === selectedLetter;
     const matchesSearch =
@@ -90,7 +90,7 @@ export default async function GlossaryPage({
   const allTerms = getGlossaryCards();
   const availableLetters = getAvailableGlossaryLetters();
 
-  const filteredTerms = allTerms.filter((item: any) => {
+  const filteredTerms = allTerms.filter((item) => {
     const matchesLetter =
       selectedLetter === "ALL" ||
       item.letter === selectedLetter;
@@ -291,7 +291,7 @@ export default async function GlossaryPage({
             {visibleTerms.length > 0 ? (
               <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
                 {visibleTerms.map(
-                  (item: any, index: number) => (
+                  (item, index: number) => (
                     <GlossaryCard
                       key={item.slug}
                       item={item}

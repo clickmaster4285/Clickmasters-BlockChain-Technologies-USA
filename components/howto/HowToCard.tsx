@@ -1,11 +1,12 @@
 import Link from "next/link";
 import { ArrowRight, BookOpen, Clock } from "lucide-react";
+import type { HowToCardData } from "@/lib/howto";
 
 export default function HowToCard({
   item,
   index,
 }: {
-  item: any;
+  item: HowToCardData;
   index: number;
 }) {
   return (

@@ -1,6 +1,7 @@
 import { HelpCircle, MessageCircleQuestion, Plus } from "lucide-react";
+import type { FAQItem, NewsItem } from "@/lib/content-types";
 
-export default function NewsFAQ({ item }: { item: any }) {
+export default function NewsFAQ({ item }: { item: NewsItem }) {
   const faqs = item.faqs || item.faq || [];
 
   if (!faqs.length) return null;
@@ -47,7 +48,7 @@ export default function NewsFAQ({ item }: { item: any }) {
 
       {/* FAQ Cards */}
       <div className="grid gap-4 p-6 md:p-10">
-        {faqs.map((faq: any) => (
+        {faqs.map((faq: FAQItem) => (
           <div
             key={faq.question}
             className="group rounded-3xl border border-white/10 bg-bg-base/50 p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-base/30 hover:bg-bg-base/70 md:p-6"
