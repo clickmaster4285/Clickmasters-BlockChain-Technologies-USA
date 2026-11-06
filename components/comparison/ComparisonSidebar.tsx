@@ -88,7 +88,7 @@ export default function ComparisonSidebar({
           </div>
         </div>
 
-        {article.tags?.length > 0 && (
+        {(article.tags?.length ?? 0) > 0 && (
           <div className="rounded-3xl border border-white/10 bg-surface/80 p-6">
             <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.22em] text-amber-base">
               <Tags className="h-4 w-4" />
@@ -96,7 +96,7 @@ export default function ComparisonSidebar({
             </p>
 
             <div className="mt-4 flex flex-wrap gap-2">
-              {article.tags.map((tag: string) => (
+              {article.tags?.map((tag: string) => (
                 <span
                   key={tag}
                   className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-xs font-semibold text-silver"
