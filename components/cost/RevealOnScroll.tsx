@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ElementType, type ReactNode } from "react";
 
 export type RevealEffect =
   | "slide-left"
@@ -71,7 +71,7 @@ export default function RevealOnScroll({
     return `${base} ${!visible ? hidden[effect] : visible[effect]}`;
   };
 
-  const Component = Tag as any;
+  const Component = Tag as ElementType;
 
   return (
     <Component

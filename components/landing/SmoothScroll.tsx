@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import type LenisInstance from "lenis";
 
 export function SmoothScroll() {
   useEffect(() => {
@@ -8,7 +9,7 @@ export function SmoothScroll() {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduce) return;
 
-    let lenis: any;
+    let lenis: LenisInstance;
     let raf = 0;
     let cancelled = false;
 
