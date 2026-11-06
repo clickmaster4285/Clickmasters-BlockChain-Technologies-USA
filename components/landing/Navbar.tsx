@@ -179,7 +179,14 @@ const mobileSections = [
   { label: "Company", items: companyLinks },
 ];
 
-const blogFeatured: Record<string, any[]> = {
+type FeaturedCard = {
+  title: string;
+  desc: string;
+  href: string;
+  badge: string;
+};
+
+const blogFeatured: Record<string, FeaturedCard[]> = {
   Comparison: [
     {
       title: "Hyperledger Fabric vs Ethereum",
@@ -238,7 +245,7 @@ const blogFeatured: Record<string, any[]> = {
   ],
 };
 
-const resourceFeatured: Record<string, any[]> = {
+const resourceFeatured: Record<string, FeaturedCard[]> = {
   Glossary: [
     {
       title: "Advanced Blockchain Glossary",

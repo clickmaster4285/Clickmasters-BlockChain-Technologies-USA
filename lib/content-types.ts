@@ -238,4 +238,6 @@ export interface ResourceItem extends ContentItem<ResourceBlock> {
   resourceType?: string;
   featured?: boolean;
   popular?: boolean;
+  /** Resource cards/listings consume tags as plain strings. */
+  tags?: string[];
 }
