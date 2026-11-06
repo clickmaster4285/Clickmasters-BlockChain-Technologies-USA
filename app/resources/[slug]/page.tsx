@@ -201,7 +201,8 @@ function ResourceContent({
                       <table className="w-full min-w-[700px]">
                         <thead className="bg-white/[0.03]">
                           <tr>
-                            {block.columns?.map((column: string) => (
+                            {/* Resources data stores table headings in `headers`. */}
+                            {(block.columns ?? block.headers)?.map((column: string) => (
                               <th
                                 key={column}
                                 className="px-5 py-4 text-left text-xs font-black uppercase tracking-[0.18em] text-amber-base"

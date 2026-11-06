@@ -184,12 +184,8 @@ export type ListicleItem = ContentItem;
 
 export interface ComparisonItem extends ContentItem {
   meta?: ContentMeta & { wordCount?: number | string };
-  /**
-   * Not present in the current data. Typed as required because
-   * ComparisonSidebar guards it with `article.tags?.length > 0`, which only
-   * type-checks when `tags` is non-optional.
-   */
-  tags: string[];
+  /** Optional: no comparison in the current data defines tags. */
+  tags?: string[];
 }
 
 export interface GlossaryItem extends ContentItem {
