@@ -80,6 +80,11 @@ export function generateStaticParams() {
   }));
 }
 
+// Every industry page is generated above. Unknown slugs must return a real
+// 404: with loading.tsx streaming, a notFound() at request time would otherwise
+// be sent as a soft 404 (HTTP 200 + noindex).
+export const dynamicParams = false;
+
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {

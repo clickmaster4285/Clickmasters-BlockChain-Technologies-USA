@@ -7,13 +7,14 @@ import {
   Star,
 } from "lucide-react";
 import ListicleCTA from "./ListicleCTA";
+import type { ContentBlock, ContentListObject, ResolvedCta, ListicleItem } from "@/lib/content-types";
 
 export default function ListicleContent({
   item,
   cta,
 }: {
-  item: any;
-  cta: any;
+  item: ListicleItem;
+  cta: ResolvedCta;
 }) {
   const blocks = item.content || [];
 
@@ -37,7 +38,7 @@ export default function ListicleContent({
         </div>
 
         <div className="space-y-7 p-4 sm:p-6 md:p-10">
-          {blocks.map((block: any, index: number) => {
+          {blocks.map((block: ContentBlock, index: number) => {
             switch (block.type) {
               case "featuredAnswer":
                 return (
@@ -129,7 +130,7 @@ export default function ListicleContent({
                     </h2>
 
                     <div className="space-y-5">
-                      {block.items.map((step: any, i: number) => (
+                      {block.items.map((step: ContentListObject, i: number) => (
                         <div
                           key={i}
                           className="rounded-3xl border border-white/10 bg-bg-base/40 p-6"
@@ -174,7 +175,7 @@ export default function ListicleContent({
                         </thead>
 
                         <tbody>
-                          {block.rows.map((row: any[], r: number) => (
+                          {block.rows.map((row: string[], r: number) => (
                             <tr key={r} className="border-t border-white/10">
                               {row.map((cell, c) => (
                                 <td

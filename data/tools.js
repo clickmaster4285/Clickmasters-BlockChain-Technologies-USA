@@ -2364,7 +2364,6 @@ function searchTools(q2) {
 }
 
 export {
-  tools,
   getToolBySlug,
   getToolCards,
   getToolsByTag,

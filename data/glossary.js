@@ -2985,7 +2985,6 @@ function searchGlossary(q2) {
 }
 
 export {
-  glossary,
   getGlossaryBySlug,
   getGlossaryCards,
   getGlossaryByTag,

@@ -83,7 +83,7 @@ export async function generateMetadata({
   );
   const searchQuery = resolvedSearchParams?.search?.trim() || "";
   const normalizedSearch = searchQuery.toLowerCase();
-  const filteredCount = getTemplateCards().filter((item: any) => {
+  const filteredCount = getTemplateCards().filter((item) => {
     const matchesCategory =
       selectedCategory.toLowerCase() === "all" ||
       item.category?.toLowerCase() === selectedCategory.toLowerCase();
@@ -93,7 +93,7 @@ export async function generateMetadata({
       item.excerpt?.toLowerCase().includes(normalizedSearch) ||
       item.category?.toLowerCase().includes(normalizedSearch) ||
       item.format?.toLowerCase().includes(normalizedSearch) ||
-      item.tags?.some((tag: any) =>
+      item.tags?.some((tag) =>
         String(tag).toLowerCase().includes(normalizedSearch)
       );
 
@@ -146,7 +146,7 @@ export default async function TemplatesPage({
 
   const normalizedSearch = searchQuery.toLowerCase();
 
-  const filteredTemplates = allTemplates.filter((item: any) => {
+  const filteredTemplates = allTemplates.filter((item) => {
     const matchesCategory =
       selectedCategory.toLowerCase() === "all" ||
       item.category?.toLowerCase() ===
@@ -158,7 +158,7 @@ export default async function TemplatesPage({
       item.excerpt?.toLowerCase().includes(normalizedSearch) ||
       item.category?.toLowerCase().includes(normalizedSearch) ||
       item.format?.toLowerCase().includes(normalizedSearch) ||
-      item.tags?.some((tag: any) =>
+      item.tags?.some((tag) =>
         String(tag).toLowerCase().includes(normalizedSearch)
       );
 
@@ -227,7 +227,7 @@ export default async function TemplatesPage({
 
             <span className="pointer-events-none absolute bottom-[15%] left-[45%] h-1.5 w-1.5 animate-template-particle rounded-full bg-amber-base" />
 
-            <div className="relative grid items-center gap-14 lg:grid-cols-[1.06fr_0.94fr]">
+            <div className="relative grid grid-cols-1 items-center gap-14 lg:grid-cols-[1.06fr_0.94fr]">
               {/* Left */}
               <div>
                 <div className="inline-flex items-center gap-2 rounded-full border border-amber-base/25 bg-amber-base/10 px-4 py-2 text-[10px] font-black uppercase tracking-[0.23em] text-amber-base">
@@ -584,7 +584,7 @@ export default async function TemplatesPage({
             {visibleTemplates.length > 0 ? (
               <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
                 {visibleTemplates.map(
-                  (item: any, index: number) => (
+                  (item, index: number) => (
                     <TemplateCard
                       key={item.slug}
                       item={item}

@@ -33,6 +33,15 @@ export function generateStaticParams() {
   }));
 }
 
+/**
+ * Most technology pages are "<Platform> Development Services" pages. Guide-style
+ * entries need their own title, both to describe the page accurately and to
+ * avoid duplicating the /service hub title ("Blockchain Development Services").
+ */
+const TITLE_OVERRIDES: Record<string, string> = {
+  "what-is-blockchain": "What Is Blockchain? A Business Leader's Guide",
+};
+
 export async function generateMetadata({
   params,
 }: TechnologyPageProps) {
@@ -53,7 +62,9 @@ export async function generateMetadata({
   }
 
   return createMetadata({
-    title: `${technology.name} Development Services`,
+    title:
+      TITLE_OVERRIDES[technology.slug] ??
+      `${technology.name} Development Services`,
     description: technology.description,
     path: `/technologies/${technology.slug}`,
     type: "article",

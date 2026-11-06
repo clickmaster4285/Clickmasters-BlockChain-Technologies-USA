@@ -103,19 +103,20 @@ const displayNames: Record<string, string> = {
 const relatedServices: TechnologyCard[] = [
   {
     title: "Blockchain Development",
-    href: "/service/blockchain-development",
+    href: "/service/blockchain-development-services",
   },
   {
     title: "Smart Contract Development",
     href: "/service/smart-contract-development",
   },
   {
-    title: "dApp Development",
-    href: "/service/dapp-development",
+    // There is no standalone dApp service page; DeFi is the closest real one.
+    title: "DeFi Development",
+    href: "/service/defi-development-company",
   },
   {
     title: "Web3 Development",
-    href: "/service/web3-development",
+    href: "/service/web3-development-company",
   },
 ];
 

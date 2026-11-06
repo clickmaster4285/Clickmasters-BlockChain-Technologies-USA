@@ -34,6 +34,7 @@ import {
 import RelatedLinks from "@/components/RelatedLinks";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { faqPageSchema } from "@/lib/structured-data";
+import type { ContentListEntry, FAQItem, ResourceBlock, ResourceItem } from "@/lib/content-types";
 
 type ResourcePageProps = {
   params: Promise<{
@@ -57,7 +58,7 @@ function formatResourceDate(date?: string) {
   }).format(parsedDate);
 }
 
-function getListItemText(item: any) {
+function getListItemText(item: ContentListEntry) {
   if (typeof item === "string") return item;
 
   return [
@@ -73,7 +74,7 @@ function ResourceContent({
   item,
   cta,
 }: {
-  item: any;
+  item: ResourceItem;
   cta: ReturnType<typeof getResourceCTA>;
 }) {
   const blocks = item.content || [];
@@ -111,7 +112,7 @@ function ResourceContent({
         </div>
 
         <div className="space-y-7 p-4 sm:p-6 md:p-10">
-          {blocks.map((block: any, index: number) => {
+          {blocks.map((block: ResourceBlock, index: number) => {
             switch (block.type) {
               case "featuredAnswer":
                 return (
@@ -174,7 +175,7 @@ function ResourceContent({
                     )}
 
                     <div className="grid gap-4">
-                      {block.items?.map((listItem: any, itemIndex: number) => (
+                      {block.items?.map((listItem: ContentListEntry, itemIndex: number) => (
                         <div
                           key={`${getListItemText(listItem)}-${itemIndex}`}
                           className="flex gap-4 rounded-2xl border border-white/10 bg-bg-base/40 p-5"
@@ -212,7 +213,7 @@ function ResourceContent({
                         </thead>
 
                         <tbody>
-                          {block.rows?.map((row: any[], rowIndex: number) => (
+                          {block.rows?.map((row: string[], rowIndex: number) => (
                             <tr
                               key={rowIndex}
                               className="border-t border-white/10"
@@ -288,7 +289,7 @@ function ResourceContent({
 }
 
 export async function generateStaticParams() {
-  return getAllResources().map((item: any) => ({
+  return getAllResources().map((item) => ({
     slug: item.slug,
   }));
 }
@@ -320,7 +321,7 @@ export default async function SingleResourcePage({
 
   if (!item) return notFound();
 
-  const resource = item as any;
+  const resource = item;
   const readTime = estimateResourceReadTime(resource);
   const formattedDate = formatResourceDate(resource.date);
   const cta = getResourceCTA(resource);
@@ -469,7 +470,7 @@ export default async function SingleResourcePage({
                   </p>
 
                   <div className="mt-5 space-y-4">
-                    {resource.faqs.map((faq: any) => (
+                    {resource.faqs.map((faq: FAQItem) => (
                       <div
                         key={faq.question}
                         className="rounded-2xl border border-white/10 bg-bg-base/40 p-4"

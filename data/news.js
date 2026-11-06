@@ -3539,7 +3539,6 @@ function searchNews(q2) {
 }
 
 export {
-  news,
   getNewsBySlug,
   getNewsCards,
   getNewsByTag,

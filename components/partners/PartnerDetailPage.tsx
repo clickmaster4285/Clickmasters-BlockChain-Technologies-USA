@@ -898,7 +898,7 @@ export default function PartnerDetailPage({
             id="partner-content"
             className="scroll-mt-32 pt-24"
           >
-            <div className="grid gap-10 xl:grid-cols-[0.7fr_1.3fr]">
+            <div className="grid grid-cols-1 gap-10 xl:grid-cols-[0.7fr_1.3fr]">
               <div className="xl:sticky xl:top-40 xl:h-fit">
                 <div className="inline-flex items-center gap-2 rounded-full border border-amber-base/20 bg-amber-base/[0.07] px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-amber-base">
                   <Globe2 className="h-4 w-4" />

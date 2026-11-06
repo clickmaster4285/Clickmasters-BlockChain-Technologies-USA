@@ -12,12 +12,13 @@ import {
   Sparkles,
 } from "lucide-react";
 import { splitHeading } from "@/lib/seo";
+import type { TemplateItem } from "@/lib/content-types";
 
 export default function TemplateHero({
   item,
   readTime,
 }: {
-  item: any;
+  item: TemplateItem;
   readTime: string;
 }) {
   const title =
@@ -46,7 +47,7 @@ export default function TemplateHero({
   const sections =
     item?.sectionsCount ||
     item?.sections?.length ||
-    item?.content?.filter((block: any) => block?.type === "heading").length ||
+    item?.content?.filter((block) => block?.type === "heading").length ||
     0;
 
   // Strict Typed Animation Variants for Framer Motion

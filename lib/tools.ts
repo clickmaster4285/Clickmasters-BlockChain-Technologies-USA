@@ -1,4 +1,5 @@
 import { tools } from "@/data/tools";
+import type { ContentBlock, ContentTag, FAQItem } from "@/lib/content-types";
 
 /* =========================================================
    Local Types
@@ -45,6 +46,14 @@ export type ToolData = UnknownRecord & {
   readTime?: string;
   status?: string;
   image?: string;
+  author?: string;
+  date?: string;
+  published?: string;
+  group?: string;
+  credibility?: string[];
+  keywords?: ContentTag[];
+  content?: ContentBlock[];
+  faq?: FAQItem[];
 
   cta?: {
     title?: string;

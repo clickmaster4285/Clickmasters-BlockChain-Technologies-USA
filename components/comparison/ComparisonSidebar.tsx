@@ -7,14 +7,15 @@ import {
   GitCompare,
   Tags,
 } from "lucide-react";
+import type { ComparisonItem } from "@/lib/content-types";
 
 export default function ComparisonSidebar({
   article,
   related,
   readTime,
 }: {
-  article: any;
-  related: any[];
+  article: ComparisonItem;
+  related: ComparisonItem[];
   readTime: number;
 }) {
   return (
@@ -113,7 +114,7 @@ export default function ComparisonSidebar({
           </p>
 
           <div className="mt-4 space-y-3">
-            {related.map((item: any) => (
+            {related.map((item: ComparisonItem) => (
               <Link
                 key={item.slug}
                 href={`/comparison/${item.slug}`}

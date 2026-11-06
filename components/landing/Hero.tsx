@@ -93,11 +93,11 @@ export function Hero() {
                   <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-amber-glow">
                     <span className="h-1.5 w-1.5 rounded-full bg-amber-base" />
                   </span>
-                  <div>
+                  <div className="min-w-0">
                     <p className="text-sm font-bold leading-tight tracking-tight text-text-primary">
                       {item.value}
                     </p>
-                    <p className="mt-0.5 text-[11px] font-medium uppercase tracking-wider text-text-muted">
+                    <p className="mt-0.5 hyphens-auto text-[11px] font-medium uppercase tracking-wider text-text-muted [overflow-wrap:anywhere]">
                       {item.label}
                     </p>
                   </div>

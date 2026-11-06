@@ -10,12 +10,13 @@ import {
   Sparkles,
 } from "lucide-react";
 import { splitHeading } from "@/lib/seo";
+import type { GlossaryItem } from "@/lib/content-types";
 
 export default function GlossaryHero({
   item,
   readTime,
 }: {
-  item: any;
+  item: GlossaryItem;
   readTime: string;
 }) {
   const title =

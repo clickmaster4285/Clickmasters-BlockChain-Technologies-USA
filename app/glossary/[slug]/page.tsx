@@ -22,8 +22,8 @@ import { faqPageSchema } from "@/lib/structured-data";
 
 export async function generateStaticParams() {
   return getAllGlossaryTerms()
-    .filter((item: any) => item?.slug)
-    .map((item: any) => ({
+    .filter((item) => item?.slug)
+    .map((item) => ({
       slug: item.slug,
     }));
 }

@@ -21,7 +21,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { articleSchema, faqPageSchema } from "@/lib/structured-data";
 
 export async function generateStaticParams() {
-  return getAllNews().map((item: any) => ({
+  return getAllNews().map((item) => ({
     slug: item.slug,
   }));
 }

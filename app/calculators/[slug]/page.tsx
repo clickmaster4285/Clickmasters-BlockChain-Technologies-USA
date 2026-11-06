@@ -21,6 +21,7 @@ import CalculatorFaq from "@/components/calculators/CalculatorFaq";
 import CalculatorHero from "@/components/calculators/CalculatorHero";
 import CalculatorRelated from "@/components/calculators/CalculatorRelated";
 import RelatedLinks from "@/components/RelatedLinks";
+import { JsonLd } from "@/components/seo/JsonLd";
 
 type CalculatorPageProps = {
   params: Promise<{
@@ -84,22 +85,7 @@ export default async function CalculatorPage({ params }: CalculatorPageProps) {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(schemas.articleSchema),
-        }}
-      />
-
-
-      {schemas.faqSchema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(schemas.faqSchema),
-          }}
-        />
-      )}
+      <JsonLd data={[schemas.articleSchema, schemas.faqSchema]} />
 
       <Navbar />
 

@@ -10,12 +10,13 @@ import {
 } from "lucide-react";
 
 import TemplatePreview from "./TemplatePreview";
+import type { ContentBlock, ContentListEntry, ContentListObject, TemplateItem, TemplateSection } from "@/lib/content-types";
 
-export default function TemplateContent({ item }: { item: any }) {
+export default function TemplateContent({ item }: { item: TemplateItem }) {
   const blocks =
     item?.content ||
-    item?.sections?.flatMap((section: any) => {
-      const entries = [];
+    item?.sections?.flatMap((section: TemplateSection) => {
+      const entries: ContentBlock[] = [];
 
       if (section?.heading) {
         entries.push({
@@ -101,7 +102,7 @@ export default function TemplateContent({ item }: { item: any }) {
             </div>
           )}
 
-          {blocks.map((block: any, index: number) => {
+          {blocks.map((block: ContentBlock, index: number) => {
             switch (block.type) {
               case "featuredAnswer":
               case "summary":
@@ -215,7 +216,7 @@ export default function TemplateContent({ item }: { item: any }) {
 
                     <div className="grid gap-4">
                       {(block.items || []).map(
-                        (entry: any, itemIndex: number) => {
+                        (entry: ContentListEntry, itemIndex: number) => {
                           const title =
                             typeof entry === "string" ? null : entry?.title;
 
@@ -287,7 +288,7 @@ export default function TemplateContent({ item }: { item: any }) {
 
                     <div className="space-y-4">
                       {(block.items || []).map(
-                        (step: any, stepIndex: number) => (
+                        (step: ContentListObject, stepIndex: number) => (
                           <div
                             key={stepIndex}
                             className="group relative overflow-hidden rounded-[1.5rem] border border-border-default bg-bg-base p-5 transition-all duration-500 hover:-translate-y-1 hover:border-amber-base/40 hover:bg-amber-base/[0.04] sm:p-6"
@@ -343,12 +344,12 @@ export default function TemplateContent({ item }: { item: any }) {
 
                         <tbody>
                           {(block.rows || []).map(
-                            (row: any[], rowIndex: number) => (
+                            (row: string[], rowIndex: number) => (
                               <tr
                                 key={rowIndex}
                                 className="border-b border-border-default transition-colors hover:bg-amber-base/[0.04]"
                               >
-                                {row.map((cell: any, cellIndex: number) => (
+                                {row.map((cell: string, cellIndex: number) => (
                                   <td
                                     key={cellIndex}
                                     className={`px-5 py-4 text-sm leading-7 ${
@@ -370,13 +371,13 @@ export default function TemplateContent({ item }: { item: any }) {
                     {/* Mobile cards */}
                     <div className="grid gap-4 md:hidden">
                       {(block.rows || []).map(
-                        (row: any[], rowIndex: number) => (
+                        (row: string[], rowIndex: number) => (
                           <article
                             key={rowIndex}
                             className="rounded-[1.4rem] border border-border-default bg-bg-base p-5"
                           >
                             <div className="space-y-3">
-                              {row.map((cell: any, cellIndex: number) => (
+                              {row.map((cell: string, cellIndex: number) => (
                                 <div
                                   key={cellIndex}
                                   className="rounded-xl border border-border-default bg-bg-surface p-4"

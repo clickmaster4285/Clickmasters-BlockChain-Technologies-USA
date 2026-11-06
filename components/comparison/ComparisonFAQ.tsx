@@ -1,6 +1,7 @@
 import { HelpCircle, MessageCircleQuestion, Plus } from "lucide-react";
+import type { ComparisonItem, FAQItem } from "@/lib/content-types";
 
-export default function ComparisonFAQ({ article }: { article: any }) {
+export default function ComparisonFAQ({ article }: { article: ComparisonItem }) {
   if (!article.faqs?.length) return null;
 
   return (
@@ -42,7 +43,7 @@ export default function ComparisonFAQ({ article }: { article: any }) {
       </div>
 
       <div className="grid gap-4 p-6 md:p-10">
-        {article.faqs.map((item: any, index: number) => (
+        {article.faqs.map((item: FAQItem, index: number) => (
           <div
             key={item.question}
             className="group rounded-3xl border border-white/10 bg-bg-base/50 p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-base/30 hover:bg-bg-base/70 md:p-6"

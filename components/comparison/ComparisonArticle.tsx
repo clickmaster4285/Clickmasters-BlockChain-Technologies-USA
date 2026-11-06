@@ -1,8 +1,9 @@
 import { CheckCircle2, Code2, HelpCircle, Layers3 } from "lucide-react";
 import ComparisonCTA from "./ComparisonCTA";
 import { getComparisonCta } from "@/lib/comparison";
+import type { ComparisonItem, ContentBlock, FAQItem } from "@/lib/content-types";
 
-function renderTable(columns: string[], rows: any[][], key: string) {
+function renderTable(columns: string[], rows: string[][], key: string) {
   if (!rows?.length) return null;
 
   return (
@@ -66,7 +67,7 @@ function renderTable(columns: string[], rows: any[][], key: string) {
   );
 }
 
-function renderContent(blocks: any[]) {
+function renderContent(blocks: ContentBlock[]) {
   if (!Array.isArray(blocks)) return null;
 
   return blocks.map((block, index) => {
@@ -124,7 +125,7 @@ export default function ComparisonArticle({
   showFaq = false,
   showBottomCta = false,
 }: {
-  article: any;
+  article: ComparisonItem;
   showFaq?: boolean;
   showBottomCta?: boolean;
 }) {
@@ -165,7 +166,7 @@ export default function ComparisonArticle({
           </div>
 
           <div className="space-y-4">
-            {article.faqs.map((item: any) => (
+            {article.faqs.map((item: FAQItem) => (
               <div
                 key={item.question}
                 className="rounded-2xl border border-white/10 bg-bg-base/50 p-5 transition-colors hover:border-amber-base/25"

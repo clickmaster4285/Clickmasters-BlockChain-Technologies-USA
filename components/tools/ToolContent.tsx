@@ -9,13 +9,15 @@ import {
   Wrench,
 } from "lucide-react";
 import ToolCTA from "./ToolCTA";
+import type { ContentBlock, ContentListEntry, ResolvedCta } from "@/lib/content-types";
+import type { ToolData } from "@/lib/tools";
 
 export default function ToolContent({
   item,
   cta,
 }: {
-  item: any;
-  cta: any;
+  item: ToolData;
+  cta: ResolvedCta;
 }) {
   const blocks = item?.content || [];
 
@@ -81,7 +83,7 @@ export default function ToolContent({
             </div>
           )}
 
-          {blocks.map((block: any, index: number) => {
+          {blocks.map((block: ContentBlock, index: number) => {
             switch (block.type) {
               case "featuredAnswer":
               case "result":
@@ -192,7 +194,7 @@ export default function ToolContent({
 
       <div className="grid gap-4">
         {(block.items || []).map(
-          (listItem: any, itemIndex: number) => {
+          (listItem: ContentListEntry, itemIndex: number) => {
             const itemTitle =
               typeof listItem === "string"
                 ? null
@@ -237,88 +239,6 @@ export default function ToolContent({
     </section>
   );
 
-              case "list":
-  return (
-    <section key={index} className="relative">
-      {block.title && (
-        <div className="mb-6 flex items-center gap-4">
-          <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl border border-[#334155] bg-[#172033] text-amber-base shadow-[0_12px_30px_rgba(0,0,0,0.25)]">
-            <ListChecks className="h-6 w-6" />
-          </span>
-
-          <div>
-            <p className="text-[10px] font-black uppercase tracking-[0.22em] text-amber-base">
-              Key Details
-            </p>
-
-            <h2 className="mt-1 text-xl font-black text-white sm:text-2xl">
-              {block.title}
-            </h2>
-          </div>
-        </div>
-      )}
-
-      <div className="grid gap-4">
-        {(block.items || []).map(
-          (listItem: any, itemIndex: number) => {
-            const itemTitle =
-              typeof listItem === "string"
-                ? null
-                : listItem?.title;
-
-            const itemDescription =
-              typeof listItem === "string"
-                ? listItem
-                : listItem?.description ||
-                  listItem?.text ||
-                  listItem?.title;
-
-            return (
-              <div
-                key={`${itemDescription}-${itemIndex}`}
-                className="group relative overflow-hidden rounded-[1.5rem] border border-[#273449] bg-[#101827] transition-all duration-500 hover:-translate-y-1.5 hover:border-[#f59e0b]/50 hover:shadow-[0_24px_65px_rgba(0,0,0,0.4)]"
-              >
-                {/* Subtle hover glow */}
-                <div className="pointer-events-none absolute -right-20 -top-20 h-44 w-44 rounded-full bg-[#3b82f6]/0 blur-3xl transition-all duration-700 group-hover:bg-[#3b82f6]/10" />
-
-                <div className="pointer-events-none absolute -bottom-20 -left-20 h-40 w-40 rounded-full bg-amber-base/0 blur-3xl transition-all duration-700 group-hover:bg-amber-base/8" />
-
-                {/* Hover top line */}
-                <div className="pointer-events-none absolute inset-x-8 top-0 h-px origin-left scale-x-0 bg-gradient-to-r from-transparent via-amber-base to-transparent transition-transform duration-700 group-hover:scale-x-100" />
-
-                <div className="relative flex items-start gap-4 p-5 sm:p-6">
-                  {/* Number */}
-                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-[#334155] bg-[#182235] text-sm font-black text-[#fbbf24] transition-all duration-500 group-hover:rotate-3 group-hover:scale-110 group-hover:border-amber-base group-hover:bg-amber-base group-hover:text-[#111827] group-hover:shadow-[0_12px_30px_rgba(245,158,11,0.22)]">
-                    {String(itemIndex + 1).padStart(2, "0")}
-                  </span>
-
-                  <div className="min-w-0 flex-1">
-                    {itemTitle && (
-                      <h2 className="text-base font-black text-white transition-colors duration-300 group-hover:text-[#fbbf24] sm:text-lg">
-                        {itemTitle}
-                      </h2>
-                    )}
-
-                    <p
-                      className={`text-sm leading-7 text-[#aab6c8] transition-colors duration-300 group-hover:text-[#d7deea] md:text-base ${
-                        itemTitle ? "mt-2" : ""
-                      }`}
-                    >
-                      {itemDescription}
-                    </p>
-                  </div>
-
-                  <span className="mt-1 grid h-8 w-8 shrink-0 place-items-center rounded-full border border-[#334155] bg-[#172033] text-[#94a3b8] transition-all duration-300 group-hover:border-amber-base group-hover:bg-amber-base group-hover:text-[#111827]">
-                    <CheckCircle2 className="h-4 w-4" />
-                  </span>
-                </div>
-              </div>
-            );
-          }
-        )}
-      </div>
-    </section>
-  );
               case "table":
   return (
     <section key={index} className="relative">
@@ -360,7 +280,7 @@ export default function ToolContent({
 
           <tbody>
             {(block.rows || []).map(
-              (row: any[], rowIndex: number) => (
+              (row: string[], rowIndex: number) => (
                 <tr
                   key={rowIndex}
                   className={`group transition-all duration-300 hover:bg-[#172033] ${
@@ -369,7 +289,7 @@ export default function ToolContent({
                       : "bg-[#131c2c]"
                   }`}
                 >
-                  {row.map((cell: any, cellIndex: number) => (
+                  {row.map((cell: string, cellIndex: number) => (
                     <td
                       key={cellIndex}
                       className={`border-b border-[#273449] px-5 py-4 align-top text-sm leading-7 transition-colors duration-300 ${
@@ -391,7 +311,7 @@ export default function ToolContent({
       {/* Mobile card layout */}
       <div className="grid gap-4 md:hidden">
         {(block.rows || []).map(
-          (row: any[], rowIndex: number) => (
+          (row: string[], rowIndex: number) => (
             <article
               key={rowIndex}
               className="group relative overflow-hidden rounded-[1.4rem] border border-[#273449] bg-[#101827] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-amber-base/40 hover:shadow-[0_18px_50px_rgba(0,0,0,0.35)]"
@@ -399,7 +319,7 @@ export default function ToolContent({
               <div className="pointer-events-none absolute -right-14 -top-14 h-32 w-32 rounded-full bg-amber-base/0 blur-3xl transition-all duration-500 group-hover:bg-amber-base/10" />
 
               <div className="relative space-y-4">
-                {row.map((cell: any, cellIndex: number) => {
+                {row.map((cell: string, cellIndex: number) => {
                   const label =
                     block.columns?.[cellIndex] ||
                     `Field ${cellIndex + 1}`;

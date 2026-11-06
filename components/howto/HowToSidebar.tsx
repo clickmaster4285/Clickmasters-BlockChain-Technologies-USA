@@ -8,14 +8,15 @@ import {
   PenTool,
   Tags,
 } from "lucide-react";
+import type { HowToItem } from "@/lib/content-types";
 
 export default function HowToSidebar({
   item,
   related,
   readTime,
 }: {
-  item: any;
-  related: any[];
+  item: HowToItem;
+  related: HowToItem[];
   readTime: string;
 }) {
   return (
@@ -128,7 +129,7 @@ export default function HowToSidebar({
           </p>
 
           <div className="mt-4 space-y-3">
-            {related.map((guide: any) => (
+            {related.map((guide: HowToItem) => (
               <Link
                 key={guide.slug}
                 href={`/howto/${guide.slug}`}

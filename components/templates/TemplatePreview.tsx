@@ -2,12 +2,15 @@
 
 import { useState } from "react";
 import { Check, Copy, FileText, Sparkles } from "lucide-react";
+import type { TemplateItem } from "@/lib/content-types";
 
 type PreviewSection = {
+  type?: string;
   title?: string;
   heading?: string;
   description?: string;
   text?: string;
+  content?: string;
   items?: Array<
     | string
     | {
@@ -18,7 +21,7 @@ type PreviewSection = {
   >;
 };
 
-export default function TemplatePreview({ item }: { item: any }) {
+export default function TemplatePreview({ item }: { item: TemplateItem }) {
   const [copied, setCopied] = useState(false);
 
   const itemTitle =
@@ -41,7 +44,7 @@ export default function TemplatePreview({ item }: { item: any }) {
   const rawPreviewSections: PreviewSection[] =
     item?.preview ||
     item?.content?.filter(
-      (block: any) =>
+      (block) =>
         block?.type === "heading" ||
         block?.type === "paragraph" ||
         block?.type === "list",
@@ -75,7 +78,7 @@ export default function TemplatePreview({ item }: { item: any }) {
   const previewSections: PreviewSection[] =
     rawPreviewSections.length > 0
       ? rawPreviewSections.reduce(
-          (sections: PreviewSection[], section: any) => {
+          (sections: PreviewSection[], section: PreviewSection) => {
             const title =
               section.title ||
               section.heading ||

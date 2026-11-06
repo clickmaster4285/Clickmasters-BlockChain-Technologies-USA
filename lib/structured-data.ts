@@ -1,35 +1,40 @@
 import { siteConfig } from "@/config/site";
+import {
+  absoluteUrl,
+  toPlainText,
+  type JsonLdObject,
+} from "@/lib/schema-primitives";
+import { resolveSiteImage } from "@/lib/site-image";
 
 /**
  * Server-side JSON-LD helpers (schema.org).
  *
  * Every schema here is emitted as a <script type="application/ld+json"> tag in
  * the server-rendered HTML, so crawlers see it without executing JavaScript.
+ *
+ * Server-only (images are verified against /public). Client components must
+ * import from lib/schema-primitives instead.
  */
+
+export {
+  absoluteUrl,
+  breadcrumbSchema,
+  faqPageSchema,
+  toPlainText,
+  type BreadcrumbItem,
+} from "@/lib/schema-primitives";
 
 export const ORGANIZATION_ID = `${siteConfig.url}/#organization`;
 export const WEBSITE_ID = `${siteConfig.url}/#website`;
 
-type JsonLdObject = Record<string, unknown>;
+const organizationLogo = {
+  "@type": "ImageObject",
+  url: absoluteUrl(siteConfig.logo),
+  width: 256,
+  height: 51,
+};
 
-export function absoluteUrl(pathOrUrl: string) {
-  if (/^https?:\/\//i.test(pathOrUrl)) return pathOrUrl;
-  const path = pathOrUrl.startsWith("/") ? pathOrUrl : `/${pathOrUrl}`;
-  // Canonical URLs on this site have no trailing slash (except the root).
-  const normalized = path.length > 1 ? path.replace(/\/+$/, "") : path;
-  return `${siteConfig.url}${normalized === "/" ? "/" : normalized}`;
-}
-
-/** Strips markdown / HTML so schema text matches the visible copy. */
-export function toPlainText(value: unknown): string {
-  if (typeof value !== "string") return "";
-  return value
-    .replace(/<[^>]+>/g, " ")
-    .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")
-    .replace(/[*_`#>]+/g, "")
-    .replace(/\s+/g, " ")
-    .trim();
-}
+const sameAs = siteConfig.sameAs.filter((url) => /^https:\/\//i.test(url));
 
 /** Compact Organization node used for publisher / provider / author. */
 const organizationReference = {
@@ -37,18 +42,16 @@ const organizationReference = {
   "@id": ORGANIZATION_ID,
   name: siteConfig.name,
   url: `${siteConfig.url}/`,
-  logo: {
-    "@type": "ImageObject",
-    url: absoluteUrl(siteConfig.logo),
-  },
+  logo: organizationLogo,
 };
 
 /**
  * Organization facts.
  *
- * TODO(BCT-03): add verified NAP (address, telephone, email) and `sameAs`
- * social profile URLs here once the canonical business details are confirmed.
- * Do not add unverified values — inconsistent NAP data hurts more than it helps.
+ * TODO(BCT-03): add verified NAP (address, telephone) here and official profile
+ * URLs to `siteConfig.sameAs` once the canonical business details are
+ * confirmed. Do not add unverified values — inconsistent NAP data hurts more
+ * than it helps.
  */
 export function organizationSchema(): JsonLdObject {
   return {
@@ -57,11 +60,11 @@ export function organizationSchema(): JsonLdObject {
     "@id": ORGANIZATION_ID,
     name: siteConfig.name,
     url: `${siteConfig.url}/`,
-    logo: {
-      "@type": "ImageObject",
-      url: absoluteUrl(siteConfig.logo),
-    },
+    logo: organizationLogo,
+    image: absoluteUrl(siteConfig.shareImage.path),
     description: siteConfig.description,
+    email: "sales@clickmastersblockchaintechnologies.com",
+    ...(sameAs.length > 0 ? { sameAs } : {}),
   };
 }
 
@@ -74,59 +77,7 @@ export function websiteSchema(): JsonLdObject {
     url: `${siteConfig.url}/`,
     description: siteConfig.description,
     inLanguage: "en-US",
-    publisher: organizationReference,
-  };
-}
-
-export type BreadcrumbItem = { name: string; path: string };
-
-export function breadcrumbSchema(items: BreadcrumbItem[]): JsonLdObject | null {
-  if (items.length < 2) return null;
-
-  return {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: items.map((item, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      name: item.name,
-      item: absoluteUrl(item.path),
-    })),
-  };
-}
-
-type FaqLike = {
-  question?: unknown;
-  answer?: unknown;
-  q?: unknown;
-  a?: unknown;
-};
-
-/** Returns null when there are no usable FAQs, so callers can skip rendering. */
-export function faqPageSchema(faqs: unknown): JsonLdObject | null {
-  if (!Array.isArray(faqs)) return null;
-
-  const mainEntity = (faqs as FaqLike[])
-    .map((faq) => ({
-      question: toPlainText(faq?.question ?? faq?.q),
-      answer: toPlainText(faq?.answer ?? faq?.a),
-    }))
-    .filter((faq) => faq.question && faq.answer)
-    .map((faq) => ({
-      "@type": "Question",
-      name: faq.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: faq.answer,
-      },
-    }));
-
-  if (mainEntity.length === 0) return null;
-
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity,
+    publisher: { "@id": ORGANIZATION_ID },
   };
 }
 
@@ -144,6 +95,7 @@ export function serviceSchema({
   image?: string;
 }): JsonLdObject {
   const url = absoluteUrl(path);
+  const resolvedImage = resolveSiteImage(image);
 
   return {
     "@context": "https://schema.org",
@@ -153,7 +105,10 @@ export function serviceSchema({
     ...(description ? { description: toPlainText(description) } : {}),
     url,
     ...(serviceType ? { serviceType } : {}),
-    ...(image ? { image: absoluteUrl(image) } : {}),
+    // Only a page-specific image is meaningful here; skip the generic fallback.
+    ...(!resolvedImage.isFallback
+      ? { image: absoluteUrl(resolvedImage.path) }
+      : {}),
     provider: organizationReference,
     areaServed: { "@type": "Country", name: "United States" },
   };
@@ -198,7 +153,7 @@ export function articleSchema({
     ...(description ? { description: toPlainText(description) } : {}),
     url,
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
-    image: [absoluteUrl(image || siteConfig.logo)],
+    image: [absoluteUrl(resolveSiteImage(image).path)],
     ...(published ? { datePublished: published } : {}),
     ...(modified ? { dateModified: modified } : {}),
     // Bylines on this site are team/company bylines, so the author is an

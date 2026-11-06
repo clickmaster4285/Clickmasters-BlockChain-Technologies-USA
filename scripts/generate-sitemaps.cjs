@@ -61,6 +61,27 @@ function extractMetaUrls(filePath) {
   return urls;
 }
 
+/**
+ * <lastmod> must be the date the page content last changed. The build time is
+ * not that (it marks every URL as modified on every deploy, which teaches
+ * Google to ignore the field), and the data's `date` field is a shared publish
+ * date, not a modification date. So lastmod is emitted only when an item
+ * carries an explicit modification date; otherwise it is omitted (optional in
+ * the sitemap protocol).
+ */
+const LASTMOD_FIELDS = ['lastModified', 'dateModified', 'updatedAt', 'updated'];
+
+function realLastModified(entry) {
+  if (!entry || typeof entry !== 'object') return undefined;
+  for (const field of LASTMOD_FIELDS) {
+    const value = entry[field] ?? entry.meta?.[field];
+    if (typeof value !== 'string' || !value.trim()) continue;
+    const date = new Date(value);
+    if (!Number.isNaN(date.getTime())) return date.toISOString().slice(0, 10);
+  }
+  return undefined;
+}
+
 function generateSitemapXml(urls) {
   let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
   xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
@@ -332,17 +353,20 @@ function run() {
     loc: `${BASE_URL}${p.loc}`,
     changefreq: p.changefreq,
     priority: p.priority,
-    lastmod: new Date().toISOString()
   }));
   mainUrls.unshift({
     loc: `${BASE_URL}`,
     changefreq: 'daily',
     priority: 1.0,
-    lastmod: new Date().toISOString()
   });
   const mainFilename = 'sitemap-main.xml';
   fs.writeFileSync(path.join(PUBLIC_DIR, mainFilename), generateSitemapXml(mainUrls));
   activeSitemaps.push(`${BASE_URL}${mainFilename}`);
+
+  // Several data files describe the same pages (e.g. the core services exist in
+  // services.ts, blockchain-services.ts and md-services.js). Each URL must be
+  // listed in exactly one sitemap, so track what has already been emitted.
+  const emittedLocs = new Set(mainUrls.map((url) => url.loc));
   console.log(`✅ ${mainFilename} — ${mainUrls.length} static urls.`);
 
   // --- Dynamic categories from data/ ---
@@ -383,7 +407,6 @@ function run() {
         loc: `${BASE_URL}${cat.mainPath.replace(/^\//, '')}`,
         changefreq: 'daily',
         priority: 0.8,
-        lastmod: new Date().toISOString()
       });
     }
 
@@ -416,12 +439,13 @@ function run() {
           loc: fullUrl,
           changefreq: 'weekly',
           priority: 0.6,
-          lastmod: new Date().toISOString()
+          ...(realLastModified(entry) ? { lastmod: realLastModified(entry) } : {}),
         });
       }
     }
 
-    const uniqueUrls = dedupeUrls(urls);
+    const uniqueUrls = dedupeUrls(urls).filter((url) => !emittedLocs.has(url.loc));
+    uniqueUrls.forEach((url) => emittedLocs.add(url.loc));
 
     if (skippedRoutes > 0) {
       console.warn(`  ⚠ ${cat.key}: excluded ${skippedRoutes} URLs without generated pages`);

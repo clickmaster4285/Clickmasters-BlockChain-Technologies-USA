@@ -7,14 +7,15 @@ import {
   Layers3,
   Tags,
 } from "lucide-react";
+import type { ContentTag, GlossaryItem } from "@/lib/content-types";
 
 export default function GlossarySidebar({
   item,
   related,
   readTime,
 }: {
-  item: any;
-  related: any[];
+  item: GlossaryItem;
+  related: GlossaryItem[];
   readTime: string;
 }) {
   const category =
@@ -121,7 +122,7 @@ export default function GlossarySidebar({
             </p>
 
             <div className="mt-4 flex flex-wrap gap-2">
-              {tags.slice(0, 10).map((tag: any, index: number) => {
+              {tags.slice(0, 10).map((tag: ContentTag, index: number) => {
                 const text =
                   typeof tag === "string"
                     ? tag
@@ -165,7 +166,7 @@ export default function GlossarySidebar({
 
           {related.length > 0 ? (
             <div className="mt-5 space-y-3">
-              {related.map((term: any) => (
+              {related.map((term: GlossaryItem) => (
                 <Link
                   key={term.slug}
                   href={`/glossary/${term.slug}`}

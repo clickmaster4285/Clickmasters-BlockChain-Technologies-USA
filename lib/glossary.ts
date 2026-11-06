@@ -1,7 +1,8 @@
 import * as glossaryData from "@/data/glossary";
+import type { ContentListEntry, GlossaryItem } from "@/lib/content-types";
 
 function resolveGlossaryData() {
-  const source = glossaryData as Record<string, any>;
+  const source = glossaryData as Record<string, unknown>;
 
   return (
     source.glossary ||
@@ -12,7 +13,7 @@ function resolveGlossaryData() {
   );
 }
 
-export function getAllGlossaryTerms() {
+export function getAllGlossaryTerms(): GlossaryItem[] {
   const terms = resolveGlossaryData();
 
   return Array.isArray(terms) ? terms : [];
@@ -20,7 +21,7 @@ export function getAllGlossaryTerms() {
 
 export function getGlossaryTermBySlug(slug: string) {
   return getAllGlossaryTerms().find(
-    (item: any) => item?.slug === slug
+    (item) => item?.slug === slug
   );
 }
 
@@ -38,7 +39,7 @@ export function getRelatedGlossaryTerms(
     currentItem.type;
 
   const sameCategory = getAllGlossaryTerms().filter(
-    (item: any) =>
+    (item) =>
       item?.slug !== slug &&
       currentCategory &&
       (
@@ -49,10 +50,10 @@ export function getRelatedGlossaryTerms(
   );
 
   const remaining = getAllGlossaryTerms().filter(
-    (item: any) =>
+    (item) =>
       item?.slug !== slug &&
       !sameCategory.some(
-        (relatedItem: any) =>
+        (relatedItem) =>
           relatedItem.slug === item.slug
       )
   );
@@ -60,19 +61,19 @@ export function getRelatedGlossaryTerms(
   return [...sameCategory, ...remaining].slice(0, limit);
 }
 
-export function estimateGlossaryReadTime(item: any) {
+export function estimateGlossaryReadTime(item: GlossaryItem) {
   if (item?.readTime) {
     return item.readTime;
   }
 
   const contentText =
     item?.content
-      ?.map((block: any) => {
+      ?.map((block) => {
         if (block?.text) return block.text;
 
         if (Array.isArray(block?.items)) {
           return block.items
-            .map((listItem: any) =>
+            .map((listItem: ContentListEntry) =>
               typeof listItem === "string"
                 ? listItem
                 : `${listItem?.title || ""} ${
@@ -113,7 +114,7 @@ export function estimateGlossaryReadTime(item: any) {
   )} min read`;
 }
 
-export function getGlossaryCTA(item: any) {
+export function getGlossaryCTA(item: GlossaryItem) {
   return {
     title:
       item?.cta?.title ||
@@ -142,7 +143,7 @@ export function getGlossaryCTA(item: any) {
 export function getGlossaryCards() {
   return getAllGlossaryTerms()
     .filter(
-      (item: any) =>
+      (item) =>
         item &&
         (
           item.slug ||
@@ -150,7 +151,7 @@ export function getGlossaryCards() {
           item.term
         )
     )
-    .map((item: any, index: number) => ({
+    .map((item, index: number) => ({
       id: item.id || index + 1,
 
       slug:
@@ -221,7 +222,7 @@ export function searchGlossaryTerms(query: string) {
   }
 
   return getGlossaryCards().filter(
-    (item: any) =>
+    (item) =>
       item.title
         ?.toLowerCase()
         .includes(normalizedQuery) ||
@@ -251,7 +252,7 @@ export function filterGlossaryByLetter(
   }
 
   return getGlossaryCards().filter(
-    (item: any) =>
+    (item) =>
       item.letter === normalizedLetter
   );
 }
@@ -260,7 +261,7 @@ export function getAvailableGlossaryLetters() {
   return Array.from(
     new Set(
       getGlossaryCards()
-        .map((item: any) => item.letter)
+        .map((item) => item.letter)
         .filter(
           (letter: string) =>
             /^[A-Z]$/.test(letter)
@@ -268,3 +269,5 @@ export function getAvailableGlossaryLetters() {
     )
   ).sort();
 }
+
+export type GlossaryCardData = ReturnType<typeof getGlossaryCards>[number];

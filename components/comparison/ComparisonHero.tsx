@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { ArrowRight, GitCompare } from "lucide-react";
 import { splitHeading } from "@/lib/seo";
+import type { ComparisonItem } from "@/lib/content-types";
 
 export default function ComparisonHero({
   article,
   readTime,
 }: {
-  article: any;
+  article: ComparisonItem;
   readTime: number;
 }) {
   const contextSuffix =

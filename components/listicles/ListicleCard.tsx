@@ -5,12 +5,13 @@ import {
   Clock,
   Star,
 } from "lucide-react";
+import type { ListicleCardData } from "@/lib/listicles";
 
 export default function ListicleCard({
   item,
   index,
 }: {
-  item: any;
+  item: ListicleCardData;
   index: number;
 }) {
   return (

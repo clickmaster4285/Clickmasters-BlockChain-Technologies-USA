@@ -22,7 +22,7 @@ import { faqPageSchema } from "@/lib/structured-data";
 export const dynamicParams = true;
 
 export async function generateStaticParams() {
-  return getAllComparisonArticles().map((item: any) => ({
+  return getAllComparisonArticles().map((item) => ({
     slug: item.slug,
   }));
 }
@@ -88,7 +88,7 @@ export default async function SingleComparisonPage({
 
           <ComparisonHero article={article} readTime={readTime} />
 
-          <section className="mt-12 grid gap-8 lg:grid-cols-[minmax(0,1fr)_340px]">
+          <section className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_340px]">
   <ComparisonArticle
   article={article}
   showFaq={false}

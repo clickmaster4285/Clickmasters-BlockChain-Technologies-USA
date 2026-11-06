@@ -1,13 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, CalendarDays, Clock3, Newspaper } from "lucide-react";
+import type { NewsCardData } from "@/lib/news";
 
 export default function NewsCard({
   item,
   index,
   featured = false,
 }: {
-  item: any;
+  item: NewsCardData;
   index: number;
   featured?: boolean;
 }) {

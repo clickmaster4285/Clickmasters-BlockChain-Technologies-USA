@@ -85,7 +85,7 @@ export async function generateMetadata({
   );
   const searchQuery = resolvedSearchParams?.search?.trim() || "";
   const normalizedSearch = searchQuery.toLowerCase();
-  const filteredCount = getToolCards().filter((item: any) => {
+  const filteredCount = getToolCards().filter((item) => {
     const matchesCategory =
       selectedCategory.toLowerCase() === "all" ||
       item.category?.toLowerCase() === selectedCategory.toLowerCase();
@@ -94,7 +94,7 @@ export async function generateMetadata({
       item.title?.toLowerCase().includes(normalizedSearch) ||
       item.excerpt?.toLowerCase().includes(normalizedSearch) ||
       item.category?.toLowerCase().includes(normalizedSearch) ||
-      item.tags?.some((tag: any) =>
+      item.tags?.some((tag) =>
         String(tag).toLowerCase().includes(normalizedSearch)
       );
 
@@ -139,7 +139,7 @@ export default async function ToolsPage({
   );
   const categoryDescription = getCategoryDescription(selectedCategory);
 
-  const filteredTools = allTools.filter((item: any) => {
+  const filteredTools = allTools.filter((item) => {
     const matchesCategory =
       selectedCategory.toLowerCase() === "all" ||
       item.category?.toLowerCase() === selectedCategory.toLowerCase();
@@ -151,7 +151,7 @@ export default async function ToolsPage({
       item.title?.toLowerCase().includes(normalizedSearch) ||
       item.excerpt?.toLowerCase().includes(normalizedSearch) ||
       item.category?.toLowerCase().includes(normalizedSearch) ||
-      item.tags?.some((tag: any) =>
+      item.tags?.some((tag) =>
         String(tag).toLowerCase().includes(normalizedSearch)
       );
 
@@ -477,7 +477,7 @@ export default async function ToolsPage({
             {/* Cards */}
             {visibleTools.length > 0 ? (
               <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-                {visibleTools.map((item: any, index: number) => (
+                {visibleTools.map((item, index: number) => (
                   <ToolCard
                     key={item.slug}
                     item={item}

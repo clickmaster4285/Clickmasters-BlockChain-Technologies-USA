@@ -27,31 +27,31 @@ export function Comparison() {
         </div>
 
         <div className="mt-14 overflow-hidden rounded-xl border border-border bg-bg-base">
-          <div className="grid grid-cols-[1.4fr_1fr_1fr] text-sm">
+          <div className="grid grid-cols-[minmax(0,0.9fr)_minmax(0,1.15fr)_minmax(0,1fr)] text-sm hyphens-auto [overflow-wrap:break-word] sm:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)_minmax(0,1fr)]">
             {/* Header row */}
-            <div className="border-r border-border bg-bg-elevated px-5 py-3.5 font-mono text-[10px] uppercase tracking-widest text-text-muted">
+            <div className="border-r border-border bg-bg-elevated px-3 py-3.5 sm:px-5 font-mono text-[10px] uppercase tracking-widest text-text-muted">
               Criteria
             </div>
-            <div className="border-r border-border bg-amber-glow/30 px-5 py-3.5 text-center font-display text-sm font-semibold text-amber-base">
+            <div className="border-r border-border bg-amber-glow/30 px-3 py-3.5 sm:px-5 text-center font-display text-sm font-semibold text-amber-base">
               ClickMasters
             </div>
-            <div className="bg-bg-elevated px-5 py-3.5 text-center font-display text-sm font-semibold text-text-muted">
+            <div className="bg-bg-elevated px-3 py-3.5 sm:px-5 text-center font-display text-sm font-semibold text-text-muted">
               Generic agencies
             </div>
 
             {/* Data rows */}
             {rows.map((r, i) => (
               <div key={r.criteria} className="contents">
-                <div className={`border-r border-border px-5 py-4 text-sm font-medium text-text-primary ${i % 2 ? "bg-bg-surface/50" : ""}`}>
+                <div className={`border-r border-border px-3 py-4 sm:px-5 text-sm font-medium text-text-primary ${i % 2 ? "bg-bg-surface/50" : ""}`}>
                   {r.criteria}
                 </div>
-                <div className={`border-r border-border px-5 py-4 text-sm text-text-primary ${i % 2 ? "bg-amber-glow/20" : "bg-amber-glow/10"}`}>
+                <div className={`border-r border-border px-3 py-4 sm:px-5 text-sm text-text-primary ${i % 2 ? "bg-amber-glow/20" : "bg-amber-glow/10"}`}>
                   <div className="flex items-center gap-2">
                     <Check className="h-4 w-4 shrink-0 text-emerald-base" />
                     <span>{r.us}</span>
                   </div>
                 </div>
-                <div className={`px-5 py-4 text-sm text-text-muted ${i % 2 ? "bg-bg-surface/50" : ""}`}>
+                <div className={`px-3 py-4 sm:px-5 text-sm text-text-muted ${i % 2 ? "bg-bg-surface/50" : ""}`}>
                   <div className="flex items-center gap-2">
                     <X className="h-4 w-4 shrink-0 text-silver-dim" />
                     <span>{r.them}</span>
