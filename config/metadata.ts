@@ -28,10 +28,11 @@ const DESCRIPTION_EXTENSION =
  * ----------------------------------------------------------------------- */
 
 const TITLE_BRAND = " | Clickmasters";
-/** ~600px — roughly what Google shows before truncating a title. */
+/**
+ * ~600px — roughly what Google shows before truncating a title. A hard limit:
+ * a title that only fits by running over it gets a TITLE_OVERRIDES entry.
+ */
 const TITLE_MAX = 60;
-/** A complete title may run this much longer rather than lose words. */
-const TITLE_SOFT_OVERFLOW = 5;
 /** Shorter leading phrases ("Case Study") are too generic to stand alone. */
 const TITLE_MIN_PREFIX = 18;
 /** Max characters of title text given up in order to keep the brand suffix. */
@@ -96,7 +97,10 @@ export function buildPageTitle(title: string, path: string) {
   let topic = title
     .trim()
     .replace(/^H1:\s*/i, "")
-    .replace(/\s*(?:\||—|-)\s*clickmasters(?: blockchain technologies)?\s*$/i, "")
+    .replace(
+      /\s*(?:\||—|-)\s*clickmasters(?: blockchain technologies)?\s*$/i,
+      "",
+    )
     .trim();
   const page = topic.match(/\s+\|\s+Page \d+ of \d+$/i)?.[0] ?? "";
   if (page) topic = topic.slice(0, -page.length).trimEnd();
@@ -123,16 +127,13 @@ export function buildPageTitle(title: string, path: string) {
   // Best brand-free option: the complete title, a breakpoint prefix, the
   // specific part after a generic lead-in ("Blockchain News: …"), or as a last
   // resort a cut at a word boundary.
-  let bare =
-    topic.length <= room(false) + TITLE_SOFT_OVERFLOW
-      ? topic
-      : prefixFor(room(false));
+  let bare = topic.length <= room(false) ? topic : prefixFor(room(false));
   if (!bare) {
     const [head, separator, ...rest] = topic.split(TITLE_BREAK);
     const tail = rest.join("").trim();
     if (separator && head.length <= 20 && tail.length >= TITLE_MIN_PREFIX) {
       if (tail.length <= room(true)) return `${tail}${page}${TITLE_BRAND}`;
-      if (tail.length <= room(false) + TITLE_SOFT_OVERFLOW) bare = tail;
+      if (tail.length <= room(false)) bare = tail;
     }
   }
   if (!bare) {
