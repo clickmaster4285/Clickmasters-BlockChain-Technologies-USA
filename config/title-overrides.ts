@@ -14,6 +14,12 @@
  * any new collisions.
  */
 export const TITLE_OVERRIDES: Record<string, string> = {
+  // Blockchain consulting journey (handoff 11 Nov 2026, section 7).
+  "/faqs/blockchain-development-consulting-enterprise":
+    "Enterprise Blockchain Consulting: Scope & Deliverables",
+  "/service/blockchain-consulting":
+    "Blockchain Consulting Services for Enterprise",
+
   // Scope document template: calculator resource vs tool.
   "/calculators/blockchain-scope-document-template":
     "Scope Document Template — Define What You Are Building",

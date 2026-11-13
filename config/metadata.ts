@@ -148,6 +148,18 @@ export function buildPageTitle(title: string, path: string) {
   return `${bare}${page}`;
 }
 
+/**
+ * Approved meta descriptions used verbatim (no length normalisation), keyed by
+ * path. Only for copy supplied in an approved content handoff.
+ */
+const DESCRIPTION_OVERRIDES: Record<string, string> = {
+  // Blockchain consulting journey (handoff 11 Nov 2026, section 7).
+  "/faqs/blockchain-development-consulting-enterprise":
+    "Explore enterprise blockchain consulting: feasibility, platform selection, vendor evaluation and business cases. See deliverables and discuss your requirements.",
+  "/service/blockchain-consulting":
+    "Evaluate blockchain feasibility, compare platforms and review vendors. Explore consulting deliverables and discuss your enterprise requirements with ClickMasters.",
+};
+
 function normalizeDescription(description: string) {
   const normalized = description.trim().replace(/\s+/g, " ");
   const pageContextMatch = normalized.match(/\s+Page \d+ of \d+\.$/i);
@@ -190,7 +202,9 @@ export function createMetadata({
   noIndex = false,
 }: CreateMetadataOptions): Metadata {
   const fullTitle = buildPageTitle(title, path);
-  const metaDescription = normalizeDescription(description);
+  const metaDescription =
+    DESCRIPTION_OVERRIDES[normalizePath(path)] ??
+    normalizeDescription(description);
   const canonicalUrl = absoluteUrl(path);
   const resolvedImage = resolveSiteImage(image);
   const imageUrl = absoluteUrl(resolvedImage.path);

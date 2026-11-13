@@ -63,20 +63,22 @@ async function fetchEditedPage(slug: string): Promise<EditedPage | null> {
   const page = obj(obj(obj(json).data).page);
   const seo = obj(page.seo);
   const edits = parseErpSections(page.sections);
+  const version = typeof page.version === "number" ? page.version : 0;
+  const parsedSeo = {
+    title: str(seo.title),
+    metaDescription: str(seo.metaDescription),
+    canonicalUrl: str(seo.canonicalUrl),
+    robots: str(seo.robots),
+    ogTitle: str(seo.ogTitle),
+    ogDescription: str(seo.ogDescription),
+    ogImage: str(seo.ogImage),
+  };
   return {
     slug,
-    version: typeof page.version === "number" ? page.version : 0,
-    seo: {
-      title: str(seo.title),
-      metaDescription: str(seo.metaDescription),
-      canonicalUrl: str(seo.canonicalUrl),
-      robots: str(seo.robots),
-      ogTitle: str(seo.ogTitle),
-      ogDescription: str(seo.ogDescription),
-      ogImage: str(seo.ogImage),
-    },
+    version,
+    seo: parsedSeo,
     edits,
-    hash: contentHash(edits),
+    hash: contentHash({ version, seo: parsedSeo, edits }),
   };
 }
 

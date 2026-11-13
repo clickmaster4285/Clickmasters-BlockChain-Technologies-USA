@@ -24,6 +24,10 @@ import {
 } from "@/lib/faqs";
 import RelatedLinks from "@/components/RelatedLinks";
 import { splitHeading } from "@/lib/seo";
+import ConsultingGuidePage from "@/components/consulting/ConsultingGuidePage";
+import { consultingGuide } from "@/data/consulting";
+
+const CONSULTING_GUIDE_SLUG = "blockchain-development-consulting-enterprise";
 
 interface FAQDetailPageProps {
   params: Promise<{
@@ -53,6 +57,15 @@ export async function generateMetadata({
     });
   }
 
+  if (faq.slug === CONSULTING_GUIDE_SLUG) {
+    return createPageMetadata({
+      title: consultingGuide.metaTitle,
+      description: consultingGuide.metaDescription,
+      path: `/faqs/${faq.slug}`,
+      type: "article",
+    });
+  }
+
   return createPageMetadata({
     title: faq.title,
     description: faq.excerpt,
@@ -69,6 +82,9 @@ export default async function FAQDetailPage({
 
   if (!faq) {
     notFound();
+  }
+  if (faq.slug === CONSULTING_GUIDE_SLUG) {
+    return <ConsultingGuidePage />;
   }
   const addFaqContext = [
     "blockchain-content-library",

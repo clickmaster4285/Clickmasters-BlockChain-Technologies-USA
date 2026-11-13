@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import {
   Mail,
@@ -30,6 +30,21 @@ export default function ContactPage() {
 
   const [errorMessage, setErrorMessage] =
     useState("");
+
+  const [projectType, setProjectType] =
+    useState("");
+
+  // Non-sensitive service identifier from links such as
+  // /contact?service=blockchain-consulting preselects the project type.
+  useEffect(() => {
+    const service = new URLSearchParams(
+      window.location.search,
+    ).get("service");
+
+    if (service === "blockchain-consulting") {
+      setProjectType("Blockchain Consulting");
+    }
+  }, []);
 
   async function handleSubmit(
     event: React.FormEvent<HTMLFormElement>,
@@ -78,7 +93,10 @@ export default function ContactPage() {
       website:
         "clickmastersblockchaintechnologies.com",
 
-      service: "Blockchain",
+      service:
+        projectType === "Blockchain Consulting"
+          ? "Blockchain Consulting"
+          : "Blockchain",
 
       landingPage: window.location.href,
       referrer: document.referrer,
@@ -111,6 +129,7 @@ export default function ContactPage() {
 
       setStatus("success");
       form.reset();
+      setProjectType("");
     } catch (error) {
       console.error(
         "Contact form submission failed:",
@@ -198,7 +217,7 @@ export default function ContactPage() {
                     id="phone"
                     name="phone"
                     type="tel"
-                    placeholder="+44 0000 000000"
+                    placeholder="+1 555 000 0000"
                   />
                 </div>
 
@@ -211,7 +230,10 @@ export default function ContactPage() {
                     id="projectType"
                     name="projectType"
                     className="h-10 rounded-md border border-input bg-transparent px-3 text-sm shadow-sm"
-                    defaultValue=""
+                    value={projectType}
+                    onChange={(event) =>
+                      setProjectType(event.target.value)
+                    }
                     required
                   >
                     <option
@@ -220,6 +242,13 @@ export default function ContactPage() {
                       className="bg-background"
                     >
                       Select…
+                    </option>
+
+                    <option
+                      value="Blockchain Consulting"
+                      className="bg-background"
+                    >
+                      Blockchain Consulting
                     </option>
 
                     <option
