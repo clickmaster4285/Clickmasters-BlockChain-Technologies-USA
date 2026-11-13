@@ -8,6 +8,10 @@ import { organizationSchema, websiteSchema } from "@/lib/structured-data";
 import { createMetadata } from "@/config/metadata";
 import { siteConfig } from "@/config/site";
 import { Providers } from "./providers";
+import ErpPageEdits from "@/components/cms/ErpPageEdits";
+import { CmsNavigationProvider, type NavLink } from "@/components/cms/CmsNavigation";
+import { safeHref } from "@/components/cms/cmsContent";
+import { getCmsSite, type CmsNavItem } from "@/lib/cms/cms";
 import "./styles.css";
 
 const { alternates: _rootCanonical, ...rootMetadata } = createMetadata({
@@ -32,11 +36,28 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+// ERP nav items → safe links (unsafe URLs become plain labels).
+function toNavLinks(items: CmsNavItem[]): NavLink[] {
+  return items.map((i) => ({
+    id: i.id,
+    label: i.label,
+    url: safeHref(i.url),
+    target: i.target,
+    children: toNavLinks(i.children),
+  }));
+}
+
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  // ERP header/footer navigation (cached 60s; null when the ERP is down).
+  const site = await getCmsSite();
+  const nav = site
+    ? { header: toNavLinks(site.navigation.header), footer: toNavLinks(site.navigation.footer) }
+    : null;
+
   return (
     <html lang="en">
       <head>
@@ -46,12 +67,16 @@ export default function RootLayout({
         />
       </head>
       <body>
+        {/* Applies ERP page edits; must stay before the page tree (see the component). */}
+        <ErpPageEdits />
         <JsonLd data={[organizationSchema(), websiteSchema()]} />
         <BreadcrumbJsonLd />
         <ViewTransitions>
           <Providers>
-            <SmoothScroll />
-            {children}
+            <CmsNavigationProvider nav={nav}>
+              <SmoothScroll />
+              {children}
+            </CmsNavigationProvider>
           </Providers>
         </ViewTransitions>
       </body>

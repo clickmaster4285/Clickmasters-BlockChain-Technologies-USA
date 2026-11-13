@@ -1,3 +1,4 @@
+import { createPageMetadata } from "@/lib/cms/page-metadata";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Navbar } from "@/components/landing/Navbar";
@@ -189,7 +190,7 @@ export async function generateMetadata({
   const svc = getServiceBySlug(slug);
   if (!svc) return {};
 
-  return createMetadata({
+  return createPageMetadata({
     title: svc.title,
     description:
       slug === "resources/blockchain-content-library"

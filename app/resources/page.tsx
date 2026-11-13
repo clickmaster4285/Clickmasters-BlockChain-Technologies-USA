@@ -1,3 +1,4 @@
+import { createPageMetadata } from "@/lib/cms/page-metadata";
 import { redirect } from "next/navigation";
 
 import { Navbar } from "@/components/landing/Navbar";
@@ -39,7 +40,7 @@ export async function generateMetadata({
     ? `Explore blockchain ${selectedCategory.toLowerCase()} resources, with practical guidance for evaluating requirements, implementation choices, and project risks.`
     : "Explore practical blockchain guides, reports, strategic frameworks, technical resources, and project planning insights.";
 
-  return createMetadata({
+  return createPageMetadata({
     title,
     description,
     path: getPageHref("/resources", 1, {

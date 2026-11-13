@@ -1,3 +1,4 @@
+import { createPageMetadata } from "@/lib/cms/page-metadata";
 import Link from "next/link";
 
 import {
@@ -17,7 +18,7 @@ import BackToTop from "@/components/ui/BackToTop";
 import { createMetadata } from "@/config/metadata";
 import { technologies } from "@/data/technologies";
 
-export const metadata = createMetadata({
+export const generateMetadata = () => createPageMetadata({
   title: "Blockchain Technologies We Use",
   description:
     "Explore the blockchain platforms, smart contract tools, infrastructure, and Web3 technologies used by ClickMasters to build secure production-ready products.",

@@ -1,5 +1,6 @@
 // app/locations/[slug]/page.tsx
 
+import { createPageMetadata } from "@/lib/cms/page-metadata";
 import type { Metadata } from "next";
 
 import { notFound } from "next/navigation";
@@ -79,7 +80,7 @@ export async function generateMetadata({
     location.image ||
     "/media/blockchain.webp";
 
-  return createMetadata({
+  return createPageMetadata({
     title: pageTitle,
     description: pageDescription,
     path: canonicalPath,

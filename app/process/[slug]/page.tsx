@@ -1,5 +1,6 @@
 // app/process/[slug]/page.tsx
 
+import { createPageMetadata } from "@/lib/cms/page-metadata";
 import type { Metadata } from "next";
 
 import { notFound } from "next/navigation";
@@ -41,7 +42,7 @@ export async function generateMetadata({
   const process = getProcessBySlug(slug);
 
   if (!process) {
-    return createMetadata({
+    return createPageMetadata({
       title: "Process Guide Not Found",
       description:
         "The requested blockchain process guide could not be found.",
@@ -50,7 +51,7 @@ export async function generateMetadata({
     });
   }
 
-  return createMetadata({
+  return createPageMetadata({
     title: process.title,
     description:
       process.excerpt ||

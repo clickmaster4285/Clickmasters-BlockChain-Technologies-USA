@@ -1,3 +1,4 @@
+import { withEditedPageSeo } from "@/lib/cms/erp-edits";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -59,7 +60,7 @@ export async function generateMetadata({
     };
   }
 
-  return getCalculatorMetadata(calculator);
+  return withEditedPageSeo(`/calculators/${slug}`, getCalculatorMetadata(calculator));
 }
 
 /* =========================================================

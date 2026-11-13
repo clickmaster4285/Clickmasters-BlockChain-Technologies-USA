@@ -41,6 +41,7 @@ import {
   X,
   Zap,
 } from "lucide-react";
+import { CmsHeaderLinks, CmsMobileLinks } from "@/components/cms/CmsNavigation";
 
 type NavItem = {
   label: string;
@@ -613,6 +614,7 @@ export function Navbar() {
           <DesktopDropdown label="Blog" items={blogLinks} />
           <DesktopDropdown label="Resources" items={resourceLinks} />
           <DesktopSimpleDropdown label="Company" items={companyLinks} />
+          <CmsHeaderLinks />
         </ul>
 
         <div className="hidden xl:block">
@@ -672,6 +674,8 @@ export function Navbar() {
                 </div>
               </li>
             ))}
+
+            <CmsMobileLinks onNavigate={() => setOpen(false)} />
 
             <li>
               <Link

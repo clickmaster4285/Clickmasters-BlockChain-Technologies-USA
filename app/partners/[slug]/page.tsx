@@ -1,5 +1,6 @@
 // app/partners/[slug]/page.tsx
 
+import { createPageMetadata } from "@/lib/cms/page-metadata";
 import type { Metadata } from "next";
 
 import { notFound } from "next/navigation";
@@ -71,7 +72,7 @@ export async function generateMetadata({
   const image =
     partner.hero?.image || partner.image;
 
-  return createMetadata({
+  return createPageMetadata({
     title: pageTitle,
     description: pageDescription,
     path: canonicalUrl,

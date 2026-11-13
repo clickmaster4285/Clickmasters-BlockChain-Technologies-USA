@@ -2164,3 +2164,45 @@
     @apply rounded-full border border-border bg-bg-base/50 px-2 py-0.5 font-mono text-[10px] text-text-muted;
   }
 }
+
+/* ============================================================
+   ERP / CMS created pages — section backgrounds (settings.background).
+   Each surface re-points the site's own tokens, so every section component
+   keeps using text-text-primary / bg-surface / border-border and still reads
+   correctly on dark or brand backgrounds. Only used by components/cms.
+   ============================================================ */
+.cms-surface-muted { background-color: var(--bg-surface); }
+.cms-surface-light { background-color: #ffffff; }
+.cms-surface-dark,
+.cms-surface-primary {
+  --text-primary: #f8fafc;
+  --text-secondary: rgba(226, 232, 240, 0.82);
+  --text-muted: rgba(203, 213, 225, 0.7);
+  --foreground: #f8fafc;
+  --muted-foreground: rgba(203, 213, 225, 0.75);
+  --bg-surface: rgba(255, 255, 255, 0.06);
+  --surface: rgba(255, 255, 255, 0.06);
+  --card: rgba(255, 255, 255, 0.06);
+  --bg-elevated: rgba(255, 255, 255, 0.08);
+  --bg-base: rgba(15, 23, 42, 0.4);
+  --border-default: rgba(255, 255, 255, 0.14);
+  --border: rgba(255, 255, 255, 0.14);
+  color: var(--text-primary);
+}
+.cms-surface-dark { background-color: #0f172a; }
+.cms-surface-primary {
+  --amber-base: #ffffff;
+  --amber-dim: #fde68a;
+  --amber-glow: rgba(255, 255, 255, 0.14);
+  --amber-border: rgba(255, 255, 255, 0.3);
+  background: linear-gradient(135deg, var(--cms-primary-from, #92400e), var(--cms-primary-via, #d97706) 55%, var(--cms-primary-to, #f59e0b));
+}
+.cms-surface-dark .text-gradient { background: linear-gradient(135deg, #f59e0b, #10b981); -webkit-background-clip: text; background-clip: text; }
+.cms-surface-primary .text-gradient { background: none; -webkit-text-fill-color: currentColor; color: #ffffff; }
+
+/* settings.paddingY — [top, bottom] in px, scaled down on small screens. */
+.cms-pad { padding-top: calc(var(--cms-pt) * 0.6); padding-bottom: calc(var(--cms-pb) * 0.6); }
+@media (min-width: 768px) {
+  .cms-pad { padding-top: var(--cms-pt); padding-bottom: var(--cms-pb); }
+}
+.cms-surface-primary .cms-btn-primary { color: #92400e; }

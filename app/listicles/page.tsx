@@ -1,3 +1,4 @@
+import { createPageMetadata } from "@/lib/cms/page-metadata";
 import Link from "next/link";
 import { ArrowRight, ChevronLeft, ChevronRight, ListChecks, Star } from "lucide-react";
 import { Navbar } from "@/components/landing/Navbar";
@@ -37,7 +38,7 @@ export async function generateMetadata({
     totalPages,
   );
 
-  return createMetadata({
+  return createPageMetadata({
     ...metadata,
     path: getPageHref("/listicles", currentPage),
   });

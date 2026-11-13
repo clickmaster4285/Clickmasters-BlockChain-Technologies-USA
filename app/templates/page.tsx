@@ -1,3 +1,4 @@
+import { createPageMetadata } from "@/lib/cms/page-metadata";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -113,7 +114,7 @@ export async function generateMetadata({
     totalPages,
   );
 
-  return createMetadata({
+  return createPageMetadata({
     ...metadata,
     path: getPageHref("/templates", currentPage, {
       category: selectedCategory,

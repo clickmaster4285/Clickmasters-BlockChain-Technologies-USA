@@ -1,3 +1,4 @@
+import { createPageMetadata } from "@/lib/cms/page-metadata";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import {
@@ -29,7 +30,7 @@ import {
    Metadata
 ========================================================= */
 
-export const metadata = createMetadata({
+export const generateMetadata = () => createPageMetadata({
   title: "Blockchain Calculators, Simulators & Planning Tools",
   description:
     "Use free blockchain calculators, DeFi yield tools, gas estimators, tokenomics simulators, ROI calculators, templates, and smart contract planning guides.",

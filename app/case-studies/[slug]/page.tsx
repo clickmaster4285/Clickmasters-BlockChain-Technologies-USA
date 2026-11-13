@@ -1,3 +1,4 @@
+import { createPageMetadata } from "@/lib/cms/page-metadata";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -222,7 +223,7 @@ export async function generateMetadata({ params }: CaseStudyPageProps) {
   const caseStudy = caseStudies.find((item) => item.slug === slug);
 
   if (!caseStudy) {
-    return createMetadata({
+    return createPageMetadata({
       title: "Case Study Not Found | ClickMasters",
       description: "The requested blockchain case study could not be found.",
       path: `/case-studies/${slug}`,
@@ -230,7 +231,7 @@ export async function generateMetadata({ params }: CaseStudyPageProps) {
     });
   }
 
-  return createMetadata({
+  return createPageMetadata({
     title: caseStudy.title,
     description: caseStudy.excerpt,
     path: `/case-studies/${caseStudy.slug || slug}`,

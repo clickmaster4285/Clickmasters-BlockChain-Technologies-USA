@@ -1,4 +1,5 @@
 // app/industries/page.tsx
+import { createPageMetadata } from "@/lib/cms/page-metadata";
 import { redirect } from "next/navigation";
 
 import IndustryPagination from "@/components/industries/IndustryPagination";
@@ -64,7 +65,7 @@ export async function generateMetadata({
     totalPages,
   );
 
-  return createMetadata({
+  return createPageMetadata({
     ...metadata,
     path: getPageHref("/industries", currentPage),
   });

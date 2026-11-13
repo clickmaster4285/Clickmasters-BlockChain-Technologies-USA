@@ -1,3 +1,4 @@
+import { createPageMetadata } from "@/lib/cms/page-metadata";
 import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import { createMetadata } from "@/config/metadata";
@@ -24,7 +25,7 @@ export async function generateMetadata({
   const cost = getCostBySlug(slug);
   if (!cost) return {};
 
-  return createMetadata({
+  return createPageMetadata({
     title: cost.meta.title,
     description:
       cost.sections[0]?.bullets?.[0] ||

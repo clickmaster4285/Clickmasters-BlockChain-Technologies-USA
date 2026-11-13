@@ -1,3 +1,4 @@
+import { createPageMetadata } from "@/lib/cms/page-metadata";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -52,7 +53,7 @@ export async function generateMetadata({
   );
 
   if (!technology) {
-    return createMetadata({
+    return createPageMetadata({
       title: "Technology Not Found",
       description:
         "The requested blockchain technology page could not be found.",
@@ -61,7 +62,7 @@ export async function generateMetadata({
     });
   }
 
-  return createMetadata({
+  return createPageMetadata({
     title:
       TITLE_OVERRIDES[technology.slug] ??
       `${technology.name} Development Services`,

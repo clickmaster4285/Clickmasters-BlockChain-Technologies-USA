@@ -1,3 +1,4 @@
+import { createPageMetadata } from "@/lib/cms/page-metadata";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Navbar } from "@/components/landing/Navbar";
@@ -52,7 +53,7 @@ export async function generateMetadata({
     item.hero?.description ||
     `Learn what ${item.term || item.title} means and how it is used in blockchain and Web3.`;
 
-  return createMetadata({
+  return createPageMetadata({
     title,
     description,
     path: `/glossary/${item.slug || slug}`,

@@ -1,6 +1,7 @@
+import { createPageMetadata } from "@/lib/cms/page-metadata";
 import { createMetadata } from "@/config/metadata";
 
-export const metadata = createMetadata({
+export const generateMetadata = () => createPageMetadata({
   title: "Contact ClickMasters",
   description:
     "Share your DeFi, NFT, DAO, or Web3 project goals and technical requirements to start a discussion about possible next steps.",

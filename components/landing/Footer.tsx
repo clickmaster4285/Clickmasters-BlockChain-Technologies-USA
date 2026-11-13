@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Hexagon } from "lucide-react";
+import { CmsFooterLinks } from "@/components/cms/CmsNavigation";
 
 // The 12 core service pages — keep in sync with CORE_SERVICES in lib/related-links.ts.
 // Hardcoded here because the footer also renders inside client components.
@@ -90,6 +91,7 @@ export function Footer() {
             </ul>
           </div>
         </div>
+        <CmsFooterLinks />
         <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t border-border pt-6 text-xs text-muted-foreground md:flex-row md:items-center">
           <p>© {new Date().getFullYear()} ClickMasters. All rights reserved.</p>
           <p className="font-mono uppercase tracking-widest">Beyond the code — beyond the chain</p>

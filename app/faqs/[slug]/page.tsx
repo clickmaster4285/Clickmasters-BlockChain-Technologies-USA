@@ -1,3 +1,4 @@
+import { createPageMetadata } from "@/lib/cms/page-metadata";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -43,7 +44,7 @@ export async function generateMetadata({
   const faq = getFAQBySlug(slug);
 
   if (!faq) {
-    return createMetadata({
+    return createPageMetadata({
       title: "FAQ Not Found",
       description:
         "The frequently asked question you requested could not be found.",
@@ -52,7 +53,7 @@ export async function generateMetadata({
     });
   }
 
-  return createMetadata({
+  return createPageMetadata({
     title: faq.title,
     description: faq.excerpt,
     path: `/faqs/${faq.slug}`,
