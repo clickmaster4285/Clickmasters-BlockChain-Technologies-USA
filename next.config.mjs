@@ -1,5 +1,12 @@
+// ERP visual editor origin (e.g. https://erp.clickmasters.pk) may frame the
+// site so page edits can be made in place. Without it, framing stays same-origin.
+const editorOrigin = /^https:\/\/[a-z0-9.-]+(:\d+)?$/i.test(process.env.CMS_EDITOR_ORIGIN ?? '')
+  ? process.env.CMS_EDITOR_ORIGIN
+  : '';
+
 const securityHeaders = [
-  { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+  // X-Frame-Options can't allow-list an origin; CSP frame-ancestors covers it then.
+  ...(editorOrigin ? [] : [{ key: 'X-Frame-Options', value: 'SAMEORIGIN' }]),
   { key: 'X-Content-Type-Options', value: 'nosniff' },
   { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
   { key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' },
@@ -14,7 +21,7 @@ const securityHeaders = [
       "media-src 'self' blob: https:",
       "connect-src 'self' https:",
       "frame-src 'self' https:",
-      "frame-ancestors 'self'",
+      `frame-ancestors 'self'${editorOrigin ? ` ${editorOrigin}` : ''}`,
       "base-uri 'self'",
       "form-action 'self'",
       "object-src 'none'",

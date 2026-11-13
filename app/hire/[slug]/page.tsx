@@ -1,5 +1,6 @@
 // app/hire/[slug]/page.tsx
 
+import { createPageMetadata } from "@/lib/cms/page-metadata";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -55,7 +56,7 @@ export async function generateMetadata({
   const hirePage = getHirePageBySlug(slug);
 
   if (!hirePage) {
-    return createMetadata({
+    return createPageMetadata({
       title: "Hire Page Not Found",
       description:
         "The requested blockchain hiring page could not be found.",
@@ -63,7 +64,7 @@ export async function generateMetadata({
     });
   }
 
-  return createMetadata({
+  return createPageMetadata({
     title: hirePage.title,
     description:
       hirePage.excerpt ||

@@ -1,3 +1,4 @@
+import { createPageMetadata } from "@/lib/cms/page-metadata";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -23,6 +24,10 @@ import {
 } from "@/lib/faqs";
 import RelatedLinks from "@/components/RelatedLinks";
 import { splitHeading } from "@/lib/seo";
+import ConsultingGuidePage from "@/components/consulting/ConsultingGuidePage";
+import { consultingGuide } from "@/data/consulting";
+
+const CONSULTING_GUIDE_SLUG = "blockchain-development-consulting-enterprise";
 
 interface FAQDetailPageProps {
   params: Promise<{
@@ -43,7 +48,7 @@ export async function generateMetadata({
   const faq = getFAQBySlug(slug);
 
   if (!faq) {
-    return createMetadata({
+    return createPageMetadata({
       title: "FAQ Not Found",
       description:
         "The frequently asked question you requested could not be found.",
@@ -52,7 +57,16 @@ export async function generateMetadata({
     });
   }
 
-  return createMetadata({
+  if (faq.slug === CONSULTING_GUIDE_SLUG) {
+    return createPageMetadata({
+      title: consultingGuide.metaTitle,
+      description: consultingGuide.metaDescription,
+      path: `/faqs/${faq.slug}`,
+      type: "article",
+    });
+  }
+
+  return createPageMetadata({
     title: faq.title,
     description: faq.excerpt,
     path: `/faqs/${faq.slug}`,
@@ -68,6 +82,9 @@ export default async function FAQDetailPage({
 
   if (!faq) {
     notFound();
+  }
+  if (faq.slug === CONSULTING_GUIDE_SLUG) {
+    return <ConsultingGuidePage />;
   }
   const addFaqContext = [
     "blockchain-content-library",

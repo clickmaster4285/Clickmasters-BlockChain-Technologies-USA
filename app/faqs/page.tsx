@@ -1,3 +1,4 @@
+import { createPageMetadata } from "@/lib/cms/page-metadata";
 import type { Metadata } from "next";
 
 import FAQCTA from "@/components/faqs/FAQCTA";
@@ -44,7 +45,7 @@ export async function generateMetadata({
     totalPages,
   );
 
-  return createMetadata({
+  return createPageMetadata({
     ...metadata,
     path: getPageHref("/faqs", currentPage),
   });

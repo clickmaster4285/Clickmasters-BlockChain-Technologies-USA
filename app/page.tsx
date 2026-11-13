@@ -1,3 +1,4 @@
+import { createPageMetadata } from "@/lib/cms/page-metadata";
 import { CinematicEntry } from "@/components/landing/CinematicEntry";
 import { Navbar } from "@/components/landing/Navbar";
 import { ScrollProgress } from "@/components/landing/ScrollProgress";
@@ -25,7 +26,7 @@ import { createMetadata } from "@/config/metadata";
 const heroVideo = "/media/hero-bg.mp4";
 const heroSide = "/media/cta-bg.webp";
 
-export const metadata = createMetadata({
+export const generateMetadata = () => createPageMetadata({
   title: "Blockchain Development Company | Clickmasters",
   description:
     "Explore blockchain development services for smart contracts, decentralized applications, and Web3 products.",

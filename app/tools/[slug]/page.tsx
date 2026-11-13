@@ -1,3 +1,4 @@
+import { createPageMetadata } from "@/lib/cms/page-metadata";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -59,7 +60,7 @@ export async function generateMetadata({
     item?.image ||
     "/media/tools-hero.webp";
 
-  return createMetadata({
+  return createPageMetadata({
     title,
     description,
     path: `/tools/${item.slug || slug}`,

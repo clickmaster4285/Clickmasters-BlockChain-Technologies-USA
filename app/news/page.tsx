@@ -1,3 +1,4 @@
+import { createPageMetadata } from "@/lib/cms/page-metadata";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -43,7 +44,7 @@ export async function generateMetadata({
     totalPages,
   );
 
-  return createMetadata({
+  return createPageMetadata({
     ...metadata,
     path: getPageHref("/news", currentPage),
   });

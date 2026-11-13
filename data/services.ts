@@ -1615,89 +1615,37 @@ const rawServices: RawService[] = [
   {
     "id": 11,
     "slug": "blockchain-consulting",
-    "title": "Blockchain Consulting — Use Case Assessment, Platform Selection, and Vendor Evaluation",
-    "excerpt": "Before you build, you need to know whether to build, what to build, and whether your vendor can deliver it.",
+    "title": "Blockchain Consulting Services for Enterprise Decisions",
+    "excerpt": "Evaluate whether blockchain fits your business process, compare implementation options, and define a practical next step.",
     "category": "Consulting",
     "author": "ClickMasters Team",
     "date": "2025-06-23",
     "readTime": "6 min read",
     "image": "/assets/blockchain-consulting.webp",
+    "description": "Evaluate blockchain feasibility, compare platforms and review vendors. Explore consulting deliverables and discuss your enterprise requirements with ClickMasters.",
     "hero": {
       "badge": "CONSULTING",
-      "title": "Blockchain Consulting — Use Case Assessment, Platform Selection, and Vendor Evaluation",
-      "description": "Before you build, you need to know whether to build, what to build, and whether your vendor can deliver it. After 1,000+ blockchain projects since 2014, we provide strategy, assessment, and technical due diligence for executives who need honest answers."
+      "title": "Blockchain Consulting Services for Enterprise Decisions",
+      "description": "Evaluate whether blockchain fits your business process, compare implementation options, and define a practical next step. Discuss your requirements for feasibility assessment, platform selection, vendor review, or an implementation roadmap."
     },
     "credibility": [
-      "1,000+ projects",
-      "Honest assessment",
-      "Vendor evaluation",
-      "Technical due diligence"
+      "Feasibility assessment",
+      "Platform selection",
+      "Vendor review",
+      "Implementation roadmap"
     ],
     "content": [
       {
         "type": "featuredAnswer",
-        "text": "Blockchain consulting services: Use case assessment — does this problem need blockchain? What is the realistic ROI? Platform selection — Ethereum vs Hyperledger vs Solana vs private network. Vendor proposal review — benchmark vendor proposals against market rates and scope completeness. Technical due diligence — codebase review for M&A, investment, or audit. Tokenomics review — economic soundness assessment and stress testing. Costs: $15,000–$30,000 for use case assessment; $10,000–$20,000 for platform selection; $5,000–$10,000 for vendor proposal review; $10,000–$25,000 for technical due diligence. Timeline: 1–4 weeks."
-      },
-      {
-        "type": "heading",
-        "text": "Consulting Engagement Types"
-      },
-      {
-        "type": "heading",
-        "text": "Use case assessment ($15,000–$30,000, 2–4 weeks)"
-      },
-      {
-        "type": "paragraph",
-        "text": "Does this business problem need blockchain? What is the realistic ROI? What is the alternative? Deliverable: go/no-go recommendation with cost-benefit analysis."
-      },
-      {
-        "type": "heading",
-        "text": "Platform selection ($10,000–$20,000, 2–3 weeks)"
-      },
-      {
-        "type": "paragraph",
-        "text": "Ethereum vs Hyperledger vs Solana vs private network. Decision matrix against your specific requirements. Deliverable: written platform recommendation with technical rationale."
-      },
-      {
-        "type": "heading",
-        "text": "Vendor proposal review ($5,000–$10,000, 1 week)"
-      },
-      {
-        "type": "paragraph",
-        "text": "Review and benchmark 2–3 vendor proposals against market rates, scope completeness, and timeline realism. Deliverable: written vendor assessment with recommendation."
-      },
-      {
-        "type": "heading",
-        "text": "Technical due diligence ($10,000–$25,000, 1–3 weeks)"
-      },
-      {
-        "type": "paragraph",
-        "text": "Codebase review of an existing system (for M&A, investment, or audit). Architecture assessment, security posture, audit report review. Deliverable: written technical assessment."
-      },
-      {
-        "type": "heading",
-        "text": "Tokenomics review ($8,000–$20,000, 1–2 weeks)"
-      },
-      {
-        "type": "paragraph",
-        "text": "Review of an existing tokenomics model for economic soundness. Stress testing against market scenarios. Deliverable: written assessment with parameter recommendations."
+        "text": "Blockchain consulting helps you decide whether blockchain fits a business process, whether a public or permissioned network is appropriate, whether to build or buy, and which platform or vendor to use. Deliverables include a feasibility brief, requirements and assumptions, a platform comparison, a risk register and a prioritised roadmap. Fees depend on scope and are agreed after the requirements discussion."
       }
     ],
-    "faqs": [
-      {
-        "question": "Do you consult for competitors of businesses you have built systems for?",
-        "answer": "We sign NDAs before every engagement. We do not share client information between engagements. We disclose any conflict of interest before accepting a consulting engagement."
-      },
-      {
-        "question": "Can you tell us honestly if blockchain is not the right choice?",
-        "answer": "Yes — and we do, consistently. Our consulting reputation depends on giving accurate advice, not on winning every development engagement. We have advised multiple businesses to use a database instead of blockchain — and those relationships have led to blockchain engagements when their use case evolved."
-      }
-    ],
+    "faqs": [],
     "cta": {
-      "title": "Ready to Get Honest Blockchain Advice?",
-      "description": "Let's assess your use case and build the right strategy.",
-      "primaryText": "Book a Free Strategy Call",
-      "secondaryText": "Explore Our Consulting Services"
+      "title": "Discuss Your Blockchain Decision",
+      "description": "Tell us the decision you need to make and the systems involved.",
+      "primaryText": "Request a Consulting Discussion",
+      "secondaryText": "View a Sample Assessment"
     }
   },
   {

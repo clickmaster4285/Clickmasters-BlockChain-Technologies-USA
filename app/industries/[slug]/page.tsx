@@ -1,5 +1,6 @@
 // app/industries/[slug]/page.tsx
 
+import { createPageMetadata } from "@/lib/cms/page-metadata";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -100,7 +101,7 @@ export async function generateMetadata({
     };
   }
 
-  return createMetadata({
+  return createPageMetadata({
     title: industry.title,
     description: industry.excerpt,
     path: `/industries/${industry.slug}`,

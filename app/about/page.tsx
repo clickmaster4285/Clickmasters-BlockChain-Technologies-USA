@@ -1,9 +1,10 @@
+import { createPageMetadata } from "@/lib/cms/page-metadata";
 import Link from "next/link";
 import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import { createMetadata } from "@/config/metadata";
 
-export const metadata = createMetadata({
+export const generateMetadata = () => createPageMetadata({
   title: "About ClickMasters — Blockchain Development",
   description:
     "Learn about ClickMasters' blockchain and Web3 service areas, project considerations, and approach to planning decentralized products.",

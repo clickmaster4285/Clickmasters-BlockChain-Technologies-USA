@@ -1,3 +1,4 @@
+import { createPageMetadata } from "@/lib/cms/page-metadata";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Navbar } from "@/components/landing/Navbar";
@@ -16,6 +17,10 @@ import ServiceSidebar from '@/components/service/ServiceSidebar';
 import RelatedLinks from "@/components/RelatedLinks";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { faqPageSchema, serviceSchema } from "@/lib/structured-data";
+import ConsultingServicePage from "@/components/consulting/ConsultingServicePage";
+import { consultingService } from "@/data/consulting";
+
+const CONSULTING_SERVICE_SLUG = "blockchain-consulting";
 
 const contentLibraryTopics = [
   {
@@ -189,7 +194,16 @@ export async function generateMetadata({
   const svc = getServiceBySlug(slug);
   if (!svc) return {};
 
-  return createMetadata({
+  if (slug === CONSULTING_SERVICE_SLUG) {
+    return createPageMetadata({
+      title: consultingService.metaTitle,
+      description: consultingService.metaDescription,
+      path: `/service/${slug}`,
+      type: "article",
+    });
+  }
+
+  return createPageMetadata({
     title: svc.title,
     description:
       slug === "resources/blockchain-content-library"
@@ -210,6 +224,9 @@ export default async function ServicePage({
   if (!service) return notFound();
   if (slug === "resources/blockchain-content-library") {
     return <ContentLibraryPage title={service.title} />;
+  }
+  if (slug === CONSULTING_SERVICE_SLUG) {
+    return <ConsultingServicePage image={service.image} />;
   }
 
   return (

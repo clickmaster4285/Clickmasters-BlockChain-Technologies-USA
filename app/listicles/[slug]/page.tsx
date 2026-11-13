@@ -1,3 +1,4 @@
+import { createPageMetadata } from "@/lib/cms/page-metadata";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Navbar } from "@/components/landing/Navbar";
@@ -36,7 +37,7 @@ export async function generateMetadata({
 
   if (!item) return {};
 
-  return createMetadata({
+  return createPageMetadata({
     title: item.title,
     description: item.excerpt || item.hero?.description || item.title,
     path: `/listicles/${item.slug || slug}`,

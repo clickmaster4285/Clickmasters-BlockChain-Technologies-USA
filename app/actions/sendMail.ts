@@ -32,6 +32,12 @@ type ContactPayload = {
   utm_campaign?: unknown;
   utm_term?: unknown;
   utm_content?: unknown;
+  /** Hidden honeypot field. Real visitors never fill it in. */
+  honeypot?: unknown;
+  /** Optional context, added to the lead message on the server. */
+  company?: unknown;
+  enquiryType?: unknown;
+  sourcePage?: unknown;
 };
 
 type SendMailResult = {
@@ -113,10 +119,22 @@ export async function sendContactMail(
     };
   }
 
+  // Spam control: automated submissions that fill the hidden field are
+  // rejected without creating a lead. It never reports success.
+  if (clean(payload.honeypot)) {
+    return {
+      ok: false,
+      error: "Unable to submit your message.",
+    };
+  }
+
   const name = clean(payload.name);
   const email = clean(payload.email);
   const phone = clean(payload.phone);
-  const message = clean(payload.message);
+  const rawMessage = clean(payload.message);
+  const company = clean(payload.company);
+  const enquiryType = clean(payload.enquiryType);
+  const sourcePage = clean(payload.sourcePage);
   const website = clean(payload.website);
   const service = clean(payload.service);
   const landingPage = clean(payload.landingPage);
@@ -127,12 +145,23 @@ export async function sendContactMail(
   const utmTerm = clean(payload.utm_term);
   const utmContent = clean(payload.utm_content);
 
-  if (!name || !email || !message) {
+  if (!name || !email || !rawMessage) {
     return {
       ok: false,
       error: "Name, email, and message are required.",
     };
   }
+
+  // Context is added after validation so an empty message is still rejected.
+  const contextLines = [
+    textLine("Enquiry type", enquiryType),
+    textLine("Source page", sourcePage),
+    textLine("Company", company),
+  ].filter((line): line is string => line !== null);
+
+  const message = contextLines.length
+    ? `${contextLines.join("\n")}\n\n${rawMessage}`
+    : rawMessage;
 
   if (!isValidEmail(email)) {
     return {

@@ -2,7 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { currentSourcePage, trackEvent } from "@/lib/analytics";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import type { ElementType, ReactNode } from "react";
 import {
   BadgeCheck,
@@ -41,6 +43,7 @@ import {
   X,
   Zap,
 } from "lucide-react";
+import { CmsHeaderLinks, CmsMobileLinks } from "@/components/cms/CmsNavigation";
 
 type NavItem = {
   label: string;
@@ -572,9 +575,49 @@ function DesktopDropdown({
   );
 }
 
+/** Pages whose header CTA is reported as a consulting CTA click. */
+const CONSULTING_PAGES = new Set([
+  "/service/blockchain-consulting",
+  "/faqs/blockchain-development-consulting-enterprise",
+]);
+
+/**
+ * The header CTA jumps to the on-page enquiry section only when the current
+ * page actually has one (id="contact"); everywhere else it opens /contact.
+ */
+function useContactHref() {
+  const pathname = usePathname();
+  const [href, setHref] = useState("/contact");
+
+  useEffect(() => {
+    setHref(document.getElementById("contact") ? "#contact" : "/contact");
+  }, [pathname]);
+
+  const onCtaClick = () => {
+    if (!CONSULTING_PAGES.has(pathname)) return;
+    trackEvent("consulting_cta_click", {
+      source_page: currentSourcePage(),
+      cta_location: "header",
+      destination_type: href === "#contact" ? "on_page_section" : "contact_page",
+    });
+  };
+
+  // The consulting pages must not describe the enquiry as "free" (handoff §5).
+  // Labels are the primary CTAs from the consulting handoff (section 5).
+  const label =
+    pathname === "/service/blockchain-consulting"
+      ? "Request a Consulting Discussion"
+      : pathname === "/faqs/blockchain-development-consulting-enterprise"
+        ? "Discuss Your Blockchain Use Case"
+        : "Book a Free Strategy Call";
+
+  return { href, onCtaClick, label };
+}
+
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const contactCta = useContactHref();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -613,15 +656,16 @@ export function Navbar() {
           <DesktopDropdown label="Blog" items={blogLinks} />
           <DesktopDropdown label="Resources" items={resourceLinks} />
           <DesktopSimpleDropdown label="Company" items={companyLinks} />
+          <CmsHeaderLinks />
         </ul>
 
         <div className="hidden xl:block">
           <Link
-            href="#contact"
+            href={contactCta.href}
+            onClick={contactCta.onCtaClick}
             className="inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-amber-base px-4 py-2.5 text-sm font-semibold text-bg-base transition-all duration-200 ease-in-out hover:-translate-y-0.5 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-base"
-            aria-label="Book a free strategy call"
           >
-            Book a Free Strategy Call
+            {contactCta.label}
           </Link>
         </div>
 
@@ -673,13 +717,18 @@ export function Navbar() {
               </li>
             ))}
 
+            <CmsMobileLinks onNavigate={() => setOpen(false)} />
+
             <li>
               <Link
-                href="#contact"
-                onClick={() => setOpen(false)}
+                href={contactCta.href}
+                onClick={() => {
+                  contactCta.onCtaClick();
+                  setOpen(false);
+                }}
                 className="mt-3 block rounded-full bg-amber-base px-4 py-2.5 text-center text-sm font-semibold text-bg-base"
               >
-                Book a Free Strategy Call
+                {contactCta.label}
               </Link>
             </li>
           </ul>

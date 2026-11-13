@@ -37,6 +37,12 @@ const SECTION_LABELS: Record<string, string> = {
   tools: "Tools",
 };
 
+/** Leaf labels that must match a page's visible breadcrumb exactly. */
+const PAGE_LABELS: Record<string, string> = {
+  "/faqs/blockchain-development-consulting-enterprise": "Enterprise blockchain consulting",
+  "/service/blockchain-consulting": "Blockchain consulting",
+};
+
 // Listing filter / pagination segments, e.g. /service/category/defi/page/2
 const FILTER_KEYS = new Set(["category", "letter", "search", "page"]);
 
@@ -100,9 +106,10 @@ export function buildBreadcrumbs(pathname: string): BreadcrumbItem[] {
   // Catch-all routes (e.g. /service/resources/x) have no page for the
   // intermediate segments, so link straight from the section to the leaf.
   if (segments.length > 1) {
+    const path = `/${segments.join("/")}`;
     items.push({
-      name: humanize(segments[segments.length - 1]),
-      path: `/${segments.join("/")}`,
+      name: PAGE_LABELS[path] ?? humanize(segments[segments.length - 1]),
+      path,
     });
   }
 

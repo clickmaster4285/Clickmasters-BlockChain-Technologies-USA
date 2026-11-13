@@ -1,3 +1,4 @@
+import { createPageMetadata } from "@/lib/cms/page-metadata";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -14,7 +15,7 @@ import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import { createMetadata } from "@/config/metadata";
 
-export const metadata = createMetadata({
+export const generateMetadata = () => createPageMetadata({
   title: "Blockchain Solutions Hub",
   description:
     "Blockchain solutions by use case: smart contracts, DeFi, tokenization, wallets and payments, exchanges, enterprise ledgers, Web3 apps, and strategy.",

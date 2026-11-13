@@ -1,3 +1,4 @@
+import { createPageMetadata } from "@/lib/cms/page-metadata";
 import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import { createMetadata } from "@/config/metadata";
@@ -5,7 +6,7 @@ import { getCostCards } from "@/data/costs";
 import CostCard from "@/components/cost/CostCard";
 import RevealOnScroll from "@/components/cost/RevealOnScroll";
 
-export const metadata = createMetadata({
+export const generateMetadata = () => createPageMetadata({
   title: "Blockchain Development Cost Guides | Clickmasters",
   description:
     "Real 2025 pricing for smart contracts, DeFi, NFTs, crypto exchanges, wallets, tokenization, and enterprise blockchain projects — broken down by scope, phase, and audit cost.",

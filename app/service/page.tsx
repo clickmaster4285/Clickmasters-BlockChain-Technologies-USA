@@ -1,3 +1,4 @@
+import { createPageMetadata } from "@/lib/cms/page-metadata";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Navbar } from "@/components/landing/Navbar";
@@ -38,7 +39,7 @@ export async function generateMetadata({ searchParams }: ServicesIndexProps) {
     totalPages,
   );
 
-  return createMetadata({
+  return createPageMetadata({
     ...metadata,
     path: getPageHref("/service", currentPage),
   });

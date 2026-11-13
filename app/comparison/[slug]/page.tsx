@@ -1,3 +1,4 @@
+import { createPageMetadata } from "@/lib/cms/page-metadata";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Navbar } from "@/components/landing/Navbar";
@@ -37,7 +38,7 @@ export async function generateMetadata({
 
   if (!article) return {};
 
-  return createMetadata({
+  return createPageMetadata({
     title: article.title,
     description:
       article.excerpt ||

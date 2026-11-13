@@ -1253,80 +1253,36 @@ const faqHubs = [
   {
     "id": 16,
     "slug": "blockchain-development-consulting-enterprise",
-    "title": "Blockchain Development Consulting — Technical Advisory for Enterprise Decision Makers",
-    "excerpt": "Use case evaluation, platform selection, build vs buy, vendor evaluation, and board communication — enterprise consulting for confident decision-making.",
+    "title": "What Does Enterprise Blockchain Consulting Include?",
+    "excerpt": "Enterprise blockchain consulting helps your team evaluate whether blockchain fits a business process, compare platform options, and plan the next step before committing to development.",
     "category": "Services",
     "author": "ClickMasters Team",
     "date": "2025-06-23",
     "readTime": "6 min read",
     "image": "/assets/enterprise-consulting.webp",
     "hero": {
-      "badge": "SERVICE",
-      "title": "Blockchain Development Consulting — Technical Advisory for Enterprise Decision Makers",
-      "description": "Use case evaluation, platform selection, build vs buy, vendor evaluation, and board communication — enterprise consulting for confident decision-making."
+      "badge": "Enterprise consulting guide",
+      "title": "What Does Enterprise Blockchain Consulting Include?",
+      "description": "Enterprise blockchain consulting helps your team evaluate whether blockchain fits a business process, compare platform options, and plan the next step before committing to development. This guide explains the decisions, deliverables, and questions to discuss with an adviser."
     },
     "credibility": [
-      "Enterprise focus",
-      "Strategic advisory",
-      "Vendor evaluation",
-      "Board-ready materials"
+      "Feasibility recommendation",
+      "Platform decision matrix",
+      "Build/buy comparison",
+      "Vendor evaluation"
     ],
     "content": [
       {
         "type": "featuredAnswer",
-        "text": "Enterprise blockchain consulting delivers: use case evaluation (blockchain vs database with documented rationale), platform selection (public vs permissioned, chain recommendation), build vs buy analysis (5-year TCO), vendor evaluation framework, and board/investor communication materials. Engagement: discovery retainer $15,000–$30,000 for 4-6 weeks. NDA signed before first call."
-      },
-      {
-        "type": "heading",
-        "text": "What Enterprise Consulting Engagements Deliver"
-      },
-      {
-        "type": "heading",
-        "text": "Use case evaluation:"
-      },
-      {
-        "type": "paragraph",
-        "text": "We analyze your specific business processes against our blockchain decision framework, producing a written recommendation: blockchain vs traditional database vs hybrid, with supporting rationale and documented assumptions."
-      },
-      {
-        "type": "heading",
-        "text": "Platform selection:"
-      },
-      {
-        "type": "paragraph",
-        "text": "For cases where blockchain is appropriate, we evaluate: public vs permissioned, chain selection, existing protocol integration vs custom build. Our recommendation includes a comparison matrix scoring each option against your specific requirements."
-      },
-      {
-        "type": "heading",
-        "text": "Build vs buy vs partner:"
-      },
-      {
-        "type": "paragraph",
-        "text": "Should you build custom, use a white-label solution, or partner with an existing blockchain platform that serves your industry? We evaluate total cost of ownership across a 5-year horizon for each path."
-      },
-      {
-        "type": "heading",
-        "text": "Vendor evaluation:"
-      },
-      {
-        "type": "paragraph",
-        "text": "If you need a development firm (sometimes that's not us — we're honest about fit), we provide a structured evaluation framework and can interview candidate vendors on your behalf."
-      },
-      {
-        "type": "heading",
-        "text": "Board and investor communication:"
-      },
-      {
-        "type": "paragraph",
-        "text": "We prepare the blockchain technical narrative for your board presentation or investor materials, making complex technology accessible to non-technical decision-makers."
+        "text": "Enterprise blockchain consulting is advisory work that happens before any development commitment. It covers a feasibility recommendation, a platform decision matrix, a build/buy comparison, vendor evaluation, and an executive decision brief. Cost and duration depend on scope and are agreed after an initial requirements discussion."
       }
     ],
     "faqs": [],
     "cta": {
-      "title": "Ready for Enterprise Blockchain Advisory?",
-      "description": "Get expert guidance for confident blockchain decisions.",
-      "primaryText": "Book a Free Strategy Call",
-      "secondaryText": "Explore Our Consulting Services"
+      "title": "Discuss Your Blockchain Decision",
+      "description": "Tell us what you are evaluating, what is uncertain, and any existing systems or vendors involved.",
+      "primaryText": "Discuss Your Blockchain Use Case",
+      "secondaryText": "Explore Blockchain Consulting Services"
     }
   },
   {

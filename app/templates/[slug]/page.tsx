@@ -1,3 +1,4 @@
+import { createPageMetadata } from "@/lib/cms/page-metadata";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -82,7 +83,7 @@ export async function generateMetadata({
   const image =
     item?.seo?.image || item?.image || "/assets/templates-hero.webp";
 
-  return createMetadata({
+  return createPageMetadata({
     title,
     description,
     path: `/templates/${item.slug || slug}`,
