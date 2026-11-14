@@ -70,22 +70,22 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -151,17 +151,17 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -291,17 +291,17 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Request a Tokenization Platform Proposal",
-        href: "#",
+        href: "/contact",
         primary: false,
       },
     ],
@@ -492,57 +492,57 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -603,17 +603,17 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -738,17 +738,17 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Request a Custom Proposal",
-        href: "#",
+        href: "/contact",
         primary: false,
       },
     ],
@@ -807,12 +807,12 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -875,17 +875,17 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -933,12 +933,12 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -999,17 +999,17 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -1136,17 +1136,17 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Request an Exchange Development Proposal",
-        href: "#",
+        href: "/contact",
         primary: false,
       },
     ],
@@ -1286,17 +1286,17 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Request a Payment Gateway Proposal",
-        href: "#",
+        href: "/contact",
         primary: false,
       },
     ],
@@ -1430,17 +1430,17 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Request a Wallet Development Proposal",
-        href: "#",
+        href: "/contact",
         primary: false,
       },
     ],
@@ -1506,17 +1506,17 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -1606,32 +1606,32 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -1691,17 +1691,17 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -1811,22 +1811,22 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -1952,17 +1952,17 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Request a DeFi Protocol Proposal",
-        href: "#",
+        href: "/contact",
         primary: false,
       },
     ],
@@ -2083,17 +2083,17 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -2176,27 +2176,27 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -2257,17 +2257,17 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -2418,22 +2418,22 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -2563,17 +2563,17 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Request an Enterprise Proposal",
-        href: "#",
+        href: "/contact",
         primary: false,
       },
     ],
@@ -2640,17 +2640,17 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -2709,17 +2709,17 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -2784,17 +2784,17 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -2872,47 +2872,47 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -3043,77 +3043,77 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -3259,52 +3259,52 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -3401,27 +3401,27 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -3578,97 +3578,97 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -3799,77 +3799,77 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -4159,27 +4159,27 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -4283,17 +4283,17 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -4434,22 +4434,22 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -4574,17 +4574,17 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Request a GameFi Development Proposal",
-        href: "#",
+        href: "/contact",
         primary: false,
       },
     ],
@@ -4687,27 +4687,27 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -4768,17 +4768,17 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -4827,17 +4827,17 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -5039,27 +5039,27 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -5187,17 +5187,17 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -5277,17 +5277,17 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -5381,32 +5381,32 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -5608,57 +5608,57 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -5834,57 +5834,57 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -5945,17 +5945,17 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -6004,12 +6004,12 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -6069,17 +6069,17 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -6140,17 +6140,17 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -6209,17 +6209,17 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -6289,22 +6289,22 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -6376,27 +6376,27 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -6457,17 +6457,17 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -6528,17 +6528,17 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -6598,17 +6598,17 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -6702,32 +6702,32 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -6795,22 +6795,22 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -6871,17 +6871,17 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -7043,22 +7043,22 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -7187,17 +7187,17 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Request an NFT Platform Proposal",
-        href: "#",
+        href: "/contact",
         primary: false,
       },
     ],
@@ -7299,32 +7299,32 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -7395,22 +7395,22 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -7468,17 +7468,17 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -7538,17 +7538,17 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -7692,52 +7692,52 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -7835,22 +7835,22 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -7923,22 +7923,22 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -8015,22 +8015,22 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -8091,17 +8091,17 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -8262,22 +8262,22 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -8337,17 +8337,17 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -8472,17 +8472,17 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Request a Smart Contract Proposal",
-        href: "#",
+        href: "/contact",
         primary: false,
       },
     ],
@@ -8552,17 +8552,17 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -8658,32 +8658,32 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -8755,27 +8755,27 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -8824,12 +8824,12 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -8973,52 +8973,52 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -9079,17 +9079,17 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -9429,42 +9429,42 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -9614,22 +9614,22 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -9855,32 +9855,32 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -10299,52 +10299,52 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -10607,47 +10607,47 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -10856,27 +10856,27 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -11018,17 +11018,17 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -11578,67 +11578,67 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -12144,67 +12144,67 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -12486,32 +12486,32 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -12771,27 +12771,27 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -13087,42 +13087,42 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -13271,17 +13271,17 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -13464,27 +13464,27 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -13605,17 +13605,17 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -13824,22 +13824,22 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -14626,142 +14626,142 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -14971,27 +14971,27 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -15230,42 +15230,42 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -15421,37 +15421,37 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -15500,12 +15500,12 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -15631,17 +15631,17 @@ const mdServices = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Request a Web3 Development Proposal",
-        href: "#",
+        href: "/contact",
         primary: false,
       },
     ],

@@ -153,17 +153,17 @@ export const costs = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Request a Tokenization Platform Proposal",
-        href: "#",
+        href: "/contact",
         primary: false,
       },
     ],
@@ -344,17 +344,17 @@ export const costs = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Request a Written Project Estimate",
-        href: "#",
+        href: "/contact",
         primary: false,
       },
     ],
@@ -523,17 +523,17 @@ export const costs = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Request an Exchange Development Proposal",
-        href: "#",
+        href: "/contact",
         primary: false,
       },
     ],
@@ -693,17 +693,17 @@ export const costs = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Request a Wallet Development Proposal",
-        href: "#",
+        href: "/contact",
         primary: false,
       },
     ],
@@ -865,17 +865,17 @@ export const costs = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Request a DeFi Protocol Proposal",
-        href: "#",
+        href: "/contact",
         primary: false,
       },
     ],
@@ -1038,17 +1038,17 @@ export const costs = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Request an Enterprise Blockchain Proposal",
-        href: "#",
+        href: "/contact",
         primary: false,
       },
     ],
@@ -1207,17 +1207,17 @@ export const costs = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Request a GameFi Development Proposal",
-        href: "#",
+        href: "/contact",
         primary: false,
       },
     ],
@@ -1395,17 +1395,17 @@ export const costs = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Request an NFT Platform Proposal",
-        href: "#",
+        href: "/contact",
         primary: false,
       },
     ],
@@ -1593,17 +1593,17 @@ export const costs = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Request a Smart Contract Proposal",
-        href: "#",
+        href: "/contact",
         primary: false,
       },
     ],
@@ -1773,17 +1773,17 @@ export const costs = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Request a Web3 Development Proposal",
-        href: "#",
+        href: "/contact",
         primary: false,
       },
     ],

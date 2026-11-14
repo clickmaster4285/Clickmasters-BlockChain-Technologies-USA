@@ -17,7 +17,13 @@ import { safeHref } from "@/components/cms/cmsContent";
 import { getCmsSite, type CmsNavItem } from "@/lib/cms/cms";
 import "./styles.css";
 
-const { alternates: _rootCanonical, ...rootMetadata } = createMetadata({
+// Canonical and robots are per page. A root-level robots tag would also land
+// on the 404 page next to Next's own "noindex" and send conflicting signals.
+const {
+  alternates: _rootCanonical,
+  robots: _rootRobots,
+  ...rootMetadata
+} = createMetadata({
   title: siteConfig.name,
   description: siteConfig.description,
   path: "/",

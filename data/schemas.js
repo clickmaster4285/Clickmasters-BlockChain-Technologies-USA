@@ -49,17 +49,17 @@ const schemas = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -126,17 +126,17 @@ const schemas = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -346,47 +346,47 @@ const schemas = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
@@ -549,22 +549,22 @@ const schemas = [
     ctas: [
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
       {
         text: "Book a Free Strategy Call",
-        href: "#",
+        href: "/contact",
         primary: true,
       },
     ],
