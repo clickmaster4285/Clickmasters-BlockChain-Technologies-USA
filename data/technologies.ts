@@ -153,9 +153,7 @@ function getTextBlocks(entry: RawTechnology) {
 }
 
 function getListItems(entry: RawTechnology) {
-  return (entry.content ?? []).flatMap(
-    (block) => block.items ?? [],
-  );
+  return (entry.content ?? []).flatMap((block) => block.items ?? []);
 }
 
 function getHeadings(entry: RawTechnology) {
@@ -166,18 +164,15 @@ function getHeadings(entry: RawTechnology) {
 
 function sentenceFrom(text: string) {
   return (
-    text
-      .split(/(?<=[.!?])\s+/)
-      .find((sentence) => sentence.length > 24) ?? text
+    text.split(/(?<=[.!?])\s+/).find((sentence) => sentence.length > 24) ?? text
   );
 }
 
 function makeOverview(entry: RawTechnology) {
   const textBlocks = getTextBlocks(entry);
-  const overview = [
-    entry.hero?.description,
-    ...textBlocks,
-  ].filter(Boolean) as string[];
+  const overview = [entry.hero?.description, ...textBlocks].filter(
+    Boolean,
+  ) as string[];
 
   return overview.slice(0, 3);
 }
@@ -269,10 +264,7 @@ export const technologies: TechnologyDetail[] = (
   const overview = makeOverview(entry);
   const capabilities = makeCapabilities(entry);
   const useCases = makeUseCases(entry);
-  const strengths = [
-    ...(entry.credibility ?? []),
-    ...capabilities,
-  ].slice(0, 6);
+  const strengths = [...(entry.credibility ?? []), ...capabilities].slice(0, 6);
 
   return {
     slug: entry.slug,
@@ -287,10 +279,7 @@ export const technologies: TechnologyDetail[] = (
       entry.excerpt ??
       sentenceFrom(overview[0] ?? entry.title),
     highlights: makeHighlights(entry),
-    overview:
-      overview.length > 0
-        ? overview
-        : [entry.excerpt ?? entry.title],
+    overview: overview.length > 0 ? overview : [entry.excerpt ?? entry.title],
     capabilities:
       capabilities.length > 0
         ? capabilities
@@ -368,14 +357,8 @@ export const technologies: TechnologyDetail[] = (
       },
     ],
     faqs: entry.faqs ?? [],
-    relatedTechnologies: makeRelatedTechnologies(
-      entry,
-      allEntries,
-    ),
-    relatedServices: relatedServices.slice(
-      index % 2,
-      index % 2 + 3,
-    ),
+    relatedTechnologies: makeRelatedTechnologies(entry, allEntries),
+    relatedServices: relatedServices.slice(index % 2, (index % 2) + 3),
   };
 });
 

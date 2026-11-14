@@ -49,17 +49,14 @@ export function generateStaticParams() {
 /**
  * Creates unique metadata for every Hire page.
  */
-export async function generateMetadata({
-  params,
-}: HireDetailPageProps) {
+export async function generateMetadata({ params }: HireDetailPageProps) {
   const { slug } = await params;
   const hirePage = getHirePageBySlug(slug);
 
   if (!hirePage) {
     return createPageMetadata({
       title: "Hire Page Not Found",
-      description:
-        "The requested blockchain hiring page could not be found.",
+      description: "The requested blockchain hiring page could not be found.",
       path: `/hire/${slug}`,
     });
   }
@@ -77,11 +74,7 @@ export async function generateMetadata({
 /**
  * Renders the different block types from data/hire.ts.
  */
-function HireContentRenderer({
-  blocks,
-}: {
-  blocks: HireContentBlock[];
-}) {
+function HireContentRenderer({ blocks }: { blocks: HireContentBlock[] }) {
   if (!Array.isArray(blocks) || blocks.length === 0) {
     return null;
   }
@@ -130,10 +123,7 @@ function HireContentRenderer({
 
           case "paragraph":
             return (
-              <p
-                key={key}
-                className="text-base leading-8 text-silver"
-              >
+              <p key={key} className="text-base leading-8 text-silver">
                 {block.text}
               </p>
             );
@@ -235,9 +225,7 @@ function HireContentRenderer({
   );
 }
 
-export default async function HireDetailPage({
-  params,
-}: HireDetailPageProps) {
+export default async function HireDetailPage({ params }: HireDetailPageProps) {
   const { slug } = await params;
 
   const hirePage = getHirePageBySlug(slug);
@@ -246,15 +234,9 @@ export default async function HireDetailPage({
     notFound();
   }
 
-  const relatedPages = getRelatedHirePages(
-    hirePage.slug,
-    3
-  );
+  const relatedPages = getRelatedHirePages(hirePage.slug, 3);
   const heroImage = hirePage.image;
-  const heroSkills = hirePage.credibility.slice(
-    0,
-    3
-  );
+  const heroSkills = hirePage.credibility.slice(0, 3);
 
   const faqSchema =
     hirePage.faqs?.length > 0
@@ -326,10 +308,7 @@ export default async function HireDetailPage({
             aria-label="Breadcrumb"
             className="mb-7 flex flex-wrap items-center gap-2 text-sm text-silver"
           >
-            <Link
-              href="/"
-              className="transition-colors hover:text-amber-base"
-            >
+            <Link href="/" className="transition-colors hover:text-amber-base">
               Home
             </Link>
 
@@ -344,9 +323,7 @@ export default async function HireDetailPage({
 
             <span>/</span>
 
-            <span className="text-text-primary">
-              {hirePage.title}
-            </span>
+            <span className="text-text-primary">{hirePage.title}</span>
           </nav>
 
           {/* Hero */}
@@ -371,16 +348,13 @@ export default async function HireDetailPage({
                 </div>
 
                 <h1 className="mt-6 max-w-4xl font-display text-4xl font-black leading-[1.08] tracking-tight text-text-primary md:text-6xl">
-                  {splitHeading(
-                    hirePage.hero?.title || hirePage.title,
-                  ).heading}
+                  {splitHeading(hirePage.hero?.title || hirePage.title).heading}
                 </h1>
 
                 <p className="mt-6 max-w-2xl text-base leading-8 text-silver md:text-lg">
                   {[
-                    splitHeading(
-                      hirePage.hero?.title || hirePage.title,
-                    ).continuation,
+                    splitHeading(hirePage.hero?.title || hirePage.title)
+                      .continuation,
                     hirePage.hero?.description || hirePage.excerpt,
                   ]
                     .filter(Boolean)
@@ -539,10 +513,7 @@ export default async function HireDetailPage({
 
           {/* Main content */}
 
-          <section
-            id="hire-guide"
-            className="scroll-mt-28 pt-20"
-          >
+          <section id="hire-guide" className="scroll-mt-28 pt-20">
             <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px]">
               <article className="min-w-0">
                 <div className="mb-9">
@@ -559,9 +530,7 @@ export default async function HireDetailPage({
                   </p>
                 </div>
 
-                <HireContentRenderer
-                  blocks={hirePage.content}
-                />
+                <HireContentRenderer blocks={hirePage.content} />
               </article>
 
               {/* Sticky sidebar */}
@@ -580,9 +549,8 @@ export default async function HireDetailPage({
                     </h2>
 
                     <p className="mt-3 text-sm leading-7 text-silver">
-                      Share your requirements and receive a
-                      recommendation for the right developer or
-                      delivery team.
+                      Share your requirements and receive a recommendation for
+                      the right developer or delivery team.
                     </p>
 
                     <Link
@@ -602,9 +570,7 @@ export default async function HireDetailPage({
 
                   <div className="mt-5 space-y-4">
                     <div className="flex items-center justify-between gap-4 border-b border-white/10 pb-4 text-sm">
-                      <span className="text-silver">
-                        Category
-                      </span>
+                      <span className="text-silver">Category</span>
 
                       <span className="font-bold text-text-primary">
                         {hirePage.category}
@@ -612,9 +578,7 @@ export default async function HireDetailPage({
                     </div>
 
                     <div className="flex items-center justify-between gap-4 border-b border-white/10 pb-4 text-sm">
-                      <span className="text-silver">
-                        Reading time
-                      </span>
+                      <span className="text-silver">Reading time</span>
 
                       <span className="font-bold text-text-primary">
                         {hirePage.readTime || "Guide"}
@@ -622,9 +586,7 @@ export default async function HireDetailPage({
                     </div>
 
                     <div className="flex items-center justify-between gap-4 border-b border-white/10 pb-4 text-sm">
-                      <span className="text-silver">
-                        Author
-                      </span>
+                      <span className="text-silver">Author</span>
 
                       <span className="text-right font-bold text-text-primary">
                         {hirePage.author || "ClickMasters"}
@@ -632,9 +594,7 @@ export default async function HireDetailPage({
                     </div>
 
                     <div className="flex items-center justify-between gap-4 text-sm">
-                      <span className="text-silver">
-                        Updated
-                      </span>
+                      <span className="text-silver">Updated</span>
 
                       <span className="font-bold text-text-primary">
                         {hirePage.date || "Recently"}
@@ -716,8 +676,7 @@ export default async function HireDetailPage({
                       href="/contact"
                       className="inline-flex items-center justify-center gap-2 rounded-full bg-bg-base px-7 py-3.5 text-sm font-bold text-amber-base shadow-glow transition-transform hover:-translate-y-1"
                     >
-                      {hirePage.cta.primaryText ||
-                        "Hire an Expert"}
+                      {hirePage.cta.primaryText || "Hire an Expert"}
                       <ArrowRight className="h-4 w-4" />
                     </Link>
 
@@ -782,16 +741,14 @@ export default async function HireDetailPage({
                       </p>
 
                       <div className="mt-5 flex flex-wrap gap-2">
-                        {item.credibility
-                          ?.slice(0, 2)
-                          .map((skill) => (
-                            <span
-                              key={skill}
-                              className="rounded-full border border-white/10 px-3 py-1 text-[11px] text-silver"
-                            >
-                              {skill}
-                            </span>
-                          ))}
+                        {item.credibility?.slice(0, 2).map((skill) => (
+                          <span
+                            key={skill}
+                            className="rounded-full border border-white/10 px-3 py-1 text-[11px] text-silver"
+                          >
+                            {skill}
+                          </span>
+                        ))}
                       </div>
 
                       <span className="mt-auto inline-flex items-center gap-2 pt-7 text-sm font-bold text-amber-base">

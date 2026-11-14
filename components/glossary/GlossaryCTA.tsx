@@ -45,9 +45,7 @@ export default function GlossaryCTA({
 
         <p
           className={`mt-5 max-w-3xl text-bg-base/80 ${
-            compact
-              ? "text-sm leading-7"
-              : "text-base leading-8 md:text-lg"
+            compact ? "text-sm leading-7" : "text-base leading-8 md:text-lg"
           }`}
         >
           {cta.description || description}

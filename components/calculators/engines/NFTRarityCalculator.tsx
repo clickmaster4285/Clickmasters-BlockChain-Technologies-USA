@@ -479,6 +479,7 @@ function TraitCountBonus({
           type="button"
           role="switch"
           aria-checked={checked}
+          aria-label="Include trait-count rarity"
           onClick={() => onCheckedChange(!checked)}
           className={`relative mt-1 h-7 w-12 shrink-0 rounded-full border transition focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-base/50 ${
             checked

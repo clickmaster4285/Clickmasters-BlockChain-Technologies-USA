@@ -34,7 +34,9 @@ export function VideoWithFallback({
   lazy = false,
 }: VideoWithFallbackProps) {
   const [hasError, setHasError] = useState(false);
-  const [activeSrc, setActiveSrc] = useState<string | undefined>(lazy ? undefined : src);
+  const [activeSrc, setActiveSrc] = useState<string | undefined>(
+    lazy ? undefined : src,
+  );
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   // Lazy-load: only set src when the video is near the viewport

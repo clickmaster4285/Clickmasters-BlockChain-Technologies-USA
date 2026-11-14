@@ -17,10 +17,17 @@ export default function GenericSection({
   index: number;
 }) {
   const parsed = parseCostContent(section.content, section.bullets ?? []);
-  const allBullets = [...parsed.labelBlocks.map((b) => `${b.label}: ${b.description}`), ...parsed.plainBullets];
+  const allBullets = [
+    ...parsed.labelBlocks.map((b) => `${b.label}: ${b.description}`),
+    ...parsed.plainBullets,
+  ];
 
   return (
-    <SectionShell tone="elevated" eyebrow={`0${index}`} className="relative overflow-hidden">
+    <SectionShell
+      tone="elevated"
+      eyebrow={`0${index}`}
+      className="relative overflow-hidden"
+    >
       <div className="pointer-events-none absolute right-[6%] top-10 h-40 w-40 rounded-full bg-emerald-glow blur-3xl animate-float-slow" />
       <div className="max-w-3xl">
         {parsed.h2 && (
@@ -41,7 +48,10 @@ export default function GenericSection({
           <RevealOnScroll effect="slide-left" delay={180}>
             <ul className="mt-6 space-y-3 border-l-2 border-amber-border pl-5">
               {allBullets.map((b, i) => (
-                <li key={i} className="text-sm leading-relaxed text-text-secondary">
+                <li
+                  key={i}
+                  className="text-sm leading-relaxed text-text-secondary"
+                >
                   {cleanInlineMarks(b)}
                 </li>
               ))}

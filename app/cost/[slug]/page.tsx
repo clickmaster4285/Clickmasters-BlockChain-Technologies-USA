@@ -52,13 +52,14 @@ export default async function CostDetailPage({
     <>
       <div className="relative bg-bg-base">
         <Navbar />
-        <JsonLd
-          data={faqPageSchema(cost.faq)}
-        />
+        <JsonLd data={faqPageSchema(cost.faq)} />
         <div className="pt-20 md:pt-24">
           <Breadcrumb title={title} />
         </div>
-        <main className="relative w-full" style={{ viewTransitionName: `cost-card-${cost.slug}` }}>
+        <main
+          className="relative w-full"
+          style={{ viewTransitionName: `cost-card-${cost.slug}` }}
+        >
           <SectionRenderer cost={cost} />
           <FAQAccordion faq={cost.faq} />
           <CTABand ctas={cost.ctas} title={title} />

@@ -1,6 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState, type ElementType, type ReactNode } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type ElementType,
+  type ReactNode,
+} from "react";
 
 export type RevealEffect =
   | "slide-left"
@@ -38,7 +44,7 @@ export default function RevealOnScroll({
           io.unobserve(el);
         }
       },
-      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
     );
     io.observe(el);
     return () => io.disconnect();
@@ -55,7 +61,7 @@ export default function RevealOnScroll({
       "pop-bounce": "opacity-0 scale-75",
       "float-rise": "opacity-0 translate-y-8",
       "fade-up": "opacity-0 translate-y-5",
-      "unfold": "opacity-0 scale-x-90 scale-y-95 origin-left",
+      unfold: "opacity-0 scale-x-90 scale-y-95 origin-left",
     };
     const visible = {
       "slide-left": "opacity-100 translate-x-0",
@@ -65,7 +71,7 @@ export default function RevealOnScroll({
       "pop-bounce": "opacity-100 scale-100",
       "float-rise": "opacity-100 translate-y-0",
       "fade-up": "opacity-100 translate-y-0",
-      "unfold": "opacity-100 scale-x-100 scale-y-100",
+      unfold: "opacity-100 scale-x-100 scale-y-100",
     };
 
     return `${base} ${!visible ? hidden[effect] : visible[effect]}`;

@@ -20,42 +20,30 @@ export function getAllGlossaryTerms(): GlossaryItem[] {
 }
 
 export function getGlossaryTermBySlug(slug: string) {
-  return getAllGlossaryTerms().find(
-    (item) => item?.slug === slug
-  );
+  return getAllGlossaryTerms().find((item) => item?.slug === slug);
 }
 
-export function getRelatedGlossaryTerms(
-  slug: string,
-  limit = 6
-) {
+export function getRelatedGlossaryTerms(slug: string, limit = 6) {
   const currentItem = getGlossaryTermBySlug(slug);
 
   if (!currentItem) return [];
 
   const currentCategory =
-    currentItem.category ||
-    currentItem.group ||
-    currentItem.type;
+    currentItem.category || currentItem.group || currentItem.type;
 
   const sameCategory = getAllGlossaryTerms().filter(
     (item) =>
       item?.slug !== slug &&
       currentCategory &&
-      (
-        item.category === currentCategory ||
+      (item.category === currentCategory ||
         item.group === currentCategory ||
-        item.type === currentCategory
-      )
+        item.type === currentCategory),
   );
 
   const remaining = getAllGlossaryTerms().filter(
     (item) =>
       item?.slug !== slug &&
-      !sameCategory.some(
-        (relatedItem) =>
-          relatedItem.slug === item.slug
-      )
+      !sameCategory.some((relatedItem) => relatedItem.slug === item.slug),
   );
 
   return [...sameCategory, ...remaining].slice(0, limit);
@@ -76,9 +64,7 @@ export function estimateGlossaryReadTime(item: GlossaryItem) {
             .map((listItem: ContentListEntry) =>
               typeof listItem === "string"
                 ? listItem
-                : `${listItem?.title || ""} ${
-                    listItem?.description || ""
-                  }`
+                : `${listItem?.title || ""} ${listItem?.description || ""}`,
             )
             .join(" ");
         }
@@ -104,53 +90,30 @@ export function estimateGlossaryReadTime(item: GlossaryItem) {
     .filter(Boolean)
     .join(" ");
 
-  const words = fallbackText
-    .split(/\s+/)
-    .filter(Boolean).length;
+  const words = fallbackText.split(/\s+/).filter(Boolean).length;
 
-  return `${Math.max(
-    2,
-    Math.ceil(words / 220)
-  )} min read`;
+  return `${Math.max(2, Math.ceil(words / 220))} min read`;
 }
 
 export function getGlossaryCTA(item: GlossaryItem) {
   return {
-    title:
-      item?.cta?.title ||
-      "Need help applying this blockchain concept?",
+    title: item?.cta?.title || "Need help applying this blockchain concept?",
 
     description:
       item?.cta?.description ||
       "Talk with ClickMasters and understand how this concept applies to your product, architecture, or blockchain strategy.",
 
-    primaryText:
-      item?.cta?.primaryText ||
-      "Book a Free Strategy Call",
+    primaryText: item?.cta?.primaryText || "Book a Free Strategy Call",
 
-    secondaryText:
-      item?.cta?.secondaryText ||
-      "Explore More Terms",
+    secondaryText: item?.cta?.secondaryText || "Explore More Terms",
 
-    href:
-      item?.cta?.href &&
-      item.cta.href !== "#"
-        ? item.cta.href
-        : "/contact",
+    href: item?.cta?.href && item.cta.href !== "#" ? item.cta.href : "/contact",
   };
 }
 
 export function getGlossaryCards() {
   return getAllGlossaryTerms()
-    .filter(
-      (item) =>
-        item &&
-        (
-          item.slug ||
-          item.title ||
-          item.term
-        )
-    )
+    .filter((item) => item && (item.slug || item.title || item.term))
     .map((item, index: number) => ({
       id: item.id || index + 1,
 
@@ -161,15 +124,9 @@ export function getGlossaryCards() {
           .replace(/[^a-z0-9]+/g, "-")
           .replace(/^-+|-+$/g, ""),
 
-      title:
-        item.title ||
-        item.term ||
-        "Blockchain Term",
+      title: item.title || item.term || "Blockchain Term",
 
-      term:
-        item.term ||
-        item.title ||
-        "Blockchain Term",
+      term: item.term || item.title || "Blockchain Term",
 
       definition:
         item.definition ||
@@ -186,36 +143,20 @@ export function getGlossaryCards() {
         "Explore the meaning and practical use of this blockchain concept.",
 
       category:
-        item.category ||
-        item.group ||
-        item.type ||
-        "Blockchain Glossary",
+        item.category || item.group || item.type || "Blockchain Glossary",
 
-      letter:
-        (
-          item.term ||
-          item.title ||
-          "#"
-        )
-          .charAt(0)
-          .toUpperCase(),
+      letter: (item.term || item.title || "#").charAt(0).toUpperCase(),
 
-      readTime:
-        estimateGlossaryReadTime(item),
+      readTime: estimateGlossaryReadTime(item),
 
-      image:
-        item.image,
+      image: item.image,
 
-      badge:
-        item.hero?.badge ||
-        "GLOSSARY",
+      badge: item.hero?.badge || "GLOSSARY",
     }));
 }
 
 export function searchGlossaryTerms(query: string) {
-  const normalizedQuery = query
-    .trim()
-    .toLowerCase();
+  const normalizedQuery = query.trim().toLowerCase();
 
   if (!normalizedQuery) {
     return getGlossaryCards();
@@ -223,38 +164,21 @@ export function searchGlossaryTerms(query: string) {
 
   return getGlossaryCards().filter(
     (item) =>
-      item.title
-        ?.toLowerCase()
-        .includes(normalizedQuery) ||
-      item.term
-        ?.toLowerCase()
-        .includes(normalizedQuery) ||
-      item.definition
-        ?.toLowerCase()
-        .includes(normalizedQuery) ||
-      item.category
-        ?.toLowerCase()
-        .includes(normalizedQuery)
+      item.title?.toLowerCase().includes(normalizedQuery) ||
+      item.term?.toLowerCase().includes(normalizedQuery) ||
+      item.definition?.toLowerCase().includes(normalizedQuery) ||
+      item.category?.toLowerCase().includes(normalizedQuery),
   );
 }
 
-export function filterGlossaryByLetter(
-  letter: string
-) {
-  const normalizedLetter =
-    letter?.trim().toUpperCase();
+export function filterGlossaryByLetter(letter: string) {
+  const normalizedLetter = letter?.trim().toUpperCase();
 
-  if (
-    !normalizedLetter ||
-    normalizedLetter === "ALL"
-  ) {
+  if (!normalizedLetter || normalizedLetter === "ALL") {
     return getGlossaryCards();
   }
 
-  return getGlossaryCards().filter(
-    (item) =>
-      item.letter === normalizedLetter
-  );
+  return getGlossaryCards().filter((item) => item.letter === normalizedLetter);
 }
 
 export function getAvailableGlossaryLetters() {
@@ -262,11 +186,8 @@ export function getAvailableGlossaryLetters() {
     new Set(
       getGlossaryCards()
         .map((item) => item.letter)
-        .filter(
-          (letter: string) =>
-            /^[A-Z]$/.test(letter)
-        )
-    )
+        .filter((letter: string) => /^[A-Z]$/.test(letter)),
+    ),
   ).sort();
 }
 

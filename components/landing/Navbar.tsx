@@ -53,65 +53,296 @@ type NavItem = {
 };
 
 const servicesLinks: NavItem[] = [
-  { label: "Smart Contract Development", desc: "Secure smart contracts for production blockchain products.", icon: ShieldCheck },
-  { label: "DApp Development", desc: "Decentralized apps with polished product experiences.", icon: Hexagon },
-  { label: "Web3 Development", desc: "Wallet, token, and chain-connected applications.", icon: Globe2 },
-  { label: "Crypto Wallet Development", desc: "Custody, signing, and multi-chain wallet flows.", icon: WalletCards },
-  { label: "Crypto Exchange Development", desc: "Exchange architecture, trading, and liquidity systems.", icon: Banknote },
-  { label: "DeFi Development", desc: "Lending, staking, swaps, vaults, and protocol tooling.", icon: Coins },
-  { label: "NFT Marketplace Development", desc: "Marketplaces for collections, assets, and digital goods.", icon: ShoppingBag },
-  { label: "Token Development", desc: "Token contracts, launches, vesting, and tokenomics.", icon: BadgeCheck },
-  { label: "DAO Development", desc: "Governance, treasury, voting, and community systems.", icon: Users },
-  { label: "Blockchain Consulting", desc: "Technical strategy for launches and enterprise adoption.", icon: BriefcaseBusiness },
-  { label: "Blockchain Security & Audit", desc: "Security reviews, risk reduction, and audit readiness.", icon: LockKeyhole },
-  { label: "Blockchain Integration", desc: "Connect blockchain systems with existing products.", icon: PlugZap },
+  {
+    label: "Smart Contract Development",
+    href: "/service/smart-contract-development",
+    desc: "Secure smart contracts for production blockchain products.",
+    icon: ShieldCheck,
+  },
+  {
+    label: "DApp Development",
+    href: "/service/blockchain-development-services",
+    desc: "Decentralized apps with polished product experiences.",
+    icon: Hexagon,
+  },
+  {
+    label: "Web3 Development",
+    href: "/service/web3-development-company",
+    desc: "Wallet, token, and chain-connected applications.",
+    icon: Globe2,
+  },
+  {
+    label: "Crypto Wallet Development",
+    href: "/service/crypto-wallet-development",
+    desc: "Custody, signing, and multi-chain wallet flows.",
+    icon: WalletCards,
+  },
+  {
+    label: "Crypto Exchange Development",
+    href: "/service/crypto-exchange-development",
+    desc: "Exchange architecture, trading, and liquidity systems.",
+    icon: Banknote,
+  },
+  {
+    label: "DeFi Development",
+    href: "/service/defi-development-company",
+    desc: "Lending, staking, swaps, vaults, and protocol tooling.",
+    icon: Coins,
+  },
+  {
+    label: "NFT Marketplace Development",
+    href: "/service/nft-development-company",
+    desc: "Marketplaces for collections, assets, and digital goods.",
+    icon: ShoppingBag,
+  },
+  {
+    label: "Token Development",
+    href: "/howto/how-to-launch-a-token",
+    desc: "Token contracts, launches, vesting, and tokenomics.",
+    icon: BadgeCheck,
+  },
+  {
+    label: "DAO Development",
+    href: "/service/hire-dao-governance-consultant",
+    desc: "Governance, treasury, voting, and community systems.",
+    icon: Users,
+  },
+  {
+    label: "Blockchain Consulting",
+    href: "/service/blockchain-consulting",
+    desc: "Technical strategy for launches and enterprise adoption.",
+    icon: BriefcaseBusiness,
+  },
+  {
+    label: "Blockchain Security & Audit",
+    href: "/process/smart-contract-audit-process",
+    desc: "Security reviews, risk reduction, and audit readiness.",
+    icon: LockKeyhole,
+  },
+  {
+    label: "Blockchain Integration",
+    href: "/service/enterprise-blockchain-solutions",
+    desc: "Connect blockchain systems with existing products.",
+    icon: PlugZap,
+  },
 ];
 
 const industriesLinks: NavItem[] = [
-  { label: "FinTech & Banking", desc: "Payments, custody, compliance, and financial rails.", icon: Banknote },
-  { label: "Healthcare", desc: "Records, consent, identity, and secure data exchange.", icon: HeartPulse },
-  { label: "Real Estate", desc: "Tokenization, escrow, property records, and ownership.", icon: Home },
-  { label: "Supply Chain & Logistics", desc: "Traceability, provenance, and multi-party workflows.", icon: Truck },
-  { label: "Manufacturing", desc: "Parts tracking, quality records, and supplier networks.", icon: Factory },
-  { label: "Retail & E-commerce", desc: "Loyalty, payments, authentication, and marketplaces.", icon: ShoppingBag },
-  { label: "Education", desc: "Credentials, certificates, identity, and learning records.", icon: GraduationCap },
-  { label: "Gaming & Entertainment", desc: "Game assets, rewards, memberships, and fan economies.", icon: Gamepad2 },
-  { label: "Insurance", desc: "Claims, policies, parametric products, and audit trails.", icon: ShieldCheck },
-  { label: "Energy & Utilities", desc: "Grid data, carbon tracking, and settlement systems.", icon: Zap },
-  { label: "Government", desc: "Public records, procurement, identity, and transparency.", icon: Building2 },
+  {
+    label: "FinTech & Banking",
+    href: "/industries/blockchain-development-fintech",
+    desc: "Payments, custody, compliance, and financial rails.",
+    icon: Banknote,
+  },
+  {
+    label: "Healthcare",
+    href: "/industries/blockchain-development-healthcare",
+    desc: "Records, consent, identity, and secure data exchange.",
+    icon: HeartPulse,
+  },
+  {
+    label: "Real Estate",
+    href: "/industries/blockchain-development-real-estate",
+    desc: "Tokenization, escrow, property records, and ownership.",
+    icon: Home,
+  },
+  {
+    label: "Supply Chain & Logistics",
+    href: "/industries/blockchain-development-supply-chain",
+    desc: "Traceability, provenance, and multi-party workflows.",
+    icon: Truck,
+  },
+  {
+    label: "Manufacturing",
+    href: "/comparison/blockchain-development-manufacturing",
+    desc: "Parts tracking, quality records, and supplier networks.",
+    icon: Factory,
+  },
+  {
+    label: "Retail & E-commerce",
+    href: "/industries/blockchain-development-retail",
+    desc: "Loyalty, payments, authentication, and marketplaces.",
+    icon: ShoppingBag,
+  },
+  {
+    label: "Education",
+    href: "/industries/blockchain-development-education",
+    desc: "Credentials, certificates, identity, and learning records.",
+    icon: GraduationCap,
+  },
+  {
+    label: "Gaming & Entertainment",
+    href: "/industries/blockchain-development-gaming",
+    desc: "Game assets, rewards, memberships, and fan economies.",
+    icon: Gamepad2,
+  },
+  {
+    label: "Insurance",
+    href: "/industries/blockchain-development-insurance",
+    desc: "Claims, policies, parametric products, and audit trails.",
+    icon: ShieldCheck,
+  },
+  {
+    label: "Energy & Utilities",
+    href: "/industries/blockchain-development-energy",
+    desc: "Grid data, carbon tracking, and settlement systems.",
+    icon: Zap,
+  },
+  {
+    label: "Government",
+    href: "/industries/blockchain-development-government",
+    desc: "Public records, procurement, identity, and transparency.",
+    icon: Building2,
+  },
 ];
 
 const solutionLinks: NavItem[] = [
-  { label: "Crypto Solutions", desc: "Crypto-native product strategy and implementation.", icon: Coins },
-  { label: "Enterprise Blockchain Solutions", desc: "Private and consortium systems for business workflows.", icon: Building2 },
-  { label: "Private Blockchain Solutions", desc: "Permissioned networks for controlled environments.", icon: LockKeyhole },
-  { label: "Web3 Solutions", desc: "Wallet-enabled applications, memberships, and token systems.", icon: Globe2 },
-  { label: "DeFi Solutions", desc: "Protocol architecture for decentralized finance products.", icon: Banknote },
-  { label: "Tokenization Solutions", desc: "Real-world asset and digital asset tokenization.", icon: BadgeCheck },
-  { label: "DAO Solutions", desc: "Governance and treasury systems for communities.", icon: Users },
-  { label: "DEX Solutions", desc: "Swap, liquidity, and decentralized exchange tooling.", icon: Workflow },
-  { label: "Cross-Chain Solutions", desc: "Bridge and interoperability patterns across chains.", icon: Network },
-  { label: "Blockchain Payment Solutions", desc: "On-chain payments, settlement, and merchant flows.", icon: WalletCards },
-  { label: "Layer 2 Solutions", desc: "Scaling, rollups, and low-fee blockchain experiences.", icon: Boxes },
-  { label: "Blockchain Integration Solutions", desc: "Integrate chains, contracts, wallets, and APIs.", icon: PlugZap },
+  {
+    label: "Crypto Solutions",
+    href: "/solution",
+    desc: "Crypto-native product strategy and implementation.",
+    icon: Coins,
+  },
+  {
+    label: "Enterprise Blockchain Solutions",
+    href: "/service/enterprise-blockchain-solutions",
+    desc: "Private and consortium systems for business workflows.",
+    icon: Building2,
+  },
+  {
+    label: "Private Blockchain Solutions",
+    href: "/service/hyperledger-fabric-network-setup",
+    desc: "Permissioned networks for controlled environments.",
+    icon: LockKeyhole,
+  },
+  {
+    label: "Web3 Solutions",
+    href: "/service/web3-development-company",
+    desc: "Wallet-enabled applications, memberships, and token systems.",
+    icon: Globe2,
+  },
+  {
+    label: "DeFi Solutions",
+    href: "/service/defi-development-company",
+    desc: "Protocol architecture for decentralized finance products.",
+    icon: Banknote,
+  },
+  {
+    label: "Tokenization Solutions",
+    href: "/service/asset-tokenization-platform",
+    desc: "Real-world asset and digital asset tokenization.",
+    icon: BadgeCheck,
+  },
+  {
+    label: "DAO Solutions",
+    href: "/service/vetoken-governance-economics",
+    desc: "Governance and treasury systems for communities.",
+    icon: Users,
+  },
+  {
+    label: "DEX Solutions",
+    href: "/comparison/crypto-exchange-cex-vs-dex",
+    desc: "Swap, liquidity, and decentralized exchange tooling.",
+    icon: Workflow,
+  },
+  {
+    label: "Cross-Chain Solutions",
+    href: "/process/cross-chain-bridge-architecture",
+    desc: "Bridge and interoperability patterns across chains.",
+    icon: Network,
+  },
+  {
+    label: "Blockchain Payment Solutions",
+    href: "/service/crypto-payment-gateway-development",
+    desc: "On-chain payments, settlement, and merchant flows.",
+    icon: WalletCards,
+  },
+  {
+    label: "Layer 2 Solutions",
+    href: "/comparison/layer1-vs-layer2-blockchain",
+    desc: "Scaling, rollups, and low-fee blockchain experiences.",
+    icon: Boxes,
+  },
+  {
+    label: "Blockchain Integration Solutions",
+    href: "/process/blockchain-oracle-integration",
+    desc: "Integrate chains, contracts, wallets, and APIs.",
+    icon: PlugZap,
+  },
 ];
 
 const technologyLinks: NavItem[] = [
-  { label: "Ethereum", desc: "EVM smart contracts, DeFi, NFTs, and protocol builds.", icon: Hexagon },
-  { label: "Solana", desc: "High-throughput apps, tokens, and performance-focused UX.", icon: Zap },
-  { label: "Polygon", desc: "Scaling, marketplaces, payments, and consumer Web3.", icon: Network },
-  { label: "BNB Chain", desc: "BSC tokens, DeFi products, and wallet integrations.", icon: Coins },
-  { label: "Hyperledger", desc: "Enterprise and permissioned blockchain networks.", icon: Building2 },
-  { label: "Avalanche", desc: "Subnets, DeFi, tokenization, and custom networks.", icon: Boxes },
-  { label: "Arbitrum", desc: "Layer 2 apps with Ethereum security and lower fees.", icon: Workflow },
-  { label: "Optimism", desc: "OP Stack, rollups, and scalable EVM ecosystems.", icon: Cpu },
+  {
+    label: "Ethereum",
+    href: "/technologies/ethereum-blockchain-development",
+    desc: "EVM smart contracts, DeFi, NFTs, and protocol builds.",
+    icon: Hexagon,
+  },
+  {
+    label: "Solana",
+    href: "/technologies/solana-development",
+    desc: "High-throughput apps, tokens, and performance-focused UX.",
+    icon: Zap,
+  },
+  {
+    label: "Polygon",
+    href: "/technologies/polygon-blockchain-development",
+    desc: "Scaling, marketplaces, payments, and consumer Web3.",
+    icon: Network,
+  },
+  {
+    label: "BNB Chain",
+    href: "/technologies/bnb-chain-development",
+    desc: "BSC tokens, DeFi products, and wallet integrations.",
+    icon: Coins,
+  },
+  {
+    label: "Hyperledger",
+    href: "/technologies/hyperledger-development",
+    desc: "Enterprise and permissioned blockchain networks.",
+    icon: Building2,
+  },
+  {
+    label: "Avalanche",
+    href: "/technologies/avalanche-blockchain-development",
+    desc: "Subnets, DeFi, tokenization, and custom networks.",
+    icon: Boxes,
+  },
+  {
+    label: "Arbitrum",
+    href: "/technologies/arbitrum-development",
+    desc: "Layer 2 apps with Ethereum security and lower fees.",
+    icon: Workflow,
+  },
+  {
+    label: "Optimism",
+    href: "/comparison/arbitrum-vs-optimism-vs-base",
+    desc: "OP Stack, rollups, and scalable EVM ecosystems.",
+    icon: Cpu,
+  },
 ];
 
 const companyLinks: NavItem[] = [
-  { label: "About Us", href: "/about", desc: "Learn about ClickMasters and our Web3 delivery approach.", icon: Building2 },
-  { label: "Why Choose Us", desc: "What makes our blockchain team a stronger partner.", icon: Star },
-  { label: "Our Team", desc: "Meet the people behind strategy, design, and engineering.", icon: Users },
-  { label: "Testimonials", desc: "Client feedback and results from delivered projects.", icon: BadgeCheck },
+  {
+    label: "About Us",
+    href: "/about",
+    desc: "Learn about ClickMasters and our Web3 delivery approach.",
+    icon: Building2,
+  },
+  {
+    label: "Why Choose Us",
+    href: "/#why-choose-us",
+    desc: "What makes our blockchain team a stronger partner.",
+    icon: Star,
+  },
+  // "Our Team" removed until verified team details are published (see the
+  // BCT-03 TODO in app/about/page.tsx); it linked nowhere.
+  {
+    label: "Example Engagements",
+    href: "/#example-engagements",
+    desc: "Illustrative scenarios of the projects we take on.",
+    icon: BadgeCheck,
+  },
 ];
 
 const blogLinks: NavItem[] = [
@@ -377,7 +608,10 @@ function DesktopSimpleDropdown({
                     const isActive = active === item.label;
 
                     return (
-                      <div key={item.label} onMouseEnter={() => setActive(item.label)}>
+                      <div
+                        key={item.label}
+                        onMouseEnter={() => setActive(item.label)}
+                      >
                         <NavEntry
                           item={item}
                           className={`group/item flex min-h-[86px] w-full items-start gap-3 rounded-2xl border p-3 text-left transition-all ${
@@ -393,7 +627,9 @@ function DesktopSimpleDropdown({
                           <span className="min-w-0">
                             <span
                               className={`block text-sm font-black leading-tight ${
-                                isActive ? "text-amber-base" : "text-text-primary"
+                                isActive
+                                  ? "text-amber-base"
+                                  : "text-text-primary"
                               }`}
                             >
                               {item.label}
@@ -598,7 +834,8 @@ function useContactHref() {
     trackEvent("consulting_cta_click", {
       source_page: currentSourcePage(),
       cta_location: "header",
-      destination_type: href === "#contact" ? "on_page_section" : "contact_page",
+      destination_type:
+        href === "#contact" ? "on_page_section" : "contact_page",
     });
   };
 

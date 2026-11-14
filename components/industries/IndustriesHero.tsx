@@ -60,9 +60,7 @@ export default function IndustriesHero() {
     return () => window.clearTimeout(timeout);
   }, []);
 
-  function handleMouseMove(
-    event: React.MouseEvent<HTMLElement>
-  ) {
+  function handleMouseMove(event: React.MouseEvent<HTMLElement>) {
     const section = sectionRef.current;
 
     if (!section) {
@@ -71,11 +69,9 @@ export default function IndustriesHero() {
 
     const bounds = section.getBoundingClientRect();
 
-    const x =
-      ((event.clientX - bounds.left) / bounds.width) * 100;
+    const x = ((event.clientX - bounds.left) / bounds.width) * 100;
 
-    const y =
-      ((event.clientY - bounds.top) / bounds.height) * 100;
+    const y = ((event.clientY - bounds.top) / bounds.height) * 100;
 
     setMousePosition({ x, y });
   }
@@ -125,10 +121,8 @@ export default function IndustriesHero() {
           backgroundImage:
             "linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px)",
           backgroundSize: "64px 64px",
-          maskImage:
-            "linear-gradient(to bottom, black, transparent 90%)",
-          WebkitMaskImage:
-            "linear-gradient(to bottom, black, transparent 90%)",
+          maskImage: "linear-gradient(to bottom, black, transparent 90%)",
+          WebkitMaskImage: "linear-gradient(to bottom, black, transparent 90%)",
         }}
       />
 
@@ -194,27 +188,12 @@ export default function IndustriesHero() {
           />
 
           <defs>
-            <linearGradient
-              id="network-line"
-              x1="0"
-              y1="0"
-              x2="1"
-              y2="1"
-            >
-              <stop
-                offset="0%"
-                stopColor="rgba(34,211,238,0)"
-              />
+            <linearGradient id="network-line" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stopColor="rgba(34,211,238,0)" />
 
-              <stop
-                offset="50%"
-                stopColor="rgba(103,232,249,0.8)"
-              />
+              <stop offset="50%" stopColor="rgba(103,232,249,0.8)" />
 
-              <stop
-                offset="100%"
-                stopColor="rgba(96,165,250,0)"
-              />
+              <stop offset="100%" stopColor="rgba(96,165,250,0)" />
             </linearGradient>
           </defs>
         </svg>
@@ -231,11 +210,7 @@ export default function IndustriesHero() {
             }`}
           >
             <div className="inline-flex items-center gap-2 rounded-full border border-cyan-300/15 bg-cyan-300/[0.06] px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-200 backdrop-blur-xl">
-              <Sparkles
-                className="h-3.5 w-3.5"
-                aria-hidden="true"
-              />
-
+              <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
               Blockchain across industries
             </div>
           </div>
@@ -269,11 +244,10 @@ export default function IndustriesHero() {
                 : "translate-y-8 opacity-0"
             }`}
           >
-            We design blockchain infrastructure for regulated,
-            data-intensive and multi-party industries. From
-            financial settlement to healthcare records, supply
-            chain traceability and real-world asset tokenization,
-            every system is engineered around measurable business
+            We design blockchain infrastructure for regulated, data-intensive
+            and multi-party industries. From financial settlement to healthcare
+            records, supply chain traceability and real-world asset
+            tokenization, every system is engineered around measurable business
             outcomes.
           </p>
 
@@ -290,7 +264,6 @@ export default function IndustriesHero() {
               className="group inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-cyan-300 px-7 text-sm font-semibold text-slate-950 shadow-[0_16px_50px_-18px_rgba(34,211,238,0.75)] transition-all duration-300 hover:-translate-y-1 hover:bg-cyan-200 hover:shadow-[0_24px_60px_-18px_rgba(34,211,238,0.9)]"
             >
               Explore industries
-
               <ArrowDownRight
                 className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:translate-y-1"
                 aria-hidden="true"
@@ -302,7 +275,6 @@ export default function IndustriesHero() {
               className="group inline-flex min-h-14 items-center justify-center gap-3 rounded-full border border-white/10 bg-white/[0.04] px-7 text-sm font-semibold text-white backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-cyan-300/30 hover:bg-white/[0.08]"
             >
               Discuss your project
-
               <ArrowUpRight
                 className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
                 aria-hidden="true"
@@ -314,9 +286,7 @@ export default function IndustriesHero() {
         {/* Trust row */}
         <div
           className={`mt-14 grid max-w-4xl gap-4 transition-all delay-[400ms] duration-1000 sm:grid-cols-3 ${
-            isVisible
-              ? "translate-y-0 opacity-100"
-              : "translate-y-8 opacity-0"
+            isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
           }`}
         >
           {trustItems.map((item) => {
@@ -328,10 +298,7 @@ export default function IndustriesHero() {
                 className="flex items-center gap-3 rounded-2xl border border-white/[0.07] bg-white/[0.025] px-4 py-3.5 backdrop-blur-xl"
               >
                 <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-cyan-300/10 bg-cyan-300/[0.06]">
-                  <Icon
-                    className="h-4 w-4 text-cyan-300"
-                    aria-hidden="true"
-                  />
+                  <Icon className="h-4 w-4 text-cyan-300" aria-hidden="true" />
                 </div>
 
                 <span className="text-xs font-medium leading-5 text-slate-300 sm:text-sm">
@@ -345,9 +312,7 @@ export default function IndustriesHero() {
         {/* Statistics */}
         <div
           className={`relative mt-16 overflow-hidden rounded-[30px] border border-white/[0.08] bg-white/[0.025] p-1 backdrop-blur-2xl transition-all delay-500 duration-1000 sm:mt-20 ${
-            isVisible
-              ? "translate-y-0 opacity-100"
-              : "translate-y-10 opacity-0"
+            isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
           }`}
         >
           <div
@@ -368,9 +333,7 @@ export default function IndustriesHero() {
                     {stat.value}
                   </span>
 
-                  <p className="mt-2 text-sm text-slate-500">
-                    {stat.label}
-                  </p>
+                  <p className="mt-2 text-sm text-slate-500">{stat.label}</p>
                 </div>
 
                 <span className="absolute right-5 top-5 text-xs font-medium text-white/10">

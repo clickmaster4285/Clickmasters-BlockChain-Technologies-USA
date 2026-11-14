@@ -27,14 +27,17 @@ export default function RevealGroup({
           io.unobserve(el);
         }
       },
-      { threshold: 0.08, rootMargin: "0px 0px -30px 0px" }
+      { threshold: 0.08, rootMargin: "0px 0px -30px 0px" },
     );
     io.observe(el);
     return () => io.disconnect();
   }, []);
 
   return (
-    <div ref={ref} className={`reveal-group ${visible ? "is-visible" : ""} ${className}`}>
+    <div
+      ref={ref}
+      className={`reveal-group ${visible ? "is-visible" : ""} ${className}`}
+    >
       {children}
     </div>
   );

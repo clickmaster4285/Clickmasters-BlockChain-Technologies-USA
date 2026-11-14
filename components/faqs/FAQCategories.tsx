@@ -1,6 +1,11 @@
 "use client";
 
-import { Boxes, BriefcaseBusiness, FileQuestion, FolderOpen } from "lucide-react";
+import {
+  Boxes,
+  BriefcaseBusiness,
+  FileQuestion,
+  FolderOpen,
+} from "lucide-react";
 
 import type { FAQCategoryItem } from "@/lib/faqs";
 
@@ -18,10 +23,7 @@ export default function FAQCategories({
   categoryCounts,
 }: FAQCategoriesProps) {
   return (
-    <div
-      className="space-y-2"
-      aria-label="Filter FAQ cards by category"
-    >
+    <div className="space-y-2" aria-label="Filter FAQ cards by category">
       {categories.map((category) => {
         const isActive = activeCategory === category.slug;
         const count = categoryCounts[category.slug] || 0;

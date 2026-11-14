@@ -4,7 +4,8 @@
 // CMS_API_URL is missing the whole integration is simply switched off.
 import { createHash } from "node:crypto";
 
-export const CMS_API_URL = process.env.CMS_API_URL?.trim().replace(/\/+$/, "") || "";
+export const CMS_API_URL =
+  process.env.CMS_API_URL?.trim().replace(/\/+$/, "") || "";
 export const CMS_SITE_DOMAIN = process.env.CMS_SITE_DOMAIN?.trim() || "";
 export const CMS_ENABLED = Boolean(CMS_API_URL && CMS_SITE_DOMAIN);
 
@@ -19,15 +20,33 @@ export function cmsWarn(...args: unknown[]) {
   if (isDev) console.warn("[cms]", ...args);
 }
 
-export const cmsBase = () => `${CMS_API_URL}/public/${encodeURIComponent(CMS_SITE_DOMAIN)}`;
+export const cmsBase = () =>
+  `${CMS_API_URL}/public/${encodeURIComponent(CMS_SITE_DOMAIN)}`;
+
+const IS_BUILD = process.env.NEXT_PHASE === "phase-production-build";
+const buildRequests = new Map<string, Promise<unknown | null>>();
 
 /**
  * GET JSON from the ERP. Returns null on 404 ("not found" / site not
  * registered). Throws on network errors, timeouts and other statuses so
  * unstable_cache never stores an outage.
  */
-export async function cmsGetJson(path: string): Promise<unknown | null> {
+export function cmsGetJson(path: string): Promise<unknown | null> {
   const url = `${cmsBase()}${path}`;
+  if (!IS_BUILD) return fetchCmsJson(url);
+  // `next build` renders hundreds of pages per worker and each one asks for
+  // the same few ERP URLs, which trips the ERP rate limit (HTTP 429). Reuse
+  // one request per URL for the whole build; pages still refresh from the ERP
+  // at runtime through the normal 60s revalidation.
+  let pending = buildRequests.get(url);
+  if (!pending) {
+    pending = fetchCmsJson(url);
+    buildRequests.set(url, pending);
+  }
+  return pending;
+}
+
+async function fetchCmsJson(url: string): Promise<unknown | null> {
   const res = await fetch(url, {
     cache: "no-store",
     headers: { Accept: "application/json" },
@@ -40,12 +59,17 @@ export async function cmsGetJson(path: string): Promise<unknown | null> {
 
 /** Short stable fingerprint of a JSON value, used to detect ERP publishes. */
 export function contentHash(value: unknown): string {
-  return createHash("sha1").update(JSON.stringify(value ?? null)).digest("hex").slice(0, 16);
+  return createHash("sha1")
+    .update(JSON.stringify(value ?? null))
+    .digest("hex")
+    .slice(0, 16);
 }
 
 export const str = (v: unknown) => (typeof v === "string" ? v.trim() : "");
 export const obj = (v: unknown): Record<string, unknown> =>
-  v && typeof v === "object" && !Array.isArray(v) ? (v as Record<string, unknown>) : {};
+  v && typeof v === "object" && !Array.isArray(v)
+    ? (v as Record<string, unknown>)
+    : {};
 
 /** Absolute URL on this site for a path, or the URL itself when already absolute http(s). */
 export function absoluteSiteUrl(pathOrUrl: string, siteUrl: string): string {

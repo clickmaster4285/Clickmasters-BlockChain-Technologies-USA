@@ -67,8 +67,7 @@ export default function CaseStudyFilters({
 
               <div className="flex items-center gap-3">
                 <span className="rounded-full border border-white/[0.07] bg-white/[0.025] px-4 py-2 text-[10px] font-black uppercase tracking-[0.14em] text-[#8896aa]">
-                  {resultsCount}{" "}
-                  {resultsCount === 1 ? "Project" : "Projects"}
+                  {resultsCount} {resultsCount === 1 ? "Project" : "Projects"}
                 </span>
 
                 {hasActiveFilters && onReset && (
@@ -94,9 +93,7 @@ export default function CaseStudyFilters({
                 <input
                   type="search"
                   value={searchQuery}
-                  onChange={(event) =>
-                    onSearchChange(event.target.value)
-                  }
+                  onChange={(event) => onSearchChange(event.target.value)}
                   placeholder="Search by client, title, or keyword..."
                   className="h-14 w-full rounded-[1.1rem] border border-white/[0.08] bg-[#091321] pl-11 pr-4 text-sm font-semibold text-white outline-none transition-all duration-300 placeholder:text-[#59677b] hover:border-white/[0.13] focus:border-amber-400/30 focus:ring-4 focus:ring-amber-400/[0.06]"
                 />
@@ -108,9 +105,7 @@ export default function CaseStudyFilters({
 
                 <select
                   value={activeIndustry}
-                  onChange={(event) =>
-                    onIndustryChange(event.target.value)
-                  }
+                  onChange={(event) => onIndustryChange(event.target.value)}
                   aria-label="Filter by industry"
                   className="h-14 w-full appearance-none rounded-[1.1rem] border border-white/[0.08] bg-[#091321] pl-11 pr-10 text-sm font-bold text-white outline-none transition-all duration-300 hover:border-white/[0.13] focus:border-amber-400/30 focus:ring-4 focus:ring-amber-400/[0.06]"
                 >
@@ -136,9 +131,7 @@ export default function CaseStudyFilters({
 
                 <select
                   value={activeService}
-                  onChange={(event) =>
-                    onServiceChange(event.target.value)
-                  }
+                  onChange={(event) => onServiceChange(event.target.value)}
                   aria-label="Filter by service"
                   className="h-14 w-full appearance-none rounded-[1.1rem] border border-white/[0.08] bg-[#091321] pl-11 pr-10 text-sm font-bold text-white outline-none transition-all duration-300 hover:border-white/[0.13] focus:border-amber-400/30 focus:ring-4 focus:ring-amber-400/[0.06]"
                 >
@@ -162,16 +155,13 @@ export default function CaseStudyFilters({
             {/* Quick industry buttons */}
             <div className="mt-5 flex flex-wrap gap-2">
               {industries.slice(0, 7).map((industry) => {
-                const isActive =
-                  activeIndustry === industry.value;
+                const isActive = activeIndustry === industry.value;
 
                 return (
                   <button
                     key={industry.value}
                     type="button"
-                    onClick={() =>
-                      onIndustryChange(industry.value)
-                    }
+                    onClick={() => onIndustryChange(industry.value)}
                     className={`rounded-full border px-4 py-2 text-[10px] font-black transition-all duration-300 ${
                       isActive
                         ? "border-amber-400 bg-amber-400 text-[#111827] shadow-[0_12px_30px_rgba(245,158,11,0.18)]"

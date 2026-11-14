@@ -39,7 +39,8 @@ const SECTION_LABELS: Record<string, string> = {
 
 /** Leaf labels that must match a page's visible breadcrumb exactly. */
 const PAGE_LABELS: Record<string, string> = {
-  "/faqs/blockchain-development-consulting-enterprise": "Enterprise blockchain consulting",
+  "/faqs/blockchain-development-consulting-enterprise":
+    "Enterprise blockchain consulting",
   "/service/blockchain-consulting": "Blockchain consulting",
 };
 
@@ -47,10 +48,41 @@ const PAGE_LABELS: Record<string, string> = {
 const FILTER_KEYS = new Set(["category", "letter", "search", "page"]);
 
 const UPPERCASE_WORDS = new Set([
-  "ai", "api", "dao", "evm", "faq", "ico", "ido", "kyc", "aml", "l2", "mvp",
-  "nft", "rwa", "sdk", "seo", "sto", "ui", "ux", "usa", "uk", "uae",
-  "zk", "p2e", "erc", "bnb", "ipfs", "dex", "cex", "roi", "tvl", "ceo", "cto",
-  "sec", "eu", "cbdc",
+  "ai",
+  "api",
+  "dao",
+  "evm",
+  "faq",
+  "ico",
+  "ido",
+  "kyc",
+  "aml",
+  "l2",
+  "mvp",
+  "nft",
+  "rwa",
+  "sdk",
+  "seo",
+  "sto",
+  "ui",
+  "ux",
+  "usa",
+  "uk",
+  "uae",
+  "zk",
+  "p2e",
+  "erc",
+  "bnb",
+  "ipfs",
+  "dex",
+  "cex",
+  "roi",
+  "tvl",
+  "ceo",
+  "cto",
+  "sec",
+  "eu",
+  "cbdc",
 ]);
 
 const WORD_OVERRIDES: Record<string, string> = {

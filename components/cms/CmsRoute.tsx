@@ -43,7 +43,11 @@ function colorVars(page: CmsPage): CSSProperties | undefined {
       "--cms-primary-to": primary,
     });
   }
-  if (secondary) Object.assign(vars, { "--emerald-base": secondary, "--secondary": secondary });
+  if (secondary)
+    Object.assign(vars, {
+      "--emerald-base": secondary,
+      "--secondary": secondary,
+    });
   return Object.keys(vars).length ? (vars as CSSProperties) : undefined;
 }
 
@@ -58,7 +62,10 @@ export default async function CmsRoute({ path }: { path: string }) {
   const css = page.customCss.trim() ? safeCss(page.customCss) : "";
 
   return (
-    <div className="min-h-screen bg-background text-foreground" style={colorVars(page)}>
+    <div
+      className="min-h-screen bg-background text-foreground"
+      style={colorVars(page)}
+    >
       <Navbar />
       <main
         data-cms-page={page.slug}

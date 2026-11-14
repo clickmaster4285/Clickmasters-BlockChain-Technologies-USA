@@ -17,7 +17,13 @@
 // hide (display: none !important), moved nodes go back to their original
 // parent + sibling, and copies (data-erp-clone) are removed on cleanup.
 import { usePathname, useRouter } from "next/navigation";
-import { startTransition, useEffect, useLayoutEffect, useRef, useState } from "react";
+import {
+  startTransition,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import { normalizeEditPath, type ErpEdit } from "@/lib/cms/erp-edits-shared";
 import { EditSession, waitForTargets } from "@/lib/cms/erp-edits-dom";
 
@@ -30,26 +36,41 @@ const POLL_MS = (() => {
 })();
 
 const warn = (...args: unknown[]) => {
-  if (process.env.NODE_ENV !== "production") console.warn("[erp-edits]", ...args);
+  if (process.env.NODE_ENV !== "production")
+    console.warn("[erp-edits]", ...args);
 };
 
 /* ------------------------------ data ------------------------------ */
 
 async function getJson(url: string): Promise<Record<string, unknown>> {
-  const res = await fetch(url, { cache: "no-store", headers: { Accept: "application/json" } });
+  const res = await fetch(url, {
+    cache: "no-store",
+    headers: { Accept: "application/json" },
+  });
   if (!res.ok) throw new Error(`${url} responded ${res.status}`);
   return ((await res.json()) ?? {}) as Record<string, unknown>;
 }
 
 // B1: the list of edited paths, cached 60s (live polling catches new ones).
-let pathsCache: { at: number; promise: Promise<Set<string>>; value?: Set<string> } | null = null;
+let pathsCache: {
+  at: number;
+  promise: Promise<Set<string>>;
+  value?: Set<string>;
+} | null = null;
 
 function editedPaths() {
   if (pathsCache && Date.now() - pathsCache.at < LIST_TTL_MS) return pathsCache;
   const entry: NonNullable<typeof pathsCache> = {
     at: Date.now(),
     promise: getJson("/api/erp-edits")
-      .then((json) => new Set((Array.isArray(json.paths) ? json.paths : []).filter((p): p is string => typeof p === "string")))
+      .then(
+        (json) =>
+          new Set(
+            (Array.isArray(json.paths) ? json.paths : []).filter(
+              (p): p is string => typeof p === "string",
+            ),
+          ),
+      )
       .catch((error) => {
         warn("could not load edited pages list", error);
         return new Set<string>();
@@ -60,7 +81,9 @@ function editedPaths() {
   return entry;
 }
 
-async function pageEdits(path: string): Promise<{ edits: ErpEdit[]; hash: string | null }> {
+async function pageEdits(
+  path: string,
+): Promise<{ edits: ErpEdit[]; hash: string | null }> {
   const json = await getJson(`/api/erp-edits?path=${encodeURIComponent(path)}`);
   return {
     edits: Array.isArray(json.edits) ? (json.edits as ErpEdit[]) : [],
@@ -90,7 +113,9 @@ function hideMain(): () => void {
   return reveal;
 }
 
-const cmsPageHash = () => document.querySelector("[data-cms-hash]")?.getAttribute("data-cms-hash") ?? null;
+const cmsPageHash = () =>
+  document.querySelector("[data-cms-hash]")?.getAttribute("data-cms-hash") ??
+  null;
 
 /* ------------------------------- component ------------------------------ */
 
@@ -178,20 +203,37 @@ export default function ErpPageEdits() {
         setGeneration((g) => g + 1);
       };
       const check = () => {
-        if (cmsPageHash() === nextHash || Date.now() - started > REFRESH_TIMEOUT_MS) done();
+        if (
+          cmsPageHash() === nextHash ||
+          Date.now() - started > REFRESH_TIMEOUT_MS
+        )
+          done();
       };
       const observer = new MutationObserver(check);
-      observer.observe(document.body, { attributes: true, subtree: true, attributeFilter: ["data-cms-hash"] });
+      observer.observe(document.body, {
+        attributes: true,
+        subtree: true,
+        attributeFilter: ["data-cms-hash"],
+      });
       const timer = setInterval(check, 500);
     };
 
     const check = async () => {
-      if (stopped || inFlight || s.refreshing || document.visibilityState !== "visible") return;
+      if (
+        stopped ||
+        inFlight ||
+        s.refreshing ||
+        document.visibilityState !== "visible"
+      )
+        return;
       if (s.applied === undefined) return; // still applying
       inFlight = true;
       try {
         const domHash = cmsPageHash();
-        const qs = new URLSearchParams({ path, ...(domHash ? { page: "1" } : {}) });
+        const qs = new URLSearchParams({
+          path,
+          ...(domHash ? { page: "1" } : {}),
+        });
         const json = await getJson(`/api/cms-live?${qs}`);
         if (stopped || s.refreshing || s.applied === undefined) return;
         const pageHash = typeof json.page === "string" ? json.page : null;

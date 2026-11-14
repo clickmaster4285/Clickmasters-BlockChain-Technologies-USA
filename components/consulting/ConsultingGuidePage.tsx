@@ -1,5 +1,11 @@
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, ChevronRight, FileQuestion, Home } from "lucide-react";
+import {
+  ArrowRight,
+  CheckCircle2,
+  ChevronRight,
+  FileQuestion,
+  Home,
+} from "lucide-react";
 
 import ConsultingEnquiryForm from "@/components/consulting/ConsultingEnquiryForm";
 import SampleAssessment from "@/components/consulting/SampleAssessment";
@@ -37,16 +43,31 @@ export default function ConsultingGuidePage() {
               className="mb-6 overflow-hidden rounded-2xl border border-border-default bg-white/85 px-4 py-3 backdrop-blur-xl sm:px-5"
             >
               <div className="flex min-w-0 items-center gap-2 overflow-hidden text-xs font-semibold text-text-secondary sm:text-sm">
-                <Link href="/" className="inline-flex shrink-0 items-center gap-2 transition hover:text-amber-base">
+                <Link
+                  href="/"
+                  className="inline-flex shrink-0 items-center gap-2 transition hover:text-amber-base"
+                >
                   <Home className="h-4 w-4" aria-hidden="true" />
                   <span className="hidden sm:inline">Home</span>
                 </Link>
-                <ChevronRight className="h-4 w-4 shrink-0 text-text-muted" aria-hidden="true" />
-                <Link href="/faqs" className="shrink-0 transition hover:text-amber-base">
+                <ChevronRight
+                  className="h-4 w-4 shrink-0 text-text-muted"
+                  aria-hidden="true"
+                />
+                <Link
+                  href="/faqs"
+                  className="shrink-0 transition hover:text-amber-base"
+                >
                   FAQs
                 </Link>
-                <ChevronRight className="h-4 w-4 shrink-0 text-text-muted" aria-hidden="true" />
-                <span className="min-w-0 truncate font-bold text-text-primary" aria-current="page">
+                <ChevronRight
+                  className="h-4 w-4 shrink-0 text-text-muted"
+                  aria-hidden="true"
+                />
+                <span
+                  className="min-w-0 truncate font-bold text-text-primary"
+                  aria-current="page"
+                >
                   {g.breadcrumb}
                 </span>
               </div>
@@ -98,9 +119,14 @@ export default function ConsultingGuidePage() {
           <section className="bg-bg-base pb-12 pt-4">
             <div className="container mx-auto max-w-5xl px-4 sm:px-6">
               <div className="rounded-2xl border border-amber-base/20 bg-amber-base/10 p-6 sm:p-8">
-                <h2 className="text-2xl font-black text-text-primary">{g.directAnswer.heading}</h2>
+                <h2 className="text-2xl font-black text-text-primary">
+                  {g.directAnswer.heading}
+                </h2>
                 {g.directAnswer.paragraphs.map((text) => (
-                  <p key={text} className="mt-4 text-base leading-8 text-text-primary">
+                  <p
+                    key={text}
+                    className="mt-4 text-base leading-8 text-text-primary"
+                  >
                     {text}
                   </p>
                 ))}
@@ -109,9 +135,15 @@ export default function ConsultingGuidePage() {
           </section>
 
           {/* 3. Five deliverables */}
-          <section className="bg-bg-base py-12" aria-labelledby="deliverables-heading">
+          <section
+            className="bg-bg-base py-12"
+            aria-labelledby="deliverables-heading"
+          >
             <div className="container mx-auto max-w-5xl px-4 sm:px-6">
-              <h2 id="deliverables-heading" className="border-l-4 border-amber-base pl-4 text-2xl font-black leading-tight text-text-primary sm:text-3xl">
+              <h2
+                id="deliverables-heading"
+                className="border-l-4 border-amber-base pl-4 text-2xl font-black leading-tight text-text-primary sm:text-3xl"
+              >
                 Five consulting deliverables
               </h2>
               <ol className="mt-6 grid gap-4 md:grid-cols-2">
@@ -125,8 +157,12 @@ export default function ConsultingGuidePage() {
                     <p className="text-xs font-black text-amber-base">
                       {String(index + 1).padStart(2, "0")}
                     </p>
-                    <h3 className="mt-2 text-lg font-black text-text-primary">{item.title}</h3>
-                    <p className="mt-2 text-sm leading-7 text-text-secondary">{item.description}</p>
+                    <h3 className="mt-2 text-lg font-black text-text-primary">
+                      {item.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-7 text-text-secondary">
+                      {item.description}
+                    </p>
                   </li>
                 ))}
               </ol>
@@ -141,9 +177,15 @@ export default function ConsultingGuidePage() {
           </section>
 
           {/* 5. Buyer FAQ answers */}
-          <section className="bg-bg-base py-12" aria-labelledby="buyer-faqs-heading">
+          <section
+            className="bg-bg-base py-12"
+            aria-labelledby="buyer-faqs-heading"
+          >
             <div className="container mx-auto max-w-5xl px-4 sm:px-6">
-              <h2 id="buyer-faqs-heading" className="border-l-4 border-amber-base pl-4 text-2xl font-black leading-tight text-text-primary sm:text-3xl">
+              <h2
+                id="buyer-faqs-heading"
+                className="border-l-4 border-amber-base pl-4 text-2xl font-black leading-tight text-text-primary sm:text-3xl"
+              >
                 Buyer questions
               </h2>
               <div className="mt-6 space-y-4">
@@ -152,8 +194,12 @@ export default function ConsultingGuidePage() {
                     key={item.question}
                     className="rounded-2xl border border-border-default bg-white p-5 sm:p-6"
                   >
-                    <h3 className="text-lg font-black text-text-primary">{item.question}</h3>
-                    <p className="mt-3 text-base leading-8 text-text-secondary">{item.answer}</p>
+                    <h3 className="text-lg font-black text-text-primary">
+                      {item.question}
+                    </h3>
+                    <p className="mt-3 text-base leading-8 text-text-secondary">
+                      {item.answer}
+                    </p>
                   </article>
                 ))}
               </div>
@@ -165,11 +211,17 @@ export default function ConsultingGuidePage() {
         <ConsultingEnquiryForm formId="consulting_faq_enquiry" />
 
         {/* 7. Relevant resources */}
-        <section className="border-t border-border-default bg-bg-base py-16 sm:py-20" aria-labelledby="resources-heading">
+        <section
+          className="border-t border-border-default bg-bg-base py-16 sm:py-20"
+          aria-labelledby="resources-heading"
+        >
           <div className="container mx-auto max-w-7xl px-4 sm:px-6">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <h2 id="resources-heading" className="text-3xl font-black tracking-tight text-text-primary">
+                <h2
+                  id="resources-heading"
+                  className="text-3xl font-black tracking-tight text-text-primary"
+                >
                   Relevant resources
                 </h2>
               </div>
@@ -192,7 +244,9 @@ export default function ConsultingGuidePage() {
                   <h3 className="text-lg font-black leading-7 text-text-primary transition group-hover:text-amber-base">
                     {item.title}
                   </h3>
-                  <p className="mt-2 text-sm leading-7 text-text-secondary">{item.description}</p>
+                  <p className="mt-2 text-sm leading-7 text-text-secondary">
+                    {item.description}
+                  </p>
                   <span className="mt-4 inline-flex items-center gap-2 text-sm font-black text-amber-base">
                     <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
                     Read guide

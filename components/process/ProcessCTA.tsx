@@ -2,11 +2,7 @@
 
 import Link from "next/link";
 
-import {
-  ArrowRight,
-  MessageSquareText,
-  Sparkles,
-} from "lucide-react";
+import { ArrowRight, MessageSquareText, Sparkles } from "lucide-react";
 
 import type { ProcessCTA as ProcessCTAType } from "@/lib/process";
 
@@ -23,10 +19,7 @@ type ProcessCTAProps = {
    Component
 ========================================================= */
 
-export default function ProcessCTA({
-  cta,
-  className = "",
-}: ProcessCTAProps) {
+export default function ProcessCTA({ cta, className = "" }: ProcessCTAProps) {
   return (
     <section
       className={[
@@ -58,7 +51,6 @@ export default function ProcessCTA({
         <div className="max-w-3xl">
           <span className="inline-flex items-center gap-2 rounded-full border border-amber-base/25 bg-amber-base/[0.08] px-4 py-2 text-[11px] font-black uppercase tracking-[0.16em] text-amber-base">
             <Sparkles className="h-4 w-4" />
-
             Start Your Project
           </span>
 

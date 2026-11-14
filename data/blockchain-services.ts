@@ -29,7 +29,8 @@ export const blockchainServices: BlockchainService[] = [
   {
     slug: "blockchain-consulting-services",
     title: "Blockchain Consulting Services",
-    shortDescription: "Chain, architecture, token model, roadmap, and cost planning.",
+    shortDescription:
+      "Chain, architecture, token model, roadmap, and cost planning.",
     fullDescription:
       "Before we write a line of code, we help you choose the right chain, architecture, and token model for your goals. Our blockchain consulting services cover feasibility studies, technical roadmaps, and cost planning, so your project starts with a plan instead of guesswork.",
     icon: Lightbulb,
@@ -40,7 +41,8 @@ export const blockchainServices: BlockchainService[] = [
   {
     slug: "custom-blockchain-development",
     title: "Custom Blockchain Development",
-    shortDescription: "Purpose-built protocols, private networks, and application logic.",
+    shortDescription:
+      "Purpose-built protocols, private networks, and application logic.",
     fullDescription:
       "Not every idea fits an existing framework. Our custom blockchain development work includes purpose-built protocols, private networks, and application logic designed around your exact business rules rather than a generic template.",
     icon: Hexagon,
@@ -51,7 +53,8 @@ export const blockchainServices: BlockchainService[] = [
   {
     slug: "blockchain-app-development",
     title: "Blockchain App Development",
-    shortDescription: "End-to-end apps with interface, backend, and on-chain components.",
+    shortDescription:
+      "End-to-end apps with interface, backend, and on-chain components.",
     fullDescription:
       "We design and build blockchain applications end-to-end — user-facing interface, backend logic, and on-chain components working together. Every blockchain app we ship is tested for real-world usage, not just a controlled demo environment.",
     icon: Globe,
@@ -62,7 +65,8 @@ export const blockchainServices: BlockchainService[] = [
   {
     slug: "smart-contract-development",
     title: "Smart Contract Development",
-    shortDescription: "Gas-efficient contracts with security patterns and testing.",
+    shortDescription:
+      "Gas-efficient contracts with security patterns and testing.",
     fullDescription:
       "Smart contracts are the core of most blockchain products, so we treat them accordingly: gas-efficient code, established security patterns, and thorough testing before deployment, with contracts written for Ethereum and other EVM-compatible networks.",
     icon: FileCode,
@@ -73,7 +77,8 @@ export const blockchainServices: BlockchainService[] = [
   {
     slug: "enterprise-blockchain-development",
     title: "Enterprise Blockchain Development",
-    shortDescription: "Permissioned networks, data integrity, and integrations.",
+    shortDescription:
+      "Permissioned networks, data integrity, and integrations.",
     fullDescription:
       "For organizations that need blockchain technology inside an existing operational or compliance framework, our enterprise blockchain development services focus on permissioned networks, data integrity, and integration with the systems your teams already use.",
     icon: Building2,
@@ -84,7 +89,8 @@ export const blockchainServices: BlockchainService[] = [
   {
     slug: "blockchain-platform-development",
     title: "Blockchain Platform Development",
-    shortDescription: "Infrastructure, APIs, and admin tooling for full platforms.",
+    shortDescription:
+      "Infrastructure, APIs, and admin tooling for full platforms.",
     fullDescription:
       "When a single application isn't enough, we build full blockchain platforms — the infrastructure, APIs, and admin tooling that let multiple products or business units operate on the same underlying network.",
     icon: Layers,
@@ -95,7 +101,8 @@ export const blockchainServices: BlockchainService[] = [
   {
     slug: "dapp-development",
     title: "DApp Development",
-    shortDescription: "Wallet connectivity, contract interaction, and live on-chain data.",
+    shortDescription:
+      "Wallet connectivity, contract interaction, and live on-chain data.",
     fullDescription:
       "Our decentralized application development covers wallet connectivity, smart contract interaction, and real-time on-chain data, giving users an experience that feels as smooth as any traditional web or mobile app.",
     icon: Network,
@@ -117,7 +124,8 @@ export const blockchainServices: BlockchainService[] = [
   {
     slug: "crypto-wallet-development",
     title: "Crypto Wallet Development",
-    shortDescription: "Secure key handling, multi-chain support, and wallet integrations.",
+    shortDescription:
+      "Secure key handling, multi-chain support, and wallet integrations.",
     fullDescription:
       "From non-custodial mobile wallets to embedded wallet infrastructure, we build crypto wallets with secure key handling, multi-chain support, and integrations for hardware wallets where they're needed.",
     icon: Wallet,
@@ -139,7 +147,8 @@ export const blockchainServices: BlockchainService[] = [
   {
     slug: "blockchain-integration-services",
     title: "Blockchain Integration Services",
-    shortDescription: "Add blockchain to existing software, payment flows, and data systems.",
+    shortDescription:
+      "Add blockchain to existing software, payment flows, and data systems.",
     fullDescription:
       "Many businesses don't need a new product — they need blockchain technology added to what they already run. Our blockchain integration services connect existing software, payment flows, or data systems to on-chain infrastructure with minimal disruption.",
     icon: Plug,

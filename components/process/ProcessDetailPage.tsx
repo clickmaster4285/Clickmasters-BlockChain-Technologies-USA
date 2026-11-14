@@ -1,10 +1,6 @@
 // components/process/ProcessDetailPage.tsx
 
-import {
-  BookOpenCheck,
-  CheckCircle2,
-  ShieldCheck,
-} from "lucide-react";
+import { BookOpenCheck, CheckCircle2, ShieldCheck } from "lucide-react";
 
 import ProcessArticleContent from "@/components/process/ProcessArticleContent";
 import ProcessCTA from "@/components/process/ProcessCTA";
@@ -12,10 +8,7 @@ import ProcessFAQ from "@/components/process/ProcessFAQ";
 import ProcessHero from "@/components/process/ProcessHero";
 import ProcessRelated from "@/components/process/ProcessRelated";
 
-import type {
-  NormalizedProcessEntry,
-  ProcessCardData,
-} from "@/lib/process";
+import type { NormalizedProcessEntry, ProcessCardData } from "@/lib/process";
 
 /* =========================================================
    Types
@@ -64,7 +57,6 @@ export default function ProcessDetailPage({
                 <div className="border-b border-white/[0.08] pb-8">
                   <span className="inline-flex items-center gap-2 rounded-full border border-amber-base/20 bg-amber-base/[0.06] px-4 py-2 text-[11px] font-black uppercase tracking-[0.17em] text-amber-base">
                     <BookOpenCheck className="h-4 w-4" />
-
                     Complete Guide
                   </span>
 
@@ -73,11 +65,9 @@ export default function ProcessDetailPage({
                   </h2>
 
                   <p className="mt-4 max-w-3xl text-sm leading-7 text-silver sm:text-base">
-                    This guide explains the strategy,
-                    architecture, implementation,
-                    security considerations, costs,
-                    risks, and production requirements
-                    involved in this process.
+                    This guide explains the strategy, architecture,
+                    implementation, security considerations, costs, risks, and
+                    production requirements involved in this process.
                   </p>
                 </div>
 
@@ -123,10 +113,7 @@ export default function ProcessDetailPage({
                     "Testing and quality assurance",
                     "Production deployment",
                   ].map((item) => (
-                    <div
-                      key={item}
-                      className="flex items-start gap-3"
-                    >
+                    <div key={item} className="flex items-start gap-3">
                       <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-amber-base" />
 
                       <span className="text-xs leading-6 text-silver">
@@ -146,9 +133,7 @@ export default function ProcessDetailPage({
 
                 <dl className="mt-5 space-y-4">
                   <div className="flex items-center justify-between gap-4 border-b border-white/[0.07] pb-4">
-                    <dt className="text-xs text-silver">
-                      Category
-                    </dt>
+                    <dt className="text-xs text-silver">Category</dt>
 
                     <dd className="text-right text-xs font-black text-text-primary">
                       {process.category}
@@ -156,9 +141,7 @@ export default function ProcessDetailPage({
                   </div>
 
                   <div className="flex items-center justify-between gap-4 border-b border-white/[0.07] pb-4">
-                    <dt className="text-xs text-silver">
-                      Reading time
-                    </dt>
+                    <dt className="text-xs text-silver">Reading time</dt>
 
                     <dd className="text-right text-xs font-black text-text-primary">
                       {process.readTime}
@@ -166,9 +149,7 @@ export default function ProcessDetailPage({
                   </div>
 
                   <div className="flex items-center justify-between gap-4 border-b border-white/[0.07] pb-4">
-                    <dt className="text-xs text-silver">
-                      Author
-                    </dt>
+                    <dt className="text-xs text-silver">Author</dt>
 
                     <dd className="max-w-[150px] text-right text-xs font-black text-text-primary">
                       {process.author}
@@ -176,9 +157,7 @@ export default function ProcessDetailPage({
                   </div>
 
                   <div className="flex items-center justify-between gap-4">
-                    <dt className="text-xs text-silver">
-                      Guide type
-                    </dt>
+                    <dt className="text-xs text-silver">Guide type</dt>
 
                     <dd className="text-right text-xs font-black text-text-primary">
                       Technical Process
@@ -196,20 +175,15 @@ export default function ProcessDetailPage({
                   </p>
 
                   <div className="mt-5 space-y-4">
-                    {process.credibility.map(
-                      (item) => (
-                        <div
-                          key={item}
-                          className="flex items-start gap-3"
-                        >
-                          <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-amber-base" />
+                    {process.credibility.map((item) => (
+                      <div key={item} className="flex items-start gap-3">
+                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-amber-base" />
 
-                          <span className="text-xs leading-6 text-silver">
-                            {item}
-                          </span>
-                        </div>
-                      ),
-                    )}
+                        <span className="text-xs leading-6 text-silver">
+                          {item}
+                        </span>
+                      </div>
+                    ))}
                   </div>
                 </div>
               )}
@@ -249,9 +223,7 @@ export default function ProcessDetailPage({
       ====================================================== */}
 
       {relatedProcesses.length > 0 && (
-        <ProcessRelated
-          processes={relatedProcesses}
-        />
+        <ProcessRelated processes={relatedProcesses} />
       )}
     </main>
   );

@@ -60,17 +60,13 @@ export async function generateMetadata({
     };
   }
 
-  const pageTitle =
-    partner.hero?.title || partner.title;
+  const pageTitle = partner.hero?.title || partner.title;
 
-  const pageDescription =
-    partner.hero?.description ||
-    partner.excerpt;
+  const pageDescription = partner.hero?.description || partner.excerpt;
 
   const canonicalUrl = `/partners/${partner.slug}`;
 
-  const image =
-    partner.hero?.image || partner.image;
+  const image = partner.hero?.image || partner.image;
 
   return createPageMetadata({
     title: pageTitle,
@@ -87,9 +83,7 @@ export async function generateMetadata({
    Page
 ========================================================= */
 
-export default async function PartnerPage({
-  params,
-}: PartnerPageProps) {
+export default async function PartnerPage({ params }: PartnerPageProps) {
   const { slug } = await params;
 
   const partner = getPartnerBySlug(slug);
@@ -98,16 +92,13 @@ export default async function PartnerPage({
     notFound();
   }
 
-  const relatedPartners =
-    getRelatedPartners(partner.slug, 3);
+  const relatedPartners = getRelatedPartners(partner.slug, 3);
 
   return (
     <PartnerDetailPage
       partner={partner}
       relatedPartners={relatedPartners}
-      relatedLinks={
-        <RelatedLinks type="partners" slug={partner.slug} />
-      }
+      relatedLinks={<RelatedLinks type="partners" slug={partner.slug} />}
     />
   );
 }

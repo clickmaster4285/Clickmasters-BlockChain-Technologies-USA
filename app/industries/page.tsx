@@ -41,9 +41,7 @@ import { getIndustryCards } from "@/lib/industry";
    Metadata
 ========================================================= */
 
-export async function generateMetadata({
-  searchParams,
-}: IndustriesPageProps) {
+export async function generateMetadata({ searchParams }: IndustriesPageProps) {
   const resolvedSearchParams = await searchParams;
   const requestedPage = Number(resolvedSearchParams?.page || "1");
   const cardsPerPage = 9;
@@ -53,9 +51,7 @@ export async function generateMetadata({
     1,
   );
   const currentPage = Math.min(
-    Number.isInteger(requestedPage) && requestedPage > 0
-      ? requestedPage
-      : 1,
+    Number.isInteger(requestedPage) && requestedPage > 0 ? requestedPage : 1,
     totalPages,
   );
   const metadata = withPageContext(
@@ -170,11 +166,7 @@ const architectureLayers = [
     title: "Security and Verification",
     description:
       "Identity, encryption, auditability, transaction validation, data integrity, and infrastructure controls protect the platform.",
-    items: [
-      "Access control",
-      "Audit and monitoring",
-      "Secure key management",
-    ],
+    items: ["Access control", "Audit and monitoring", "Secure key management"],
   },
 ];
 
@@ -244,7 +236,7 @@ type IndustriesPageProps = {
   searchParams: Promise<{
     page?: string;
   }>;
-}
+};
 
 export default async function IndustriesPage({
   searchParams,
@@ -253,15 +245,10 @@ export default async function IndustriesPage({
 
   const cardsPerPage = 9;
 
-  const requestedPage = Number(
-    resolvedSearchParams.page || "1",
-  );
+  const requestedPage = Number(resolvedSearchParams.page || "1");
 
   const currentPage =
-    Number.isInteger(requestedPage) && requestedPage > 0
-      ? requestedPage
-      : 1;
-      
+    Number.isInteger(requestedPage) && requestedPage > 0 ? requestedPage : 1;
 
   const industryCards = getIndustryCards();
 
@@ -272,9 +259,7 @@ export default async function IndustriesPage({
 
   if (currentPage > totalPages) {
     redirect(
-      totalPages === 1
-        ? "/industries"
-        : getPageHref("/industries", totalPages),
+      totalPages === 1 ? "/industries" : getPageHref("/industries", totalPages),
     );
   }
 
@@ -338,21 +323,19 @@ export default async function IndustriesPage({
               <div className="relative z-10">
                 <div className="inline-flex items-center gap-2 rounded-full border border-amber-base/20 bg-amber-base/[0.075] px-4 py-2 text-xs font-bold uppercase tracking-[0.22em] text-amber-base">
                   <Sparkles className="h-4 w-4" />
-
                   Blockchain Across Industries
                 </div>
 
                 <h1 className="mt-8 max-w-4xl font-display text-4xl font-black leading-[1.04] tracking-[-0.04em] text-text-primary sm:text-5xl md:text-6xl xl:text-[4.5rem]">
                   Blockchain Solutions for Industries
-                  {currentPage > 1 &&
-                    ` — Page ${currentPage} of ${totalPages}`}
+                  {currentPage > 1 && ` — Page ${currentPage} of ${totalPages}`}
                 </h1>
 
                 <p className="mt-7 max-w-2xl text-base leading-8 text-silver md:text-lg">
-                  We design secure blockchain platforms around
-                  your industry&apos;s real workflows, assets,
-                  participants, compliance requirements,
-                  integrations, and long-term business goals.
+                  We design secure blockchain platforms around your
+                  industry&apos;s real workflows, assets, participants,
+                  compliance requirements, integrations, and long-term business
+                  goals.
                 </p>
 
                 <div className="mt-9 flex flex-wrap gap-3">
@@ -361,7 +344,6 @@ export default async function IndustriesPage({
                     className="group inline-flex items-center gap-2 rounded-full bg-amber-base px-7 py-4 text-sm font-black text-bg-base shadow-glow transition-all duration-300 hover:-translate-y-1 hover:bg-amber-light"
                   >
                     Explore Industries
-
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Link>
 
@@ -370,7 +352,6 @@ export default async function IndustriesPage({
                     className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.035] px-7 py-4 text-sm font-bold text-text-primary transition-all duration-300 hover:-translate-y-1 hover:border-amber-base/35 hover:bg-amber-base/[0.05] hover:text-amber-base"
                   >
                     Discuss Your Business
-
                     <ArrowUpRight className="h-4 w-4" />
                   </Link>
                 </div>
@@ -432,7 +413,6 @@ export default async function IndustriesPage({
 
                           <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-amber-base" />
                         </span>
-
                         Enterprise blockchain solutions
                       </div>
 
@@ -444,23 +424,21 @@ export default async function IndustriesPage({
                             </p>
 
                             <p className="mt-2 max-w-sm text-lg font-black leading-snug text-text-primary md:text-xl">
-                              Secure infrastructure designed around
-                              real business operations
+                              Secure infrastructure designed around real
+                              business operations
                             </p>
 
                             <div className="mt-4 flex flex-wrap gap-2">
-                              {[
-                                "Secure",
-                                "Scalable",
-                                "Connected",
-                              ].map((item) => (
-                                <span
-                                  key={item}
-                                  className="rounded-full border border-white/10 bg-white/[0.035] px-3 py-1 text-[10px] font-medium text-silver"
-                                >
-                                  {item}
-                                </span>
-                              ))}
+                              {["Secure", "Scalable", "Connected"].map(
+                                (item) => (
+                                  <span
+                                    key={item}
+                                    className="rounded-full border border-white/10 bg-white/[0.035] px-3 py-1 text-[10px] font-medium text-silver"
+                                  >
+                                    {item}
+                                  </span>
+                                ),
+                              )}
                             </div>
                           </div>
 
@@ -479,9 +457,7 @@ export default async function IndustriesPage({
                       </span>
 
                       <div>
-                        <p className="text-[10px] text-silver">
-                          Architecture
-                        </p>
+                        <p className="text-[10px] text-silver">Architecture</p>
 
                         <p className="text-xs font-black text-text-primary">
                           Security first
@@ -524,16 +500,14 @@ export default async function IndustriesPage({
                 </p>
 
                 <h2 className="mt-4 text-3xl font-black tracking-[-0.035em] text-text-primary md:text-5xl">
-                  From Industry Friction to Shared Digital
-                  Infrastructure
+                  From Industry Friction to Shared Digital Infrastructure
                 </h2>
               </div>
 
               <p className="max-w-2xl text-sm leading-7 text-silver lg:justify-self-end">
-                Blockchain creates value when it solves a real
-                coordination, ownership, verification, trust, or
-                settlement problem—not when it is added only as a
-                technology feature.
+                Blockchain creates value when it solves a real coordination,
+                ownership, verification, trust, or settlement problem—not when
+                it is added only as a technology feature.
               </p>
             </div>
 
@@ -577,29 +551,24 @@ export default async function IndustriesPage({
               Industry Explorer
           ====================================================== */}
 
-          <section
-            id="industry-explorer"
-            className="scroll-mt-28 pt-24"
-          >
+          <section id="industry-explorer" className="scroll-mt-28 pt-24">
             <div className="grid gap-8 lg:grid-cols-[1fr_0.72fr] lg:items-end">
               <div>
                 <div className="inline-flex items-center gap-2 rounded-full border border-amber-base/20 bg-amber-base/[0.065] px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-amber-base">
                   <Building2 className="h-4 w-4" />
-
                   Industry Solutions
                 </div>
 
                 <h2 className="mt-5 max-w-4xl text-3xl font-black tracking-[-0.035em] text-text-primary md:text-5xl">
-                  Blockchain Solutions Designed Around Your
-                  Industry
+                  Blockchain Solutions Designed Around Your Industry
                 </h2>
               </div>
 
               <div className="lg:text-right">
                 <p className="text-sm leading-7 text-silver">
-                  Explore how blockchain can improve trust,
-                  ownership, automation, security, verification,
-                  and coordination across your industry.
+                  Explore how blockchain can improve trust, ownership,
+                  automation, security, verification, and coordination across
+                  your industry.
                 </p>
 
                 <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.025] px-4 py-2 text-xs font-bold text-amber-base">
@@ -611,87 +580,85 @@ export default async function IndustriesPage({
             {industryCards.length > 0 ? (
               <>
                 <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-                {visibleIndustryCards.map((industry, index) => (
-                  <Link
-                    key={industry.slug}
-                    href={`/industries/${industry.slug}`}
-                    className="group relative flex min-h-[500px] flex-col overflow-hidden rounded-[2rem] border border-white/[0.09] bg-surface shadow-[0_20px_65px_rgba(0,0,0,0.16)] transition-all duration-500 hover:-translate-y-2 hover:border-amber-base/35 hover:bg-surface/90 hover:shadow-[0_30px_90px_rgba(0,0,0,0.25)]"
-                  >
-                    <div className="absolute -right-20 -top-20 h-52 w-52 rounded-full bg-amber-base/[0.045] blur-[60px] transition-colors duration-500 group-hover:bg-amber-base/[0.09]" />
+                  {visibleIndustryCards.map((industry, index) => (
+                    <Link
+                      key={industry.slug}
+                      href={`/industries/${industry.slug}`}
+                      className="group relative flex min-h-[500px] flex-col overflow-hidden rounded-[2rem] border border-white/[0.09] bg-surface shadow-[0_20px_65px_rgba(0,0,0,0.16)] transition-all duration-500 hover:-translate-y-2 hover:border-amber-base/35 hover:bg-surface/90 hover:shadow-[0_30px_90px_rgba(0,0,0,0.25)]"
+                    >
+                      <div className="absolute -right-20 -top-20 h-52 w-52 rounded-full bg-amber-base/[0.045] blur-[60px] transition-colors duration-500 group-hover:bg-amber-base/[0.09]" />
 
-                    <div className="relative h-[220px] overflow-hidden border-b border-white/[0.08] bg-gradient-to-br from-bg-base via-surface to-amber-base/[0.12] sm:h-[240px]">
-                      <div
-                        aria-hidden="true"
-                        className="absolute inset-0 opacity-[0.18]"
-                        style={{
-                          backgroundImage:
-                            "linear-gradient(rgba(217,119,6,0.18) 1px, transparent 1px), linear-gradient(90deg, rgba(217,119,6,0.18) 1px, transparent 1px)",
-                          backgroundSize: "28px 28px",
-                        }}
-                      />
+                      <div className="relative h-[220px] overflow-hidden border-b border-white/[0.08] bg-gradient-to-br from-bg-base via-surface to-amber-base/[0.12] sm:h-[240px]">
+                        <div
+                          aria-hidden="true"
+                          className="absolute inset-0 opacity-[0.18]"
+                          style={{
+                            backgroundImage:
+                              "linear-gradient(rgba(217,119,6,0.18) 1px, transparent 1px), linear-gradient(90deg, rgba(217,119,6,0.18) 1px, transparent 1px)",
+                            backgroundSize: "28px 28px",
+                          }}
+                        />
 
-                      <div className="absolute -left-14 -top-14 h-44 w-44 rounded-full bg-amber-base/[0.10] blur-3xl" />
+                        <div className="absolute -left-14 -top-14 h-44 w-44 rounded-full bg-amber-base/[0.10] blur-3xl" />
 
-                      <div className="absolute -bottom-16 right-8 h-52 w-52 rounded-full bg-emerald-base/[0.08] blur-3xl" />
+                        <div className="absolute -bottom-16 right-8 h-52 w-52 rounded-full bg-emerald-base/[0.08] blur-3xl" />
 
-                      <div className="relative flex h-full items-center justify-center p-8">
-                        <div className="absolute h-40 w-40 rounded-full bg-amber-base/[0.12] blur-3xl transition-transform duration-700 group-hover:scale-125" />
+                        <div className="relative flex h-full items-center justify-center p-8">
+                          <div className="absolute h-40 w-40 rounded-full bg-amber-base/[0.12] blur-3xl transition-transform duration-700 group-hover:scale-125" />
 
-                        <div className="relative grid h-28 w-28 place-items-center rounded-[1.75rem] border border-white/[0.12] bg-bg-base/80 p-5 shadow-[0_22px_70px_rgba(0,0,0,0.20)] backdrop-blur-xl transition-all duration-500 group-hover:rotate-3 group-hover:scale-105 group-hover:border-amber-base/35 sm:h-32 sm:w-32">
-                          <Image
-                            src={industry.image}
-                            alt={industry.title}
-                            width={112}
-                            height={112}
-                            sizes="112px"
-                            className="h-full w-full object-contain transition-transform duration-700 group-hover:scale-110"
-                          />
+                          <div className="relative grid h-28 w-28 place-items-center rounded-[1.75rem] border border-white/[0.12] bg-bg-base/80 p-5 shadow-[0_22px_70px_rgba(0,0,0,0.20)] backdrop-blur-xl transition-all duration-500 group-hover:rotate-3 group-hover:scale-105 group-hover:border-amber-base/35 sm:h-32 sm:w-32">
+                            <Image
+                              src={industry.image}
+                              alt={industry.title}
+                              width={112}
+                              height={112}
+                              sizes="112px"
+                              className="h-full w-full object-contain transition-transform duration-700 group-hover:scale-110"
+                            />
+                          </div>
                         </div>
-                      </div>
 
-                      <div className="absolute inset-x-10 bottom-0 h-px bg-gradient-to-r from-transparent via-amber-base/55 to-transparent" />
+                        <div className="absolute inset-x-10 bottom-0 h-px bg-gradient-to-r from-transparent via-amber-base/55 to-transparent" />
 
-                      <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent" />
 
-                      <div className="absolute inset-0 bg-gradient-to-r from-bg-base/15 via-transparent to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-bg-base/15 via-transparent to-transparent" />
 
-                      <div className="absolute left-5 top-5">
-                        <span className="inline-flex items-center gap-2 rounded-full border border-amber-base/20 bg-bg-base/75 px-3.5 py-1.5 text-[10px] font-black uppercase tracking-[0.16em] text-amber-base backdrop-blur-xl">
-                          <Building2 className="h-3.5 w-3.5" />
+                        <div className="absolute left-5 top-5">
+                          <span className="inline-flex items-center gap-2 rounded-full border border-amber-base/20 bg-bg-base/75 px-3.5 py-1.5 text-[10px] font-black uppercase tracking-[0.16em] text-amber-base backdrop-blur-xl">
+                            <Building2 className="h-3.5 w-3.5" />
 
-                          {industry.badge || "Industry"}
+                            {industry.badge || "Industry"}
+                          </span>
+                        </div>
+
+                        <span className="absolute right-5 top-5 grid h-9 min-w-9 place-items-center rounded-full border border-white/10 bg-bg-base/70 px-2 font-mono text-[10px] font-bold text-silver backdrop-blur-xl">
+                          {String(startIndex + index + 1).padStart(2, "0")}
                         </span>
                       </div>
 
-                      <span className="absolute right-5 top-5 grid h-9 min-w-9 place-items-center rounded-full border border-white/10 bg-bg-base/70 px-2 font-mono text-[10px] font-bold text-silver backdrop-blur-xl">
-                        {String(startIndex + index + 1).padStart(2, "0")}
-                      </span>
-                    </div>
+                      <div className="relative flex flex-1 flex-col p-6 md:p-7">
+                        <div className="flex items-center justify-between gap-4">
+                          <p className="text-[10px] font-black uppercase tracking-[0.2em] text-amber-base">
+                            Blockchain for
+                          </p>
 
-                    <div className="relative flex flex-1 flex-col p-6 md:p-7">
-                      <div className="flex items-center justify-between gap-4">
-                        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-amber-base">
-                          Blockchain for
+                          <span className="text-xs font-medium text-silver">
+                            {industry.readTime || "Industry guide"}
+                          </span>
+                        </div>
+
+                        <h2 className="mt-4 text-2xl font-black leading-[1.2] tracking-[-0.025em] text-text-primary transition-colors duration-300 group-hover:text-amber-base">
+                          {industry.title}
+                        </h2>
+
+                        <p className="mt-4 line-clamp-3 text-sm leading-7 text-silver">
+                          {industry.excerpt}
                         </p>
 
-                        <span className="text-xs font-medium text-silver">
-                          {industry.readTime || "Industry guide"}
-                        </span>
-                      </div>
-
-                      <h2 className="mt-4 text-2xl font-black leading-[1.2] tracking-[-0.025em] text-text-primary transition-colors duration-300 group-hover:text-amber-base">
-                        {industry.title}
-                      </h2>
-
-                      <p className="mt-4 line-clamp-3 text-sm leading-7 text-silver">
-                        {industry.excerpt}
-                      </p>
-
-                      {industry.credibility.length > 0 && (
-                        <div className="mt-5 flex flex-wrap gap-2">
-                          {industry.credibility
-                            .slice(0, 3)
-                            .map((item) => (
+                        {industry.credibility.length > 0 && (
+                          <div className="mt-5 flex flex-wrap gap-2">
+                            {industry.credibility.slice(0, 3).map((item) => (
                               <span
                                 key={item}
                                 className="rounded-full border border-white/[0.085] bg-white/[0.025] px-3 py-1.5 text-[10px] font-medium text-silver"
@@ -699,23 +666,23 @@ export default async function IndustriesPage({
                                 {item}
                               </span>
                             ))}
-                        </div>
-                      )}
+                          </div>
+                        )}
 
-                      <div className="mt-auto pt-7">
-                        <div className="flex items-center justify-between border-t border-white/[0.08] pt-5">
-                          <span className="text-sm font-black text-text-primary transition-colors group-hover:text-amber-base">
-                            Explore solution
-                          </span>
+                        <div className="mt-auto pt-7">
+                          <div className="flex items-center justify-between border-t border-white/[0.08] pt-5">
+                            <span className="text-sm font-black text-text-primary transition-colors group-hover:text-amber-base">
+                              Explore solution
+                            </span>
 
-                          <span className="grid h-10 w-10 place-items-center rounded-full border border-white/[0.09] bg-white/[0.025] text-amber-base transition-all duration-300 group-hover:border-amber-base/30 group-hover:bg-amber-base group-hover:text-bg-base">
-                            <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                          </span>
+                            <span className="grid h-10 w-10 place-items-center rounded-full border border-white/[0.09] bg-white/[0.025] text-amber-base transition-all duration-300 group-hover:border-amber-base/30 group-hover:bg-amber-base group-hover:text-bg-base">
+                              <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                            </span>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </Link>
-                ))}
+                    </Link>
+                  ))}
                 </div>
 
                 <IndustryPagination
@@ -734,9 +701,8 @@ export default async function IndustriesPage({
                 </h2>
 
                 <p className="mx-auto mt-3 max-w-lg text-sm leading-7 text-silver">
-                  Confirm that your industry entries contain all
-                  required fields and use the category value
-                  &quot;Industry&quot;.
+                  Confirm that your industry entries contain all required fields
+                  and use the category value &quot;Industry&quot;.
                 </p>
               </div>
             )}
@@ -754,15 +720,13 @@ export default async function IndustriesPage({
                 </p>
 
                 <h2 className="mt-4 text-3xl font-black tracking-[-0.035em] text-text-primary md:text-5xl">
-                  Every Industry Solution Requires More Than
-                  Smart Contracts
+                  Every Industry Solution Requires More Than Smart Contracts
                 </h2>
 
                 <p className="mt-6 max-w-xl text-sm leading-7 text-silver md:text-base">
-                  A production blockchain product combines user
-                  experience, integrations, programmable
-                  infrastructure, security, data, and operational
-                  controls into one connected architecture.
+                  A production blockchain product combines user experience,
+                  integrations, programmable infrastructure, security, data, and
+                  operational controls into one connected architecture.
                 </p>
 
                 <Link
@@ -770,7 +734,6 @@ export default async function IndustriesPage({
                   className="mt-8 inline-flex items-center gap-2 rounded-full border border-amber-base/30 bg-amber-base/[0.08] px-6 py-3 text-sm font-black text-amber-base transition-all hover:-translate-y-1 hover:bg-amber-base hover:text-bg-base"
                 >
                   Plan Your Architecture
-
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
@@ -844,9 +807,9 @@ export default async function IndustriesPage({
               </h2>
 
               <p className="mt-5 text-sm leading-7 text-silver md:text-base">
-                The goal is not simply blockchain adoption. The
-                goal is better execution, trusted information,
-                secure transactions, and stronger coordination.
+                The goal is not simply blockchain adoption. The goal is better
+                execution, trusted information, secure transactions, and
+                stronger coordination.
               </p>
             </div>
 
@@ -898,10 +861,9 @@ export default async function IndustriesPage({
                 </h2>
 
                 <p className="mt-6 max-w-lg text-sm leading-7 text-silver">
-                  We do not force every business into the same
-                  blockchain template. Architecture, technology,
-                  governance, integrations, and delivery are
-                  selected according to the actual industry
+                  We do not force every business into the same blockchain
+                  template. Architecture, technology, governance, integrations,
+                  and delivery are selected according to the actual industry
                   environment.
                 </p>
               </div>
@@ -953,20 +915,17 @@ export default async function IndustriesPage({
                 <div>
                   <div className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-[0.22em] text-amber-base">
                     <Sparkles className="h-4 w-4" />
-
                     Build for Your Industry
                   </div>
 
                   <h2 className="mt-5 max-w-4xl text-3xl font-black leading-tight text-text-primary md:text-5xl">
-                    Turn Your Industry Challenge Into a Secure
-                    Digital Platform
+                    Turn Your Industry Challenge Into a Secure Digital Platform
                   </h2>
 
                   <p className="mt-5 max-w-2xl text-sm leading-7 text-silver md:text-base">
-                    Share your business model, operational
-                    challenge, or product idea. We will help define
-                    the right blockchain use case, architecture,
-                    integrations, roadmap, and delivery model.
+                    Share your business model, operational challenge, or product
+                    idea. We will help define the right blockchain use case,
+                    architecture, integrations, roadmap, and delivery model.
                   </p>
                 </div>
 
@@ -976,7 +935,6 @@ export default async function IndustriesPage({
                     className="group inline-flex items-center justify-center gap-2 rounded-full bg-amber-base px-8 py-4 text-sm font-black text-bg-base shadow-glow transition-transform hover:-translate-y-1 hover:bg-amber-light"
                   >
                     Book a Free Consultation
-
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Link>
 
@@ -985,7 +943,6 @@ export default async function IndustriesPage({
                     className="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/[0.035] px-8 py-4 text-sm font-bold text-text-primary transition-all hover:border-amber-base/30 hover:bg-amber-base/[0.05] hover:text-amber-base"
                   >
                     Explore Our Services
-
                     <ArrowUpRight className="h-4 w-4" />
                   </Link>
                 </div>

@@ -44,8 +44,7 @@ export async function generateMetadata({
   if (!process) {
     return createPageMetadata({
       title: "Process Guide Not Found",
-      description:
-        "The requested blockchain process guide could not be found.",
+      description: "The requested blockchain process guide could not be found.",
       path: `/process/${slug}`,
       noIndex: true,
     });
@@ -53,15 +52,9 @@ export async function generateMetadata({
 
   return createPageMetadata({
     title: process.title,
-    description:
-      process.excerpt ||
-      process.hero.description ||
-      process.title,
+    description: process.excerpt || process.hero.description || process.title,
     path: `/process/${process.slug}`,
-    image:
-      process.hero.image ||
-      process.image ||
-      undefined,
+    image: process.hero.image || process.image || undefined,
     type: "article",
   });
 }
@@ -76,17 +69,12 @@ export default async function ProcessSlugPage({
     notFound();
   }
 
-  const relatedProcesses = getRelatedProcesses(
-    process.slug,
-    3,
-  );
+  const relatedProcesses = getRelatedProcesses(process.slug, 3);
 
   return (
     <div className="min-h-screen bg-bg-base text-text-primary">
       <Navbar />
-      <JsonLd
-        data={faqPageSchema(process.faqs)}
-      />
+      <JsonLd data={faqPageSchema(process.faqs)} />
 
       <main className="overflow-hidden bg-bg-base">
         <ProcessHero process={process} />
@@ -120,16 +108,14 @@ export default async function ProcessSlugPage({
                   </p>
 
                   <div className="mt-5 space-y-3">
-                    {process.credibility.map(
-                      (item) => (
-                        <div
-                          key={item}
-                          className="rounded-xl border border-white/[0.07] bg-white/[0.025] px-4 py-3 text-sm leading-6 text-silver"
-                        >
-                          {item}
-                        </div>
-                      ),
-                    )}
+                    {process.credibility.map((item) => (
+                      <div
+                        key={item}
+                        className="rounded-xl border border-white/[0.07] bg-white/[0.025] px-4 py-3 text-sm leading-6 text-silver"
+                      >
+                        {item}
+                      </div>
+                    ))}
                   </div>
                 </div>
               )}
@@ -159,14 +145,12 @@ export default async function ProcessSlugPage({
               </div>
 
               <div className="mt-8 grid gap-7 md:grid-cols-2 xl:grid-cols-3">
-                {relatedProcesses.map(
-                  (relatedProcess) => (
-                    <ProcessCard
-                      key={relatedProcess.slug}
-                      process={relatedProcess}
-                    />
-                  ),
-                )}
+                {relatedProcesses.map((relatedProcess) => (
+                  <ProcessCard
+                    key={relatedProcess.slug}
+                    process={relatedProcess}
+                  />
+                ))}
               </div>
             </div>
           </section>

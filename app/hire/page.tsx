@@ -29,10 +29,7 @@ import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import BackToTop from "@/components/ui/BackToTop";
 import { createMetadata } from "@/config/metadata";
-import {
-  getFeaturedHirePages,
-  getHireCards,
-} from "@/lib/hire";
+import { getFeaturedHirePages, getHireCards } from "@/lib/hire";
 import { getPageHref, withPageContext } from "@/lib/pagination";
 
 const ITEMS_PER_PAGE = 12;
@@ -51,15 +48,10 @@ function getRequestedPage(page?: string): number {
     : 1;
 }
 
-export async function generateMetadata({
-  searchParams,
-}: HirePageProps) {
+export async function generateMetadata({ searchParams }: HirePageProps) {
   const resolvedSearchParams = await searchParams;
   const hirePages = getHireCards();
-  const totalPages = Math.max(
-    Math.ceil(hirePages.length / ITEMS_PER_PAGE),
-    1,
-  );
+  const totalPages = Math.max(Math.ceil(hirePages.length / ITEMS_PER_PAGE), 1);
   const currentPage = Math.min(
     getRequestedPage(resolvedSearchParams?.page),
     totalPages,
@@ -210,42 +202,27 @@ const reasons = [
   },
 ];
 
-export default async function HirePage({
-  searchParams,
-}: HirePageProps) {
+export default async function HirePage({ searchParams }: HirePageProps) {
   const resolvedSearchParams = await searchParams;
 
-  const requestedPage = getRequestedPage(
-    resolvedSearchParams?.page
-  );
+  const requestedPage = getRequestedPage(resolvedSearchParams?.page);
 
   const hireCards = getHireCards();
   const featuredPages = getFeaturedHirePages(6);
 
-  const totalPages = Math.max(
-    Math.ceil(hireCards.length / ITEMS_PER_PAGE),
-    1
-  );
+  const totalPages = Math.max(Math.ceil(hireCards.length / ITEMS_PER_PAGE), 1);
 
-  const safeCurrentPage = Math.min(
-    requestedPage,
-    totalPages
-  );
+  const safeCurrentPage = Math.min(requestedPage, totalPages);
 
   const paginatedCards = hireCards.slice(
     (safeCurrentPage - 1) * ITEMS_PER_PAGE,
-    safeCurrentPage * ITEMS_PER_PAGE
+    safeCurrentPage * ITEMS_PER_PAGE,
   );
 
   const pageStart =
-    hireCards.length === 0
-      ? 0
-      : (safeCurrentPage - 1) * ITEMS_PER_PAGE + 1;
+    hireCards.length === 0 ? 0 : (safeCurrentPage - 1) * ITEMS_PER_PAGE + 1;
 
-  const pageEnd = Math.min(
-    safeCurrentPage * ITEMS_PER_PAGE,
-    hireCards.length
-  );
+  const pageEnd = Math.min(safeCurrentPage * ITEMS_PER_PAGE, hireCards.length);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -286,10 +263,9 @@ export default async function HirePage({
                 </h1>
 
                 <p className="mt-6 max-w-2xl text-base leading-8 text-silver md:text-lg">
-                  Hire experienced blockchain, Solidity, smart
-                  contract, Web3, DeFi, exchange, and enterprise
-                  developers who can turn complex requirements into
-                  secure and scalable products.
+                  Hire experienced blockchain, Solidity, smart contract, Web3,
+                  DeFi, exchange, and enterprise developers who can turn complex
+                  requirements into secure and scalable products.
                 </p>
 
                 <div className="mt-8 flex flex-wrap gap-3">
@@ -410,9 +386,7 @@ export default async function HirePage({
                     </span>
 
                     <div>
-                      <p className="text-xs text-silver">
-                        Expert matching
-                      </p>
+                      <p className="text-xs text-silver">Expert matching</p>
                       <p className="text-sm font-bold text-text-primary">
                         Within 24–72 hours
                       </p>
@@ -466,8 +440,8 @@ export default async function HirePage({
                 </div>
 
                 <p className="max-w-xl text-sm leading-7 text-silver">
-                  Start with our most requested developer roles or
-                  explore the complete hiring library below.
+                  Start with our most requested developer roles or explore the
+                  complete hiring library below.
                 </p>
               </div>
 
@@ -507,7 +481,6 @@ export default async function HirePage({
                     </div>
 
                     <div className="relative flex min-h-[260px] flex-col p-7">
-
                       <h2 className="mt-7 text-2xl font-black leading-tight text-text-primary transition-colors group-hover:text-amber-base">
                         {item.title}
                       </h2>
@@ -517,16 +490,14 @@ export default async function HirePage({
                       </p>
 
                       <div className="mt-5 flex flex-wrap gap-2">
-                        {item.credibility
-                          ?.slice(0, 3)
-                          .map((skill) => (
-                            <span
-                              key={skill}
-                              className="rounded-full border border-white/10 px-3 py-1 text-[11px] font-medium text-silver"
-                            >
-                              {skill}
-                            </span>
-                          ))}
+                        {item.credibility?.slice(0, 3).map((skill) => (
+                          <span
+                            key={skill}
+                            className="rounded-full border border-white/10 px-3 py-1 text-[11px] font-medium text-silver"
+                          >
+                            {skill}
+                          </span>
+                        ))}
                       </div>
 
                       <div className="mt-auto pt-7">
@@ -544,10 +515,7 @@ export default async function HirePage({
 
           {/* All hire roles */}
 
-          <section
-            id="hire-expertise"
-            className="scroll-mt-28 pt-24"
-          >
+          <section id="hire-expertise" className="scroll-mt-28 pt-24">
             <div className="mb-9 flex flex-col justify-between gap-5 lg:flex-row lg:items-end">
               <div>
                 <p className="font-mono text-xs uppercase tracking-[0.3em] text-amber-base">
@@ -561,10 +529,9 @@ export default async function HirePage({
 
               <div className="max-w-xl">
                 <p className="text-sm leading-7 text-silver">
-                  Showing {pageStart}–{pageEnd} of{" "}
-                  {hireCards.length} specialist hiring guides.
-                  Select a role to review capabilities, use cases,
-                  hiring considerations, and project requirements.
+                  Showing {pageStart}–{pageEnd} of {hireCards.length} specialist
+                  hiring guides. Select a role to review capabilities, use
+                  cases, hiring considerations, and project requirements.
                 </p>
               </div>
             </div>
@@ -573,10 +540,7 @@ export default async function HirePage({
               <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
                 {paginatedCards.map((item, index) => {
                   const globalIndex =
-                    (safeCurrentPage - 1) *
-                      ITEMS_PER_PAGE +
-                    index +
-                    1;
+                    (safeCurrentPage - 1) * ITEMS_PER_PAGE + index + 1;
 
                   return (
                     <Link
@@ -605,10 +569,7 @@ export default async function HirePage({
                         </div>
 
                         <span className="absolute right-5 top-5 rounded-full border border-white/10 bg-bg-base/75 px-3 py-1 font-mono text-xs text-silver/80 backdrop-blur-xl">
-                          {String(globalIndex).padStart(
-                            2,
-                            "0"
-                          )}
+                          {String(globalIndex).padStart(2, "0")}
                         </span>
                       </div>
 
@@ -633,16 +594,14 @@ export default async function HirePage({
                         </p>
 
                         <div className="mt-5 flex flex-wrap gap-2">
-                          {item.credibility
-                            ?.slice(0, 3)
-                            .map((skill) => (
-                              <span
-                                key={skill}
-                                className="rounded-full border border-white/10 bg-white/[0.02] px-3 py-1 text-[11px] font-medium text-silver"
-                              >
-                                {skill}
-                              </span>
-                            ))}
+                          {item.credibility?.slice(0, 3).map((skill) => (
+                            <span
+                              key={skill}
+                              className="rounded-full border border-white/10 bg-white/[0.02] px-3 py-1 text-[11px] font-medium text-silver"
+                            >
+                              {skill}
+                            </span>
+                          ))}
                         </div>
 
                         <div className="mt-auto flex items-center justify-between border-t border-white/10 pt-6">
@@ -663,8 +622,8 @@ export default async function HirePage({
                 </h2>
 
                 <p className="mt-3 text-sm text-silver">
-                  Please check that your Hire entries use the
-                  category value &quot;Hire&quot;.
+                  Please check that your Hire entries use the category value
+                  &quot;Hire&quot;.
                 </p>
               </div>
             )}
@@ -675,10 +634,7 @@ export default async function HirePage({
               <div className="mt-12 flex flex-wrap items-center justify-center gap-3">
                 {safeCurrentPage > 1 ? (
                   <Link
-                    href={getPageHref(
-                      "/hire",
-                      safeCurrentPage - 1
-                    )}
+                    href={getPageHref("/hire", safeCurrentPage - 1)}
                     className="inline-flex h-11 items-center gap-2 rounded-full border border-white/10 bg-surface px-5 text-sm font-bold text-silver transition-all hover:border-amber-base/40 hover:text-amber-base"
                   >
                     <ChevronLeft className="h-4 w-4" />
@@ -700,8 +656,7 @@ export default async function HirePage({
                       : safeCurrentPage;
 
                   const page = startPage + index;
-                  const isActive =
-                    page === safeCurrentPage;
+                  const isActive = page === safeCurrentPage;
 
                   if (page > totalPages) {
                     return null;
@@ -711,9 +666,7 @@ export default async function HirePage({
                     <Link
                       key={page}
                       href={getPageHref("/hire", page)}
-                      aria-current={
-                        isActive ? "page" : undefined
-                      }
+                      aria-current={isActive ? "page" : undefined}
                       className={`grid h-11 w-11 place-items-center rounded-full border text-sm font-black transition-all ${
                         isActive
                           ? "border-amber-base bg-amber-base text-bg-base shadow-glow"
@@ -727,10 +680,7 @@ export default async function HirePage({
 
                 {safeCurrentPage < totalPages ? (
                   <Link
-                    href={getPageHref(
-                      "/hire",
-                      safeCurrentPage + 1
-                    )}
+                    href={getPageHref("/hire", safeCurrentPage + 1)}
                     className="inline-flex h-11 items-center gap-2 rounded-full bg-amber-base px-5 text-sm font-bold text-bg-base transition-transform hover:-translate-y-0.5"
                   >
                     Next
@@ -759,9 +709,9 @@ export default async function HirePage({
               </h2>
 
               <p className="mt-5 text-sm leading-7 text-silver md:text-base">
-                Engage one developer, assemble a complete team, or
-                deliver a defined project with a model aligned to
-                your product stage and technical needs.
+                Engage one developer, assemble a complete team, or deliver a
+                defined project with a model aligned to your product stage and
+                technical needs.
               </p>
             </div>
 
@@ -823,9 +773,9 @@ export default async function HirePage({
                 </h2>
 
                 <p className="mt-5 max-w-xl text-sm leading-7 text-silver">
-                  Our structured process helps you identify the
-                  required expertise, review the engagement model,
-                  and begin development with clear expectations.
+                  Our structured process helps you identify the required
+                  expertise, review the engagement model, and begin development
+                  with clear expectations.
                 </p>
 
                 <Link
@@ -882,9 +832,9 @@ export default async function HirePage({
                 </h2>
 
                 <p className="mt-5 max-w-xl text-sm leading-7 text-silver">
-                  Get specialized blockchain capability supported
-                  by architecture, security, delivery, and
-                  long-term technical expertise.
+                  Get specialized blockchain capability supported by
+                  architecture, security, delivery, and long-term technical
+                  expertise.
                 </p>
               </div>
 
@@ -928,15 +878,13 @@ export default async function HirePage({
                   </p>
 
                   <h2 className="mt-3 max-w-4xl text-3xl font-black leading-tight md:text-5xl">
-                    Need the Right Blockchain Developer for Your
-                    Next Product?
+                    Need the Right Blockchain Developer for Your Next Product?
                   </h2>
 
                   <p className="mt-4 max-w-2xl text-sm leading-7 text-bg-base/80 md:text-base">
                     Share your requirements and receive a practical
-                    recommendation for the expertise, team
-                    structure, timeline, and engagement model your
-                    project needs.
+                    recommendation for the expertise, team structure, timeline,
+                    and engagement model your project needs.
                   </p>
                 </div>
 

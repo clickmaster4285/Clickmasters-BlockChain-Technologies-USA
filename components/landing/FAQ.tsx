@@ -3,13 +3,21 @@
 import { homeFaqs } from "@/data/home-faqs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { faqPageSchema } from "@/lib/schema-primitives";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const faqs = homeFaqs;
 
 export function FAQ() {
   return (
-    <section id="faq" className="relative overflow-hidden border-y border-border bg-bg-surface py-24 md:py-28">
+    <section
+      id="faq"
+      className="relative overflow-hidden border-y border-border bg-bg-surface py-24 md:py-28"
+    >
       {/* FAQPage JSON-LD is built here (from the same data as the visible FAQs)
           so it is server-rendered into the HTML without also being copied into
           the page's RSC payload. */}
@@ -25,15 +33,24 @@ export function FAQ() {
             Frequently Asked Questions
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-text-secondary">
-            Straight answers to the questions we hear most often from clients evaluating a
-            blockchain development company.
+            Straight answers to the questions we hear most often from clients
+            evaluating a blockchain development company.
           </p>
         </div>
 
         <div className="mx-auto mt-12 max-w-3xl">
-          <Accordion type="single" collapsible defaultValue="item-0" className="w-full">
+          <Accordion
+            type="single"
+            collapsible
+            defaultValue="item-0"
+            className="w-full"
+          >
             {faqs.map((f, i) => (
-              <AccordionItem key={f.q} value={`item-${i}`} className="border-border">
+              <AccordionItem
+                key={f.q}
+                value={`item-${i}`}
+                className="border-border"
+              >
                 <AccordionTrigger className="px-2 text-left text-base font-semibold text-text-primary transition-colors hover:text-amber-base md:text-lg">
                   {f.q}
                 </AccordionTrigger>

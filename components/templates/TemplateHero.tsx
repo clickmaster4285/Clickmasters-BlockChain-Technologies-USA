@@ -55,9 +55,9 @@ export default function TemplateHero({
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { 
-        staggerChildren: 0.08, 
-        delayChildren: 0.1 
+      transition: {
+        staggerChildren: 0.08,
+        delayChildren: 0.1,
       },
     },
   };
@@ -82,21 +82,36 @@ export default function TemplateHero({
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:42px_42px] opacity-80 transition-transform duration-1000 group-hover/hero:scale-[1.01]" />
 
       {/* Cyberpunk Amber & Emerald Background Glows */}
-      <div className="pointer-events-none absolute -right-32 -top-32 h-[30rem] w-[30rem] rounded-full bg-amber-500/10 blur-[120px] transition-all duration-1000 group-hover/hero:scale-125 group-hover/hero:opacity-100 animate-pulse" style={{ animationDuration: '8s' }} />
-      <div className="pointer-events-none absolute -bottom-36 left-[20%] h-[24rem] w-[24rem] rounded-full bg-emerald-500/5 blur-[100px] animate-pulse" style={{ animationDuration: '10s' }} />
-      
+      <div
+        className="pointer-events-none absolute -right-32 -top-32 h-[30rem] w-[30rem] rounded-full bg-amber-500/10 blur-[120px] transition-all duration-1000 group-hover/hero:scale-125 group-hover/hero:opacity-100 animate-pulse"
+        style={{ animationDuration: "8s" }}
+      />
+      <div
+        className="pointer-events-none absolute -bottom-36 left-[20%] h-[24rem] w-[24rem] rounded-full bg-emerald-500/5 blur-[100px] animate-pulse"
+        style={{ animationDuration: "10s" }}
+      />
+
       {/* Top Border Highlight */}
       <div className="pointer-events-none absolute inset-x-12 top-0 h-px bg-gradient-to-r from-transparent via-amber-500/60 to-transparent" />
 
       {/* Subtle floating background particles */}
-      <span className="pointer-events-none absolute left-[7%] top-[18%] h-1.5 w-1.5 rounded-full bg-amber-500/40 animate-ping" style={{ animationDuration: '4s' }} />
-      <span className="pointer-events-none absolute right-[8%] top-[26%] h-1 w-1 rounded-full bg-amber-400/60 animate-bounce" style={{ animationDuration: '5s' }} />
+      <span
+        className="pointer-events-none absolute left-[7%] top-[18%] h-1.5 w-1.5 rounded-full bg-amber-500/40 animate-ping"
+        style={{ animationDuration: "4s" }}
+      />
+      <span
+        className="pointer-events-none absolute right-[8%] top-[26%] h-1 w-1 rounded-full bg-amber-400/60 animate-bounce"
+        style={{ animationDuration: "5s" }}
+      />
 
       <div className="relative grid items-center gap-12 lg:grid-cols-[1.08fr_0.92fr]">
         {/* Left Interactive Content Area */}
         <motion.div variants={containerVariants} className="flex flex-col">
           {/* Badges and Metadata */}
-          <motion.div variants={fadeInUpVariants} className="mt-2 flex flex-wrap gap-3">
+          <motion.div
+            variants={fadeInUpVariants}
+            className="mt-2 flex flex-wrap gap-3"
+          >
             <span className="inline-flex items-center gap-2 rounded-full border border-amber-500/25 bg-amber-500/10 px-4 py-2 text-[10px] font-black uppercase tracking-[0.22em] text-amber-400 transition-all hover:bg-amber-500/20">
               <FileText className="h-4 w-4" />
               {item?.hero?.badge || item?.category || "Template"}
@@ -116,7 +131,7 @@ export default function TemplateHero({
           </motion.div>
 
           {/* Heading */}
-          <motion.h1 
+          <motion.h1
             variants={fadeInUpVariants}
             className="mt-8 max-w-5xl font-display text-4xl font-black leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl"
           >
@@ -124,7 +139,7 @@ export default function TemplateHero({
           </motion.h1>
 
           {/* Description Paragraph */}
-          <motion.p 
+          <motion.p
             variants={fadeInUpVariants}
             className="mt-6 max-w-3xl text-base leading-8 text-neutral-400 md:text-lg"
           >
@@ -132,13 +147,20 @@ export default function TemplateHero({
           </motion.p>
 
           {/* Features / Meta Grid Cards */}
-          <motion.div variants={fadeInUpVariants} className="mt-8 grid gap-3 sm:grid-cols-3">
+          <motion.div
+            variants={fadeInUpVariants}
+            className="mt-8 grid gap-3 sm:grid-cols-3"
+          >
             {[
               { label: "Format", value: format, icon: FileText },
-              { label: "Sections", value: sections || "Complete", icon: Layers3 },
-              { label: "Ready For", value: "Professional Use", icon: Sparkles }
+              {
+                label: "Sections",
+                value: sections || "Complete",
+                icon: Layers3,
+              },
+              { label: "Ready For", value: "Professional Use", icon: Sparkles },
             ].map((card, i) => (
-              <motion.div 
+              <motion.div
                 key={i}
                 whileHover={{ y: -5, scale: 1.015 }}
                 transition={{ type: "spring", stiffness: 350, damping: 18 }}
@@ -158,7 +180,10 @@ export default function TemplateHero({
           </motion.div>
 
           {/* Dynamic Buttons */}
-          <motion.div variants={fadeInUpVariants} className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <motion.div
+            variants={fadeInUpVariants}
+            className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap"
+          >
             <motion.a
               whileHover={{ y: -3, scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
@@ -169,7 +194,11 @@ export default function TemplateHero({
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/button:translate-x-1.5" />
             </motion.a>
 
-            <motion.div whileHover={{ y: -3, scale: 1.02 }} whileTap={{ scale: 0.98 }} className="w-full sm:w-auto">
+            <motion.div
+              whileHover={{ y: -3, scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="w-full sm:w-auto"
+            >
               <Link
                 href="/contact"
                 className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-neutral-800 bg-neutral-950 px-7 py-3.5 text-sm font-semibold text-neutral-300 transition-all duration-300 hover:border-amber-500/30 hover:bg-neutral-900/60 hover:text-amber-400"
@@ -181,18 +210,29 @@ export default function TemplateHero({
         </motion.div>
 
         {/* Right Animated Stack Layer */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.25, type: "spring", stiffness: 90, damping: 16 }}
+          transition={{
+            delay: 0.25,
+            type: "spring",
+            stiffness: 90,
+            damping: 16,
+          }}
           className="relative flex min-h-[450px] items-center justify-center"
         >
           {/* Glow backdrop behind the papers */}
           <div className="pointer-events-none absolute h-[24rem] w-[24rem] rounded-full bg-amber-500/5 blur-[100px]" />
 
           {/* Abstract Rotating Lines */}
-          <div className="pointer-events-none absolute h-[340px] w-[340px] animate-spin rounded-full border border-amber-500/10" style={{ animationDuration: '28s' }} />
-          <div className="pointer-events-none absolute h-[270px] w-[270px] animate-spin rounded-full border border-dashed border-neutral-800" style={{ animationDuration: '18s', animationDirection: 'reverse' }} />
+          <div
+            className="pointer-events-none absolute h-[340px] w-[340px] animate-spin rounded-full border border-amber-500/10"
+            style={{ animationDuration: "28s" }}
+          />
+          <div
+            className="pointer-events-none absolute h-[270px] w-[270px] animate-spin rounded-full border border-dashed border-neutral-800"
+            style={{ animationDuration: "18s", animationDirection: "reverse" }}
+          />
 
           {/* Stack item 1: Back Paper */}
           <div className="absolute h-[320px] w-[245px] rotate-[-10deg] rounded-[1.7rem] border border-neutral-800 bg-neutral-950 transition-all duration-700 ease-out group-hover/hero:rotate-[-15deg] group-hover/hero:-translate-x-7 group-hover/hero:-translate-y-2">
@@ -216,7 +256,7 @@ export default function TemplateHero({
           </div>
 
           {/* Stack item 3: Main Document Sheet with Floating Mechanics */}
-          <motion.div 
+          <motion.div
             animate={{ y: [0, -7, 0] }}
             transition={{ repeat: Infinity, duration: 4.5, ease: "easeInOut" }}
             className="relative z-10 h-[350px] w-[265px] overflow-hidden rounded-[1.8rem] border border-neutral-800 bg-gradient-to-br from-neutral-950 to-neutral-900 p-6 shadow-2xl transition-all duration-500 group-hover/hero:border-amber-500/40"
@@ -261,14 +301,22 @@ export default function TemplateHero({
               <span className="text-xs font-bold text-amber-400">
                 Professional Template
               </span>
-              <Copy className="h-4 w-4 text-amber-400 animate-bounce" style={{ animationDuration: '3s' }} />
+              <Copy
+                className="h-4 w-4 text-amber-400 animate-bounce"
+                style={{ animationDuration: "3s" }}
+              />
             </div>
           </motion.div>
 
           {/* Floating Contextual Badge */}
-          <motion.div 
+          <motion.div
             animate={{ y: [0, 6, 0] }}
-            transition={{ repeat: Infinity, duration: 4, ease: "easeInOut", delay: 0.4 }}
+            transition={{
+              repeat: Infinity,
+              duration: 4,
+              ease: "easeInOut",
+              delay: 0.4,
+            }}
             className="absolute bottom-3 right-0 z-20 rounded-2xl border border-neutral-800 bg-neutral-950/90 px-4 py-3 backdrop-blur-xl sm:right-4 shadow-xl"
           >
             <p className="text-[9px] font-black uppercase tracking-[0.18em] text-amber-400">

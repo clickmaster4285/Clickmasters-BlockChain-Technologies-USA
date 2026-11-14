@@ -18,37 +18,26 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 
-type SubmissionStatus =
-  | "idle"
-  | "loading"
-  | "success"
-  | "error";
+type SubmissionStatus = "idle" | "loading" | "success" | "error";
 
 export default function ContactPage() {
-  const [status, setStatus] =
-    useState<SubmissionStatus>("idle");
+  const [status, setStatus] = useState<SubmissionStatus>("idle");
 
-  const [errorMessage, setErrorMessage] =
-    useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const [projectType, setProjectType] =
-    useState("");
+  const [projectType, setProjectType] = useState("");
 
   // Non-sensitive service identifier from links such as
   // /contact?service=blockchain-consulting preselects the project type.
   useEffect(() => {
-    const service = new URLSearchParams(
-      window.location.search,
-    ).get("service");
+    const service = new URLSearchParams(window.location.search).get("service");
 
     if (service === "blockchain-consulting") {
       setProjectType("Blockchain Consulting");
     }
   }, []);
 
-  async function handleSubmit(
-    event: React.FormEvent<HTMLFormElement>,
-  ) {
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     setStatus("loading");
@@ -57,29 +46,17 @@ export default function ContactPage() {
     const form = event.currentTarget;
     const formData = new FormData(form);
 
-    const name = String(
-      formData.get("name") || "",
-    ).trim();
+    const name = String(formData.get("name") || "").trim();
 
-    const email = String(
-      formData.get("email") || "",
-    ).trim();
+    const email = String(formData.get("email") || "").trim();
 
-    const phone = String(
-      formData.get("phone") || "",
-    ).trim();
+    const phone = String(formData.get("phone") || "").trim();
 
-    const projectType = String(
-      formData.get("projectType") || "",
-    ).trim();
+    const projectType = String(formData.get("projectType") || "").trim();
 
-    const message = String(
-      formData.get("message") || "",
-    ).trim();
+    const message = String(formData.get("message") || "").trim();
 
-    const searchParams = new URLSearchParams(
-      window.location.search,
-    );
+    const searchParams = new URLSearchParams(window.location.search);
 
     const payload = {
       name,
@@ -90,8 +67,7 @@ export default function ContactPage() {
         ? `Project Type: ${projectType}\n\n${message}`
         : message,
 
-      website:
-        "clickmastersblockchaintechnologies.com",
+      website: "clickmastersblockchaintechnologies.com",
 
       service:
         projectType === "Blockchain Consulting"
@@ -101,40 +77,29 @@ export default function ContactPage() {
       landingPage: window.location.href,
       referrer: document.referrer,
 
-      utm_source:
-        searchParams.get("utm_source") || "",
+      utm_source: searchParams.get("utm_source") || "",
 
-      utm_medium:
-        searchParams.get("utm_medium") || "",
+      utm_medium: searchParams.get("utm_medium") || "",
 
-      utm_campaign:
-        searchParams.get("utm_campaign") || "",
+      utm_campaign: searchParams.get("utm_campaign") || "",
 
-      utm_term:
-        searchParams.get("utm_term") || "",
+      utm_term: searchParams.get("utm_term") || "",
 
-      utm_content:
-        searchParams.get("utm_content") || "",
+      utm_content: searchParams.get("utm_content") || "",
     };
 
     try {
       const result = await sendContactMail(payload);
 
       if (!result.ok) {
-        throw new Error(
-          result.error ||
-            "Unable to submit your message.",
-        );
+        throw new Error(result.error || "Unable to submit your message.");
       }
 
       setStatus("success");
       form.reset();
       setProjectType("");
     } catch (error) {
-      console.error(
-        "Contact form submission failed:",
-        error,
-      );
+      console.error("Contact form submission failed:", error);
 
       setStatus("error");
 
@@ -158,15 +123,14 @@ export default function ContactPage() {
 
           <h1 className="mt-4 text-5xl font-bold tracking-tight md:text-6xl">
             Let&apos;s build your{" "}
-            <span className="text-gradient">
-              Web3 project
-            </span>
+            <span className="text-gradient">Web3 project</span>
           </h1>
 
           <p className="mt-6 max-w-2xl text-lg text-muted-foreground">
-            Tell us about your protocol, product, or DAO. Share your goals and constraints so we
-            can discuss a suitable next step. Include relevant technical constraints, timelines,
-            existing systems, or stakeholder requirements.
+            Tell us about your protocol, product, or DAO. Share your goals and
+            constraints so we can discuss a suitable next step. Include relevant
+            technical constraints, timelines, existing systems, or stakeholder
+            requirements.
           </p>
 
           <div className="mt-12 grid gap-10 md:grid-cols-[1.2fr_1fr]">
@@ -178,13 +142,12 @@ export default function ContactPage() {
                 Send a project brief
               </h2>
               <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                Share the product, timeline, and chain so we can reply with a scoped plan.
+                Share the product, timeline, and chain so we can reply with a
+                scoped plan.
               </p>
               <div className="mt-6 grid gap-5">
                 <div className="grid gap-2">
-                  <Label htmlFor="name">
-                    Name
-                  </Label>
+                  <Label htmlFor="name">Name</Label>
 
                   <Input
                     id="name"
@@ -195,9 +158,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="grid gap-2">
-                  <Label htmlFor="email">
-                    Email
-                  </Label>
+                  <Label htmlFor="email">Email</Label>
 
                   <Input
                     id="email"
@@ -209,9 +170,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="grid gap-2">
-                  <Label htmlFor="phone">
-                    Phone number
-                  </Label>
+                  <Label htmlFor="phone">Phone number</Label>
 
                   <Input
                     id="phone"
@@ -222,25 +181,17 @@ export default function ContactPage() {
                 </div>
 
                 <div className="grid gap-2">
-                  <Label htmlFor="projectType">
-                    Project type
-                  </Label>
+                  <Label htmlFor="projectType">Project type</Label>
 
                   <select
                     id="projectType"
                     name="projectType"
                     className="h-10 rounded-md border border-input bg-transparent px-3 text-sm shadow-sm"
                     value={projectType}
-                    onChange={(event) =>
-                      setProjectType(event.target.value)
-                    }
+                    onChange={(event) => setProjectType(event.target.value)}
                     required
                   >
-                    <option
-                      value=""
-                      disabled
-                      className="bg-background"
-                    >
+                    <option value="" disabled className="bg-background">
                       Select…
                     </option>
 
@@ -251,45 +202,27 @@ export default function ContactPage() {
                       Blockchain Consulting
                     </option>
 
-                    <option
-                      value="DeFi"
-                      className="bg-background"
-                    >
+                    <option value="DeFi" className="bg-background">
                       DeFi
                     </option>
 
-                    <option
-                      value="NFT"
-                      className="bg-background"
-                    >
+                    <option value="NFT" className="bg-background">
                       NFT
                     </option>
 
-                    <option
-                      value="DAO"
-                      className="bg-background"
-                    >
+                    <option value="DAO" className="bg-background">
                       DAO
                     </option>
 
-                    <option
-                      value="Wallet"
-                      className="bg-background"
-                    >
+                    <option value="Wallet" className="bg-background">
                       Wallet
                     </option>
 
-                    <option
-                      value="Smart Contracts"
-                      className="bg-background"
-                    >
+                    <option value="Smart Contracts" className="bg-background">
                       Smart Contracts
                     </option>
 
-                    <option
-                      value="Tokenization"
-                      className="bg-background"
-                    >
+                    <option value="Tokenization" className="bg-background">
                       Tokenization
                     </option>
 
@@ -300,19 +233,14 @@ export default function ContactPage() {
                       Enterprise Blockchain
                     </option>
 
-                    <option
-                      value="Other"
-                      className="bg-background"
-                    >
+                    <option value="Other" className="bg-background">
                       Other
                     </option>
                   </select>
                 </div>
 
                 <div className="grid gap-2">
-                  <Label htmlFor="message">
-                    Message
-                  </Label>
+                  <Label htmlFor="message">Message</Label>
 
                   <Textarea
                     id="message"
@@ -336,8 +264,7 @@ export default function ContactPage() {
                       </p>
 
                       <p className="mt-1 text-sm text-muted-foreground">
-                        Thank you. Our team will contact
-                        you shortly.
+                        Thank you. Our team will contact you shortly.
                       </p>
                     </div>
                   </div>
@@ -351,9 +278,7 @@ export default function ContactPage() {
                     <CircleAlert className="mt-0.5 h-5 w-5 shrink-0 text-destructive" />
 
                     <div>
-                      <p className="text-sm font-semibold">
-                        Submission failed
-                      </p>
+                      <p className="text-sm font-semibold">Submission failed</p>
 
                       <p className="mt-1 text-sm text-muted-foreground">
                         {errorMessage}
@@ -395,9 +320,7 @@ export default function ContactPage() {
                 </span>
 
                 <div>
-                  <p className="font-semibold">
-                    Email
-                  </p>
+                  <p className="font-semibold">Email</p>
 
                   <p className="break-all text-sm text-muted-foreground">
                     sales@clickmastersblockchaintechnologies.com
@@ -406,9 +329,7 @@ export default function ContactPage() {
               </a>
 
               <div className="rounded-2xl border border-dashed border-border p-5">
-                <p className="font-semibold">
-                  Project discussion
-                </p>
+                <p className="font-semibold">Project discussion</p>
 
                 <p className="mt-1 text-sm text-muted-foreground">
                   Share your goals and questions so the right topics can be
@@ -424,8 +345,8 @@ export default function ContactPage() {
               <p className="mt-3 text-sm leading-7 text-muted-foreground">
                 Explain what the product should help people do, who will use it,
                 and which process or trust issue it addresses. If you are still
-                exploring an idea, describe the decision you need to make
-                rather than committing to a particular blockchain or token.
+                exploring an idea, describe the decision you need to make rather
+                than committing to a particular blockchain or token.
               </p>
             </article>
             <article className="rounded-2xl border border-border bg-surface p-6">
@@ -439,7 +360,9 @@ export default function ContactPage() {
               </p>
             </article>
             <article className="rounded-2xl border border-border bg-surface p-6">
-              <h2 className="text-xl font-semibold">Plan a useful discussion</h2>
+              <h2 className="text-xl font-semibold">
+                Plan a useful discussion
+              </h2>
               <p className="mt-3 text-sm leading-7 text-muted-foreground">
                 A first project conversation can focus on feasibility, scope,
                 architecture options, integration dependencies, security
@@ -451,7 +374,9 @@ export default function ContactPage() {
           </section>
 
           <section className="mt-8 rounded-2xl border border-border bg-surface p-6 md:p-8">
-            <h2 className="text-xl font-semibold">What happens after you reach out?</h2>
+            <h2 className="text-xl font-semibold">
+              What happens after you reach out?
+            </h2>
             <p className="mt-3 max-w-4xl text-sm leading-7 text-muted-foreground">
               The information in your message helps determine whether the
               question is about product discovery, a technical design,
@@ -463,9 +388,9 @@ export default function ContactPage() {
             </p>
             <p className="mt-3 max-w-4xl text-sm leading-7 text-muted-foreground">
               You can also use the service pages, technical guides, tools, and
-              checklists to prepare questions in advance. A clear description
-              of the intended outcome, constraints, and unresolved decisions
-              makes a project conversation more useful for everyone involved.
+              checklists to prepare questions in advance. A clear description of
+              the intended outcome, constraints, and unresolved decisions makes
+              a project conversation more useful for everyone involved.
             </p>
           </section>
         </section>

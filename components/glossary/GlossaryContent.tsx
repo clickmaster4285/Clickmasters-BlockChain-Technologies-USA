@@ -7,7 +7,13 @@ import {
   Quote,
 } from "lucide-react";
 import GlossaryCTA from "./GlossaryCTA";
-import type { ContentBlock, ContentListEntry, ContentListObject, GlossaryItem, ResolvedCta } from "@/lib/content-types";
+import type {
+  ContentBlock,
+  ContentListEntry,
+  ContentListObject,
+  GlossaryItem,
+  ResolvedCta,
+} from "@/lib/content-types";
 
 export default function GlossaryContent({
   item,
@@ -195,7 +201,7 @@ export default function GlossaryContent({
                               </div>
                             </div>
                           );
-                        }
+                        },
                       )}
                     </div>
                   </div>
@@ -225,18 +231,16 @@ export default function GlossaryContent({
 
                               <div>
                                 <h2 className="text-lg font-black text-text-primary">
-                                  {step.title ||
-                                    `Step ${stepIndex + 1}`}
+                                  {step.title || `Step ${stepIndex + 1}`}
                                 </h2>
 
                                 <p className="mt-3 text-sm leading-7 text-silver md:text-base">
-                                  {step.description ||
-                                    step.text}
+                                  {step.description || step.text}
                                 </p>
                               </div>
                             </div>
                           </div>
-                        )
+                        ),
                       )}
                     </div>
                   </div>
@@ -260,16 +264,14 @@ export default function GlossaryContent({
                       <table className="w-full min-w-[680px]">
                         <thead className="bg-white/[0.03]">
                           <tr>
-                            {(block.columns || []).map(
-                              (column: string) => (
-                                <th
-                                  key={column}
-                                  className="px-5 py-4 text-left text-xs font-black uppercase tracking-[0.18em] text-amber-base"
-                                >
-                                  {column}
-                                </th>
-                              )
-                            )}
+                            {(block.columns || []).map((column: string) => (
+                              <th
+                                key={column}
+                                className="px-5 py-4 text-left text-xs font-black uppercase tracking-[0.18em] text-amber-base"
+                              >
+                                {column}
+                              </th>
+                            ))}
                           </tr>
                         </thead>
 
@@ -280,21 +282,16 @@ export default function GlossaryContent({
                                 key={rowIndex}
                                 className="border-t border-white/10"
                               >
-                                {row.map(
-                                  (
-                                    cell: string,
-                                    cellIndex: number
-                                  ) => (
-                                    <td
-                                      key={cellIndex}
-                                      className="px-5 py-4 text-sm leading-6 text-silver"
-                                    >
-                                      {String(cell)}
-                                    </td>
-                                  )
-                                )}
+                                {row.map((cell: string, cellIndex: number) => (
+                                  <td
+                                    key={cellIndex}
+                                    className="px-5 py-4 text-sm leading-6 text-silver"
+                                  >
+                                    {String(cell)}
+                                  </td>
+                                ))}
                               </tr>
-                            )
+                            ),
                           )}
                         </tbody>
                       </table>
@@ -337,8 +334,7 @@ export default function GlossaryContent({
                     )}
 
                     <p className="mt-3 text-sm leading-7 text-silver md:text-base">
-                      {block.text ||
-                        block.description}
+                      {block.text || block.description}
                     </p>
                   </div>
                 );

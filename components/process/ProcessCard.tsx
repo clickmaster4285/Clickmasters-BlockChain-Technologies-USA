@@ -35,40 +35,30 @@ const categoryStyles: Record<
   }
 > = {
   Security: {
-    badge:
-      "border-red-400/20 bg-red-400/[0.08] text-red-300",
-    icon:
-      "border-red-400/20 bg-red-400/[0.08] text-red-300",
+    badge: "border-red-400/20 bg-red-400/[0.08] text-red-300",
+    icon: "border-red-400/20 bg-red-400/[0.08] text-red-300",
   },
 
   Technical: {
-    badge:
-      "border-blue-400/20 bg-blue-400/[0.08] text-blue-300",
-    icon:
-      "border-blue-400/20 bg-blue-400/[0.08] text-blue-300",
+    badge: "border-blue-400/20 bg-blue-400/[0.08] text-blue-300",
+    icon: "border-blue-400/20 bg-blue-400/[0.08] text-blue-300",
   },
 
   Legal: {
-    badge:
-      "border-purple-400/20 bg-purple-400/[0.08] text-purple-300",
-    icon:
-      "border-purple-400/20 bg-purple-400/[0.08] text-purple-300",
+    badge: "border-purple-400/20 bg-purple-400/[0.08] text-purple-300",
+    icon: "border-purple-400/20 bg-purple-400/[0.08] text-purple-300",
   },
 
   Enterprise: {
-    badge:
-      "border-emerald-400/20 bg-emerald-400/[0.08] text-emerald-300",
-    icon:
-      "border-emerald-400/20 bg-emerald-400/[0.08] text-emerald-300",
+    badge: "border-emerald-400/20 bg-emerald-400/[0.08] text-emerald-300",
+    icon: "border-emerald-400/20 bg-emerald-400/[0.08] text-emerald-300",
   },
 };
 
 const defaultCategoryStyle = {
-  badge:
-    "border-amber-base/20 bg-amber-base/[0.08] text-amber-base",
+  badge: "border-amber-base/20 bg-amber-base/[0.08] text-amber-base",
 
-  icon:
-    "border-amber-base/20 bg-amber-base/[0.08] text-amber-base",
+  icon: "border-amber-base/20 bg-amber-base/[0.08] text-amber-base",
 };
 
 /* =========================================================
@@ -103,15 +93,11 @@ export default function ProcessCard({
   className = "",
 }: ProcessCardProps) {
   const categoryStyle =
-    categoryStyles[process.category] ??
-    defaultCategoryStyle;
+    categoryStyles[process.category] ?? defaultCategoryStyle;
 
-  const formattedDate = formatProcessDate(
-    process.date,
-  );
+  const formattedDate = formatProcessDate(process.date);
 
-  const processImage =
-    process.hero.image || process.image;
+  const processImage = process.hero.image || process.image;
 
   return (
     <article
@@ -233,10 +219,7 @@ export default function ProcessCard({
         {/* Title */}
 
         <h2 className="mt-5 text-xl font-black leading-[1.35] tracking-[-0.025em] text-text-primary transition-colors duration-300 group-hover:text-amber-base md:text-2xl">
-          <Link
-            href={`/process/${process.slug}`}
-            className="outline-none"
-          >
+          <Link href={`/process/${process.slug}`} className="outline-none">
             {process.title}
           </Link>
         </h2>
@@ -251,16 +234,14 @@ export default function ProcessCard({
 
         {process.credibility.length > 0 && (
           <div className="mt-6 flex flex-wrap gap-2">
-            {process.credibility
-              .slice(0, 3)
-              .map((item) => (
-                <span
-                  key={item}
-                  className="rounded-full border border-white/[0.08] bg-white/[0.025] px-3 py-1.5 text-[10px] font-medium text-silver transition-all duration-300 group-hover:border-amber-base/20 group-hover:bg-amber-base/[0.04]"
-                >
-                  {item}
-                </span>
-              ))}
+            {process.credibility.slice(0, 3).map((item) => (
+              <span
+                key={item}
+                className="rounded-full border border-white/[0.08] bg-white/[0.025] px-3 py-1.5 text-[10px] font-medium text-silver transition-all duration-300 group-hover:border-amber-base/20 group-hover:bg-amber-base/[0.04]"
+              >
+                {item}
+              </span>
+            ))}
           </div>
         )}
 
@@ -278,7 +259,6 @@ export default function ProcessCard({
 
               <span className="inline-flex items-center gap-2 text-xs font-black text-amber-base">
                 Read guide
-
                 <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
               </span>
             </Link>

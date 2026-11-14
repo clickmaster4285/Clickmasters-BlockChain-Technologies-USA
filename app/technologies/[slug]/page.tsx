@@ -43,14 +43,10 @@ const TITLE_OVERRIDES: Record<string, string> = {
   "what-is-blockchain": "What Is Blockchain? A Business Leader's Guide",
 };
 
-export async function generateMetadata({
-  params,
-}: TechnologyPageProps) {
+export async function generateMetadata({ params }: TechnologyPageProps) {
   const { slug } = await params;
 
-  const technology = technologies.find(
-    (item) => item.slug === slug,
-  );
+  const technology = technologies.find((item) => item.slug === slug);
 
   if (!technology) {
     return createPageMetadata({
@@ -77,9 +73,7 @@ export default async function TechnologyDetailPage({
 }: TechnologyPageProps) {
   const { slug } = await params;
 
-  const technology = technologies.find(
-    (item) => item.slug === slug,
-  );
+  const technology = technologies.find((item) => item.slug === slug);
 
   if (!technology) {
     notFound();
@@ -88,9 +82,7 @@ export default async function TechnologyDetailPage({
   return (
     <div className="min-h-screen bg-bg-base text-text-primary">
       <Navbar />
-      <JsonLd
-        data={faqPageSchema(technology.faqs)}
-      />
+      <JsonLd data={faqPageSchema(technology.faqs)} />
 
       <main className="overflow-hidden bg-bg-base">
         <section className="relative isolate overflow-hidden border-b border-white/[0.07] pb-16 pt-32 lg:pb-24 lg:pt-40">
@@ -104,8 +96,7 @@ export default async function TechnologyDetailPage({
               backgroundImage:
                 "linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px)",
               backgroundSize: "72px 72px",
-              maskImage:
-                "linear-gradient(to bottom, black, transparent 90%)",
+              maskImage: "linear-gradient(to bottom, black, transparent 90%)",
             }}
           />
 

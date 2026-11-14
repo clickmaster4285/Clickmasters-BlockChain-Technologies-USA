@@ -349,10 +349,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
               </h1>
 
               <p className="mt-6 max-w-3xl text-base font-medium leading-8 text-text-secondary sm:text-lg">
-                {[
-                  splitHeading(caseStudy.title).continuation,
-                  caseStudy.excerpt,
-                ]
+                {[splitHeading(caseStudy.title).continuation, caseStudy.excerpt]
                   .filter(Boolean)
                   .join(" — ")}
               </p>
@@ -492,7 +489,10 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                       In This Case Study
                     </p>
 
-                    <nav className="mt-4 space-y-2" aria-label="Case study sections">
+                    <nav
+                      className="mt-4 space-y-2"
+                      aria-label="Case study sections"
+                    >
                       {articleHeadings.map((item, index) => (
                         <Link
                           key={`${item.id}-${index}`}
@@ -514,7 +514,8 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                     Need this kind of result?
                   </p>
                   <p className="mt-2 text-sm leading-7 text-text-secondary">
-                    Share your requirements and we will map the right blockchain approach.
+                    Share your requirements and we will map the right blockchain
+                    approach.
                   </p>
                   <Link
                     href="/contact"
@@ -595,7 +596,8 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                   Ready to plan your blockchain project?
                 </h2>
                 <p className="mt-4 max-w-2xl text-base leading-8 text-text-secondary">
-                  We can help you scope the architecture, timeline, compliance needs, and launch plan.
+                  We can help you scope the architecture, timeline, compliance
+                  needs, and launch plan.
                 </p>
               </div>
 

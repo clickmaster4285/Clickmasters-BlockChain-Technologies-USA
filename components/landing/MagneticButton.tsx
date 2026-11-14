@@ -10,7 +10,12 @@ type Props = {
   strength?: number;
 };
 
-export function MagneticButton({ children, className, onClick, strength = 0.3 }: Props) {
+export function MagneticButton({
+  children,
+  className,
+  onClick,
+  strength = 0.3,
+}: Props) {
   const ref = useRef<HTMLButtonElement>(null);
   const [pos, setPos] = useState({ x: 0, y: 0 });
 

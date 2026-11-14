@@ -6,7 +6,10 @@
 import { MotionConfig, motion } from "framer-motion";
 import type { ReactNode } from "react";
 
-const VARIANTS: Record<string, { opacity: number; x?: number; y?: number; scale?: number }> = {
+const VARIANTS: Record<
+  string,
+  { opacity: number; x?: number; y?: number; scale?: number }
+> = {
   "fade-up": { opacity: 0, y: 28 },
   "fade-in": { opacity: 0 },
   fade: { opacity: 0 },
@@ -18,7 +21,13 @@ const VARIANTS: Record<string, { opacity: number; x?: number; y?: number; scale?
   "zoom-in": { opacity: 0, scale: 0.94 },
 };
 
-export default function CmsMotion({ motion: kind, children }: { motion: string; children: ReactNode }) {
+export default function CmsMotion({
+  motion: kind,
+  children,
+}: {
+  motion: string;
+  children: ReactNode;
+}) {
   const from = VARIANTS[kind];
   if (!from) return <>{children}</>;
   return (

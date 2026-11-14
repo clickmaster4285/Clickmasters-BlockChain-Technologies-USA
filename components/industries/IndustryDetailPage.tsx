@@ -104,11 +104,7 @@ function formatDate(date: string) {
    Reveal Animation
 ========================================================= */
 
-function Reveal({
-  children,
-  className = "",
-  delay = 0,
-}: RevealProps) {
+function Reveal({ children, className = "", delay = 0 }: RevealProps) {
   const elementRef = useRef<HTMLDivElement | null>(null);
   const [visible, setVisible] = useState(false);
 
@@ -166,20 +162,16 @@ function ReadingProgress() {
   useEffect(() => {
     const updateProgress = () => {
       const documentHeight =
-        document.documentElement.scrollHeight -
-        window.innerHeight;
+        document.documentElement.scrollHeight - window.innerHeight;
 
       if (documentHeight <= 0) {
         setProgress(0);
         return;
       }
 
-      const currentProgress =
-        (window.scrollY / documentHeight) * 100;
+      const currentProgress = (window.scrollY / documentHeight) * 100;
 
-      setProgress(
-        Math.min(100, Math.max(0, currentProgress)),
-      );
+      setProgress(Math.min(100, Math.max(0, currentProgress)));
     };
 
     updateProgress();
@@ -268,23 +260,11 @@ function BlockchainNetworkDecoration() {
             x2="1"
             y2="1"
           >
-            <stop
-              offset="0%"
-              stopColor="currentColor"
-              stopOpacity="0"
-            />
+            <stop offset="0%" stopColor="currentColor" stopOpacity="0" />
 
-            <stop
-              offset="50%"
-              stopColor="currentColor"
-              stopOpacity=".7"
-            />
+            <stop offset="50%" stopColor="currentColor" stopOpacity=".7" />
 
-            <stop
-              offset="100%"
-              stopColor="currentColor"
-              stopOpacity="0"
-            />
+            <stop offset="100%" stopColor="currentColor" stopOpacity="0" />
           </linearGradient>
         </defs>
 
@@ -341,9 +321,7 @@ function BlockchainNetworkDecoration() {
 function InteractiveGlow() {
   const containerRef = useRef<HTMLDivElement | null>(null);
 
-  const handlePointerMove = (
-    event: React.PointerEvent<HTMLDivElement>,
-  ) => {
+  const handlePointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
     const container = containerRef.current;
 
     if (!container) {
@@ -376,11 +354,7 @@ function InteractiveGlow() {
    Hero
 ========================================================= */
 
-function IndustryHero({
-  industry,
-}: {
-  industry: IndustryData;
-}) {
+function IndustryHero({ industry }: { industry: IndustryData }) {
   return (
     <section className="relative overflow-hidden border-b border-white/[0.08] pt-28 md:pt-32">
       <div className="absolute inset-0 bg-gradient-to-b from-background via-bg-base to-background" />
@@ -405,10 +379,7 @@ function IndustryHero({
           className="mb-8 flex flex-wrap items-center gap-2 text-sm text-silver"
           aria-label="Breadcrumb"
         >
-          <Link
-            href="/"
-            className="transition-colors hover:text-amber-base"
-          >
+          <Link href="/" className="transition-colors hover:text-amber-base">
             Home
           </Link>
 
@@ -479,49 +450,43 @@ function IndustryHero({
                 className="group inline-flex items-center gap-2 rounded-full bg-amber-base px-7 py-4 text-sm font-black text-bg-base shadow-glow transition-all duration-300 hover:-translate-y-1 hover:bg-amber-light"
               >
                 Discuss Your Project
-
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
-          <button
-  type="button"
-  onClick={() => {
-    document
-      .getElementById("industry-content")
-      ?.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-  }}
-  className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.035] px-7 py-4 text-sm font-bold text-text-primary transition-all duration-300 hover:-translate-y-1 hover:border-amber-base/35 hover:bg-amber-base/[0.05] hover:text-amber-base"
->
-  Explore the Guide
-
-  <ChevronDown className="h-4 w-4" />
-</button>
+              <button
+                type="button"
+                onClick={() => {
+                  document.getElementById("industry-content")?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                  });
+                }}
+                className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.035] px-7 py-4 text-sm font-bold text-text-primary transition-all duration-300 hover:-translate-y-1 hover:border-amber-base/35 hover:bg-amber-base/[0.05] hover:text-amber-base"
+              >
+                Explore the Guide
+                <ChevronDown className="h-4 w-4" />
+              </button>
             </div>
 
             {industry.credibility.length > 0 && (
               <div className="industry-hero-entry industry-hero-entry-six mt-10 grid gap-3 sm:grid-cols-2">
-                {industry.credibility
-                  .slice(0, 4)
-                  .map((item, index) => (
-                    <div
-                      key={item}
-                      className="group flex items-center gap-3 rounded-2xl border border-white/[0.08] bg-surface/45 px-4 py-3.5 backdrop-blur-xl transition-all duration-300 hover:border-amber-base/25 hover:bg-surface"
-                    >
-                      <span className="grid h-8 w-8 shrink-0 place-items-center rounded-xl bg-amber-base/10 text-amber-base">
-                        {index % 2 === 0 ? (
-                          <CheckCircle2 className="h-4 w-4" />
-                        ) : (
-                          <BadgeCheck className="h-4 w-4" />
-                        )}
-                      </span>
+                {industry.credibility.slice(0, 4).map((item, index) => (
+                  <div
+                    key={item}
+                    className="group flex items-center gap-3 rounded-2xl border border-white/[0.08] bg-surface/45 px-4 py-3.5 backdrop-blur-xl transition-all duration-300 hover:border-amber-base/25 hover:bg-surface"
+                  >
+                    <span className="grid h-8 w-8 shrink-0 place-items-center rounded-xl bg-amber-base/10 text-amber-base">
+                      {index % 2 === 0 ? (
+                        <CheckCircle2 className="h-4 w-4" />
+                      ) : (
+                        <BadgeCheck className="h-4 w-4" />
+                      )}
+                    </span>
 
-                      <span className="text-xs font-semibold leading-5 text-silver transition-colors group-hover:text-text-primary">
-                        {item}
-                      </span>
-                    </div>
-                  ))}
+                    <span className="text-xs font-semibold leading-5 text-silver transition-colors group-hover:text-text-primary">
+                      {item}
+                    </span>
+                  </div>
+                ))}
               </div>
             )}
           </div>
@@ -536,9 +501,7 @@ function IndustryHero({
                 </span>
 
                 <div>
-                  <p className="text-[10px] text-silver">
-                    Infrastructure
-                  </p>
+                  <p className="text-[10px] text-silver">Infrastructure</p>
 
                   <p className="text-xs font-black text-text-primary">
                     Security-led
@@ -554,9 +517,7 @@ function IndustryHero({
                 </span>
 
                 <div>
-                  <p className="text-[10px] text-silver">
-                    Architecture
-                  </p>
+                  <p className="text-[10px] text-silver">Architecture</p>
 
                   <p className="text-xs font-black text-text-primary">
                     Enterprise-ready
@@ -590,8 +551,7 @@ function IndustryHero({
                       </p>
 
                       <p className="mt-2 max-w-sm text-lg font-black leading-snug text-text-primary">
-                        Strategy, architecture and implementation
-                        insights
+                        Strategy, architecture and implementation insights
                       </p>
                     </div>
 
@@ -648,11 +608,7 @@ function IndustryValueStrip() {
           const Icon = item.icon;
 
           return (
-            <Reveal
-              key={item.title}
-              delay={index * 90}
-              className="h-full"
-            >
+            <Reveal key={item.title} delay={index * 90} className="h-full">
               <article className="group relative h-full border-b border-white/[0.08] p-6 transition-colors hover:bg-amber-base/[0.035] md:border-r xl:border-b-0">
                 <span className="grid h-11 w-11 place-items-center rounded-2xl bg-amber-base/10 text-amber-base transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
                   <Icon className="h-5 w-5" />
@@ -678,14 +634,8 @@ function IndustryValueStrip() {
    Table of Contents
 ========================================================= */
 
-function TableOfContents({
-  items,
-}: {
-  items: TocItem[];
-}) {
-  const [activeId, setActiveId] = useState(
-    items[0]?.id || "",
-  );
+function TableOfContents({ items }: { items: TocItem[] }) {
+  const [activeId, setActiveId] = useState(items[0]?.id || "");
 
   useEffect(() => {
     if (items.length === 0) {
@@ -702,8 +652,7 @@ function TableOfContents({
           .filter((entry) => entry.isIntersecting)
           .sort(
             (first, second) =>
-              first.boundingClientRect.top -
-              second.boundingClientRect.top,
+              first.boundingClientRect.top - second.boundingClientRect.top,
           );
 
         if (visibleEntries[0]) {
@@ -716,9 +665,7 @@ function TableOfContents({
       },
     );
 
-    elements.forEach((element) =>
-      observer.observe(element),
-    );
+    elements.forEach((element) => observer.observe(element));
 
     return () => observer.disconnect();
   }, [items]);
@@ -787,8 +734,8 @@ function TableOfContents({
             </h2>
 
             <p className="mt-2 text-xs leading-6 text-silver">
-              Discuss your use case, architecture and delivery
-              roadmap with our blockchain team.
+              Discuss your use case, architecture and delivery roadmap with our
+              blockchain team.
             </p>
 
             <Link
@@ -796,7 +743,6 @@ function TableOfContents({
               className="group mt-5 inline-flex items-center gap-2 text-xs font-black text-amber-base"
             >
               Book a consultation
-
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </Link>
           </div>
@@ -810,11 +756,7 @@ function TableOfContents({
    Content Blocks
 ========================================================= */
 
-function FeaturedAnswer({
-  text,
-}: {
-  text: string;
-}) {
+function FeaturedAnswer({ text }: { text: string }) {
   return (
     <Reveal>
       <div className="relative overflow-hidden rounded-[2rem] border border-amber-base/20 bg-gradient-to-br from-amber-base/[0.1] via-surface to-surface p-6 md:p-8">
@@ -846,13 +788,7 @@ function FeaturedAnswer({
   );
 }
 
-function ContentHeading({
-  text,
-  id,
-}: {
-  text: string;
-  id: string;
-}) {
+function ContentHeading({ text, id }: { text: string; id: string }) {
   return (
     <Reveal>
       <div
@@ -873,11 +809,7 @@ function ContentHeading({
   );
 }
 
-function ContentParagraph({
-  text,
-}: {
-  text: string;
-}) {
+function ContentParagraph({ text }: { text: string }) {
   return (
     <Reveal>
       <p className="text-base leading-8 text-silver md:text-[1.04rem] md:leading-9">
@@ -887,11 +819,7 @@ function ContentParagraph({
   );
 }
 
-function ContentList({
-  items,
-}: {
-  items: string[];
-}) {
+function ContentList({ items }: { items: string[] }) {
   return (
     <Reveal>
       <div className="grid gap-3">
@@ -984,11 +912,7 @@ function ContentTable({
   );
 }
 
-function ContentCode({
-  text,
-}: {
-  text: string;
-}) {
+function ContentCode({ text }: { text: string }) {
   return (
     <Reveal>
       <div className="overflow-hidden rounded-[1.75rem] border border-white/[0.09] bg-bg-base">
@@ -1042,40 +966,22 @@ function IndustryArticle({
 
         switch (block.type) {
           case "featuredAnswer":
-            return (
-              <FeaturedAnswer
-                key={key}
-                text={block.text}
-              />
-            );
+            return <FeaturedAnswer key={key} text={block.text} />;
 
           case "heading":
             return (
               <ContentHeading
                 key={key}
                 text={block.text}
-                id={
-                  headingMap.get(index) ||
-                  `section-${index + 1}`
-                }
+                id={headingMap.get(index) || `section-${index + 1}`}
               />
             );
 
           case "paragraph":
-            return (
-              <ContentParagraph
-                key={key}
-                text={block.text}
-              />
-            );
+            return <ContentParagraph key={key} text={block.text} />;
 
           case "list":
-            return (
-              <ContentList
-                key={key}
-                items={block.items}
-              />
-            );
+            return <ContentList key={key} items={block.items} />;
 
           case "table":
             return (
@@ -1087,12 +993,7 @@ function IndustryArticle({
             );
 
           case "code":
-            return (
-              <ContentCode
-                key={key}
-                text={block.text}
-              />
-            );
+            return <ContentCode key={key} text={block.text} />;
 
           default:
             return null;
@@ -1110,26 +1011,22 @@ const architectureNodes = [
   {
     icon: Fingerprint,
     label: "Identity",
-    position:
-      "left-[8%] top-[16%] md:left-[12%] md:top-[18%]",
+    position: "left-[8%] top-[16%] md:left-[12%] md:top-[18%]",
   },
   {
     icon: Database,
     label: "Data",
-    position:
-      "right-[8%] top-[16%] md:right-[12%] md:top-[18%]",
+    position: "right-[8%] top-[16%] md:right-[12%] md:top-[18%]",
   },
   {
     icon: Link2,
     label: "Contracts",
-    position:
-      "bottom-[14%] left-[8%] md:bottom-[17%] md:left-[12%]",
+    position: "bottom-[14%] left-[8%] md:bottom-[17%] md:left-[12%]",
   },
   {
     icon: ShieldCheck,
     label: "Security",
-    position:
-      "bottom-[14%] right-[8%] md:bottom-[17%] md:right-[12%]",
+    position: "bottom-[14%] right-[8%] md:bottom-[17%] md:right-[12%]",
   },
 ];
 
@@ -1151,10 +1048,9 @@ function ArchitectureVisual() {
               </h2>
 
               <p className="mt-6 max-w-xl text-sm leading-7 text-silver md:text-base">
-                Production systems combine identity, data,
-                programmable workflows, infrastructure,
-                integrations and security into one coordinated
-                architecture.
+                Production systems combine identity, data, programmable
+                workflows, infrastructure, integrations and security into one
+                coordinated architecture.
               </p>
 
               <div className="mt-8 grid gap-3 sm:grid-cols-2">
@@ -1197,10 +1093,7 @@ function ArchitectureVisual() {
                     strokeWidth="1"
                     className="text-amber-base/25"
                   >
-                    <path
-                      d="M250 250 L95 105"
-                      className="industry-draw-line"
-                    />
+                    <path d="M250 250 L95 105" className="industry-draw-line" />
 
                     <path
                       d="M250 250 L405 105"
@@ -1274,11 +1167,7 @@ function ArchitectureVisual() {
    FAQs
 ========================================================= */
 
-function IndustryFAQs({
-  faqs,
-}: {
-  faqs: IndustryData["faqs"];
-}) {
+function IndustryFAQs({ faqs }: { faqs: IndustryData["faqs"] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(
     faqs.length > 0 ? 0 : null,
   );
@@ -1301,8 +1190,8 @@ function IndustryFAQs({
             </h2>
 
             <p className="mt-5 max-w-lg text-sm leading-7 text-silver">
-              Clear answers to common strategic, technical and
-              implementation questions related to this industry.
+              Clear answers to common strategic, technical and implementation
+              questions related to this industry.
             </p>
           </div>
         </Reveal>
@@ -1312,10 +1201,7 @@ function IndustryFAQs({
             const open = openIndex === index;
 
             return (
-              <Reveal
-                key={faq.question}
-                delay={index * 70}
-              >
+              <Reveal key={faq.question} delay={index * 70}>
                 <article
                   className={[
                     "overflow-hidden rounded-[1.5rem] border transition-all duration-300",
@@ -1326,9 +1212,7 @@ function IndustryFAQs({
                 >
                   <button
                     type="button"
-                    onClick={() =>
-                      setOpenIndex(open ? null : index)
-                    }
+                    onClick={() => setOpenIndex(open ? null : index)}
                     aria-expanded={open}
                     className="flex w-full items-center justify-between gap-5 px-5 py-5 text-left md:px-6"
                   >
@@ -1360,9 +1244,7 @@ function IndustryFAQs({
                   <div
                     className={[
                       "grid transition-[grid-template-rows] duration-300",
-                      open
-                        ? "grid-rows-[1fr]"
-                        : "grid-rows-[0fr]",
+                      open ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
                     ].join(" ")}
                   >
                     <div className="overflow-hidden">
@@ -1385,11 +1267,7 @@ function IndustryFAQs({
    Related Industries
 ========================================================= */
 
-function RelatedIndustries({
-  industries,
-}: {
-  industries: IndustryData[];
-}) {
+function RelatedIndustries({ industries }: { industries: IndustryData[] }) {
   if (industries.length === 0) {
     return null;
   }
@@ -1413,7 +1291,6 @@ function RelatedIndustries({
             className="group inline-flex items-center gap-2 text-sm font-black text-amber-base"
           >
             View all industries
-
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
@@ -1421,11 +1298,7 @@ function RelatedIndustries({
 
       <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
         {industries.map((industry, index) => (
-          <Reveal
-            key={industry.slug}
-            delay={index * 90}
-            className="h-full"
-          >
+          <Reveal key={industry.slug} delay={index * 90} className="h-full">
             <Link
               href={`/industries/${industry.slug}`}
               className="group flex h-full flex-col overflow-hidden rounded-[2rem] border border-white/[0.09] bg-surface transition-all duration-500 hover:-translate-y-2 hover:border-amber-base/30"
@@ -1442,8 +1315,7 @@ function RelatedIndustries({
                 <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent" />
 
                 <span className="absolute left-5 top-5 rounded-full border border-amber-base/20 bg-bg-base/75 px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.16em] text-amber-base backdrop-blur-xl">
-                  {industry.hero.badge ||
-                    industry.category}
+                  {industry.hero.badge || industry.category}
                 </span>
               </div>
 
@@ -1478,11 +1350,7 @@ function RelatedIndustries({
    CTA
 ========================================================= */
 
-function IndustryCTA({
-  cta,
-}: {
-  cta: IndustryData["cta"];
-}) {
+function IndustryCTA({ cta }: { cta: IndustryData["cta"] }) {
   return (
     <section className="mt-24">
       <Reveal>
@@ -1506,7 +1374,6 @@ function IndustryCTA({
             <div>
               <div className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-[0.22em] text-amber-base">
                 <Sparkles className="h-4 w-4" />
-
                 Start Your Industry Project
               </div>
 
@@ -1569,8 +1436,7 @@ export default function IndustryDetailPage({
 
       duplicateCounter.set(baseId, count + 1);
 
-      const uniqueId =
-        count === 0 ? baseId : `${baseId}-${count + 1}`;
+      const uniqueId = count === 0 ? baseId : `${baseId}-${count + 1}`;
 
       generatedMap.set(index, uniqueId);
 
@@ -1602,47 +1468,39 @@ export default function IndustryDetailPage({
             id="industry-content"
             className="site-container scroll-mt-24 px-6 pt-24"
           >
-      
+            <div className="min-w-0">
+              <div className="mb-10 flex items-center justify-between gap-5 border-b border-white/[0.08] pb-6">
+                <div className="flex items-center gap-3">
+                  <span className="grid h-11 w-11 place-items-center rounded-2xl bg-amber-base/10 text-amber-base">
+                    <FileText className="h-5 w-5" />
+                  </span>
 
-              <div className="min-w-0">
-                <div className="mb-10 flex items-center justify-between gap-5 border-b border-white/[0.08] pb-6">
-                  <div className="flex items-center gap-3">
-                    <span className="grid h-11 w-11 place-items-center rounded-2xl bg-amber-base/10 text-amber-base">
-                      <FileText className="h-5 w-5" />
-                    </span>
+                  <div>
+                    <p className="text-sm font-black text-text-primary">
+                      Complete Industry Guide
+                    </p>
 
-                    <div>
-                      <p className="text-sm font-black text-text-primary">
-                        Complete Industry Guide
-                      </p>
-
-                      <p className="mt-1 text-xs text-silver">
-                        Strategy, architecture and implementation
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="hidden items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.025] px-4 py-2 text-xs text-silver sm:inline-flex">
-                    <Clock3 className="h-3.5 w-3.5 text-amber-base" />
-
-                    {industry.readTime}
+                    <p className="mt-1 text-xs text-silver">
+                      Strategy, architecture and implementation
+                    </p>
                   </div>
                 </div>
 
-                <IndustryArticle
-                  industry={industry}
-                  headingMap={headingMap}
-                />
+                <div className="hidden items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.025] px-4 py-2 text-xs text-silver sm:inline-flex">
+                  <Clock3 className="h-3.5 w-3.5 text-amber-base" />
+
+                  {industry.readTime}
+                </div>
               </div>
-            
+
+              <IndustryArticle industry={industry} headingMap={headingMap} />
+            </div>
 
             <ArchitectureVisual />
 
             <IndustryFAQs faqs={industry.faqs} />
 
-            <RelatedIndustries
-              industries={relatedIndustries}
-            />
+            <RelatedIndustries industries={relatedIndustries} />
 
             <IndustryCTA cta={industry.cta} />
           </section>

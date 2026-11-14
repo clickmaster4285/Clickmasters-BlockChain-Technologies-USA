@@ -10,12 +10,8 @@ interface FAQAccordionProps {
   items: FAQItem[];
 }
 
-export default function FAQAccordion({
-  items,
-}: FAQAccordionProps) {
-  const [openFAQ, setOpenFAQ] = useState<string | null>(
-    items[0]?.slug ?? null
-  );
+export default function FAQAccordion({ items }: FAQAccordionProps) {
+  const [openFAQ, setOpenFAQ] = useState<string | null>(items[0]?.slug ?? null);
 
   return (
     <div className="space-y-4">
@@ -32,7 +28,7 @@ export default function FAQAccordion({
               type="button"
               onClick={() =>
                 setOpenFAQ((current) =>
-                  current === faq.slug ? null : faq.slug
+                  current === faq.slug ? null : faq.slug,
                 )
               }
               aria-expanded={isOpen}

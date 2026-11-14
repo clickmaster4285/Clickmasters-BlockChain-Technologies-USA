@@ -35,7 +35,12 @@ import {
 import RelatedLinks from "@/components/RelatedLinks";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { faqPageSchema } from "@/lib/structured-data";
-import type { ContentListEntry, FAQItem, ResourceBlock, ResourceItem } from "@/lib/content-types";
+import type {
+  ContentListEntry,
+  FAQItem,
+  ResourceBlock,
+  ResourceItem,
+} from "@/lib/content-types";
 
 type ResourcePageProps = {
   params: Promise<{
@@ -62,13 +67,7 @@ function formatResourceDate(date?: string) {
 function getListItemText(item: ContentListEntry) {
   if (typeof item === "string") return item;
 
-  return [
-    item?.title,
-    item?.description,
-    item?.text,
-  ]
-    .filter(Boolean)
-    .join(" ");
+  return [item?.title, item?.description, item?.text].filter(Boolean).join(" ");
 }
 
 function ResourceContent({
@@ -176,18 +175,20 @@ function ResourceContent({
                     )}
 
                     <div className="grid gap-4">
-                      {block.items?.map((listItem: ContentListEntry, itemIndex: number) => (
-                        <div
-                          key={`${getListItemText(listItem)}-${itemIndex}`}
-                          className="flex gap-4 rounded-2xl border border-white/10 bg-bg-base/40 p-5"
-                        >
-                          <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-amber-base" />
+                      {block.items?.map(
+                        (listItem: ContentListEntry, itemIndex: number) => (
+                          <div
+                            key={`${getListItemText(listItem)}-${itemIndex}`}
+                            className="flex gap-4 rounded-2xl border border-white/10 bg-bg-base/40 p-5"
+                          >
+                            <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-amber-base" />
 
-                          <p className="text-sm leading-7 text-silver">
-                            {getListItemText(listItem)}
-                          </p>
-                        </div>
-                      ))}
+                            <p className="text-sm leading-7 text-silver">
+                              {getListItemText(listItem)}
+                            </p>
+                          </div>
+                        ),
+                      )}
                     </div>
                   </div>
                 );
@@ -203,33 +204,37 @@ function ResourceContent({
                         <thead className="bg-white/[0.03]">
                           <tr>
                             {/* Resources data stores table headings in `headers`. */}
-                            {(block.columns ?? block.headers)?.map((column: string) => (
-                              <th
-                                key={column}
-                                className="px-5 py-4 text-left text-xs font-black uppercase tracking-[0.18em] text-amber-base"
-                              >
-                                {column}
-                              </th>
-                            ))}
+                            {(block.columns ?? block.headers)?.map(
+                              (column: string) => (
+                                <th
+                                  key={column}
+                                  className="px-5 py-4 text-left text-xs font-black uppercase tracking-[0.18em] text-amber-base"
+                                >
+                                  {column}
+                                </th>
+                              ),
+                            )}
                           </tr>
                         </thead>
 
                         <tbody>
-                          {block.rows?.map((row: string[], rowIndex: number) => (
-                            <tr
-                              key={rowIndex}
-                              className="border-t border-white/10"
-                            >
-                              {row.map((cell, cellIndex) => (
-                                <td
-                                  key={cellIndex}
-                                  className="px-5 py-4 text-sm leading-6 text-silver"
-                                >
-                                  {cell}
-                                </td>
-                              ))}
-                            </tr>
-                          ))}
+                          {block.rows?.map(
+                            (row: string[], rowIndex: number) => (
+                              <tr
+                                key={rowIndex}
+                                className="border-t border-white/10"
+                              >
+                                {row.map((cell, cellIndex) => (
+                                  <td
+                                    key={cellIndex}
+                                    className="px-5 py-4 text-sm leading-6 text-silver"
+                                  >
+                                    {cell}
+                                  </td>
+                                ))}
+                              </tr>
+                            ),
+                          )}
                         </tbody>
                       </table>
                     </div>
@@ -261,9 +266,7 @@ function ResourceContent({
       </section>
 
       <section className="rounded-[1.5rem] border border-white/10 bg-bg-base/60 p-6 md:rounded-[2rem] md:p-8">
-        <h2 className="text-2xl font-black text-text-primary">
-          {cta.title}
-        </h2>
+        <h2 className="text-2xl font-black text-text-primary">{cta.title}</h2>
 
         <p className="mt-3 max-w-2xl text-sm leading-7 text-silver md:text-base">
           {cta.description}
@@ -327,18 +330,13 @@ export default async function SingleResourcePage({
   const readTime = estimateResourceReadTime(resource);
   const formattedDate = formatResourceDate(resource.date);
   const cta = getResourceCTA(resource);
-  const relatedCards = getResourceCards(
-    getRelatedResources(slug, 3)
-  );
-  const credibility =
-    resource.credibility || resource.tags || [];
+  const relatedCards = getResourceCards(getRelatedResources(slug, 3));
+  const credibility = resource.credibility || resource.tags || [];
 
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
-      <JsonLd
-        data={faqPageSchema(resource.faqs)}
-      />
+      <JsonLd data={faqPageSchema(resource.faqs)} />
 
       <main className="relative overflow-hidden bg-gradient-to-b from-bg-base via-surface/40 to-bg-base pb-24 pt-32">
         <div className="pointer-events-none absolute left-[-14rem] top-[-10rem] h-[32rem] w-[32rem] rounded-full bg-amber-base/10 blur-3xl" />

@@ -7,10 +7,7 @@ interface FAQEmptyStateProps {
   onReset: () => void;
 }
 
-export default function FAQEmptyState({
-  query,
-  onReset,
-}: FAQEmptyStateProps) {
+export default function FAQEmptyState({ query, onReset }: FAQEmptyStateProps) {
   return (
     <div className="rounded-2xl border border-border-default bg-white px-6 py-14 text-center shadow-[0_18px_55px_rgba(15,23,42,0.06)] sm:px-10">
       <div className="mx-auto grid h-16 w-16 place-items-center rounded-2xl border border-amber-base/20 bg-amber-base/10 text-amber-base">

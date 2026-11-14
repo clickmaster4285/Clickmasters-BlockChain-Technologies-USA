@@ -75,13 +75,7 @@ export default function CaseStudiesHero({
   industriesCount = 12,
   averageGrowth = "146%",
   clientSatisfaction = "98%",
-  featuredClients = [
-    "NEXORA",
-    "FINORA",
-    "URBANLY",
-    "VANTAGE",
-    "APEX",
-  ],
+  featuredClients = ["NEXORA", "FINORA", "URBANLY", "VANTAGE", "APEX"],
 }: CaseStudiesHeroProps) {
   const stats: HeroStat[] = [
     {
@@ -103,16 +97,11 @@ export default function CaseStudiesHero({
   ];
 
   function scrollToCaseStudies() {
-    const section = document.getElementById(
-      "case-studies-grid"
-    );
+    const section = document.getElementById("case-studies-grid");
 
     if (!section) return;
 
-    const top =
-      section.getBoundingClientRect().top +
-      window.scrollY -
-      100;
+    const top = section.getBoundingClientRect().top + window.scrollY - 100;
 
     window.scrollTo({
       top,
@@ -253,9 +242,7 @@ export default function CaseStudiesHero({
                     <TrendingUp className="h-3.5 w-3.5 text-emerald-300" />
                   </div>
 
-                  <p className="mt-3 text-2xl font-black text-white">
-                    +184%
-                  </p>
+                  <p className="mt-3 text-2xl font-black text-white">+184%</p>
 
                   <p className="mt-1 text-[10px] font-bold text-emerald-300">
                     Above target
@@ -271,9 +258,7 @@ export default function CaseStudiesHero({
                     <Award className="h-3.5 w-3.5 text-amber-400" />
                   </div>
 
-                  <p className="mt-3 text-2xl font-black text-white">
-                    7.4%
-                  </p>
+                  <p className="mt-3 text-2xl font-black text-white">7.4%</p>
 
                   <p className="mt-1 text-[10px] font-bold text-amber-400">
                     New record
@@ -294,24 +279,20 @@ export default function CaseStudiesHero({
                 </div>
 
                 <div className="mt-8 flex h-32 items-end gap-2 sm:gap-3">
-                  {[28, 42, 36, 58, 49, 73, 66, 92].map(
-                    (height, index) => (
+                  {[28, 42, 36, 58, 49, 73, 66, 92].map((height, index) => (
+                    <div
+                      key={`${height}-${index}`}
+                      className="group/bar flex h-full flex-1 items-end"
+                    >
                       <div
-                        key={`${height}-${index}`}
-                        className="group/bar flex h-full flex-1 items-end"
-                      >
-                        <div
-                          className="animate-case-hero-bar w-full origin-bottom rounded-t-md bg-gradient-to-t from-amber-500/35 to-amber-300 transition-all duration-300 group-hover/bar:brightness-125"
-                          style={{
-                            height: `${height}%`,
-                            animationDelay: `${
-                              650 + index * 80
-                            }ms`,
-                          }}
-                        />
-                      </div>
-                    )
-                  )}
+                        className="animate-case-hero-bar w-full origin-bottom rounded-t-md bg-gradient-to-t from-amber-500/35 to-amber-300 transition-all duration-300 group-hover/bar:brightness-125"
+                        style={{
+                          height: `${height}%`,
+                          animationDelay: `${650 + index * 80}ms`,
+                        }}
+                      />
+                    </div>
+                  ))}
                 </div>
 
                 <div className="mt-3 flex justify-between text-[8px] font-bold uppercase tracking-[0.1em] text-[#536176]">
@@ -398,9 +379,7 @@ export default function CaseStudiesHero({
                   Client Rating
                 </p>
 
-                <p className="mt-1 text-sm font-black text-white">
-                  4.9 / 5.0
-                </p>
+                <p className="mt-1 text-sm font-black text-white">4.9 / 5.0</p>
               </div>
             </div>
           </div>
@@ -457,7 +436,6 @@ export default function CaseStudiesHero({
           className="group absolute bottom-3 left-1/2 z-30 hidden -translate-x-1/2 flex-col items-center gap-2 text-[8px] font-black uppercase tracking-[0.18em] text-[#657287] transition-colors duration-300 hover:text-amber-400 xl:flex"
         >
           Explore work
-
           <span className="grid h-10 w-7 place-items-center rounded-full border border-white/[0.1] bg-white/[0.025]">
             <ArrowDown className="h-3.5 w-3.5 animate-case-scroll-arrow" />
           </span>

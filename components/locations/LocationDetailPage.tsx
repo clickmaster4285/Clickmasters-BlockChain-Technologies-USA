@@ -53,10 +53,7 @@ import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import BackToTop from "@/components/ui/BackToTop";
 
-import type {
-  LocationContentBlock,
-  LocationEntry,
-} from "@/lib/location";
+import type { LocationContentBlock, LocationEntry } from "@/lib/location";
 import { splitHeading } from "@/lib/seo";
 
 /* =========================================================
@@ -93,31 +90,24 @@ type FAQItemProps = {
    Helpers
 ========================================================= */
 
-function getFirstTextValue(
-  values: Array<string | undefined>,
-) {
-  return values.find(
-    (value): value is string =>
-      typeof value === "string" &&
-      value.trim().length > 0,
-  )?.trim();
+function getFirstTextValue(values: Array<string | undefined>) {
+  return values
+    .find(
+      (value): value is string =>
+        typeof value === "string" && value.trim().length > 0,
+    )
+    ?.trim();
 }
 
 function toTitleCase(value: string) {
   return value
     .split("-")
     .filter(Boolean)
-    .map(
-      (part) =>
-        part.charAt(0).toUpperCase() +
-        part.slice(1),
-    )
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
     .join(" ");
 }
 
-function getLocationDisplayName(
-  location: LocationEntry,
-) {
+function getLocationDisplayName(location: LocationEntry) {
   const explicitName = getFirstTextValue([
     location.city,
     location.country,
@@ -128,28 +118,19 @@ function getLocationDisplayName(
     return explicitName;
   }
 
-  const titleLead = location.title
-    .split(/\s+[—–]\s+/)[0]
-    ?.trim();
+  const titleLead = location.title.split(/\s+[—–]\s+/)[0]?.trim();
 
   const titleName = titleLead
-    ?.replace(
-      /^Blockchain Development Company\s+(?:Serving|in)\s+/i,
-      "",
-    )
+    ?.replace(/^Blockchain Development Company\s+(?:Serving|in)\s+/i, "")
     .trim();
 
   if (titleName) {
     return titleName;
   }
 
-  const slugName = location.slug
-    .replace(/^blockchain-development-/, "")
-    .trim();
+  const slugName = location.slug.replace(/^blockchain-development-/, "").trim();
 
-  return slugName
-    ? toTitleCase(slugName)
-    : "Location Guide";
+  return slugName ? toTitleCase(slugName) : "Location Guide";
 }
 
 /* =========================================================
@@ -324,39 +305,30 @@ export default function LocationDetailPage({
   relatedLocations,
   relatedLinks,
 }: LocationDetailPageProps) {
-  const [readingProgress, setReadingProgress] =
-    useState(0);
+  const [readingProgress, setReadingProgress] = useState(0);
 
-  const [activeSection, setActiveSection] =
-    useState<SectionId>("overview");
+  const [activeSection, setActiveSection] = useState<SectionId>("overview");
 
-  const locationName =
-    getLocationDisplayName(location);
+  const locationName = getLocationDisplayName(location);
 
-  const heroTitle =
-    location.hero?.title || location.title;
+  const heroTitle = location.hero?.title || location.title;
 
-  const heroDescription =
-    location.hero?.description ||
-    location.excerpt;
+  const heroDescription = location.hero?.description || location.excerpt;
   const { heading: heroHeading, continuation: heroContinuation } =
     splitHeading(heroTitle);
 
   const heroBadge =
-    location.hero?.badge ||
-    `Blockchain Development in ${locationName}`;
+    location.hero?.badge || `Blockchain Development in ${locationName}`;
 
-  const heroImage =
-    location.hero?.image || location.image;
+  const heroImage = location.hero?.image || location.image;
 
-  const credibilityItems =
-    location.credibility?.length
-      ? location.credibility
-      : [
-          "Enterprise-ready solutions",
-          "Security-first architecture",
-          "End-to-end product delivery",
-        ];
+  const credibilityItems = location.credibility?.length
+    ? location.credibility
+    : [
+        "Enterprise-ready solutions",
+        "Security-first architecture",
+        "End-to-end product delivery",
+      ];
 
   const contentBlocks = location.content || [];
 
@@ -381,18 +353,13 @@ export default function LocationDetailPage({
         label: "Technical support",
       },
     ],
-    [
-      location.city,
-      location.country,
-      locationName,
-    ],
+    [location.city, location.country, locationName],
   );
 
   useEffect(() => {
     const updateReadingProgress = () => {
       const scrollableHeight =
-        document.documentElement.scrollHeight -
-        window.innerHeight;
+        document.documentElement.scrollHeight - window.innerHeight;
 
       if (scrollableHeight <= 0) {
         setReadingProgress(0);
@@ -400,46 +367,25 @@ export default function LocationDetailPage({
       }
 
       setReadingProgress(
-        Math.min(
-          100,
-          Math.max(
-            0,
-            (window.scrollY / scrollableHeight) *
-              100,
-          ),
-        ),
+        Math.min(100, Math.max(0, (window.scrollY / scrollableHeight) * 100)),
       );
     };
 
     updateReadingProgress();
 
-    window.addEventListener(
-      "scroll",
-      updateReadingProgress,
-      {
-        passive: true,
-      },
-    );
+    window.addEventListener("scroll", updateReadingProgress, {
+      passive: true,
+    });
 
     return () => {
-      window.removeEventListener(
-        "scroll",
-        updateReadingProgress,
-      );
+      window.removeEventListener("scroll", updateReadingProgress);
     };
   }, []);
 
   useEffect(() => {
-    const availableSections =
-      navigationItems
-        .map(({ id }) =>
-          document.getElementById(id),
-        )
-        .filter(
-          (
-            section,
-          ): section is HTMLElement => Boolean(section),
-        );
+    const availableSections = navigationItems
+      .map(({ id }) => document.getElementById(id))
+      .filter((section): section is HTMLElement => Boolean(section));
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -447,14 +393,11 @@ export default function LocationDetailPage({
           .filter((entry) => entry.isIntersecting)
           .sort(
             (first, second) =>
-              second.intersectionRatio -
-              first.intersectionRatio,
+              second.intersectionRatio - first.intersectionRatio,
           )[0];
 
         if (visibleEntry) {
-          setActiveSection(
-            visibleEntry.target.id as SectionId,
-          );
+          setActiveSection(visibleEntry.target.id as SectionId);
         }
       },
       {
@@ -463,26 +406,19 @@ export default function LocationDetailPage({
       },
     );
 
-    availableSections.forEach((section) =>
-      observer.observe(section),
-    );
+    availableSections.forEach((section) => observer.observe(section));
 
     return () => {
       observer.disconnect();
     };
   }, []);
 
-  const scrollToSection = useCallback(
-    (sectionId: SectionId) => {
-      document
-        .getElementById(sectionId)
-        ?.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-    },
-    [],
-  );
+  const scrollToSection = useCallback((sectionId: SectionId) => {
+    document.getElementById(sectionId)?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }, []);
 
   return (
     <div className="min-h-screen bg-background text-text-primary">
@@ -539,10 +475,7 @@ export default function LocationDetailPage({
               Hero
           ====================================================== */}
 
-          <section
-            id="overview"
-            className="scroll-mt-32"
-          >
+          <section id="overview" className="scroll-mt-32">
             <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-surface shadow-[0_40px_140px_rgba(0,0,0,0.34)] md:rounded-[3rem]">
               <div className="absolute inset-x-16 top-0 h-px bg-gradient-to-r from-transparent via-amber-base to-transparent" />
 
@@ -576,38 +509,32 @@ export default function LocationDetailPage({
                       className="group inline-flex items-center justify-center gap-2 rounded-full bg-amber-base px-7 py-4 text-sm font-black text-bg-base shadow-glow transition-all duration-300 hover:-translate-y-1 hover:bg-amber-light"
                     >
                       Start Your Project
-
                       <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                     </Link>
 
                     <button
                       type="button"
-                      onClick={() =>
-                        scrollToSection("services")
-                      }
+                      onClick={() => scrollToSection("services")}
                       className="group inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/[0.035] px-7 py-4 text-sm font-bold text-text-primary transition-all duration-300 hover:-translate-y-1 hover:border-amber-base/30 hover:bg-amber-base/[0.07] hover:text-amber-base"
                     >
                       Explore Capabilities
-
                       <ArrowDown className="h-4 w-4 transition-transform duration-300 group-hover:translate-y-1" />
                     </button>
                   </div>
 
                   <div className="mt-10 grid gap-3 sm:grid-cols-3">
-                    {credibilityItems
-                      .slice(0, 3)
-                      .map((item) => (
-                        <div
-                          key={item}
-                          className="group flex items-start gap-3 rounded-2xl border border-white/[0.08] bg-white/[0.025] px-4 py-4 transition-all duration-300 hover:-translate-y-1 hover:border-amber-base/25 hover:bg-amber-base/[0.05]"
-                        >
-                          <CircleCheckBig className="mt-0.5 h-4 w-4 shrink-0 text-amber-base transition-transform duration-300 group-hover:scale-110" />
+                    {credibilityItems.slice(0, 3).map((item) => (
+                      <div
+                        key={item}
+                        className="group flex items-start gap-3 rounded-2xl border border-white/[0.08] bg-white/[0.025] px-4 py-4 transition-all duration-300 hover:-translate-y-1 hover:border-amber-base/25 hover:bg-amber-base/[0.05]"
+                      >
+                        <CircleCheckBig className="mt-0.5 h-4 w-4 shrink-0 text-amber-base transition-transform duration-300 group-hover:scale-110" />
 
-                          <span className="text-xs font-medium leading-5 text-silver">
-                            {item}
-                          </span>
-                        </div>
-                      ))}
+                        <span className="text-xs font-medium leading-5 text-silver">
+                          {item}
+                        </span>
+                      </div>
+                    ))}
                   </div>
 
                   <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-3 text-xs text-silver">
@@ -665,10 +592,7 @@ export default function LocationDetailPage({
                       </div>
 
                       <span className="font-mono text-[10px] text-amber-base/45">
-                        {String(index + 1).padStart(
-                          2,
-                          "0",
-                        )}
+                        {String(index + 1).padStart(2, "0")}
                       </span>
                     </div>
                   </div>
@@ -684,12 +608,9 @@ export default function LocationDetailPage({
           <div className="sticky top-20 z-40 mt-6 hidden justify-center lg:flex">
             <div className="flex items-center gap-1 rounded-full border border-white/10 bg-bg-base/90 p-1.5 shadow-[0_20px_70px_rgba(0,0,0,0.25)] backdrop-blur-xl">
               {navigationItems.map((item) => {
-                const isActive =
-                  activeSection === item.id;
+                const isActive = activeSection === item.id;
 
-                const sectionExists =
-                  item.id !== "faq" ||
-                  faqItems.length > 0;
+                const sectionExists = item.id !== "faq" || faqItems.length > 0;
 
                 if (!sectionExists) {
                   return null;
@@ -699,9 +620,7 @@ export default function LocationDetailPage({
                   <button
                     key={item.id}
                     type="button"
-                    onClick={() =>
-                      scrollToSection(item.id)
-                    }
+                    onClick={() => scrollToSection(item.id)}
                     className={[
                       "rounded-full px-5 py-2.5 text-xs font-bold transition-all duration-300",
                       isActive
@@ -752,7 +671,6 @@ export default function LocationDetailPage({
                       <div className="mt-auto pt-7">
                         <span className="inline-flex items-center gap-2 text-xs font-black text-amber-base opacity-70 transition-opacity group-hover:opacity-100">
                           Learn through delivery
-
                           <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                         </span>
                       </div>
@@ -767,10 +685,7 @@ export default function LocationDetailPage({
               Services
           ====================================================== */}
 
-          <section
-            id="services"
-            className="scroll-mt-32 pt-24"
-          >
+          <section id="services" className="scroll-mt-32 pt-24">
             <SectionHeading
               eyebrow="Core Capabilities"
               title={`Blockchain Services Available in ${locationName}`}
@@ -810,25 +725,23 @@ export default function LocationDetailPage({
                       </p>
 
                       <div className="mt-6 grid gap-3 overflow-hidden">
-                        {service.details.map(
-                          (detail, index) => (
-                            <div
-                              key={detail}
-                              className="flex translate-y-4 items-start gap-3 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100"
-                              style={{
-                                transitionDelay: `${index * 70}ms`,
-                              }}
-                            >
-                              <span className="mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-amber-base/10 text-amber-base">
-                                <Check className="h-3 w-3" />
-                              </span>
+                        {service.details.map((detail, index) => (
+                          <div
+                            key={detail}
+                            className="flex translate-y-4 items-start gap-3 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100"
+                            style={{
+                              transitionDelay: `${index * 70}ms`,
+                            }}
+                          >
+                            <span className="mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-amber-base/10 text-amber-base">
+                              <Check className="h-3 w-3" />
+                            </span>
 
-                              <span className="text-xs leading-6 text-silver">
-                                {detail}
-                              </span>
-                            </div>
-                          ),
-                        )}
+                            <span className="text-xs leading-6 text-silver">
+                              {detail}
+                            </span>
+                          </div>
+                        ))}
                       </div>
 
                       <div className="mt-auto flex items-center justify-between border-t border-white/[0.08] pt-5">
@@ -851,28 +764,22 @@ export default function LocationDetailPage({
               Dynamic Location Content
           ====================================================== */}
 
-          <section
-            id="location-content"
-            className="scroll-mt-32 pt-24"
-          >
+          <section id="location-content" className="scroll-mt-32 pt-24">
             <div className="grid gap-10 xl:grid-cols-[0.7fr_1.3fr]">
               <div className="xl:sticky xl:top-40 xl:h-fit">
                 <div className="inline-flex items-center gap-2 rounded-full border border-amber-base/20 bg-amber-base/[0.07] px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-amber-base">
                   <Globe2 className="h-4 w-4" />
-
                   Market Intelligence
                 </div>
 
                 <h2 className="mt-6 text-3xl font-black tracking-[-0.04em] text-text-primary md:text-5xl">
-                  Blockchain Development in{" "}
-                  {locationName}
+                  Blockchain Development in {locationName}
                 </h2>
 
                 <p className="mt-6 max-w-xl text-sm leading-7 text-silver md:text-base">
-                  Explore the market opportunities, technical
-                  capabilities, use cases, and delivery
-                  considerations relevant to businesses in this
-                  location.
+                  Explore the market opportunities, technical capabilities, use
+                  cases, and delivery considerations relevant to businesses in
+                  this location.
                 </p>
 
                 <div className="mt-8 rounded-[1.7rem] border border-white/[0.09] bg-surface p-6">
@@ -897,7 +804,6 @@ export default function LocationDetailPage({
                     className="group mt-5 inline-flex items-center gap-2 text-sm font-black text-amber-base"
                   >
                     Schedule a consultation
-
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Link>
                 </div>
@@ -906,15 +812,13 @@ export default function LocationDetailPage({
               <div>
                 {contentBlocks.length > 0 ? (
                   <div className="space-y-6">
-                    {contentBlocks.map(
-                      (block, index) => (
-                        <ContentBlockRenderer
-                          key={`${block.type}-${index}`}
-                          block={block}
-                          index={index}
-                        />
-                      ),
-                    )}
+                    {contentBlocks.map((block, index) => (
+                      <ContentBlockRenderer
+                        key={`${block.type}-${index}`}
+                        block={block}
+                        index={index}
+                      />
+                    ))}
                   </div>
                 ) : (
                   <SpotlightCard className="p-8 md:p-10">
@@ -929,8 +833,7 @@ export default function LocationDetailPage({
                         </h2>
 
                         <p className="mt-4 text-sm leading-7 text-silver">
-                          Add content blocks to this location
-                          inside{" "}
+                          Add content blocks to this location inside{" "}
                           <code className="rounded-md bg-bg-base px-2 py-1 text-amber-base">
                             data/locations.js
                           </code>
@@ -948,10 +851,7 @@ export default function LocationDetailPage({
               Process
           ====================================================== */}
 
-          <section
-            id="process"
-            className="scroll-mt-32 pt-24"
-          >
+          <section id="process" className="scroll-mt-32 pt-24">
             <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-surface p-7 md:rounded-[3rem] md:p-12 lg:p-14">
               <div className="absolute -left-40 -top-40 h-96 w-96 rounded-full bg-amber-base/[0.06] blur-[120px]" />
 
@@ -1002,10 +902,7 @@ export default function LocationDetailPage({
           ====================================================== */}
 
           {faqItems.length > 0 && (
-            <section
-              id="faq"
-              className="scroll-mt-32 pt-24"
-            >
+            <section id="faq" className="scroll-mt-32 pt-24">
               <div className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr]">
                 <div>
                   <div className="inline-flex items-center gap-2 rounded-full border border-amber-base/20 bg-amber-base/[0.07] px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-amber-base">
@@ -1014,14 +911,12 @@ export default function LocationDetailPage({
                   </div>
 
                   <h2 className="mt-6 text-3xl font-black tracking-[-0.04em] text-text-primary md:text-5xl">
-                    Blockchain Development FAQs for{" "}
-                    {locationName}
+                    Blockchain Development FAQs for {locationName}
                   </h2>
 
                   <p className="mt-6 max-w-xl text-sm leading-7 text-silver md:text-base">
-                    Important information about product
-                    development, architecture, security,
-                    integrations, project timelines, and
+                    Important information about product development,
+                    architecture, security, integrations, project timelines, and
                     engagement.
                   </p>
                 </div>
@@ -1045,10 +940,7 @@ export default function LocationDetailPage({
           ====================================================== */}
 
           {relatedLocations.length > 0 && (
-            <section
-              id="related"
-              className="scroll-mt-32 pt-24"
-            >
+            <section id="related" className="scroll-mt-32 pt-24">
               <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
                 <SectionHeading
                   eyebrow="Global Coverage"
@@ -1061,20 +953,17 @@ export default function LocationDetailPage({
                   className="group inline-flex shrink-0 items-center gap-2 text-sm font-black text-amber-base"
                 >
                   View all locations
-
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
               </div>
 
               <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-                {relatedLocations.map(
-                  (relatedLocation) => (
-                    <RelatedLocationCard
-                      key={relatedLocation.slug}
-                      location={relatedLocation}
-                    />
-                  ),
-                )}
+                {relatedLocations.map((relatedLocation) => (
+                  <RelatedLocationCard
+                    key={relatedLocation.slug}
+                    location={relatedLocation}
+                  />
+                ))}
               </div>
             </section>
           )}
@@ -1111,27 +1000,19 @@ export default function LocationDetailPage({
 
                 <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
                   <Link
-                    href={
-                      location.cta?.primaryLink ||
-                      "/contact"
-                    }
+                    href={location.cta?.primaryLink || "/contact"}
                     className="group/button inline-flex items-center justify-center gap-2 rounded-full bg-amber-base px-8 py-4 text-sm font-black text-bg-base shadow-glow transition-all duration-300 hover:-translate-y-1 hover:bg-amber-light"
                   >
-                    {location.cta?.primaryText ||
-                      "Book a Consultation"}
+                    {location.cta?.primaryText || "Book a Consultation"}
 
                     <ArrowRight className="h-4 w-4 transition-transform group-hover/button:translate-x-1" />
                   </Link>
 
                   <Link
-                    href={
-                      location.cta?.secondaryLink ||
-                      "/service"
-                    }
+                    href={location.cta?.secondaryLink || "/service"}
                     className="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/[0.035] px-8 py-4 text-sm font-bold text-text-primary transition-all duration-300 hover:-translate-y-1 hover:border-amber-base/30 hover:text-amber-base"
                   >
-                    {location.cta?.secondaryText ||
-                      "Explore Services"}
+                    {location.cta?.secondaryText || "Explore Services"}
 
                     <ArrowUpRight className="h-4 w-4" />
                   </Link>
@@ -1250,7 +1131,6 @@ function HeroVisual({
             <span className="absolute h-full w-full animate-ping rounded-full bg-amber-base opacity-50" />
             <span className="relative h-2.5 w-2.5 rounded-full bg-amber-base" />
           </span>
-
           Active delivery market
         </span>
       </div>
@@ -1263,16 +1143,11 @@ function HeroVisual({
             </p>
 
             <p className="mt-2 max-w-sm text-xl font-black leading-snug text-text-primary">
-              Secure blockchain solutions for{" "}
-              {locationName}
+              Secure blockchain solutions for {locationName}
             </p>
 
             <div className="mt-4 flex flex-wrap gap-2">
-              {[
-                "Strategy",
-                "Engineering",
-                "Security",
-              ].map((item) => (
+              {["Strategy", "Engineering", "Security"].map((item) => (
                 <span
                   key={item}
                   className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-[10px] text-silver"
@@ -1296,9 +1171,7 @@ function HeroVisual({
           </span>
 
           <div>
-            <p className="text-[10px] text-silver">
-              Architecture
-            </p>
+            <p className="text-[10px] text-silver">Architecture</p>
 
             <p className="text-xs font-black text-text-primary">
               Security first
@@ -1314,31 +1187,19 @@ function HeroVisual({
    Spotlight Card
 ========================================================= */
 
-function SpotlightCard({
-  children,
-  className = "",
-}: SpotlightCardProps) {
+function SpotlightCard({ children, className = "" }: SpotlightCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
 
-  function handleMouseMove(
-    event: MouseEvent<HTMLDivElement>,
-  ) {
+  function handleMouseMove(event: MouseEvent<HTMLDivElement>) {
     const card = cardRef.current;
 
     if (!card) return;
 
-    const bounds =
-      card.getBoundingClientRect();
+    const bounds = card.getBoundingClientRect();
 
-    card.style.setProperty(
-      "--mouse-x",
-      `${event.clientX - bounds.left}px`,
-    );
+    card.style.setProperty("--mouse-x", `${event.clientX - bounds.left}px`);
 
-    card.style.setProperty(
-      "--mouse-y",
-      `${event.clientY - bounds.top}px`,
-    );
+    card.style.setProperty("--mouse-y", `${event.clientY - bounds.top}px`);
   }
 
   return (
@@ -1383,9 +1244,7 @@ function SectionHeading({
   return (
     <div
       className={
-        centered
-          ? "relative mx-auto max-w-3xl text-center"
-          : "max-w-4xl"
+        centered ? "relative mx-auto max-w-3xl text-center" : "max-w-4xl"
       }
     >
       <p className="font-mono text-xs uppercase tracking-[0.3em] text-amber-base">
@@ -1468,11 +1327,7 @@ function ContentBlockRenderer({
   }
 
   if (block.type === "paragraph") {
-    return (
-      <p className="text-base leading-8 text-silver">
-        {block.text}
-      </p>
-    );
+    return <p className="text-base leading-8 text-silver">{block.text}</p>;
   }
 
   if (block.type === "list") {
@@ -1487,9 +1342,7 @@ function ContentBlockRenderer({
               <Check className="h-3.5 w-3.5" />
             </span>
 
-            <p className="text-sm leading-7 text-silver">
-              {item}
-            </p>
+            <p className="text-sm leading-7 text-silver">{item}</p>
           </div>
         ))}
       </div>
@@ -1517,25 +1370,21 @@ function ContentBlockRenderer({
             ) : null}
 
             <tbody>
-              {(block.rows || []).map(
-                (row, rowIndex) => (
-                  <tr
-                    key={`${index}-${rowIndex}`}
-                    className="border-b border-white/[0.07] transition-colors last:border-b-0 hover:bg-amber-base/[0.035]"
-                  >
-                    {row.map(
-                      (cell, cellIndex) => (
-                        <td
-                          key={`${rowIndex}-${cellIndex}`}
-                          className="px-5 py-4 text-sm leading-6 text-silver"
-                        >
-                          {cell}
-                        </td>
-                      ),
-                    )}
-                  </tr>
-                ),
-              )}
+              {(block.rows || []).map((row, rowIndex) => (
+                <tr
+                  key={`${index}-${rowIndex}`}
+                  className="border-b border-white/[0.07] transition-colors last:border-b-0 hover:bg-amber-base/[0.035]"
+                >
+                  {row.map((cell, cellIndex) => (
+                    <td
+                      key={`${rowIndex}-${cellIndex}`}
+                      className="px-5 py-4 text-sm leading-6 text-silver"
+                    >
+                      {cell}
+                    </td>
+                  ))}
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
@@ -1568,14 +1417,8 @@ function ContentBlockRenderer({
    FAQ
 ========================================================= */
 
-function FAQItem({
-  question,
-  answer,
-  index,
-}: FAQItemProps) {
-  const [isOpen, setIsOpen] = useState(
-    index === 0,
-  );
+function FAQItem({ question, answer, index }: FAQItemProps) {
+  const [isOpen, setIsOpen] = useState(index === 0);
 
   return (
     <article
@@ -1589,9 +1432,7 @@ function FAQItem({
       <button
         type="button"
         aria-expanded={isOpen}
-        onClick={() =>
-          setIsOpen((current) => !current)
-        }
+        onClick={() => setIsOpen((current) => !current)}
         className="flex w-full items-center justify-between gap-6 px-5 py-5 text-left md:px-7 md:py-6"
       >
         <span className="text-sm font-black leading-6 text-text-primary md:text-base">
@@ -1613,9 +1454,7 @@ function FAQItem({
       <div
         className={[
           "grid transition-all duration-300",
-          isOpen
-            ? "grid-rows-[1fr] opacity-100"
-            : "grid-rows-[0fr] opacity-0",
+          isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0",
         ].join(" ")}
       >
         <div className="overflow-hidden">
@@ -1632,13 +1471,8 @@ function FAQItem({
    Related Location Card
 ========================================================= */
 
-function RelatedLocationCard({
-  location,
-}: {
-  location: LocationEntry;
-}) {
-  const locationName =
-    getLocationDisplayName(location);
+function RelatedLocationCard({ location }: { location: LocationEntry }) {
+  const locationName = getLocationDisplayName(location);
 
   return (
     <Link
@@ -1647,7 +1481,7 @@ function RelatedLocationCard({
     >
       <div className="relative h-[230px] overflow-hidden border-b border-white/[0.08] bg-bg-base">
         {location.image ? (
-           <>
+          <>
             <Image
               src={location.image}
               alt={location.title}

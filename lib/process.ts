@@ -170,34 +170,20 @@ const DEFAULT_CTA: ProcessCTA = {
    Internal Utilities
 ========================================================= */
 
-function isNonEmptyString(
-  value: unknown,
-): value is string {
-  return (
-    typeof value === "string" &&
-    value.trim().length > 0
-  );
+function isNonEmptyString(value: unknown): value is string {
+  return typeof value === "string" && value.trim().length > 0;
 }
 
-function normalizeText(
-  value: unknown,
-  fallback = "",
-): string {
-  return isNonEmptyString(value)
-    ? value.trim()
-    : fallback;
+function normalizeText(value: unknown, fallback = ""): string {
+  return isNonEmptyString(value) ? value.trim() : fallback;
 }
 
-function normalizeStringArray(
-  value: unknown,
-): string[] {
+function normalizeStringArray(value: unknown): string[] {
   if (!Array.isArray(value)) {
     return [];
   }
 
-  return value
-    .filter(isNonEmptyString)
-    .map((item) => item.trim());
+  return value.filter(isNonEmptyString).map((item) => item.trim());
 }
 
 function createSlug(value: string): string {
@@ -209,47 +195,30 @@ function createSlug(value: string): string {
     .replace(/^-+|-+$/g, "");
 }
 
-function normalizeSlug(
-  slug: unknown,
-  title: string,
-  id: number,
-): string {
-  const source = normalizeText(
-    slug,
-    title || `process-${id}`,
-  );
+function normalizeSlug(slug: unknown, title: string, id: number): string {
+  const source = normalizeText(slug, title || `process-${id}`);
 
   const normalized = createSlug(source);
 
   return normalized || `process-${id}`;
 }
 
-function createExcerpt(
-  entry: RawProcessEntry,
-  title: string,
-): string {
-  const explicitExcerpt = normalizeText(
-    entry.excerpt,
-  );
+function createExcerpt(entry: RawProcessEntry, title: string): string {
+  const explicitExcerpt = normalizeText(entry.excerpt);
 
   if (explicitExcerpt) {
     return explicitExcerpt;
   }
 
-  const heroDescription = normalizeText(
-    entry.hero?.description,
-  );
+  const heroDescription = normalizeText(entry.hero?.description);
 
   if (heroDescription) {
     return heroDescription;
   }
 
   const firstParagraph = entry.content?.find(
-    (
-      block,
-    ): block is ProcessParagraphBlock =>
-      block.type === "paragraph" &&
-      isNonEmptyString(block.text),
+    (block): block is ProcessParagraphBlock =>
+      block.type === "paragraph" && isNonEmptyString(block.text),
   );
 
   if (firstParagraph) {
@@ -264,59 +233,38 @@ function normalizeHero(
   title: string,
   excerpt: string,
 ): ProcessHero {
-  const image = normalizeText(
-    entry.hero?.image,
-    normalizeText(entry.image),
-  );
+  const image = normalizeText(entry.hero?.image, normalizeText(entry.image));
 
   return {
     badge: normalizeText(
       entry.hero?.badge,
-      normalizeText(
-        entry.category,
-        DEFAULT_CATEGORY,
-      ).toUpperCase(),
+      normalizeText(entry.category, DEFAULT_CATEGORY).toUpperCase(),
     ),
 
-    title: normalizeText(
-      entry.hero?.title,
-      title,
-    ),
+    title: normalizeText(entry.hero?.title, title),
 
-    description: normalizeText(
-      entry.hero?.description,
-      excerpt,
-    ),
+    description: normalizeText(entry.hero?.description, excerpt),
 
     ...(image ? { image } : {}),
   };
 }
 
-function normalizeFAQs(
-  faqs: unknown,
-): ProcessFAQ[] {
+function normalizeFAQs(faqs: unknown): ProcessFAQ[] {
   if (!Array.isArray(faqs)) {
     return [];
   }
 
   return faqs
     .map((faq) => {
-      if (
-        !faq ||
-        typeof faq !== "object"
-      ) {
+      if (!faq || typeof faq !== "object") {
         return null;
       }
 
       const rawFAQ = faq as RawProcessFAQ;
 
-      const question = normalizeText(
-        rawFAQ.question,
-      );
+      const question = normalizeText(rawFAQ.question);
 
-      const answer = normalizeText(
-        rawFAQ.answer,
-      );
+      const answer = normalizeText(rawFAQ.answer);
 
       if (!question || !answer) {
         return null;
@@ -327,105 +275,60 @@ function normalizeFAQs(
         answer,
       };
     })
-    .filter(
-      (faq): faq is ProcessFAQ =>
-        faq !== null,
-    );
+    .filter((faq): faq is ProcessFAQ => faq !== null);
 }
 
-function normalizeContent(
-  content: unknown,
-): ProcessContentBlock[] {
+function normalizeContent(content: unknown): ProcessContentBlock[] {
   if (!Array.isArray(content)) {
     return [];
   }
 
-  return content.filter(
-    (
-      block,
-    ): block is ProcessContentBlock => {
-      if (
-        !block ||
-        typeof block !== "object" ||
-        !("type" in block)
-      ) {
+  return content.filter((block): block is ProcessContentBlock => {
+    if (!block || typeof block !== "object" || !("type" in block)) {
+      return false;
+    }
+
+    const candidate = block as ProcessContentBlock;
+
+    switch (candidate.type) {
+      case "featuredAnswer":
+      case "paragraph":
+        return isNonEmptyString(candidate.text);
+
+      case "heading":
+        return isNonEmptyString(candidate.text);
+
+      case "list":
+        return (
+          Array.isArray(candidate.items) &&
+          candidate.items.some(isNonEmptyString)
+        );
+
+      case "table":
+        return Array.isArray(candidate.rows) && candidate.rows.length > 0;
+
+      case "code":
+        return isNonEmptyString(candidate.text);
+
+      default:
         return false;
-      }
-
-      const candidate =
-        block as ProcessContentBlock;
-
-      switch (candidate.type) {
-        case "featuredAnswer":
-        case "paragraph":
-          return isNonEmptyString(
-            candidate.text,
-          );
-
-        case "heading":
-          return isNonEmptyString(
-            candidate.text,
-          );
-
-        case "list":
-          return (
-            Array.isArray(candidate.items) &&
-            candidate.items.some(
-              isNonEmptyString,
-            )
-          );
-
-        case "table":
-          return (
-            Array.isArray(candidate.rows) &&
-            candidate.rows.length > 0
-          );
-
-        case "code":
-          return isNonEmptyString(
-            candidate.text,
-          );
-
-        default:
-          return false;
-      }
-    },
-  );
+    }
+  });
 }
 
-function normalizeCTA(
-  cta: RawProcessCTA | undefined,
-): ProcessCTA {
+function normalizeCTA(cta: RawProcessCTA | undefined): ProcessCTA {
   return {
-    title: normalizeText(
-      cta?.title,
-      DEFAULT_CTA.title,
-    ),
+    title: normalizeText(cta?.title, DEFAULT_CTA.title),
 
-    description: normalizeText(
-      cta?.description,
-      DEFAULT_CTA.description,
-    ),
+    description: normalizeText(cta?.description, DEFAULT_CTA.description),
 
-    primaryText: normalizeText(
-      cta?.primaryText,
-      DEFAULT_CTA.primaryText,
-    ),
+    primaryText: normalizeText(cta?.primaryText, DEFAULT_CTA.primaryText),
 
-    primaryLink: normalizeText(
-      cta?.primaryLink,
-      DEFAULT_CTA.primaryLink,
-    ),
+    primaryLink: normalizeText(cta?.primaryLink, DEFAULT_CTA.primaryLink),
 
-    secondaryText: normalizeText(
-      cta?.secondaryText,
-      DEFAULT_CTA.secondaryText,
-    ),
+    secondaryText: normalizeText(cta?.secondaryText, DEFAULT_CTA.secondaryText),
 
-    secondaryLink: normalizeText(
-      cta?.secondaryLink,
-      DEFAULT_CTA.secondaryLink,
-    ),
+    secondaryLink: normalizeText(cta?.secondaryLink, DEFAULT_CTA.secondaryLink),
   };
 }
 
@@ -434,30 +337,17 @@ function normalizeProcessEntry(
   index: number,
 ): NormalizedProcessEntry {
   const id =
-    typeof entry.id === "number" &&
-    Number.isFinite(entry.id)
+    typeof entry.id === "number" && Number.isFinite(entry.id)
       ? entry.id
       : index + 1;
 
-  const title = normalizeText(
-    entry.title,
-    `Process Guide ${id}`,
-  );
+  const title = normalizeText(entry.title, `Process Guide ${id}`);
 
-  const slug = normalizeSlug(
-    entry.slug,
-    title,
-    id,
-  );
+  const slug = normalizeSlug(entry.slug, title, id);
 
-  const excerpt = createExcerpt(
-    entry,
-    title,
-  );
+  const excerpt = createExcerpt(entry, title);
 
-  const image = normalizeText(
-    entry.image,
-  );
+  const image = normalizeText(entry.image);
 
   return {
     id,
@@ -465,38 +355,21 @@ function normalizeProcessEntry(
     title,
     excerpt,
 
-    category: normalizeText(
-      entry.category,
-      DEFAULT_CATEGORY,
-    ),
+    category: normalizeText(entry.category, DEFAULT_CATEGORY),
 
-    author: normalizeText(
-      entry.author,
-      DEFAULT_AUTHOR,
-    ),
+    author: normalizeText(entry.author, DEFAULT_AUTHOR),
 
     date: normalizeText(entry.date),
 
-    readTime: normalizeText(
-      entry.readTime,
-      DEFAULT_READ_TIME,
-    ),
+    readTime: normalizeText(entry.readTime, DEFAULT_READ_TIME),
 
     ...(image ? { image } : {}),
 
-    hero: normalizeHero(
-      entry,
-      title,
-      excerpt,
-    ),
+    hero: normalizeHero(entry, title, excerpt),
 
-    credibility: normalizeStringArray(
-      entry.credibility,
-    ),
+    credibility: normalizeStringArray(entry.credibility),
 
-    content: normalizeContent(
-      entry.content,
-    ),
+    content: normalizeContent(entry.content),
 
     faqs: normalizeFAQs(entry.faqs),
 
@@ -508,17 +381,9 @@ function normalizeProcessEntry(
    Cached Normalized Data
 ========================================================= */
 
-const normalizedProcesses: NormalizedProcessEntry[] =
-  (
-    Array.isArray(processData)
-      ? processData
-      : []
-  ).map((entry, index) =>
-    normalizeProcessEntry(
-      entry as RawProcessEntry,
-      index,
-    ),
-  );
+const normalizedProcesses: NormalizedProcessEntry[] = (
+  Array.isArray(processData) ? processData : []
+).map((entry, index) => normalizeProcessEntry(entry as RawProcessEntry, index));
 
 /* =========================================================
    Public Helpers
@@ -570,22 +435,16 @@ export function getProcessCards(): ProcessCardData[] {
 export function getProcessBySlug(
   slug: string,
 ): NormalizedProcessEntry | undefined {
-  const normalizedSlug =
-    createSlug(slug);
+  const normalizedSlug = createSlug(slug);
 
-  return normalizedProcesses.find(
-    (process) =>
-      process.slug === normalizedSlug,
-  );
+  return normalizedProcesses.find((process) => process.slug === normalizedSlug);
 }
 
 /**
  * Returns all valid process slugs.
  */
 export function getProcessSlugs(): string[] {
-  return normalizedProcesses.map(
-    (process) => process.slug,
-  );
+  return normalizedProcesses.map((process) => process.slug);
 }
 
 /**
@@ -600,14 +459,8 @@ export function getProcessCount(): number {
  */
 export function getProcessCategories(): string[] {
   return Array.from(
-    new Set(
-      normalizedProcesses.map(
-        (process) => process.category,
-      ),
-    ),
-  ).sort((first, second) =>
-    first.localeCompare(second),
-  );
+    new Set(normalizedProcesses.map((process) => process.category)),
+  ).sort((first, second) => first.localeCompare(second));
 }
 
 /**
@@ -621,48 +474,29 @@ export function getRelatedProcesses(
   currentSlug: string,
   limit = 3,
 ): NormalizedProcessEntry[] {
-  const safeLimit = Math.max(
-    0,
-    Math.floor(limit),
-  );
+  const safeLimit = Math.max(0, Math.floor(limit));
 
   if (safeLimit === 0) {
     return [];
   }
 
-  const currentProcess =
-    getProcessBySlug(currentSlug);
+  const currentProcess = getProcessBySlug(currentSlug);
 
   if (!currentProcess) {
-    return normalizedProcesses.slice(
-      0,
-      safeLimit,
-    );
+    return normalizedProcesses.slice(0, safeLimit);
   }
 
-  const otherProcesses =
-    normalizedProcesses.filter(
-      (process) =>
-        process.slug !==
-        currentProcess.slug,
-    );
+  const otherProcesses = normalizedProcesses.filter(
+    (process) => process.slug !== currentProcess.slug,
+  );
 
-  const sameCategory =
-    otherProcesses.filter(
-      (process) =>
-        process.category ===
-        currentProcess.category,
-    );
+  const sameCategory = otherProcesses.filter(
+    (process) => process.category === currentProcess.category,
+  );
 
-  const differentCategory =
-    otherProcesses.filter(
-      (process) =>
-        process.category !==
-        currentProcess.category,
-    );
+  const differentCategory = otherProcesses.filter(
+    (process) => process.category !== currentProcess.category,
+  );
 
-  return [
-    ...sameCategory,
-    ...differentCategory,
-  ].slice(0, safeLimit);
+  return [...sameCategory, ...differentCategory].slice(0, safeLimit);
 }

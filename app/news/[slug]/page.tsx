@@ -100,11 +100,7 @@ export default async function SingleNewsPage({
           <section className="mt-10 grid gap-8 lg:grid-cols-[minmax(0,1fr)_340px]">
             <NewsContent item={item} cta={cta} />
 
-            <NewsSidebar
-              item={item}
-              related={related}
-              readTime={readTime}
-            />
+            <NewsSidebar item={item} related={related} readTime={readTime} />
           </section>
 
           <NewsFAQ item={item} />

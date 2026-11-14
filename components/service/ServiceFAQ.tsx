@@ -14,7 +14,9 @@ export default function ServiceFAQ({ items }: Props) {
 
   return (
     <div>
-      <h2 className="text-2xl font-semibold mb-6">Frequently asked questions</h2>
+      <h2 className="text-2xl font-semibold mb-6">
+        Frequently asked questions
+      </h2>
       <div className="space-y-3">
         {items.map((item, i) => {
           const isOpen = openIndex === i;
@@ -33,12 +35,16 @@ export default function ServiceFAQ({ items }: Props) {
                 aria-expanded={isOpen}
               >
                 <span className="font-medium pr-4">{item.question}</span>
-                <ChevronDown className={`h-4 w-4 flex-shrink-0 text-amber-base transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`} />
+                <ChevronDown
+                  className={`h-4 w-4 flex-shrink-0 text-amber-base transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
+                />
               </button>
               <div
                 className={`overflow-hidden transition-all duration-200 ${isOpen ? "max-h-48" : "max-h-0"}`}
               >
-                <p className="px-5 pb-5 text-sm text-silver-base leading-relaxed">{item.answer}</p>
+                <p className="px-5 pb-5 text-sm text-silver-base leading-relaxed">
+                  {item.answer}
+                </p>
               </div>
             </motion.div>
           );

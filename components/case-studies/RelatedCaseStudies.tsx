@@ -43,10 +43,7 @@ export default function RelatedCaseStudies({
             </div>
 
             <h2 className="mt-6 max-w-4xl text-4xl font-black leading-[1.04] tracking-[-0.045em] text-white sm:text-5xl lg:text-6xl">
-              {title}{" "}
-              <span className="text-amber-400">
-                {highlightedText}
-              </span>
+              {title} <span className="text-amber-400">{highlightedText}</span>
             </h2>
 
             <p className="mt-6 max-w-2xl text-sm font-medium leading-7 text-[#8f9caf] sm:text-base">
@@ -59,7 +56,6 @@ export default function RelatedCaseStudies({
             className="group inline-flex min-h-12 items-center justify-center gap-3 self-start rounded-full border border-white/[0.1] bg-white/[0.03] px-6 py-3 text-sm font-black text-[#c5cfdd] transition-all duration-300 hover:-translate-y-1 hover:border-amber-400/25 hover:bg-amber-400/[0.06] hover:text-amber-400 lg:self-auto"
           >
             View All Case Studies
-
             <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
         </div>

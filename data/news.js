@@ -8,7 +8,8 @@ export const news = [
   {
     id: 1,
     slug: "blackrock-buidl-fund-analysis",
-    title: "BlackRock BUIDL Fund — What the World's Largest Asset Manager's Tokenization Move Means",
+    title:
+      "BlackRock BUIDL Fund — What the World's Largest Asset Manager's Tokenization Move Means",
     excerpt:
       "When BlackRock launched a tokenized money market fund on Ethereum in March 2024 and reached $1.5B+ AUM in months, it validated tokenization more than any conference panel or whitepaper could. Here is what actually happened and what it means for builders.",
     category: "Tokenization",
@@ -19,7 +20,8 @@ export const news = [
 
     hero: {
       badge: "NEWS",
-      title: "BlackRock BUIDL Fund — What the World's Largest Asset Manager's Tokenization Move Means",
+      title:
+        "BlackRock BUIDL Fund — What the World's Largest Asset Manager's Tokenization Move Means",
       description:
         "When BlackRock launched a tokenized money market fund on Ethereum in March 2024 and reached $1.5B+ AUM in months, it validated tokenization more than any conference panel or whitepaper could. Here is what actually happened and what it means for builders.",
     },
@@ -94,7 +96,8 @@ export const news = [
 
     cta: {
       title: "Ready to Build Tokenized Fund Solutions?",
-      description: "Get expert guidance on building tokenized fund infrastructure.",
+      description:
+        "Get expert guidance on building tokenized fund infrastructure.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Tokenization Guide",
     },
@@ -113,7 +116,8 @@ export const news = [
 
     hero: {
       badge: "NEWS",
-      title: "EigenLayer Restaking — What It Means for Protocol Security Budgets",
+      title:
+        "EigenLayer Restaking — What It Means for Protocol Security Budgets",
       description:
         "EigenLayer allows Ethereum validators to stake ETH again for additional protocols — providing security without the protocol needing its own validator set or token. With $15B+ TVL, it has become the largest staking protocol launched in 2024. Here is the mechanism and the risks.",
     },
@@ -180,7 +184,8 @@ export const news = [
 
     cta: {
       title: "Ready to Build on EigenLayer?",
-      description: "Get expert guidance on leveraging restaking security for your protocol.",
+      description:
+        "Get expert guidance on leveraging restaking security for your protocol.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Restaking Guide",
     },
@@ -188,7 +193,8 @@ export const news = [
   {
     id: 3,
     slug: "ethereum-l2-defi-volume",
-    title: "Ethereum L2 Ecosystem in 2025 — Where DeFi Volume Has Migrated and Why",
+    title:
+      "Ethereum L2 Ecosystem in 2025 — Where DeFi Volume Has Migrated and Why",
     excerpt:
       "More than 60% of Ethereum DeFi activity by transaction count has moved to Layer 2 networks. Arbitrum, Base, and Optimism dominate. Here is the current state and what it means for protocol builders.",
     category: "Layer 2",
@@ -199,7 +205,8 @@ export const news = [
 
     hero: {
       badge: "NEWS",
-      title: "Ethereum L2 Ecosystem in 2025 — Where DeFi Volume Has Migrated and Why",
+      title:
+        "Ethereum L2 Ecosystem in 2025 — Where DeFi Volume Has Migrated and Why",
       description:
         "More than 60% of Ethereum DeFi activity by transaction count has moved to Layer 2 networks. Arbitrum, Base, and Optimism dominate. Here is the current state and what it means for protocol builders.",
     },
@@ -291,7 +298,8 @@ export const news = [
 
     cta: {
       title: "Ready to Deploy on L2?",
-      description: "Get expert guidance on selecting the right Layer 2 for your application.",
+      description:
+        "Get expert guidance on selecting the right Layer 2 for your application.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the L2 Deployment Guide",
     },
@@ -299,7 +307,8 @@ export const news = [
   {
     id: 4,
     slug: "rwa-tokenization-market-2025",
-    title: "Real-World Asset Tokenization Market Update — $10T by 2030 Projection and Current State",
+    title:
+      "Real-World Asset Tokenization Market Update — $10T by 2030 Projection and Current State",
     excerpt:
       "Tokenized real-world assets have crossed $5B in AUM as of mid-2025. The market is real, the institutional participants are serious, and the infrastructure is maturing.",
     category: "Tokenization",
@@ -310,7 +319,8 @@ export const news = [
 
     hero: {
       badge: "NEWS",
-      title: "Real-World Asset Tokenization Market Update — $10T by 2030 Projection and Current State",
+      title:
+        "Real-World Asset Tokenization Market Update — $10T by 2030 Projection and Current State",
       description:
         "Tokenized real-world assets have crossed $5B in AUM as of mid-2025. The market is real, the institutional participants are serious, and the infrastructure is maturing. Here is the current state by asset class.",
     },
@@ -393,7 +403,8 @@ export const news = [
   {
     id: 5,
     slug: "mica-regulation-vs-us-policy",
-    title: "MiCA vs US Crypto Policy — What US Builders Need to Know About European Regulation",
+    title:
+      "MiCA vs US Crypto Policy — What US Builders Need to Know About European Regulation",
     excerpt:
       "Europe's Markets in Crypto-Assets Regulation (MiCA) is the world's most comprehensive crypto regulatory framework. US companies serving European users or with EU operations need to understand what it requires.",
     category: "Regulation",
@@ -404,7 +415,8 @@ export const news = [
 
     hero: {
       badge: "NEWS",
-      title: "MiCA vs US Crypto Policy — What US Builders Need to Know About European Regulation",
+      title:
+        "MiCA vs US Crypto Policy — What US Builders Need to Know About European Regulation",
       description:
         "Europe's Markets in Crypto-Assets Regulation (MiCA) is the world's most comprehensive crypto regulatory framework. US companies serving European users or with EU operations need to understand what it requires.",
     },
@@ -462,7 +474,8 @@ export const news = [
 
     faqs: [
       {
-        question: "Does MiCA apply to US companies with no EU physical presence?",
+        question:
+          "Does MiCA apply to US companies with no EU physical presence?",
         answer:
           "If you actively serve EU users: likely yes, for the CASP provisions. 'Actively serving' includes: targeting EU users in marketing, accepting EU residents as customers, or localizing the platform in EU languages. The extraterritorial reach is contested but should not be ignored.",
       },
@@ -478,7 +491,8 @@ export const news = [
   {
     id: 6,
     slug: "web3-login-integration-case-study",
-    title: "Case Study — Web3 Login Integration: 84% Reduction in Onboarding Abandonment",
+    title:
+      "Case Study — Web3 Login Integration: 84% Reduction in Onboarding Abandonment",
     excerpt:
       "A consumer dApp had 89% onboarding abandonment — users quitting when asked to install MetaMask. After implementing Magic Link social login, abandonment dropped to 14%. Here is exactly what changed.",
     category: "Case Study",
@@ -489,7 +503,8 @@ export const news = [
 
     hero: {
       badge: "CASE STUDY",
-      title: "Case Study — Web3 Login Integration: 84% Reduction in Onboarding Abandonment",
+      title:
+        "Case Study — Web3 Login Integration: 84% Reduction in Onboarding Abandonment",
       description:
         "A consumer dApp had 89% onboarding abandonment — users quitting when asked to install MetaMask. After implementing Magic Link social login, abandonment dropped to 14%. Here is exactly what changed.",
     },
@@ -560,7 +575,11 @@ export const news = [
         columns: ["Metric", "Before", "After"],
         rows: [
           ["Onboarding abandonment rate", "89%", "14%"],
-          ["Time from landing page to first purchase", "47 minutes avg", "3.2 minutes avg"],
+          [
+            "Time from landing page to first purchase",
+            "47 minutes avg",
+            "3.2 minutes avg",
+          ],
           ["Returning user login time", "N/A", "8 seconds (Google 1-click)"],
           ["Monthly active users", "2,100", "11,400 (+443%)"],
           ["Monthly NFT purchases", "340", "2,890 (+750%)"],
@@ -599,7 +618,8 @@ export const news = [
 
     cta: {
       title: "Ready to Reduce Onboarding Abandonment?",
-      description: "Get expert guidance on implementing social login for your Web3 application.",
+      description:
+        "Get expert guidance on implementing social login for your Web3 application.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Wallet Integration Guide",
     },
@@ -607,7 +627,8 @@ export const news = [
   {
     id: 7,
     slug: "defi-regulation-us-2025",
-    title: "DeFi Regulation in the US — The Current State and What Builders Must Know",
+    title:
+      "DeFi Regulation in the US — The Current State and What Builders Must Know",
     excerpt:
       "US DeFi regulation is advancing on three fronts: SEC enforcement, CFTC jurisdiction claims, and congressional legislation. Here is the state of play in mid-2025 and the compliance architecture that gives DeFi protocols the strongest defensible position.",
     category: "Regulation",
@@ -618,7 +639,8 @@ export const news = [
 
     hero: {
       badge: "NEWS",
-      title: "DeFi Regulation in the US — The Current State and What Builders Must Know",
+      title:
+        "DeFi Regulation in the US — The Current State and What Builders Must Know",
       description:
         "US DeFi regulation is advancing on three fronts: SEC enforcement, CFTC jurisdiction claims, and congressional legislation. Here is the state of play in mid-2025 and the compliance architecture that gives DeFi protocols the strongest defensible position.",
     },
@@ -687,7 +709,8 @@ export const news = [
 
     faqs: [
       {
-        question: "Does deploying smart contracts make me a 'DeFi exchange' subject to SEC registration?",
+        question:
+          "Does deploying smart contracts make me a 'DeFi exchange' subject to SEC registration?",
         answer:
           "The SEC's theory is evolving. Deploying an open-source contract you have no control over is more defensible than operating a front-end with admin keys and upgradeability. The more control you retain over the protocol, the more exposure you have to exchange registration requirements. Genuinely decentralized protocols (no admin keys, full on-chain governance, no team control) are in a more defensible position.",
       },
@@ -785,7 +808,8 @@ export const news = [
 
     cta: {
       title: "Ready to Build on Ethereum?",
-      description: "Get expert guidance on leveraging Ethereum's latest upgrades.",
+      description:
+        "Get expert guidance on leveraging Ethereum's latest upgrades.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Ethereum Developer Guide",
     },
@@ -863,7 +887,8 @@ export const news = [
 
     cta: {
       title: "Ready to Build Tokenized Fund Solutions?",
-      description: "Get expert guidance on building tokenized fund infrastructure.",
+      description:
+        "Get expert guidance on building tokenized fund infrastructure.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Tokenized Fund Guide",
     },
@@ -871,7 +896,8 @@ export const news = [
   {
     id: 10,
     slug: "cross-chain-2025",
-    title: "Blockchain News: Cross-Chain Interoperability 2025 — CCIP, LayerZero, and Wormhole",
+    title:
+      "Blockchain News: Cross-Chain Interoperability 2025 — CCIP, LayerZero, and Wormhole",
     excerpt:
       "Cross-chain interoperability has matured significantly after $2B+ in bridge exploits drove security-first redesigns. Here is the current state of the three leading protocols.",
     category: "Interoperability",
@@ -882,7 +908,8 @@ export const news = [
 
     hero: {
       badge: "NEWS",
-      title: "Blockchain News: Cross-Chain Interoperability 2025 — CCIP, LayerZero, and Wormhole",
+      title:
+        "Blockchain News: Cross-Chain Interoperability 2025 — CCIP, LayerZero, and Wormhole",
       description:
         "Cross-chain interoperability has matured significantly after $2B+ in bridge exploits drove security-first redesigns. Here is the current state of the three leading protocols.",
     },
@@ -961,7 +988,8 @@ export const news = [
   {
     id: 11,
     slug: "defi-regulation-2025",
-    title: "Blockchain News: DeFi Regulation Update — Uniswap Labs, Coinbase, and SEC 2025",
+    title:
+      "Blockchain News: DeFi Regulation Update — Uniswap Labs, Coinbase, and SEC 2025",
     excerpt:
       "The SEC and CFTC both continued aggressive enforcement in 2024–2025, targeting centralized crypto entities first and DeFi second. Here is the current regulatory landscape.",
     category: "Regulation",
@@ -972,7 +1000,8 @@ export const news = [
 
     hero: {
       badge: "NEWS",
-      title: "Blockchain News: DeFi Regulation Update — Uniswap Labs, Coinbase, and SEC 2025",
+      title:
+        "Blockchain News: DeFi Regulation Update — Uniswap Labs, Coinbase, and SEC 2025",
       description:
         "The SEC and CFTC both continued aggressive enforcement in 2024–2025, targeting centralized crypto entities first and DeFi second. Here is the current regulatory landscape.",
     },
@@ -1040,7 +1069,8 @@ export const news = [
   {
     id: 12,
     slug: "enterprise-blockchain-faq-it-operations",
-    title: "Enterprise Blockchain FAQ — 20 Questions for IT and Operations Teams",
+    title:
+      "Enterprise Blockchain FAQ — 20 Questions for IT and Operations Teams",
     excerpt:
       "A comprehensive FAQ for enterprise IT and operations teams considering blockchain deployment — infrastructure, uptime, backup, monitoring, and certificate management.",
     category: "Enterprise",
@@ -1051,7 +1081,8 @@ export const news = [
 
     hero: {
       badge: "FAQ",
-      title: "Enterprise Blockchain FAQ — 20 Questions for IT and Operations Teams",
+      title:
+        "Enterprise Blockchain FAQ — 20 Questions for IT and Operations Teams",
       description:
         "A comprehensive FAQ for enterprise IT and operations teams considering blockchain deployment — infrastructure, uptime, backup, monitoring, and certificate management.",
     },
@@ -1234,7 +1265,8 @@ export const news = [
 
     cta: {
       title: "Need Help Deploying Enterprise Blockchain?",
-      description: "Get expert guidance on production-grade Hyperledger Fabric deployment.",
+      description:
+        "Get expert guidance on production-grade Hyperledger Fabric deployment.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Enterprise Blockchain Guide",
     },
@@ -1253,7 +1285,8 @@ export const news = [
 
     hero: {
       badge: "SCHEMA",
-      title: "Location Pages Schema — City-Level Blockchain Development Services",
+      title:
+        "Location Pages Schema — City-Level Blockchain Development Services",
       description:
         "Location-level schema templates for Clickmasters Blockchain Technologies city pages.",
     },
@@ -1329,7 +1362,8 @@ export const news = [
 
     cta: {
       title: "Need Help with SEO?",
-      description: "Get expert guidance on implementing structured data for blockchain services.",
+      description:
+        "Get expert guidance on implementing structured data for blockchain services.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Schema Guide",
     },
@@ -1337,7 +1371,8 @@ export const news = [
   {
     id: 14,
     slug: "ethereum-roadmap-2025-surge-scourge-verge",
-    title: "Blockchain News: Ethereum Roadmap 2025 — The Surge, Scourge, and Verge",
+    title:
+      "Blockchain News: Ethereum Roadmap 2025 — The Surge, Scourge, and Verge",
     excerpt:
       "Ethereum's multi-year roadmap (The Merge → Surge → Scourge → Verge → Purge → Splurge) is actively progressing. Here is what 2025 brought and what is coming for builders.",
     category: "Ethereum",
@@ -1348,7 +1383,8 @@ export const news = [
 
     hero: {
       badge: "NEWS",
-      title: "Ethereum Roadmap 2025 — What Builders Need to Know About the Upcoming Protocol Changes",
+      title:
+        "Ethereum Roadmap 2025 — What Builders Need to Know About the Upcoming Protocol Changes",
       description:
         "Ethereum's multi-year roadmap (The Merge → Surge → Scourge → Verge → Purge → Splurge) is actively progressing. Here is what 2025 brought and what is coming for builders.",
     },
@@ -1419,7 +1455,8 @@ export const news = [
 
     cta: {
       title: "Ready to Build on Ethereum?",
-      description: "Get expert guidance on leveraging Ethereum's latest upgrades.",
+      description:
+        "Get expert guidance on leveraging Ethereum's latest upgrades.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Ethereum Developer Guide",
     },
@@ -1427,7 +1464,8 @@ export const news = [
   {
     id: 15,
     slug: "tokenized-treasuries-2025",
-    title: "Blockchain News: Tokenized US Treasuries Cross $5B — BlackRock, Franklin Templeton, and Ondo Lead",
+    title:
+      "Blockchain News: Tokenized US Treasuries Cross $5B — BlackRock, Franklin Templeton, and Ondo Lead",
     excerpt:
       "The tokenized US Treasury market has become the fastest-growing segment of on-chain assets. Here is who is leading, what it means for institutional adoption, and what builders can learn.",
     category: "Tokenization",
@@ -1438,7 +1476,8 @@ export const news = [
 
     hero: {
       badge: "NEWS",
-      title: "Tokenized US Treasuries Cross $5B — BlackRock, Franklin Templeton, and Ondo Lead",
+      title:
+        "Tokenized US Treasuries Cross $5B — BlackRock, Franklin Templeton, and Ondo Lead",
       description:
         "The tokenized US Treasury market has become the fastest-growing segment of on-chain assets. Here is who is leading, what it means for institutional adoption, and what builders can learn from the infrastructure.",
     },
@@ -1508,7 +1547,8 @@ export const news = [
 
     cta: {
       title: "Ready to Build Tokenized Treasury Solutions?",
-      description: "Get expert guidance on building tokenized fund infrastructure.",
+      description:
+        "Get expert guidance on building tokenized fund infrastructure.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Tokenized Treasury Guide",
     },
@@ -1516,7 +1556,8 @@ export const news = [
   {
     id: 16,
     slug: "defi-insurance-2025",
-    title: "Blockchain News: DeFi Insurance in 2025 — Protocol Coverage for Smart Contract Risk",
+    title:
+      "Blockchain News: DeFi Insurance in 2025 — Protocol Coverage for Smart Contract Risk",
     excerpt:
       "Nexus Mutual has paid $15M+ in claims. InsurAce, Risk Harbor, and Unslashed provide alternatives. DeFi insurance is the risk management layer that institutional DeFi participation requires.",
     category: "DeFi",
@@ -1527,7 +1568,8 @@ export const news = [
 
     hero: {
       badge: "NEWS",
-      title: "DeFi Insurance in 2025 — Protocol Coverage for Smart Contract Risk",
+      title:
+        "DeFi Insurance in 2025 — Protocol Coverage for Smart Contract Risk",
       description:
         "Nexus Mutual has paid $15M+ in claims. InsurAce, Risk Harbor, and Unslashed provide alternatives. DeFi insurance is the risk management layer that institutional DeFi participation requires. Here is the market state.",
     },
@@ -1608,7 +1650,8 @@ export const news = [
   {
     id: 17,
     slug: "cftc-crypto-derivatives-2025",
-    title: "Blockchain News: CFTC and Crypto Derivatives in 2025 — Regulatory Framework for Perpetuals and Options",
+    title:
+      "Blockchain News: CFTC and Crypto Derivatives in 2025 — Regulatory Framework for Perpetuals and Options",
     excerpt:
       "The CFTC has jurisdiction over most crypto derivatives (perpetual futures, options) in the US. Here is the current regulatory landscape for exchanges offering derivatives to US customers.",
     category: "Regulation",
@@ -1619,7 +1662,8 @@ export const news = [
 
     hero: {
       badge: "NEWS",
-      title: "CFTC and Crypto Derivatives in 2025 — Regulatory Framework for Perpetuals and Options",
+      title:
+        "CFTC and Crypto Derivatives in 2025 — Regulatory Framework for Perpetuals and Options",
       description:
         "The CFTC has jurisdiction over most crypto derivatives (perpetual futures, options) in the US. Here is the current regulatory landscape for exchanges offering derivatives to US customers.",
     },
@@ -1706,7 +1750,8 @@ export const news = [
 
     faqs: [
       {
-        question: "Can DeFi perpetuals protocols (dYdX, GMX) serve US customers?",
+        question:
+          "Can DeFi perpetuals protocols (dYdX, GMX) serve US customers?",
         answer:
           "Legally uncertain. dYdX v3 (centralized order book) implemented US customer restrictions. dYdX v4 (Cosmos appchain) is decentralized — the protocol itself cannot geofence. GMX is a smart contract without centralized enforcement. The CFTC has stated it can bring action against developers and interfaces providing unregistered derivatives services to US customers. Both protocols restrict access for US customers in their official front-ends.",
       },
@@ -1714,7 +1759,8 @@ export const news = [
 
     cta: {
       title: "Need Help Navigating CFTC Regulations?",
-      description: "Get expert guidance on crypto derivatives regulatory compliance.",
+      description:
+        "Get expert guidance on crypto derivatives regulatory compliance.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the CFTC Compliance Guide",
     },
@@ -1722,7 +1768,8 @@ export const news = [
   {
     id: 18,
     slug: "web3-social-2025",
-    title: "Blockchain News: Web3 Social Media in 2025 — Farcaster, Lens Protocol, and Decentralized Identity",
+    title:
+      "Blockchain News: Web3 Social Media in 2025 — Farcaster, Lens Protocol, and Decentralized Identity",
     excerpt:
       "Web3 social protocols give users ownership of their social graph. Farcaster has crossed 100,000 active users. Lens Protocol powers dozens of social applications. Here is the current state for builders.",
     category: "Social",
@@ -1733,7 +1780,8 @@ export const news = [
 
     hero: {
       badge: "NEWS",
-      title: "Web3 Social Media in 2025 — Farcaster, Lens Protocol, and Decentralized Identity",
+      title:
+        "Web3 Social Media in 2025 — Farcaster, Lens Protocol, and Decentralized Identity",
       description:
         "Web3 social protocols give users ownership of their social graph. Farcaster has crossed 100,000 active users. Lens Protocol powers dozens of social applications. Here is the current state for builders.",
     },
@@ -1831,7 +1879,8 @@ const { cast } = await client.publishCast(signerUuid, "Hello from my dApp!");
 
     cta: {
       title: "Ready to Build on Web3 Social?",
-      description: "Get expert guidance on building Farcaster Frames and Lens applications.",
+      description:
+        "Get expert guidance on building Farcaster Frames and Lens applications.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Web3 Social Guide",
     },
@@ -1839,7 +1888,8 @@ const { cast } = await client.publishCast(signerUuid, "Hello from my dApp!");
   {
     id: 19,
     slug: "hyperledger-fabric-3-2025",
-    title: "Blockchain News: Hyperledger Fabric 3.0 — What Changed for Enterprise Deployments",
+    title:
+      "Blockchain News: Hyperledger Fabric 3.0 — What Changed for Enterprise Deployments",
     excerpt:
       "Hyperledger Fabric 3.0 introduced significant changes to the ordering service, consensus, and endorsement model. Here is what enterprise teams need to know before upgrading or starting new projects.",
     category: "Enterprise",
@@ -1850,7 +1900,8 @@ const { cast } = await client.publishCast(signerUuid, "Hello from my dApp!");
 
     hero: {
       badge: "NEWS",
-      title: "Blockchain News: Hyperledger Fabric 3.0 — What Changed for Enterprise Deployments",
+      title:
+        "Blockchain News: Hyperledger Fabric 3.0 — What Changed for Enterprise Deployments",
       description:
         "Hyperledger Fabric 3.0 introduced significant changes to the ordering service, consensus, and endorsement model. Here is what enterprise teams need to know before upgrading or starting new projects.",
     },
@@ -1936,7 +1987,8 @@ evaluateResult, err := contract.EvaluateTransaction("QueryCar", "CAR10")`,
   {
     id: 20,
     slug: "layer3-networks-2025",
-    title: "Blockchain News: Layer 3 Networks — Arbitrum Orbit, Base Ecosystem Chains",
+    title:
+      "Blockchain News: Layer 3 Networks — Arbitrum Orbit, Base Ecosystem Chains",
     excerpt:
       "Layer 3 (L3) networks — rollups built on top of Layer 2 rollups — are now a production option for applications needing dedicated blockspace, custom gas tokens, and L2-inherited security.",
     category: "Layer 2",
@@ -1947,7 +1999,8 @@ evaluateResult, err := contract.EvaluateTransaction("QueryCar", "CAR10")`,
 
     hero: {
       badge: "NEWS",
-      title: "Blockchain News: Layer 3 Networks — Arbitrum Orbit, Base Ecosystem Chains",
+      title:
+        "Blockchain News: Layer 3 Networks — Arbitrum Orbit, Base Ecosystem Chains",
       description:
         "Layer 3 (L3) networks — rollups built on top of Layer 2 rollups — are now a production option for applications needing dedicated blockspace, custom gas tokens, and L2-inherited security. Here is the current state.",
     },
@@ -2180,7 +2233,8 @@ evaluateResult, err := contract.EvaluateTransaction("QueryCar", "CAR10")`,
   {
     id: 23,
     slug: "nft-enterprise-applications-faq",
-    title: "NFT Enterprise Applications FAQ — 15 Questions for Corporate Decision-Makers",
+    title:
+      "NFT Enterprise Applications FAQ — 15 Questions for Corporate Decision-Makers",
     excerpt:
       "A comprehensive FAQ for corporate decision-makers considering enterprise NFT applications — business cases, wallet requirements, legal status, integration complexity, and budgets.",
     category: "NFT",
@@ -2191,7 +2245,8 @@ evaluateResult, err := contract.EvaluateTransaction("QueryCar", "CAR10")`,
 
     hero: {
       badge: "FAQ",
-      title: "NFT Enterprise Applications FAQ — 15 Questions for Corporate Decision-Makers",
+      title:
+        "NFT Enterprise Applications FAQ — 15 Questions for Corporate Decision-Makers",
       description:
         "A comprehensive FAQ for corporate decision-makers considering enterprise NFT applications — business cases, wallet requirements, legal status, integration complexity, and budgets.",
     },
@@ -2334,7 +2389,8 @@ evaluateResult, err := contract.EvaluateTransaction("QueryCar", "CAR10")`,
 
     cta: {
       title: "Ready to Build Enterprise NFT Solutions?",
-      description: "Get expert guidance on implementing enterprise NFT applications.",
+      description:
+        "Get expert guidance on implementing enterprise NFT applications.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Enterprise NFT Guide",
     },
@@ -2342,7 +2398,8 @@ evaluateResult, err := contract.EvaluateTransaction("QueryCar", "CAR10")`,
   {
     id: 24,
     slug: "blockchain-development-pricing-faq",
-    title: "Blockchain Development Pricing FAQ — 20 Questions About Cost and Timeline",
+    title:
+      "Blockchain Development Pricing FAQ — 20 Questions About Cost and Timeline",
     excerpt:
       "A comprehensive FAQ about blockchain development pricing — cost drivers, minimum budgets, fixed vs time-and-materials, and hidden costs.",
     category: "Business",
@@ -2353,7 +2410,8 @@ evaluateResult, err := contract.EvaluateTransaction("QueryCar", "CAR10")`,
 
     hero: {
       badge: "FAQ",
-      title: "Blockchain Development Pricing FAQ — 20 Questions About Cost and Timeline",
+      title:
+        "Blockchain Development Pricing FAQ — 20 Questions About Cost and Timeline",
       description:
         "A comprehensive FAQ about blockchain development pricing — cost drivers, minimum budgets, fixed vs time-and-materials, and hidden costs.",
     },
@@ -2536,7 +2594,8 @@ evaluateResult, err := contract.EvaluateTransaction("QueryCar", "CAR10")`,
 
     cta: {
       title: "Ready to Get a Quote?",
-      description: "Get expert guidance on blockchain development costs and timelines.",
+      description:
+        "Get expert guidance on blockchain development costs and timelines.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Pricing Guide",
     },
@@ -2544,7 +2603,8 @@ evaluateResult, err := contract.EvaluateTransaction("QueryCar", "CAR10")`,
   {
     id: 25,
     slug: "mica-eu-regulation-2025",
-    title: "Blockchain News: MiCA Regulation Implementation — EU Digital Asset Framework 2025",
+    title:
+      "Blockchain News: MiCA Regulation Implementation — EU Digital Asset Framework 2025",
     excerpt:
       "MiCA (Markets in Crypto Assets Regulation) became fully effective June 30, 2024 for stablecoins and December 30, 2024 for crypto asset service providers. Here is what it means for builders and enterprises.",
     category: "Regulation",
@@ -2555,7 +2615,8 @@ evaluateResult, err := contract.EvaluateTransaction("QueryCar", "CAR10")`,
 
     hero: {
       badge: "NEWS",
-      title: "Blockchain News: MiCA Regulation Implementation — EU Digital Asset Framework 2025",
+      title:
+        "Blockchain News: MiCA Regulation Implementation — EU Digital Asset Framework 2025",
       description:
         "MiCA (Markets in Crypto Assets Regulation) became fully effective June 30, 2024 for stablecoins and December 30, 2024 for crypto asset service providers. Here is what it means for builders and enterprises operating in or targeting EU markets.",
     },
@@ -2626,7 +2687,8 @@ evaluateResult, err := contract.EvaluateTransaction("QueryCar", "CAR10")`,
   {
     id: 26,
     slug: "ethereum-staking-yields-2025",
-    title: "Blockchain News: Ethereum Staking Yields — Post-Merge Economics 2025",
+    title:
+      "Blockchain News: Ethereum Staking Yields — Post-Merge Economics 2025",
     excerpt:
       "Ethereum staking yields have stabilized at 3–5% APY post-Merge, with liquid staking protocols earning additional yield through MEV. Here is the current staking economics landscape.",
     category: "Ethereum",
@@ -2637,7 +2699,8 @@ evaluateResult, err := contract.EvaluateTransaction("QueryCar", "CAR10")`,
 
     hero: {
       badge: "NEWS",
-      title: "Blockchain News: Ethereum Staking Yields — Post-Merge Economics 2025",
+      title:
+        "Blockchain News: Ethereum Staking Yields — Post-Merge Economics 2025",
       description:
         "Ethereum staking yields have stabilized at 3–5% APY post-Merge, with liquid staking protocols earning additional yield through MEV. Here is the current staking economics landscape.",
     },
@@ -2680,8 +2743,18 @@ evaluateResult, err := contract.EvaluateTransaction("QueryCar", "CAR10")`,
         rows: [
           ["Lido", "stETH", "~3.5–4.0%", "Largest LST by TVL"],
           ["Rocket Pool", "rETH", "~3.2–3.8%", "More decentralized"],
-          ["Frax Ether", "sfrxETH", "~4.0–4.5%", "Dual-token model boosts yield"],
-          ["Coinbase Staked ETH", "cbETH", "~3.0–3.5%", "Institutional, lower yield"],
+          [
+            "Frax Ether",
+            "sfrxETH",
+            "~4.0–4.5%",
+            "Dual-token model boosts yield",
+          ],
+          [
+            "Coinbase Staked ETH",
+            "cbETH",
+            "~3.0–3.5%",
+            "Institutional, lower yield",
+          ],
           ["Mantle Staked ETH", "mETH", "~3.5–4.2%", "Newer, competitive"],
         ],
       },
@@ -2707,7 +2780,8 @@ evaluateResult, err := contract.EvaluateTransaction("QueryCar", "CAR10")`,
 
     cta: {
       title: "Ready to Build Staking Solutions?",
-      description: "Get expert guidance on Ethereum staking and liquid staking protocols.",
+      description:
+        "Get expert guidance on Ethereum staking and liquid staking protocols.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Staking Guide",
     },
@@ -2715,7 +2789,8 @@ evaluateResult, err := contract.EvaluateTransaction("QueryCar", "CAR10")`,
   {
     id: 27,
     slug: "crypto-mergers-acquisitions-2025",
-    title: "Blockchain News: Crypto M&A Activity 2025 — Acquisitions and Consolidation",
+    title:
+      "Blockchain News: Crypto M&A Activity 2025 — Acquisitions and Consolidation",
     excerpt:
       "The crypto industry saw significant M&A activity through 2024–2025 as regulatory clarity improved and institutional investors consolidated positions.",
     category: "Business",
@@ -2726,7 +2801,8 @@ evaluateResult, err := contract.EvaluateTransaction("QueryCar", "CAR10")`,
 
     hero: {
       badge: "NEWS",
-      title: "Blockchain News: Crypto M&A Activity 2025 — Acquisitions and Consolidation",
+      title:
+        "Blockchain News: Crypto M&A Activity 2025 — Acquisitions and Consolidation",
       description:
         "The crypto industry saw significant M&A activity through 2024–2025 as regulatory clarity improved and institutional investors consolidating positions. Here is the current M&A landscape.",
     },
@@ -2801,7 +2877,8 @@ evaluateResult, err := contract.EvaluateTransaction("QueryCar", "CAR10")`,
   {
     id: 28,
     slug: "bitcoin-layer2-2025",
-    title: "Blockchain News: Bitcoin Layer 2 Networks — Lightning, Stacks, and Ordinals DeFi",
+    title:
+      "Blockchain News: Bitcoin Layer 2 Networks — Lightning, Stacks, and Ordinals DeFi",
     excerpt:
       "Bitcoin historically had no programmability beyond basic scripts. Lightning Network, Stacks, and Ordinals-based DeFi are changing this — adding smart contract capability to the world's most secure blockchain.",
     category: "Bitcoin",
@@ -2812,7 +2889,8 @@ evaluateResult, err := contract.EvaluateTransaction("QueryCar", "CAR10")`,
 
     hero: {
       badge: "NEWS",
-      title: "Blockchain News: Bitcoin Layer 2 Networks — Lightning, Stacks, and Ordinals DeFi",
+      title:
+        "Blockchain News: Bitcoin Layer 2 Networks — Lightning, Stacks, and Ordinals DeFi",
       description:
         "Bitcoin historically had no programmability beyond basic scripts. Lightning Network, Stacks, and Ordinals-based DeFi are changing this — adding smart contract capability to the world's most secure blockchain.",
     },
@@ -3069,7 +3147,8 @@ evaluateResult, err := contract.EvaluateTransaction("QueryCar", "CAR10")`,
 
     cta: {
       title: "Need More Blockchain Terms Explained?",
-      description: "Get expert guidance on blockchain terminology and concepts.",
+      description:
+        "Get expert guidance on blockchain terminology and concepts.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Complete Glossary",
     },
@@ -3177,7 +3256,8 @@ evaluateResult, err := contract.EvaluateTransaction("QueryCar", "CAR10")`,
 
     cta: {
       title: "Need Help with SEO?",
-      description: "Get expert guidance on implementing structured data for your website.",
+      description:
+        "Get expert guidance on implementing structured data for your website.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Schema Guide",
     },
@@ -3196,7 +3276,8 @@ evaluateResult, err := contract.EvaluateTransaction("QueryCar", "CAR10")`,
 
     hero: {
       badge: "NEWS",
-      title: "SEC Crypto Enforcement in 2025 — What US Blockchain Builders Must Know",
+      title:
+        "SEC Crypto Enforcement in 2025 — What US Blockchain Builders Must Know",
       description:
         "The SEC has accelerated enforcement of unregistered securities offerings in the crypto space. Here is a plain-English summary of the key enforcement actions and what they mean for your project.",
     },
@@ -3265,7 +3346,8 @@ evaluateResult, err := contract.EvaluateTransaction("QueryCar", "CAR10")`,
 
     cta: {
       title: "Need Help Navigating SEC Regulations?",
-      description: "Get expert guidance on SEC compliance for your blockchain project.",
+      description:
+        "Get expert guidance on SEC compliance for your blockchain project.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the SEC Compliance Guide",
     },
@@ -3273,7 +3355,8 @@ evaluateResult, err := contract.EvaluateTransaction("QueryCar", "CAR10")`,
   {
     id: 32,
     slug: "institutional-tokenization-2025",
-    title: "Blockchain News: Institutional Tokenization — $10T Projected Market, BlackRock and Franklin Templeton Leading",
+    title:
+      "Blockchain News: Institutional Tokenization — $10T Projected Market, BlackRock and Franklin Templeton Leading",
     excerpt:
       "The institutional tokenization of real-world assets has moved from pilot to production. BlackRock, Franklin Templeton, JPMorgan, and Hamilton Lane have launched live tokenized fund products.",
     category: "Tokenization",
@@ -3284,7 +3367,8 @@ evaluateResult, err := contract.EvaluateTransaction("QueryCar", "CAR10")`,
 
     hero: {
       badge: "NEWS",
-      title: "Institutional Tokenization — $10T Projected Market, BlackRock and Franklin Templeton Leading",
+      title:
+        "Institutional Tokenization — $10T Projected Market, BlackRock and Franklin Templeton Leading",
       description:
         "The institutional tokenization of real-world assets has moved from pilot to production. BlackRock, Franklin Templeton, JPMorgan, and Hamilton Lane have launched live tokenized fund products. Here is the state of the market.",
     },
@@ -3343,7 +3427,8 @@ evaluateResult, err := contract.EvaluateTransaction("QueryCar", "CAR10")`,
 
     cta: {
       title: "Ready to Build Institutional Tokenization Solutions?",
-      description: "Get expert guidance on building tokenized fund infrastructure.",
+      description:
+        "Get expert guidance on building tokenized fund infrastructure.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Institutional Tokenization Guide",
     },
@@ -3351,7 +3436,8 @@ evaluateResult, err := contract.EvaluateTransaction("QueryCar", "CAR10")`,
   {
     id: 33,
     slug: "ethereum-pectra-upgrade",
-    title: "Blockchain News: Ethereum Pectra Upgrade — EIP-7702 and What It Means for Wallet Developers",
+    title:
+      "Blockchain News: Ethereum Pectra Upgrade — EIP-7702 and What It Means for Wallet Developers",
     excerpt:
       "Ethereum's Pectra upgrade introduces EIP-7702, which allows EOA wallets to temporarily behave like smart contract wallets — without migration.",
     category: "Ethereum",
@@ -3362,7 +3448,8 @@ evaluateResult, err := contract.EvaluateTransaction("QueryCar", "CAR10")`,
 
     hero: {
       badge: "NEWS",
-      title: "Ethereum Pectra Upgrade — EIP-7702 and What It Means for Wallet Developers",
+      title:
+        "Ethereum Pectra Upgrade — EIP-7702 and What It Means for Wallet Developers",
       description:
         "Ethereum's Pectra upgrade introduces EIP-7702, which allows EOA wallets to temporarily behave like smart contract wallets — without migration. Here is what the upgrade changes and what builders should do.",
     },
@@ -3417,7 +3504,8 @@ evaluateResult, err := contract.EvaluateTransaction("QueryCar", "CAR10")`,
 
     cta: {
       title: "Ready to Build on Ethereum?",
-      description: "Get expert guidance on leveraging Ethereum's latest upgrades.",
+      description:
+        "Get expert guidance on leveraging Ethereum's latest upgrades.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Ethereum Developer Guide",
     },
@@ -3436,7 +3524,8 @@ evaluateResult, err := contract.EvaluateTransaction("QueryCar", "CAR10")`,
 
     hero: {
       badge: "NEWS",
-      title: "US Stablecoin Legislation — GENIUS Act and What It Means for Businesses Using USDC",
+      title:
+        "US Stablecoin Legislation — GENIUS Act and What It Means for Businesses Using USDC",
       description:
         "The US Congress is advancing stablecoin legislation. The GENIUS Act would create a federal regulatory framework for payment stablecoins. Here is what it would change and what businesses using USDC should know.",
     },
@@ -3515,7 +3604,7 @@ function getNewsCards(o2 = {}) {
     c = c.filter(
       (x) =>
         x.title.toLowerCase().includes(q) ||
-        x.description.toLowerCase().includes(q)
+        x.description.toLowerCase().includes(q),
     );
   }
 
@@ -3533,14 +3622,8 @@ function searchNews(q2) {
   const q = q2.toLowerCase();
   return news.filter(
     (i) =>
-      i.title.toLowerCase().includes(q) ||
-      i.slug.toLowerCase().includes(q)
+      i.title.toLowerCase().includes(q) || i.slug.toLowerCase().includes(q),
   );
 }
 
-export {
-  getNewsBySlug,
-  getNewsCards,
-  getNewsByTag,
-  searchNews,
-};
+export { getNewsBySlug, getNewsCards, getNewsByTag, searchNews };

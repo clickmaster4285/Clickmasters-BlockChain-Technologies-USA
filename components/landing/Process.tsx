@@ -70,12 +70,20 @@ export function Process() {
             <span className="h-1.5 w-1.5 rounded-full bg-amber-base" />
             Our Process
           </div>
-          <h2 className="mt-5 font-bold tracking-tight text-text-primary" style={{ fontSize: "clamp(2.25rem, 5vw, 3.75rem)", lineHeight: 1.05 }}>
-            Our Blockchain Development <span className="text-gradient">Process</span>
+          <h2
+            className="mt-5 font-bold tracking-tight text-text-primary"
+            style={{
+              fontSize: "clamp(2.25rem, 5vw, 3.75rem)",
+              lineHeight: 1.05,
+            }}
+          >
+            Our Blockchain Development{" "}
+            <span className="text-gradient">Process</span>
           </h2>
           <p className="mt-4 text-base leading-relaxed text-text-secondary md:text-lg">
-            A clear process is part of what makes a blockchain development company easy to work
-            with. Here's how a project with Clickmasters moves from idea to production:
+            A clear process is part of what makes a blockchain development
+            company easy to work with. Here's how a project with Clickmasters
+            moves from idea to production:
           </p>
         </div>
 

@@ -4,12 +4,12 @@
 // Total: 21 entries (IDs 1-21)
 // ============================================================
 
-
 export const glossary = [
   {
     id: 1,
     slug: "advanced-blockchain-glossary",
-    title: "Blockchain Glossary — 50 Advanced Terms for Developers | Clickmasters",
+    title:
+      "Blockchain Glossary — 50 Advanced Terms for Developers | Clickmasters",
     excerpt:
       "Developer-level definitions for the technical terms that appear in production DeFi, enterprise blockchain, and smart contract development.",
     category: "Glossary",
@@ -331,7 +331,8 @@ export const glossary = [
 
     cta: {
       title: "Need More Blockchain Terms Explained?",
-      description: "Get expert guidance on blockchain terminology and concepts.",
+      description:
+        "Get expert guidance on blockchain terminology and concepts.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Complete Glossary",
     },
@@ -339,7 +340,8 @@ export const glossary = [
   {
     id: 2,
     slug: "enterprise-regulatory-glossary",
-    title: "Blockchain Glossary — 50 Enterprise and Regulatory Terms | Clickmasters",
+    title:
+      "Blockchain Glossary — 50 Enterprise and Regulatory Terms | Clickmasters",
     excerpt:
       "A comprehensive glossary of enterprise and regulatory blockchain terms for business leaders and compliance professionals.",
     category: "Glossary",
@@ -573,7 +575,8 @@ export const glossary = [
 
     cta: {
       title: "Need More Blockchain Terms Explained?",
-      description: "Get expert guidance on blockchain terminology and concepts.",
+      description:
+        "Get expert guidance on blockchain terminology and concepts.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Complete Glossary",
     },
@@ -581,7 +584,8 @@ export const glossary = [
   {
     id: 3,
     slug: "defi-security-glossary",
-    title: "Blockchain DeFi Security Glossary — 40 Security Terms Every Developer Must Know | Clickmasters",
+    title:
+      "Blockchain DeFi Security Glossary — 40 Security Terms Every Developer Must Know | Clickmasters",
     excerpt:
       "A comprehensive glossary of DeFi security terms for developers — access control, attack vectors, exploit patterns, and prevention strategies.",
     category: "Glossary",
@@ -592,7 +596,8 @@ export const glossary = [
 
     hero: {
       badge: "GLOSSARY",
-      title: "Blockchain DeFi Security Glossary — 40 Security Terms Every Developer Must Know",
+      title:
+        "Blockchain DeFi Security Glossary — 40 Security Terms Every Developer Must Know",
       description:
         "A comprehensive glossary of DeFi security terms for developers — access control, attack vectors, exploit patterns, and prevention strategies.",
     },
@@ -887,7 +892,8 @@ export const glossary = [
   {
     id: 4,
     slug: "blockchain-glossary-essential",
-    title: "Blockchain Glossary — 100 Essential Terms Every Business Leader and Developer Must Know | Clickmasters",
+    title:
+      "Blockchain Glossary — 100 Essential Terms Every Business Leader and Developer Must Know | Clickmasters",
     excerpt:
       "A comprehensive blockchain glossary covering 100 essential terms for business leaders, developers, and compliance professionals.",
     category: "Glossary",
@@ -898,7 +904,8 @@ export const glossary = [
 
     hero: {
       badge: "GLOSSARY",
-      title: "Blockchain Glossary — 100 Essential Terms Every Business Leader and Developer Must Know",
+      title:
+        "Blockchain Glossary — 100 Essential Terms Every Business Leader and Developer Must Know",
       description:
         "A comprehensive blockchain glossary covering 100 essential terms for business leaders, developers, and compliance professionals.",
     },
@@ -1345,7 +1352,8 @@ export const glossary = [
 
     cta: {
       title: "Need More Blockchain Terms Explained?",
-      description: "Get expert guidance on blockchain terminology and concepts.",
+      description:
+        "Get expert guidance on blockchain terminology and concepts.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Complete Glossary",
     },
@@ -1353,7 +1361,8 @@ export const glossary = [
   {
     id: 5,
     slug: "ecosystem-glossary",
-    title: "Blockchain Ecosystem Glossary — 40 Protocol and Network Terms | Clickmasters",
+    title:
+      "Blockchain Ecosystem Glossary — 40 Protocol and Network Terms | Clickmasters",
     excerpt:
       "A comprehensive glossary of blockchain ecosystem terms covering protocols, networks, and industry culture.",
     category: "Glossary",
@@ -1603,7 +1612,8 @@ export const glossary = [
 
     cta: {
       title: "Need More Blockchain Terms Explained?",
-      description: "Get expert guidance on blockchain terminology and concepts.",
+      description:
+        "Get expert guidance on blockchain terminology and concepts.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Complete Glossary",
     },
@@ -1611,7 +1621,8 @@ export const glossary = [
   {
     id: 6,
     slug: "regulatory-glossary",
-    title: "Blockchain Regulatory Glossary — 30 Legal and Compliance Terms | Clickmasters",
+    title:
+      "Blockchain Regulatory Glossary — 30 Legal and Compliance Terms | Clickmasters",
     excerpt:
       "A comprehensive glossary of blockchain regulatory and compliance terms for legal professionals and business leaders.",
     category: "Glossary",
@@ -1797,7 +1808,8 @@ export const glossary = [
   {
     id: 7,
     slug: "layer2-scaling-glossary",
-    title: "Layer 2 and Scaling Glossary — 30 Technical Terms for Rollup Developers | Clickmasters",
+    title:
+      "Layer 2 and Scaling Glossary — 30 Technical Terms for Rollup Developers | Clickmasters",
     excerpt:
       "A comprehensive glossary of Layer 2 and scaling terminology for rollup developers and blockchain infrastructure engineers.",
     category: "Glossary",
@@ -1808,7 +1820,8 @@ export const glossary = [
 
     hero: {
       badge: "GLOSSARY",
-      title: "Layer 2 and Scaling Glossary — 30 Technical Terms for Rollup Developers",
+      title:
+        "Layer 2 and Scaling Glossary — 30 Technical Terms for Rollup Developers",
       description:
         "A comprehensive glossary of Layer 2 and scaling terminology for rollup developers and blockchain infrastructure engineers.",
     },
@@ -1991,7 +2004,8 @@ export const glossary = [
   {
     id: 8,
     slug: "cryptography-fundamentals-glossary",
-    title: "Cryptography and Security Fundamentals Glossary — 30 Core Terms | Clickmasters",
+    title:
+      "Cryptography and Security Fundamentals Glossary — 30 Core Terms | Clickmasters",
     excerpt:
       "A comprehensive glossary of cryptography and security fundamentals for blockchain developers and security professionals.",
     category: "Glossary",
@@ -2177,7 +2191,8 @@ export const glossary = [
 
     cta: {
       title: "Need More Cryptography Terms Explained?",
-      description: "Get expert guidance on cryptography and security fundamentals.",
+      description:
+        "Get expert guidance on cryptography and security fundamentals.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Cryptography Guide",
     },
@@ -2185,7 +2200,8 @@ export const glossary = [
   {
     id: 9,
     slug: "solidity-language-glossary",
-    title: "Smart Contract Glossary — Solidity Language Reference Terms | Clickmasters",
+    title:
+      "Smart Contract Glossary — Solidity Language Reference Terms | Clickmasters",
     excerpt:
       "A comprehensive glossary of Solidity language terms for smart contract developers.",
     category: "Glossary",
@@ -2403,7 +2419,8 @@ export const glossary = [
 
     cta: {
       title: "Need Help with Solidity Development?",
-      description: "Get expert guidance on Solidity smart contract development.",
+      description:
+        "Get expert guidance on Solidity smart contract development.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Solidity Guide",
     },
@@ -2411,7 +2428,8 @@ export const glossary = [
   {
     id: 10,
     slug: "security-incident-response-glossary",
-    title: "Security Glossary — Incident Response and Smart Contract Attack Terms | Clickmasters",
+    title:
+      "Security Glossary — Incident Response and Smart Contract Attack Terms | Clickmasters",
     excerpt:
       "A comprehensive glossary of security incident response and smart contract attack terms for security professionals.",
     category: "Glossary",
@@ -2422,7 +2440,8 @@ export const glossary = [
 
     hero: {
       badge: "GLOSSARY",
-      title: "Security Glossary — Incident Response and Smart Contract Attack Terms",
+      title:
+        "Security Glossary — Incident Response and Smart Contract Attack Terms",
       description:
         "A comprehensive glossary of security incident response and smart contract attack terms for security professionals.",
     },
@@ -2589,7 +2608,8 @@ export const glossary = [
 
     cta: {
       title: "Need Help with Security Incident Response?",
-      description: "Get expert guidance on blockchain security incident response.",
+      description:
+        "Get expert guidance on blockchain security incident response.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Incident Response Guide",
     },
@@ -2597,7 +2617,8 @@ export const glossary = [
   {
     id: 11,
     slug: "defi-protocol-terms-glossary",
-    title: "Blockchain Glossary — DeFi Protocol Terms for Builders and Investors | Clickmasters",
+    title:
+      "Blockchain Glossary — DeFi Protocol Terms for Builders and Investors | Clickmasters",
     excerpt:
       "A comprehensive glossary of DeFi protocol terms for builders, developers, and investors.",
     category: "Glossary",
@@ -2608,7 +2629,8 @@ export const glossary = [
 
     hero: {
       badge: "GLOSSARY",
-      title: "Blockchain Glossary — DeFi Protocol Terms for Builders and Investors",
+      title:
+        "Blockchain Glossary — DeFi Protocol Terms for Builders and Investors",
       description:
         "A comprehensive glossary of DeFi protocol terms for builders, developers, and investors.",
     },
@@ -2783,7 +2805,8 @@ export const glossary = [
 
     cta: {
       title: "Need More DeFi Terms Explained?",
-      description: "Get expert guidance on DeFi protocol design and development.",
+      description:
+        "Get expert guidance on DeFi protocol design and development.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the DeFi Glossary",
     },
@@ -2791,7 +2814,8 @@ export const glossary = [
   {
     id: 12,
     slug: "web3-user-experience-glossary",
-    title: "Web3 User Experience Glossary — Terms Every dApp Builder Should Know | Clickmasters",
+    title:
+      "Web3 User Experience Glossary — Terms Every dApp Builder Should Know | Clickmasters",
     excerpt:
       "A comprehensive glossary of Web3 user experience terms for dApp builders and product designers.",
     category: "Glossary",
@@ -2802,7 +2826,8 @@ export const glossary = [
 
     hero: {
       badge: "GLOSSARY",
-      title: "Web3 User Experience Glossary — Terms Every dApp Builder Should Know",
+      title:
+        "Web3 User Experience Glossary — Terms Every dApp Builder Should Know",
       description:
         "A comprehensive glossary of Web3 user experience terms for dApp builders and product designers.",
     },
@@ -2929,7 +2954,8 @@ export const glossary = [
 
     cta: {
       title: "Need Help with Web3 UX?",
-      description: "Get expert guidance on building user-friendly Web3 applications.",
+      description:
+        "Get expert guidance on building user-friendly Web3 applications.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Web3 UX Guide",
     },
@@ -2961,7 +2987,7 @@ function getGlossaryCards(o2 = {}) {
     c = c.filter(
       (x) =>
         x.title.toLowerCase().includes(q) ||
-        x.description.toLowerCase().includes(q)
+        x.description.toLowerCase().includes(q),
     );
   }
 
@@ -2979,8 +3005,7 @@ function searchGlossary(q2) {
   const q = q2.toLowerCase();
   return glossary.filter(
     (i) =>
-      i.title.toLowerCase().includes(q) ||
-      i.slug.toLowerCase().includes(q)
+      i.title.toLowerCase().includes(q) || i.slug.toLowerCase().includes(q),
   );
 }
 

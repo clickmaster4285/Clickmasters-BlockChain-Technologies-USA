@@ -9,7 +9,11 @@ import {
   Wrench,
 } from "lucide-react";
 import ToolCTA from "./ToolCTA";
-import type { ContentBlock, ContentListEntry, ResolvedCta } from "@/lib/content-types";
+import type {
+  ContentBlock,
+  ContentListEntry,
+  ResolvedCta,
+} from "@/lib/content-types";
 import type { ToolData } from "@/lib/tools";
 
 export default function ToolContent({
@@ -59,9 +63,7 @@ export default function ToolContent({
 
         <div className="space-y-8 p-4 sm:p-6 md:p-10">
           {/* Intro */}
-          {(item?.excerpt ||
-            item?.description ||
-            item?.hero?.description) && (
+          {(item?.excerpt || item?.description || item?.hero?.description) && (
             <div className="rounded-3xl border border-amber-base/20 bg-amber-base/10 p-6 md:p-7">
               <div className="flex items-start gap-4">
                 <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-amber-base/10 text-amber-base">
@@ -74,9 +76,7 @@ export default function ToolContent({
                   </p>
 
                   <p className="mt-3 text-base leading-8 text-silver md:text-lg">
-                    {item.excerpt ||
-                      item.description ||
-                      item.hero?.description}
+                    {item.excerpt || item.description || item.hero?.description}
                   </p>
                 </div>
               </div>
@@ -172,190 +172,197 @@ export default function ToolContent({
                 );
 
               case "list":
-  return (
-    <section key={index} className="relative">
-      {block.title && (
-        <div className="mb-6 flex items-center gap-4">
-          <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl border border-amber-base/20 bg-amber-base/10 text-amber-base shadow-[0_12px_30px_rgba(245,158,11,0.08)]">
-            <ListChecks className="h-6 w-6" />
-          </span>
+                return (
+                  <section key={index} className="relative">
+                    {block.title && (
+                      <div className="mb-6 flex items-center gap-4">
+                        <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl border border-amber-base/20 bg-amber-base/10 text-amber-base shadow-[0_12px_30px_rgba(245,158,11,0.08)]">
+                          <ListChecks className="h-6 w-6" />
+                        </span>
 
-          <div>
-            <p className="text-[10px] font-black uppercase tracking-[0.22em] text-amber-base">
-              Key Details
-            </p>
+                        <div>
+                          <p className="text-[10px] font-black uppercase tracking-[0.22em] text-amber-base">
+                            Key Details
+                          </p>
 
-            <h2 className="mt-1 text-xl font-black text-text-primary sm:text-2xl">
-              {block.title}
-            </h2>
-          </div>
-        </div>
-      )}
+                          <h2 className="mt-1 text-xl font-black text-text-primary sm:text-2xl">
+                            {block.title}
+                          </h2>
+                        </div>
+                      </div>
+                    )}
 
-      <div className="grid gap-4">
-        {(block.items || []).map(
-          (listItem: ContentListEntry, itemIndex: number) => {
-            const itemTitle =
-              typeof listItem === "string"
-                ? null
-                : listItem?.title;
+                    <div className="grid gap-4">
+                      {(block.items || []).map(
+                        (listItem: ContentListEntry, itemIndex: number) => {
+                          const itemTitle =
+                            typeof listItem === "string"
+                              ? null
+                              : listItem?.title;
 
-            const itemDescription =
-              typeof listItem === "string"
-                ? listItem
-                : listItem?.description ||
-                  listItem?.text ||
-                  listItem?.title;
+                          const itemDescription =
+                            typeof listItem === "string"
+                              ? listItem
+                              : listItem?.description ||
+                                listItem?.text ||
+                                listItem?.title;
 
-            return (
-              <div
-                key={`${itemDescription}-${itemIndex}`}
-                className="checklist-card"
-              >
-                <div className="checklist-card__inner">
-                  <div className="checklist-card__row">
-                    <span className="checklist-card__num">
-                      {String(itemIndex + 1).padStart(2, "0")}
-                    </span>
+                          return (
+                            <div
+                              key={`${itemDescription}-${itemIndex}`}
+                              className="checklist-card"
+                            >
+                              <div className="checklist-card__inner">
+                                <div className="checklist-card__row">
+                                  <span className="checklist-card__num">
+                                    {String(itemIndex + 1).padStart(2, "0")}
+                                  </span>
 
-                    <div className="min-w-0 flex-1">
-                      {itemTitle && (
-                        <h2 className="checklist-card__title">{itemTitle}</h2>
+                                  <div className="min-w-0 flex-1">
+                                    {itemTitle && (
+                                      <h2 className="checklist-card__title">
+                                        {itemTitle}
+                                      </h2>
+                                    )}
+
+                                    <p
+                                      className={`checklist-card__text${itemTitle ? " mt-2" : ""}`}
+                                    >
+                                      {itemDescription}
+                                    </p>
+                                  </div>
+
+                                  <span
+                                    className="checklist-card__check"
+                                    aria-hidden="true"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          );
+                        },
                       )}
-
-                      <p className={`checklist-card__text${itemTitle ? " mt-2" : ""}`}>
-                        {itemDescription}
-                      </p>
                     </div>
-
-                    <span className="checklist-card__check" aria-hidden="true" />
-                  </div>
-                </div>
-              </div>
-            );
-          }
-        )}
-      </div>
-    </section>
-  );
+                  </section>
+                );
 
               case "table":
-  return (
-    <section key={index} className="relative">
-      {block.title && (
-        <div className="mb-5 flex items-center gap-4">
-          <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl border border-[#334155] bg-[#172033] text-amber-base shadow-[0_12px_30px_rgba(0,0,0,0.25)]">
-            <ListChecks className="h-6 w-6" />
-          </span>
+                return (
+                  <section key={index} className="relative">
+                    {block.title && (
+                      <div className="mb-5 flex items-center gap-4">
+                        <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl border border-[#334155] bg-[#172033] text-amber-base shadow-[0_12px_30px_rgba(0,0,0,0.25)]">
+                          <ListChecks className="h-6 w-6" />
+                        </span>
 
-          <div>
-            <p className="text-[10px] font-black uppercase tracking-[0.22em] text-amber-base">
-              Comparison Data
-            </p>
+                        <div>
+                          <p className="text-[10px] font-black uppercase tracking-[0.22em] text-amber-base">
+                            Comparison Data
+                          </p>
 
-            <h2 className="mt-1 text-xl font-black text-white sm:text-2xl">
-              {block.title}
-            </h2>
-          </div>
-        </div>
-      )}
+                          <h2 className="mt-1 text-xl font-black text-white sm:text-2xl">
+                            {block.title}
+                          </h2>
+                        </div>
+                      </div>
+                    )}
 
-      {/* Desktop table */}
-      <div className="hidden overflow-hidden rounded-[1.5rem] border border-[#273449] bg-[#101827] shadow-[0_24px_70px_rgba(0,0,0,0.28)] md:block">
-        <table className="w-full border-collapse">
-          <thead>
-            <tr className="bg-gradient-to-r from-[#182235] via-[#1b263a] to-[#182235]">
-              {(block.columns || []).map(
-                (column: string, columnIndex: number) => (
-                  <th
-                    key={`${column}-${columnIndex}`}
-                    className="border-b border-[#334155] px-5 py-4 text-left text-xs font-black uppercase tracking-[0.16em] text-[#fbbf24]"
-                  >
-                    {column}
-                  </th>
-                )
-              )}
-            </tr>
-          </thead>
+                    {/* Desktop table */}
+                    <div className="hidden overflow-hidden rounded-[1.5rem] border border-[#273449] bg-[#101827] shadow-[0_24px_70px_rgba(0,0,0,0.28)] md:block">
+                      <table className="w-full border-collapse">
+                        <thead>
+                          <tr className="bg-gradient-to-r from-[#182235] via-[#1b263a] to-[#182235]">
+                            {(block.columns || []).map(
+                              (column: string, columnIndex: number) => (
+                                <th
+                                  key={`${column}-${columnIndex}`}
+                                  className="border-b border-[#334155] px-5 py-4 text-left text-xs font-black uppercase tracking-[0.16em] text-[#fbbf24]"
+                                >
+                                  {column}
+                                </th>
+                              ),
+                            )}
+                          </tr>
+                        </thead>
 
-          <tbody>
-            {(block.rows || []).map(
-              (row: string[], rowIndex: number) => (
-                <tr
-                  key={rowIndex}
-                  className={`group transition-all duration-300 hover:bg-[#172033] ${
-                    rowIndex % 2 === 0
-                      ? "bg-[#101827]"
-                      : "bg-[#131c2c]"
-                  }`}
-                >
-                  {row.map((cell: string, cellIndex: number) => (
-                    <td
-                      key={cellIndex}
-                      className={`border-b border-[#273449] px-5 py-4 align-top text-sm leading-7 transition-colors duration-300 ${
-                        cellIndex === 0
-                          ? "font-bold text-white group-hover:text-[#fbbf24]"
-                          : "text-[#aab6c8] group-hover:text-[#d7deea]"
-                      }`}
-                    >
-                      {String(cell)}
-                    </td>
-                  ))}
-                </tr>
-              )
-            )}
-          </tbody>
-        </table>
-      </div>
-
-      {/* Mobile card layout */}
-      <div className="grid gap-4 md:hidden">
-        {(block.rows || []).map(
-          (row: string[], rowIndex: number) => (
-            <article
-              key={rowIndex}
-              className="group relative overflow-hidden rounded-[1.4rem] border border-[#273449] bg-[#101827] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-amber-base/40 hover:shadow-[0_18px_50px_rgba(0,0,0,0.35)]"
-            >
-              <div className="pointer-events-none absolute -right-14 -top-14 h-32 w-32 rounded-full bg-amber-base/0 blur-3xl transition-all duration-500 group-hover:bg-amber-base/10" />
-
-              <div className="relative space-y-4">
-                {row.map((cell: string, cellIndex: number) => {
-                  const label =
-                    block.columns?.[cellIndex] ||
-                    `Field ${cellIndex + 1}`;
-
-                  return (
-                    <div
-                      key={cellIndex}
-                      className={`rounded-2xl border p-4 ${
-                        cellIndex === 0
-                          ? "border-amber-base/25 bg-amber-base/10"
-                          : "border-white/10 bg-[#151f31]"
-                      }`}
-                    >
-                      <p className="text-[10px] font-black uppercase tracking-[0.18em] text-amber-base">
-                        {label}
-                      </p>
-
-                      <p
-                        className={`mt-2 text-sm leading-7 ${
-                          cellIndex === 0
-                            ? "font-black text-white"
-                            : "text-[#c2ccda]"
-                        }`}
-                      >
-                        {String(cell)}
-                      </p>
+                        <tbody>
+                          {(block.rows || []).map(
+                            (row: string[], rowIndex: number) => (
+                              <tr
+                                key={rowIndex}
+                                className={`group transition-all duration-300 hover:bg-[#172033] ${
+                                  rowIndex % 2 === 0
+                                    ? "bg-[#101827]"
+                                    : "bg-[#131c2c]"
+                                }`}
+                              >
+                                {row.map((cell: string, cellIndex: number) => (
+                                  <td
+                                    key={cellIndex}
+                                    className={`border-b border-[#273449] px-5 py-4 align-top text-sm leading-7 transition-colors duration-300 ${
+                                      cellIndex === 0
+                                        ? "font-bold text-white group-hover:text-[#fbbf24]"
+                                        : "text-[#aab6c8] group-hover:text-[#d7deea]"
+                                    }`}
+                                  >
+                                    {String(cell)}
+                                  </td>
+                                ))}
+                              </tr>
+                            ),
+                          )}
+                        </tbody>
+                      </table>
                     </div>
-                  );
-                })}
-              </div>
-            </article>
-          )
-        )}
-      </div>
-    </section>
-  );
+
+                    {/* Mobile card layout */}
+                    <div className="grid gap-4 md:hidden">
+                      {(block.rows || []).map(
+                        (row: string[], rowIndex: number) => (
+                          <article
+                            key={rowIndex}
+                            className="group relative overflow-hidden rounded-[1.4rem] border border-[#273449] bg-[#101827] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-amber-base/40 hover:shadow-[0_18px_50px_rgba(0,0,0,0.35)]"
+                          >
+                            <div className="pointer-events-none absolute -right-14 -top-14 h-32 w-32 rounded-full bg-amber-base/0 blur-3xl transition-all duration-500 group-hover:bg-amber-base/10" />
+
+                            <div className="relative space-y-4">
+                              {row.map((cell: string, cellIndex: number) => {
+                                const label =
+                                  block.columns?.[cellIndex] ||
+                                  `Field ${cellIndex + 1}`;
+
+                                return (
+                                  <div
+                                    key={cellIndex}
+                                    className={`rounded-2xl border p-4 ${
+                                      cellIndex === 0
+                                        ? "border-amber-base/25 bg-amber-base/10"
+                                        : "border-white/10 bg-[#151f31]"
+                                    }`}
+                                  >
+                                    <p className="text-[10px] font-black uppercase tracking-[0.18em] text-amber-base">
+                                      {label}
+                                    </p>
+
+                                    <p
+                                      className={`mt-2 text-sm leading-7 ${
+                                        cellIndex === 0
+                                          ? "font-black text-white"
+                                          : "text-[#c2ccda]"
+                                      }`}
+                                    >
+                                      {String(cell)}
+                                    </p>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          </article>
+                        ),
+                      )}
+                    </div>
+                  </section>
+                );
 
               case "codeBlock":
               case "code":
@@ -392,8 +399,7 @@ export default function ToolContent({
                     )}
 
                     <p className="mt-3 text-sm leading-7 text-silver md:text-base">
-                      {block.text ||
-                        block.description}
+                      {block.text || block.description}
                     </p>
                   </div>
                 );
@@ -413,7 +419,6 @@ export default function ToolContent({
           })}
         </div>
       </section>
-
     </article>
   );
 }

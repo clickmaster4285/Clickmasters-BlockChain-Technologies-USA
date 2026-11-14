@@ -14,10 +14,7 @@ import BackToTop from "@/components/ui/BackToTop";
 import GlossaryCard from "@/components/glossary/GlossaryCard";
 import { createMetadata } from "@/config/metadata";
 import { getPageHref, withPageContext } from "@/lib/pagination";
-import {
-  getAvailableGlossaryLetters,
-  getGlossaryCards,
-} from "@/lib/glossary";
+import { getAvailableGlossaryLetters, getGlossaryCards } from "@/lib/glossary";
 
 const PER_PAGE = 9;
 
@@ -32,13 +29,9 @@ function getRequestedPage(page?: string) {
   const parsedPage = Number(page || 1);
   return Number.isFinite(parsedPage) && parsedPage > 0 ? parsedPage : 1;
 }
-export async function generateMetadata({
-  searchParams,
-}: GlossaryPageProps) {
+export async function generateMetadata({ searchParams }: GlossaryPageProps) {
   const resolvedSearchParams = await searchParams;
-  const selectedLetter = (
-    resolvedSearchParams?.letter || "ALL"
-  ).toUpperCase();
+  const selectedLetter = (resolvedSearchParams?.letter || "ALL").toUpperCase();
   const searchQuery = resolvedSearchParams?.search?.trim() || "";
   const normalizedSearch = searchQuery.toLowerCase();
   const filteredTerms = getGlossaryCards().filter((item) => {
@@ -53,10 +46,7 @@ export async function generateMetadata({
 
     return matchesLetter && matchesSearch;
   });
-  const totalPages = Math.max(
-    Math.ceil(filteredTerms.length / PER_PAGE),
-    1,
-  );
+  const totalPages = Math.max(Math.ceil(filteredTerms.length / PER_PAGE), 1);
   const currentPage = Math.min(
     getRequestedPage(resolvedSearchParams?.page),
     totalPages,
@@ -83,9 +73,7 @@ export default async function GlossaryPage({
   const resolvedSearchParams = await searchParams;
 
   const requestedPage = Number(resolvedSearchParams?.page || 1);
-  const selectedLetter = (
-    resolvedSearchParams?.letter || "ALL"
-  ).toUpperCase();
+  const selectedLetter = (resolvedSearchParams?.letter || "ALL").toUpperCase();
   const searchQuery = resolvedSearchParams?.search?.trim() || "";
 
   const allTerms = getGlossaryCards();
@@ -93,44 +81,26 @@ export default async function GlossaryPage({
 
   const filteredTerms = allTerms.filter((item) => {
     const matchesLetter =
-      selectedLetter === "ALL" ||
-      item.letter === selectedLetter;
+      selectedLetter === "ALL" || item.letter === selectedLetter;
 
     const normalizedSearch = searchQuery.toLowerCase();
 
     const matchesSearch =
       !normalizedSearch ||
-      item.title
-        ?.toLowerCase()
-        .includes(normalizedSearch) ||
-      item.term
-        ?.toLowerCase()
-        .includes(normalizedSearch) ||
-      item.definition
-        ?.toLowerCase()
-        .includes(normalizedSearch) ||
-      item.category
-        ?.toLowerCase()
-        .includes(normalizedSearch);
+      item.title?.toLowerCase().includes(normalizedSearch) ||
+      item.term?.toLowerCase().includes(normalizedSearch) ||
+      item.definition?.toLowerCase().includes(normalizedSearch) ||
+      item.category?.toLowerCase().includes(normalizedSearch);
 
     return matchesLetter && matchesSearch;
   });
 
-  const totalPages = Math.max(
-    Math.ceil(filteredTerms.length / PER_PAGE),
-    1
-  );
+  const totalPages = Math.max(Math.ceil(filteredTerms.length / PER_PAGE), 1);
 
-  const safeCurrentPage = Math.min(
-    Math.max(requestedPage, 1),
-    totalPages
-  );
+  const safeCurrentPage = Math.min(Math.max(requestedPage, 1), totalPages);
 
   const start = (safeCurrentPage - 1) * PER_PAGE;
-  const visibleTerms = filteredTerms.slice(
-    start,
-    start + PER_PAGE
-  );
+  const visibleTerms = filteredTerms.slice(start, start + PER_PAGE);
 
   function createPageHref(page: number) {
     return getPageHref("/glossary", page, {
@@ -168,8 +138,8 @@ export default async function GlossaryPage({
 
                 <p className="mt-5 max-w-2xl text-base leading-8 text-silver md:text-lg">
                   Explore simple definitions, practical examples, technical
-                  explanations, and real-world uses of blockchain, crypto,
-                  Web3, DeFi, smart-contract, and enterprise terminology.
+                  explanations, and real-world uses of blockchain, crypto, Web3,
+                  DeFi, smart-contract, and enterprise terminology.
                 </p>
 
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
@@ -220,54 +190,52 @@ export default async function GlossaryPage({
                 </div>
               </div>
 
-           {/* Right hero image */}
-<div className="relative flex items-center justify-center lg:justify-end">
-  <div className="relative w-full max-w-[560px]">
-    {/* Soft glow behind image */}
-    <div className="pointer-events-none absolute inset-x-12 inset-y-10 rounded-full bg-amber-base/15 blur-3xl" />
+              {/* Right hero image */}
+              <div className="relative flex items-center justify-center lg:justify-end">
+                <div className="relative w-full max-w-[560px]">
+                  {/* Soft glow behind image */}
+                  <div className="pointer-events-none absolute inset-x-12 inset-y-10 rounded-full bg-amber-base/15 blur-3xl" />
 
-    {/* Main image area */}
-    <div className="relative aspect-[4/3] w-full overflow-hidden">
-      <Image
-        src="/media/glossary-hero.webp"
-        alt="Blockchain and Web3 glossary illustration"
-        fill
-        priority
-        sizes="(max-width: 1024px) 100vw, 45vw"
-        className="animate-glossary-float object-contain object-center drop-shadow-[0_30px_70px_rgba(0,0,0,0.45)]"
-      />
-    </div>
+                  {/* Main image area */}
+                  <div className="relative aspect-[4/3] w-full overflow-hidden">
+                    <Image
+                      src="/media/glossary-hero.webp"
+                      alt="Blockchain and Web3 glossary illustration"
+                      fill
+                      priority
+                      sizes="(max-width: 1024px) 100vw, 45vw"
+                      className="animate-glossary-float object-contain object-center drop-shadow-[0_30px_70px_rgba(0,0,0,0.45)]"
+                    />
+                  </div>
 
-    {/* Floating top label */}
-    <div className="absolute left-2 top-6 rounded-2xl border border-white/10 bg-bg-base/75 px-4 py-3 shadow-xl backdrop-blur-xl sm:left-6">
-      <p className="text-[10px] font-black uppercase tracking-[0.2em] text-amber-base">
-        Blockchain Terms
-      </p>
+                  {/* Floating top label */}
+                  <div className="absolute left-2 top-6 rounded-2xl border border-white/10 bg-bg-base/75 px-4 py-3 shadow-xl backdrop-blur-xl sm:left-6">
+                    <p className="text-[10px] font-black uppercase tracking-[0.2em] text-amber-base">
+                      Blockchain Terms
+                    </p>
 
-      <p className="mt-1 text-sm font-bold text-text-primary">
-        Simple explanations
-      </p>
-    </div>
+                    <p className="mt-1 text-sm font-bold text-text-primary">
+                      Simple explanations
+                    </p>
+                  </div>
 
-    {/* Floating bottom label */}
-    <div className="absolute bottom-5 right-2 rounded-2xl border border-white/10 bg-bg-base/75 px-4 py-3 shadow-xl backdrop-blur-xl sm:right-6">
-      <p className="text-[10px] font-black uppercase tracking-[0.2em] text-amber-base">
-        Developer Ready
-      </p>
+                  {/* Floating bottom label */}
+                  <div className="absolute bottom-5 right-2 rounded-2xl border border-white/10 bg-bg-base/75 px-4 py-3 shadow-xl backdrop-blur-xl sm:right-6">
+                    <p className="text-[10px] font-black uppercase tracking-[0.2em] text-amber-base">
+                      Developer Ready
+                    </p>
 
-      <p className="mt-1 text-sm font-bold text-text-primary">
-        Practical definitions
-      </p>
-    </div>
-  </div>
-</div>
+                    <p className="mt-1 text-sm font-bold text-text-primary">
+                      Practical definitions
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
           {/* Search and filters */}
           <section id="terms" className="mt-16">
-       
-
             {/* Heading */}
             <div className="mb-8 mt-14 flex flex-col justify-between gap-4 md:flex-row md:items-end">
               <div>
@@ -283,23 +251,21 @@ export default async function GlossaryPage({
               </div>
 
               <p className="max-w-xl text-sm leading-6 text-silver">
-                Showing {visibleTerms.length} of{" "}
-                {filteredTerms.length} matching terms.
+                Showing {visibleTerms.length} of {filteredTerms.length} matching
+                terms.
               </p>
             </div>
 
             {/* Cards */}
             {visibleTerms.length > 0 ? (
               <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-                {visibleTerms.map(
-                  (item, index: number) => (
-                    <GlossaryCard
-                      key={item.slug}
-                      item={item}
-                      index={start + index}
-                    />
-                  )
-                )}
+                {visibleTerms.map((item, index: number) => (
+                  <GlossaryCard
+                    key={item.slug}
+                    item={item}
+                    index={start + index}
+                  />
+                ))}
               </div>
             ) : (
               <div className="rounded-[2rem] border border-white/10 bg-surface/80 p-10 text-center md:p-16">
@@ -328,9 +294,7 @@ export default async function GlossaryPage({
               <div className="mt-16 flex flex-wrap items-center justify-center gap-3">
                 {safeCurrentPage > 1 ? (
                   <Link
-                    href={createPageHref(
-                      safeCurrentPage - 1
-                    )}
+                    href={createPageHref(safeCurrentPage - 1)}
                     className="inline-flex h-11 items-center gap-2 rounded-full border border-white/10 bg-surface px-5 text-sm font-bold text-silver transition-all hover:border-amber-base/40 hover:text-amber-base"
                   >
                     <ChevronLeft className="h-4 w-4" />
@@ -351,15 +315,13 @@ export default async function GlossaryPage({
                       ? Math.max(totalPages - 2, 1)
                       : safeCurrentPage;
 
-                  const pageNumber =
-                    paginationStart + index;
+                  const pageNumber = paginationStart + index;
 
                   if (pageNumber > totalPages) {
                     return null;
                   }
 
-                  const isActive =
-                    pageNumber === safeCurrentPage;
+                  const isActive = pageNumber === safeCurrentPage;
 
                   return (
                     <Link
@@ -378,9 +340,7 @@ export default async function GlossaryPage({
 
                 {safeCurrentPage < totalPages ? (
                   <Link
-                    href={createPageHref(
-                      safeCurrentPage + 1
-                    )}
+                    href={createPageHref(safeCurrentPage + 1)}
                     className="inline-flex h-11 items-center gap-2 rounded-full bg-amber-base px-5 text-sm font-black text-bg-base transition-transform hover:-translate-y-0.5"
                   >
                     Next
@@ -404,17 +364,17 @@ export default async function GlossaryPage({
                 Blockchain terminology often depends on the network,
                 application, or governance model being discussed. A token
                 standard, consensus mechanism, or custody term may have
-                different implications across systems. Use each definition as
-                an orientation, then follow technical material and protocol
+                different implications across systems. Use each definition as an
+                orientation, then follow technical material and protocol
                 documentation for implementation details.
               </p>
               <p>
                 When comparing concepts, note who controls keys, how state is
-                validated, where data is stored, and what assumptions users
-                must trust. For decisions involving contracts, financial
-                assets, or compliance, confirm the meaning with current
-                primary sources and qualified reviewers rather than relying on
-                a glossary entry alone.
+                validated, where data is stored, and what assumptions users must
+                trust. For decisions involving contracts, financial assets, or
+                compliance, confirm the meaning with current primary sources and
+                qualified reviewers rather than relying on a glossary entry
+                alone.
               </p>
               <p>
                 Search results and letter filters can help locate related

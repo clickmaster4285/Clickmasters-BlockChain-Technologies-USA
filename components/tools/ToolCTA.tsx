@@ -1,9 +1,5 @@
 import Link from "next/link";
-import {
-  ArrowRight,
-  Sparkles,
-  Wrench,
-} from "lucide-react";
+import { ArrowRight, Sparkles, Wrench } from "lucide-react";
 
 export default function ToolCTA({
   title = "Need help using this tool for your blockchain project?",
@@ -26,9 +22,7 @@ export default function ToolCTA({
   return (
     <section
       className={`group relative overflow-hidden rounded-[2rem] bg-gradient-to-r from-amber-base via-amber-light to-amber-base text-bg-base shadow-[0_28px_90px_rgba(0,0,0,0.28)] ${
-        compact
-          ? "p-6 sm:p-7 md:p-8"
-          : "p-8 sm:p-10 md:p-14"
+        compact ? "p-6 sm:p-7 md:p-8" : "p-8 sm:p-10 md:p-14"
       }`}
     >
       <div className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-white/15 blur-3xl transition-transform duration-700 group-hover:scale-125" />
@@ -55,9 +49,7 @@ export default function ToolCTA({
 
         <p
           className={`mt-5 max-w-3xl text-bg-base/80 ${
-            compact
-              ? "text-sm leading-7"
-              : "text-base leading-8 md:text-lg"
+            compact ? "text-sm leading-7" : "text-base leading-8 md:text-lg"
           }`}
         >
           {cta?.description || description}

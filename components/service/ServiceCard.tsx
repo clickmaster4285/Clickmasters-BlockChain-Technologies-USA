@@ -5,7 +5,13 @@ import { ArrowRight } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import type { Service } from "@/data/services";
 
-export default function ServiceCard({ service, index }: { service: Service; index: number }) {
+export default function ServiceCard({
+  service,
+  index,
+}: {
+  service: Service;
+  index: number;
+}) {
   const shouldReduce = useReducedMotion();
   return (
     <Link
@@ -24,14 +30,19 @@ export default function ServiceCard({ service, index }: { service: Service; inde
         <p className="mt-3 text-sm text-muted-foreground">{service.short}</p>
         <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
           {service.sections.slice(0, 2).map((ss) => (
-            <li key={ss.heading}><span className="font-semibold">{ss.heading}:</span> {ss.content}</li>
+            <li key={ss.heading}>
+              <span className="font-semibold">{ss.heading}:</span> {ss.content}
+            </li>
           ))}
         </ul>
         <div className="mt-4 flex items-center justify-between">
-          <span className="inline-flex items-center gap-2 text-sm font-semibold text-amber-base">Learn more
+          <span className="inline-flex items-center gap-2 text-sm font-semibold text-amber-base">
+            Learn more
             <ArrowRight className="h-4 w-4" aria-hidden />
           </span>
-          <span className="rounded-full bg-primary px-3 py-1 text-xs font-medium text-primary-foreground">Contact</span>
+          <span className="rounded-full bg-primary px-3 py-1 text-xs font-medium text-primary-foreground">
+            Contact
+          </span>
         </div>
       </motion.article>
     </Link>

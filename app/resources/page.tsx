@@ -23,9 +23,7 @@ type ResourcesPageProps = {
   }>;
 };
 
-export async function generateMetadata({
-  searchParams,
-}: ResourcesPageProps) {
+export async function generateMetadata({ searchParams }: ResourcesPageProps) {
   const params = await searchParams;
   const categories = getResourceCategories(getAllResources());
   const selectedCategory = resolveListingCategory(
@@ -66,15 +64,11 @@ export default async function ResourcesPage({
     );
   }
 
-  const initialSearch =
-    typeof params.search === "string"
-      ? params.search
-      : "";
+  const initialSearch = typeof params.search === "string" ? params.search : "";
 
   const allResources = getAllResources();
   const resourceCards = getResourceCards(allResources);
-  const categories =
-    getResourceCategories(allResources);
+  const categories = getResourceCategories(allResources);
   const initialCategory = resolveListingCategory(
     categories,
     typeof params.category === "string" ? params.category : "",

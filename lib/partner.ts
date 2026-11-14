@@ -116,25 +116,20 @@ export type NormalizedPartnerEntry = PartnerEntry & {
    Raw Data
 ========================================================= */
 
-const rawPartners =
-  partnersData as PartnerEntry[];
+const rawPartners = partnersData as PartnerEntry[];
 
 /* =========================================================
    Internal Helpers
 ========================================================= */
 
-function normalizeText(
-  value: string | undefined,
-): string | undefined {
+function normalizeText(value: string | undefined): string | undefined {
   if (typeof value !== "string") {
     return undefined;
   }
 
   const normalizedValue = value.trim();
 
-  return normalizedValue.length > 0
-    ? normalizedValue
-    : undefined;
+  return normalizedValue.length > 0 ? normalizedValue : undefined;
 }
 
 function normalizeSlug(slug: string): string {
@@ -144,25 +139,19 @@ function normalizeSlug(slug: string): string {
     .replace(/^\/+|\/+$/g, "");
 }
 
-function normalizePartner(
-  partner: PartnerEntry,
-): NormalizedPartnerEntry {
+function normalizePartner(partner: PartnerEntry): NormalizedPartnerEntry {
   return {
     ...partner,
 
     slug: normalizeSlug(partner.slug),
 
-    title:
-      normalizeText(partner.title) ||
-      "Blockchain Technology Partner",
+    title: normalizeText(partner.title) || "Blockchain Technology Partner",
 
     excerpt:
       normalizeText(partner.excerpt) ||
       "Explore this blockchain technology, infrastructure, security, or integration partner.",
 
-    category:
-      normalizeText(partner.category) ||
-      "Partners",
+    category: normalizeText(partner.category) || "Partners",
 
     image: normalizeText(partner.image),
 
@@ -170,61 +159,36 @@ function normalizePartner(
 
     date: normalizeText(partner.date),
 
-    readTime: normalizeText(
-      partner.readTime,
-    ),
+    readTime: normalizeText(partner.readTime),
 
     hero: partner.hero
       ? {
-          badge:
-            normalizeText(
-              partner.hero.badge,
-            ) || "PARTNER",
+          badge: normalizeText(partner.hero.badge) || "PARTNER",
 
           title:
-            normalizeText(
-              partner.hero.title,
-            ) ||
-            normalizeText(partner.title),
+            normalizeText(partner.hero.title) || normalizeText(partner.title),
 
           description:
-            normalizeText(
-              partner.hero.description,
-            ) ||
+            normalizeText(partner.hero.description) ||
             normalizeText(partner.excerpt),
 
-          image: normalizeText(
-            partner.hero.image,
-          ),
+          image: normalizeText(partner.hero.image),
         }
       : undefined,
 
-    credibility: Array.isArray(
-      partner.credibility,
-    )
+    credibility: Array.isArray(partner.credibility)
       ? partner.credibility
-          .map((item) =>
-            normalizeText(item),
-          )
-          .filter(
-            (item): item is string =>
-              Boolean(item),
-          )
+          .map((item) => normalizeText(item))
+          .filter((item): item is string => Boolean(item))
       : [],
 
-    content: Array.isArray(partner.content)
-      ? partner.content
-      : [],
+    content: Array.isArray(partner.content) ? partner.content : [],
 
     faqs: Array.isArray(partner.faqs)
       ? partner.faqs.filter(
           (faq) =>
-            Boolean(
-              normalizeText(faq.question),
-            ) &&
-            Boolean(
-              normalizeText(faq.answer),
-            ),
+            Boolean(normalizeText(faq.question)) &&
+            Boolean(normalizeText(faq.answer)),
         )
       : [],
 
@@ -234,30 +198,18 @@ function normalizePartner(
         "Ready to Discuss Your Blockchain Project?",
 
       description:
-        normalizeText(
-          partner.cta?.description,
-        ) ||
+        normalizeText(partner.cta?.description) ||
         "Speak with our team about the right technology, infrastructure, security, and integration approach for your project.",
 
       primaryText:
-        normalizeText(
-          partner.cta?.primaryText,
-        ) || "Book a Free Strategy Call",
+        normalizeText(partner.cta?.primaryText) || "Book a Free Strategy Call",
 
-      primaryLink:
-        normalizeText(
-          partner.cta?.primaryLink,
-        ) || "/contact",
+      primaryLink: normalizeText(partner.cta?.primaryLink) || "/contact",
 
       secondaryText:
-        normalizeText(
-          partner.cta?.secondaryText,
-        ) || "Explore Our Services",
+        normalizeText(partner.cta?.secondaryText) || "Explore Our Services",
 
-      secondaryLink:
-        normalizeText(
-          partner.cta?.secondaryLink,
-        ) || "/service",
+      secondaryLink: normalizeText(partner.cta?.secondaryLink) || "/service",
     },
   };
 }
@@ -266,16 +218,15 @@ function normalizePartner(
    Normalized Data
 ========================================================= */
 
-const partners: NormalizedPartnerEntry[] =
-  rawPartners
-    .filter(
-      (partner) =>
-        Boolean(partner) &&
-        typeof partner.id === "number" &&
-        Boolean(normalizeText(partner.slug)) &&
-        Boolean(normalizeText(partner.title)),
-    )
-    .map(normalizePartner);
+const partners: NormalizedPartnerEntry[] = rawPartners
+  .filter(
+    (partner) =>
+      Boolean(partner) &&
+      typeof partner.id === "number" &&
+      Boolean(normalizeText(partner.slug)) &&
+      Boolean(normalizeText(partner.title)),
+  )
+  .map(normalizePartner);
 
 /* =========================================================
    Public Functions
@@ -307,22 +258,16 @@ export function getPartnerCards(): NormalizedPartnerEntry[] {
 export function getPartnerBySlug(
   slug: string,
 ): NormalizedPartnerEntry | undefined {
-  const normalizedSlug =
-    normalizeSlug(slug);
+  const normalizedSlug = normalizeSlug(slug);
 
-  return partners.find(
-    (partner) =>
-      partner.slug === normalizedSlug,
-  );
+  return partners.find((partner) => partner.slug === normalizedSlug);
 }
 
 /**
  * Returns all partner slugs for static generation.
  */
 export function getPartnerSlugs(): string[] {
-  return partners.map(
-    (partner) => partner.slug,
-  );
+  return partners.map((partner) => partner.slug);
 }
 
 /**
@@ -340,20 +285,12 @@ export function getRelatedPartners(
   currentSlug: string,
   limit = 3,
 ): NormalizedPartnerEntry[] {
-  const normalizedCurrentSlug =
-    normalizeSlug(currentSlug);
+  const normalizedCurrentSlug = normalizeSlug(currentSlug);
 
-  const safeLimit =
-    Number.isInteger(limit) && limit > 0
-      ? limit
-      : 3;
+  const safeLimit = Number.isInteger(limit) && limit > 0 ? limit : 3;
 
   return partners
-    .filter(
-      (partner) =>
-        partner.slug !==
-        normalizedCurrentSlug,
-    )
+    .filter((partner) => partner.slug !== normalizedCurrentSlug)
     .slice(0, safeLimit)
     .map((partner) => ({
       ...partner,

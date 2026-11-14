@@ -33,10 +33,7 @@ import LocationPagination from "@/components/locations/LocationPagination";
 import { createMetadata } from "@/config/metadata";
 import { getPageHref, withPageContext } from "@/lib/pagination";
 
-import {
-  getLocationCards,
-  getLocationsCount,
-} from "@/lib/location";
+import { getLocationCards, getLocationsCount } from "@/lib/location";
 
 /* =========================================================
    Metadata
@@ -44,9 +41,7 @@ import {
 
 const LOCATIONS_PER_PAGE = 9;
 
-export async function generateMetadata({
-  searchParams,
-}: LocationsPageProps) {
+export async function generateMetadata({ searchParams }: LocationsPageProps) {
   const resolvedSearchParams = await searchParams;
   const requestedPage = Number(resolvedSearchParams?.page ?? "1");
   const totalPages = Math.max(
@@ -54,9 +49,7 @@ export async function generateMetadata({
     1,
   );
   const currentPage = Math.min(
-    Number.isInteger(requestedPage) && requestedPage > 0
-      ? requestedPage
-      : 1,
+    Number.isInteger(requestedPage) && requestedPage > 0 ? requestedPage : 1,
     totalPages,
   );
   const metadata = withPageContext(
@@ -180,31 +173,20 @@ export default async function LocationsPage({
 
   const cardsPerPage = LOCATIONS_PER_PAGE;
 
-  const requestedPage = Number(
-    resolvedSearchParams.page ?? "1",
-  );
+  const requestedPage = Number(resolvedSearchParams.page ?? "1");
 
   const currentPage =
-    Number.isInteger(requestedPage) &&
-    requestedPage > 0
-      ? requestedPage
-      : 1;
+    Number.isInteger(requestedPage) && requestedPage > 0 ? requestedPage : 1;
 
-  const totalPages = Math.max(
-    1,
-    Math.ceil(locations.length / cardsPerPage),
-  );
+  const totalPages = Math.max(1, Math.ceil(locations.length / cardsPerPage));
 
   if (currentPage > totalPages) {
     redirect(
-      totalPages === 1
-        ? "/locations"
-        : getPageHref("/locations", totalPages),
+      totalPages === 1 ? "/locations" : getPageHref("/locations", totalPages),
     );
   }
 
-  const startIndex =
-    (currentPage - 1) * cardsPerPage;
+  const startIndex = (currentPage - 1) * cardsPerPage;
 
   const visibleLocations = locations.slice(
     startIndex,
@@ -287,7 +269,6 @@ export default async function LocationsPage({
               <div className="relative z-10">
                 <div className="inline-flex items-center gap-2 rounded-full border border-amber-base/20 bg-amber-base/[0.075] px-4 py-2 text-xs font-bold uppercase tracking-[0.22em] text-amber-base">
                   <Sparkles className="h-4 w-4" />
-
                   Global Blockchain Delivery
                 </div>
 
@@ -296,16 +277,14 @@ export default async function LocationsPage({
                   <span className="bg-gradient-to-r from-amber-base via-amber-light to-amber-base bg-clip-text text-transparent">
                     Global Markets
                   </span>
-                  {currentPage > 1 &&
-                    ` — Page ${currentPage} of ${totalPages}`}
+                  {currentPage > 1 && ` — Page ${currentPage} of ${totalPages}`}
                 </h1>
 
                 <p className="mt-7 max-w-2xl text-base leading-8 text-silver md:text-lg">
-                  Explore our blockchain development services
-                  across major cities and technology markets. We
-                  combine global engineering expertise with
-                  regional business understanding to build secure,
-                  scalable, and production-ready digital products.
+                  Explore our blockchain development services across major
+                  cities and technology markets. We combine global engineering
+                  expertise with regional business understanding to build
+                  secure, scalable, and production-ready digital products.
                 </p>
 
                 <div className="mt-9 flex flex-wrap gap-3">
@@ -314,7 +293,6 @@ export default async function LocationsPage({
                     className="group inline-flex items-center gap-2 rounded-full bg-amber-base px-7 py-4 text-sm font-black text-bg-base shadow-glow transition-all duration-300 hover:-translate-y-1 hover:bg-amber-light"
                   >
                     Discuss Your Project
-
                     <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                   </Link>
 
@@ -323,7 +301,6 @@ export default async function LocationsPage({
                     className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.035] px-7 py-4 text-sm font-bold text-text-primary transition-all duration-300 hover:-translate-y-1 hover:border-amber-base/35 hover:bg-amber-base/[0.05] hover:text-amber-base"
                   >
                     Explore Services
-
                     <ArrowUpRight className="h-4 w-4" />
                   </Link>
                 </div>
@@ -431,7 +408,6 @@ export default async function LocationsPage({
 
                         <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-amber-base" />
                       </span>
-
                       Global delivery network
                     </div>
 
@@ -443,16 +419,12 @@ export default async function LocationsPage({
                           </p>
 
                           <p className="mt-2 max-w-sm text-lg font-black leading-snug text-text-primary md:text-xl">
-                            Global engineering connected to local
-                            business requirements
+                            Global engineering connected to local business
+                            requirements
                           </p>
 
                           <div className="mt-4 flex flex-wrap gap-2">
-                            {[
-                              "Global",
-                              "Secure",
-                              "Scalable",
-                            ].map((item) => (
+                            {["Global", "Secure", "Scalable"].map((item) => (
                               <span
                                 key={item}
                                 className="rounded-full border border-white/10 bg-white/[0.035] px-3 py-1 text-[10px] font-medium text-silver"
@@ -478,9 +450,7 @@ export default async function LocationsPage({
                     </span>
 
                     <div>
-                      <p className="text-[10px] text-silver">
-                        Development
-                      </p>
+                      <p className="text-[10px] text-silver">Development</p>
 
                       <p className="text-xs font-black text-text-primary">
                         Enterprise ready
@@ -496,9 +466,7 @@ export default async function LocationsPage({
                     </span>
 
                     <div>
-                      <p className="text-[10px] text-silver">
-                        Coverage
-                      </p>
+                      <p className="text-[10px] text-silver">Coverage</p>
 
                       <p className="text-xs font-black text-text-primary">
                         Worldwide
@@ -522,16 +490,15 @@ export default async function LocationsPage({
                 </p>
 
                 <h2 className="mt-4 text-3xl font-black tracking-[-0.035em] text-text-primary md:text-5xl">
-                  Global Capabilities With Regional Business
-                  Understanding
+                  Global Capabilities With Regional Business Understanding
                 </h2>
               </div>
 
               <p className="max-w-2xl text-sm leading-7 text-silver lg:justify-self-end">
-                Successful blockchain products require more than
-                technical development. They require understanding
-                the market, users, regulations, integrations, and
-                operating environment surrounding the product.
+                Successful blockchain products require more than technical
+                development. They require understanding the market, users,
+                regulations, integrations, and operating environment surrounding
+                the product.
               </p>
             </div>
 
@@ -570,22 +537,19 @@ export default async function LocationsPage({
               <div>
                 <div className="inline-flex items-center gap-2 rounded-full border border-amber-base/20 bg-amber-base/[0.065] px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-amber-base">
                   <MapPin className="h-4 w-4" />
-
                   Development Locations
                 </div>
 
                 <h2 className="mt-5 max-w-4xl text-3xl font-black tracking-[-0.035em] text-text-primary md:text-5xl">
-                  Explore Blockchain Development Services by
-                  Location
+                  Explore Blockchain Development Services by Location
                 </h2>
               </div>
 
               <div className="lg:text-right">
                 <p className="text-sm leading-7 text-silver">
-                  Select a location to explore regional blockchain
-                  expertise, business opportunities, technology
-                  services, delivery capabilities, and local market
-                  insights.
+                  Select a location to explore regional blockchain expertise,
+                  business opportunities, technology services, delivery
+                  capabilities, and local market insights.
                 </p>
 
                 <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.025] px-4 py-2 text-xs font-bold text-amber-base">
@@ -597,139 +561,131 @@ export default async function LocationsPage({
             {visibleLocations.length > 0 ? (
               <>
                 <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-                  {visibleLocations.map(
-                    (location, index) => {
-                      const globalIndex =
-                        startIndex + index + 1;
+                  {visibleLocations.map((location, index) => {
+                    const globalIndex = startIndex + index + 1;
 
-                      const locationName =
-                        location.city ||
-                        location.country ||
-                        location.region ||
-                        "Global";
+                    const locationName =
+                      location.city ||
+                      location.country ||
+                      location.region ||
+                      "Global";
 
-                      return (
-                        <Link
-                          key={location.slug}
-                          href={`/locations/${location.slug}`}
-                          className="group relative flex min-h-[510px] flex-col overflow-hidden rounded-[2rem] border border-white/[0.09] bg-surface shadow-[0_20px_65px_rgba(0,0,0,0.16)] transition-all duration-500 hover:-translate-y-2 hover:border-amber-base/35 hover:bg-surface/90 hover:shadow-[0_30px_90px_rgba(0,0,0,0.25)]"
-                        >
-                          <div className="absolute -right-20 -top-20 h-52 w-52 rounded-full bg-amber-base/[0.045] blur-[60px] transition-colors duration-500 group-hover:bg-amber-base/[0.09]" />
+                    return (
+                      <Link
+                        key={location.slug}
+                        href={`/locations/${location.slug}`}
+                        className="group relative flex min-h-[510px] flex-col overflow-hidden rounded-[2rem] border border-white/[0.09] bg-surface shadow-[0_20px_65px_rgba(0,0,0,0.16)] transition-all duration-500 hover:-translate-y-2 hover:border-amber-base/35 hover:bg-surface/90 hover:shadow-[0_30px_90px_rgba(0,0,0,0.25)]"
+                      >
+                        <div className="absolute -right-20 -top-20 h-52 w-52 rounded-full bg-amber-base/[0.045] blur-[60px] transition-colors duration-500 group-hover:bg-amber-base/[0.09]" />
 
-                          {/* Card Visual */}
+                        {/* Card Visual */}
 
-                          <div className="relative h-[230px] overflow-hidden border-b border-white/[0.08] bg-bg-base sm:h-[245px]">
-                            {location.image ? (
-                              <>
-                                <Image
-                                  src={location.image}
-                                  alt={location.title}
-                                  fill
-                                  sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
-                                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                                />
+                        <div className="relative h-[230px] overflow-hidden border-b border-white/[0.08] bg-bg-base sm:h-[245px]">
+                          {location.image ? (
+                            <>
+                              <Image
+                                src={location.image}
+                                alt={location.title}
+                                fill
+                                sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                                className="object-cover transition-transform duration-700 group-hover:scale-110"
+                              />
 
-                                <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/25 to-transparent" />
+                              <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/25 to-transparent" />
 
-                                <div className="absolute inset-0 bg-gradient-to-br from-bg-base/65 via-transparent to-amber-base/10" />
-                              </>
-                            ) : (
-                              <>
-                                <div
-                                  className="absolute inset-0 opacity-[0.16]"
-                                  style={{
-                                    backgroundImage:
-                                      "linear-gradient(rgba(225,157,45,0.18) 1px, transparent 1px), linear-gradient(90deg, rgba(225,157,45,0.18) 1px, transparent 1px)",
+                              <div className="absolute inset-0 bg-gradient-to-br from-bg-base/65 via-transparent to-amber-base/10" />
+                            </>
+                          ) : (
+                            <>
+                              <div
+                                className="absolute inset-0 opacity-[0.16]"
+                                style={{
+                                  backgroundImage:
+                                    "linear-gradient(rgba(225,157,45,0.18) 1px, transparent 1px), linear-gradient(90deg, rgba(225,157,45,0.18) 1px, transparent 1px)",
 
-                                    backgroundSize:
-                                      "28px 28px",
-                                  }}
-                                />
+                                  backgroundSize: "28px 28px",
+                                }}
+                              />
 
-                                <div className="absolute inset-0 grid place-items-center">
-                                  <span className="grid h-24 w-24 place-items-center rounded-[1.7rem] border border-amber-base/25 bg-surface text-amber-base transition-transform duration-500 group-hover:rotate-3 group-hover:scale-110">
-                                    <MapPin className="h-11 w-11" />
-                                  </span>
-                                </div>
-                              </>
-                            )}
+                              <div className="absolute inset-0 grid place-items-center">
+                                <span className="grid h-24 w-24 place-items-center rounded-[1.7rem] border border-amber-base/25 bg-surface text-amber-base transition-transform duration-500 group-hover:rotate-3 group-hover:scale-110">
+                                  <MapPin className="h-11 w-11" />
+                                </span>
+                              </div>
+                            </>
+                          )}
 
-                            <div className="absolute -left-14 -top-14 h-44 w-44 rounded-full bg-amber-base/[0.10] blur-3xl" />
+                          <div className="absolute -left-14 -top-14 h-44 w-44 rounded-full bg-amber-base/[0.10] blur-3xl" />
 
-                            <div className="absolute -bottom-16 right-8 h-52 w-52 rounded-full bg-amber-base/[0.05] blur-3xl" />
+                          <div className="absolute -bottom-16 right-8 h-52 w-52 rounded-full bg-amber-base/[0.05] blur-3xl" />
 
-                            <div className="absolute inset-x-10 bottom-0 h-px bg-gradient-to-r from-transparent via-amber-base/55 to-transparent" />
+                          <div className="absolute inset-x-10 bottom-0 h-px bg-gradient-to-r from-transparent via-amber-base/55 to-transparent" />
 
-                            <div className="absolute left-5 top-5">
-                              <span className="inline-flex items-center gap-2 rounded-full border border-amber-base/20 bg-bg-base/75 px-3.5 py-1.5 text-[10px] font-black uppercase tracking-[0.16em] text-amber-base backdrop-blur-xl">
-                                <MapPin className="h-3.5 w-3.5" />
+                          <div className="absolute left-5 top-5">
+                            <span className="inline-flex items-center gap-2 rounded-full border border-amber-base/20 bg-bg-base/75 px-3.5 py-1.5 text-[10px] font-black uppercase tracking-[0.16em] text-amber-base backdrop-blur-xl">
+                              <MapPin className="h-3.5 w-3.5" />
 
-                                {locationName}
-                              </span>
-                            </div>
-
-                            <span className="absolute right-5 top-5 grid h-9 min-w-9 place-items-center rounded-full border border-white/10 bg-bg-base/70 px-2 font-mono text-[10px] font-bold text-silver backdrop-blur-xl">
-                              {String(
-                                globalIndex,
-                              ).padStart(2, "0")}
+                              {locationName}
                             </span>
                           </div>
 
-                          {/* Card Content */}
+                          <span className="absolute right-5 top-5 grid h-9 min-w-9 place-items-center rounded-full border border-white/10 bg-bg-base/70 px-2 font-mono text-[10px] font-bold text-silver backdrop-blur-xl">
+                            {String(globalIndex).padStart(2, "0")}
+                          </span>
+                        </div>
 
-                          <div className="relative flex flex-1 flex-col p-6 md:p-7">
-                            <div className="flex items-center justify-between gap-4">
-                              <p className="text-[10px] font-black uppercase tracking-[0.2em] text-amber-base">
-                                Blockchain Development
-                              </p>
+                        {/* Card Content */}
 
-                              <span className="shrink-0 text-xs font-medium text-silver">
-                                {location.readTime ||
-                                  "Location guide"}
-                              </span>
-                            </div>
-
-                            <h2 className="mt-4 text-2xl font-black leading-[1.2] tracking-[-0.025em] text-text-primary transition-colors duration-300 group-hover:text-amber-base">
-                              {location.title}
-                            </h2>
-
-                            <p className="mt-4 line-clamp-3 text-sm leading-7 text-silver">
-                              {location.excerpt}
+                        <div className="relative flex flex-1 flex-col p-6 md:p-7">
+                          <div className="flex items-center justify-between gap-4">
+                            <p className="text-[10px] font-black uppercase tracking-[0.2em] text-amber-base">
+                              Blockchain Development
                             </p>
 
-                            {location.credibility &&
-                              location.credibility.length >
-                                0 && (
-                                <div className="mt-5 flex flex-wrap gap-2">
-                                  {location.credibility
-                                    .slice(0, 3)
-                                    .map((item) => (
-                                      <span
-                                        key={item}
-                                        className="rounded-full border border-white/[0.085] bg-white/[0.025] px-3 py-1.5 text-[10px] font-medium text-silver"
-                                      >
-                                        {item}
-                                      </span>
-                                    ))}
-                                </div>
-                              )}
+                            <span className="shrink-0 text-xs font-medium text-silver">
+                              {location.readTime || "Location guide"}
+                            </span>
+                          </div>
 
-                            <div className="mt-auto pt-7">
-                              <div className="flex items-center justify-between border-t border-white/[0.08] pt-5">
-                                <span className="text-sm font-black text-text-primary transition-colors duration-300 group-hover:text-amber-base">
-                                  Explore location
-                                </span>
+                          <h2 className="mt-4 text-2xl font-black leading-[1.2] tracking-[-0.025em] text-text-primary transition-colors duration-300 group-hover:text-amber-base">
+                            {location.title}
+                          </h2>
 
-                                <span className="grid h-10 w-10 place-items-center rounded-full border border-white/[0.09] bg-white/[0.025] text-amber-base transition-all duration-300 group-hover:border-amber-base/30 group-hover:bg-amber-base group-hover:text-bg-base">
-                                  <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                                </span>
+                          <p className="mt-4 line-clamp-3 text-sm leading-7 text-silver">
+                            {location.excerpt}
+                          </p>
+
+                          {location.credibility &&
+                            location.credibility.length > 0 && (
+                              <div className="mt-5 flex flex-wrap gap-2">
+                                {location.credibility
+                                  .slice(0, 3)
+                                  .map((item) => (
+                                    <span
+                                      key={item}
+                                      className="rounded-full border border-white/[0.085] bg-white/[0.025] px-3 py-1.5 text-[10px] font-medium text-silver"
+                                    >
+                                      {item}
+                                    </span>
+                                  ))}
                               </div>
+                            )}
+
+                          <div className="mt-auto pt-7">
+                            <div className="flex items-center justify-between border-t border-white/[0.08] pt-5">
+                              <span className="text-sm font-black text-text-primary transition-colors duration-300 group-hover:text-amber-base">
+                                Explore location
+                              </span>
+
+                              <span className="grid h-10 w-10 place-items-center rounded-full border border-white/[0.09] bg-white/[0.025] text-amber-base transition-all duration-300 group-hover:border-amber-base/30 group-hover:bg-amber-base group-hover:text-bg-base">
+                                <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                              </span>
                             </div>
                           </div>
-                        </Link>
-                      );
-                    },
-                  )}
+                        </div>
+                      </Link>
+                    );
+                  })}
                 </div>
 
                 <LocationPagination
@@ -748,9 +704,8 @@ export default async function LocationsPage({
                 </h2>
 
                 <p className="mx-auto mt-3 max-w-lg text-sm leading-7 text-silver">
-                  Confirm that your location entries include a
-                  valid title and slug inside the locations data
-                  file.
+                  Confirm that your location entries include a valid title and
+                  slug inside the locations data file.
                 </p>
               </div>
             )}
@@ -767,14 +722,13 @@ export default async function LocationsPage({
               </p>
 
               <h2 className="mt-4 text-3xl font-black tracking-[-0.035em] text-text-primary md:text-5xl">
-                From Local Opportunity to Production-Ready
-                Blockchain Product
+                From Local Opportunity to Production-Ready Blockchain Product
               </h2>
 
               <p className="mt-5 text-sm leading-7 text-silver md:text-base">
-                We combine market understanding, product strategy,
-                technical architecture, engineering, integrations,
-                security, and long-term support.
+                We combine market understanding, product strategy, technical
+                architecture, engineering, integrations, security, and long-term
+                support.
               </p>
             </div>
 
@@ -830,20 +784,18 @@ export default async function LocationsPage({
                 <div>
                   <div className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-[0.22em] text-amber-base">
                     <Sparkles className="h-4 w-4" />
-
                     Build From Anywhere
                   </div>
 
                   <h2 className="mt-5 max-w-4xl text-3xl font-black leading-tight text-text-primary md:text-5xl">
-                    Build a Secure Blockchain Product for Your
-                    Market
+                    Build a Secure Blockchain Product for Your Market
                   </h2>
 
                   <p className="mt-5 max-w-2xl text-sm leading-7 text-silver md:text-base">
-                    Share your location, industry, business
-                    challenge, or product idea. Our team will help
-                    define the correct use case, architecture,
-                    integrations, roadmap, and delivery model.
+                    Share your location, industry, business challenge, or
+                    product idea. Our team will help define the correct use
+                    case, architecture, integrations, roadmap, and delivery
+                    model.
                   </p>
                 </div>
 
@@ -853,7 +805,6 @@ export default async function LocationsPage({
                     className="group inline-flex items-center justify-center gap-2 rounded-full bg-amber-base px-8 py-4 text-sm font-black text-bg-base shadow-glow transition-transform duration-300 hover:-translate-y-1 hover:bg-amber-light"
                   >
                     Book a Free Consultation
-
                     <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                   </Link>
 
@@ -862,7 +813,6 @@ export default async function LocationsPage({
                     className="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/[0.035] px-8 py-4 text-sm font-bold text-text-primary transition-all duration-300 hover:border-amber-base/30 hover:bg-amber-base/[0.05] hover:text-amber-base"
                   >
                     Explore Industries
-
                     <ArrowUpRight className="h-4 w-4" />
                   </Link>
                 </div>

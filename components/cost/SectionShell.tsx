@@ -20,7 +20,9 @@ export default function SectionShell({
   eyebrow?: string;
 }) {
   return (
-    <section className={`relative w-full py-16 md:py-24 ${toneClass[tone]} ${className}`}>
+    <section
+      className={`relative w-full py-16 md:py-24 ${toneClass[tone]} ${className}`}
+    >
       <div className="site-container mx-auto px-4">
         {eyebrow && (
           <div className="mb-3 inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.2em] text-amber-base">

@@ -2,11 +2,7 @@
 
 import Link from "next/link";
 import { getPageHref } from "@/lib/pagination";
-import {
-  ArrowLeft,
-  ArrowRight,
-  MoreHorizontal,
-} from "lucide-react";
+import { ArrowLeft, ArrowRight, MoreHorizontal } from "lucide-react";
 
 type IndustryPaginationProps = {
   currentPage: number;
@@ -18,10 +14,7 @@ function getVisiblePages(
   totalPages: number,
 ): Array<number | "ellipsis"> {
   if (totalPages <= 7) {
-    return Array.from(
-      { length: totalPages },
-      (_, index) => index + 1,
-    );
+    return Array.from({ length: totalPages }, (_, index) => index + 1);
   }
 
   if (currentPage <= 4) {
@@ -59,10 +52,7 @@ export default function IndustryPagination({
     return null;
   }
 
-  const visiblePages = getVisiblePages(
-    currentPage,
-    totalPages,
-  );
+  const visiblePages = getVisiblePages(currentPage, totalPages);
 
   const createPageLink = (page: number) => getPageHref("/industries", page);
 
@@ -72,14 +62,8 @@ export default function IndustryPagination({
       className="mt-14 flex flex-col items-center gap-5"
     >
       <p className="text-xs font-semibold text-silver">
-        Page{" "}
-        <span className="text-text-primary">
-          {currentPage}
-        </span>{" "}
-        of{" "}
-        <span className="text-text-primary">
-          {totalPages}
-        </span>
+        Page <span className="text-text-primary">{currentPage}</span> of{" "}
+        <span className="text-text-primary">{totalPages}</span>
       </p>
 
       <div className="flex flex-wrap items-center justify-center gap-2">
@@ -92,17 +76,13 @@ export default function IndustryPagination({
           >
             <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
 
-            <span className="hidden sm:inline">
-              Previous
-            </span>
+            <span className="hidden sm:inline">Previous</span>
           </Link>
         ) : (
           <span className="inline-flex h-11 cursor-not-allowed items-center justify-center gap-2 rounded-full border border-white/[0.05] bg-surface/40 px-5 text-xs font-black text-silver/40">
             <ArrowLeft className="h-4 w-4" />
 
-            <span className="hidden sm:inline">
-              Previous
-            </span>
+            <span className="hidden sm:inline">Previous</span>
           </span>
         )}
 

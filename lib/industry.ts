@@ -136,11 +136,7 @@ export function normalizeIndustrySlug(slug: string): string {
 
 function normalizeStringArray(values: string[]): string[] {
   return Array.from(
-    new Set(
-      values
-        .map((value) => normalizeString(value))
-        .filter(Boolean)
-    )
+    new Set(values.map((value) => normalizeString(value)).filter(Boolean)),
   );
 }
 
@@ -149,30 +145,20 @@ function normalizeStringArray(values: string[]): string[] {
 ========================================================= */
 
 function isRecord(value: unknown): value is UnknownRecord {
-  return (
-    typeof value === "object" &&
-    value !== null &&
-    !Array.isArray(value)
-  );
+  return typeof value === "object" && value !== null && !Array.isArray(value);
 }
 
 function isStringArray(value: unknown): value is string[] {
   return (
-    Array.isArray(value) &&
-    value.every((item) => typeof item === "string")
+    Array.isArray(value) && value.every((item) => typeof item === "string")
   );
 }
 
 function isStringMatrix(value: unknown): value is string[][] {
-  return (
-    Array.isArray(value) &&
-    value.every((row) => isStringArray(row))
-  );
+  return Array.isArray(value) && value.every((row) => isStringArray(row));
 }
 
-function isIndustryContentBlock(
-  value: unknown
-): value is IndustryContentBlock {
+function isIndustryContentBlock(value: unknown): value is IndustryContentBlock {
   if (!isRecord(value)) {
     return false;
   }
@@ -187,19 +173,14 @@ function isIndustryContentBlock(
       return isStringArray(value.items);
 
     case "table":
-      return (
-        isStringArray(value.headers) &&
-        isStringMatrix(value.rows)
-      );
+      return isStringArray(value.headers) && isStringMatrix(value.rows);
 
     default:
       return false;
   }
 }
 
-function isIndustryHero(
-  value: unknown
-): value is IndustryHero {
+function isIndustryHero(value: unknown): value is IndustryHero {
   if (!isRecord(value)) {
     return false;
   }
@@ -211,22 +192,15 @@ function isIndustryHero(
   );
 }
 
-function isIndustryFaq(
-  value: unknown
-): value is IndustryFaq {
+function isIndustryFaq(value: unknown): value is IndustryFaq {
   if (!isRecord(value)) {
     return false;
   }
 
-  return (
-    typeof value.question === "string" &&
-    typeof value.answer === "string"
-  );
+  return typeof value.question === "string" && typeof value.answer === "string";
 }
 
-function isIndustryCta(
-  value: unknown
-): value is IndustryCta {
+function isIndustryCta(value: unknown): value is IndustryCta {
   if (!isRecord(value)) {
     return false;
   }
@@ -239,9 +213,7 @@ function isIndustryCta(
   );
 }
 
-function isIndustryPage(
-  value: unknown
-): value is IndustryPage {
+function isIndustryPage(value: unknown): value is IndustryPage {
   if (!isRecord(value)) {
     return false;
   }
@@ -272,7 +244,7 @@ function isIndustryPage(
 ========================================================= */
 
 function normalizeContentBlock(
-  block: IndustryContentBlock
+  block: IndustryContentBlock,
 ): IndustryContentBlock | null {
   switch (block.type) {
     case "featuredAnswer": {
@@ -324,9 +296,7 @@ function normalizeContentBlock(
 
       const rows = block.rows
         .map((row) => row.map(normalizeString))
-        .filter((row) =>
-          row.some((cell) => Boolean(cell))
-        );
+        .filter((row) => row.some((cell) => Boolean(cell)));
 
       if (headers.length === 0 || rows.length === 0) {
         return null;
@@ -348,30 +318,21 @@ function normalizeContentBlock(
    Industry Page Normalization
 ========================================================= */
 
-function normalizeIndustryPage(
-  industry: IndustryPage
-): IndustryPage {
+function normalizeIndustryPage(industry: IndustryPage): IndustryPage {
   const title = normalizeString(industry.title);
 
   const excerpt = normalizeString(industry.excerpt);
 
   const content = industry.content
     .map(normalizeContentBlock)
-    .filter(
-      (
-        block
-      ): block is IndustryContentBlock =>
-        block !== null
-    );
+    .filter((block): block is IndustryContentBlock => block !== null);
 
   const faqs = industry.faqs
     .map((faq) => ({
       question: normalizeString(faq.question),
       answer: normalizeString(faq.answer),
     }))
-    .filter(
-      (faq) => faq.question && faq.answer
-    );
+    .filter((faq) => faq.question && faq.answer);
 
   return {
     id: industry.id,
@@ -384,38 +345,23 @@ function normalizeIndustryPage(
 
     category: "Industry",
 
-    author:
-      normalizeString(industry.author) ||
-      "ClickMasters Team",
+    author: normalizeString(industry.author) || "ClickMasters Team",
 
     date: normalizeString(industry.date),
 
-    readTime:
-      normalizeString(industry.readTime) ||
-      "5 min read",
+    readTime: normalizeString(industry.readTime) || "5 min read",
 
-    image:
-      normalizeString(industry.image) ||
-      "/media/blockchain.webp",
+    image: normalizeString(industry.image) || "/media/blockchain.webp",
 
     hero: {
-      badge:
-        normalizeString(industry.hero.badge) ||
-        "Industry",
+      badge: normalizeString(industry.hero.badge) || "Industry",
 
-      title:
-        normalizeString(industry.hero.title) ||
-        title,
+      title: normalizeString(industry.hero.title) || title,
 
-      description:
-        normalizeString(
-          industry.hero.description
-        ) || excerpt,
+      description: normalizeString(industry.hero.description) || excerpt,
     },
 
-    credibility: normalizeStringArray(
-      industry.credibility
-    ),
+    credibility: normalizeStringArray(industry.credibility),
 
     content,
 
@@ -427,20 +373,14 @@ function normalizeIndustryPage(
         "Ready to Build Your Blockchain Solution?",
 
       description:
-        normalizeString(
-          industry.cta.description
-        ) ||
+        normalizeString(industry.cta.description) ||
         "Discuss your requirements with our blockchain development team.",
 
       primaryText:
-        normalizeString(
-          industry.cta.primaryText
-        ) || "Book a Free Consultation",
+        normalizeString(industry.cta.primaryText) || "Book a Free Consultation",
 
       secondaryText:
-        normalizeString(
-          industry.cta.secondaryText
-        ) || "Request a Proposal",
+        normalizeString(industry.cta.secondaryText) || "Request a Proposal",
     },
   };
 }
@@ -449,9 +389,7 @@ function normalizeIndustryPage(
    Industry Card Mapper
 ========================================================= */
 
-function mapIndustryToCard(
-  industry: IndustryPage
-): IndustryCardData {
+function mapIndustryToCard(industry: IndustryPage): IndustryCardData {
   return {
     id: industry.id,
     slug: industry.slug,
@@ -471,78 +409,54 @@ function mapIndustryToCard(
    Industry Data Collection
 ========================================================= */
 
-const normalizedIndustriesMap = new Map<
-  string,
-  IndustryPage
->();
+const normalizedIndustriesMap = new Map<string, IndustryPage>();
 
 const normalizedIndustryIds = new Set<number>();
 
 if (!Array.isArray(industriesData)) {
-  console.warn(
-    "[industry] industriesData must be an array."
-  );
+  console.warn("[industry] industriesData must be an array.");
 } else {
   for (const industry of industriesData) {
     if (!isIndustryPage(industry)) {
-      console.warn(
-        "[industry] Invalid industry entry skipped:",
-        industry
-      );
+      console.warn("[industry] Invalid industry entry skipped:", industry);
 
       continue;
     }
 
-    const normalizedIndustry =
-      normalizeIndustryPage(industry);
+    const normalizedIndustry = normalizeIndustryPage(industry);
 
     if (!normalizedIndustry.slug) {
       console.warn(
         "[industry] Industry with empty slug skipped:",
-        normalizedIndustry.title
+        normalizedIndustry.title,
       );
 
       continue;
     }
 
-    if (
-      normalizedIndustriesMap.has(
-        normalizedIndustry.slug
-      )
-    ) {
+    if (normalizedIndustriesMap.has(normalizedIndustry.slug)) {
       console.warn(
-        `[industry] Duplicate slug skipped: "${normalizedIndustry.slug}"`
+        `[industry] Duplicate slug skipped: "${normalizedIndustry.slug}"`,
       );
 
       continue;
     }
 
-    if (
-      normalizedIndustryIds.has(
-        normalizedIndustry.id
-      )
-    ) {
+    if (normalizedIndustryIds.has(normalizedIndustry.id)) {
       console.warn(
-        `[industry] Duplicate ID skipped: "${normalizedIndustry.id}"`
+        `[industry] Duplicate ID skipped: "${normalizedIndustry.id}"`,
       );
 
       continue;
     }
 
-    normalizedIndustriesMap.set(
-      normalizedIndustry.slug,
-      normalizedIndustry
-    );
+    normalizedIndustriesMap.set(normalizedIndustry.slug, normalizedIndustry);
 
-    normalizedIndustryIds.add(
-      normalizedIndustry.id
-    );
+    normalizedIndustryIds.add(normalizedIndustry.id);
   }
 }
 
-const normalizedIndustries = Array.from(
-  normalizedIndustriesMap.values()
-);
+const normalizedIndustries = Array.from(normalizedIndustriesMap.values());
 
 /* =========================================================
    Public Industry Utilities
@@ -561,79 +475,50 @@ export function getAllIndustryPages(): IndustryPage[] {
   }));
 }
 
-export function getIndustryPageBySlug(
-  slug: string
-): IndustryPage | undefined {
-  const normalizedSlug =
-    normalizeIndustrySlug(slug);
+export function getIndustryPageBySlug(slug: string): IndustryPage | undefined {
+  const normalizedSlug = normalizeIndustrySlug(slug);
 
-  return normalizedIndustriesMap.get(
-    normalizedSlug
-  );
+  return normalizedIndustriesMap.get(normalizedSlug);
 }
 
-export function hasIndustryPage(
-  slug: string
-): boolean {
-  return normalizedIndustriesMap.has(
-    normalizeIndustrySlug(slug)
-  );
+export function hasIndustryPage(slug: string): boolean {
+  return normalizedIndustriesMap.has(normalizeIndustrySlug(slug));
 }
 
 export function getIndustryCards(): IndustryCardData[] {
-  return normalizedIndustries.map(
-    mapIndustryToCard
-  );
+  return normalizedIndustries.map(mapIndustryToCard);
 }
 
 export function getIndustryStaticParams(): IndustryPageParams[] {
-  return normalizedIndustries.map(
-    (industry) => ({
-      slug: industry.slug,
-    })
-  );
+  return normalizedIndustries.map((industry) => ({
+    slug: industry.slug,
+  }));
 }
 
 export function getIndustrySlugs(): string[] {
-  return normalizedIndustries.map(
-    (industry) => industry.slug
-  );
+  return normalizedIndustries.map((industry) => industry.slug);
 }
 
 export function getIndustryPageCount(): number {
   return normalizedIndustries.length;
 }
 
-export function getFeaturedIndustryPages(
-  limit = 6
-): IndustryCardData[] {
-  const safeLimit = Math.max(
-    0,
-    Math.floor(limit)
-  );
+export function getFeaturedIndustryPages(limit = 6): IndustryCardData[] {
+  const safeLimit = Math.max(0, Math.floor(limit));
 
-  return normalizedIndustries
-    .slice(0, safeLimit)
-    .map(mapIndustryToCard);
+  return normalizedIndustries.slice(0, safeLimit).map(mapIndustryToCard);
 }
 
 export function getRelatedIndustryPages(
   currentSlug: string,
-  limit = 3
+  limit = 3,
 ): IndustryCardData[] {
-  const normalizedCurrentSlug =
-    normalizeIndustrySlug(currentSlug);
+  const normalizedCurrentSlug = normalizeIndustrySlug(currentSlug);
 
-  const safeLimit = Math.max(
-    0,
-    Math.floor(limit)
-  );
+  const safeLimit = Math.max(0, Math.floor(limit));
 
   return normalizedIndustries
-    .filter(
-      (industry) =>
-        industry.slug !== normalizedCurrentSlug
-    )
+    .filter((industry) => industry.slug !== normalizedCurrentSlug)
     .slice(0, safeLimit)
     .map(mapIndustryToCard);
 }
@@ -642,20 +527,14 @@ export function getIndustryBadges(): string[] {
   return Array.from(
     new Set(
       normalizedIndustries
-        .map((industry) =>
-          normalizeString(industry.hero.badge)
-        )
-        .filter(Boolean)
-    )
+        .map((industry) => normalizeString(industry.hero.badge))
+        .filter(Boolean),
+    ),
   );
 }
 
-export function searchIndustryPages(
-  query: string
-): IndustryCardData[] {
-  const normalizedQuery = normalizeString(
-    query
-  ).toLowerCase();
+export function searchIndustryPages(query: string): IndustryCardData[] {
+  const normalizedQuery = normalizeString(query).toLowerCase();
 
   if (!normalizedQuery) {
     return getIndustryCards();
@@ -675,10 +554,7 @@ export function searchIndustryPages(
               return block.items.join(" ");
 
             case "table":
-              return [
-                ...block.headers,
-                ...block.rows.flat(),
-              ].join(" ");
+              return [...block.headers, ...block.rows.flat()].join(" ");
 
             default:
               return "";
@@ -699,9 +575,7 @@ export function searchIndustryPages(
         .join(" ")
         .toLowerCase();
 
-      return searchableText.includes(
-        normalizedQuery
-      );
+      return searchableText.includes(normalizedQuery);
     })
     .map(mapIndustryToCard);
 }

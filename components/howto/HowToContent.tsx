@@ -6,7 +6,12 @@ import {
   Quote,
 } from "lucide-react";
 import HowToCTA from "./HowToCTA";
-import type { ContentBlock, ContentListObject, ResolvedCta, HowToItem } from "@/lib/content-types";
+import type {
+  ContentBlock,
+  ContentListObject,
+  ResolvedCta,
+  HowToItem,
+} from "@/lib/content-types";
 
 export default function HowToContent({
   item,
@@ -19,7 +24,6 @@ export default function HowToContent({
 
   return (
     <article className="space-y-8 overflow-x-hidden sm:space-y-10">
-
       {/* CTA #1 */}
 
       <HowToCTA
@@ -145,9 +149,7 @@ export default function HowToContent({
                               {i + 1}
                             </div>
 
-                            <h2 className="text-lg font-black">
-                              {step.title}
-                            </h2>
+                            <h2 className="text-lg font-black">{step.title}</h2>
                           </div>
 
                           <p className="leading-7 break-words text-silver">
@@ -182,10 +184,7 @@ export default function HowToContent({
 
                         <tbody>
                           {block.rows.map((row: string[], r: number) => (
-                            <tr
-                              key={r}
-                              className="border-t border-white/10"
-                            >
+                            <tr key={r} className="border-t border-white/10">
                               {row.map((cell, c) => (
                                 <td
                                   key={c}
@@ -227,7 +226,6 @@ export default function HowToContent({
       </section>
 
       {/* CTA #2 */}
-
     </article>
   );
 }

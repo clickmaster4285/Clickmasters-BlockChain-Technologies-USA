@@ -19,7 +19,8 @@ export const listicles = [
 
     hero: {
       badge: "LISTICLE",
-      title: "15 Best Blockchains for NFT Projects in 2025 — Ranked by Use Case",
+      title:
+        "15 Best Blockchains for NFT Projects in 2025 — Ranked by Use Case",
       description:
         "The right blockchain for your NFT project depends on your audience, transaction volume, budget, and secondary market requirements. Here are 15 options ranked for specific use cases.",
     },
@@ -152,7 +153,8 @@ export const listicles = [
 
     cta: {
       title: "Ready to Choose the Right Blockchain for Your NFT Project?",
-      description: "Get expert guidance on selecting the optimal blockchain for your NFT collection.",
+      description:
+        "Get expert guidance on selecting the optimal blockchain for your NFT collection.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the NFT Blockchain Decision Guide",
     },
@@ -160,7 +162,8 @@ export const listicles = [
   {
     id: 2,
     slug: "biggest-smart-contract-exploits",
-    title: "10 Biggest Smart Contract Exploits — What They Teach Us | Clickmasters",
+    title:
+      "10 Biggest Smart Contract Exploits — What They Teach Us | Clickmasters",
     excerpt:
       "$8B+ in smart contract exploits. Every major exploit revealed a class of vulnerability that production systems now defend against. Here is the complete post-mortem learning guide.",
     category: "Security",
@@ -171,7 +174,8 @@ export const listicles = [
 
     hero: {
       badge: "LISTICLE",
-      title: "10 Biggest Smart Contract Exploits in History — What Each Teaches Builders",
+      title:
+        "10 Biggest Smart Contract Exploits in History — What Each Teaches Builders",
       description:
         "$8B+ in smart contract exploits. Every major exploit revealed a class of vulnerability that production systems now defend against. Here is the complete post-mortem learning guide.",
     },
@@ -320,7 +324,8 @@ export const listicles = [
 
     cta: {
       title: "Need Help Securing Your Smart Contracts?",
-      description: "Get expert guidance on smart contract security and vulnerability prevention.",
+      description:
+        "Get expert guidance on smart contract security and vulnerability prevention.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Security Checklist",
     },
@@ -328,7 +333,8 @@ export const listicles = [
   {
     id: 3,
     slug: "best-blockchain-developer-resources",
-    title: "12 Best Blockchain Courses and Resources for Developers 2025 | Clickmasters",
+    title:
+      "12 Best Blockchain Courses and Resources for Developers 2025 | Clickmasters",
     excerpt:
       "The blockchain developer learning path has improved significantly since 2020. These are the resources actually used by production developers — not theoretical courses.",
     category: "Developer Resources",
@@ -339,7 +345,8 @@ export const listicles = [
 
     hero: {
       badge: "LISTICLE",
-      title: "12 Best Blockchain Developer Resources in 2025 — Ranked by Quality and Relevance",
+      title:
+        "12 Best Blockchain Developer Resources in 2025 — Ranked by Quality and Relevance",
       description:
         "The blockchain developer learning path has improved significantly since 2020. These are the resources actually used by production developers — not theoretical courses from instructors who have never deployed to mainnet.",
     },
@@ -464,7 +471,8 @@ export const listicles = [
 
     faqs: [
       {
-        question: "How long does it realistically take to be a production-ready Solidity developer?",
+        question:
+          "How long does it realistically take to be a production-ready Solidity developer?",
         answer:
           "Minimum 12 months of focused learning and practice to be trusted with production DeFi code. 18–24 months to be senior-level. The learning is not just Solidity syntax — it is security awareness, EVM internals, DeFi economics, and the judgment to identify when something 'feels wrong' even if it compiles.",
       },
@@ -472,7 +480,8 @@ export const listicles = [
 
     cta: {
       title: "Ready to Advance Your Blockchain Development Career?",
-      description: "Get expert guidance on choosing the right resources for your learning path.",
+      description:
+        "Get expert guidance on choosing the right resources for your learning path.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Developer Learning Path",
     },
@@ -480,7 +489,8 @@ export const listicles = [
   {
     id: 4,
     slug: "questions-before-hiring-blockchain-firm",
-    title: "10 Questions to Ask Before Hiring a Blockchain Development Firm | Clickmasters",
+    title:
+      "10 Questions to Ask Before Hiring a Blockchain Development Firm | Clickmasters",
     excerpt:
       "These 10 questions take 45 minutes to ask and can save you $200,000+ in misdirected development spend or a deployed exploit. Ask all of them before signing any contract.",
     category: "Business",
@@ -491,7 +501,8 @@ export const listicles = [
 
     hero: {
       badge: "LISTICLE",
-      title: "10 Questions to Ask Before Hiring Any Blockchain Development Firm",
+      title:
+        "10 Questions to Ask Before Hiring Any Blockchain Development Firm",
       description:
         "These 10 questions take 45 minutes to ask and can save you $200,000+ in misdirected development spend or a deployed exploit. Ask all of them before signing any contract.",
     },
@@ -561,7 +572,7 @@ export const listicles = [
         text: "Expected: specific knowledge of the regulatory classification for your project (MSB, securities, etc.).",
       },
       {
-        type: 'paragraph',
+        type: "paragraph",
         text: 'Red flag: "We focus on the technology, not the regulation" or references to FCA/GDPR (UK/EU frameworks) for a US project.',
       },
       {
@@ -577,7 +588,7 @@ export const listicles = [
         text: "Expected: Chainlink TWAP with staleness check and deviation circuit breaker.",
       },
       {
-        type: 'paragraph',
+        type: "paragraph",
         text: 'Red flag: "We use Uniswap spot prices" or uncertainty about the question.',
       },
       {
@@ -593,7 +604,7 @@ export const listicles = [
         text: "Expected: fixed scope with documented change request process.",
       },
       {
-        type: 'paragraph',
+        type: "paragraph",
         text: 'Red flag: time-and-materials with no cap or vague answer about "we\'ll figure it out."',
       },
       {
@@ -609,7 +620,7 @@ export const listicles = [
         text: "Expected: named engineers with verifiable LinkedIn profiles and GitHub activity.",
       },
       {
-        type: 'paragraph',
+        type: "paragraph",
         text: 'Red flag: anonymous "team" without names, or junior profiles presented as senior.',
       },
       {
@@ -625,7 +636,7 @@ export const listicles = [
         text: "Expected: 95%+ line coverage, 90%+ branch coverage, fuzz testing on arithmetic, invariant tests for protocol invariants.",
       },
       {
-        type: 'paragraph',
+        type: "paragraph",
         text: 'Red flag: "We test manually" or vague answer without specific coverage targets.',
       },
       {
@@ -641,7 +652,7 @@ export const listicles = [
         text: "Expected: two references shared within 48 hours, with contact information for people you can actually call.",
       },
       {
-        type: 'paragraph',
+        type: "paragraph",
         text: 'Red flag: "We protect client confidentiality" (legitimate firms have clients who will provide references) or references who cannot be independently verified.',
       },
       {
@@ -657,7 +668,7 @@ export const listicles = [
         text: "Expected: honest answer with context (most complex blockchain projects have some scope adjustment; the question is how well-managed the process is).",
       },
       {
-        type: 'paragraph',
+        type: "paragraph",
         text: 'Red flag: "100%" (no one is 100% on time) or inability to answer with real data.',
       },
     ],
@@ -672,7 +683,8 @@ export const listicles = [
 
     cta: {
       title: "Ready to Choose the Right Blockchain Partner?",
-      description: "Get expert guidance on selecting the right development firm for your project.",
+      description:
+        "Get expert guidance on selecting the right development firm for your project.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Vendor Evaluation Checklist",
     },
@@ -680,7 +692,8 @@ export const listicles = [
   {
     id: 5,
     slug: "blockchain-infrastructure-cost-calculator",
-    title: "Blockchain Infrastructure Cost Calculator — Monthly and Annual Operating Cost",
+    title:
+      "Blockchain Infrastructure Cost Calculator — Monthly and Annual Operating Cost",
     excerpt:
       "Once your blockchain is deployed, infrastructure cost is ongoing. Use this calculator to estimate your monthly operating cost by deployment type.",
     category: "Tools",
@@ -691,7 +704,8 @@ export const listicles = [
 
     hero: {
       badge: "TOOLS",
-      title: "Blockchain Infrastructure Cost Calculator — Monthly and Annual Operating Cost",
+      title:
+        "Blockchain Infrastructure Cost Calculator — Monthly and Annual Operating Cost",
       description:
         "Once your blockchain is deployed, infrastructure cost is ongoing. Use this calculator to estimate your monthly operating cost by deployment type.",
     },
@@ -720,7 +734,12 @@ export const listicles = [
         type: "table",
         columns: ["Component", "Unit Cost", "Typical Qty", "Monthly Total"],
         rows: [
-          ["AWS EKS — peer nodes (m5.xlarge)", "$145/node/mo", "6 (3 orgs × 2 peers)", "$870"],
+          [
+            "AWS EKS — peer nodes (m5.xlarge)",
+            "$145/node/mo",
+            "6 (3 orgs × 2 peers)",
+            "$870",
+          ],
           ["AWS EKS — orderer nodes (m5.large)", "$72/node/mo", "3", "$216"],
           ["CouchDB state database", "$58/instance/mo", "6", "$348"],
           ["AWS CloudHSM (CA key protection)", "$1,050/unit/mo", "2", "$2,100"],
@@ -758,14 +777,22 @@ export const listicles = [
         type: "table",
         columns: ["Component", "Unit Cost", "Monthly Total"],
         rows: [
-          ["AWS EKS cluster (matching engine, API, services)", "$2,400/mo", "$2,400"],
+          [
+            "AWS EKS cluster (matching engine, API, services)",
+            "$2,400/mo",
+            "$2,400",
+          ],
           ["AWS CloudHSM (hot wallet keys)", "$2,100/mo (2 HSMs)", "$2,100"],
           ["RDS PostgreSQL (Multi-AZ)", "$480/mo", "$480"],
           ["ElasticSearch (order history)", "$380/mo", "$380"],
           ["Redis cluster (real-time order book cache)", "$290/mo", "$290"],
           ["CDN + WAF (CloudFront + Shield)", "$350/mo", "$350"],
           ["Chainalysis (AML compliance API)", "$4,000/mo", "$4,000"],
-          ["Jumio KYC (per verification)", "Variable ($1–$3/user)", "$500–$3,000"],
+          [
+            "Jumio KYC (per verification)",
+            "Variable ($1–$3/user)",
+            "$500–$3,000",
+          ],
           ["Sendgrid (email notifications)", "$90/mo", "$90"],
           ["Monitoring + logging", "$200/mo", "$200"],
           ["TOTAL", "", "$10,390–$12,890/mo"],
@@ -776,7 +803,8 @@ export const listicles = [
 
     faqs: [
       {
-        question: "What is the biggest infrastructure cost surprise for new blockchain deployments?",
+        question:
+          "What is the biggest infrastructure cost surprise for new blockchain deployments?",
         answer:
           "CloudHSM for exchanges — at $2,100/month for two HSMs (the minimum for production redundancy), this single line item is often the largest monthly infrastructure cost and is frequently excluded from initial cost estimates.",
       },
@@ -784,7 +812,8 @@ export const listicles = [
 
     cta: {
       title: "Need Help Estimating Your Infrastructure Costs?",
-      description: "Get expert guidance on planning and optimizing your blockchain infrastructure.",
+      description:
+        "Get expert guidance on planning and optimizing your blockchain infrastructure.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Infrastructure Cost Template",
     },
@@ -792,7 +821,8 @@ export const listicles = [
   {
     id: 6,
     slug: "blockchain-partner-law-firms",
-    title: "Blockchain Development Partner for Law Firms — Technical Delivery for Your Clients",
+    title:
+      "Blockchain Development Partner for Law Firms — Technical Delivery for Your Clients",
     excerpt:
       "Law firms advising clients on token issuance, tokenization, DAO structure, and crypto compliance need a trusted technical delivery partner. Here is how we work with law firms.",
     category: "Partners",
@@ -803,7 +833,8 @@ export const listicles = [
 
     hero: {
       badge: "PARTNERS",
-      title: "Blockchain Development Partner for Law Firms — Technical Delivery for Your Clients",
+      title:
+        "Blockchain Development Partner for Law Firms — Technical Delivery for Your Clients",
       description:
         "Law firms advising clients on token issuance, tokenization, DAO structure, and crypto compliance need a trusted technical delivery partner. Here is how we work with law firms.",
     },
@@ -886,7 +917,8 @@ export const listicles = [
 
     cta: {
       title: "Interested in the Law Firm Partner Program?",
-      description: "Get expert technical delivery for your blockchain and crypto clients.",
+      description:
+        "Get expert technical delivery for your blockchain and crypto clients.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Inquire About the Partner Program",
     },
@@ -894,7 +926,8 @@ export const listicles = [
   {
     id: 7,
     slug: "blockchain-news-government-2025",
-    title: "Blockchain in Government — US Federal and State Initiatives in 2025 | Clickmasters",
+    title:
+      "Blockchain in Government — US Federal and State Initiatives in 2025 | Clickmasters",
     excerpt:
       "US federal agencies and state governments have accelerated blockchain pilots. Here is where government blockchain stands in 2025 — what has been deployed, what is in pilot, and what is still theoretical.",
     category: "News",
@@ -905,7 +938,8 @@ export const listicles = [
 
     hero: {
       badge: "NEWS",
-      title: "Blockchain in Government — US Federal and State Initiatives in 2025",
+      title:
+        "Blockchain in Government — US Federal and State Initiatives in 2025",
       description:
         "US federal agencies and state governments have accelerated blockchain pilots. Here is where government blockchain stands in 2025 — what has been deployed, what is in pilot, and what is still theoretical.",
     },
@@ -974,7 +1008,8 @@ export const listicles = [
 
     cta: {
       title: "Need Help Navigating Government Blockchain?",
-      description: "Get expert guidance on building blockchain solutions for government use cases.",
+      description:
+        "Get expert guidance on building blockchain solutions for government use cases.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Government Blockchain Guide",
     },
@@ -982,7 +1017,8 @@ export const listicles = [
   {
     id: 8,
     slug: "us-blockchain-regulations-complete",
-    title: "Complete List of US Blockchain Regulations by Agency | Clickmasters",
+    title:
+      "Complete List of US Blockchain Regulations by Agency | Clickmasters",
     excerpt:
       "US blockchain regulation is multi-agency with overlapping jurisdiction. Here is the complete guide to which agency regulates which activity, what the thresholds are, and what compliance looks like.",
     category: "Regulation",
@@ -993,7 +1029,8 @@ export const listicles = [
 
     hero: {
       badge: "REGULATION",
-      title: "Complete US Blockchain Regulatory Framework — Every Agency, Every Rule, Every Threshold",
+      title:
+        "Complete US Blockchain Regulatory Framework — Every Agency, Every Rule, Every Threshold",
       description:
         "US blockchain regulation is multi-agency with overlapping jurisdiction. Here is the complete guide to which agency regulates which activity, what the thresholds are, and what compliance looks like.",
     },
@@ -1209,17 +1246,17 @@ export const listicles = [
 
     cta: {
       title: "Need Help Navigating US Blockchain Regulations?",
-      description: "Get expert guidance on compliance for your blockchain project.",
+      description:
+        "Get expert guidance on compliance for your blockchain project.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Regulatory Compliance Guide",
     },
   },
   // ============================================================
-// LISTICLES DATA FILE (UPDATED)
-// A comprehensive collection of curated lists for blockchain topics
-// Total: 19 articles (IDs 1-19)
-// ============================================================
-
+  // LISTICLES DATA FILE (UPDATED)
+  // A comprehensive collection of curated lists for blockchain topics
+  // Total: 19 articles (IDs 1-19)
+  // ============================================================
 
   // ===== PREVIOUS LISTICLES (IDs 1-8) =====
   // ... All previous 8 listicles remain unchanged ...
@@ -1228,7 +1265,8 @@ export const listicles = [
   {
     id: 9,
     slug: "best-blockchain-development-companies",
-    title: "Best Blockchain Development Companies in 2025 — US-Focused Rankings | Clickmasters",
+    title:
+      "Best Blockchain Development Companies in 2025 — US-Focused Rankings | Clickmasters",
     excerpt:
       "After 1,000+ blockchain projects and having inherited dozens of failed builds from other vendors, we know what separates credible blockchain development firms from expensive mistakes. This is not a paid ranking — it is a framework for evaluating any vendor, including us.",
     category: "Business",
@@ -1239,7 +1277,8 @@ export const listicles = [
 
     hero: {
       badge: "LISTICLE",
-      title: "Best Blockchain Development Companies in 2025 — What to Look for and How to Evaluate Any Vendor",
+      title:
+        "Best Blockchain Development Companies in 2025 — What to Look for and How to Evaluate Any Vendor",
       description:
         "After 1,000+ blockchain projects and having inherited dozens of failed builds from other vendors, we know what separates credible blockchain development firms from expensive mistakes. This is not a paid ranking — it is a framework for evaluating any vendor, including us.",
     },
@@ -1392,7 +1431,8 @@ export const listicles = [
 
     faqs: [
       {
-        question: "How do I verify a blockchain development company's claimed project count?",
+        question:
+          "How do I verify a blockchain development company's claimed project count?",
         answer:
           "Ask for contract addresses. Every mainnet smart contract deployment is verifiable on a block explorer. 1,000 projects claimed → ask to see 10 Etherscan links. A credible firm can provide them immediately.",
       },
@@ -1402,7 +1442,8 @@ export const listicles = [
           "For non-security-critical components (front-end, documentation, analytics): offshore can be appropriate with proper oversight. For smart contracts, wallet infrastructure, and matching engine development: offshore significantly increases security risk. The cost saving must be weighed against the documented history of offshore-developed, under-audited blockchain systems producing exploitable vulnerabilities.",
       },
       {
-        question: "What is the right price range for a blockchain development firm?",
+        question:
+          "What is the right price range for a blockchain development firm?",
         answer:
           "For US-market, security-critical blockchain work: $150–$400/hr equivalent for the development team. Below $80/hr for a US-project team is a sign that either the quality is lower than you need or the firm is offshore with no US-based oversight. Above $500/hr: typically an advisory/strategy engagement, not development execution.",
       },
@@ -1410,7 +1451,8 @@ export const listicles = [
 
     cta: {
       title: "Need Help Choosing the Right Blockchain Partner?",
-      description: "Get expert guidance on selecting the right development firm for your project.",
+      description:
+        "Get expert guidance on selecting the right development firm for your project.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Vendor Evaluation Checklist",
     },
@@ -1429,7 +1471,8 @@ export const listicles = [
 
     hero: {
       badge: "LISTICLE",
-      title: "Top Smart Contract Auditors in 2025 — How to Choose the Right Audit Firm for Your Protocol",
+      title:
+        "Top Smart Contract Auditors in 2025 — How to Choose the Right Audit Firm for Your Protocol",
       description:
         "Smart contract audit quality varies dramatically — not just in price, but in the depth of review and the categories of vulnerabilities covered. After managing audit engagements for 1,000+ projects since 2014, here is the honest guide to audit firm selection.",
     },
@@ -1508,7 +1551,11 @@ export const listicles = [
         rows: [
           ["Tier 1 firm", "1,000–2,000 LoC", "$20,000–$50,000"],
           ["Tier 1 firm", "2,000–5,000 LoC", "$45,000–$90,000"],
-          ["Tier 1 firm", "Large protocol with econ modeling", "$80,000–$150,000+"],
+          [
+            "Tier 1 firm",
+            "Large protocol with econ modeling",
+            "$80,000–$150,000+",
+          ],
           ["Tier 2 boutique", "1,000–2,000 LoC", "$12,000–$35,000"],
           ["Code4rena competitive", "Variable", "$10,000–$50,000 pool"],
         ],
@@ -1522,7 +1569,8 @@ export const listicles = [
           "1–2 weeks (simple contract, 100–300 LoC). 3–4 weeks (standard protocol, 800–2,000 LoC). 5–8 weeks (large DeFi protocol with economic modeling). Full timeline from engagement start to final report: add 1–2 weeks for scheduling and 1–2 weeks for finding remediation and re-audit.",
       },
       {
-        question: "Should we use a competitive audit platform or a traditional firm?",
+        question:
+          "Should we use a competitive audit platform or a traditional firm?",
         answer:
           "Both for critical protocols — competitive + firm. The competitive platform finds bugs that the firm's reviewers missed; the firm provides deterministic methodology coverage. For most projects, firm audit only is appropriate (cost and timeline constraints). The competitive audit is an enhancement, not a substitute.",
       },
@@ -1535,7 +1583,8 @@ export const listicles = [
 
     cta: {
       title: "Need Help Choosing an Audit Firm?",
-      description: "Get expert guidance on selecting the right auditor for your smart contracts.",
+      description:
+        "Get expert guidance on selecting the right auditor for your smart contracts.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Audit Selection Guide",
     },
@@ -1554,7 +1603,8 @@ export const listicles = [
 
     hero: {
       badge: "LISTICLE",
-      title: "Best Blockchain Platforms for Enterprise in 2025 — Hyperledger, Ethereum, Quorum, and Corda Compared",
+      title:
+        "Best Blockchain Platforms for Enterprise in 2025 — Hyperledger, Ethereum, Quorum, and Corda Compared",
       description:
         "The correct enterprise blockchain platform depends on your specific requirements — not on which platform a vendor prefers. After building on every major enterprise platform since 2014, here is an unbiased comparison.",
     },
@@ -1649,14 +1699,50 @@ export const listicles = [
       },
       {
         type: "table",
-        columns: ["Requirement", "Hyperledger Fabric", "Private Ethereum", "Quorum", "Corda"],
+        columns: [
+          "Requirement",
+          "Hyperledger Fabric",
+          "Private Ethereum",
+          "Quorum",
+          "Corda",
+        ],
         rows: [
-          ["Multi-org data privacy", "✅ Best", "⚠️ Limited", "✅ Good", "✅ Best"],
+          [
+            "Multi-org data privacy",
+            "✅ Best",
+            "⚠️ Limited",
+            "✅ Good",
+            "✅ Best",
+          ],
           ["EVM compatibility", "❌", "✅", "✅", "❌"],
-          ["Developer pool", "⚠️ Smaller", "✅ Largest", "✅ Large", "⚠️ Smallest"],
-          ["Financial contracts", "✅ Good", "⚠️ Limited", "✅ Good", "✅ Best"],
-          ["Cost to develop", "⚠️ Higher", "✅ Baseline", "⚠️ Moderate", "⚠️ Highest"],
-          ["Best use case", "Supply chain, healthcare", "General enterprise", "Financial privacy", "Financial contracts"],
+          [
+            "Developer pool",
+            "⚠️ Smaller",
+            "✅ Largest",
+            "✅ Large",
+            "⚠️ Smallest",
+          ],
+          [
+            "Financial contracts",
+            "✅ Good",
+            "⚠️ Limited",
+            "✅ Good",
+            "✅ Best",
+          ],
+          [
+            "Cost to develop",
+            "⚠️ Higher",
+            "✅ Baseline",
+            "⚠️ Moderate",
+            "⚠️ Highest",
+          ],
+          [
+            "Best use case",
+            "Supply chain, healthcare",
+            "General enterprise",
+            "Financial privacy",
+            "Financial contracts",
+          ],
         ],
       },
     ],
@@ -1668,7 +1754,8 @@ export const listicles = [
           "Yes — active Linux Foundation project as of 2025. Version 2.x has significantly improved chaincode lifecycle management. AWS Managed Blockchain and IBM Blockchain Platform both maintain commercial Fabric offerings.",
       },
       {
-        question: "Which enterprise blockchain platform has the most production deployments?",
+        question:
+          "Which enterprise blockchain platform has the most production deployments?",
         answer:
           "Hyperledger Fabric by a significant margin for consortium and supply chain networks. Private Ethereum is most common for single-organization enterprise deployments.",
       },
@@ -1681,7 +1768,8 @@ export const listicles = [
 
     cta: {
       title: "Need Help Choosing an Enterprise Blockchain Platform?",
-      description: "Get expert guidance on selecting the right platform for your enterprise use case.",
+      description:
+        "Get expert guidance on selecting the right platform for your enterprise use case.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Platform Selection Guide",
     },
@@ -1689,7 +1777,8 @@ export const listicles = [
   {
     id: 12,
     slug: "best-defi-protocols-study",
-    title: "Best DeFi Protocols to Study Before Building Your Own | Clickmasters",
+    title:
+      "Best DeFi Protocols to Study Before Building Your Own | Clickmasters",
     excerpt:
       "The most reliable way to design a well-architected DeFi protocol is to understand why the best-architected existing protocols made their design choices. Here are the protocols that have proven their design under real market conditions.",
     category: "DeFi",
@@ -1700,7 +1789,8 @@ export const listicles = [
 
     hero: {
       badge: "LISTICLE",
-      title: "Best DeFi Protocols to Study Before Building Your Own — Architecture Deep Dives",
+      title:
+        "Best DeFi Protocols to Study Before Building Your Own — Architecture Deep Dives",
       description:
         "The most reliable way to design a well-architected DeFi protocol is to understand why the best-architected existing protocols made their design choices. Here are the protocols that have proven their design under real market conditions.",
     },
@@ -1794,12 +1884,14 @@ export const listicles = [
           "All are open source on GitHub: Uniswap (Uniswap organization), Aave (aave organization), Compound (compound-finance), Curve (curvefi), MakerDAO (makerdao). All audit reports are publicly available on the respective audit firms' websites and on the projects' documentation sites.",
       },
       {
-        question: "Should I fork an existing DeFi protocol or build from scratch?",
+        question:
+          "Should I fork an existing DeFi protocol or build from scratch?",
         answer:
           "Forking a well-audited protocol (e.g., Uniswap V2 for a basic AMM) reduces development cost and audit risk — you are starting from an audited base. Customize the economic parameters and fee structures. Build from scratch only when your protocol requires fundamentally different architecture that existing protocols cannot provide.",
       },
       {
-        question: "What is the most common mistake when forking a DeFi protocol?",
+        question:
+          "What is the most common mistake when forking a DeFi protocol?",
         answer:
           "Forking the contracts but not understanding why every design decision was made. A common pattern: fork Uniswap V2 for a new chain, modify the fee structure, inadvertently remove an overflow protection from the fee calculation, and produce an exploitable arithmetic error in the fork. Understand every line before you modify it.",
       },
@@ -1807,7 +1899,8 @@ export const listicles = [
 
     cta: {
       title: "Ready to Build Your DeFi Protocol?",
-      description: "Get expert guidance on designing and building production-grade DeFi protocols.",
+      description:
+        "Get expert guidance on designing and building production-grade DeFi protocols.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the DeFi Architecture Guide",
     },
@@ -1826,7 +1919,8 @@ export const listicles = [
 
     hero: {
       badge: "LISTICLE",
-      title: "Best Blockchain Use Cases for Real Estate in 2025 — Ranked by ROI Potential",
+      title:
+        "Best Blockchain Use Cases for Real Estate in 2025 — Ranked by ROI Potential",
       description:
         "Not every blockchain real estate application delivers equal ROI. After 1,000+ projects including real estate tokenization, escrow automation, and title management, here is the honest ranking by deployment readiness and documented return.",
     },
@@ -1919,7 +2013,8 @@ export const listicles = [
 
     faqs: [
       {
-        question: "Which real estate blockchain application has the fastest payback?",
+        question:
+          "Which real estate blockchain application has the fastest payback?",
         answer:
           "Smart contract escrow: $68,000 project cost vs $120,000–$280,000 annual escrow fee savings at 100 transactions. Payback: 2–3 months.",
       },
@@ -1932,7 +2027,8 @@ export const listicles = [
 
     cta: {
       title: "Ready to Build Real Estate Blockchain Solutions?",
-      description: "Get expert guidance on implementing blockchain for real estate applications.",
+      description:
+        "Get expert guidance on implementing blockchain for real estate applications.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Real Estate Blockchain Guide",
     },
@@ -1974,14 +2070,63 @@ export const listicles = [
       },
       {
         type: "table",
-        columns: ["Chain", "Gas Per Mint", "Marketplace", "Collector Base", "Dev Cost", "Best For"],
+        columns: [
+          "Chain",
+          "Gas Per Mint",
+          "Marketplace",
+          "Collector Base",
+          "Dev Cost",
+          "Best For",
+        ],
         rows: [
-          ["Ethereum L1", "$5–$50", "OpenSea, Blur", "Largest", "Baseline", "High-value 1/1 art, PFP"],
-          ["Polygon PoS", "$0.001–$0.10", "OpenSea Polygon", "Large", "Same as ETH", "High-volume collections, gaming"],
-          ["Solana", "$0.00025", "Magic Eden", "Large", "+25–40%", "High-frequency gaming items"],
-          ["Immutable X", "$0 (NFT ops)", "IMX Marketplace", "Growing", "+10–20%", "Gaming, kids/family NFTs"],
-          ["Avalanche", "$0.01–$0.50", "Joepegs", "Moderate", "Baseline", "Studio-specific subnets"],
-          ["BNB Chain", "$0.05–$0.50", "Binance NFT", "Large", "Same as ETH", "Asian market access"],
+          [
+            "Ethereum L1",
+            "$5–$50",
+            "OpenSea, Blur",
+            "Largest",
+            "Baseline",
+            "High-value 1/1 art, PFP",
+          ],
+          [
+            "Polygon PoS",
+            "$0.001–$0.10",
+            "OpenSea Polygon",
+            "Large",
+            "Same as ETH",
+            "High-volume collections, gaming",
+          ],
+          [
+            "Solana",
+            "$0.00025",
+            "Magic Eden",
+            "Large",
+            "+25–40%",
+            "High-frequency gaming items",
+          ],
+          [
+            "Immutable X",
+            "$0 (NFT ops)",
+            "IMX Marketplace",
+            "Growing",
+            "+10–20%",
+            "Gaming, kids/family NFTs",
+          ],
+          [
+            "Avalanche",
+            "$0.01–$0.50",
+            "Joepegs",
+            "Moderate",
+            "Baseline",
+            "Studio-specific subnets",
+          ],
+          [
+            "BNB Chain",
+            "$0.05–$0.50",
+            "Binance NFT",
+            "Large",
+            "Same as ETH",
+            "Asian market access",
+          ],
         ],
       },
       {
@@ -2045,7 +2190,8 @@ export const listicles = [
 
     cta: {
       title: "Ready to Choose the Right NFT Blockchain?",
-      description: "Get expert guidance on selecting the optimal blockchain for your NFT project.",
+      description:
+        "Get expert guidance on selecting the optimal blockchain for your NFT project.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the NFT Blockchain Decision Guide",
     },
@@ -2064,7 +2210,8 @@ export const listicles = [
 
     hero: {
       badge: "LISTICLE",
-      title: "Best Blockchain Solutions for Financial Services in 2025 — Ranked by Adoption and ROI",
+      title:
+        "Best Blockchain Solutions for Financial Services in 2025 — Ranked by Adoption and ROI",
       description:
         "Financial services is where blockchain has the deepest ROI track record. After 1,000+ projects including settlement networks, tokenization platforms, and permissioned DeFi, here are the use cases producing the strongest documented returns.",
     },
@@ -2153,12 +2300,14 @@ export const listicles = [
 
     faqs: [
       {
-        question: "Is blockchain in financial services mainstream or still experimental?",
+        question:
+          "Is blockchain in financial services mainstream or still experimental?",
         answer:
           "Settlement networks, CBDC pilots, and tokenized securities are in production at scale as of 2025. According to Deloitte's 2024 Global Blockchain Survey, 83% of financial services executives see blockchain as 'broadly scalable and will achieve mainstream adoption.' Several major banks (JPMorgan, HSBC, Standard Chartered) have production blockchain deployments.",
       },
       {
-        question: "What is the regulatory risk for financial services blockchain in the US?",
+        question:
+          "What is the regulatory risk for financial services blockchain in the US?",
         answer:
           "Lower than for retail crypto — financial institutions deploying permissioned blockchain for settlement or tokenization are operating within existing regulatory frameworks (BSA, SEC securities laws) rather than creating new regulatory categories. The FinCEN and SEC regulatory frameworks that apply to traditional finance apply to blockchain-based finance in most institutional use cases.",
       },
@@ -2166,7 +2315,8 @@ export const listicles = [
 
     cta: {
       title: "Ready to Build Financial Services Blockchain Solutions?",
-      description: "Get expert guidance on implementing blockchain for financial services.",
+      description:
+        "Get expert guidance on implementing blockchain for financial services.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Financial Services Blockchain Guide",
     },
@@ -2185,7 +2335,8 @@ export const listicles = [
 
     hero: {
       badge: "LISTICLE",
-      title: "Best Blockchain Development Tools in 2025 — The Production Stack for Ethereum Smart Contract Development",
+      title:
+        "Best Blockchain Development Tools in 2025 — The Production Stack for Ethereum Smart Contract Development",
       description:
         "The blockchain development tooling ecosystem has matured significantly since 2014. Here is the current production stack — the tools that senior blockchain engineers actually use, not the tutorial-friendly options.",
     },
@@ -2304,7 +2455,8 @@ export const listicles = [
 
     cta: {
       title: "Need Help Building Your Blockchain Dev Stack?",
-      description: "Get expert guidance on selecting the right tools for your blockchain development.",
+      description:
+        "Get expert guidance on selecting the right tools for your blockchain development.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Developer Stack Guide",
     },
@@ -2323,7 +2475,8 @@ export const listicles = [
 
     hero: {
       badge: "LISTICLE",
-      title: "Best Blockchain Use Cases for Supply Chain in 2025 — Ranked by ROI and Deployment Readiness",
+      title:
+        "Best Blockchain Use Cases for Supply Chain in 2025 — Ranked by ROI and Deployment Readiness",
       description:
         "Supply chain traceability was one of blockchain's first commercial applications — and the use cases that have reached production scale are distinct from the ones still in pilot. Here is the honest ranking.",
     },
@@ -2416,12 +2569,14 @@ export const listicles = [
 
     faqs: [
       {
-        question: "Has blockchain supply chain been successfully deployed at scale?",
+        question:
+          "Has blockchain supply chain been successfully deployed at scale?",
         answer:
           "Yes: Walmart Food Trust (leafy greens, 100+ suppliers), LVMH Aura (luxury goods, 40M+ items), Everledger (diamonds, 2M+ items), Boeing (aerospace parts). These are not pilots — they are production systems with real transaction volume.",
       },
       {
-        question: "What is the main challenge for blockchain supply chain adoption?",
+        question:
+          "What is the main challenge for blockchain supply chain adoption?",
         answer:
           "Counterparty onboarding. A blockchain supply chain network only works if all relevant participants join. Getting 50 suppliers to all adopt a new system requires change management investment that is often underestimated in project budgets. We design counterparty onboarding tooling (web portals, not API requirements) to lower this barrier.",
       },
@@ -2429,7 +2584,8 @@ export const listicles = [
 
     cta: {
       title: "Ready to Build Supply Chain Blockchain Solutions?",
-      description: "Get expert guidance on implementing blockchain for supply chain applications.",
+      description:
+        "Get expert guidance on implementing blockchain for supply chain applications.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Supply Chain Blockchain Guide",
     },
@@ -2437,7 +2593,8 @@ export const listicles = [
   {
     id: 18,
     slug: "best-crypto-payment-gateways",
-    title: "Best Crypto Payment Gateway Solutions for US Businesses | Clickmasters",
+    title:
+      "Best Crypto Payment Gateway Solutions for US Businesses | Clickmasters",
     excerpt:
       "US businesses accepting cryptocurrency can choose from a third-party processor (fast, simple, higher ongoing cost) or a custom gateway (longer to build, lower ongoing cost, full ownership). Here is the honest comparison — and when each is the right choice.",
     category: "Payments",
@@ -2448,7 +2605,8 @@ export const listicles = [
 
     hero: {
       badge: "LISTICLE",
-      title: "Best Crypto Payment Gateway Solutions for US Businesses in 2025 — Third-Party vs Custom Compared",
+      title:
+        "Best Crypto Payment Gateway Solutions for US Businesses in 2025 — Third-Party vs Custom Compared",
       description:
         "US businesses accepting cryptocurrency can choose from a third-party processor (fast, simple, higher ongoing cost) or a custom gateway (longer to build, lower ongoing cost, full ownership). Here is the honest comparison — and when each is the right choice.",
     },
@@ -2569,7 +2727,8 @@ export const listicles = [
           "At $15,000 development cost and 0.7% fee saving: $2.1M annual transaction volume. At $40,000 development cost: $5.7M annual volume.",
       },
       {
-        question: "Does accepting crypto payments require me to know about blockchain?",
+        question:
+          "Does accepting crypto payments require me to know about blockchain?",
         answer:
           "No. Third-party processors handle the blockchain complexity. You receive USD in your bank account; the processor handles crypto receipt, conversion, and settlement.",
       },
@@ -2577,7 +2736,8 @@ export const listicles = [
 
     cta: {
       title: "Ready to Accept Crypto Payments?",
-      description: "Get expert guidance on setting up crypto payment acceptance for your business.",
+      description:
+        "Get expert guidance on setting up crypto payment acceptance for your business.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Crypto Payments Guide",
     },
@@ -2596,7 +2756,8 @@ export const listicles = [
 
     hero: {
       badge: "LISTICLE",
-      title: "Best Blockchain Use Cases for Enterprise in 2025 — Ranked by ROI and Deployment Readiness",
+      title:
+        "Best Blockchain Use Cases for Enterprise in 2025 — Ranked by ROI and Deployment Readiness",
       description:
         "Enterprise blockchain adoption has shifted from pilots to production. Here are the use cases with documented ROI and production deployments across multiple industries.",
     },
@@ -2677,12 +2838,14 @@ export const listicles = [
 
     faqs: [
       {
-        question: "Which enterprise blockchain use case has the fastest payback?",
+        question:
+          "Which enterprise blockchain use case has the fastest payback?",
         answer:
           "Financial settlement automation: projects typically achieve payback in 6–18 months. Supply chain traceability: 18–36 months due to multi-party onboarding costs. Tokenization: 12–24 months depending on property value.",
       },
       {
-        question: "What is the biggest barrier to enterprise blockchain adoption?",
+        question:
+          "What is the biggest barrier to enterprise blockchain adoption?",
         answer:
           "Counterparty onboarding. A blockchain network only works if all relevant participants join. Getting 50 suppliers or counterparties to adopt a new system requires change management investment that is often underestimated in project budgets.",
       },
@@ -2690,17 +2853,17 @@ export const listicles = [
 
     cta: {
       title: "Ready to Build Enterprise Blockchain Solutions?",
-      description: "Get expert guidance on implementing blockchain for enterprise use cases.",
+      description:
+        "Get expert guidance on implementing blockchain for enterprise use cases.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Enterprise Blockchain Guide",
     },
   },
   // ============================================================
-// LISTICLES DATA FILE (UPDATED)
-// A comprehensive collection of curated lists for blockchain topics
-// Total: 25 articles (IDs 1-25)
-// ============================================================
-
+  // LISTICLES DATA FILE (UPDATED)
+  // A comprehensive collection of curated lists for blockchain topics
+  // Total: 25 articles (IDs 1-25)
+  // ============================================================
 
   // ===== PREVIOUS LISTICLES (IDs 1-19) =====
   // ... All previous 19 listicles remain unchanged ...
@@ -2709,7 +2872,8 @@ export const listicles = [
   {
     id: 20,
     slug: "best-blockchain-development-tools-2025",
-    title: "12 Best Blockchain Development Tools for 2025 — Developer Stack Guide | Clickmasters",
+    title:
+      "12 Best Blockchain Development Tools for 2025 — Developer Stack Guide | Clickmasters",
     excerpt:
       "These are the production-standard tools used in every serious Solidity development workflow in 2025.",
     category: "Developer Tools",
@@ -2720,7 +2884,8 @@ export const listicles = [
 
     hero: {
       badge: "LISTICLE",
-      title: "12 Best Blockchain Development Tools for 2025 — Developer Stack Guide",
+      title:
+        "12 Best Blockchain Development Tools for 2025 — Developer Stack Guide",
       description:
         "These are the production-standard tools used in every serious Solidity development workflow in 2025.",
     },
@@ -2839,7 +3004,8 @@ export const listicles = [
 
     cta: {
       title: "Need Help Building Your Blockchain Dev Stack?",
-      description: "Get expert guidance on selecting the right tools for your blockchain development.",
+      description:
+        "Get expert guidance on selecting the right tools for your blockchain development.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Developer Stack Guide",
     },
@@ -2847,7 +3013,8 @@ export const listicles = [
   {
     id: 21,
     slug: "how-to-evaluate-blockchain-roi",
-    title: "How to Evaluate Blockchain ROI — Framework for Enterprise Decision Makers | Clickmasters",
+    title:
+      "How to Evaluate Blockchain ROI — Framework for Enterprise Decision Makers | Clickmasters",
     excerpt:
       "Enterprise blockchain ROI evaluation requires a structured framework. Here is the step-by-step process used by Clickmasters Blockchain Technologies in every enterprise engagement.",
     category: "Business",
@@ -2858,7 +3025,8 @@ export const listicles = [
 
     hero: {
       badge: "LISTICLE",
-      title: "How to Evaluate Blockchain ROI — Framework for Enterprise Decision Makers",
+      title:
+        "How to Evaluate Blockchain ROI — Framework for Enterprise Decision Makers",
       description:
         "Enterprise blockchain ROI evaluation requires a structured framework. Here is the step-by-step process used by Clickmasters Blockchain Technologies in every enterprise engagement.",
     },
@@ -2987,7 +3155,8 @@ export const listicles = [
 
     faqs: [
       {
-        question: "What financial metrics does a CFO most want to see for blockchain approval?",
+        question:
+          "What financial metrics does a CFO most want to see for blockchain approval?",
         answer:
           "In order: (1) payback period in months (CFOs want < 18–24 months for technology investments), (2) NPV over 3 years (absolute dollar return), (3) IRR (shows capital efficiency). Everything else is supporting evidence. Lead with payback period — it's the number most CFOs make decisions on.",
       },
@@ -2995,7 +3164,8 @@ export const listicles = [
 
     cta: {
       title: "Need Help Evaluating Blockchain ROI?",
-      description: "Get expert guidance on building a business case that gets executive approval.",
+      description:
+        "Get expert guidance on building a business case that gets executive approval.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the ROI Framework Template",
     },
@@ -3003,7 +3173,8 @@ export const listicles = [
   {
     id: 22,
     slug: "questions-before-hiring-blockchain-firm",
-    title: "10 Questions to Ask Before Hiring a Blockchain Development Company | Clickmasters",
+    title:
+      "10 Questions to Ask Before Hiring a Blockchain Development Company | Clickmasters",
     excerpt:
       "Before signing a contract with any blockchain development firm, ask these questions. The answers reveal who can actually deliver and who will take your money.",
     category: "Business",
@@ -3014,7 +3185,8 @@ export const listicles = [
 
     hero: {
       badge: "LISTICLE",
-      title: "10 Questions to Ask Before Hiring a Blockchain Development Company",
+      title:
+        "10 Questions to Ask Before Hiring a Blockchain Development Company",
       description:
         "Before signing a contract with any blockchain development firm, ask these questions. The answers reveal who can actually deliver and who will take your money.",
     },
@@ -3060,7 +3232,7 @@ export const listicles = [
         text: "What a good answer looks like: A link to a published Trail of Bits, Consensys Diligence, or comparable firm audit report.",
       },
       {
-        type: 'paragraph',
+        type: "paragraph",
         text: 'What a bad answer looks like: "We do internal audits" or "Our clients prefer to keep audits private."',
       },
       {
@@ -3077,7 +3249,7 @@ export const listicles = [
       },
       {
         type: "paragraph",
-        text: 'The answer should be: a formal Change Order process with written estimates before implementation. Any answer suggesting "we\'re flexible, we\'ll work it out" means scope creep with uncontrolled costs.',
+        text: "The answer should be: a formal Change Order process with written estimates before implementation. Any answer suggesting \"we're flexible, we'll work it out\" means scope creep with uncontrolled costs.",
       },
       {
         type: "heading",
@@ -3133,7 +3305,8 @@ export const listicles = [
 
     cta: {
       title: "Need Help Choosing the Right Blockchain Partner?",
-      description: "Get expert guidance on selecting the right development firm for your project.",
+      description:
+        "Get expert guidance on selecting the right development firm for your project.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Vendor Evaluation Checklist",
     },
@@ -3141,7 +3314,8 @@ export const listicles = [
   {
     id: 23,
     slug: "blockchain-smart-contract-audit",
-    title: "Blockchain Smart Contract Audit — What to Expect and How to Prepare | Clickmasters",
+    title:
+      "Blockchain Smart Contract Audit — What to Expect and How to Prepare | Clickmasters",
     excerpt:
       "Understanding the audit process helps you get maximum value from your engagement. Here is what a professional smart contract audit looks like from start to finish.",
     category: "Security",
@@ -3152,7 +3326,8 @@ export const listicles = [
 
     hero: {
       badge: "LISTICLE",
-      title: "Blockchain Smart Contract Audit — What to Expect and How to Prepare",
+      title:
+        "Blockchain Smart Contract Audit — What to Expect and How to Prepare",
       description:
         "Understanding the audit process helps you get maximum value from your engagement. Here is what a professional smart contract audit looks like from start to finish.",
     },
@@ -3242,7 +3417,7 @@ export const listicles = [
       {
         type: "list",
         items: [
-          'Review findings, prepare responses',
+          "Review findings, prepare responses",
           '"We fixed this" vs "Accepted risk: [reason]"',
         ],
       },
@@ -3332,7 +3507,8 @@ export const listicles = [
 
     faqs: [
       {
-        question: "Can we use a competitive audit platform (Code4rena, Sherlock) instead of a private audit?",
+        question:
+          "Can we use a competitive audit platform (Code4rena, Sherlock) instead of a private audit?",
         answer:
           "Yes — competitive audits offer broader researcher coverage at potentially lower cost. Tradeoffs: less coordination (competitive auditors don't ask your team questions), variable timing, less predictable scope. Best practice for high-value protocols: private audit + competitive audit. The competitive audit often finds issues missed by private auditors because more eyes see the code.",
       },
@@ -3340,7 +3516,8 @@ export const listicles = [
 
     cta: {
       title: "Need Help Preparing for Your Smart Contract Audit?",
-      description: "Get expert guidance on selecting and preparing for a smart contract audit.",
+      description:
+        "Get expert guidance on selecting and preparing for a smart contract audit.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Audit Preparation Checklist",
     },
@@ -3348,7 +3525,8 @@ export const listicles = [
   {
     id: 24,
     slug: "how-daos-work",
-    title: "How Decentralized Autonomous Organizations (DAOs) Work — Complete Implementation Guide | Clickmasters",
+    title:
+      "How Decentralized Autonomous Organizations (DAOs) Work — Complete Implementation Guide | Clickmasters",
     excerpt:
       "A DAO is an organization governed by code and token holder votes. Here is the complete technical and organizational guide to launching one.",
     category: "DAO",
@@ -3359,7 +3537,8 @@ export const listicles = [
 
     hero: {
       badge: "LISTICLE",
-      title: "How Decentralized Autonomous Organizations (DAOs) Work — Complete Implementation Guide",
+      title:
+        "How Decentralized Autonomous Organizations (DAOs) Work — Complete Implementation Guide",
       description:
         "A DAO is an organization governed by code and token holder votes. Here is the complete technical and organizational guide to launching one.",
     },
@@ -3469,7 +3648,8 @@ contract MyGovernor is Governor, GovernorVotesQuorumFraction {
 
     faqs: [
       {
-        question: "What is the minimum token supply needed for a functioning DAO?",
+        question:
+          "What is the minimum token supply needed for a functioning DAO?",
         answer:
           "A DAO with fewer than 1,000 token holders where 5 addresses hold 50%+ of supply is a DAO in name only — it's a multi-sig with extra steps. For genuine decentralization: 10,000+ token holders, no single address > 10%, active governance participation > 5% of supply per vote.",
       },
@@ -3477,7 +3657,8 @@ contract MyGovernor is Governor, GovernorVotesQuorumFraction {
 
     cta: {
       title: "Ready to Launch Your DAO?",
-      description: "Get expert guidance on structuring, launching, and governing your DAO.",
+      description:
+        "Get expert guidance on structuring, launching, and governing your DAO.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the DAO Implementation Guide",
     },
@@ -3485,7 +3666,8 @@ contract MyGovernor is Governor, GovernorVotesQuorumFraction {
   {
     id: 25,
     slug: "how-to-calculate-blockchain-gas-costs",
-    title: "How to Calculate Blockchain Gas Costs — Complete Cost Estimation Guide | Clickmasters",
+    title:
+      "How to Calculate Blockchain Gas Costs — Complete Cost Estimation Guide | Clickmasters",
     excerpt:
       "Understanding gas cost calculation helps you design cost-effective smart contracts and accurately estimate user transaction costs.",
     category: "Development",
@@ -3496,7 +3678,8 @@ contract MyGovernor is Governor, GovernorVotesQuorumFraction {
 
     hero: {
       badge: "LISTICLE",
-      title: "How to Calculate Blockchain Gas Costs — Complete Cost Estimation Guide",
+      title:
+        "How to Calculate Blockchain Gas Costs — Complete Cost Estimation Guide",
       description:
         "Understanding gas cost calculation helps you design cost-effective smart contracts and accurately estimate user transaction costs.",
     },
@@ -3618,7 +3801,6 @@ forge snapshot --match-test test_LargeDeposit`,
         type: "heading",
         text: "Estimating Annual Infrastructure Cost for a dApp",
       },
-      
     ],
 
     faqs: [
@@ -3631,7 +3813,8 @@ forge snapshot --match-test test_LargeDeposit`,
 
     cta: {
       title: "Need Help Optimizing Gas Costs?",
-      description: "Get expert guidance on designing cost-effective smart contracts.",
+      description:
+        "Get expert guidance on designing cost-effective smart contracts.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Gas Cost Calculator",
     },
@@ -3662,7 +3845,7 @@ function getListicleCards(o2 = {}) {
     c = c.filter(
       (x) =>
         x.title.toLowerCase().includes(q) ||
-        x.description.toLowerCase().includes(q)
+        x.description.toLowerCase().includes(q),
     );
   }
 
@@ -3680,8 +3863,7 @@ function searchListicles(q2) {
   const q = q2.toLowerCase();
   return listicles.filter(
     (i) =>
-      i.title.toLowerCase().includes(q) ||
-      i.slug.toLowerCase().includes(q)
+      i.title.toLowerCase().includes(q) || i.slug.toLowerCase().includes(q),
   );
 }
 

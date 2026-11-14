@@ -19,10 +19,7 @@ export default function ToolHero({
   item: ToolData;
   readTime: string;
 }) {
-  const title =
-    item?.hero?.title ||
-    item?.title ||
-    "Blockchain Tool";
+  const title = item?.hero?.title || item?.title || "Blockchain Tool";
 
   const description =
     item?.hero?.description ||
@@ -40,7 +37,6 @@ export default function ToolHero({
       <div className="absolute inset-x-12 top-0 h-px bg-gradient-to-r from-transparent via-amber-base to-transparent" />
 
       <div className="relative grid items-center gap-12 lg:grid-cols-[1fr_420px]">
-
         {/* LEFT */}
         <div>
           <Link
@@ -52,7 +48,6 @@ export default function ToolHero({
           </Link>
 
           <div className="mt-7 flex flex-wrap gap-3">
-
             <span className="inline-flex items-center gap-2 rounded-full border border-amber-base/20 bg-amber-base/10 px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-amber-base">
               <Wrench className="h-4 w-4" />
               {item?.hero?.badge || item?.category || "Tool"}
@@ -82,12 +77,9 @@ export default function ToolHero({
           {/* Features */}
 
           <div className="mt-8 grid gap-4 sm:grid-cols-3">
-
             <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
               <ShieldCheck className="h-6 w-6 text-amber-base" />
-              <h2 className="mt-3 font-black">
-                Enterprise Ready
-              </h2>
+              <h2 className="mt-3 font-black">Enterprise Ready</h2>
               <p className="mt-2 text-sm text-silver">
                 Built for production environments.
               </p>
@@ -95,9 +87,7 @@ export default function ToolHero({
 
             <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
               <Zap className="h-6 w-6 text-amber-base" />
-              <h2 className="mt-3 font-black">
-                Fast Results
-              </h2>
+              <h2 className="mt-3 font-black">Fast Results</h2>
               <p className="mt-2 text-sm text-silver">
                 Save hours of manual planning.
               </p>
@@ -105,20 +95,16 @@ export default function ToolHero({
 
             <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
               <Sparkles className="h-6 w-6 text-amber-base" />
-              <h2 className="mt-3 font-black">
-                Professional
-              </h2>
+              <h2 className="mt-3 font-black">Professional</h2>
               <p className="mt-2 text-sm text-silver">
                 Trusted by blockchain teams.
               </p>
             </div>
-
           </div>
 
           {/* Buttons */}
 
           <div className="mt-10 flex flex-wrap gap-4">
-
             <a
               href="#tool"
               className="inline-flex items-center gap-2 rounded-full bg-amber-base px-7 py-3 text-sm font-black text-bg-base transition-all hover:-translate-y-1"
@@ -133,14 +119,12 @@ export default function ToolHero({
             >
               Talk to Expert
             </Link>
-
           </div>
         </div>
 
         {/* RIGHT */}
 
         <div className="relative flex items-center justify-center">
-
           <div className="absolute h-80 w-80 rounded-full bg-amber-base/15 blur-3xl" />
 
           {/* Floating Rings */}
@@ -152,11 +136,8 @@ export default function ToolHero({
           {/* Center Card */}
 
           <div className="relative w-full max-w-[320px] overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.02] p-8 backdrop-blur-xl">
-
             <div className="mx-auto flex h-24 w-24 animate-pulse items-center justify-center rounded-3xl bg-amber-base/10">
-
               <Wrench className="h-12 w-12 text-amber-base" />
-
             </div>
 
             <h2 className="mt-8 text-center text-2xl font-black">
@@ -164,39 +145,25 @@ export default function ToolHero({
             </h2>
 
             <p className="mt-4 text-center text-sm leading-7 text-silver">
-              Interactive planning, estimation,
-              calculations and enterprise-grade
-              blockchain utilities.
+              Interactive planning, estimation, calculations and
+              enterprise-grade blockchain utilities.
             </p>
 
             <div className="mt-8 grid grid-cols-2 gap-3">
-
               <div className="rounded-2xl bg-white/[0.03] p-4 text-center">
-                <p className="text-2xl font-black text-amber-base">
-                  AI
-                </p>
+                <p className="text-2xl font-black text-amber-base">AI</p>
 
-                <p className="mt-1 text-xs text-silver">
-                  Assisted
-                </p>
+                <p className="mt-1 text-xs text-silver">Assisted</p>
               </div>
 
               <div className="rounded-2xl bg-white/[0.03] p-4 text-center">
-                <p className="text-2xl font-black text-amber-base">
-                  24/7
-                </p>
+                <p className="text-2xl font-black text-amber-base">24/7</p>
 
-                <p className="mt-1 text-xs text-silver">
-                  Available
-                </p>
+                <p className="mt-1 text-xs text-silver">Available</p>
               </div>
-
             </div>
-
           </div>
-
         </div>
-
       </div>
     </section>
   );

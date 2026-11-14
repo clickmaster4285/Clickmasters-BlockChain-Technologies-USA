@@ -7,7 +7,12 @@ import {
   Star,
 } from "lucide-react";
 import ListicleCTA from "./ListicleCTA";
-import type { ContentBlock, ContentListObject, ResolvedCta, ListicleItem } from "@/lib/content-types";
+import type {
+  ContentBlock,
+  ContentListObject,
+  ResolvedCta,
+  ListicleItem,
+} from "@/lib/content-types";
 
 export default function ListicleContent({
   item,
@@ -139,9 +144,7 @@ export default function ListicleContent({
                             <div className="grid h-10 w-10 place-items-center rounded-full bg-amber-base font-bold text-bg-base">
                               {i + 1}
                             </div>
-                            <h2 className="text-lg font-black">
-                              {step.title}
-                            </h2>
+                            <h2 className="text-lg font-black">{step.title}</h2>
                           </div>
 
                           <p className="leading-7 text-silver">
@@ -262,7 +265,6 @@ export default function ListicleContent({
           })}
         </div>
       </section>
-
     </article>
   );
 }

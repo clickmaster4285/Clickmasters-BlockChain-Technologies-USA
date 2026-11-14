@@ -6,7 +6,10 @@ import RevealOnScroll from "@/components/cost/RevealOnScroll";
 import RevealGroup from "@/components/cost/RevealGroup";
 
 function groupByDash(labels: string[], bullets: string[]) {
-  const groups: { label: string; items: string[] }[] = labels.map((label) => ({ label, items: [] }));
+  const groups: { label: string; items: string[] }[] = labels.map((label) => ({
+    label,
+    items: [],
+  }));
   let idx = -1;
   for (const raw of bullets) {
     if (/^-\s+/.test(raw)) idx = Math.min(idx + 1, groups.length - 1);
@@ -17,7 +20,10 @@ function groupByDash(labels: string[], bullets: string[]) {
 }
 
 export function isChecklistSection(labels: string[]) {
-  return labels.some((l) => /includes:?$/i.test(l)) && labels.some((l) => /red flags?/i.test(l));
+  return (
+    labels.some((l) => /includes:?$/i.test(l)) &&
+    labels.some((l) => /red flags?/i.test(l))
+  );
 }
 
 /**
@@ -33,7 +39,9 @@ export default function ChecklistSection({
   index: number;
 }) {
   const h2 = section.content.match(/#{1,3}\s*H2:\s*(.+)/)?.[1]?.trim();
-  const labels = Array.from(section.content.matchAll(/\*\*([^*][^*]*?)\*(?!\*)/g))
+  const labels = Array.from(
+    section.content.matchAll(/\*\*([^*][^*]*?)\*(?!\*)/g),
+  )
     .map((m) => m[1].trim())
     .filter((l) => !/^H[12]:/.test(l));
   const groups = groupByDash(labels, section.bullets ?? []);

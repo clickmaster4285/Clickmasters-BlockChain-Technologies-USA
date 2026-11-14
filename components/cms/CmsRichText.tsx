@@ -20,7 +20,8 @@ const TAG_CLASSES: Record<string, string> = {
   ul: "mt-4 list-disc space-y-2 pl-6 text-base text-text-secondary marker:text-amber-base md:text-lg",
   ol: "mt-4 list-decimal space-y-2 pl-6 text-base text-text-secondary marker:text-amber-base md:text-lg",
   li: "pl-1 leading-relaxed",
-  blockquote: "my-8 border-l-2 border-amber-base pl-6 text-lg italic text-text-primary md:text-xl",
+  blockquote:
+    "my-8 border-l-2 border-amber-base pl-6 text-lg italic text-text-primary md:text-xl",
   strong: "font-semibold text-text-primary",
   b: "font-semibold text-text-primary",
   em: "italic",
@@ -47,21 +48,72 @@ const TAG_CLASSES: Record<string, string> = {
 };
 const VOID_TAGS = new Set(["br", "hr", "img"]);
 const BLOCK_TAGS = new Set([
-  "p", "h1", "h2", "h3", "h4", "h5", "h6", "ul", "ol", "blockquote", "pre", "hr", "div", "table", "figure", "section",
+  "p",
+  "h1",
+  "h2",
+  "h3",
+  "h4",
+  "h5",
+  "h6",
+  "ul",
+  "ol",
+  "blockquote",
+  "pre",
+  "hr",
+  "div",
+  "table",
+  "figure",
+  "section",
 ]);
 const DROP_TAGS = new Set([
-  "script", "style", "iframe", "object", "embed", "template", "noscript", "svg", "math", "textarea",
-  "select", "button", "form", "input", "head", "title", "link", "meta", "base", "frame", "frameset", "applet",
+  "script",
+  "style",
+  "iframe",
+  "object",
+  "embed",
+  "template",
+  "noscript",
+  "svg",
+  "math",
+  "textarea",
+  "select",
+  "button",
+  "form",
+  "input",
+  "head",
+  "title",
+  "link",
+  "meta",
+  "base",
+  "frame",
+  "frameset",
+  "applet",
 ]);
 
-type Node = { tag: string; href?: string; src?: string; alt?: string; children: (Node | string)[] };
+type Node = {
+  tag: string;
+  href?: string;
+  src?: string;
+  alt?: string;
+  children: (Node | string)[];
+};
 
-const ENTITIES: Record<string, string> = { amp: "&", lt: "<", gt: ">", quot: '"', apos: "'", nbsp: " " };
+const ENTITIES: Record<string, string> = {
+  amp: "&",
+  lt: "<",
+  gt: ">",
+  quot: '"',
+  apos: "'",
+  nbsp: " ",
+};
 
 function decodeEntities(text: string) {
   return text.replace(/&(#x[0-9a-f]+|#\d+|[a-z]+);/gi, (m, e: string) => {
     if (e[0] === "#") {
-      const code = e[1] === "x" || e[1] === "X" ? parseInt(e.slice(2), 16) : parseInt(e.slice(1), 10);
+      const code =
+        e[1] === "x" || e[1] === "X"
+          ? parseInt(e.slice(2), 16)
+          : parseInt(e.slice(1), 10);
       return code > 0 && code <= 0x10ffff ? String.fromCodePoint(code) : "";
     }
     return ENTITIES[e.toLowerCase()] ?? m;
@@ -69,7 +121,10 @@ function decodeEntities(text: string) {
 }
 
 function attr(attrs: string, name: string) {
-  const m = new RegExp(`\\b${name}\\s*=\\s*(?:"([^"]*)"|'([^']*)'|([^\\s>]+))`, "i").exec(attrs);
+  const m = new RegExp(
+    `\\b${name}\\s*=\\s*(?:"([^"]*)"|'([^']*)'|([^\\s>]+))`,
+    "i",
+  ).exec(attrs);
   return decodeEntities((m?.[1] ?? m?.[2] ?? m?.[3] ?? "").trim());
 }
 
@@ -79,7 +134,8 @@ function parse(html: string): Node {
   const top = () => stack[stack.length - 1].node;
   let dropping: { name: string; depth: number } | null = null;
 
-  const token = /<!--[\s\S]*?-->|<(\/?)([a-zA-Z][a-zA-Z0-9]*)((?:[^>"']|"[^"]*"|'[^']*')*)>|[^<]+|</g;
+  const token =
+    /<!--[\s\S]*?-->|<(\/?)([a-zA-Z][a-zA-Z0-9]*)((?:[^>"']|"[^"]*"|'[^']*')*)>|[^<]+|</g;
   for (const m of html.matchAll(token)) {
     const [raw, closing, rawName, attrs = ""] = m;
     if (raw.startsWith("<!--")) continue;
@@ -93,7 +149,8 @@ function parse(html: string): Node {
     const selfClosing = /\/\s*$/.test(attrs);
 
     if (dropping) {
-      if (name === dropping.name && !selfClosing) dropping.depth += closing ? -1 : 1;
+      if (name === dropping.name && !selfClosing)
+        dropping.depth += closing ? -1 : 1;
       if (dropping.depth === 0) dropping = null;
       continue;
     }
@@ -105,7 +162,14 @@ function parse(html: string): Node {
     }
 
     if (DROP_TAGS.has(name)) {
-      if (!selfClosing && !VOID_TAGS.has(name) && name !== "input" && name !== "link" && name !== "meta" && name !== "base") {
+      if (
+        !selfClosing &&
+        !VOID_TAGS.has(name) &&
+        name !== "input" &&
+        name !== "link" &&
+        name !== "meta" &&
+        name !== "base"
+      ) {
         dropping = { name, depth: 1 };
       }
       continue;
@@ -144,12 +208,27 @@ function render(node: Node | string, key: number): ReactNode {
     case "hr":
       return <hr key={key} className={className} />;
     case "img":
-      return <img key={key} src={node.src} alt={node.alt ?? ""} loading="lazy" decoding="async" className={className} />;
+      return (
+        <img
+          key={key}
+          src={node.src}
+          alt={node.alt ?? ""}
+          loading="lazy"
+          decoding="async"
+          className={className}
+        />
+      );
     case "a": {
       const children = node.children.map(render);
       if (!node.href) return <Fragment key={key}>{children}</Fragment>;
       return isExternal(node.href) ? (
-        <a key={key} href={node.href} className={className} target="_blank" rel="noopener noreferrer">
+        <a
+          key={key}
+          href={node.href}
+          className={className}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           {children}
         </a>
       ) : node.href.startsWith("/") ? (
@@ -176,7 +255,10 @@ function render(node: Node | string, key: number): ReactNode {
         }
       }
       return (
-        <div key={key} className="mt-6 overflow-x-auto rounded-xl border border-border">
+        <div
+          key={key}
+          className="mt-6 overflow-x-auto rounded-xl border border-border"
+        >
           <table className={className}>{kids.map(render)}</table>
         </div>
       );
@@ -203,7 +285,13 @@ function render(node: Node | string, key: number): ReactNode {
   }
 }
 
-export default function CmsRichText({ html, className }: { html: string; className?: string }) {
+export default function CmsRichText({
+  html,
+  className,
+}: {
+  html: string;
+  className?: string;
+}) {
   if (!html.trim()) return null;
   return <div className={className}>{parse(html).children.map(render)}</div>;
 }

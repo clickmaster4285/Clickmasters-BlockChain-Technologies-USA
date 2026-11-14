@@ -17,11 +17,7 @@ import { Footer } from "@/components/landing/Footer";
 import { Navbar } from "@/components/landing/Navbar";
 import { createMetadata } from "@/config/metadata";
 import type { FAQContentBlock, FAQItem } from "@/lib/faqs";
-import {
-  getAllFAQs,
-  getFAQBySlug,
-  getRelatedFAQs,
-} from "@/lib/faqs";
+import { getAllFAQs, getFAQBySlug, getRelatedFAQs } from "@/lib/faqs";
 import RelatedLinks from "@/components/RelatedLinks";
 import { splitHeading } from "@/lib/seo";
 import ConsultingGuidePage from "@/components/consulting/ConsultingGuidePage";
@@ -74,9 +70,7 @@ export async function generateMetadata({
   });
 }
 
-export default async function FAQDetailPage({
-  params,
-}: FAQDetailPageProps) {
+export default async function FAQDetailPage({ params }: FAQDetailPageProps) {
   const { slug } = await params;
   const faq = getFAQBySlug(slug);
 
@@ -93,10 +87,7 @@ export default async function FAQDetailPage({
     "blockchain-development-company-huntsville",
   ].includes(faq.slug);
   const faqTitle = faq.hero?.title || faq.title;
-  const faqHeading = splitHeading(
-    faqTitle,
-    addFaqContext ? 66 : 70,
-  );
+  const faqHeading = splitHeading(faqTitle, addFaqContext ? 66 : 70);
 
   const relatedFAQs = getRelatedFAQs(faq.slug, faq.category, 3);
 
@@ -184,10 +175,7 @@ export default async function FAQDetailPage({
               </h1>
 
               <p className="mt-6 max-w-3xl text-base font-medium leading-8 text-text-secondary sm:text-lg">
-                {[
-                  faqHeading.continuation,
-                  faq.hero?.description || faq.excerpt,
-                ]
+                {[faqHeading.continuation, faq.hero?.description || faq.excerpt]
                   .filter(Boolean)
                   .join(" — ")}
               </p>
@@ -245,9 +233,7 @@ export default async function FAQDetailPage({
                   />
                 ))}
 
-                {faq.faqs.length > 0 ? (
-                  <NestedFAQs items={faq.faqs} />
-                ) : null}
+                {faq.faqs.length > 0 ? <NestedFAQs items={faq.faqs} /> : null}
               </div>
             </article>
           </div>
@@ -277,10 +263,7 @@ export default async function FAQDetailPage({
 
             <div className="mt-8 grid gap-5 md:grid-cols-3">
               {relatedFAQs.map((relatedFAQ) => (
-                <RelatedFAQCard
-                  key={relatedFAQ.slug}
-                  faq={relatedFAQ}
-                />
+                <RelatedFAQCard key={relatedFAQ.slug} faq={relatedFAQ} />
               ))}
             </div>
           </div>
@@ -295,11 +278,7 @@ export default async function FAQDetailPage({
   );
 }
 
-function ContentBlockRenderer({
-  block,
-}: {
-  block: FAQContentBlock;
-}) {
+function ContentBlockRenderer({ block }: { block: FAQContentBlock }) {
   switch (block.type) {
     case "featuredAnswer":
       return (
@@ -363,10 +342,7 @@ function ContentBlockRenderer({
               </thead>
               <tbody>
                 {block.rows?.map((row, rowIndex) => (
-                  <tr
-                    key={rowIndex}
-                    className="border-t border-border-default"
-                  >
+                  <tr key={rowIndex} className="border-t border-border-default">
                     {row.map((cell, cellIndex) => (
                       <td
                         key={`${rowIndex}-${cellIndex}`}
@@ -399,11 +375,7 @@ function ContentBlockRenderer({
   }
 }
 
-function NestedFAQs({
-  items,
-}: {
-  items: FAQItem["faqs"];
-}) {
+function NestedFAQs({ items }: { items: FAQItem["faqs"] }) {
   return (
     <section className="rounded-2xl border border-border-default bg-bg-base p-5">
       <h2 className="text-2xl font-black tracking-tight text-text-primary">
@@ -416,9 +388,7 @@ function NestedFAQs({
             key={item.question}
             className="rounded-xl border border-border-default bg-white p-4"
           >
-            <h2 className="font-black text-text-primary">
-              {item.question}
-            </h2>
+            <h2 className="font-black text-text-primary">{item.question}</h2>
             <p className="mt-2 text-sm leading-7 text-text-secondary">
               {item.answer}
             </p>

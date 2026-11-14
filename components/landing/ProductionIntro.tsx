@@ -37,15 +37,17 @@ export function ProductionIntro() {
 
           <div className="rounded-2xl border border-border bg-surface p-6 shadow-soft md:p-8">
             <p className="text-base leading-relaxed text-text-secondary md:text-lg">
-              Clickmasters is a blockchain development company focused on building secure,
-              scalable, and production-ready blockchain solutions. We help startups and
-              enterprises with blockchain development services across Ethereum, EVM-compatible
-              chains, Solana, and enterprise ledger frameworks.
+              Clickmasters is a blockchain development company focused on
+              building secure, scalable, and production-ready blockchain
+              solutions. We help startups and enterprises with blockchain
+              development services across Ethereum, EVM-compatible chains,
+              Solana, and enterprise ledger frameworks.
             </p>
             <p className="mt-5 text-base leading-relaxed text-text-secondary md:text-lg">
-              As a full-service blockchain solutions company in the USA, we combine clear
-              architecture, tested code, security reviews, and reliable communication to deliver
-              blockchain technology solutions built for real business needs-not short-term demos.
+              As a full-service blockchain solutions company in the USA, we
+              combine clear architecture, tested code, security reviews, and
+              reliable communication to deliver blockchain technology solutions
+              built for real business needs-not short-term demos.
             </p>
 
             <div className="mt-7 grid gap-3 sm:grid-cols-3">

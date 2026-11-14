@@ -4,7 +4,9 @@ import PricingTableSection from "@/components/cost/sections/PricingTable";
 import ComparisonSection from "@/components/cost/sections/Comparison";
 import FeatureGridSection from "@/components/cost/sections/FeatureGrid";
 import CaseStudySection from "@/components/cost/sections/CaseStudy";
-import ChecklistSection, { isChecklistSection } from "@/components/cost/sections/CheckList";
+import ChecklistSection, {
+  isChecklistSection,
+} from "@/components/cost/sections/CheckList";
 import GenericSection from "@/components/cost/sections/Generic";
 
 function getLabels(content: string): string[] {
@@ -28,26 +30,36 @@ export default function SectionRenderer({ cost }: { cost: CostItem }) {
         }
 
         if (heading.includes("CASE STUDY")) {
-          return <CaseStudySection key={index} section={section} index={index} />;
+          return (
+            <CaseStudySection key={index} section={section} index={index} />
+          );
         }
 
         const labels = getLabels(section.content);
         const tablePresent = hasTable(section.content);
 
         if (isChecklistSection(labels)) {
-          return <ChecklistSection key={index} section={section} index={index} />;
+          return (
+            <ChecklistSection key={index} section={section} index={index} />
+          );
         }
 
         if (tablePresent && labels.length >= 2) {
-          return <ComparisonSection key={index} section={section} index={index} />;
+          return (
+            <ComparisonSection key={index} section={section} index={index} />
+          );
         }
 
         if (tablePresent) {
-          return <PricingTableSection key={index} section={section} index={index} />;
+          return (
+            <PricingTableSection key={index} section={section} index={index} />
+          );
         }
 
         if (labels.length >= 3) {
-          return <FeatureGridSection key={index} section={section} index={index} />;
+          return (
+            <FeatureGridSection key={index} section={section} index={index} />
+          );
         }
 
         return <GenericSection key={index} section={section} index={index} />;

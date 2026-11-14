@@ -18,7 +18,11 @@ import {
   obj,
   str,
 } from "./config";
-import { normalizeEditPath, parseErpSections, type ErpEdit } from "./erp-edits-shared";
+import {
+  normalizeEditPath,
+  parseErpSections,
+  type ErpEdit,
+} from "./erp-edits-shared";
 
 export const EDITS_TAG = "erp-edited-pages";
 const FAILURE_BACKOFF_MS = 30_000;
@@ -49,7 +53,9 @@ async function fetchEditedPaths(): Promise<string[]> {
   const json = await cmsGetJson("/edited-pages");
   const pages = obj(obj(json).data).pages;
   if (!Array.isArray(pages)) return [];
-  const paths = pages.map((p) => normalizeEditPath(str(obj(p).slug))).filter((slug) => SLUG_REGEX.test(slug));
+  const paths = pages
+    .map((p) => normalizeEditPath(str(obj(p).slug)))
+    .filter((slug) => SLUG_REGEX.test(slug));
   return [...new Set(paths)];
 }
 
@@ -85,10 +91,18 @@ async function fetchEditedPage(slug: string): Promise<EditedPage | null> {
 const cacheOptions = { revalidate: CMS_REVALIDATE_SECONDS, tags: [EDITS_TAG] };
 const fetchEditedPathsCached = isDev
   ? fetchEditedPaths
-  : unstable_cache(fetchEditedPaths, ["erp-edited-paths", CMS_SITE_DOMAIN], cacheOptions);
+  : unstable_cache(
+      fetchEditedPaths,
+      ["erp-edited-paths", CMS_SITE_DOMAIN],
+      cacheOptions,
+    );
 const fetchEditedPageCached = isDev
   ? fetchEditedPage
-  : unstable_cache(fetchEditedPage, ["erp-edited-page", CMS_SITE_DOMAIN], cacheOptions);
+  : unstable_cache(
+      fetchEditedPage,
+      ["erp-edited-page", CMS_SITE_DOMAIN],
+      cacheOptions,
+    );
 
 let lastFailureAt = 0;
 
@@ -97,7 +111,9 @@ let lastFailureAt = 0;
 type FetchOptions = { fresh?: boolean };
 
 /** Normalized paths ("/a/b", home "/") that have published edits. Empty on any error. */
-export async function getEditedPaths({ fresh = false }: FetchOptions = {}): Promise<string[]> {
+export async function getEditedPaths({
+  fresh = false,
+}: FetchOptions = {}): Promise<string[]> {
   if (!CMS_ENABLED) return [];
   if (!fresh && Date.now() - lastFailureAt < FAILURE_BACKOFF_MS) return [];
   try {
@@ -110,7 +126,10 @@ export async function getEditedPaths({ fresh = false }: FetchOptions = {}): Prom
 }
 
 /** Published edits for a URL path, or null. Checks the list first (B1). */
-export async function getEditedPage(path: string, { fresh = false }: FetchOptions = {}): Promise<EditedPage | null> {
+export async function getEditedPage(
+  path: string,
+  { fresh = false }: FetchOptions = {},
+): Promise<EditedPage | null> {
   const slug = normalizeEditPath(path);
   const paths = await getEditedPaths({ fresh });
   if (!paths.includes(slug)) return null;
@@ -123,17 +142,25 @@ export async function getEditedPage(path: string, { fresh = false }: FetchOption
 }
 
 /** Overlays an edited page's SEO on a route's own metadata. Only set fields replace. */
-export async function withEditedPageSeo(path: string, metadata: Metadata): Promise<Metadata> {
+export async function withEditedPageSeo(
+  path: string,
+  metadata: Metadata,
+): Promise<Metadata> {
   const page = await getEditedPage(path);
   if (!page) return metadata;
   const { seo } = page;
   const rawImage = seo.ogImage;
   const ogImage =
-    /^https?:\/\//i.test(rawImage) || (rawImage.startsWith("/") && !rawImage.startsWith("//"))
+    /^https?:\/\//i.test(rawImage) ||
+    (rawImage.startsWith("/") && !rawImage.startsWith("//"))
       ? absoluteSiteUrl(rawImage, siteConfig.url)
       : "";
-  const hasOg = Boolean(seo.ogTitle || seo.ogDescription || ogImage || seo.title);
-  const canonical = seo.canonicalUrl ? absoluteSiteUrl(seo.canonicalUrl, siteConfig.url) : "";
+  const hasOg = Boolean(
+    seo.ogTitle || seo.ogDescription || ogImage || seo.title,
+  );
+  const canonical = seo.canonicalUrl
+    ? absoluteSiteUrl(seo.canonicalUrl, siteConfig.url)
+    : "";
 
   return {
     ...metadata,
@@ -146,7 +173,9 @@ export async function withEditedPageSeo(path: string, metadata: Metadata): Promi
           openGraph: {
             ...metadata.openGraph,
             ...(canonical ? { url: canonical } : {}),
-            ...(seo.ogTitle || seo.title ? { title: seo.ogTitle || seo.title } : {}),
+            ...(seo.ogTitle || seo.title
+              ? { title: seo.ogTitle || seo.title }
+              : {}),
             ...(seo.ogDescription || seo.metaDescription
               ? { description: seo.ogDescription || seo.metaDescription }
               : {}),
@@ -154,7 +183,9 @@ export async function withEditedPageSeo(path: string, metadata: Metadata): Promi
           },
           twitter: {
             ...metadata.twitter,
-            ...(seo.ogTitle || seo.title ? { title: seo.ogTitle || seo.title } : {}),
+            ...(seo.ogTitle || seo.title
+              ? { title: seo.ogTitle || seo.title }
+              : {}),
             ...(seo.ogDescription || seo.metaDescription
               ? { description: seo.ogDescription || seo.metaDescription }
               : {}),

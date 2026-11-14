@@ -6,7 +6,9 @@ import type LenisInstance from "lenis";
 export function SmoothScroll() {
   useEffect(() => {
     if (typeof window === "undefined") return;
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const reduce = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
     if (reduce) return;
 
     let lenis: LenisInstance;

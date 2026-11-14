@@ -36,8 +36,7 @@ const defaultSections: ContentSection[] = [
   {
     id: "challenge",
     eyebrow: "The Challenge",
-    title:
-      "Strong market potential, but an inconsistent acquisition system.",
+    title: "Strong market potential, but an inconsistent acquisition system.",
     description:
       "Nexora had a valuable SaaS product and a growing market, but its marketing funnel was not converting attention into predictable revenue.",
     paragraphs: [
@@ -72,8 +71,7 @@ const defaultSections: ContentSection[] = [
   {
     id: "strategy",
     eyebrow: "The Strategy",
-    title:
-      "One connected growth system built around high-intent demand.",
+    title: "One connected growth system built around high-intent demand.",
     description:
       "We designed a strategy that aligned market positioning, acquisition, conversion, and performance reporting.",
     paragraphs: [
@@ -90,8 +88,7 @@ const defaultSections: ContentSection[] = [
   {
     id: "execution",
     eyebrow: "Execution",
-    title:
-      "From strategic direction to a scalable acquisition engine.",
+    title: "From strategic direction to a scalable acquisition engine.",
     description:
       "We translated the strategy into campaigns, landing pages, messaging systems, and reporting infrastructure.",
     paragraphs: [
@@ -178,9 +175,7 @@ export default function CaseStudyContent({
         <div className="divide-y divide-white/[0.08]">
           {sections.map((section, index) => {
             const Icon =
-              sectionIcons[
-                section.id as keyof typeof sectionIcons
-              ] ?? Target;
+              sectionIcons[section.id as keyof typeof sectionIcons] ?? Target;
 
             return (
               <article

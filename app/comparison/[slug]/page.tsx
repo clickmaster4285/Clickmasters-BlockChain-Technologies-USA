@@ -66,9 +66,7 @@ export default async function SingleComparisonPage({
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
-      <JsonLd
-        data={faqPageSchema(article.faqs)}
-      />
+      <JsonLd data={faqPageSchema(article.faqs)} />
 
       <main className="relative overflow-hidden bg-gradient-to-b from-bg-base via-surface/40 to-bg-base pt-32 pb-24">
         <div className="pointer-events-none absolute left-[-14rem] top-[-10rem] h-[32rem] w-[32rem] rounded-full bg-amber-base/10 blur-3xl" />
@@ -90,37 +88,41 @@ export default async function SingleComparisonPage({
           <ComparisonHero article={article} readTime={readTime} />
 
           <section className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_340px]">
-  <ComparisonArticle
-  article={article}
-  showFaq={false}
-  showBottomCta={false}
-/>
+            <ComparisonArticle
+              article={article}
+              showFaq={false}
+              showBottomCta={false}
+            />
 
-  <ComparisonSidebar
-    article={article}
-    related={related}
-    readTime={readTime}
-  />
-</section>
-<ComparisonFAQ article={article} />
+            <ComparisonSidebar
+              article={article}
+              related={related}
+              readTime={readTime}
+            />
+          </section>
+          <ComparisonFAQ article={article} />
 
-<ComparisonFAQ article={article} />
+          <ComparisonFAQ article={article} />
 
-<div className="mt-8"> {/* mt-8 ka matlab hai margin-top: 2rem */}
-  <ComparisonCTA
-    cta={{
-      text: article.cta?.primaryText || "Book a Free Strategy Call",
-      href: "/contact",
-      primary: true,
-    }}
-    title={article.cta?.title || "Ready to make the right technical decision?"}
-    description={
-      article.cta?.description ||
-      "We can help you choose the right chain, architecture, smart contract strategy, and launch plan."
-    }
-  />
-</div>
-
+          <div className="mt-8">
+            {" "}
+            {/* mt-8 ka matlab hai margin-top: 2rem */}
+            <ComparisonCTA
+              cta={{
+                text: article.cta?.primaryText || "Book a Free Strategy Call",
+                href: "/contact",
+                primary: true,
+              }}
+              title={
+                article.cta?.title ||
+                "Ready to make the right technical decision?"
+              }
+              description={
+                article.cta?.description ||
+                "We can help you choose the right chain, architecture, smart contract strategy, and launch plan."
+              }
+            />
+          </div>
         </section>
         <RelatedLinks type="comparison" slug={slug} />
       </main>

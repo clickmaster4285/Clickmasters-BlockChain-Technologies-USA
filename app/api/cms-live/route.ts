@@ -22,16 +22,23 @@ export async function GET(request: NextRequest) {
   const path = normalizeEditPath(params.get("path") ?? "/");
 
   const editsPromise = coalesce(`live-edits:${path}`, async () => {
-    const [fresh, cached] = await Promise.all([getEditedPage(path, { fresh: true }), getEditedPage(path)]);
+    const [fresh, cached] = await Promise.all([
+      getEditedPage(path, { fresh: true }),
+      getEditedPage(path),
+    ]);
     // Keep the server-rendered SEO of edited pages in step with the edits.
-    if ((fresh?.hash ?? null) !== (cached?.hash ?? null)) revalidateTag(EDITS_TAG, { expire: 0 });
+    if ((fresh?.hash ?? null) !== (cached?.hash ?? null))
+      revalidateTag(EDITS_TAG, { expire: 0 });
     return fresh;
   });
   const pagePromise =
     params.get("page") === "1"
       ? coalesce(`live-page:${path}`, async () => {
           const slug = normalizeCmsSlug(path);
-          const [fresh, cached] = await Promise.all([getCmsPage(slug, { fresh: true }), getCmsPage(slug)]);
+          const [fresh, cached] = await Promise.all([
+            getCmsPage(slug, { fresh: true }),
+            getCmsPage(slug),
+          ]);
           if ((fresh?.hash ?? null) !== (cached?.hash ?? null)) {
             revalidateTag(CMS_PAGE_TAG, { expire: 0 });
           }
@@ -42,7 +49,10 @@ export async function GET(request: NextRequest) {
   const [edits, page] = await Promise.all([editsPromise, pagePromise]);
 
   return NextResponse.json(
-    { edits: edits?.hash ?? null, page: page === undefined ? undefined : (page?.hash ?? null) },
+    {
+      edits: edits?.hash ?? null,
+      page: page === undefined ? undefined : (page?.hash ?? null),
+    },
     { headers: { "Cache-Control": "no-store" } },
   );
 }

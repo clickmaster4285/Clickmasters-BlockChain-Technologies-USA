@@ -2,10 +2,7 @@
 
 import Link from "next/link";
 
-import {
-  ArrowRight,
-  BookOpen,
-} from "lucide-react";
+import { ArrowRight, BookOpen } from "lucide-react";
 
 import ProcessCard from "@/components/process/ProcessCard";
 
@@ -64,7 +61,6 @@ export default function ProcessRelated({
           <div className="max-w-3xl">
             <span className="inline-flex items-center gap-2 rounded-full border border-amber-base/20 bg-amber-base/[0.06] px-4 py-2 text-[11px] font-black uppercase tracking-[0.17em] text-amber-base">
               <BookOpen className="h-4 w-4" />
-
               Continue Learning
             </span>
 
@@ -82,7 +78,6 @@ export default function ProcessRelated({
             className="group inline-flex min-h-12 shrink-0 items-center justify-center gap-3 rounded-xl border border-white/[0.1] bg-white/[0.025] px-5 text-sm font-black text-text-primary transition-all duration-300 hover:border-amber-base/40 hover:bg-amber-base/[0.07] hover:text-amber-base"
           >
             View All Guides
-
             <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
         </div>
@@ -91,10 +86,7 @@ export default function ProcessRelated({
 
         <div className="mt-10 grid gap-7 md:grid-cols-2 xl:grid-cols-3">
           {processes.map((process) => (
-            <ProcessCard
-              key={process.slug}
-              process={process}
-            />
+            <ProcessCard key={process.slug} process={process} />
           ))}
         </div>
       </div>

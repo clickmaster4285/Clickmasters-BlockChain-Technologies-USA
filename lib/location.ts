@@ -7,13 +7,7 @@ import locationsData from "@/data/locations";
 ========================================================= */
 
 export type LocationContentBlock = {
-  type:
-    | "featuredAnswer"
-    | "heading"
-    | "paragraph"
-    | "list"
-    | "table"
-    | "code";
+  type: "featuredAnswer" | "heading" | "paragraph" | "list" | "table" | "code";
 
   text?: string;
 
@@ -148,20 +142,13 @@ function getFallbackImage(slug: string) {
     .split("")
     .reduce((total, char) => total + char.charCodeAt(0), 0);
 
-  return locationImageFallbacks[
-    hash % locationImageFallbacks.length
-  ];
+  return locationImageFallbacks[hash % locationImageFallbacks.length];
 }
 
-function normalizeLocationImage(
-  image: string | undefined,
-  slug: string,
-) {
-  const mappedImage =
-    locationImageBySlug[slug] || getFallbackImage(slug);
+function normalizeLocationImage(image: string | undefined, slug: string) {
+  const mappedImage = locationImageBySlug[slug] || getFallbackImage(slug);
 
-  const normalizedImage =
-    typeof image === "string" ? image.trim() : "";
+  const normalizedImage = typeof image === "string" ? image.trim() : "";
 
   if (!normalizedImage) {
     return mappedImage;
@@ -177,19 +164,11 @@ function normalizeLocationImage(
   return normalizedImage;
 }
 
-function isRecord(
-  value: unknown,
-): value is Record<string, unknown> {
-  return Boolean(
-    value &&
-      typeof value === "object" &&
-      !Array.isArray(value),
-  );
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return Boolean(value && typeof value === "object" && !Array.isArray(value));
 }
 
-function isLocationEntry(
-  location: unknown,
-): location is LocationEntry {
+function isLocationEntry(location: unknown): location is LocationEntry {
   if (!isRecord(location)) {
     return false;
   }
@@ -206,11 +185,9 @@ function isLocationEntry(
    Normalize Location Data
 ========================================================= */
 
-const rawLocations: unknown[] = (
-  Array.isArray(locationsData)
-    ? locationsData
-    : []
-);
+const rawLocations: unknown[] = Array.isArray(locationsData)
+  ? locationsData
+  : [];
 
 const normalizedLocations: LocationEntry[] = rawLocations
   .filter(isLocationEntry)
@@ -222,37 +199,28 @@ const normalizedLocations: LocationEntry[] = rawLocations
     title: location.title.trim(),
 
     excerpt:
-      typeof location.excerpt === "string"
-        ? location.excerpt.trim()
-        : "",
+      typeof location.excerpt === "string" ? location.excerpt.trim() : "",
 
-    image: normalizeLocationImage(
-      location.image,
-      location.slug.trim(),
-    ),
+    image: normalizeLocationImage(location.image, location.slug.trim()),
 
     credibility: Array.isArray(location.credibility)
       ? location.credibility.filter(
           (item): item is string =>
-            typeof item === "string" &&
-            item.trim().length > 0,
+            typeof item === "string" && item.trim().length > 0,
         )
       : [],
 
-    content: Array.isArray(location.content)
-      ? location.content
-      : [],
+    content: Array.isArray(location.content) ? location.content : [],
 
     faqs: Array.isArray(location.faqs)
-      ? location.faqs.filter(
-          (faq): faq is LocationFAQ =>
-            Boolean(
-              faq &&
-                typeof faq.question === "string" &&
-                faq.question.trim().length > 0 &&
-                typeof faq.answer === "string" &&
-                faq.answer.trim().length > 0,
-            ),
+      ? location.faqs.filter((faq): faq is LocationFAQ =>
+          Boolean(
+            faq &&
+            typeof faq.question === "string" &&
+            faq.question.trim().length > 0 &&
+            typeof faq.answer === "string" &&
+            faq.answer.trim().length > 0,
+          ),
         )
       : [],
   }));
@@ -278,16 +246,11 @@ export function getLocationCards(): LocationEntry[] {
 /**
  * Find one location using its slug.
  */
-export function getLocationBySlug(
-  slug: string,
-): LocationEntry | undefined {
-  const normalizedSlug = decodeURIComponent(slug)
-    .trim()
-    .toLowerCase();
+export function getLocationBySlug(slug: string): LocationEntry | undefined {
+  const normalizedSlug = decodeURIComponent(slug).trim().toLowerCase();
 
   return normalizedLocations.find(
-    (location) =>
-      location.slug.toLowerCase() === normalizedSlug,
+    (location) => location.slug.toLowerCase() === normalizedSlug,
   );
 }
 
@@ -302,9 +265,7 @@ export function locationExists(slug: string): boolean {
  * Return all slugs for generateStaticParams.
  */
 export function getLocationSlugs(): string[] {
-  return normalizedLocations.map(
-    (location) => location.slug,
-  );
+  return normalizedLocations.map((location) => location.slug);
 }
 
 /**
@@ -320,18 +281,14 @@ export function getRelatedLocations(
   currentSlug: string,
   limit = 3,
 ): LocationEntry[] {
-  const currentLocation =
-    getLocationBySlug(currentSlug);
+  const currentLocation = getLocationBySlug(currentSlug);
 
   if (!currentLocation) {
     return normalizedLocations.slice(0, limit);
   }
 
   return normalizedLocations
-    .filter(
-      (location) =>
-        location.slug !== currentLocation.slug,
-    )
+    .filter((location) => location.slug !== currentLocation.slug)
     .map((location) => {
       let relevanceScore = 0;
 
@@ -351,8 +308,7 @@ export function getRelatedLocations(
 
       if (
         currentLocation.category &&
-        location.category ===
-          currentLocation.category
+        location.category === currentLocation.category
       ) {
         relevanceScore += 2;
       }
@@ -362,11 +318,7 @@ export function getRelatedLocations(
         relevanceScore,
       };
     })
-    .sort(
-      (first, second) =>
-        second.relevanceScore -
-        first.relevanceScore,
-    )
+    .sort((first, second) => second.relevanceScore - first.relevanceScore)
     .slice(0, Math.max(0, limit))
     .map(({ location }) => location);
 }
@@ -388,28 +340,19 @@ export function getLocationCountries(): string[] {
         .map((location) => location.country)
         .filter(
           (country): country is string =>
-            typeof country === "string" &&
-            country.trim().length > 0,
+            typeof country === "string" && country.trim().length > 0,
         ),
     ),
-  ).sort((first, second) =>
-    first.localeCompare(second),
-  );
+  ).sort((first, second) => first.localeCompare(second));
 }
 
 /**
  * Return locations belonging to a country.
  */
-export function getLocationsByCountry(
-  country: string,
-): LocationEntry[] {
-  const normalizedCountry = country
-    .trim()
-    .toLowerCase();
+export function getLocationsByCountry(country: string): LocationEntry[] {
+  const normalizedCountry = country.trim().toLowerCase();
 
   return normalizedLocations.filter(
-    (location) =>
-      location.country?.toLowerCase() ===
-      normalizedCountry,
+    (location) => location.country?.toLowerCase() === normalizedCountry,
   );
 }

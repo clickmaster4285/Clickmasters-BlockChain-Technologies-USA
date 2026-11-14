@@ -220,7 +220,6 @@ export default function FeaturedCaseStudy({
                   className="group/button mt-9 inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-amber-400 px-7 py-3.5 text-sm font-black text-[#111827] shadow-[0_18px_45px_rgba(245,158,11,0.2)] transition-all duration-300 hover:-translate-y-1 hover:bg-amber-300 hover:shadow-[0_24px_60px_rgba(245,158,11,0.3)]"
                 >
                   View Full Case Study
-
                   <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover/button:translate-x-1 group-hover/button:-translate-y-1" />
                 </Link>
               </div>

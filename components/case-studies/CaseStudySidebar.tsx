@@ -149,7 +149,6 @@ export default function CaseStudySidebar({
               className="group mt-5 inline-flex min-h-12 w-full items-center justify-center gap-3 rounded-full bg-amber-400 px-5 py-3 text-sm font-black text-[#111827] transition-all duration-300 hover:-translate-y-1 hover:bg-amber-300 hover:shadow-[0_18px_45px_rgba(245,158,11,0.24)]"
             >
               Start a similar project
-
               <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
             </Link>
           </div>
@@ -242,9 +241,7 @@ export default function CaseStudySidebar({
                 return;
               }
 
-              await navigator.clipboard.writeText(
-                window.location.href
-              );
+              await navigator.clipboard.writeText(window.location.href);
             } catch {
               // User cancelled sharing or clipboard permission was unavailable.
             }

@@ -1,17 +1,24 @@
 // ERP visual editor origin (e.g. https://erp.clickmasters.pk) may frame the
 // site so page edits can be made in place. Without it, framing stays same-origin.
-const editorOrigin = /^https:\/\/[a-z0-9.-]+(:\d+)?$/i.test(process.env.CMS_EDITOR_ORIGIN ?? '')
+const editorOrigin = /^https:\/\/[a-z0-9.-]+(:\d+)?$/i.test(
+  process.env.CMS_EDITOR_ORIGIN ?? "",
+)
   ? process.env.CMS_EDITOR_ORIGIN
-  : '';
+  : "";
 
 const securityHeaders = [
-  // X-Frame-Options can't allow-list an origin; CSP frame-ancestors covers it then.
-  ...(editorOrigin ? [] : [{ key: 'X-Frame-Options', value: 'SAMEORIGIN' }]),
-  { key: 'X-Content-Type-Options', value: 'nosniff' },
-  { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
-  { key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' },
+  // Legacy clickjacking header for scanners/old browsers. Browsers that support
+  // CSP ignore it whenever frame-ancestors is present (CSP spec), so the ERP
+  // editor origin allowed below can still frame the site.
+  { key: "X-Frame-Options", value: "SAMEORIGIN" },
+  { key: "X-Content-Type-Options", value: "nosniff" },
+  { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
   {
-    key: 'Content-Security-Policy',
+    key: "Strict-Transport-Security",
+    value: "max-age=63072000; includeSubDomains; preload",
+  },
+  {
+    key: "Content-Security-Policy",
     value: [
       "default-src 'self'",
       "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
@@ -21,23 +28,26 @@ const securityHeaders = [
       "media-src 'self' blob: https:",
       "connect-src 'self' https:",
       "frame-src 'self' https:",
-      `frame-ancestors 'self'${editorOrigin ? ` ${editorOrigin}` : ''}`,
+      `frame-ancestors 'self'${editorOrigin ? ` ${editorOrigin}` : ""}`,
       "base-uri 'self'",
       "form-action 'self'",
       "object-src 'none'",
-    ].join('; '),
+    ].join("; "),
   },
-  { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
+  {
+    key: "Permissions-Policy",
+    value: "camera=(), microphone=(), geolocation=()",
+  },
 ];
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   poweredByHeader: false,
-  allowedDevOrigins: ['192.168.88.61', '192.168.88.62', '192.168.34.54'],
+  allowedDevOrigins: ["192.168.88.61", "192.168.88.62", "192.168.34.54"],
   async headers() {
     return [
       {
-        source: '/:path*',
+        source: "/:path*",
         headers: securityHeaders,
       },
       // Files in /public are served with max-age=0 by default, so every page
@@ -45,11 +55,11 @@ const nextConfig = {
       // names are not content-hashed, so cache for a week (not "immutable") and
       // allow serving a stale copy while revalidating in the background.
       {
-        source: '/:dir(media|assets)/:path*',
+        source: "/:dir(media|assets)/:path*",
         headers: [
           {
-            key: 'Cache-Control',
-            value: 'public, max-age=604800, stale-while-revalidate=86400',
+            key: "Cache-Control",
+            value: "public, max-age=604800, stale-while-revalidate=86400",
           },
         ],
       },
@@ -58,13 +68,13 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: '/services',
-        destination: '/service',
+        source: "/services",
+        destination: "/service",
         permanent: true,
       },
       {
-        source: '/services/:slug',
-        destination: '/service/:slug',
+        source: "/services/:slug",
+        destination: "/service/:slug",
         permanent: true,
       },
     ];
@@ -72,33 +82,33 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'cdn.jsdelivr.net',
+        protocol: "https",
+        hostname: "cdn.jsdelivr.net",
       },
       {
-        protocol: 'https',
-        hostname: 'img.icons8.com',
+        protocol: "https",
+        hostname: "img.icons8.com",
       },
       {
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
+        protocol: "https",
+        hostname: "images.unsplash.com",
       },
       {
-        protocol: 'https',
-        hostname: 'source.unsplash.com',
+        protocol: "https",
+        hostname: "source.unsplash.com",
       },
       {
-        protocol: 'https',
-        hostname: 'i.pravatar.cc',
+        protocol: "https",
+        hostname: "i.pravatar.cc",
       },
       {
-        protocol: 'https',
-        hostname: 'www.magnific.com',
+        protocol: "https",
+        hostname: "www.magnific.com",
       },
     ],
     // Serve modern formats and cap generated widths at 1920px (no 2048/3840
     // variants), so hero images stay small on every device.
-    formats: ['image/avif', 'image/webp'],
+    formats: ["image/avif", "image/webp"],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
   },
 };

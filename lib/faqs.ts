@@ -59,8 +59,10 @@ const rawFAQs = faqHubsData as FAQItem[];
 
 const categoryDescriptions: Record<string, string> = {
   FAQ: "Core blockchain, Web3, DeFi, NFT, exchange, and tokenization questions.",
-  "Case Studies": "Real project outcomes, delivery decisions, and measurable results.",
-  Tools: "Technical workflows, deployment automation, APIs, and practical resources.",
+  "Case Studies":
+    "Real project outcomes, delivery decisions, and measurable results.",
+  Tools:
+    "Technical workflows, deployment automation, APIs, and practical resources.",
   Glossary: "Deep explanations of blockchain and DeFi architecture terms.",
   Services: "Consulting and delivery guidance for blockchain projects.",
   Locations: "Location-specific blockchain development guidance.",
@@ -75,15 +77,13 @@ export const faqCategories: FAQCategoryItem[] = [
     label: "All",
     description: "Browse every FAQ hub and related blockchain resource.",
   },
-  ...Array.from(new Set(faqs.map((faq) => faq.category))).map(
-    (category) => ({
-      slug: category,
-      label: category,
-      description:
-        categoryDescriptions[category] ||
-        `Browse ${category.toLowerCase()} questions and resources.`,
-    })
-  ),
+  ...Array.from(new Set(faqs.map((faq) => faq.category))).map((category) => ({
+    slug: category,
+    label: category,
+    description:
+      categoryDescriptions[category] ||
+      `Browse ${category.toLowerCase()} questions and resources.`,
+  })),
 ];
 
 export function getAllFAQs(): FAQItem[] {
@@ -105,10 +105,10 @@ export function getFAQsByCategory(category: string): FAQItem[] {
 export function getRelatedFAQs(
   currentSlug: string,
   category: string,
-  limit = 3
+  limit = 3,
 ): FAQItem[] {
   const sameCategory = faqs.filter(
-    (faq) => faq.slug !== currentSlug && faq.category === category
+    (faq) => faq.slug !== currentSlug && faq.category === category,
   );
 
   if (sameCategory.length >= limit) {
@@ -118,7 +118,7 @@ export function getRelatedFAQs(
   return [
     ...sameCategory,
     ...faqs.filter(
-      (faq) => faq.slug !== currentSlug && faq.category !== category
+      (faq) => faq.slug !== currentSlug && faq.category !== category,
     ),
   ].slice(0, limit);
 }
@@ -147,7 +147,7 @@ export function searchFAQs(query: string): FAQItem[] {
           ...(block.rows || []).flat(),
         ]
           .filter(Boolean)
-          .join(" ")
+          .join(" "),
       ),
       ...faq.faqs.flatMap((item) => [item.question, item.answer]),
     ]

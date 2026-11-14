@@ -22,16 +22,14 @@ export default function NewsCard({
       <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-amber-base/10 blur-3xl opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
       <div className="relative flex h-full flex-col">
-      <div className="mb-6 flex items-center justify-between">
-  <span className="inline-flex items-center gap-2 rounded-full bg-amber-base/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-amber-base">
-    <Newspaper className="h-4 w-4" />
-    {item.badge || item.category || "News"}
-  </span>
+        <div className="mb-6 flex items-center justify-between">
+          <span className="inline-flex items-center gap-2 rounded-full bg-amber-base/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-amber-base">
+            <Newspaper className="h-4 w-4" />
+            {item.badge || item.category || "News"}
+          </span>
 
-  <span className="text-xs font-bold text-silver">
-    #{index + 1}
-  </span>
-</div>
+          <span className="text-xs font-bold text-silver">#{index + 1}</span>
+        </div>
 
         <div className="mb-4 flex items-center justify-between gap-3 text-xs text-silver">
           <span className="inline-flex items-center gap-1.5">

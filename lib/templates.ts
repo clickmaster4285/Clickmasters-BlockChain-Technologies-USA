@@ -160,8 +160,7 @@ export function getTemplateCards() {
         sections:
           item.sectionsCount ||
           item.sections?.length ||
-          item.content?.filter((block) => block?.type === "heading")
-            .length ||
+          item.content?.filter((block) => block?.type === "heading").length ||
           0,
 
         readTime: estimateTemplateReadTime(item),
@@ -186,9 +185,7 @@ export function searchTemplates(query: string) {
       item.excerpt?.toLowerCase().includes(normalized) ||
       item.category?.toLowerCase().includes(normalized) ||
       item.format?.toLowerCase().includes(normalized) ||
-      item.tags?.some((tag) =>
-        String(tag).toLowerCase().includes(normalized),
-      ),
+      item.tags?.some((tag) => String(tag).toLowerCase().includes(normalized)),
   );
 }
 
@@ -212,8 +209,7 @@ export function getFeaturedTemplates(limit = 3) {
   }
 
   const remaining = cards.filter(
-    (item) =>
-      !featured.some((featuredItem) => featuredItem.slug === item.slug),
+    (item) => !featured.some((featuredItem) => featuredItem.slug === item.slug),
   );
 
   return [...featured, ...remaining].slice(0, limit);

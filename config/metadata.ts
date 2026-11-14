@@ -156,8 +156,9 @@ const DESCRIPTION_OVERRIDES: Record<string, string> = {
   // Blockchain consulting journey (handoff 11 Nov 2026, section 7).
   "/faqs/blockchain-development-consulting-enterprise":
     "Explore enterprise blockchain consulting: feasibility, platform selection, vendor evaluation and business cases. See deliverables and discuss your requirements.",
+  // Trimmed "your" from the handoff copy to stay within 160 characters.
   "/service/blockchain-consulting":
-    "Evaluate blockchain feasibility, compare platforms and review vendors. Explore consulting deliverables and discuss your enterprise requirements with ClickMasters.",
+    "Evaluate blockchain feasibility, compare platforms and review vendors. Explore consulting deliverables and discuss enterprise requirements with ClickMasters.",
 };
 
 function normalizeDescription(description: string) {

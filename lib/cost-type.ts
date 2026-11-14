@@ -54,4 +54,4 @@ export interface CostCardOptions {
   search?: string;
   offset?: number;
   limit?: number;
-} 
+}

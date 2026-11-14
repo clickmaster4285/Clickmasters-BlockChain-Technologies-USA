@@ -1,7 +1,13 @@
 "use client";
 
 import { useId, useRef, useState } from "react";
-import { CircleAlert, CircleCheckBig, LoaderCircle, Mail, Send } from "lucide-react";
+import {
+  CircleAlert,
+  CircleCheckBig,
+  LoaderCircle,
+  Mail,
+  Send,
+} from "lucide-react";
 
 import { sendContactMail } from "@/app/actions/sendMail";
 import { currentSourcePage, trackEvent } from "@/lib/analytics";
@@ -15,13 +21,18 @@ const CONTACT_EMAIL = "sales@clickmastersblockchaintechnologies.com";
 const inputClass =
   "w-full rounded-xl border border-border-default bg-white px-4 py-3 text-sm text-text-primary shadow-sm transition placeholder:text-text-muted focus:border-amber-base focus:outline-none focus:ring-2 focus:ring-amber-base/30 aria-[invalid=true]:border-destructive";
 
-function validate(values: { name: string; email: string; summary: string }): FieldErrors {
+function validate(values: {
+  name: string;
+  email: string;
+  summary: string;
+}): FieldErrors {
   const errors: FieldErrors = {};
   if (!values.name) errors.name = "Enter your name.";
   if (!values.email) errors.email = "Enter your email address.";
   else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email))
     errors.email = "Enter a valid email address, for example name@company.com.";
-  if (!values.summary) errors.summary = "Describe the decision you need to make.";
+  if (!values.summary)
+    errors.summary = "Describe the decision you need to make.";
   return errors;
 }
 
@@ -59,7 +70,10 @@ export default function ConsultingEnquiryForm({ formId }: { formId: string }) {
   }
 
   function reportError(category: "validation" | "server" | "network") {
-    trackEvent("consulting_form_error", { form_id: formId, error_category: category });
+    trackEvent("consulting_form_error", {
+      form_id: formId,
+      error_category: category,
+    });
   }
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -152,7 +166,9 @@ export default function ConsultingEnquiryForm({ formId }: { formId: string }) {
   }
 
   const describedBy = (field: FieldName, hint?: string) =>
-    [hint, fieldErrors[field] ? `${ids[field]}-error` : null].filter(Boolean).join(" ") || undefined;
+    [hint, fieldErrors[field] ? `${ids[field]}-error` : null]
+      .filter(Boolean)
+      .join(" ") || undefined;
 
   return (
     <section
@@ -170,8 +186,8 @@ export default function ConsultingEnquiryForm({ formId }: { formId: string }) {
               Discuss Your Blockchain Decision
             </h2>
             <p className="mt-3 text-base leading-7 text-text-secondary">
-              Tell us what you are evaluating, what is uncertain, and any existing
-              systems or vendors involved.
+              Tell us what you are evaluating, what is uncertain, and any
+              existing systems or vendors involved.
             </p>
 
             <form
@@ -182,15 +198,30 @@ export default function ConsultingEnquiryForm({ formId }: { formId: string }) {
               aria-describedby={`${uid}-privacy`}
             >
               {/* Honeypot: hidden from people and assistive technology. */}
-              <div aria-hidden="true" className="absolute -left-[9999px] h-px w-px overflow-hidden">
+              <div
+                aria-hidden="true"
+                className="absolute -left-[9999px] h-px w-px overflow-hidden"
+              >
                 <label htmlFor={`${uid}-website`}>Leave this field empty</label>
-                <input id={`${uid}-website`} name="website_url" type="text" tabIndex={-1} autoComplete="off" />
+                <input
+                  id={`${uid}-website`}
+                  name="website_url"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
               </div>
 
               <div className="grid gap-5 sm:grid-cols-2">
                 <div className="grid gap-2">
-                  <label htmlFor={ids.name} className="text-sm font-bold text-text-primary">
-                    Name <span className="font-medium text-text-secondary">(required)</span>
+                  <label
+                    htmlFor={ids.name}
+                    className="text-sm font-bold text-text-primary"
+                  >
+                    Name{" "}
+                    <span className="font-medium text-text-secondary">
+                      (required)
+                    </span>
                   </label>
                   <input
                     id={ids.name}
@@ -203,15 +234,24 @@ export default function ConsultingEnquiryForm({ formId }: { formId: string }) {
                     className={inputClass}
                   />
                   {fieldErrors.name && (
-                    <p id={`${ids.name}-error`} className="text-sm font-medium text-destructive">
+                    <p
+                      id={`${ids.name}-error`}
+                      className="text-sm font-medium text-destructive"
+                    >
                       {fieldErrors.name}
                     </p>
                   )}
                 </div>
 
                 <div className="grid gap-2">
-                  <label htmlFor={ids.email} className="text-sm font-bold text-text-primary">
-                    Email <span className="font-medium text-text-secondary">(required)</span>
+                  <label
+                    htmlFor={ids.email}
+                    className="text-sm font-bold text-text-primary"
+                  >
+                    Email{" "}
+                    <span className="font-medium text-text-secondary">
+                      (required)
+                    </span>
                   </label>
                   <input
                     id={ids.email}
@@ -225,15 +265,24 @@ export default function ConsultingEnquiryForm({ formId }: { formId: string }) {
                     className={inputClass}
                   />
                   {fieldErrors.email && (
-                    <p id={`${ids.email}-error`} className="text-sm font-medium text-destructive">
+                    <p
+                      id={`${ids.email}-error`}
+                      className="text-sm font-medium text-destructive"
+                    >
                       {fieldErrors.email}
                     </p>
                   )}
                 </div>
 
                 <div className="grid gap-2">
-                  <label htmlFor={ids.company} className="text-sm font-bold text-text-primary">
-                    Company <span className="font-medium text-text-secondary">(optional)</span>
+                  <label
+                    htmlFor={ids.company}
+                    className="text-sm font-bold text-text-primary"
+                  >
+                    Company{" "}
+                    <span className="font-medium text-text-secondary">
+                      (optional)
+                    </span>
                   </label>
                   <input
                     id={ids.company}
@@ -245,8 +294,14 @@ export default function ConsultingEnquiryForm({ formId }: { formId: string }) {
                 </div>
 
                 <div className="grid gap-2">
-                  <label htmlFor={ids.phone} className="text-sm font-bold text-text-primary">
-                    Phone <span className="font-medium text-text-secondary">(optional)</span>
+                  <label
+                    htmlFor={ids.phone}
+                    className="text-sm font-bold text-text-primary"
+                  >
+                    Phone{" "}
+                    <span className="font-medium text-text-secondary">
+                      (optional)
+                    </span>
                   </label>
                   <input
                     id={ids.phone}
@@ -259,14 +314,23 @@ export default function ConsultingEnquiryForm({ formId }: { formId: string }) {
               </div>
 
               <div className="grid gap-2">
-                <label htmlFor={ids.summary} className="text-sm font-bold text-text-primary">
+                <label
+                  htmlFor={ids.summary}
+                  className="text-sm font-bold text-text-primary"
+                >
                   What decision do you need to make?{" "}
-                  <span className="font-medium text-text-secondary">(required)</span>
+                  <span className="font-medium text-text-secondary">
+                    (required)
+                  </span>
                 </label>
-                <p id={`${ids.summary}-hint`} className="text-sm leading-6 text-text-secondary">
-                  For example: blockchain or database, which platform, build or buy,
-                  or a review of a vendor proposal. Please do not include private keys,
-                  seed phrases, passwords or confidential documents.
+                <p
+                  id={`${ids.summary}-hint`}
+                  className="text-sm leading-6 text-text-secondary"
+                >
+                  For example: blockchain or database, which platform, build or
+                  buy, or a review of a vendor proposal. Please do not include
+                  private keys, seed phrases, passwords or confidential
+                  documents.
                 </p>
                 <textarea
                   id={ids.summary}
@@ -274,11 +338,17 @@ export default function ConsultingEnquiryForm({ formId }: { formId: string }) {
                   rows={5}
                   required
                   aria-invalid={Boolean(fieldErrors.summary)}
-                  aria-describedby={describedBy("summary", `${ids.summary}-hint`)}
+                  aria-describedby={describedBy(
+                    "summary",
+                    `${ids.summary}-hint`,
+                  )}
                   className={inputClass}
                 />
                 {fieldErrors.summary && (
-                  <p id={`${ids.summary}-error`} className="text-sm font-medium text-destructive">
+                  <p
+                    id={`${ids.summary}-error`}
+                    className="text-sm font-medium text-destructive"
+                  >
                     {fieldErrors.summary}
                   </p>
                 )}
@@ -288,7 +358,10 @@ export default function ConsultingEnquiryForm({ formId }: { formId: string }) {
                 <div role="status" aria-live="polite">
                   {status === "success" && (
                     <div className="flex items-start gap-3 rounded-2xl border border-emerald-base/30 bg-emerald-base/10 p-4">
-                      <CircleCheckBig className="mt-0.5 h-5 w-5 shrink-0 text-emerald-base" aria-hidden="true" />
+                      <CircleCheckBig
+                        className="mt-0.5 h-5 w-5 shrink-0 text-emerald-base"
+                        aria-hidden="true"
+                      />
                       <p className="text-sm font-semibold text-text-primary">
                         Thank you. Your consulting enquiry has been received.
                       </p>
@@ -298,19 +371,29 @@ export default function ConsultingEnquiryForm({ formId }: { formId: string }) {
                 <div role="alert">
                   {status === "error" && (
                     <div className="flex items-start gap-3 rounded-2xl border border-destructive/30 bg-destructive/10 p-4">
-                      <CircleAlert className="mt-0.5 h-5 w-5 shrink-0 text-destructive" aria-hidden="true" />
+                      <CircleAlert
+                        className="mt-0.5 h-5 w-5 shrink-0 text-destructive"
+                        aria-hidden="true"
+                      />
                       <div>
-                        <p className="text-sm font-semibold text-text-primary">Submission failed</p>
-                        <p className="mt-1 text-sm text-text-secondary">{errorMessage}</p>
+                        <p className="text-sm font-semibold text-text-primary">
+                          Submission failed
+                        </p>
+                        <p className="mt-1 text-sm text-text-secondary">
+                          {errorMessage}
+                        </p>
                       </div>
                     </div>
                   )}
                 </div>
               </div>
 
-              <p id={`${uid}-privacy`} className="text-xs leading-6 text-text-secondary">
-                We use these details only to respond to your enquiry. Submitting this
-                form does not sign you up for marketing.
+              <p
+                id={`${uid}-privacy`}
+                className="text-xs leading-6 text-text-secondary"
+              >
+                We use these details only to respond to your enquiry. Submitting
+                this form does not sign you up for marketing.
               </p>
 
               <button
@@ -321,7 +404,10 @@ export default function ConsultingEnquiryForm({ formId }: { formId: string }) {
               >
                 {status === "loading" ? (
                   <>
-                    <LoaderCircle className="h-4 w-4 animate-spin" aria-hidden="true" />
+                    <LoaderCircle
+                      className="h-4 w-4 animate-spin"
+                      aria-hidden="true"
+                    />
                     Sending…
                   </>
                 ) : (
@@ -335,12 +421,16 @@ export default function ConsultingEnquiryForm({ formId }: { formId: string }) {
           </div>
 
           <aside className="space-y-4 lg:border-l lg:border-border-default lg:pl-8">
-            <h3 className="text-lg font-black text-text-primary">What happens next</h3>
+            <h3 className="text-lg font-black text-text-primary">
+              What happens next
+            </h3>
             <p className="text-sm leading-7 text-text-secondary">
-              Tell us the decision you need to make and the systems involved. We will
-              review your enquiry and discuss an appropriate scope.
+              Tell us the decision you need to make and the systems involved. We
+              will review your enquiry and discuss an appropriate scope.
             </p>
-            <h3 className="pt-2 text-lg font-black text-text-primary">Prefer email?</h3>
+            <h3 className="pt-2 text-lg font-black text-text-primary">
+              Prefer email?
+            </h3>
             <a
               href={`mailto:${CONTACT_EMAIL}`}
               onClick={() =>
@@ -351,7 +441,10 @@ export default function ConsultingEnquiryForm({ formId }: { formId: string }) {
               }
               className="flex items-center gap-3 rounded-xl border border-border-default bg-bg-base p-4 text-sm font-semibold text-text-primary transition hover:border-amber-base/40 hover:text-amber-base"
             >
-              <Mail className="h-5 w-5 shrink-0 text-amber-base" aria-hidden="true" />
+              <Mail
+                className="h-5 w-5 shrink-0 text-amber-base"
+                aria-hidden="true"
+              />
               <span className="break-all">{CONTACT_EMAIL}</span>
             </a>
           </aside>

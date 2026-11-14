@@ -59,9 +59,7 @@ export default function CaseStudiesCTA({
 
               <h2 className="mt-7 max-w-4xl text-4xl font-black leading-[1.03] tracking-[-0.05em] text-white sm:text-5xl lg:text-6xl xl:text-7xl">
                 {title}{" "}
-                <span className="text-amber-400">
-                  {highlightedText}
-                </span>
+                <span className="text-amber-400">{highlightedText}</span>
               </h2>
 
               <p className="mt-7 max-w-2xl text-sm font-medium leading-7 text-[#94a2b6] sm:text-base sm:leading-8">

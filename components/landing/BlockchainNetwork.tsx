@@ -4,7 +4,13 @@ import { useEffect, useRef } from "react";
 
 type Node = { x: number; y: number; vx: number; vy: number };
 
-export function BlockchainNetwork({ density = 0.00012, className = "" }: { density?: number; className?: string }) {
+export function BlockchainNetwork({
+  density = 0.00012,
+  className = "",
+}: {
+  density?: number;
+  className?: string;
+}) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -53,7 +59,12 @@ export function BlockchainNetwork({ density = 0.00012, className = "" }: { densi
           const d = Math.hypot(dx, dy);
           if (d < maxDist) {
             const alpha = 1 - d / maxDist;
-            const grad = ctx.createLinearGradient(nodes[i].x, nodes[i].y, nodes[j].x, nodes[j].y);
+            const grad = ctx.createLinearGradient(
+              nodes[i].x,
+              nodes[i].y,
+              nodes[j].x,
+              nodes[j].y,
+            );
             grad.addColorStop(0, `rgba(217, 119, 6, ${alpha * 0.35})`);
             grad.addColorStop(1, `rgba(100, 116, 139, ${alpha * 0.35})`);
             ctx.strokeStyle = grad;

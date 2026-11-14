@@ -185,7 +185,6 @@ export default function NewsContent({
           })}
         </div>
       </section>
-
     </article>
   );
 }

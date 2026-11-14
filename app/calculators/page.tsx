@@ -30,22 +30,23 @@ import {
    Metadata
 ========================================================= */
 
-export const generateMetadata = () => createPageMetadata({
-  title: "Blockchain Calculators, Simulators & Planning Tools",
-  description:
-    "Use free blockchain calculators, DeFi yield tools, gas estimators, tokenomics simulators, ROI calculators, templates, and smart contract planning guides.",
-  path: CALCULATORS_BASE_PATH,
-  keywords: [
-    "blockchain calculator",
-    "Ethereum gas calculator",
-    "DeFi yield calculator",
-    "tokenomics simulator",
-    "NFT rarity calculator",
-    "blockchain ROI calculator",
-    "crypto exchange calculator",
-    "smart contract tools",
-  ],
-});
+export const generateMetadata = () =>
+  createPageMetadata({
+    title: "Blockchain Calculators, Simulators & Planning Tools",
+    description:
+      "Use free blockchain calculators, DeFi yield tools, gas estimators, tokenomics simulators, ROI calculators, templates, and smart contract planning guides.",
+    path: CALCULATORS_BASE_PATH,
+    keywords: [
+      "blockchain calculator",
+      "Ethereum gas calculator",
+      "DeFi yield calculator",
+      "tokenomics simulator",
+      "NFT rarity calculator",
+      "blockchain ROI calculator",
+      "crypto exchange calculator",
+      "smart contract tools",
+    ],
+  });
 
 /* =========================================================
    Page Constants
@@ -120,7 +121,6 @@ export default async function CalculatorsPage({
           __html: JSON.stringify(schemas.collectionPageSchema),
         }}
       />
-
 
       <Navbar />
 

@@ -1,10 +1,5 @@
 import Link from "next/link";
-import {
-  ArrowRight,
-  BookOpen,
-  Clock,
-  Star,
-} from "lucide-react";
+import { ArrowRight, BookOpen, Clock, Star } from "lucide-react";
 import type { ListicleCardData } from "@/lib/listicles";
 
 export default function ListicleCard({

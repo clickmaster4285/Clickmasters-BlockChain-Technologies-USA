@@ -8,7 +8,13 @@ const ACCENTS = [
   "from-emerald-base/15 to-transparent",
 ];
 
-export default function CostCard({ card, index }: { card: CostCardType; index: number }) {
+export default function CostCard({
+  card,
+  index,
+}: {
+  card: CostCardType;
+  index: number;
+}) {
   const cleanTitle = card.title.split("|")[0].trim();
   const accent = ACCENTS[index % ACCENTS.length];
 
@@ -20,7 +26,9 @@ export default function CostCard({ card, index }: { card: CostCardType; index: n
           className="flip-card-inner card group relative flex h-full flex-col overflow-hidden rounded-3xl border border-border-default bg-bg-surface p-6 focus-visible:outline-2 focus-visible:outline-amber-base"
           style={{ viewTransitionName: `cost-card-${card.slug}` }}
         >
-          <div className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${accent} opacity-0 transition-opacity duration-500 group-hover:opacity-100`} />
+          <div
+            className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${accent} opacity-0 transition-opacity duration-500 group-hover:opacity-100`}
+          />
 
           <div className="relative flex items-center justify-between">
             <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-text-muted">
@@ -41,7 +49,9 @@ export default function CostCard({ card, index }: { card: CostCardType; index: n
 
           <div className="relative mt-6 flex items-center gap-2 text-sm font-semibold text-amber-base">
             See pricing
-            <span className="transition-transform duration-300 group-hover:translate-x-1.5">→</span>
+            <span className="transition-transform duration-300 group-hover:translate-x-1.5">
+              →
+            </span>
           </div>
 
           <div className="pointer-events-none absolute bottom-0 left-0 h-1 w-0 bg-gradient-primary transition-[width] duration-500 group-hover:w-full" />
