@@ -37,11 +37,7 @@ type ResourceLibraryProps = {
   resourcesPerPage?: number;
 };
 
-type SortOption =
-  | "latest"
-  | "oldest"
-  | "title-ascending"
-  | "title-descending";
+type SortOption = "latest" | "oldest" | "title-ascending" | "title-descending";
 
 const sortOptions: Array<{
   label: string;
@@ -69,10 +65,7 @@ function getResourceTimestamp(date?: string) {
   return parsedDate.getTime();
 }
 
-function getVisiblePageNumbers(
-  currentPage: number,
-  totalPages: number
-) {
+function getVisiblePageNumbers(currentPage: number, totalPages: number) {
   const pageNumbers: Array<number | "ellipsis"> = [];
 
   if (totalPages <= 5) {
@@ -90,16 +83,9 @@ function getVisiblePageNumbers(
   }
 
   const startPage = Math.max(2, currentPage - 1);
-  const endPage = Math.min(
-    totalPages - 1,
-    currentPage + 1
-  );
+  const endPage = Math.min(totalPages - 1, currentPage + 1);
 
-  for (
-    let page = startPage;
-    page <= endPage;
-    page += 1
-  ) {
+  for (let page = startPage; page <= endPage; page += 1) {
     pageNumbers.push(page);
   }
 
@@ -119,25 +105,20 @@ export default function ResourceLibrary({
   initialCategory = "",
   resourcesPerPage = 9,
 }: ResourceLibraryProps) {
-  const [searchQuery, setSearchQuery] =
-    useState(initialSearch);
+  const [searchQuery, setSearchQuery] = useState(initialSearch);
 
-  const [selectedCategory, setSelectedCategory] =
-    useState(initialCategory || "All");
+  const [selectedCategory, setSelectedCategory] = useState(
+    initialCategory || "All",
+  );
 
-  const [sortBy, setSortBy] =
-    useState<SortOption>("latest");
+  const [sortBy, setSortBy] = useState<SortOption>("latest");
 
   const [currentPage, setCurrentPage] = useState(1);
 
   const availableCategories = useMemo(() => {
     if (categories.length > 0) {
       return Array.from(
-        new Set(
-          categories
-            .map((category) => category.trim())
-            .filter(Boolean)
-        )
+        new Set(categories.map((category) => category.trim()).filter(Boolean)),
       );
     }
 
@@ -145,11 +126,8 @@ export default function ResourceLibrary({
       new Set(
         resources
           .map((resource) => resource.category?.trim())
-          .filter(
-            (category): category is string =>
-              Boolean(category)
-          )
-      )
+          .filter((category): category is string => Boolean(category)),
+      ),
     );
   }, [categories, resources]);
 
@@ -157,13 +135,9 @@ export default function ResourceLibrary({
     const counts = new Map<string, number>();
 
     resources.forEach((resource) => {
-      const category =
-        resource.category?.trim() || "Resources";
+      const category = resource.category?.trim() || "Resources";
 
-      counts.set(
-        category,
-        (counts.get(category) || 0) + 1
-      );
+      counts.set(category, (counts.get(category) || 0) + 1);
     });
 
     return counts;
@@ -171,14 +145,12 @@ export default function ResourceLibrary({
 
   const filteredResources = useMemo(() => {
     const normalizedSearch = normalizeValue(searchQuery);
-    const normalizedCategory =
-      normalizeValue(selectedCategory);
+    const normalizedCategory = normalizeValue(selectedCategory);
 
     const filtered = resources.filter((resource) => {
       const matchesCategory =
         selectedCategory === "All" ||
-        normalizeValue(resource.category) ===
-          normalizedCategory;
+        normalizeValue(resource.category) === normalizedCategory;
 
       if (!matchesCategory) return false;
       if (!normalizedSearch) return true;
@@ -201,8 +173,7 @@ export default function ResourceLibrary({
     return [...filtered].sort((first, second) => {
       if (sortBy === "oldest") {
         return (
-          getResourceTimestamp(first.date) -
-          getResourceTimestamp(second.date)
+          getResourceTimestamp(first.date) - getResourceTimestamp(second.date)
         );
       }
 
@@ -215,42 +186,23 @@ export default function ResourceLibrary({
       }
 
       return (
-        getResourceTimestamp(second.date) -
-        getResourceTimestamp(first.date)
+        getResourceTimestamp(second.date) - getResourceTimestamp(first.date)
       );
     });
-  }, [
-    resources,
-    searchQuery,
-    selectedCategory,
-    sortBy,
-  ]);
+  }, [resources, searchQuery, selectedCategory, sortBy]);
 
   const totalPages = Math.max(
     1,
-    Math.ceil(
-      filteredResources.length / resourcesPerPage
-    )
+    Math.ceil(filteredResources.length / resourcesPerPage),
   );
 
   const paginatedResources = useMemo(() => {
-    const startIndex =
-      (currentPage - 1) * resourcesPerPage;
+    const startIndex = (currentPage - 1) * resourcesPerPage;
 
-    return filteredResources.slice(
-      startIndex,
-      startIndex + resourcesPerPage
-    );
-  }, [
-    currentPage,
-    filteredResources,
-    resourcesPerPage,
-  ]);
+    return filteredResources.slice(startIndex, startIndex + resourcesPerPage);
+  }, [currentPage, filteredResources, resourcesPerPage]);
 
-  const visiblePageNumbers = getVisiblePageNumbers(
-    currentPage,
-    totalPages
-  );
+  const visiblePageNumbers = getVisiblePageNumbers(currentPage, totalPages);
 
   const startResult =
     filteredResources.length === 0
@@ -259,7 +211,7 @@ export default function ResourceLibrary({
 
   const endResult = Math.min(
     currentPage * resourcesPerPage,
-    filteredResources.length
+    filteredResources.length,
   );
 
   useEffect(() => {
@@ -280,15 +232,12 @@ export default function ResourceLibrary({
   }
 
   function scrollToLibraryTop() {
-    const libraryElement =
-      document.getElementById("resource-library");
+    const libraryElement = document.getElementById("resource-library");
 
     if (!libraryElement) return;
 
     const top =
-      libraryElement.getBoundingClientRect().top +
-      window.scrollY -
-      110;
+      libraryElement.getBoundingClientRect().top + window.scrollY - 110;
 
     window.scrollTo({
       top,
@@ -327,9 +276,8 @@ export default function ResourceLibrary({
             </h1>
 
             <p className="mt-4 max-w-2xl text-sm font-medium leading-7 text-silver sm:text-base">
-              Browse practical blockchain resources written
-              like focused articles, with clear takeaways and
-              direct next steps.
+              Browse practical blockchain resources written like focused
+              articles, with clear takeaways and direct next steps.
             </p>
           </div>
 
@@ -371,18 +319,14 @@ export default function ResourceLibrary({
 
         <div className="mb-5 grid gap-3 rounded-[1.5rem] border border-white/10 bg-bg-base/80 p-3 shadow-[0_24px_70px_rgba(15,23,42,0.08)] backdrop-blur-xl sm:p-4 lg:grid-cols-[minmax(0,1fr)_210px]">
           <label className="group relative min-w-0">
-            <span className="sr-only">
-              Search resources
-            </span>
+            <span className="sr-only">Search resources</span>
 
             <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-silver transition-colors duration-300 group-focus-within:text-amber-base" />
 
             <input
               type="search"
               value={searchQuery}
-              onChange={(event) =>
-                setSearchQuery(event.target.value)
-              }
+              onChange={(event) => setSearchQuery(event.target.value)}
               placeholder="Search by topic, title, or keyword..."
               className="h-14 w-full rounded-[1rem] border border-white/10 bg-surface/80 pl-12 pr-12 text-sm font-semibold text-text-primary outline-none transition-all duration-300 placeholder:text-silver-mid focus:border-amber-base/35 focus:bg-bg-base focus:ring-4 focus:ring-amber-base/[0.08]"
             />
@@ -400,19 +344,13 @@ export default function ResourceLibrary({
           </label>
 
           <label className="relative">
-            <span className="sr-only">
-              Sort resources
-            </span>
+            <span className="sr-only">Sort resources</span>
 
             <SlidersHorizontal className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-amber-base" />
 
             <select
               value={sortBy}
-              onChange={(event) =>
-                setSortBy(
-                  event.target.value as SortOption
-                )
-              }
+              onChange={(event) => setSortBy(event.target.value as SortOption)}
               className="h-14 w-full appearance-none rounded-[1rem] border border-white/10 bg-surface/80 pl-11 pr-11 text-sm font-bold text-text-primary outline-none transition-all duration-300 focus:border-amber-base/35 focus:bg-bg-base focus:ring-4 focus:ring-amber-base/[0.08]"
             >
               {sortOptions.map((option) => (
@@ -447,25 +385,22 @@ export default function ResourceLibrary({
             <button
               key={category}
               type="button"
-              onClick={() =>
-                setSelectedCategory(category)
-              }
+              onClick={() => setSelectedCategory(category)}
               className={`rounded-full border px-4 py-2.5 text-xs font-black transition-all duration-300 ${
                 selectedCategory === category
                   ? "border-amber-base bg-amber-base text-[#101827]"
                   : "border-white/10 bg-bg-base/70 text-silver hover:border-amber-base/30 hover:bg-amber-base/10 hover:text-amber-base"
               }`}
             >
-              {category} (
-              {categoryCounts.get(category) || 0})
+              {category} ({categoryCounts.get(category) || 0})
             </button>
           ))}
         </div>
 
         <div className="mb-6 flex flex-col gap-3 border-y border-white/10 py-4 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-sm font-bold text-silver">
-            Showing {startResult}-{endResult} of{" "}
-            {filteredResources.length} resources
+            Showing {startResult}-{endResult} of {filteredResources.length}{" "}
+            resources
           </p>
 
           {(searchQuery ||
@@ -485,24 +420,20 @@ export default function ResourceLibrary({
         {paginatedResources.length > 0 ? (
           <>
             <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-              {paginatedResources.map(
-                (resource, index) => (
-                  <ResourceCard
-                    key={resource.id || resource.slug}
-                    item={resource}
-                    index={index}
-                  />
-                )
-              )}
+              {paginatedResources.map((resource, index) => (
+                <ResourceCard
+                  key={resource.id || resource.slug}
+                  item={resource}
+                  index={index}
+                />
+              ))}
             </div>
 
             {totalPages > 1 && (
               <div className="mt-12 flex flex-col items-center justify-between gap-5 rounded-[1.3rem] border border-white/10 bg-bg-base/80 p-4 shadow-soft sm:flex-row sm:p-5">
                 <button
                   type="button"
-                  onClick={() =>
-                    changePage(currentPage - 1)
-                  }
+                  onClick={() => changePage(currentPage - 1)}
                   disabled={currentPage === 1}
                   className="group inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/10 bg-surface px-5 py-3 text-xs font-black text-silver transition-all duration-300 hover:border-amber-base/25 hover:text-amber-base disabled:cursor-not-allowed disabled:opacity-35 sm:w-auto"
                 >
@@ -511,52 +442,41 @@ export default function ResourceLibrary({
                 </button>
 
                 <div className="flex flex-wrap items-center justify-center gap-2">
-                  {visiblePageNumbers.map(
-                    (page, index) => {
-                      if (page === "ellipsis") {
-                        return (
-                          <span
-                            key={`ellipsis-${index}`}
-                            className="grid h-10 w-8 place-items-center text-xs font-black text-silver"
-                          >
-                            ...
-                          </span>
-                        );
-                      }
-
-                      const isCurrent =
-                        page === currentPage;
-
+                  {visiblePageNumbers.map((page, index) => {
+                    if (page === "ellipsis") {
                       return (
-                        <button
-                          key={page}
-                          type="button"
-                          onClick={() =>
-                            changePage(page)
-                          }
-                          aria-current={
-                            isCurrent
-                              ? "page"
-                              : undefined
-                          }
-                          className={`grid h-10 w-10 place-items-center rounded-full text-xs font-black transition-all duration-300 ${
-                            isCurrent
-                              ? "bg-amber-base text-[#101827]"
-                              : "border border-white/10 bg-surface text-silver hover:border-amber-base/25 hover:text-amber-base"
-                          }`}
+                        <span
+                          key={`ellipsis-${index}`}
+                          className="grid h-10 w-8 place-items-center text-xs font-black text-silver"
                         >
-                          {page}
-                        </button>
+                          ...
+                        </span>
                       );
                     }
-                  )}
+
+                    const isCurrent = page === currentPage;
+
+                    return (
+                      <button
+                        key={page}
+                        type="button"
+                        onClick={() => changePage(page)}
+                        aria-current={isCurrent ? "page" : undefined}
+                        className={`grid h-10 w-10 place-items-center rounded-full text-xs font-black transition-all duration-300 ${
+                          isCurrent
+                            ? "bg-amber-base text-[#101827]"
+                            : "border border-white/10 bg-surface text-silver hover:border-amber-base/25 hover:text-amber-base"
+                        }`}
+                      >
+                        {page}
+                      </button>
+                    );
+                  })}
                 </div>
 
                 <button
                   type="button"
-                  onClick={() =>
-                    changePage(currentPage + 1)
-                  }
+                  onClick={() => changePage(currentPage + 1)}
                   disabled={currentPage === totalPages}
                   className="group inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/10 bg-surface px-5 py-3 text-xs font-black text-silver transition-all duration-300 hover:border-amber-base/25 hover:text-amber-base disabled:cursor-not-allowed disabled:opacity-35 sm:w-auto"
                 >
@@ -577,8 +497,8 @@ export default function ResourceLibrary({
             </h2>
 
             <p className="mx-auto mt-3 max-w-lg text-sm leading-7 text-silver">
-              Try a broader keyword or reset the filters to
-              view the complete resource library.
+              Try a broader keyword or reset the filters to view the complete
+              resource library.
             </p>
 
             <button

@@ -60,25 +60,18 @@ export async function generateMetadata({
     };
   }
 
-  const pageTitle =
-    location.title ||
-    "Blockchain Development Services";
+  const pageTitle = location.title || "Blockchain Development Services";
 
   const pageDescription =
     location.excerpt ||
     `Explore blockchain development services, enterprise solutions, technical expertise, and regional delivery capabilities in ${
-      location.city ||
-      location.country ||
-      location.region ||
-      "this location"
+      location.city || location.country || location.region || "this location"
     }.`;
 
   const canonicalPath = `/locations/${location.slug}`;
 
   const socialImage =
-    location.hero?.image ||
-    location.image ||
-    "/media/blockchain.webp";
+    location.hero?.image || location.image || "/media/blockchain.webp";
 
   return createPageMetadata({
     title: pageTitle,
@@ -104,18 +97,13 @@ export default async function LocationSlugPage({
     notFound();
   }
 
-  const relatedLocations = getRelatedLocations(
-    location.slug,
-    3,
-  );
+  const relatedLocations = getRelatedLocations(location.slug, 3);
 
   return (
     <LocationDetailPage
       location={location}
       relatedLocations={relatedLocations}
-      relatedLinks={
-        <RelatedLinks type="locations" slug={location.slug} />
-      }
+      relatedLinks={<RelatedLinks type="locations" slug={location.slug} />}
     />
   );
 }

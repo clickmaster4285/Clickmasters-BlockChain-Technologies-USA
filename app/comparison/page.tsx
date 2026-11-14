@@ -37,9 +37,7 @@ function getRequestedPage(page?: string) {
   return Number.isFinite(parsedPage) && parsedPage > 0 ? parsedPage : 1;
 }
 
-export async function generateMetadata({
-  searchParams,
-}: ComparisonPageProps) {
+export async function generateMetadata({ searchParams }: ComparisonPageProps) {
   const resolvedSearchParams = await searchParams;
   const totalPages = Math.max(
     Math.ceil(comparisonCards.length / ITEMS_PER_PAGE),
@@ -69,14 +67,14 @@ export default async function ComparisonPage({
   const currentPage = Math.max(Number(resolvedSearchParams?.page || 1), 1);
   const totalPages = Math.max(
     Math.ceil(comparisonCards.length / ITEMS_PER_PAGE),
-    1
+    1,
   );
 
   const safeCurrentPage = Math.min(currentPage, totalPages);
 
   const paginatedCards = comparisonCards.slice(
     (safeCurrentPage - 1) * ITEMS_PER_PAGE,
-    safeCurrentPage * ITEMS_PER_PAGE
+    safeCurrentPage * ITEMS_PER_PAGE,
   );
 
   return (
@@ -149,17 +147,17 @@ export default async function ComparisonPage({
                 </div>
               </div>
 
-           <div className="relative">
-  <div className="relative aspect-[3/3] overflow-hidden rounded-[2rem]">
-    <Image
-      src="/media/blockchain.webp"
-      alt="Blockchain comparison visual"
-      fill
-      priority
-      className="object-cover object-center transition-transform duration-[3500ms] ease-out hover:scale-105"
-    />
-  </div>
-</div>
+              <div className="relative">
+                <div className="relative aspect-[3/3] overflow-hidden rounded-[2rem]">
+                  <Image
+                    src="/media/blockchain.webp"
+                    alt="Blockchain comparison visual"
+                    fill
+                    priority
+                    className="object-cover object-center transition-transform duration-[3500ms] ease-out hover:scale-105"
+                  />
+                </div>
+              </div>
             </div>
           </div>
 
@@ -234,7 +232,7 @@ export default async function ComparisonPage({
                       </span>
                       <span className="text-xs text-silver">
                         {String(
-                          (safeCurrentPage - 1) * ITEMS_PER_PAGE + index + 1
+                          (safeCurrentPage - 1) * ITEMS_PER_PAGE + index + 1,
                         ).padStart(2, "0")}
                       </span>
                     </div>
@@ -265,71 +263,69 @@ export default async function ComparisonPage({
               ))}
             </div>
 
-    <div className="mt-12 flex flex-wrap items-center justify-center gap-3">
+            <div className="mt-12 flex flex-wrap items-center justify-center gap-3">
+              {/* BACK */}
 
-  {/* BACK */}
+              {safeCurrentPage > 1 ? (
+                <Link
+                  href={getPageHref("/comparison", safeCurrentPage - 1)}
+                  className="inline-flex h-11 items-center gap-2 rounded-full border border-white/10 bg-surface px-5 text-sm font-bold text-silver transition-all hover:border-amber-base/40 hover:text-amber-base"
+                >
+                  <ChevronLeft className="h-4 w-4" />
+                  Back
+                </Link>
+              ) : (
+                <span className="inline-flex h-11 cursor-not-allowed items-center gap-2 rounded-full border border-white/5 bg-white/[0.02] px-5 text-sm font-bold text-silver/40">
+                  <ChevronLeft className="h-4 w-4" />
+                  Back
+                </span>
+              )}
 
-  {safeCurrentPage > 1 ? (
-    <Link
-      href={getPageHref("/comparison", safeCurrentPage - 1)}
-      className="inline-flex h-11 items-center gap-2 rounded-full border border-white/10 bg-surface px-5 text-sm font-bold text-silver transition-all hover:border-amber-base/40 hover:text-amber-base"
-    >
-      <ChevronLeft className="h-4 w-4" />
-      Back
-    </Link>
-  ) : (
-    <span className="inline-flex h-11 cursor-not-allowed items-center gap-2 rounded-full border border-white/5 bg-white/[0.02] px-5 text-sm font-bold text-silver/40">
-      <ChevronLeft className="h-4 w-4" />
-      Back
-    </span>
-  )}
+              {/* PAGE NUMBERS */}
 
-  {/* PAGE NUMBERS */}
+              {Array.from({ length: Math.min(3, totalPages) }).map((_, i) => {
+                const startPage =
+                  safeCurrentPage >= totalPages - 1
+                    ? Math.max(totalPages - 2, 1)
+                    : safeCurrentPage;
 
-  {Array.from({ length: Math.min(3, totalPages) }).map((_, i) => {
-    const startPage =
-      safeCurrentPage >= totalPages - 1
-        ? Math.max(totalPages - 2, 1)
-        : safeCurrentPage;
+                const page = startPage + i;
+                const isActive = page === safeCurrentPage;
 
-    const page = startPage + i;
-    const isActive = page === safeCurrentPage;
+                if (page > totalPages) return null;
 
-    if (page > totalPages) return null;
+                return (
+                  <Link
+                    key={page}
+                    href={getPageHref("/comparison", page)}
+                    className={`grid h-11 w-11 place-items-center rounded-full border text-sm font-black transition-all ${
+                      isActive
+                        ? "border-amber-base bg-amber-base text-bg-base shadow-glow"
+                        : "border-white/10 bg-surface text-silver hover:border-amber-base/40 hover:text-amber-base"
+                    }`}
+                  >
+                    {page}
+                  </Link>
+                );
+              })}
 
-    return (
-      <Link
-        key={page}
-        href={getPageHref("/comparison", page)}
-        className={`grid h-11 w-11 place-items-center rounded-full border text-sm font-black transition-all ${
-          isActive
-            ? "border-amber-base bg-amber-base text-bg-base shadow-glow"
-            : "border-white/10 bg-surface text-silver hover:border-amber-base/40 hover:text-amber-base"
-        }`}
-      >
-        {page}
-      </Link>
-    );
-  })}
+              {/* NEXT */}
 
-  {/* NEXT */}
-
-  {safeCurrentPage < totalPages ? (
-    <Link
-      href={getPageHref("/comparison", safeCurrentPage + 1)}
-      className="inline-flex h-11 items-center gap-2 rounded-full bg-amber-base px-5 text-sm font-bold text-bg-base transition-transform hover:-translate-y-0.5"
-    >
-      Next
-      <ChevronRight className="h-4 w-4" />
-    </Link>
-  ) : (
-    <span className="inline-flex h-11 cursor-not-allowed items-center gap-2 rounded-full bg-amber-base/30 px-5 text-sm font-bold text-bg-base/50">
-      Next
-      <ChevronRight className="h-4 w-4" />
-    </span>
-  )}
-
-</div>
+              {safeCurrentPage < totalPages ? (
+                <Link
+                  href={getPageHref("/comparison", safeCurrentPage + 1)}
+                  className="inline-flex h-11 items-center gap-2 rounded-full bg-amber-base px-5 text-sm font-bold text-bg-base transition-transform hover:-translate-y-0.5"
+                >
+                  Next
+                  <ChevronRight className="h-4 w-4" />
+                </Link>
+              ) : (
+                <span className="inline-flex h-11 cursor-not-allowed items-center gap-2 rounded-full bg-amber-base/30 px-5 text-sm font-bold text-bg-base/50">
+                  Next
+                  <ChevronRight className="h-4 w-4" />
+                </span>
+              )}
+            </div>
           </section>
 
           <section className="mt-20">

@@ -7,13 +7,13 @@ import { createMetadata } from "@/config/metadata";
 import { getServiceBySlug, getAllServiceSlugs } from "@/data/services";
 import Hero from "@/components/service/Hero";
 import StickyCTA from "@/components/service/StickyCTA";
-import CaseStudyCarousel from '@/components/service/CaseStudyCarousel';
-import BackToTop from '@/components/ui/BackToTop';
-import ServiceSection from '@/components/service/ServiceSection';
-import ServiceTimeline from '@/components/service/ServiceTimeline';
-import ServiceTestimonials from '@/components/service/ServiceTestimonials';
-import ServiceFAQ from '@/components/service/ServiceFAQ';
-import ServiceSidebar from '@/components/service/ServiceSidebar';
+import CaseStudyCarousel from "@/components/service/CaseStudyCarousel";
+import BackToTop from "@/components/ui/BackToTop";
+import ServiceSection from "@/components/service/ServiceSection";
+import ServiceTimeline from "@/components/service/ServiceTimeline";
+import ServiceTestimonials from "@/components/service/ServiceTestimonials";
+import ServiceFAQ from "@/components/service/ServiceFAQ";
+import ServiceSidebar from "@/components/service/ServiceSidebar";
 import RelatedLinks from "@/components/RelatedLinks";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { faqPageSchema, serviceSchema } from "@/lib/structured-data";
@@ -156,9 +156,9 @@ function ContentLibraryPage({ title }: { title: string }) {
                 Planning a blockchain project?
               </h2>
               <p className="mt-4 leading-7 text-slate-200">
-                Talk with Clickmasters about your goals, technical
-                requirements, and next steps. We can help turn early research
-                into a practical project plan.
+                Talk with Clickmasters about your goals, technical requirements,
+                and next steps. We can help turn early research into a practical
+                project plan.
               </p>
               <Link
                 href="/contact"
@@ -208,7 +208,7 @@ export async function generateMetadata({
     description:
       slug === "resources/blockchain-content-library"
         ? "Browse blockchain development resources covering services, industry applications, technical guides, compliance, and practical tools."
-        : svc.description ?? svc.hero.blurb,
+        : (svc.description ?? svc.hero.blurb),
     path: `/service/${slug}`,
     type: "article",
   });
@@ -246,18 +246,52 @@ export default async function ServicePage({
       />
       <main className="pt-32 pb-24 bg-gradient-to-b from-surface/30 to-bg-base relative overflow-hidden">
         {/* Decorative SVG waves */}
-        <svg className="pointer-events-none absolute -left-20 -top-10 opacity-70 animate-wave" width="840" height="420" viewBox="0 0 840 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M0 140 C 140 60, 280 220, 420 140 C 560 60, 700 220, 840 140 L840 420 L0 420 Z" fill="var(--amber-base)" opacity="0.12" />
+        <svg
+          className="pointer-events-none absolute -left-20 -top-10 opacity-70 animate-wave"
+          width="840"
+          height="420"
+          viewBox="0 0 840 420"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <path
+            d="M0 140 C 140 60, 280 220, 420 140 C 560 60, 700 220, 840 140 L840 420 L0 420 Z"
+            fill="var(--amber-base)"
+            opacity="0.12"
+          />
         </svg>
-        <svg className="pointer-events-none absolute right-8 top-40 opacity-40 animate-blob" width="360" height="220" viewBox="0 0 360 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M0 80 C 80 0, 160 160, 240 80 C 320 0, 360 160, 360 80 L360 220 L0 220 Z" fill="var(--amber-base)" opacity="0.06" />
+        <svg
+          className="pointer-events-none absolute right-8 top-40 opacity-40 animate-blob"
+          width="360"
+          height="220"
+          viewBox="0 0 360 220"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <path
+            d="M0 80 C 80 0, 160 160, 240 80 C 320 0, 360 160, 360 80 L360 220 L0 220 Z"
+            fill="var(--amber-base)"
+            opacity="0.06"
+          />
         </svg>
         <section className="site-container px-6">
           {/* Breadcrumbs */}
-          <nav className="mb-6 flex items-center gap-2 text-sm text-silver-mid" aria-label="Breadcrumb">
-            <Link href="/" className="hover:text-amber-base transition-colors">Home</Link>
+          <nav
+            className="mb-6 flex items-center gap-2 text-sm text-silver-mid"
+            aria-label="Breadcrumb"
+          >
+            <Link href="/" className="hover:text-amber-base transition-colors">
+              Home
+            </Link>
             <span aria-hidden="true">/</span>
-            <Link href="/service" className="hover:text-amber-base transition-colors">Services</Link>
+            <Link
+              href="/service"
+              className="hover:text-amber-base transition-colors"
+            >
+              Services
+            </Link>
             <span aria-hidden="true">/</span>
             <span className="text-silver-base">{service.title}</span>
           </nav>
@@ -274,19 +308,36 @@ export default async function ServicePage({
 
               {/* Technical deliverables */}
               <div className="rounded-2xl border border-border bg-surface p-6">
-                <h2 className="text-lg font-semibold">Technical deliverables</h2>
+                <h2 className="text-lg font-semibold">
+                  Technical deliverables
+                </h2>
                 <ul className="mt-3 text-sm text-silver-base space-y-2">
-                  <li className="flex items-start gap-2"><span className="text-amber-base mt-0.5">›</span> Auditable smart contract source code (verifiable)</li>
-                  <li className="flex items-start gap-2"><span className="text-amber-base mt-0.5">›</span> Test suite with CI integration</li>
-                  <li className="flex items-start gap-2"><span className="text-amber-base mt-0.5">›</span> Deployment scripts and infra as code</li>
-                  <li className="flex items-start gap-2"><span className="text-amber-base mt-0.5">›</span> Monitoring dashboard and runbooks</li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-amber-base mt-0.5">›</span> Auditable
+                    smart contract source code (verifiable)
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-amber-base mt-0.5">›</span> Test suite
+                    with CI integration
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-amber-base mt-0.5">›</span> Deployment
+                    scripts and infra as code
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-amber-base mt-0.5">›</span> Monitoring
+                    dashboard and runbooks
+                  </li>
                 </ul>
               </div>
 
               {/* Integrations */}
               <div className="rounded-2xl border border-border bg-surface p-6">
                 <h2 className="text-lg font-semibold">Integrations</h2>
-                <p className="mt-2 text-sm text-silver-base">Common integrations: The Graph, Alchemy/Infura, OpenZeppelin Defender, and popular wallet providers.</p>
+                <p className="mt-2 text-sm text-silver-base">
+                  Common integrations: The Graph, Alchemy/Infura, OpenZeppelin
+                  Defender, and popular wallet providers.
+                </p>
               </div>
 
               {/* Case studies */}
@@ -294,7 +345,15 @@ export default async function ServicePage({
                 <div className="rounded-2xl border border-border bg-surface p-6">
                   <h2 className="text-lg font-semibold">Case studies</h2>
                   <div className="mt-3">
-                    <CaseStudyCarousel slides={[{ title: service.caseStudy.title, blurb: service.caseStudy.blurb, image: service.caseStudy.image }]} />
+                    <CaseStudyCarousel
+                      slides={[
+                        {
+                          title: service.caseStudy.title,
+                          blurb: service.caseStudy.blurb,
+                          image: service.caseStudy.image,
+                        },
+                      ]}
+                    />
                   </div>
                 </div>
               )}
@@ -321,9 +380,17 @@ export default async function ServicePage({
           {/* Bottom CTA */}
           <div className="mt-16 rounded-3xl p-10 md:p-14 bg-gradient-to-r from-amber-base via-amber-light to-surface text-bg-base text-center">
             <h2 className="text-3xl md:text-4xl font-bold">Ready to talk?</h2>
-            <p className="mt-3 text-bg-base/80 max-w-xl mx-auto">Schedule a discovery call and receive a tailored scope and estimate. No commitment required.</p>
+            <p className="mt-3 text-bg-base/80 max-w-xl mx-auto">
+              Schedule a discovery call and receive a tailored scope and
+              estimate. No commitment required.
+            </p>
             <div className="mt-6">
-              <Link href="/contact" className="inline-flex items-center gap-2 rounded-full bg-bg-base px-8 py-3.5 text-sm font-semibold text-amber-base shadow-glow hover:-translate-y-0.5 transition-transform">Contact us</Link>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 rounded-full bg-bg-base px-8 py-3.5 text-sm font-semibold text-amber-base shadow-glow hover:-translate-y-0.5 transition-transform"
+              >
+                Contact us
+              </Link>
             </div>
           </div>
         </section>

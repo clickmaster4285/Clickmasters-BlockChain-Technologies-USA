@@ -40,11 +40,18 @@ export function Dominate() {
             <span className="h-1.5 w-1.5 rounded-full bg-amber-base" />
             Why Choose ClickMasters
           </div>
-          <h2 className="mt-5 font-bold tracking-tight text-text-primary" style={{ fontSize: "clamp(2.25rem, 5vw, 3.75rem)", lineHeight: 1.05 }}>
+          <h2
+            className="mt-5 font-bold tracking-tight text-text-primary"
+            style={{
+              fontSize: "clamp(2.25rem, 5vw, 3.75rem)",
+              lineHeight: 1.05,
+            }}
+          >
             Built to <span className="text-gradient">Dominate.</span>
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-base leading-relaxed text-text-secondary md:text-lg">
-            Review the capabilities and technology areas covered by our blockchain services.
+            Review the capabilities and technology areas covered by our
+            blockchain services.
           </p>
         </div>
 

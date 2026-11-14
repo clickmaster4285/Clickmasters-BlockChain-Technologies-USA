@@ -60,7 +60,10 @@ export async function generateMetadata({
     };
   }
 
-  return withEditedPageSeo(`/calculators/${slug}`, getCalculatorMetadata(calculator));
+  return withEditedPageSeo(
+    `/calculators/${slug}`,
+    getCalculatorMetadata(calculator),
+  );
 }
 
 /* =========================================================

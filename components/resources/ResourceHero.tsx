@@ -26,29 +26,25 @@ const floatingResources = [
   {
     title: "Business Guides",
     icon: BookOpen,
-    position:
-      "left-[2%] top-[12%] sm:left-[5%] sm:top-[13%]",
+    position: "left-[2%] top-[12%] sm:left-[5%] sm:top-[13%]",
     animation: "animate-resource-float-one",
   },
   {
     title: "Research Reports",
     icon: FileText,
-    position:
-      "right-[2%] top-[8%] sm:right-[5%] sm:top-[12%]",
+    position: "right-[2%] top-[8%] sm:right-[5%] sm:top-[12%]",
     animation: "animate-resource-float-two",
   },
   {
     title: "Learning Paths",
     icon: Layers3,
-    position:
-      "bottom-[7%] left-[3%] sm:bottom-[11%] sm:left-[8%]",
+    position: "bottom-[7%] left-[3%] sm:bottom-[11%] sm:left-[8%]",
     animation: "animate-resource-float-three",
   },
   {
     title: "Expert Insights",
     icon: Zap,
-    position:
-      "bottom-[4%] right-[3%] sm:bottom-[10%] sm:right-[7%]",
+    position: "bottom-[4%] right-[3%] sm:bottom-[10%] sm:right-[7%]",
     animation: "animate-resource-float-four",
   },
 ];
@@ -62,14 +58,9 @@ export default function ResourceHero({
   const router = useRouter();
   const [query, setQuery] = useState("");
 
-  const visibleCategories = useMemo(
-    () => categories.slice(0, 5),
-    [categories]
-  );
+  const visibleCategories = useMemo(() => categories.slice(0, 5), [categories]);
 
-  function handleSearch(
-    event: React.FormEvent<HTMLFormElement>
-  ) {
+  function handleSearch(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     const normalizedQuery = query.trim();
@@ -82,7 +73,7 @@ export default function ResourceHero({
     router.push(
       getPageHref("/resources", 1, {
         search: normalizedQuery,
-      })
+      }),
     );
   }
 
@@ -163,9 +154,8 @@ export default function ResourceHero({
 
           {/* Description */}
           <p className="animate-resource-hero-reveal resource-hero-delay-two mt-7 max-w-3xl text-base font-medium leading-8 text-[#9aa8bd] opacity-0 sm:text-lg">
-            Explore expert guides, strategic reports,
-            practical frameworks, learning paths, and
-            actionable insights created to help businesses
+            Explore expert guides, strategic reports, practical frameworks,
+            learning paths, and actionable insights created to help businesses
             understand technology and execute with clarity.
           </p>
 
@@ -182,9 +172,7 @@ export default function ResourceHero({
 
                 <input
                   value={query}
-                  onChange={(event) =>
-                    setQuery(event.target.value)
-                  }
+                  onChange={(event) => setQuery(event.target.value)}
                   type="search"
                   placeholder="Search guides, reports, insights..."
                   aria-label="Search resources"
@@ -197,7 +185,6 @@ export default function ResourceHero({
                 className="group inline-flex h-12 items-center justify-center gap-2 rounded-[1.2rem] bg-amber-base px-6 text-sm font-black text-[#101827] shadow-[0_12px_35px_rgba(245,158,11,0.22)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-amber-300 hover:shadow-[0_18px_45px_rgba(245,158,11,0.3)]"
               >
                 Search Library
-
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
               </button>
             </div>
@@ -218,7 +205,7 @@ export default function ResourceHero({
                     router.push(
                       getPageHref("/resources", 1, {
                         category,
-                      })
+                      }),
                     )
                   }
                   className="rounded-full border border-white/[0.08] bg-white/[0.025] px-3.5 py-2 text-[11px] font-bold text-[#9ca9bb] transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-base/25 hover:bg-amber-base/[0.07] hover:text-amber-base"

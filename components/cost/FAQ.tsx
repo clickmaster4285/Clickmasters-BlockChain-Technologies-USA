@@ -16,7 +16,7 @@ export default function FAQAccordion({ faq }: { faq: CostFAQItem[] }) {
     <section className="relative w-full overflow-hidden bg-gradient-to-b from-bg-base to-bg-elevated py-16 md:py-24">
       {/* Animated background elements */}
       <div className="pointer-events-none absolute inset-0 bg-hex-light opacity-30" />
-      
+
       {/* Floating orbs */}
       <div className="pointer-events-none absolute -left-20 top-1/4 h-[500px] w-[500px] rounded-full bg-amber-glow/20 blur-3xl animate-orb" />
       <div className="pointer-events-none absolute -right-20 bottom-1/4 h-[400px] w-[400px] rounded-full bg-emerald-glow/15 blur-3xl animate-orb animation-delay-2000" />
@@ -25,19 +25,29 @@ export default function FAQAccordion({ faq }: { faq: CostFAQItem[] }) {
       {/* Floating geometric shapes */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute right-[8%] top-[10%] h-16 w-16 animate-float rounded-lg border border-amber-base/20 bg-amber-glow/10 backdrop-blur-sm">
-          <div className="flex h-full items-center justify-center text-2xl text-amber-base/40">✦</div>
+          <div className="flex h-full items-center justify-center text-2xl text-amber-base/40">
+            ✦
+          </div>
         </div>
         <div className="absolute right-[15%] top-[35%] h-12 w-12 animate-float animation-delay-1000 rounded-full border border-emerald-base/20 bg-emerald-glow/10 backdrop-blur-sm">
-          <div className="flex h-full items-center justify-center text-lg text-emerald-base/40">◈</div>
+          <div className="flex h-full items-center justify-center text-lg text-emerald-base/40">
+            ◈
+          </div>
         </div>
         <div className="absolute right-[5%] top-[60%] h-20 w-20 animate-float animation-delay-2000 rounded-2xl border border-amber-base/20 bg-amber-glow/10 backdrop-blur-sm">
-          <div className="flex h-full items-center justify-center text-3xl text-amber-base/40">◆</div>
+          <div className="flex h-full items-center justify-center text-3xl text-amber-base/40">
+            ◆
+          </div>
         </div>
         <div className="absolute right-[20%] top-[75%] h-10 w-10 animate-float animation-delay-1500 rounded-full border border-purple-base/20 bg-purple-glow/10 backdrop-blur-sm">
-          <div className="flex h-full items-center justify-center text-sm text-purple-base/40">●</div>
+          <div className="flex h-full items-center justify-center text-sm text-purple-base/40">
+            ●
+          </div>
         </div>
         <div className="absolute right-[12%] top-[90%] h-14 w-14 animate-float animation-delay-2500 rounded-lg border border-emerald-base/20 bg-emerald-glow/10 backdrop-blur-sm">
-          <div className="flex h-full items-center justify-center text-xl text-emerald-base/40">▣</div>
+          <div className="flex h-full items-center justify-center text-xl text-emerald-base/40">
+            ▣
+          </div>
         </div>
       </div>
 
@@ -61,7 +71,8 @@ export default function FAQAccordion({ faq }: { faq: CostFAQItem[] }) {
                 </span>
               </h2>
               <p className="mt-3 max-w-md text-sm text-text-secondary">
-                Everything you need to know before starting your blockchain project
+                Everything you need to know before starting your blockchain
+                project
               </p>
             </RevealOnScroll>
 
@@ -77,29 +88,36 @@ export default function FAQAccordion({ faq }: { faq: CostFAQItem[] }) {
                         aria-expanded={isOpen}
                       >
                         <span className="flex items-center gap-3 text-sm font-medium text-text-primary md:text-base">
-                          <span className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold transition-colors ${
-                            isOpen 
-                              ? "bg-amber-base text-white" 
-                              : "bg-bg-elevated text-text-muted"
-                          }`}>
+                          <span
+                            className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold transition-colors ${
+                              isOpen
+                                ? "bg-amber-base text-white"
+                                : "bg-bg-elevated text-text-muted"
+                            }`}
+                          >
                             {i + 1}
                           </span>
                           {item.question}
                         </span>
                         <span
                           className={`shrink-0 flex h-8 w-8 items-center justify-center rounded-full transition-all duration-300 ${
-                            isOpen 
-                              ? "bg-amber-base/10 text-amber-base rotate-45" 
+                            isOpen
+                              ? "bg-amber-base/10 text-amber-base rotate-45"
                               : "bg-bg-elevated text-text-muted hover:bg-amber-base/5"
                           }`}
                         >
-                          <svg 
+                          <svg
                             className={`h-4 w-4 transition-transform duration-300 ${isOpen ? "rotate-0" : ""}`}
-                            fill="none" 
-                            viewBox="0 0 24 24" 
+                            fill="none"
+                            viewBox="0 0 24 24"
                             stroke="currentColor"
                           >
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M12 4v16m8-8H4"
+                            />
                           </svg>
                         </span>
                       </button>
@@ -129,12 +147,14 @@ export default function FAQAccordion({ faq }: { faq: CostFAQItem[] }) {
                 <div className="absolute h-full w-full animate-ping-slow rounded-full border-2 border-amber-base/20" />
                 <div className="absolute h-[90%] w-[90%] animate-ping-slow animation-delay-1000 rounded-full border-2 border-emerald-base/15" />
                 <div className="absolute h-[80%] w-[80%] animate-ping-slow animation-delay-2000 rounded-full border-2 border-purple-base/15" />
-                
+
                 {/* Center icon */}
                 <div className="relative flex h-40 w-40 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-base/10 to-emerald-base/10 backdrop-blur-sm">
                   <div className="text-center">
                     <div className="text-5xl animate-float">⛓️</div>
-                    <p className="mt-2 text-xs font-semibold text-text-muted">Blockchain</p>
+                    <p className="mt-2 text-xs font-semibold text-text-muted">
+                      Blockchain
+                    </p>
                   </div>
                 </div>
               </div>
@@ -163,7 +183,15 @@ export default function FAQAccordion({ faq }: { faq: CostFAQItem[] }) {
 
               {/* Connecting lines */}
               <svg className="absolute inset-0 h-full w-full">
-                <circle cx="144" cy="144" r="100" fill="none" stroke="url(#grad)" strokeWidth="1" strokeDasharray="4 4" />
+                <circle
+                  cx="144"
+                  cy="144"
+                  r="100"
+                  fill="none"
+                  stroke="url(#grad)"
+                  strokeWidth="1"
+                  strokeDasharray="4 4"
+                />
                 <defs>
                   <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" stopColor="#F59E0B" stopOpacity="0.3" />

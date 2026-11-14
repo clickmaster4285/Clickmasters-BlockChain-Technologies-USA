@@ -7,7 +7,8 @@ import { isCopySelector, isSafeStyle, type ErpEdit } from "./erp-edits-shared";
 const MAX_WAIT_FOR_DOM_MS = 1500;
 
 const warn = (...args: unknown[]) => {
-  if (process.env.NODE_ENV !== "production") console.warn("[erp-edits]", ...args);
+  if (process.env.NODE_ENV !== "production")
+    console.warn("[erp-edits]", ...args);
 };
 
 /* ---------------------------- DOM helpers ---------------------------- */
@@ -23,23 +24,37 @@ export function query(selector: string): Styled | null {
   }
 }
 
-export type Resolved = { edit: ErpEdit; el: Styled | null; target: Styled | null };
+export type Resolved = {
+  edit: ErpEdit;
+  el: Styled | null;
+  target: Styled | null;
+};
 
 /** Pass 1: resolve every plain selector against the original DOM. Copy selectors stay null. */
-export function resolvePlain(edits: ErpEdit[]): { resolved: Resolved[]; missing: number } {
+export function resolvePlain(edits: ErpEdit[]): {
+  resolved: Resolved[];
+  missing: number;
+} {
   let missing = 0;
   const resolved = edits.map((edit) => {
     const el = isCopySelector(edit.selector) ? null : query(edit.selector);
-    const target = edit.type === "sectionMove" && !isCopySelector(edit.target) ? query(edit.target) : null;
+    const target =
+      edit.type === "sectionMove" && !isCopySelector(edit.target)
+        ? query(edit.target)
+        : null;
     if (!el && !isCopySelector(edit.selector)) missing++;
-    if (edit.type === "sectionMove" && !target && !isCopySelector(edit.target)) missing++;
+    if (edit.type === "sectionMove" && !target && !isCopySelector(edit.target))
+      missing++;
     return { edit, el, target };
   });
   return { resolved, missing };
 }
 
 /** Waits briefly until the route's content is in the DOM (all plain selectors match, or the deadline). */
-export function waitForTargets(edits: ErpEdit[], isCancelled: () => boolean): Promise<Resolved[] | null> {
+export function waitForTargets(
+  edits: ErpEdit[],
+  isCancelled: () => boolean,
+): Promise<Resolved[] | null> {
   return new Promise((resolve) => {
     let result = resolvePlain(edits);
     if (result.missing === 0) return resolve(result.resolved);
@@ -60,7 +75,8 @@ export function waitForTargets(edits: ErpEdit[], isCancelled: () => boolean): Pr
     });
     observer.observe(document.body, { childList: true, subtree: true });
     const timer = setTimeout(() => {
-      if (result.missing) warn(`${result.missing} edit target(s) not found on this page`);
+      if (result.missing)
+        warn(`${result.missing} edit target(s) not found on this page`);
       finish();
     }, MAX_WAIT_FOR_DOM_MS);
   });
@@ -77,12 +93,18 @@ export class EditSession {
     let props = this.styles.get(el);
     if (!props) this.styles.set(el, (props = new Map()));
     if (!props.has(property)) {
-      props.set(property, [el.style.getPropertyValue(property), el.style.getPropertyPriority(property)]);
+      props.set(property, [
+        el.style.getPropertyValue(property),
+        el.style.getPropertyPriority(property),
+      ]);
     }
     el.style.setProperty(property, value, "important");
   }
 
-  private editElement(el: Styled, edit: Extract<ErpEdit, { type: "elementEdit" }>) {
+  private editElement(
+    el: Styled,
+    edit: Extract<ErpEdit, { type: "elementEdit" }>,
+  ) {
     if (typeof edit.text === "string") {
       const nodes = Array.from(el.childNodes);
       this.undo.push(() => el.replaceChildren(...nodes));
@@ -125,7 +147,8 @@ export class EditSession {
 
     // 1. Duplicates, in order (clones of the original, unedited elements).
     for (const { edit, el } of resolved) {
-      if (edit.type !== "sectionDuplicate" || !/^[A-Za-z0-9-]+$/.test(edit.id)) continue;
+      if (edit.type !== "sectionDuplicate" || !/^[A-Za-z0-9-]+$/.test(edit.id))
+        continue;
       const source = live(el, edit.selector);
       if (!source) continue;
       const clone = source.cloneNode(true) as Styled;

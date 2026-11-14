@@ -18,12 +18,13 @@ import BackToTop from "@/components/ui/BackToTop";
 import { createMetadata } from "@/config/metadata";
 import { technologies } from "@/data/technologies";
 
-export const generateMetadata = () => createPageMetadata({
-  title: "Blockchain Technologies We Use",
-  description:
-    "Explore the blockchain platforms, smart contract tools, infrastructure, and Web3 technologies used by ClickMasters to build secure production-ready products.",
-  path: "/technologies",
-});
+export const generateMetadata = () =>
+  createPageMetadata({
+    title: "Blockchain Technologies We Use",
+    description:
+      "Explore the blockchain platforms, smart contract tools, infrastructure, and Web3 technologies used by ClickMasters to build secure production-ready products.",
+    path: "/technologies",
+  });
 
 const selectionPrinciples = [
   {
@@ -69,8 +70,7 @@ export default function TechnologiesPage() {
               backgroundImage:
                 "linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px)",
               backgroundSize: "72px 72px",
-              maskImage:
-                "linear-gradient(to bottom, black, transparent 90%)",
+              maskImage: "linear-gradient(to bottom, black, transparent 90%)",
             }}
           />
 
@@ -88,10 +88,7 @@ export default function TechnologiesPage() {
 
               <ChevronRight className="h-3.5 w-3.5 text-amber-base" />
 
-              <span
-                aria-current="page"
-                className="text-text-primary"
-              >
+              <span aria-current="page" className="text-text-primary">
                 Technologies
               </span>
             </nav>
@@ -110,8 +107,8 @@ export default function TechnologiesPage() {
                 <p className="mt-7 max-w-3xl text-base leading-8 text-silver sm:text-lg">
                   We select blockchain platforms, smart contract frameworks,
                   infrastructure tools, and application technologies based on
-                  security, scalability, maintainability, and real-world
-                  product requirements.
+                  security, scalability, maintainability, and real-world product
+                  requirements.
                 </p>
 
                 <div className="mt-9 flex flex-wrap gap-3">
@@ -247,16 +244,14 @@ export default function TechnologiesPage() {
                     </p>
 
                     <div className="mt-6 flex flex-wrap gap-2">
-                      {technology.capabilities
-                        .slice(0, 3)
-                        .map((capability) => (
-                          <span
-                            key={capability}
-                            className="rounded-full border border-white/[0.08] bg-white/[0.025] px-3 py-1.5 text-[10px] font-medium text-silver"
-                          >
-                            {capability}
-                          </span>
-                        ))}
+                      {technology.capabilities.slice(0, 3).map((capability) => (
+                        <span
+                          key={capability}
+                          className="rounded-full border border-white/[0.08] bg-white/[0.025] px-3 py-1.5 text-[10px] font-medium text-silver"
+                        >
+                          {capability}
+                        </span>
+                      ))}
                     </div>
 
                     <div className="mt-auto pt-7">
@@ -295,9 +290,9 @@ export default function TechnologiesPage() {
                 </h2>
 
                 <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-silver sm:text-base">
-                  Share your product requirements with our blockchain
-                  engineers. We will help you evaluate the right network,
-                  architecture, development tools, and infrastructure.
+                  Share your product requirements with our blockchain engineers.
+                  We will help you evaluate the right network, architecture,
+                  development tools, and infrastructure.
                 </p>
 
                 <Link

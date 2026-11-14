@@ -1,6 +1,12 @@
 import { createPageMetadata } from "@/lib/cms/page-metadata";
 import Link from "next/link";
-import { ArrowRight, ChevronLeft, ChevronRight, ListChecks, Star } from "lucide-react";
+import {
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight,
+  ListChecks,
+  Star,
+} from "lucide-react";
 import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import BackToTop from "@/components/ui/BackToTop";
@@ -21,9 +27,7 @@ function getRequestedPage(page?: string) {
   return Number.isFinite(parsedPage) && parsedPage > 0 ? parsedPage : 1;
 }
 
-export async function generateMetadata({
-  searchParams,
-}: ListiclesPageProps) {
+export async function generateMetadata({ searchParams }: ListiclesPageProps) {
   const resolvedSearchParams = await searchParams;
   const allLists = getListicleCards();
   const totalPages = Math.max(Math.ceil(allLists.length / PER_PAGE), 1);
@@ -85,9 +89,9 @@ export default async function ListiclesPage({
                 </h1>
 
                 <p className="mt-5 max-w-2xl text-lg leading-8 text-silver">
-                  Explore curated rankings, expert picks, useful tools, practical
-                  recommendations, and Web3 ideas selected for founders,
-                  developers, and enterprise teams.
+                  Explore curated rankings, expert picks, useful tools,
+                  practical recommendations, and Web3 ideas selected for
+                  founders, developers, and enterprise teams.
                 </p>
 
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
@@ -128,40 +132,40 @@ export default async function ListiclesPage({
                 </div>
               </div>
 
-            <div className="relative flex justify-center lg:justify-end">
-  <div className="relative w-full max-w-xl">
-    <div className="absolute inset-6 rounded-full bg-amber-base/15 blur-3xl" />
+              <div className="relative flex justify-center lg:justify-end">
+                <div className="relative w-full max-w-xl">
+                  <div className="absolute inset-6 rounded-full bg-amber-base/15 blur-3xl" />
 
-    <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem]">
-      <Image
-        src="/media/listicles-hero.webp"
-        alt="Curated blockchain listicles"
-        fill
-        priority
-        sizes="(max-width: 1024px) 100vw, 45vw"
-        className="animate-float object-contain object-center drop-shadow-[0_30px_80px_rgba(0,0,0,0.45)] transition-transform duration-[3500ms] ease-out hover:scale-105"
-      />
-    </div>
+                  <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem]">
+                    <Image
+                      src="/media/listicles-hero.webp"
+                      alt="Curated blockchain listicles"
+                      fill
+                      priority
+                      sizes="(max-width: 1024px) 100vw, 45vw"
+                      className="animate-float object-contain object-center drop-shadow-[0_30px_80px_rgba(0,0,0,0.45)] transition-transform duration-[3500ms] ease-out hover:scale-105"
+                    />
+                  </div>
 
-    <div className="absolute left-4 top-4 rounded-2xl border border-white/10 bg-bg-base/70 px-4 py-3 backdrop-blur-xl">
-      <p className="text-xs font-black uppercase tracking-[0.2em] text-amber-base">
-        Curated Picks
-      </p>
-      <p className="mt-1 text-sm font-bold text-text-primary">
-        Expert selected lists
-      </p>
-    </div>
+                  <div className="absolute left-4 top-4 rounded-2xl border border-white/10 bg-bg-base/70 px-4 py-3 backdrop-blur-xl">
+                    <p className="text-xs font-black uppercase tracking-[0.2em] text-amber-base">
+                      Curated Picks
+                    </p>
+                    <p className="mt-1 text-sm font-bold text-text-primary">
+                      Expert selected lists
+                    </p>
+                  </div>
 
-    <div className="absolute bottom-4 right-4 rounded-2xl border border-white/10 bg-bg-base/70 px-4 py-3 backdrop-blur-xl">
-      <p className="text-xs font-black uppercase tracking-[0.2em] text-amber-base">
-        Updated
-      </p>
-      <p className="mt-1 text-sm font-bold text-text-primary">
-        2026 insights
-      </p>
-    </div>
-  </div>
-</div>
+                  <div className="absolute bottom-4 right-4 rounded-2xl border border-white/10 bg-bg-base/70 px-4 py-3 backdrop-blur-xl">
+                    <p className="text-xs font-black uppercase tracking-[0.2em] text-amber-base">
+                      Updated
+                    </p>
+                    <p className="mt-1 text-sm font-bold text-text-primary">
+                      2026 insights
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -178,8 +182,8 @@ export default async function ListiclesPage({
               </div>
 
               <p className="max-w-xl text-sm leading-6 text-silver">
-                Showing {lists.length} of {allLists.length} curated guides.
-                Open any card to explore the full list.
+                Showing {lists.length} of {allLists.length} curated guides. Open
+                any card to explore the full list.
               </p>
             </div>
 

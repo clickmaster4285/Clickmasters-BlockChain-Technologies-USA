@@ -42,20 +42,24 @@ export function Hero() {
             {/* Headline */}
             <h1 className="mt-7 text-5xl font-bold leading-[1.06] tracking-tight text-text-primary md:text-6xl lg:text-7xl">
               <span className="block">Blockchain Development Company</span>
-              <span className="block text-gradient">Building Secure, Scalable Web3 Products</span>
+              <span className="block text-gradient">
+                Building Secure, Scalable Web3 Products
+              </span>
             </h1>
 
             {/* Subtext with rotating badge */}
             <p className="mt-6 max-w-xl text-base leading-relaxed text-text-secondary md:text-lg">
-              Explore blockchain development services for startups, protocols, and enterprises
-              planning a product or improving an existing platform. Work can span architecture,
-              smart contracts, decentralized applications, and the supporting infrastructure
+              Explore blockchain development services for startups, protocols,
+              and enterprises planning a product or improving an existing
+              platform. Work can span architecture, smart contracts,
+              decentralized applications, and the supporting infrastructure
               needed for a production deployment.
             </p>
             <p className="mt-4 max-w-xl text-base leading-relaxed text-text-secondary md:text-lg">
-              From an early product concept to an established application, the service pages
-              describe common implementation options, security considerations, and delivery
-              choices. Share your requirements to discuss an appropriate project scope.
+              From an early product concept to an established application, the
+              service pages describe common implementation options, security
+              considerations, and delivery choices. Share your requirements to
+              discuss an appropriate project scope.
             </p>
 
             {/* CTA — Button-in-button architecture */}
@@ -122,8 +126,6 @@ export function Hero() {
                   priority
                 />
 
-          
-
                 {/* Floating wallet mockup */}
                 <div className="pointer-events-none absolute right-5 top-22 z-20 h-28 w-22 md:h-32 md:w-26">
                   <Image
@@ -175,9 +177,24 @@ export function Hero() {
                   {/* Bottom: Mini metrics grid */}
                   <div className="grid grid-cols-3 gap-2">
                     {[
-                      { label: "Gas usage", value: "Example", change: "Sample data", up: false },
-                      { label: "Block height", value: "Example", change: "Sample data", up: true },
-                      { label: "Wallet activity", value: "Example", change: "Sample data", up: true },
+                      {
+                        label: "Gas usage",
+                        value: "Example",
+                        change: "Sample data",
+                        up: false,
+                      },
+                      {
+                        label: "Block height",
+                        value: "Example",
+                        change: "Sample data",
+                        up: true,
+                      },
+                      {
+                        label: "Wallet activity",
+                        value: "Example",
+                        change: "Sample data",
+                        up: true,
+                      },
                     ].map((m) => (
                       <div
                         key={m.label}
@@ -190,8 +207,9 @@ export function Hero() {
                           {m.value}
                         </p>
                         <span
-                          className={`font-mono text-[9px] font-medium ${m.up ? "text-emerald-base" : "text-amber-base"
-                            }`}
+                          className={`font-mono text-[9px] font-medium ${
+                            m.up ? "text-emerald-base" : "text-amber-base"
+                          }`}
                         >
                           {m.change}
                         </span>

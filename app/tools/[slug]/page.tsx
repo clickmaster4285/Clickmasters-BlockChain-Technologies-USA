@@ -43,10 +43,7 @@ export async function generateMetadata({
   if (!item) return {};
 
   const title =
-    item?.seo?.title ||
-    item?.hero?.title ||
-    item?.title ||
-    "Blockchain Tool";
+    item?.seo?.title || item?.hero?.title || item?.title || "Blockchain Tool";
 
   const description =
     item?.seo?.description ||
@@ -55,10 +52,7 @@ export async function generateMetadata({
     item?.hero?.description ||
     "Use this practical blockchain tool to improve your planning, analysis, security, and technical decision-making.";
 
-  const image =
-    item?.seo?.image ||
-    item?.image ||
-    "/media/tools-hero.webp";
+  const image = item?.seo?.image || item?.image || "/media/tools-hero.webp";
 
   return createPageMetadata({
     title,
@@ -86,17 +80,12 @@ export default async function SingleToolPage({
   const related = getRelatedTools(slug, 4);
   const cta = getToolCTA(item);
 
-  const pageTitle =
-    item?.hero?.title ||
-    item?.title ||
-    "Blockchain Tool";
+  const pageTitle = item?.hero?.title || item?.title || "Blockchain Tool";
 
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
-      <JsonLd
-        data={faqPageSchema(item?.faqs || item?.faq)}
-      />
+      <JsonLd data={faqPageSchema(item?.faqs || item?.faq)} />
 
       <main className="relative overflow-hidden bg-gradient-to-b from-bg-base via-surface/40 to-bg-base pb-24 pt-32">
         {/* Background decoration */}
@@ -112,17 +101,11 @@ export default async function SingleToolPage({
             className="mb-6 flex min-w-0 flex-wrap items-center gap-2 text-sm text-silver"
             aria-label="Breadcrumb"
           >
-            <Link
-              href="/"
-              className="transition-colors hover:text-amber-base"
-            >
+            <Link href="/" className="transition-colors hover:text-amber-base">
               Home
             </Link>
 
-            <span
-              aria-hidden="true"
-              className="text-silver/50"
-            >
+            <span aria-hidden="true" className="text-silver/50">
               /
             </span>
 
@@ -133,10 +116,7 @@ export default async function SingleToolPage({
               Tools
             </Link>
 
-            <span
-              aria-hidden="true"
-              className="text-silver/50"
-            >
+            <span aria-hidden="true" className="text-silver/50">
               /
             </span>
 
@@ -146,26 +126,16 @@ export default async function SingleToolPage({
           </nav>
 
           {/* Hero */}
-          <ToolHero
-            item={item}
-            readTime={readTime}
-          />
+          <ToolHero item={item} readTime={readTime} />
 
           {/* Main content and sidebar */}
           <section className="mt-10 grid min-w-0 gap-8 lg:grid-cols-[minmax(0,1fr)_340px]">
             <div className="min-w-0">
-              <ToolContent
-                item={item}
-                cta={cta}
-              />
+              <ToolContent item={item} cta={cta} />
             </div>
 
             <div className="min-w-0">
-              <ToolSidebar
-                item={item}
-                related={related}
-                readTime={readTime}
-              />
+              <ToolSidebar item={item} related={related} readTime={readTime} />
             </div>
           </section>
 

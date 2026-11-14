@@ -29,29 +29,25 @@ const categoryVisuals = [
     icon: BookOpen,
     label: "Guides",
     accent: "amber",
-    description:
-      "Step-by-step resources created for practical implementation.",
+    description: "Step-by-step resources created for practical implementation.",
   },
   {
     icon: LineChart,
     label: "Research",
     accent: "blue",
-    description:
-      "Market analysis, trends, reports, and strategic insights.",
+    description: "Market analysis, trends, reports, and strategic insights.",
   },
   {
     icon: GraduationCap,
     label: "Learning",
     accent: "purple",
-    description:
-      "Structured knowledge for teams, founders, and professionals.",
+    description: "Structured knowledge for teams, founders, and professionals.",
   },
   {
     icon: BriefcaseBusiness,
     label: "Business",
     accent: "emerald",
-    description:
-      "Frameworks for strategy, operations, growth, and execution.",
+    description: "Frameworks for strategy, operations, growth, and execution.",
   },
   {
     icon: Code2,
@@ -78,18 +74,14 @@ const categoryVisuals = [
     icon: Lightbulb,
     label: "Insights",
     accent: "yellow",
-    description:
-      "Expert perspectives and actionable technology insights.",
+    description: "Expert perspectives and actionable technology insights.",
   },
 ];
 
 function getCategoryVisual(category: string, index: number) {
   const normalized = category.toLowerCase();
 
-  if (
-    normalized.includes("guide") ||
-    normalized.includes("article")
-  ) {
+  if (normalized.includes("guide") || normalized.includes("article")) {
     return categoryVisuals[0];
   }
 
@@ -109,10 +101,7 @@ function getCategoryVisual(category: string, index: number) {
     return categoryVisuals[2];
   }
 
-  if (
-    normalized.includes("business") ||
-    normalized.includes("strategy")
-  ) {
+  if (normalized.includes("business") || normalized.includes("strategy")) {
     return categoryVisuals[3];
   }
 
@@ -124,17 +113,11 @@ function getCategoryVisual(category: string, index: number) {
     return categoryVisuals[4];
   }
 
-  if (
-    normalized.includes("security") ||
-    normalized.includes("audit")
-  ) {
+  if (normalized.includes("security") || normalized.includes("audit")) {
     return categoryVisuals[5];
   }
 
-  if (
-    normalized.includes("enterprise") ||
-    normalized.includes("company")
-  ) {
+  if (normalized.includes("enterprise") || normalized.includes("company")) {
     return categoryVisuals[6];
   }
 
@@ -251,36 +234,26 @@ export default function ResourceCategories({
 
           <h2 className="mt-6 text-3xl font-black leading-tight tracking-[-0.04em] text-white sm:text-4xl lg:text-5xl">
             Find exactly what you need,
-            <span className="text-amber-base">
-              {" "}
-              faster
-            </span>
+            <span className="text-amber-base"> faster</span>
           </h2>
 
           <p className="mx-auto mt-5 max-w-2xl text-sm font-medium leading-7 text-[#8d9aae] sm:text-base">
-            Browse the resource library by topic and jump
-            directly into practical guides, reports,
-            insights, and learning materials.
+            Browse the resource library by topic and jump directly into
+            practical guides, reports, insights, and learning materials.
           </p>
         </div>
 
         {/* Categories grid */}
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {visibleCategories.map((category, index) => {
-            const visual = getCategoryVisual(
-              category,
-              index
-            );
+            const visual = getCategoryVisual(category, index);
 
-            const colors = getAccentClasses(
-              visual.accent
-            );
+            const colors = getAccentClasses(visual.accent);
 
             const Icon = visual.icon;
 
             const count = resources.filter(
-              (resource) =>
-                resource.category === category
+              (resource) => resource.category === category,
             ).length;
 
             return (
@@ -349,9 +322,7 @@ export default function ResourceCategories({
 
                     <div className="mt-6 flex items-center gap-3 text-xs font-black text-[#a7b2c1]">
                       Browse category
-
                       <span className="h-px w-7 bg-white/15 transition-all duration-500 group-hover:w-12 group-hover:bg-amber-base/50" />
-
                       <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-1" />
                     </div>
                   </div>
@@ -385,7 +356,6 @@ export default function ResourceCategories({
               className="group inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/[0.1] bg-white/[0.03] px-6 py-3 text-sm font-black text-[#c6d0de] transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-base/30 hover:bg-amber-base/[0.08] hover:text-amber-base sm:w-auto"
             >
               View All Resources
-
               <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-1" />
             </Link>
           </div>

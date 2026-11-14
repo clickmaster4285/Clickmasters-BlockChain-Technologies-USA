@@ -73,9 +73,7 @@ function getCategoryDescription(category: string) {
   return `Explore ${category.toLowerCase()} templates for blockchain teams, with structures for planning, documentation, and implementation.`;
 }
 
-export async function generateMetadata({
-  searchParams,
-}: TemplatesPageProps) {
+export async function generateMetadata({ searchParams }: TemplatesPageProps) {
   const resolvedSearchParams = await searchParams;
   const categories = getTemplateCategories();
   const selectedCategory = resolveListingCategory(
@@ -95,7 +93,7 @@ export async function generateMetadata({
       item.category?.toLowerCase().includes(normalizedSearch) ||
       item.format?.toLowerCase().includes(normalizedSearch) ||
       item.tags?.some((tag) =>
-        String(tag).toLowerCase().includes(normalizedSearch)
+        String(tag).toLowerCase().includes(normalizedSearch),
       );
 
     return matchesCategory && matchesSearch;
@@ -128,13 +126,9 @@ export default async function TemplatesPage({
 }: TemplatesPageProps) {
   const resolvedSearchParams = await searchParams;
 
-  const requestedPage = Math.max(
-    Number(resolvedSearchParams?.page || 1),
-    1
-  );
+  const requestedPage = Math.max(Number(resolvedSearchParams?.page || 1), 1);
 
-  const searchQuery =
-    resolvedSearchParams?.search?.trim() || "";
+  const searchQuery = resolvedSearchParams?.search?.trim() || "";
 
   const allTemplates = getTemplateCards();
   const categories = getTemplateCategories();
@@ -150,8 +144,7 @@ export default async function TemplatesPage({
   const filteredTemplates = allTemplates.filter((item) => {
     const matchesCategory =
       selectedCategory.toLowerCase() === "all" ||
-      item.category?.toLowerCase() ===
-        selectedCategory.toLowerCase();
+      item.category?.toLowerCase() === selectedCategory.toLowerCase();
 
     const matchesSearch =
       !normalizedSearch ||
@@ -160,7 +153,7 @@ export default async function TemplatesPage({
       item.category?.toLowerCase().includes(normalizedSearch) ||
       item.format?.toLowerCase().includes(normalizedSearch) ||
       item.tags?.some((tag) =>
-        String(tag).toLowerCase().includes(normalizedSearch)
+        String(tag).toLowerCase().includes(normalizedSearch),
       );
 
     return matchesCategory && matchesSearch;
@@ -168,27 +161,19 @@ export default async function TemplatesPage({
 
   const totalPages = Math.max(
     Math.ceil(filteredTemplates.length / PER_PAGE),
-    1
+    1,
   );
 
-  const safeCurrentPage = Math.min(
-    requestedPage,
-    totalPages
-  );
+  const safeCurrentPage = Math.min(requestedPage, totalPages);
 
   const start = (safeCurrentPage - 1) * PER_PAGE;
 
-  const visibleTemplates = filteredTemplates.slice(
-    start,
-    start + PER_PAGE
-  );
+  const visibleTemplates = filteredTemplates.slice(start, start + PER_PAGE);
 
   function createPageHref(page: number) {
     return getPageHref("/templates", page, {
       category:
-        selectedCategory.toLowerCase() !== "all"
-          ? selectedCategory
-          : undefined,
+        selectedCategory.toLowerCase() !== "all" ? selectedCategory : undefined,
       search: searchQuery || undefined,
     });
   }
@@ -272,7 +257,6 @@ export default async function TemplatesPage({
                     className="group/button inline-flex w-full items-center justify-center gap-2 rounded-full bg-amber-base px-7 py-3.5 text-sm font-black text-[#101827] transition-all duration-300 hover:-translate-y-1 sm:w-auto"
                   >
                     Explore Templates
-
                     <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/button:translate-x-1" />
                   </a>
 
@@ -438,9 +422,8 @@ export default async function TemplatesPage({
                   decisions, and make reviews easier to follow. Before adapting
                   one, identify who will read or approve it, what decision it
                   must support, and which details are specific to your project.
-                  Replace example values, remove sections that do not apply,
-                  and confirm that requirements and responsibilities are
-                  current.
+                  Replace example values, remove sections that do not apply, and
+                  confirm that requirements and responsibilities are current.
                 </p>
                 <p>
                   Templates are starting structures rather than legal,
@@ -459,12 +442,8 @@ export default async function TemplatesPage({
             </section>
           )}
 
-          
           {/* Library */}
-          <section
-            id="template-library"
-            className="scroll-mt-28 pt-20"
-          >
+          <section id="template-library" className="scroll-mt-28 pt-20">
             {/* Filters */}
             <div className="relative overflow-hidden rounded-[2rem] border border-border-default bg-bg-surface/90 p-5 backdrop-blur-xl md:p-7">
               <div className="pointer-events-none absolute -right-24 -top-24 h-60 w-60 rounded-full bg-amber-base/10 blur-[80px]" />
@@ -533,8 +512,7 @@ export default async function TemplatesPage({
                 <div className="mt-6 flex flex-wrap gap-2">
                   {["All", ...categories].map((category) => {
                     const isActive =
-                      selectedCategory.toLowerCase() ===
-                      category.toLowerCase();
+                      selectedCategory.toLowerCase() === category.toLowerCase();
 
                     return (
                       <Link
@@ -576,23 +554,21 @@ export default async function TemplatesPage({
               </div>
 
               <p className="max-w-xl text-sm leading-7 text-text-secondary">
-                Showing {visibleTemplates.length} of{" "}
-                {filteredTemplates.length} matching templates.
+                Showing {visibleTemplates.length} of {filteredTemplates.length}{" "}
+                matching templates.
               </p>
             </div>
 
             {/* Cards */}
             {visibleTemplates.length > 0 ? (
               <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-                {visibleTemplates.map(
-                  (item, index: number) => (
-                    <TemplateCard
-                      key={item.slug}
-                      item={item}
-                      index={start + index}
-                    />
-                  )
-                )}
+                {visibleTemplates.map((item, index: number) => (
+                  <TemplateCard
+                    key={item.slug}
+                    item={item}
+                    index={start + index}
+                  />
+                ))}
               </div>
             ) : (
               <div className="relative overflow-hidden rounded-[2rem] border border-border-default bg-bg-surface p-10 text-center md:p-16">
@@ -627,9 +603,7 @@ export default async function TemplatesPage({
               <div className="mt-16 flex flex-wrap items-center justify-center gap-3">
                 {safeCurrentPage > 1 ? (
                   <Link
-                    href={createPageHref(
-                      safeCurrentPage - 1
-                    )}
+                    href={createPageHref(safeCurrentPage - 1)}
                     className="inline-flex h-11 items-center gap-2 rounded-full border border-border-default bg-bg-base px-5 text-sm font-bold text-text-secondary transition-all hover:-translate-y-0.5 hover:border-amber-base/40 hover:text-amber-base"
                   >
                     <ChevronLeft className="h-4 w-4" />
@@ -650,15 +624,13 @@ export default async function TemplatesPage({
                       ? Math.max(totalPages - 2, 1)
                       : safeCurrentPage;
 
-                  const pageNumber =
-                    paginationStart + index;
+                  const pageNumber = paginationStart + index;
 
                   if (pageNumber > totalPages) {
                     return null;
                   }
 
-                  const isActive =
-                    pageNumber === safeCurrentPage;
+                  const isActive = pageNumber === safeCurrentPage;
 
                   return (
                     <Link
@@ -677,9 +649,7 @@ export default async function TemplatesPage({
 
                 {safeCurrentPage < totalPages ? (
                   <Link
-                    href={createPageHref(
-                      safeCurrentPage + 1
-                    )}
+                    href={createPageHref(safeCurrentPage + 1)}
                     className="inline-flex h-11 items-center gap-2 rounded-full bg-amber-base px-5 text-sm font-black text-[#101827] transition-all hover:-translate-y-0.5"
                   >
                     Next

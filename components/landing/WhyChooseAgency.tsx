@@ -1,4 +1,10 @@
-import { BadgeCheck, FileCheck2, ShieldCheck, UsersRound, Workflow } from "lucide-react";
+import {
+  BadgeCheck,
+  FileCheck2,
+  ShieldCheck,
+  UsersRound,
+  Workflow,
+} from "lucide-react";
 
 const reasons = [
   {
@@ -30,7 +36,10 @@ const reasons = [
 
 export function WhyChooseAgency() {
   return (
-    <section className="relative overflow-hidden bg-bg-base py-24 md:py-32">
+    <section
+      id="why-choose-us"
+      className="relative overflow-hidden bg-bg-base py-24 md:py-32"
+    >
       <div className="bg-neon-grid pointer-events-none absolute inset-0 opacity-30 [mask-image:radial-gradient(ellipse_at_center,black,transparent_78%)]" />
       <div className="pointer-events-none absolute left-1/2 top-0 h-[28rem] w-[28rem] -translate-x-1/2 rounded-full bg-amber-glow blur-[120px]" />
 
@@ -43,11 +52,14 @@ export function WhyChooseAgency() {
             </div>
             <h2 className="mt-5 text-4xl font-bold tracking-tight text-text-primary md:text-5xl">
               Why Choose Clickmasters as Your{" "}
-              <span className="text-gradient">Blockchain Development Agency</span>
+              <span className="text-gradient">
+                Blockchain Development Agency
+              </span>
             </h2>
             <p className="mt-5 text-base leading-relaxed text-text-secondary md:text-lg">
-              There's no shortage of agencies claiming blockchain expertise. Here's what actually
-              sets Clickmasters apart as a blockchain development agency:
+              There's no shortage of agencies claiming blockchain expertise.
+              Here's what actually sets Clickmasters apart as a blockchain
+              development agency:
             </p>
           </div>
 

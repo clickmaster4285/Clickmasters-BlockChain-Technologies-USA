@@ -35,7 +35,10 @@ const RESOURCE_HUB_LINKS = [
   ["Tools", "/tools"],
   ["Templates", "/templates"],
   ["Resources", "/resources"],
-  ["Blockchain Content Library", "/service/resources/blockchain-content-library"],
+  [
+    "Blockchain Content Library",
+    "/service/resources/blockchain-content-library",
+  ],
   ["Best-Of Lists", "/listicles"],
   ["Glossary", "/glossary"],
   ["FAQs", "/faqs"],
@@ -54,47 +57,103 @@ export function Footer() {
               <span className="grid h-8 w-8 place-items-center rounded-lg bg-primary/10 text-primary">
                 <Hexagon className="h-4 w-4" />
               </span>
-              <span className="font-display text-sm font-bold tracking-tight text-text-primary">CLICKMASTERS</span>
+              <span className="font-display text-sm font-bold tracking-tight text-text-primary">
+                CLICKMASTERS
+              </span>
             </div>
             <p className="mt-4 max-w-sm text-sm text-muted-foreground">
-              Blockchain &amp; Web3 development company. Engineering decentralized infrastructure for founders, protocols and enterprises.
+              Blockchain &amp; Web3 development company. Engineering
+              decentralized infrastructure for founders, protocols and
+              enterprises.
             </p>
           </div>
           <div>
-            <p className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">Services</p>
+            <p className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
+              Services
+            </p>
             <ul className="mt-4 grid gap-x-4 gap-y-2 text-sm sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
               {CORE_SERVICE_LINKS.map(([label, href]) => (
-                <li key={href}><Link href={href} className="text-foreground/80 hover:text-primary">{label}</Link></li>
+                <li key={href}>
+                  <Link
+                    href={href}
+                    className="text-foreground/80 hover:text-primary"
+                  >
+                    {label}
+                  </Link>
+                </li>
               ))}
             </ul>
           </div>
           <div>
-            <p className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">Resources</p>
+            <p className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
+              Resources
+            </p>
             <ul className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
               {RESOURCE_HUB_LINKS.map(([label, href]) => (
-                <li key={href}><Link href={href} className="text-foreground/80 hover:text-primary">{label}</Link></li>
+                <li key={href}>
+                  <Link
+                    href={href}
+                    className="text-foreground/80 hover:text-primary"
+                  >
+                    {label}
+                  </Link>
+                </li>
               ))}
             </ul>
           </div>
           <div>
-            <p className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">Company</p>
+            <p className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
+              Company
+            </p>
             <ul className="mt-4 space-y-2 text-sm">
-              <li><Link href="/solution" className="text-foreground/80 hover:text-primary">Solution</Link></li>
-              <li><Link href="/about" className="text-foreground/80 hover:text-primary">About</Link></li>
-              <li><Link href="/contact" className="text-foreground/80 hover:text-primary">Contact</Link></li>
+              <li>
+                <Link
+                  href="/solution"
+                  className="text-foreground/80 hover:text-primary"
+                >
+                  Solution
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/about"
+                  className="text-foreground/80 hover:text-primary"
+                >
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/contact"
+                  className="text-foreground/80 hover:text-primary"
+                >
+                  Contact
+                </Link>
+              </li>
             </ul>
           </div>
           <div>
-            <p className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">Contact</p>
+            <p className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
+              Contact
+            </p>
             <ul className="mt-4 space-y-2 text-sm">
-              <li><a href="mailto:sales@clickmastersblockchaintechnologies.com" className="break-all text-foreground/80 hover:text-primary">sales@clickmastersblockchaintechnologies.com</a></li>
+              <li>
+                <a
+                  href="mailto:sales@clickmastersblockchaintechnologies.com"
+                  className="break-all text-foreground/80 hover:text-primary"
+                >
+                  sales@clickmastersblockchaintechnologies.com
+                </a>
+              </li>
             </ul>
           </div>
         </div>
         <CmsFooterLinks />
         <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t border-border pt-6 text-xs text-muted-foreground md:flex-row md:items-center">
           <p>© {new Date().getFullYear()} ClickMasters. All rights reserved.</p>
-          <p className="font-mono uppercase tracking-widest">Beyond the code — beyond the chain</p>
+          <p className="font-mono uppercase tracking-widest">
+            Beyond the code — beyond the chain
+          </p>
         </div>
       </div>
     </footer>

@@ -1,5 +1,9 @@
 import { comparisons } from "@/data/comparisons";
-import type { ComparisonItem, ContentBlock, ContentCta } from "@/lib/content-types";
+import type {
+  ComparisonItem,
+  ContentBlock,
+  ContentCta,
+} from "@/lib/content-types";
 
 export function cleanComparisonTitle(title: string) {
   return title?.replace(/^H1:\s*/i, "")?.trim() || "Comparison Guide";
@@ -43,7 +47,11 @@ export function getRelatedComparisons(slug: string, limit = 4) {
     .slice(0, limit);
 }
 
-type ComparisonContent = string | Array<string | ContentBlock> | null | undefined;
+type ComparisonContent =
+  | string
+  | Array<string | ContentBlock>
+  | null
+  | undefined;
 
 function extractTextFromContent(content: ComparisonContent): string {
   if (!content) return "";

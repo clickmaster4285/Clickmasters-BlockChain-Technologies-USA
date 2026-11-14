@@ -22,7 +22,10 @@ export default function ServicePageSkeleton() {
           <section className="mt-12 grid gap-8 md:grid-cols-3">
             <div className="md:col-span-2 space-y-8">
               {[1, 2, 3].map((i) => (
-                <div key={i} className="rounded-2xl border border-border bg-surface p-6 md:p-8">
+                <div
+                  key={i}
+                  className="rounded-2xl border border-border bg-surface p-6 md:p-8"
+                >
                   <div className="flex gap-6 items-start">
                     <div className="h-14 w-14 rounded-2xl bg-surface/60 flex-shrink-0" />
                     <div className="flex-1 space-y-3">

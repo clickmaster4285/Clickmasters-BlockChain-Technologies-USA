@@ -8,7 +8,8 @@ export const tools = [
   {
     id: 1,
     slug: "token-launch-checklist",
-    title: "Blockchain Token Launch Checklist — 50-Point Verification Before Any Public Token Release",
+    title:
+      "Blockchain Token Launch Checklist — 50-Point Verification Before Any Public Token Release",
     excerpt:
       "Token launches that fail — exploited contracts, death spirals, regulatory issues — share common characteristics. This checklist addresses every documented failure mode.",
     category: "Checklist",
@@ -19,7 +20,8 @@ export const tools = [
 
     hero: {
       badge: "TOOL",
-      title: "Token Launch Checklist — 50-Point Verification Before Any Public Token Release",
+      title:
+        "Token Launch Checklist — 50-Point Verification Before Any Public Token Release",
       description:
         "Token launches that fail — exploited contracts, death spirals, regulatory issues — share common characteristics. This checklist addresses every documented failure mode.",
     },
@@ -151,7 +153,8 @@ export const tools = [
 
     cta: {
       title: "Ready to Launch Your Token?",
-      description: "Get expert guidance on launching your token with our comprehensive support.",
+      description:
+        "Get expert guidance on launching your token with our comprehensive support.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Token Launch Checklist",
     },
@@ -159,7 +162,8 @@ export const tools = [
   {
     id: 2,
     slug: "nft-launch-checklist",
-    title: "NFT Project Launch Checklist — 45-Point Verification Before Your Mint",
+    title:
+      "NFT Project Launch Checklist — 45-Point Verification Before Your Mint",
     excerpt:
       "The most common NFT project failures are preventable. This checklist covers every failure mode documented across 1,000+ NFT project post-mortems.",
     category: "Checklist",
@@ -170,7 +174,8 @@ export const tools = [
 
     hero: {
       badge: "TOOL",
-      title: "NFT Project Launch Checklist — 45-Point Verification Before Your Mint",
+      title:
+        "NFT Project Launch Checklist — 45-Point Verification Before Your Mint",
       description:
         "The most common NFT project failures are preventable. This checklist covers every failure mode documented across 1,000+ NFT project post-mortems.",
     },
@@ -292,7 +297,8 @@ export const tools = [
 
     faqs: [
       {
-        question: "What is the most common reason NFT mints fail on launch day?",
+        question:
+          "What is the most common reason NFT mints fail on launch day?",
         answer:
           "Gas wars caused by insufficient per-wallet limits combined with first-come-first-served minting. If thousands of people try to mint simultaneously with no limit enforcement beyond max supply, gas fees spike to hundreds of dollars per transaction. Prevention: dutch auction pricing, per-wallet limits, or allowlist pre-mint to stagger demand.",
       },
@@ -300,7 +306,8 @@ export const tools = [
 
     cta: {
       title: "Ready to Launch Your NFT Collection?",
-      description: "Get expert guidance on launching your NFT project from concept to sellout.",
+      description:
+        "Get expert guidance on launching your NFT project from concept to sellout.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the NFT Launch Checklist",
     },
@@ -386,7 +393,12 @@ export const tools = [
       },
       {
         type: "table",
-        columns: ["Cost Category", "Annual Amount", "Data Source", "Verifiable by"],
+        columns: [
+          "Cost Category",
+          "Annual Amount",
+          "Data Source",
+          "Verifiable by",
+        ],
         rows: [
           ["[Category 1]", "$[Amount]", "[Source]", "[Finance contact]"],
           ["[Category 2]", "$[Amount]", "[Source]", "[Finance contact]"],
@@ -483,10 +495,34 @@ export const tools = [
         type: "table",
         columns: ["Risk", "Probability", "Impact", "Mitigation", "Owner"],
         rows: [
-          ["Participant onboarding delays", "Medium", "High", "Web portal + onboarding support", "Project PM"],
-          ["ERP integration complexity", "Medium", "High", "Dedicated ERP integration sprint", "IT Lead"],
-          ["Regulatory change", "Low", "Medium", "Modular architecture + legal monitoring", "Legal"],
-          ["Smart contract vulnerability", "Low", "Very High", "Independent security audit", "Dev team"],
+          [
+            "Participant onboarding delays",
+            "Medium",
+            "High",
+            "Web portal + onboarding support",
+            "Project PM",
+          ],
+          [
+            "ERP integration complexity",
+            "Medium",
+            "High",
+            "Dedicated ERP integration sprint",
+            "IT Lead",
+          ],
+          [
+            "Regulatory change",
+            "Low",
+            "Medium",
+            "Modular architecture + legal monitoring",
+            "Legal",
+          ],
+          [
+            "Smart contract vulnerability",
+            "Low",
+            "Very High",
+            "Independent security audit",
+            "Dev team",
+          ],
         ],
       },
       {
@@ -497,10 +533,30 @@ export const tools = [
         type: "table",
         columns: ["Phase", "Deliverable", "Timeline", "Success Metric"],
         rows: [
-          ["1. Discovery", "Technical Specification Document", "Weeks 1–6", "Specification approved by stakeholders"],
-          ["2. Development", "Working blockchain network + integration", "Weeks 6–24", "All test cases passing"],
-          ["3. Pilot", "2 participant pilot deployment", "Weeks 22–28", "Pilot KPIs confirmed"],
-          ["4. Full deployment", "All participants onboarded", "Weeks 26–40", "100% participant participation"],
+          [
+            "1. Discovery",
+            "Technical Specification Document",
+            "Weeks 1–6",
+            "Specification approved by stakeholders",
+          ],
+          [
+            "2. Development",
+            "Working blockchain network + integration",
+            "Weeks 6–24",
+            "All test cases passing",
+          ],
+          [
+            "3. Pilot",
+            "2 participant pilot deployment",
+            "Weeks 22–28",
+            "Pilot KPIs confirmed",
+          ],
+          [
+            "4. Full deployment",
+            "All participants onboarded",
+            "Weeks 26–40",
+            "100% participant participation",
+          ],
         ],
       },
     ],
@@ -509,7 +565,8 @@ export const tools = [
 
     cta: {
       title: "Ready to Build Your Business Case?",
-      description: "Get expert guidance on building a blockchain business case that gets executive approval.",
+      description:
+        "Get expert guidance on building a blockchain business case that gets executive approval.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Business Case Template",
     },
@@ -517,7 +574,8 @@ export const tools = [
   {
     id: 4,
     slug: "blockchain-development-by-industry",
-    title: "Blockchain Development Services: Industry-Specific Pages Index | Clickmasters",
+    title:
+      "Blockchain Development Services: Industry-Specific Pages Index | Clickmasters",
     excerpt:
       "Blockchain applications differ significantly by industry — regulatory requirements, integration targets, and use case patterns vary. Here is our complete industry index.",
     category: "Index",
@@ -647,7 +705,8 @@ export const tools = [
 
     cta: {
       title: "Ready to Build Industry-Specific Blockchain Solutions?",
-      description: "Get expert guidance on blockchain development for your industry.",
+      description:
+        "Get expert guidance on blockchain development for your industry.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Industry Guide",
     },
@@ -655,7 +714,8 @@ export const tools = [
   {
     id: 5,
     slug: "ethereum-vs-hyperledger-fabric",
-    title: "Ethereum vs Hyperledger Fabric — Complete Comparison for Enterprise Use Cases",
+    title:
+      "Ethereum vs Hyperledger Fabric — Complete Comparison for Enterprise Use Cases",
     excerpt:
       "Ethereum and Hyperledger Fabric solve different problems. Choosing between them is not a matter of preference — it is a matter of matching architecture to requirements.",
     category: "Comparison",
@@ -666,7 +726,8 @@ export const tools = [
 
     hero: {
       badge: "COMPARISON",
-      title: "Ethereum vs Hyperledger Fabric — Complete Comparison for Enterprise Use Cases",
+      title:
+        "Ethereum vs Hyperledger Fabric — Complete Comparison for Enterprise Use Cases",
       description:
         "Ethereum and Hyperledger Fabric solve different problems. Choosing between them is not a matter of preference — it is a matter of matching architecture to requirements. Here is the definitive comparison.",
     },
@@ -691,16 +752,56 @@ export const tools = [
         type: "table",
         columns: ["Factor", "Ethereum (L1/L2)", "Hyperledger Fabric"],
         rows: [
-          ["Permission model", "Permissionless (public)", "Permissioned (known participants only)"],
-          ["Transaction visibility", "All transactions public", "Visible only to channel members"],
-          ["Transaction cost", "Gas fees (variable)", "Near-zero (infrastructure cost only)"],
-          ["Throughput (TPS)", "12–30 (L1), 1,000–4,000 (L2)", "1,000–5,000 per channel"],
-          ["Finality", "~12 seconds probabilistic", "Immediate (deterministic)"],
-          ["Identity model", "Pseudonymous wallet addresses", "X.509 certificate-based (formal identity)"],
-          ["Smart contract language", "Solidity (or Vyper)", "Go, JavaScript, or Java (chaincode)"],
-          ["Data privacy", "No native privacy", "Channel architecture, Private Data Collections"],
-          ["Token / asset model", "Native tokens (ETH) + ERC-20/721", "No native token (use CBDC or stablecoin bridge)"],
-          ["Developer ecosystem", "Largest (50,000+ Solidity devs)", "Smaller (Go developer pool)"],
+          [
+            "Permission model",
+            "Permissionless (public)",
+            "Permissioned (known participants only)",
+          ],
+          [
+            "Transaction visibility",
+            "All transactions public",
+            "Visible only to channel members",
+          ],
+          [
+            "Transaction cost",
+            "Gas fees (variable)",
+            "Near-zero (infrastructure cost only)",
+          ],
+          [
+            "Throughput (TPS)",
+            "12–30 (L1), 1,000–4,000 (L2)",
+            "1,000–5,000 per channel",
+          ],
+          [
+            "Finality",
+            "~12 seconds probabilistic",
+            "Immediate (deterministic)",
+          ],
+          [
+            "Identity model",
+            "Pseudonymous wallet addresses",
+            "X.509 certificate-based (formal identity)",
+          ],
+          [
+            "Smart contract language",
+            "Solidity (or Vyper)",
+            "Go, JavaScript, or Java (chaincode)",
+          ],
+          [
+            "Data privacy",
+            "No native privacy",
+            "Channel architecture, Private Data Collections",
+          ],
+          [
+            "Token / asset model",
+            "Native tokens (ETH) + ERC-20/721",
+            "No native token (use CBDC or stablecoin bridge)",
+          ],
+          [
+            "Developer ecosystem",
+            "Largest (50,000+ Solidity devs)",
+            "Smaller (Go developer pool)",
+          ],
         ],
       },
       {
@@ -751,13 +852,14 @@ export const tools = [
       },
       {
         type: "paragraph",
-        text: '"Ethereum is more secure than Fabric" — In different ways. Ethereum\'s security comes from billions in validator stake. Fabric\'s security comes from known, formally-identified participants — a different trust model, not a weaker one.',
+        text: "\"Ethereum is more secure than Fabric\" — In different ways. Ethereum's security comes from billions in validator stake. Fabric's security comes from known, formally-identified participants — a different trust model, not a weaker one.",
       },
     ],
 
     faqs: [
       {
-        question: "Can I start with Hyperledger Fabric and later move to Ethereum?",
+        question:
+          "Can I start with Hyperledger Fabric and later move to Ethereum?",
         answer:
           "Architecturally complex but possible. The data model and business logic would need to be reimplemented in Solidity. The migration is not automatic. Design for the right platform from the start rather than planning for migration.",
       },
@@ -765,7 +867,8 @@ export const tools = [
 
     cta: {
       title: "Need Help Choosing the Right Platform?",
-      description: "Get expert guidance on selecting between Ethereum and Hyperledger Fabric.",
+      description:
+        "Get expert guidance on selecting between Ethereum and Hyperledger Fabric.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Comparison PDF",
     },
@@ -813,12 +916,42 @@ export const tools = [
         type: "table",
         columns: ["Contract Type", "Development", "Audit", "Total"],
         rows: [
-          ["Standard ERC-20 token", "$5,000–$10,000", "$5,000–$12,000", "$10,000–$22,000"],
-          ["ERC-20 with vesting", "$8,000–$15,000", "$7,000–$15,000", "$15,000–$30,000"],
-          ["Standard ERC-721 NFT", "$6,000–$12,000", "$6,000–$14,000", "$12,000–$26,000"],
-          ["ERC-721A (advanced NFT)", "$10,000–$18,000", "$8,000–$18,000", "$18,000–$36,000"],
-          ["Simple escrow", "$8,000–$15,000", "$7,000–$15,000", "$15,000–$30,000"],
-          ["Multi-sig wallet", "$12,000–$20,000", "$10,000–$20,000", "$22,000–$40,000"],
+          [
+            "Standard ERC-20 token",
+            "$5,000–$10,000",
+            "$5,000–$12,000",
+            "$10,000–$22,000",
+          ],
+          [
+            "ERC-20 with vesting",
+            "$8,000–$15,000",
+            "$7,000–$15,000",
+            "$15,000–$30,000",
+          ],
+          [
+            "Standard ERC-721 NFT",
+            "$6,000–$12,000",
+            "$6,000–$14,000",
+            "$12,000–$26,000",
+          ],
+          [
+            "ERC-721A (advanced NFT)",
+            "$10,000–$18,000",
+            "$8,000–$18,000",
+            "$18,000–$36,000",
+          ],
+          [
+            "Simple escrow",
+            "$8,000–$15,000",
+            "$7,000–$15,000",
+            "$15,000–$30,000",
+          ],
+          [
+            "Multi-sig wallet",
+            "$12,000–$20,000",
+            "$10,000–$20,000",
+            "$22,000–$40,000",
+          ],
         ],
       },
       {
@@ -829,12 +962,42 @@ export const tools = [
         type: "table",
         columns: ["Protocol Type", "Development", "Audit + Economics", "Total"],
         rows: [
-          ["ERC-20 staking/yield", "$20,000–$40,000", "$20,000–$40,000", "$40,000–$80,000"],
-          ["AMM DEX (basic)", "$60,000–$100,000", "$40,000–$80,000", "$100,000–$180,000"],
-          ["Lending protocol", "$80,000–$140,000", "$50,000–$100,000", "$130,000–$240,000"],
-          ["Yield aggregator", "$70,000–$120,000", "$45,000–$90,000", "$115,000–$210,000"],
-          ["DEX + lending suite", "$140,000–$240,000", "$80,000–$140,000", "$220,000–$380,000"],
-          ["Full DeFi protocol", "$180,000–$300,000", "$100,000–$180,000", "$280,000–$480,000"],
+          [
+            "ERC-20 staking/yield",
+            "$20,000–$40,000",
+            "$20,000–$40,000",
+            "$40,000–$80,000",
+          ],
+          [
+            "AMM DEX (basic)",
+            "$60,000–$100,000",
+            "$40,000–$80,000",
+            "$100,000–$180,000",
+          ],
+          [
+            "Lending protocol",
+            "$80,000–$140,000",
+            "$50,000–$100,000",
+            "$130,000–$240,000",
+          ],
+          [
+            "Yield aggregator",
+            "$70,000–$120,000",
+            "$45,000–$90,000",
+            "$115,000–$210,000",
+          ],
+          [
+            "DEX + lending suite",
+            "$140,000–$240,000",
+            "$80,000–$140,000",
+            "$220,000–$380,000",
+          ],
+          [
+            "Full DeFi protocol",
+            "$180,000–$300,000",
+            "$100,000–$180,000",
+            "$280,000–$480,000",
+          ],
         ],
       },
       {
@@ -845,10 +1008,30 @@ export const tools = [
         type: "table",
         columns: ["Chaincode Type", "Development", "Audit", "Total"],
         rows: [
-          ["Simple asset tracker", "$30,000–$60,000", "$15,000–$30,000", "$45,000–$90,000"],
-          ["Supply chain traceability", "$50,000–$100,000", "$20,000–$40,000", "$70,000–$140,000"],
-          ["Multi-party settlement", "$60,000–$120,000", "$25,000–$50,000", "$85,000–$170,000"],
-          ["DSCSA compliance chaincode", "$80,000–$140,000", "$30,000–$60,000", "$110,000–$200,000"],
+          [
+            "Simple asset tracker",
+            "$30,000–$60,000",
+            "$15,000–$30,000",
+            "$45,000–$90,000",
+          ],
+          [
+            "Supply chain traceability",
+            "$50,000–$100,000",
+            "$20,000–$40,000",
+            "$70,000–$140,000",
+          ],
+          [
+            "Multi-party settlement",
+            "$60,000–$120,000",
+            "$25,000–$50,000",
+            "$85,000–$170,000",
+          ],
+          [
+            "DSCSA compliance chaincode",
+            "$80,000–$140,000",
+            "$30,000–$60,000",
+            "$110,000–$200,000",
+          ],
         ],
       },
       {
@@ -859,10 +1042,30 @@ export const tools = [
         type: "table",
         columns: ["Contract Type", "Development", "Audit", "Total"],
         rows: [
-          ["ERC-20 with transfer restrictions", "$20,000–$40,000", "$15,000–$30,000", "$35,000–$70,000"],
-          ["ERC-3643 (T-REX) security token", "$40,000–$80,000", "$25,000–$50,000", "$65,000–$130,000"],
-          ["Distribution contract (USDC)", "$15,000–$25,000", "$10,000–$20,000", "$25,000–$45,000"],
-          ["Full tokenization platform contracts", "$60,000–$120,000", "$35,000–$70,000", "$95,000–$190,000"],
+          [
+            "ERC-20 with transfer restrictions",
+            "$20,000–$40,000",
+            "$15,000–$30,000",
+            "$35,000–$70,000",
+          ],
+          [
+            "ERC-3643 (T-REX) security token",
+            "$40,000–$80,000",
+            "$25,000–$50,000",
+            "$65,000–$130,000",
+          ],
+          [
+            "Distribution contract (USDC)",
+            "$15,000–$25,000",
+            "$10,000–$20,000",
+            "$25,000–$45,000",
+          ],
+          [
+            "Full tokenization platform contracts",
+            "$60,000–$120,000",
+            "$35,000–$70,000",
+            "$95,000–$190,000",
+          ],
         ],
       },
       {
@@ -899,7 +1102,8 @@ export const tools = [
 
     cta: {
       title: "Ready to Get a Quote?",
-      description: "Get expert guidance on smart contract development costs and timelines.",
+      description:
+        "Get expert guidance on smart contract development costs and timelines.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Cost Guide",
     },
@@ -907,7 +1111,8 @@ export const tools = [
   {
     id: 7,
     slug: "contact",
-    title: "Book a Free Blockchain Strategy Call — NDA Signed Before the First Call",
+    title:
+      "Book a Free Blockchain Strategy Call — NDA Signed Before the First Call",
     excerpt:
       "A 30-minute call. You describe your project. We tell you honestly whether blockchain is the right solution and what an engagement would look like. No obligation, no sales pitch.",
     category: "Contact",
@@ -918,7 +1123,8 @@ export const tools = [
 
     hero: {
       badge: "CONTACT",
-      title: "Book a Free Blockchain Strategy Call — NDA Signed Before the First Call",
+      title:
+        "Book a Free Blockchain Strategy Call — NDA Signed Before the First Call",
       description:
         "A 30-minute call. You describe your project. We tell you honestly whether blockchain is the right solution and what an engagement would look like. No obligation, no sales pitch.",
     },
@@ -990,7 +1196,8 @@ export const tools = [
 
     cta: {
       title: "Ready to Book Your Free Strategy Call?",
-      description: "Get expert guidance on your blockchain project with no obligation.",
+      description:
+        "Get expert guidance on your blockchain project with no obligation.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Call Preparation Guide",
     },
@@ -998,7 +1205,8 @@ export const tools = [
   {
     id: 8,
     slug: "blockchain-technical-due-diligence",
-    title: "Blockchain Technical Due Diligence Checklist — For Investors and Acquirers",
+    title:
+      "Blockchain Technical Due Diligence Checklist — For Investors and Acquirers",
     excerpt:
       "This checklist is for investors, acquirers, and enterprise partners evaluating a blockchain protocol or company's technical maturity.",
     category: "Checklist",
@@ -1009,7 +1217,8 @@ export const tools = [
 
     hero: {
       badge: "CHECKLIST",
-      title: "Blockchain Technical Due Diligence Checklist — For Investors and Acquirers",
+      title:
+        "Blockchain Technical Due Diligence Checklist — For Investors and Acquirers",
       description:
         "This checklist is for investors, acquirers, and enterprise partners evaluating a blockchain protocol or company's technical maturity.",
     },
@@ -1166,7 +1375,8 @@ export const tools = [
 
     faqs: [
       {
-        question: "What is a reasonable timeline to complete technical due diligence on a DeFi protocol?",
+        question:
+          "What is a reasonable timeline to complete technical due diligence on a DeFi protocol?",
         answer:
           "Thorough technical DD for a DeFi protocol: 2–4 weeks. This includes: code review (1 week), audit report analysis (2–3 days), on-chain analytics (2–3 days), team interviews (3–5 hours), tokenomics modeling (1 week). For acquisitions or significant investments (>$5M): engage an independent technical advisor for the code review component.",
       },
@@ -1174,7 +1384,8 @@ export const tools = [
 
     cta: {
       title: "Need Help with Technical Due Diligence?",
-      description: "Get expert guidance on evaluating blockchain protocols and companies.",
+      description:
+        "Get expert guidance on evaluating blockchain protocols and companies.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Due Diligence Checklist",
     },
@@ -1436,7 +1647,8 @@ contract VestingVault is Ownable {
 
     faqs: [
       {
-        question: "Should we use OpenZeppelin Contracts or write our own ERC-20?",
+        question:
+          "Should we use OpenZeppelin Contracts or write our own ERC-20?",
         answer:
           "Always use OpenZeppelin. Their contracts are audited by the leading security firms, used in $100B+ of DeFi, and maintain backwards-compatible updates. Writing your own ERC-20 from scratch introduces risk without benefit. Customize via inheritance (add features on top of OZ base), not by rewriting the core standard.",
       },
@@ -1444,7 +1656,8 @@ contract VestingVault is Ownable {
 
     cta: {
       title: "Ready to Deploy Your Token?",
-      description: "Get expert guidance on ERC-20 token development and deployment.",
+      description:
+        "Get expert guidance on ERC-20 token development and deployment.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Token Template",
     },
@@ -1452,7 +1665,8 @@ contract VestingVault is Ownable {
   {
     id: 10,
     slug: "blockchain-analytics-templates",
-    title: "Blockchain Data Analytics Templates — Dune Dashboards and On-Chain KPIs",
+    title:
+      "Blockchain Data Analytics Templates — Dune Dashboards and On-Chain KPIs",
     excerpt:
       "Every production blockchain protocol needs on-chain analytics for transparency and decision-making. Here are the SQL query templates for Dune Analytics.",
     category: "Analytics",
@@ -1463,7 +1677,8 @@ contract VestingVault is Ownable {
 
     hero: {
       badge: "TEMPLATE",
-      title: "Blockchain Data Analytics Templates — Dune Dashboards and On-Chain KPIs",
+      title:
+        "Blockchain Data Analytics Templates — Dune Dashboards and On-Chain KPIs",
       description:
         "Every production blockchain protocol needs on-chain analytics for transparency and decision-making. Here are the SQL query templates for Dune Analytics.",
     },
@@ -1589,7 +1804,8 @@ ORDER BY day DESC`,
 
     cta: {
       title: "Ready to Build Your Analytics Dashboard?",
-      description: "Get expert guidance on on-chain analytics and Dune dashboard setup.",
+      description:
+        "Get expert guidance on on-chain analytics and Dune dashboard setup.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Analytics Templates",
     },
@@ -1597,7 +1813,8 @@ ORDER BY day DESC`,
   {
     id: 11,
     slug: "smart-contract-security-checklist",
-    title: "Smart Contract Pre-Launch Security Checklist — 50-Point Audit Readiness Tool",
+    title:
+      "Smart Contract Pre-Launch Security Checklist — 50-Point Audit Readiness Tool",
     excerpt:
       "Run this checklist before submitting your contracts to a security audit. Resolving these issues before the audit saves audit time and avoids findings that would otherwise delay your launch.",
     category: "Checklist",
@@ -1608,7 +1825,8 @@ ORDER BY day DESC`,
 
     hero: {
       badge: "CHECKLIST",
-      title: "Smart Contract Pre-Launch Security Checklist — 50-Point Audit Readiness Tool",
+      title:
+        "Smart Contract Pre-Launch Security Checklist — 50-Point Audit Readiness Tool",
       description:
         "Run this checklist before submitting your contracts to a security audit. Resolving these issues before the audit saves audit time (cost) and avoids findings that would otherwise delay your launch.",
     },
@@ -1633,7 +1851,7 @@ ORDER BY day DESC`,
         type: "list",
         items: [
           "Solidity version is pinned (e.g., `pragma solidity 0.8.24;` not `^0.8.0`)",
-          "Named imports used (`import {ERC20} from \"@openzeppelin/...\"` not `import \"@openzeppelin/...\"`)",
+          'Named imports used (`import {ERC20} from "@openzeppelin/..."` not `import "@openzeppelin/..."`)',
           "All functions have NatSpec documentation (`@notice`, `@param`, `@return`)",
           "No unused imports or state variables",
           "All state variables have explicit visibility (`public`, `private`, `internal`)",
@@ -1794,7 +2012,8 @@ ORDER BY day DESC`,
 
     cta: {
       title: "Need Help Preparing for Your Security Audit?",
-      description: "Get expert guidance on smart contract security and audit preparation.",
+      description:
+        "Get expert guidance on smart contract security and audit preparation.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Security Checklist",
     },
@@ -1985,7 +2204,8 @@ ORDER BY day DESC`,
 
     cta: {
       title: "Ready to Launch Your Token?",
-      description: "Get expert guidance on launching your token with our comprehensive support.",
+      description:
+        "Get expert guidance on launching your token with our comprehensive support.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Token Launch Checklist",
     },
@@ -1993,7 +2213,8 @@ ORDER BY day DESC`,
   {
     id: 13,
     slug: "blockchain-vendor-comparison",
-    title: "Blockchain Vendor Comparison Tool — How to Evaluate Development Firms",
+    title:
+      "Blockchain Vendor Comparison Tool — How to Evaluate Development Firms",
     excerpt:
       "Use this scoring matrix to evaluate blockchain development vendors side by side. Score each vendor 1–5 on each criterion.",
     category: "Template",
@@ -2004,7 +2225,8 @@ ORDER BY day DESC`,
 
     hero: {
       badge: "TEMPLATE",
-      title: "Blockchain Vendor Comparison Tool — How to Evaluate Development Firms",
+      title:
+        "Blockchain Vendor Comparison Tool — How to Evaluate Development Firms",
       description:
         "Use this scoring matrix to evaluate blockchain development vendors side by side. Score each vendor 1–5 on each criterion.",
     },
@@ -2105,7 +2327,8 @@ ORDER BY day DESC`,
 
     cta: {
       title: "Need Help Evaluating Blockchain Vendors?",
-      description: "Get expert guidance on selecting the right development partner.",
+      description:
+        "Get expert guidance on selecting the right development partner.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Vendor Evaluation Checklist",
     },
@@ -2113,7 +2336,8 @@ ORDER BY day DESC`,
   {
     id: 14,
     slug: "blockchain-scope-document-template",
-    title: "Blockchain Project Scope Document Template — Define Before You Build",
+    title:
+      "Blockchain Project Scope Document Template — Define Before You Build",
     excerpt:
       "A scope document defines exactly what will be built, preventing scope creep and misaligned expectations. This template is used in every Clickmasters Blockchain Technologies engagement.",
     category: "Template",
@@ -2124,7 +2348,8 @@ ORDER BY day DESC`,
 
     hero: {
       badge: "TEMPLATE",
-      title: "Blockchain Project Scope Document Template — Define Before You Build",
+      title:
+        "Blockchain Project Scope Document Template — Define Before You Build",
       description:
         "A scope document defines exactly what will be built, preventing scope creep and misaligned expectations. This template is used in every Clickmasters Blockchain Technologies engagement.",
     },
@@ -2264,11 +2489,27 @@ ORDER BY day DESC`,
         type: "table",
         columns: ["Deliverable", "Acceptance Criteria", "Due Date"],
         rows: [
-          ["Technical Specification Document", "Client approval, all function signatures defined", "Week 6"],
-          ["Smart contracts (testnet)", "All unit tests passing, 95%+ coverage", "Week 16"],
+          [
+            "Technical Specification Document",
+            "Client approval, all function signatures defined",
+            "Week 6",
+          ],
+          [
+            "Smart contracts (testnet)",
+            "All unit tests passing, 95%+ coverage",
+            "Week 16",
+          ],
           ["Frontend (staging)", "Client UAT sign-off", "Week 20"],
-          ["Security audit report", "All Critical/High findings resolved", "Week 24"],
-          ["Production deployment", "Contract verified on explorer, client access confirmed", "Week 28"],
+          [
+            "Security audit report",
+            "All Critical/High findings resolved",
+            "Week 24",
+          ],
+          [
+            "Production deployment",
+            "Contract verified on explorer, client access confirmed",
+            "Week 28",
+          ],
         ],
       },
       {
@@ -2308,7 +2549,8 @@ ORDER BY day DESC`,
 
     cta: {
       title: "Ready to Define Your Blockchain Project Scope?",
-      description: "Get expert guidance on scoping and planning your blockchain project.",
+      description:
+        "Get expert guidance on scoping and planning your blockchain project.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Scope Document Template",
     },
@@ -2340,7 +2582,7 @@ function getToolCards(o2 = {}) {
     c = c.filter(
       (x) =>
         x.title.toLowerCase().includes(q) ||
-        x.description.toLowerCase().includes(q)
+        x.description.toLowerCase().includes(q),
     );
   }
 
@@ -2358,14 +2600,8 @@ function searchTools(q2) {
   const q = q2.toLowerCase();
   return tools.filter(
     (i) =>
-      i.title.toLowerCase().includes(q) ||
-      i.slug.toLowerCase().includes(q)
+      i.title.toLowerCase().includes(q) || i.slug.toLowerCase().includes(q),
   );
 }
 
-export {
-  getToolBySlug,
-  getToolCards,
-  getToolsByTag,
-  searchTools,
-};
+export { getToolBySlug, getToolCards, getToolsByTag, searchTools };

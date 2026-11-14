@@ -7,7 +7,8 @@ export function ScrollProgress() {
   useEffect(() => {
     const onScroll = () => {
       const h = document.documentElement;
-      const scrolled = h.scrollTop / Math.max(1, h.scrollHeight - h.clientHeight);
+      const scrolled =
+        h.scrollTop / Math.max(1, h.scrollHeight - h.clientHeight);
       setP(scrolled);
     };
     onScroll();

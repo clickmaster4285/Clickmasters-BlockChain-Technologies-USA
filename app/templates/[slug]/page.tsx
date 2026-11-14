@@ -122,9 +122,7 @@ export default async function TemplateSlugPage({ params }: TemplatePageProps) {
   return (
     <div className="min-h-screen overflow-x-hidden bg-background text-foreground">
       <Navbar />
-      <JsonLd
-        data={faqPageSchema(item?.faqs || item?.faq)}
-      />
+      <JsonLd data={faqPageSchema(item?.faqs || item?.faq)} />
 
       <main className="relative overflow-hidden bg-gradient-to-b from-bg-base via-amber-base/5 to-bg-base pb-24 pt-28 sm:pt-32">
         {/* Main background grid */}

@@ -5,9 +5,7 @@ interface IndustriesGridProps {
   industries: IndustryCardData[];
 }
 
-export default function IndustriesGrid({
-  industries,
-}: IndustriesGridProps) {
+export default function IndustriesGrid({ industries }: IndustriesGridProps) {
   return (
     <section
       id="industries-grid"
@@ -40,10 +38,9 @@ export default function IndustriesGrid({
 
           <div className="lg:pb-2">
             <p className="max-w-2xl text-base leading-8 text-slate-400 sm:text-lg">
-              Explore how blockchain can improve settlement,
-              traceability, compliance, ownership, automation and
-              coordination across industries where trust and
-              verifiable data are essential.
+              Explore how blockchain can improve settlement, traceability,
+              compliance, ownership, automation and coordination across
+              industries where trust and verifiable data are essential.
             </p>
 
             <div className="mt-6 flex flex-wrap gap-3">
@@ -79,8 +76,8 @@ export default function IndustriesGrid({
             </h2>
 
             <p className="mx-auto mt-3 max-w-xl text-sm leading-7 text-slate-400">
-              Industry content has not been added yet. Please check
-              the industry data source.
+              Industry content has not been added yet. Please check the industry
+              data source.
             </p>
           </div>
         )}

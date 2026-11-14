@@ -2,12 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import {
-  ArrowUpRight,
-  BarChart3,
-  Clock3,
-  TrendingUp,
-} from "lucide-react";
+import { ArrowUpRight, BarChart3, Clock3, TrendingUp } from "lucide-react";
 
 export type CaseStudyCardItem = {
   id?: string | number;

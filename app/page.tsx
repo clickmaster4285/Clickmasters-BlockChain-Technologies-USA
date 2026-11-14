@@ -26,13 +26,14 @@ import { createMetadata } from "@/config/metadata";
 const heroVideo = "/media/hero-bg.mp4";
 const heroSide = "/media/cta-bg.webp";
 
-export const generateMetadata = () => createPageMetadata({
-  title: "Blockchain Development Company | Clickmasters",
-  description:
-    "Explore blockchain development services for smart contracts, decentralized applications, and Web3 products.",
-  path: "/",
-  image: heroSide,
-});
+export const generateMetadata = () =>
+  createPageMetadata({
+    title: "Blockchain Development Company | Clickmasters",
+    description:
+      "Explore blockchain development services for smart contracts, decentralized applications, and Web3 products.",
+    path: "/",
+    image: heroSide,
+  });
 
 export default function Index() {
   return (
@@ -44,19 +45,45 @@ export default function Index() {
       <main>
         <Hero />
         <TrustedMarquee />
-        <Reveal><ProductionIntro /></Reveal>
-        <Reveal><Services /></Reveal>
-        <Reveal><Dominate /></Reveal>
-        <Reveal><Benefits /></Reveal>
-        <Reveal><WhyChooseAgency /></Reveal>
-        <Reveal><Audience /></Reveal>
-        <Reveal><Portfolio /></Reveal>
-        <Reveal><Process /></Reveal>
-        <Reveal><Comparison /></Reveal>
-        <Reveal><Testimonials /></Reveal>
-        <Reveal><TechStack /></Reveal>
-        <Reveal><FAQ /></Reveal>
-        <Reveal><FinalCTA /></Reveal>
+        <Reveal>
+          <ProductionIntro />
+        </Reveal>
+        <Reveal>
+          <Services />
+        </Reveal>
+        <Reveal>
+          <Dominate />
+        </Reveal>
+        <Reveal>
+          <Benefits />
+        </Reveal>
+        <Reveal>
+          <WhyChooseAgency />
+        </Reveal>
+        <Reveal>
+          <Audience />
+        </Reveal>
+        <Reveal>
+          <Portfolio />
+        </Reveal>
+        <Reveal>
+          <Process />
+        </Reveal>
+        <Reveal>
+          <Comparison />
+        </Reveal>
+        <Reveal>
+          <Testimonials />
+        </Reveal>
+        <Reveal>
+          <TechStack />
+        </Reveal>
+        <Reveal>
+          <FAQ />
+        </Reveal>
+        <Reveal>
+          <FinalCTA />
+        </Reveal>
       </main>
       <Footer />
       <BackToTop />

@@ -100,11 +100,7 @@ export default async function SingleHowToPage({
           <section className="mt-8 grid gap-8 lg:mt-12 lg:grid-cols-[minmax(0,1fr)_320px] xl:grid-cols-[minmax(0,1fr)_340px]">
             <HowToContent item={item} cta={cta} />
 
-            <HowToSidebar
-              item={item}
-              related={related}
-              readTime={readTime}
-            />
+            <HowToSidebar item={item} related={related} readTime={readTime} />
           </section>
 
           <HowToFAQ item={item} />

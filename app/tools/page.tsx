@@ -27,10 +27,7 @@ import {
   withPageContext,
 } from "@/lib/pagination";
 
-import {
-  getToolCards,
-  getToolCategories,
-} from "@/lib/tools";
+import { getToolCards, getToolCategories } from "@/lib/tools";
 
 const PER_PAGE = 9;
 
@@ -75,9 +72,7 @@ function getCategoryDescription(category: string) {
   return `Explore ${category.toLowerCase()} tools for blockchain teams making technical and business decisions.`;
 }
 
-export async function generateMetadata({
-  searchParams,
-}: ToolsPageProps) {
+export async function generateMetadata({ searchParams }: ToolsPageProps) {
   const resolvedSearchParams = await searchParams;
   const categories = getToolCategories();
   const selectedCategory = resolveListingCategory(
@@ -96,7 +91,7 @@ export async function generateMetadata({
       item.excerpt?.toLowerCase().includes(normalizedSearch) ||
       item.category?.toLowerCase().includes(normalizedSearch) ||
       item.tags?.some((tag) =>
-        String(tag).toLowerCase().includes(normalizedSearch)
+        String(tag).toLowerCase().includes(normalizedSearch),
       );
 
     return matchesCategory && matchesSearch;
@@ -124,9 +119,7 @@ export async function generateMetadata({
   });
 }
 
-export default async function ToolsPage({
-  searchParams,
-}: ToolsPageProps) {
+export default async function ToolsPage({ searchParams }: ToolsPageProps) {
   const resolvedSearchParams = await searchParams;
 
   const requestedPage = Number(resolvedSearchParams?.page || 1);
@@ -153,35 +146,24 @@ export default async function ToolsPage({
       item.excerpt?.toLowerCase().includes(normalizedSearch) ||
       item.category?.toLowerCase().includes(normalizedSearch) ||
       item.tags?.some((tag) =>
-        String(tag).toLowerCase().includes(normalizedSearch)
+        String(tag).toLowerCase().includes(normalizedSearch),
       );
 
     return matchesCategory && matchesSearch;
   });
 
-  const totalPages = Math.max(
-    Math.ceil(filteredTools.length / PER_PAGE),
-    1
-  );
+  const totalPages = Math.max(Math.ceil(filteredTools.length / PER_PAGE), 1);
 
-  const safeCurrentPage = Math.min(
-    Math.max(requestedPage, 1),
-    totalPages
-  );
+  const safeCurrentPage = Math.min(Math.max(requestedPage, 1), totalPages);
 
   const start = (safeCurrentPage - 1) * PER_PAGE;
 
-  const visibleTools = filteredTools.slice(
-    start,
-    start + PER_PAGE
-  );
+  const visibleTools = filteredTools.slice(start, start + PER_PAGE);
 
   function createPageHref(page: number) {
     return getPageHref("/tools", page, {
       category:
-        selectedCategory.toLowerCase() !== "all"
-          ? selectedCategory
-          : undefined,
+        selectedCategory.toLowerCase() !== "all" ? selectedCategory : undefined,
       search: searchQuery || undefined,
     });
   }
@@ -373,19 +355,18 @@ export default async function ToolsPage({
               </h2>
               <div className="mt-3 grid gap-4 text-sm leading-7 text-silver md:grid-cols-2">
                 <p>
-                  Start by identifying the question the tool should help
-                  answer, then provide inputs that reflect your product,
-                  network, users, and operating assumptions. Review the
-                  definitions and scope of each input before relying on an
-                  output. If an estimate or checklist highlights a gap, record
-                  the assumption and confirm it with the person responsible for
-                  that area.
+                  Start by identifying the question the tool should help answer,
+                  then provide inputs that reflect your product, network, users,
+                  and operating assumptions. Review the definitions and scope of
+                  each input before relying on an output. If an estimate or
+                  checklist highlights a gap, record the assumption and confirm
+                  it with the person responsible for that area.
                 </p>
                 <p>
                   Tool outputs are planning aids, not guarantees, audits, or
-                  legal, financial, and security advice. Network fees,
-                  protocol behavior, and regulatory requirements can change.
-                  Verify important results against primary sources and project
+                  legal, financial, and security advice. Network fees, protocol
+                  behavior, and regulatory requirements can change. Verify
+                  important results against primary sources and project
                   evidence, and involve qualified specialists before making
                   production or compliance decisions.
                 </p>
@@ -397,10 +378,7 @@ export default async function ToolsPage({
           <section id="tools-grid" className="scroll-mt-28 pt-16">
             <div className="rounded-[2rem] border border-white/10 bg-surface/80 p-4 shadow-[0_20px_70px_rgba(0,0,0,0.16)] backdrop-blur-xl sm:p-5 md:p-6">
               <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
-                <form
-                  action="/tools"
-                  className="relative"
-                >
+                <form action="/tools" className="relative">
                   {selectedCategory.toLowerCase() !== "all" && (
                     <input
                       type="hidden"
@@ -420,8 +398,7 @@ export default async function ToolsPage({
                   />
                 </form>
 
-                {(searchQuery ||
-                  selectedCategory.toLowerCase() !== "all") && (
+                {(searchQuery || selectedCategory.toLowerCase() !== "all") && (
                   <Link
                     href="/tools"
                     className="inline-flex min-h-12 items-center justify-center rounded-xl border border-white/10 bg-white/[0.025] px-5 text-sm font-black text-silver transition-all duration-300 hover:border-amber-base/35 hover:bg-amber-base/[0.06] hover:text-amber-base"
@@ -434,8 +411,7 @@ export default async function ToolsPage({
               <div className="mt-5 flex flex-wrap gap-2">
                 {["All", ...categories].map((category) => {
                   const isActive =
-                    selectedCategory.toLowerCase() ===
-                    category.toLowerCase();
+                    selectedCategory.toLowerCase() === category.toLowerCase();
 
                   return (
                     <Link
@@ -479,11 +455,7 @@ export default async function ToolsPage({
             {visibleTools.length > 0 ? (
               <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
                 {visibleTools.map((item, index: number) => (
-                  <ToolCard
-                    key={item.slug}
-                    item={item}
-                    index={start + index}
-                  />
+                  <ToolCard key={item.slug} item={item} index={start + index} />
                 ))}
               </div>
             ) : (
@@ -544,8 +516,7 @@ export default async function ToolsPage({
 
                   if (pageNumber > totalPages) return null;
 
-                  const isActive =
-                    pageNumber === safeCurrentPage;
+                  const isActive = pageNumber === safeCurrentPage;
 
                   return (
                     <Link

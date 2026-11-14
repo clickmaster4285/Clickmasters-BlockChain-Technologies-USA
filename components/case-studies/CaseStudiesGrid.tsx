@@ -81,26 +81,16 @@ const services: CaseStudyFilterOption[] = [
 ];
 
 function normalizeValue(value?: string) {
-  return value
-    ?.trim()
-    .toLowerCase()
-    .replace(/&/g, "and")
-    .replace(/\s+/g, "-");
+  return value?.trim().toLowerCase().replace(/&/g, "and").replace(/\s+/g, "-");
 }
 
-export default function CaseStudiesGrid({
-  caseStudies,
-}: CaseStudiesGridProps) {
+export default function CaseStudiesGrid({ caseStudies }: CaseStudiesGridProps) {
   const [searchQuery, setSearchQuery] = useState("");
-  const [activeIndustry, setActiveIndustry] =
-    useState("all");
-  const [activeService, setActiveService] =
-    useState("all");
+  const [activeIndustry, setActiveIndustry] = useState("all");
+  const [activeService, setActiveService] = useState("all");
 
   const filteredCaseStudies = useMemo(() => {
-    const normalizedSearch = searchQuery
-      .trim()
-      .toLowerCase();
+    const normalizedSearch = searchQuery.trim().toLowerCase();
 
     return caseStudies.filter((caseStudy) => {
       const searchableText = [
@@ -123,25 +113,15 @@ export default function CaseStudiesGrid({
 
       const matchesIndustry =
         activeIndustry === "all" ||
-        normalizeValue(caseStudy.industry) ===
-          activeIndustry;
+        normalizeValue(caseStudy.industry) === activeIndustry;
 
       const matchesService =
         activeService === "all" ||
         normalizeValue(caseStudy.service) === activeService;
 
-      return (
-        matchesSearch &&
-        matchesIndustry &&
-        matchesService
-      );
+      return matchesSearch && matchesIndustry && matchesService;
     });
-  }, [
-    caseStudies,
-    searchQuery,
-    activeIndustry,
-    activeService,
-  ]);
+  }, [caseStudies, searchQuery, activeIndustry, activeService]);
 
   function resetFilters() {
     setSearchQuery("");
@@ -175,17 +155,14 @@ export default function CaseStudiesGrid({
 
               <h2 className="mt-6 max-w-4xl text-4xl font-black leading-[1.04] tracking-[-0.045em] text-white sm:text-5xl lg:text-6xl">
                 Explore the work behind{" "}
-                <span className="text-amber-400">
-                  measurable growth.
-                </span>
+                <span className="text-amber-400">measurable growth.</span>
               </h2>
             </div>
 
             <p className="max-w-xl text-sm font-medium leading-7 text-[#8f9caf] sm:text-base">
-              Browse client projects across different
-              industries, services, and business objectives.
-              Every case study shows the challenge, strategy,
-              execution, and result.
+              Browse client projects across different industries, services, and
+              business objectives. Every case study shows the challenge,
+              strategy, execution, and result.
             </p>
           </div>
         </div>
@@ -210,18 +187,13 @@ export default function CaseStudiesGrid({
         <div className="mx-auto mt-10 max-w-7xl px-4 sm:px-6 lg:mt-12">
           {filteredCaseStudies.length > 0 ? (
             <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-              {filteredCaseStudies.map(
-                (caseStudy, index) => (
-                  <CaseStudyCard
-                    key={
-                      caseStudy.id ??
-                      caseStudy.slug
-                    }
-                    item={caseStudy}
-                    index={index}
-                  />
-                )
-              )}
+              {filteredCaseStudies.map((caseStudy, index) => (
+                <CaseStudyCard
+                  key={caseStudy.id ?? caseStudy.slug}
+                  item={caseStudy}
+                  index={index}
+                />
+              ))}
             </div>
           ) : (
             <div className="relative overflow-hidden rounded-[2rem] border border-white/[0.08] bg-[#0c1727]/85 px-6 py-20 text-center shadow-[0_30px_90px_rgba(0,0,0,0.25)] backdrop-blur-xl sm:px-10">
@@ -237,9 +209,8 @@ export default function CaseStudiesGrid({
                 </h2>
 
                 <p className="mt-4 text-sm font-medium leading-7 text-[#8592a6]">
-                  We could not find a project matching your
-                  current search and filters. Try another
-                  keyword or reset the filters.
+                  We could not find a project matching your current search and
+                  filters. Try another keyword or reset the filters.
                 </p>
 
                 <button

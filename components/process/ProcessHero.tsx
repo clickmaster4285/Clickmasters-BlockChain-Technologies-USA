@@ -37,59 +37,44 @@ const categoryStyles: Record<
   }
 > = {
   Security: {
-    badge:
-      "border-red-400/25 bg-red-400/[0.08] text-red-300",
+    badge: "border-red-400/25 bg-red-400/[0.08] text-red-300",
 
-    glow:
-      "bg-red-400/[0.14]",
+    glow: "bg-red-400/[0.14]",
 
-    icon:
-      "text-red-300",
+    icon: "text-red-300",
   },
 
   Technical: {
-    badge:
-      "border-blue-400/25 bg-blue-400/[0.08] text-blue-300",
+    badge: "border-blue-400/25 bg-blue-400/[0.08] text-blue-300",
 
-    glow:
-      "bg-blue-400/[0.14]",
+    glow: "bg-blue-400/[0.14]",
 
-    icon:
-      "text-blue-300",
+    icon: "text-blue-300",
   },
 
   Legal: {
-    badge:
-      "border-purple-400/25 bg-purple-400/[0.08] text-purple-300",
+    badge: "border-purple-400/25 bg-purple-400/[0.08] text-purple-300",
 
-    glow:
-      "bg-purple-400/[0.14]",
+    glow: "bg-purple-400/[0.14]",
 
-    icon:
-      "text-purple-300",
+    icon: "text-purple-300",
   },
 
   Enterprise: {
-    badge:
-      "border-emerald-400/25 bg-emerald-400/[0.08] text-emerald-300",
+    badge: "border-emerald-400/25 bg-emerald-400/[0.08] text-emerald-300",
 
-    glow:
-      "bg-emerald-400/[0.14]",
+    glow: "bg-emerald-400/[0.14]",
 
-    icon:
-      "text-emerald-300",
+    icon: "text-emerald-300",
   },
 };
 
 const defaultCategoryStyle = {
-  badge:
-    "border-amber-base/25 bg-amber-base/[0.08] text-amber-base",
+  badge: "border-amber-base/25 bg-amber-base/[0.08] text-amber-base",
 
-  glow:
-    "bg-amber-base/[0.14]",
+  glow: "bg-amber-base/[0.14]",
 
-  icon:
-    "text-amber-base",
+  icon: "text-amber-base",
 };
 
 /* =========================================================
@@ -123,15 +108,11 @@ export default function ProcessHero({
   priority = true,
 }: ProcessHeroProps) {
   const categoryStyle =
-    categoryStyles[process.category] ??
-    defaultCategoryStyle;
+    categoryStyles[process.category] ?? defaultCategoryStyle;
 
-  const formattedDate = formatProcessDate(
-    process.date,
-  );
+  const formattedDate = formatProcessDate(process.date);
 
-  const heroImage =
-    process.hero.image || process.image;
+  const heroImage = process.hero.image || process.image;
 
   const { heading, continuation } = splitHeading(process.hero.title);
 
@@ -153,8 +134,7 @@ export default function ProcessHero({
 
           backgroundSize: "72px 72px",
 
-          maskImage:
-            "linear-gradient(to bottom, black, transparent 90%)",
+          maskImage: "linear-gradient(to bottom, black, transparent 90%)",
         }}
       />
 
@@ -220,8 +200,7 @@ export default function ProcessHero({
             >
               <BadgeCheck className="h-4 w-4" />
 
-              {process.hero.badge ||
-                process.category}
+              {process.hero.badge || process.category}
             </div>
 
             {/* Title */}
@@ -270,25 +249,23 @@ export default function ProcessHero({
 
             {process.credibility.length > 0 && (
               <div className="mt-8 grid gap-3 sm:grid-cols-2">
-                {process.credibility.map(
-                  (item) => (
-                    <div
-                      key={item}
-                      className="flex items-start gap-3 rounded-xl border border-white/[0.07] bg-white/[0.02] px-4 py-3"
-                    >
-                      <CheckCircle2
-                        className={[
-                          "mt-0.5 h-4 w-4 shrink-0",
-                          categoryStyle.icon,
-                        ].join(" ")}
-                      />
+                {process.credibility.map((item) => (
+                  <div
+                    key={item}
+                    className="flex items-start gap-3 rounded-xl border border-white/[0.07] bg-white/[0.02] px-4 py-3"
+                  >
+                    <CheckCircle2
+                      className={[
+                        "mt-0.5 h-4 w-4 shrink-0",
+                        categoryStyle.icon,
+                      ].join(" ")}
+                    />
 
-                      <span className="text-xs font-medium leading-5 text-silver">
-                        {item}
-                      </span>
-                    </div>
-                  ),
-                )}
+                    <span className="text-xs font-medium leading-5 text-silver">
+                      {item}
+                    </span>
+                  </div>
+                ))}
               </div>
             )}
           </div>
@@ -330,8 +307,7 @@ export default function ProcessHero({
                         backgroundImage:
                           "linear-gradient(rgba(225,157,45,0.25) 1px, transparent 1px), linear-gradient(90deg, rgba(225,157,45,0.25) 1px, transparent 1px)",
 
-                        backgroundSize:
-                          "34px 34px",
+                        backgroundSize: "34px 34px",
                       }}
                     />
                   </div>
@@ -346,8 +322,7 @@ export default function ProcessHero({
                     </p>
 
                     <p className="mt-2 max-w-sm text-sm font-bold leading-6 text-text-primary">
-                      Architecture, security,
-                      implementation, cost, and
+                      Architecture, security, implementation, cost, and
                       production requirements.
                     </p>
                   </div>
@@ -367,9 +342,7 @@ export default function ProcessHero({
 
               <div className="grid grid-cols-3 border-t border-white/[0.08] bg-surface">
                 <div className="border-r border-white/[0.08] p-4 text-center">
-                  <p className="text-lg font-black text-text-primary">
-                    01
-                  </p>
+                  <p className="text-lg font-black text-text-primary">01</p>
 
                   <p className="mt-1 text-[9px] font-bold uppercase tracking-[0.12em] text-silver">
                     Strategy
@@ -377,9 +350,7 @@ export default function ProcessHero({
                 </div>
 
                 <div className="border-r border-white/[0.08] p-4 text-center">
-                  <p className="text-lg font-black text-text-primary">
-                    02
-                  </p>
+                  <p className="text-lg font-black text-text-primary">02</p>
 
                   <p className="mt-1 text-[9px] font-bold uppercase tracking-[0.12em] text-silver">
                     Architecture
@@ -387,9 +358,7 @@ export default function ProcessHero({
                 </div>
 
                 <div className="p-4 text-center">
-                  <p className="text-lg font-black text-text-primary">
-                    03
-                  </p>
+                  <p className="text-lg font-black text-text-primary">03</p>
 
                   <p className="mt-1 text-[9px] font-bold uppercase tracking-[0.12em] text-silver">
                     Delivery

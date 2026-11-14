@@ -91,9 +91,7 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const { slug } = await params;
 
-  const industry = industries.find(
-    (item) => item.slug === slug,
-  );
+  const industry = industries.find((item) => item.slug === slug);
 
   if (!industry) {
     return {
@@ -110,14 +108,10 @@ export async function generateMetadata({
   });
 }
 
-export default async function IndustrySlugPage({
-  params,
-}: PageProps) {
+export default async function IndustrySlugPage({ params }: PageProps) {
   const { slug } = await params;
 
-  const industry = industries.find(
-    (item) => item.slug === slug,
-  );
+  const industry = industries.find((item) => item.slug === slug);
 
   if (!industry) {
     notFound();
@@ -126,8 +120,7 @@ export default async function IndustrySlugPage({
   const relatedIndustries = industries
     .filter(
       (item) =>
-        item.slug !== industry.slug &&
-        item.category === industry.category,
+        item.slug !== industry.slug && item.category === industry.category,
     )
     .slice(0, 3);
 
@@ -139,16 +132,12 @@ export default async function IndustrySlugPage({
     <>
       <JsonLd data={faqPageSchema(industry.faqs)} />
       <IndustryDetailPage
-      industry={industry}
-      relatedIndustries={
-        relatedIndustries.length > 0
-          ? relatedIndustries
-          : fallbackRelated
-      }
-      relatedLinks={
-        <RelatedLinks type="industries" slug={industry.slug} />
-      }
-    />
+        industry={industry}
+        relatedIndustries={
+          relatedIndustries.length > 0 ? relatedIndustries : fallbackRelated
+        }
+        relatedLinks={<RelatedLinks type="industries" slug={industry.slug} />}
+      />
     </>
   );
 }

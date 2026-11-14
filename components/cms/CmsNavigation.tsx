@@ -8,22 +8,50 @@ import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 import { createContext, useContext, type ReactNode } from "react";
 
-export type NavLink = { id: string; label: string; url: string; target: string; children: NavLink[] };
+export type NavLink = {
+  id: string;
+  label: string;
+  url: string;
+  target: string;
+  children: NavLink[];
+};
 export type SiteNav = { header: NavLink[]; footer: NavLink[] };
 
 const EMPTY: SiteNav = { header: [], footer: [] };
 const NavContext = createContext<SiteNav>(EMPTY);
 
-export function CmsNavigationProvider({ nav, children }: { nav: SiteNav | null; children: ReactNode }) {
-  return <NavContext.Provider value={nav ?? EMPTY}>{children}</NavContext.Provider>;
+export function CmsNavigationProvider({
+  nav,
+  children,
+}: {
+  nav: SiteNav | null;
+  children: ReactNode;
+}) {
+  return (
+    <NavContext.Provider value={nav ?? EMPTY}>{children}</NavContext.Provider>
+  );
 }
 
-function NavAnchor({ item, className, onClick }: { item: NavLink; className: string; onClick?: () => void }) {
+function NavAnchor({
+  item,
+  className,
+  onClick,
+}: {
+  item: NavLink;
+  className: string;
+  onClick?: () => void;
+}) {
   if (!item.url) return <span className={className}>{item.label}</span>;
   const external = /^https?:\/\//i.test(item.url) || item.target === "_blank";
   if (external) {
     return (
-      <a href={item.url} className={className} target="_blank" rel="noopener noreferrer" onClick={onClick}>
+      <a
+        href={item.url}
+        className={className}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={onClick}
+      >
         {item.label}
       </a>
     );
@@ -51,13 +79,15 @@ export function CmsHeaderLinks() {
               <div className="pointer-events-none absolute left-1/2 top-full z-50 mt-5 w-64 -translate-x-1/2 translate-y-4 opacity-0 transition-all duration-300 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100">
                 <div className="absolute -top-5 left-0 h-5 w-full" />
                 <div className="rounded-2xl border border-border bg-bg-base/95 p-2 shadow-soft backdrop-blur-2xl">
-                  {[item, ...item.children].filter((c) => c.url).map((child) => (
-                    <NavAnchor
-                      key={child.id}
-                      item={child}
-                      className="block rounded-xl px-3 py-2 text-sm font-medium text-text-primary hover:bg-amber-base/10 hover:text-amber-base"
-                    />
-                  ))}
+                  {[item, ...item.children]
+                    .filter((c) => c.url)
+                    .map((child) => (
+                      <NavAnchor
+                        key={child.id}
+                        item={child}
+                        className="block rounded-xl px-3 py-2 text-sm font-medium text-text-primary hover:bg-amber-base/10 hover:text-amber-base"
+                      />
+                    ))}
                 </div>
               </div>
             </>
@@ -76,11 +106,15 @@ export function CmsHeaderLinks() {
 /** Extra section for the mobile menu. */
 export function CmsMobileLinks({ onNavigate }: { onNavigate: () => void }) {
   const { header } = useContext(NavContext);
-  const flat = header.flatMap((item) => [item, ...item.children]).filter((i) => i.url);
+  const flat = header
+    .flatMap((item) => [item, ...item.children])
+    .filter((i) => i.url);
   if (!flat.length) return null;
   return (
     <li className="pt-3">
-      <p className="px-3 pb-2 text-xs font-semibold uppercase tracking-[0.18em] text-amber-base">More</p>
+      <p className="px-3 pb-2 text-xs font-semibold uppercase tracking-[0.18em] text-amber-base">
+        More
+      </p>
       <div className="grid gap-2">
         {flat.map((item) => (
           <NavAnchor
@@ -101,16 +135,24 @@ export function CmsFooterLinks() {
   if (!footer.length) return null;
   const groups = footer.filter((i) => i.children.length);
   const loose = footer.filter((i) => !i.children.length);
-  const columns = [...groups.map((g) => ({ title: g.label, links: g.children })), ...(loose.length ? [{ title: "More", links: loose }] : [])];
+  const columns = [
+    ...groups.map((g) => ({ title: g.label, links: g.children })),
+    ...(loose.length ? [{ title: "More", links: loose }] : []),
+  ];
   return (
     <div className="mt-10 grid gap-10 border-t border-border pt-10 sm:grid-cols-2 lg:grid-cols-4">
       {columns.map((col) => (
         <div key={col.title}>
-          <p className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">{col.title}</p>
+          <p className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
+            {col.title}
+          </p>
           <ul className="mt-4 space-y-2 text-sm">
             {col.links.map((link) => (
               <li key={link.id}>
-                <NavAnchor item={link} className="text-foreground/80 hover:text-primary" />
+                <NavAnchor
+                  item={link}
+                  className="text-foreground/80 hover:text-primary"
+                />
               </li>
             ))}
           </ul>

@@ -19,18 +19,11 @@ export default function GlossarySidebar({
   readTime: string;
 }) {
   const category =
-    item?.category ||
-    item?.group ||
-    item?.type ||
-    "Blockchain Glossary";
+    item?.category || item?.group || item?.type || "Blockchain Glossary";
 
   const faqs = item?.faqs || item?.faq || [];
 
-  const tags =
-    item?.tags ||
-    item?.credibility ||
-    item?.keywords ||
-    [];
+  const tags = item?.tags || item?.credibility || item?.keywords || [];
 
   return (
     <aside className="space-y-6">
@@ -73,9 +66,7 @@ export default function GlossarySidebar({
                 Read time
               </span>
 
-              <strong className="text-right text-amber-base">
-                {readTime}
-              </strong>
+              <strong className="text-right text-amber-base">{readTime}</strong>
             </div>
 
             <div className="flex items-center justify-between gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-4">
@@ -106,9 +97,7 @@ export default function GlossarySidebar({
                 FAQ
               </span>
 
-              <strong className="text-amber-base">
-                {faqs.length}
-              </strong>
+              <strong className="text-amber-base">{faqs.length}</strong>
             </div>
           </div>
         </div>
@@ -182,9 +171,7 @@ export default function GlossarySidebar({
                         term.excerpt ||
                         term.description) && (
                         <p className="mt-2 line-clamp-2 text-xs leading-5 text-silver">
-                          {term.definition ||
-                            term.excerpt ||
-                            term.description}
+                          {term.definition || term.excerpt || term.description}
                         </p>
                       )}
                     </div>

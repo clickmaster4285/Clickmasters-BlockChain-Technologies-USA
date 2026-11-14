@@ -28,7 +28,7 @@ export default function FAQsClient({
 }: FAQsClientProps) {
   const pageNumbers = Array.from(
     { length: totalPages },
-    (_, index) => index + 1
+    (_, index) => index + 1,
   );
 
   return (
@@ -40,9 +40,7 @@ export default function FAQsClient({
       <div className="container mx-auto max-w-7xl px-4 sm:px-6">
         <div className="mb-8 flex flex-col gap-3 border-b border-border-default pb-5 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="text-sm font-black text-amber-base">
-              FAQ cards
-            </p>
+            <p className="text-sm font-black text-amber-base">FAQ cards</p>
 
             <h2
               id="faq-browser-title"
@@ -60,11 +58,7 @@ export default function FAQsClient({
 
         <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
           {items.map((faq, index) => (
-            <FAQCard
-              key={faq.slug}
-              faq={faq}
-              index={startIndex + index}
-            />
+            <FAQCard key={faq.slug} faq={faq} index={startIndex + index} />
           ))}
         </div>
 
@@ -129,18 +123,12 @@ export default function FAQsClient({
   );
 }
 
-function FAQCard({
-  faq,
-  index,
-}: {
-  faq: FAQItem;
-  index: number;
-}) {
+function FAQCard({ faq, index }: { faq: FAQItem; index: number }) {
   const codeBlocks = faq.content.filter(
-    (block) => block.type === "code"
+    (block) => block.type === "code",
   ).length;
   const questions = faq.content.filter((block) =>
-    block.text?.startsWith("Q")
+    block.text?.startsWith("Q"),
   ).length;
 
   return (
@@ -186,10 +174,7 @@ function FAQCard({
         </p>
 
         <div className="mt-5 grid grid-cols-2 gap-3 border-t border-border-default pt-5">
-          <CardMetric
-            label="Sections"
-            value={faq.content.length}
-          />
+          <CardMetric label="Sections" value={faq.content.length} />
           <CardMetric
             label={codeBlocks === 1 ? "Code block" : "Code blocks"}
             value={codeBlocks}
@@ -210,13 +195,7 @@ function FAQCard({
   );
 }
 
-function CardMetric({
-  label,
-  value,
-}: {
-  label: string;
-  value: number;
-}) {
+function CardMetric({ label, value }: { label: string; value: number }) {
   return (
     <div className="rounded-xl border border-border-default bg-bg-base p-3">
       <p className="text-lg font-black text-text-primary">{value}</p>

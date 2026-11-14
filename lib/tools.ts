@@ -134,11 +134,7 @@ function normalizeTags(value: unknown): string[] {
   }
 
   return Array.from(
-    new Set(
-      value
-        .map((item) => normalizeText(item))
-        .filter(Boolean),
-    ),
+    new Set(value.map((item) => normalizeText(item)).filter(Boolean)),
   );
 }
 
@@ -223,9 +219,7 @@ function getToolBadge(tool: ToolData): string {
 }
 
 function getToolHref(tool: ToolData): string {
-  const seoUrl =
-    normalizeText(tool.seo?.url) ||
-    normalizeText(tool.meta?.url);
+  const seoUrl = normalizeText(tool.seo?.url) || normalizeText(tool.meta?.url);
 
   if (seoUrl) {
     const normalizedUrl = `/${seoUrl.replace(/^\/+|\/+$/g, "")}`;
@@ -266,9 +260,7 @@ function getToolReadTime(tool: ToolData): string {
     return explicitReadTime;
   }
 
-  const content = Array.isArray(tool.content)
-    ? tool.content
-    : [];
+  const content = Array.isArray(tool.content) ? tool.content : [];
 
   const wordCount = content.reduce((total, block) => {
     if (!block || typeof block !== "object") {
@@ -277,9 +269,7 @@ function getToolReadTime(tool: ToolData): string {
 
     const record = block as UnknownRecord;
     const text = normalizeText(record.text);
-    const items = Array.isArray(record.items)
-      ? record.items
-      : [];
+    const items = Array.isArray(record.items) ? record.items : [];
 
     const itemWords = items.reduce((itemTotal, item) => {
       if (typeof item === "string") {
@@ -300,11 +290,7 @@ function getToolReadTime(tool: ToolData): string {
       return itemTotal;
     }, 0);
 
-    return (
-      total +
-      text.split(/\s+/).filter(Boolean).length +
-      itemWords
-    );
+    return total + text.split(/\s+/).filter(Boolean).length + itemWords;
   }, 0);
 
   const minutes = Math.max(3, Math.ceil(wordCount / 220));
@@ -316,18 +302,15 @@ function getToolReadTime(tool: ToolData): string {
    Normalized Data
 ========================================================= */
 
-const rawTools: unknown[] = Array.isArray(tools)
-  ? (tools as unknown[])
-  : [];
+const rawTools: unknown[] = Array.isArray(tools) ? (tools as unknown[]) : [];
 
 const normalizedTools: ToolData[] = rawTools
-  .filter(
-    (tool): tool is ToolData =>
-      Boolean(
-        tool &&
-          typeof tool === "object" &&
-          normalizeText((tool as ToolData).slug),
-      ),
+  .filter((tool): tool is ToolData =>
+    Boolean(
+      tool &&
+      typeof tool === "object" &&
+      normalizeText((tool as ToolData).slug),
+    ),
   )
   .map((tool) => ({
     ...tool,
@@ -345,14 +328,10 @@ export function getAllTools(): ToolData[] {
   return [...normalizedTools];
 }
 
-export function getToolBySlug(
-  slug: string,
-): ToolData | undefined {
+export function getToolBySlug(slug: string): ToolData | undefined {
   const normalizedSlug = normalizeSlug(slug);
 
-  return normalizedTools.find(
-    (tool) => tool.slug === normalizedSlug,
-  );
+  return normalizedTools.find((tool) => tool.slug === normalizedSlug);
 }
 
 export function getToolCards(): ToolCardData[] {
@@ -379,18 +358,12 @@ export function getToolCards(): ToolCardData[] {
 export function getToolCategories(): string[] {
   return Array.from(
     new Set(
-      normalizedTools
-        .map((tool) => getToolCategory(tool))
-        .filter(Boolean),
+      normalizedTools.map((tool) => getToolCategory(tool)).filter(Boolean),
     ),
-  ).sort((first, second) =>
-    first.localeCompare(second),
-  );
+  ).sort((first, second) => first.localeCompare(second));
 }
 
-export function getToolsByCategory(
-  category: string,
-): ToolData[] {
+export function getToolsByCategory(category: string): ToolData[] {
   const normalizedCategory = normalizeText(category).toLowerCase();
 
   if (!normalizedCategory || normalizedCategory === "all") {
@@ -398,25 +371,19 @@ export function getToolsByCategory(
   }
 
   return normalizedTools.filter(
-    (tool) =>
-      getToolCategory(tool).toLowerCase() ===
-      normalizedCategory,
+    (tool) => getToolCategory(tool).toLowerCase() === normalizedCategory,
   );
 }
 
-export function getToolsByType(
-  type: ToolType,
-): ToolData[] {
+export function getToolsByType(type: ToolType): ToolData[] {
   return normalizedTools.filter(
     (tool) => normalizeToolType(tool.type) === type,
   );
 }
 
-export function getFeaturedTools(
-  limit?: number,
-): ToolData[] {
-  const featuredTools = normalizedTools.filter(
-    (tool) => Boolean(tool.featured),
+export function getFeaturedTools(limit?: number): ToolData[] {
+  const featuredTools = normalizedTools.filter((tool) =>
+    Boolean(tool.featured),
   );
 
   if (typeof limit === "number" && limit > 0) {
@@ -426,9 +393,7 @@ export function getFeaturedTools(
   return featuredTools;
 }
 
-export function searchTools(
-  query: string,
-): ToolData[] {
+export function searchTools(query: string): ToolData[] {
   const normalizedQuery = normalizeText(query).toLowerCase();
 
   if (!normalizedQuery) {
@@ -450,30 +415,24 @@ export function getRelatedTools(
     return [];
   }
 
-  const currentCategory =
-    getToolCategory(currentTool).toLowerCase();
+  const currentCategory = getToolCategory(currentTool).toLowerCase();
 
   const currentTags = new Set(
-    normalizeTags(currentTool.tags).map((tag) =>
-      tag.toLowerCase(),
-    ),
+    normalizeTags(currentTool.tags).map((tag) => tag.toLowerCase()),
   );
 
   return normalizedTools
     .filter((tool) => tool.slug !== currentTool.slug)
     .map((tool) => {
       const sameCategory =
-        getToolCategory(tool).toLowerCase() ===
-        currentCategory;
+        getToolCategory(tool).toLowerCase() === currentCategory;
 
-      const sharedTags = normalizeTags(tool.tags).filter(
-        (tag) => currentTags.has(tag.toLowerCase()),
+      const sharedTags = normalizeTags(tool.tags).filter((tag) =>
+        currentTags.has(tag.toLowerCase()),
       ).length;
 
       const score =
-        (sameCategory ? 10 : 0) +
-        sharedTags * 3 +
-        (tool.featured ? 1 : 0);
+        (sameCategory ? 10 : 0) + sharedTags * 3 + (tool.featured ? 1 : 0);
 
       return {
         tool,
@@ -516,19 +475,15 @@ export function getToolCTA(tool: ToolData): {
 } {
   return {
     title:
-      normalizeText(tool.cta?.title) ||
-      `Need help with ${getToolTitle(tool)}?`,
+      normalizeText(tool.cta?.title) || `Need help with ${getToolTitle(tool)}?`,
     description:
       normalizeText(tool.cta?.description) ||
       "Talk with ClickMasters and get expert guidance tailored to your product, architecture, budget, timeline, and technical goals.",
     primaryText:
-      normalizeText(tool.cta?.primaryText) ||
-      "Book a Free Strategy Call",
+      normalizeText(tool.cta?.primaryText) || "Book a Free Strategy Call",
     secondaryText: normalizeText(tool.cta?.secondaryText),
     href: normalizeText(tool.cta?.href) || "/contact",
-    secondaryHref:
-      normalizeText(tool.cta?.secondaryHref) ||
-      "/tools",
+    secondaryHref: normalizeText(tool.cta?.secondaryHref) || "/tools",
   };
 }
 

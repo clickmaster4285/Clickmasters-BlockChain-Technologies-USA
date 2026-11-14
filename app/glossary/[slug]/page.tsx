@@ -40,10 +40,7 @@ export async function generateMetadata({
   if (!item) return {};
 
   const title =
-    item.seo?.title ||
-    item.title ||
-    item.term ||
-    "Blockchain Glossary";
+    item.seo?.title || item.title || item.term || "Blockchain Glossary";
 
   const description =
     item.seo?.description ||
@@ -76,17 +73,12 @@ export default async function SingleGlossaryPage({
   const related = getRelatedGlossaryTerms(slug, 6);
   const cta = getGlossaryCTA(item);
 
-  const pageTitle =
-    item.title ||
-    item.term ||
-    "Blockchain Glossary Term";
+  const pageTitle = item.title || item.term || "Blockchain Glossary Term";
 
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
-      <JsonLd
-        data={faqPageSchema(item.faqs || item.faq)}
-      />
+      <JsonLd data={faqPageSchema(item.faqs || item.faq)} />
 
       <main className="relative overflow-hidden bg-gradient-to-b from-bg-base via-surface/40 to-bg-base pb-24 pt-32">
         <div className="pointer-events-none absolute left-[-14rem] top-[-10rem] h-[32rem] w-[32rem] rounded-full bg-amber-base/10 blur-3xl" />
@@ -97,10 +89,7 @@ export default async function SingleGlossaryPage({
             className="mb-6 flex flex-wrap items-center gap-2 text-sm text-silver"
             aria-label="Breadcrumb"
           >
-            <Link
-              href="/"
-              className="transition-colors hover:text-amber-base"
-            >
+            <Link href="/" className="transition-colors hover:text-amber-base">
               Home
             </Link>
 
@@ -120,16 +109,10 @@ export default async function SingleGlossaryPage({
             </span>
           </nav>
 
-          <GlossaryHero
-            item={item}
-            readTime={readTime}
-          />
+          <GlossaryHero item={item} readTime={readTime} />
 
           <section className="mt-10 grid gap-8 lg:grid-cols-[minmax(0,1fr)_340px]">
-            <GlossaryContent
-              item={item}
-              cta={cta}
-            />
+            <GlossaryContent item={item} cta={cta} />
 
             <GlossarySidebar
               item={item}
@@ -139,8 +122,6 @@ export default async function SingleGlossaryPage({
           </section>
 
           <GlossaryFAQ item={item} />
-
-          
         </section>
         <RelatedLinks type="glossary" slug={slug} />
       </main>

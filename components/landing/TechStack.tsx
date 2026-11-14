@@ -36,14 +36,15 @@ const categories: Category[] = [
     icon: Link2,
     accent: "#D97706",
     items: [
-      { name: "Ethereum and EVM-compatible chains", logos: [{ slug: "ethereum", color: "3C3C3D" }] },
+      {
+        name: "Ethereum and EVM-compatible chains",
+        logos: [{ slug: "ethereum", color: "3C3C3D" }],
+      },
       { name: "Polygon", logos: [{ slug: "polygon", color: "7B3FE4" }] },
       { name: "Solana", logos: [{ slug: "solana", color: "9945FF" }] },
       {
         name: "Avalanche, Arbitrum, Optimism, Base",
-        logos: [
-          { slug: "optimism", color: "FF0420" },
-        ],
+        logos: [{ slug: "optimism", color: "FF0420" }],
       },
       { name: "Enterprise/permissioned ledger frameworks", logos: [] },
     ],
@@ -56,7 +57,10 @@ const categories: Category[] = [
       { name: "Solidity", logos: [{ slug: "solidity", color: "363636" }] },
       { name: "Vyper", logos: [] },
       { name: "Hardhat and Foundry", logos: [] },
-      { name: "OpenZeppelin standards", logos: [{ slug: "openzeppelin", color: "4E5EE4" }] },
+      {
+        name: "OpenZeppelin standards",
+        logos: [{ slug: "openzeppelin", color: "4E5EE4" }],
+      },
     ],
   },
   {
@@ -85,7 +89,10 @@ const categories: Category[] = [
           { slug: "graphql", color: "E10098" },
         ],
       },
-      { name: "IPFS and decentralized storage", logos: [{ slug: "ipfs", color: "65C2CB" }] },
+      {
+        name: "IPFS and decentralized storage",
+        logos: [{ slug: "ipfs", color: "65C2CB" }],
+      },
     ],
   },
   {
@@ -149,7 +156,8 @@ export function TechStack() {
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
         style={{
-          background: "radial-gradient(ellipse 80% 50% at 50% 50%, rgba(217,119,6,0.08), transparent 70%)",
+          background:
+            "radial-gradient(ellipse 80% 50% at 50% 50%, rgba(217,119,6,0.08), transparent 70%)",
         }}
       />
 
@@ -160,13 +168,17 @@ export function TechStack() {
             <span className="h-1.5 w-1.5 rounded-full bg-amber-base" />
             Technologies We Work With
           </div>
-          <h2 className="mt-5 font-bold tracking-tight text-text-primary" style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)", lineHeight: 1.05 }}>
+          <h2
+            className="mt-5 font-bold tracking-tight text-text-primary"
+            style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)", lineHeight: 1.05 }}
+          >
             Blockchain technology paired with a solid{" "}
             <span className="text-gradient">application layer</span>
           </h2>
           <p className="mt-4 text-base leading-relaxed text-text-secondary md:text-lg">
-            Blockchain technology in web development only works well when it's paired with a
-            solid application layer. Our stack spans both sides of that equation:
+            Blockchain technology in web development only works well when it's
+            paired with a solid application layer. Our stack spans both sides of
+            that equation:
           </p>
         </div>
 
@@ -216,7 +228,10 @@ export function TechStack() {
                             ))}
                           </span>
                         ) : (
-                          <Icon aria-hidden="true" className="h-4 w-4 text-amber-base" />
+                          <Icon
+                            aria-hidden="true"
+                            className="h-4 w-4 text-amber-base"
+                          />
                         )}
                       </span>
                       <span>{item.name}</span>
@@ -256,13 +271,20 @@ function Marquee({ items, reverse }: { items: string[]; reverse: boolean }) {
   return (
     <div
       className="group relative overflow-hidden"
-      style={{ maskImage: "linear-gradient(90deg, transparent, black 10%, black 90%, transparent)" }}
+      style={{
+        maskImage:
+          "linear-gradient(90deg, transparent, black 10%, black 90%, transparent)",
+      }}
     >
       <div
         className={`tech-marquee flex w-max gap-8 whitespace-nowrap ${reverse ? "animate-marquee-right" : "animate-marquee-left"}`}
         style={{ animationDuration: "40s" }}
-        onMouseEnter={(e) => (e.currentTarget.style.animationPlayState = "paused")}
-        onMouseLeave={(e) => (e.currentTarget.style.animationPlayState = "running")}
+        onMouseEnter={(e) =>
+          (e.currentTarget.style.animationPlayState = "paused")
+        }
+        onMouseLeave={(e) =>
+          (e.currentTarget.style.animationPlayState = "running")
+        }
       >
         {doubled.map((t, i) => (
           <span key={i}>{t}</span>

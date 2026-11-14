@@ -19,15 +19,16 @@ export default function HowToHero({
   readTime: string;
 }) {
   const contextSuffix =
-    item.slug === "how-to-choose-blockchain-development-company" ? " Guide" : "";
+    item.slug === "how-to-choose-blockchain-development-company"
+      ? " Guide"
+      : "";
   const { heading, continuation } = splitHeading(
     item.hero?.title || item.title,
     70 - contextSuffix.length,
   );
-  const description =
-    [continuation, item.hero?.description || item.excerpt]
-      .filter(Boolean)
-      .join(" — ");
+  const description = [continuation, item.hero?.description || item.excerpt]
+    .filter(Boolean)
+    .join(" — ");
 
   return (
     <section className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-bg-base/70 p-5 shadow-[0_35px_120px_rgba(0,0,0,.45)] backdrop-blur-xl sm:p-7 md:p-10 lg:p-12">

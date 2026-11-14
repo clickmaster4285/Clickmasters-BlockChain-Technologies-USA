@@ -1,14 +1,46 @@
 import { Check, X } from "lucide-react";
 
 const rows = [
-  { criteria: "Security audits", us: "Formal verification + 3rd party", them: "Basic testing only" },
-  { criteria: "Gas optimization", us: "Assembly-level optimization", them: "Often overlooked" },
-  { criteria: "Multi-chain support", us: "10+ chains, EVM + non-EVM", them: "1-2 chains" },
-  { criteria: "Post-launch monitoring", us: "24/7 on-chain alerting", them: "Limited support" },
-  { criteria: "Tokenomics consulting", us: "In-house economists", them: "Outsourced or absent" },
-  { criteria: "Smart contract standards", us: "ERC-20/721/1155/4337/6551", them: "Basic ERC-20 only" },
-  { criteria: "NDA before first call", us: "Yes - mandatory", them: "Rarely offered upfront" },
-  { criteria: "Fixed-price quoting", us: "After discovery phase", them: "Hourly or undefined scope" },
+  {
+    criteria: "Security audits",
+    us: "Formal verification + 3rd party",
+    them: "Basic testing only",
+  },
+  {
+    criteria: "Gas optimization",
+    us: "Assembly-level optimization",
+    them: "Often overlooked",
+  },
+  {
+    criteria: "Multi-chain support",
+    us: "10+ chains, EVM + non-EVM",
+    them: "1-2 chains",
+  },
+  {
+    criteria: "Post-launch monitoring",
+    us: "24/7 on-chain alerting",
+    them: "Limited support",
+  },
+  {
+    criteria: "Tokenomics consulting",
+    us: "In-house economists",
+    them: "Outsourced or absent",
+  },
+  {
+    criteria: "Smart contract standards",
+    us: "ERC-20/721/1155/4337/6551",
+    them: "Basic ERC-20 only",
+  },
+  {
+    criteria: "NDA before first call",
+    us: "Yes - mandatory",
+    them: "Rarely offered upfront",
+  },
+  {
+    criteria: "Fixed-price quoting",
+    us: "After discovery phase",
+    them: "Hourly or undefined scope",
+  },
 ];
 
 export function Comparison() {
@@ -42,16 +74,22 @@ export function Comparison() {
             {/* Data rows */}
             {rows.map((r, i) => (
               <div key={r.criteria} className="contents">
-                <div className={`border-r border-border px-3 py-4 sm:px-5 text-sm font-medium text-text-primary ${i % 2 ? "bg-bg-surface/50" : ""}`}>
+                <div
+                  className={`border-r border-border px-3 py-4 sm:px-5 text-sm font-medium text-text-primary ${i % 2 ? "bg-bg-surface/50" : ""}`}
+                >
                   {r.criteria}
                 </div>
-                <div className={`border-r border-border px-3 py-4 sm:px-5 text-sm text-text-primary ${i % 2 ? "bg-amber-glow/20" : "bg-amber-glow/10"}`}>
+                <div
+                  className={`border-r border-border px-3 py-4 sm:px-5 text-sm text-text-primary ${i % 2 ? "bg-amber-glow/20" : "bg-amber-glow/10"}`}
+                >
                   <div className="flex items-center gap-2">
                     <Check className="h-4 w-4 shrink-0 text-emerald-base" />
                     <span>{r.us}</span>
                   </div>
                 </div>
-                <div className={`px-3 py-4 sm:px-5 text-sm text-text-muted ${i % 2 ? "bg-bg-surface/50" : ""}`}>
+                <div
+                  className={`px-3 py-4 sm:px-5 text-sm text-text-muted ${i % 2 ? "bg-bg-surface/50" : ""}`}
+                >
                   <div className="flex items-center gap-2">
                     <X className="h-4 w-4 shrink-0 text-silver-dim" />
                     <span>{r.them}</span>

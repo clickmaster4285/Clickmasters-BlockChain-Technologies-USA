@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import Image from 'next/image';
+import Image from "next/image";
 import useEmblaCarousel from "embla-carousel-react";
 import Link from "next/link";
 import { useReducedMotion } from "framer-motion";
@@ -65,7 +65,11 @@ export default function CaseStudyCarousel({ slides }: { slides: Slide[] }) {
   if (!slides || slides.length === 0) return null;
 
   return (
-    <div className="embla" onMouseEnter={() => (pausedRef.current = true)} onMouseLeave={() => (pausedRef.current = false)}>
+    <div
+      className="embla"
+      onMouseEnter={() => (pausedRef.current = true)}
+      onMouseLeave={() => (pausedRef.current = false)}
+    >
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container">
           {slides.map((s, i) => (
@@ -73,13 +77,24 @@ export default function CaseStudyCarousel({ slides }: { slides: Slide[] }) {
               <article className="rounded-2xl border border-border bg-surface p-6">
                 {s.image && (
                   <div className="rounded-md overflow-hidden">
-                    <Image src={s.image} alt={s.title} width={800} height={420} className="w-full h-auto object-cover" />
+                    <Image
+                      src={s.image}
+                      alt={s.title}
+                      width={800}
+                      height={420}
+                      className="w-full h-auto object-cover"
+                    />
                   </div>
                 )}
                 <h2 className="font-semibold mt-3">{s.title}</h2>
                 <p className="mt-2 text-sm text-muted-foreground">{s.blurb}</p>
                 <div className="mt-4">
-                  <Link href="/contact" className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground">Talk to us</Link>
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground"
+                  >
+                    Talk to us
+                  </Link>
                 </div>
               </article>
             </div>
@@ -100,15 +115,33 @@ export default function CaseStudyCarousel({ slides }: { slides: Slide[] }) {
 
       {/* progress bar for current slide */}
       <div className="mt-2 h-1 w-full bg-surface/30 rounded-full overflow-hidden">
-        <div className="h-1 bg-amber-base transition-all" style={{ width: `${progress * 100}%` }} />
+        <div
+          className="h-1 bg-amber-base transition-all"
+          style={{ width: `${progress * 100}%` }}
+        />
       </div>
 
       <style jsx>{`
-        .embla { overflow: hidden }
-        .embla__viewport { overflow: hidden; width: 100% }
-        .embla__container { display: flex; gap: 16px }
-        .embla__slide { min-width: 320px; flex: 0 0 auto }
-        @media (min-width: 768px) { .embla__slide { min-width: 420px } }
+        .embla {
+          overflow: hidden;
+        }
+        .embla__viewport {
+          overflow: hidden;
+          width: 100%;
+        }
+        .embla__container {
+          display: flex;
+          gap: 16px;
+        }
+        .embla__slide {
+          min-width: 320px;
+          flex: 0 0 auto;
+        }
+        @media (min-width: 768px) {
+          .embla__slide {
+            min-width: 420px;
+          }
+        }
       `}</style>
     </div>
   );

@@ -125,7 +125,8 @@ export const howTos = [
 
     faqs: [
       {
-        question: "What is the most common reason DeFi protocols fail in the first 90 days?",
+        question:
+          "What is the most common reason DeFi protocols fail in the first 90 days?",
         answer:
           "TVL too concentrated in protocol's own token emissions (mercenary capital that leaves when emissions reduce) AND the protocol failing to build genuine utility beyond yield farming. Protocols that survive: provide a service users genuinely need and would pay for even without token rewards.",
       },
@@ -133,7 +134,8 @@ export const howTos = [
 
     cta: {
       title: "Ready to Launch Your DeFi Protocol?",
-      description: "Get expert guidance on launching your DeFi protocol with our comprehensive support.",
+      description:
+        "Get expert guidance on launching your DeFi protocol with our comprehensive support.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the DeFi Launch Checklist",
     },
@@ -152,7 +154,8 @@ export const howTos = [
 
     hero: {
       badge: "HOW-TO",
-      title: "How to Set Up Hyperledger Fabric — Step-by-Step Network Deployment",
+      title:
+        "How to Set Up Hyperledger Fabric — Step-by-Step Network Deployment",
       description:
         "A complete step-by-step guide to setting up a Hyperledger Fabric network — from prerequisites through crypto generation, channel creation, and chaincode deployment.",
     },
@@ -365,7 +368,8 @@ peer chaincode query \
 
     cta: {
       title: "Need Help Setting Up Hyperledger Fabric?",
-      description: "Get expert guidance on deploying and managing your Hyperledger Fabric network.",
+      description:
+        "Get expert guidance on deploying and managing your Hyperledger Fabric network.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Fabric Deployment Checklist",
     },
@@ -373,7 +377,8 @@ peer chaincode query \
   {
     id: 3,
     slug: "how-to-deploy-smart-contract-multi-chain",
-    title: "How to Deploy a Smart Contract to Multiple Blockchains — Multi-Chain Strategy",
+    title:
+      "How to Deploy a Smart Contract to Multiple Blockchains — Multi-Chain Strategy",
     excerpt:
       "Deploying the same smart contract to multiple EVM-compatible chains is straightforward but requires careful chain-specific configuration. Learn the multi-chain deployment architecture.",
     category: "How-To Guide",
@@ -384,7 +389,8 @@ peer chaincode query \
 
     hero: {
       badge: "HOW-TO",
-      title: "How to Deploy a Smart Contract to Multiple Blockchains — Multi-Chain Strategy",
+      title:
+        "How to Deploy a Smart Contract to Multiple Blockchains — Multi-Chain Strategy",
       description:
         "Deploying the same smart contract to multiple EVM-compatible chains is straightforward but requires careful chain-specific configuration. Learn the multi-chain deployment architecture.",
     },
@@ -524,7 +530,8 @@ done`,
 
     faqs: [
       {
-        question: "Should we deploy to all chains simultaneously or phase the rollout?",
+        question:
+          "Should we deploy to all chains simultaneously or phase the rollout?",
         answer:
           "Phase the rollout. Deploy to Arbitrum first (largest DeFi ecosystem), run for 30–90 days, confirm the protocol works as expected. Then deploy to Base, then Optimism. Each deployment requires its own liquidity bootstrapping and user acquisition — spreading across 5 chains at launch dilutes your liquidity and user attention.",
       },
@@ -532,7 +539,8 @@ done`,
 
     cta: {
       title: "Ready to Deploy Multi-Chain?",
-      description: "Get expert guidance on deploying your smart contract across multiple EVM chains.",
+      description:
+        "Get expert guidance on deploying your smart contract across multiple EVM chains.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Multi-Chain Deployment Guide",
     },
@@ -540,7 +548,8 @@ done`,
   {
     id: 4,
     slug: "how-to-build-blockchain-loyalty-program",
-    title: "How to Build a Blockchain Loyalty Program — Technical Implementation Guide",
+    title:
+      "How to Build a Blockchain Loyalty Program — Technical Implementation Guide",
     excerpt:
       "A complete technical guide to building a blockchain-based loyalty program — from design and token selection to smart contract development and POS integration.",
     category: "How-To Guide",
@@ -551,7 +560,8 @@ done`,
 
     hero: {
       badge: "HOW-TO",
-      title: "How to Build a Blockchain Loyalty Program — Technical Implementation Guide",
+      title:
+        "How to Build a Blockchain Loyalty Program — Technical Implementation Guide",
       description:
         "A complete technical guide to building a blockchain-based loyalty program — from design and token selection to smart contract development and POS integration.",
     },
@@ -722,7 +732,8 @@ done`,
 
     faqs: [
       {
-        question: "What is the estimated monthly operational cost for a blockchain loyalty program?",
+        question:
+          "What is the estimated monthly operational cost for a blockchain loyalty program?",
         answer:
           "For a small business (500 monthly active members): Polygon PoS gas costs for transactions: ~$5–$20/month. Magic Link (if used): $99–$499/month for their email wallet service. Backend hosting: $50–$200/month. Total: $150–$720/month. For a restaurant chain: add proportionally for higher member counts.",
       },
@@ -730,7 +741,8 @@ done`,
 
     cta: {
       title: "Ready to Build Your Blockchain Loyalty Program?",
-      description: "Get expert guidance on building a blockchain-based loyalty program for your business.",
+      description:
+        "Get expert guidance on building a blockchain-based loyalty program for your business.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Loyalty Program Guide",
     },
@@ -738,7 +750,8 @@ done`,
   {
     id: 5,
     slug: "how-to-integrate-chainlink-vrf",
-    title: "How to Integrate Chainlink VRF — Verifiable Random Number for NFT Reveals and Gaming",
+    title:
+      "How to Integrate Chainlink VRF — Verifiable Random Number for NFT Reveals and Gaming",
     excerpt:
       "Chainlink VRF (Verifiable Random Function) provides cryptographically provable randomness on-chain. Essential for NFT trait reveals, lottery selection, and game outcomes.",
     category: "How-To Guide",
@@ -749,7 +762,8 @@ done`,
 
     hero: {
       badge: "HOW-TO",
-      title: "How to Integrate Chainlink VRF — Verifiable Random Number for NFT Reveals and Gaming",
+      title:
+        "How to Integrate Chainlink VRF — Verifiable Random Number for NFT Reveals and Gaming",
       description:
         "Chainlink VRF (Verifiable Random Function) provides cryptographically provable randomness on-chain. Essential for: NFT trait reveals, lottery selection, game outcomes, any application requiring tamper-proof randomness.",
     },
@@ -916,7 +930,8 @@ contract SubscriptionVRF is VRFConsumerBaseV2Plus {
 
     cta: {
       title: "Ready to Integrate Chainlink VRF?",
-      description: "Get expert guidance on implementing verifiable randomness in your project.",
+      description:
+        "Get expert guidance on implementing verifiable randomness in your project.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the VRF Integration Guide",
     },
@@ -924,7 +939,8 @@ contract SubscriptionVRF is VRFConsumerBaseV2Plus {
   {
     id: 6,
     slug: "how-to-implement-chainlink-automation",
-    title: "How to Implement Chainlink Automation — Automated Smart Contract Functions",
+    title:
+      "How to Implement Chainlink Automation — Automated Smart Contract Functions",
     excerpt:
       "Chainlink Automation (formerly Keepers) executes smart contract functions automatically based on time or on-chain conditions — without requiring a centralized server to trigger them.",
     category: "How-To Guide",
@@ -935,7 +951,8 @@ contract SubscriptionVRF is VRFConsumerBaseV2Plus {
 
     hero: {
       badge: "HOW-TO",
-      title: "How to Implement Chainlink Automation — Automated Smart Contract Functions",
+      title:
+        "How to Implement Chainlink Automation — Automated Smart Contract Functions",
       description:
         "Chainlink Automation (formerly Keepers) executes smart contract functions automatically based on time or on-chain conditions — without requiring a centralized server to trigger them.",
     },
@@ -1088,7 +1105,8 @@ contract EventTriggeredAction is ILogAutomation {
 
     cta: {
       title: "Ready to Implement Chainlink Automation?",
-      description: "Get expert guidance on automating your smart contract functions.",
+      description:
+        "Get expert guidance on automating your smart contract functions.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Automation Guide",
     },
@@ -1267,7 +1285,8 @@ contract EventTriggeredAction is ILogAutomation {
 
     cta: {
       title: "Ready to Build Your Token Launchpad?",
-      description: "Get expert guidance on building a token launchpad for your community.",
+      description:
+        "Get expert guidance on building a token launchpad for your community.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Launchpad Development Guide",
     },
@@ -1275,7 +1294,8 @@ contract EventTriggeredAction is ILogAutomation {
   {
     id: 8,
     slug: "how-to-implement-multichain-nft",
-    title: "How to Implement Multi-Chain NFT Collections — Deploy Once, Exist Everywhere",
+    title:
+      "How to Implement Multi-Chain NFT Collections — Deploy Once, Exist Everywhere",
     excerpt:
       "Multi-chain NFT collections allow the same NFT to live natively on multiple blockchains — enabling cross-chain gaming items, identity tokens, and collectibles.",
     category: "How-To Guide",
@@ -1286,7 +1306,8 @@ contract EventTriggeredAction is ILogAutomation {
 
     hero: {
       badge: "HOW-TO",
-      title: "How to Implement Multi-Chain NFT Collections — Deploy Once, Exist Everywhere",
+      title:
+        "How to Implement Multi-Chain NFT Collections — Deploy Once, Exist Everywhere",
       description:
         "Multi-chain NFT collections allow the same NFT to live natively on multiple blockchains — enabling cross-chain gaming items, identity tokens, and collectibles.",
     },
@@ -1411,15 +1432,17 @@ async function bridgeNFT(tokenId, destinationChainId) {
 
     faqs: [
       {
-        question: "If an NFT is bridged cross-chain, which chain shows it as the 'real' one?",
+        question:
+          "If an NFT is bridged cross-chain, which chain shows it as the 'real' one?",
         answer:
-          "With lock-and-mint: the source chain holds the \"canonical\" NFT (it's locked); the bridged version is a representation. With burn-and-mint (ONFT): the NFT exists on exactly one chain at any time — wherever it currently lives is the \"real\" one. Both approaches maintain scarcity (1 NFT = 1 token across all chains).",
+          'With lock-and-mint: the source chain holds the "canonical" NFT (it\'s locked); the bridged version is a representation. With burn-and-mint (ONFT): the NFT exists on exactly one chain at any time — wherever it currently lives is the "real" one. Both approaches maintain scarcity (1 NFT = 1 token across all chains).',
       },
     ],
 
     cta: {
       title: "Ready to Build Multi-Chain NFTs?",
-      description: "Get expert guidance on implementing cross-chain NFT collections.",
+      description:
+        "Get expert guidance on implementing cross-chain NFT collections.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Multi-Chain NFT Guide",
     },
@@ -1440,7 +1463,8 @@ async function bridgeNFT(tokenId, destinationChainId) {
 
     hero: {
       badge: "HOW-TO",
-      title: "How to Create a Smart Contract — The Complete Process From Specification to Mainnet",
+      title:
+        "How to Create a Smart Contract — The Complete Process From Specification to Mainnet",
       description:
         "Creating a smart contract requires five sequential phases: specification, development, testing, audit, and deployment. Skipping any phase — especially audit — is the most common reason smart contract projects fail or get exploited. Here is the full process.",
     },
@@ -1722,7 +1746,8 @@ myth analyze src/MyToken.sol`,
 
     cta: {
       title: "Ready to Create Your Smart Contract?",
-      description: "Get expert guidance on developing, testing, and deploying your smart contract.",
+      description:
+        "Get expert guidance on developing, testing, and deploying your smart contract.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Smart Contract Checklist",
     },
@@ -1741,7 +1766,8 @@ myth analyze src/MyToken.sol`,
 
     hero: {
       badge: "HOW-TO",
-      title: "How to Launch an NFT Collection — The Complete Process From Concept to Sellout",
+      title:
+        "How to Launch an NFT Collection — The Complete Process From Concept to Sellout",
       description:
         "An NFT collection launch combines art, smart contracts, a minting website, and a community strategy. Here is the complete checklist — what successful projects did right and what failed projects got wrong.",
     },
@@ -1918,7 +1944,8 @@ myth analyze src/MyToken.sol`,
 
     cta: {
       title: "Ready to Launch Your NFT Collection?",
-      description: "Get expert guidance on launching your NFT project from concept to sellout.",
+      description:
+        "Get expert guidance on launching your NFT project from concept to sellout.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the NFT Launch Checklist",
     },
@@ -1937,7 +1964,8 @@ myth analyze src/MyToken.sol`,
 
     hero: {
       badge: "HOW-TO",
-      title: "How to Build a DeFi Protocol — The Complete Architecture and Development Guide",
+      title:
+        "How to Build a DeFi Protocol — The Complete Architecture and Development Guide",
       description:
         "Building a DeFi protocol requires economics design first, smart contracts second, and independent audit third — in that exact order. Here is the complete process from protocol concept to mainnet launch.",
     },
@@ -2152,7 +2180,8 @@ myth analyze src/MyToken.sol`,
 
     cta: {
       title: "Ready to Build Your DeFi Protocol?",
-      description: "Get expert guidance on building your DeFi protocol from economics to mainnet.",
+      description:
+        "Get expert guidance on building your DeFi protocol from economics to mainnet.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the DeFi Architecture Guide",
     },
@@ -2171,7 +2200,8 @@ myth analyze src/MyToken.sol`,
 
     hero: {
       badge: "HOW-TO",
-      title: "How to Tokenize Real Estate — The Complete US Legal and Technical Process",
+      title:
+        "How to Tokenize Real Estate — The Complete US Legal and Technical Process",
       description:
         "Tokenizing real estate requires three parallel workstreams: legal structuring (SEC compliance), financial engineering (token economics), and technical infrastructure (smart contracts and investor platform). Here is each step, what it costs, and how long it takes.",
     },
@@ -2322,7 +2352,10 @@ myth analyze src/MyToken.sol`,
         type: "table",
         columns: ["Component", "Cost Range"],
         rows: [
-          ["Securities counsel (Reg D + PPM + operating agreement)", "$40,000–$80,000"],
+          [
+            "Securities counsel (Reg D + PPM + operating agreement)",
+            "$40,000–$80,000",
+          ],
           ["Smart contract development", "$30,000–$60,000"],
           ["Smart contract audit", "$15,000–$25,000"],
           ["Investor platform", "$60,000–$130,000"],
@@ -2348,7 +2381,8 @@ myth analyze src/MyToken.sol`,
 
     cta: {
       title: "Ready to Tokenize Your Real Estate?",
-      description: "Get expert guidance on tokenizing real estate with SEC-compliant structure.",
+      description:
+        "Get expert guidance on tokenizing real estate with SEC-compliant structure.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Real Estate Tokenization Guide",
     },
@@ -2356,7 +2390,8 @@ myth analyze src/MyToken.sol`,
   {
     id: 13,
     slug: "how-to-start-crypto-exchange",
-    title: "How to Start a Crypto Exchange in the US — Legal and Technical Guide | Clickmasters",
+    title:
+      "How to Start a Crypto Exchange in the US — Legal and Technical Guide | Clickmasters",
     excerpt:
       "A complete guide to starting a US crypto exchange — regulatory compliance (FinCEN MSB, state MTLs), technical architecture, and timeline.",
     category: "How-To Guide",
@@ -2367,7 +2402,8 @@ myth analyze src/MyToken.sol`,
 
     hero: {
       badge: "HOW-TO",
-      title: "How to Start a Crypto Exchange in the US — Regulatory Compliance, Technical Architecture, and Timeline",
+      title:
+        "How to Start a Crypto Exchange in the US — Regulatory Compliance, Technical Architecture, and Timeline",
       description:
         "Starting a US crypto exchange requires: FinCEN MSB registration, state money transmitter licenses in every operating state, AML program, HSM-backed wallet infrastructure, and a professional-grade matching engine. Here is the complete guide.",
     },
@@ -2486,7 +2522,8 @@ myth analyze src/MyToken.sol`,
 
     faqs: [
       {
-        question: "Can I operate a US crypto exchange without money transmitter licenses?",
+        question:
+          "Can I operate a US crypto exchange without money transmitter licenses?",
         answer:
           "Operating without required MTLs is a federal crime (Bank Secrecy Act). Several crypto businesses have been criminally prosecuted for unlicensed money transmission. Do not operate without legal counsel confirming your licensing status.",
       },
@@ -2499,7 +2536,8 @@ myth analyze src/MyToken.sol`,
 
     cta: {
       title: "Ready to Start Your Crypto Exchange?",
-      description: "Get expert guidance on building a US-compliant crypto exchange.",
+      description:
+        "Get expert guidance on building a US-compliant crypto exchange.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Exchange Startup Guide",
     },
@@ -2518,7 +2556,8 @@ myth analyze src/MyToken.sol`,
 
     hero: {
       badge: "HOW-TO",
-      title: "How to Accept Crypto Payments for Your Business — Four Approaches Compared",
+      title:
+        "How to Accept Crypto Payments for Your Business — Four Approaches Compared",
       description:
         "Accepting cryptocurrency payments for your business can take 3 days (third-party processor) or 8 weeks (custom gateway). Here is each approach, what it costs, and which to choose based on your transaction volume.",
     },
@@ -2635,7 +2674,8 @@ myth analyze src/MyToken.sol`,
 
     cta: {
       title: "Ready to Accept Crypto Payments?",
-      description: "Get expert guidance on setting up crypto payment acceptance for your business.",
+      description:
+        "Get expert guidance on setting up crypto payment acceptance for your business.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Crypto Payments Guide",
     },
@@ -2643,7 +2683,8 @@ myth analyze src/MyToken.sol`,
   {
     id: 15,
     slug: "how-to-create-dao",
-    title: "How to Create a DAO — Structure, Legal, and Governance | Clickmasters",
+    title:
+      "How to Create a DAO — Structure, Legal, and Governance | Clickmasters",
     excerpt:
       "A complete guide to creating a DAO — legal structure, governance token, on-chain governance contracts, and treasury setup.",
     category: "How-To Guide",
@@ -2654,7 +2695,8 @@ myth analyze src/MyToken.sol`,
 
     hero: {
       badge: "HOW-TO",
-      title: "How to Create a DAO — Legal Structure, Governance Contracts, and Treasury Setup",
+      title:
+        "How to Create a DAO — Legal Structure, Governance Contracts, and Treasury Setup",
       description:
         "A DAO is a legally structured entity governed by smart contracts and token holders. Creating one requires three components: a legal wrapper (Wyoming DAO LLC or similar), a governance token, and on-chain governance contracts. Here is the complete process.",
     },
@@ -2819,7 +2861,8 @@ myth analyze src/MyToken.sol`,
 
     cta: {
       title: "Ready to Create Your DAO?",
-      description: "Get expert guidance on structuring, launching, and governing your DAO.",
+      description:
+        "Get expert guidance on structuring, launching, and governing your DAO.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the DAO Creation Guide",
     },
@@ -2827,7 +2870,8 @@ myth analyze src/MyToken.sol`,
   {
     id: 16,
     slug: "how-to-build-crypto-wallet",
-    title: "How to Build a Crypto Wallet — Technical Architecture Guide | Clickmasters",
+    title:
+      "How to Build a Crypto Wallet — Technical Architecture Guide | Clickmasters",
     excerpt:
       "A complete technical guide to building a crypto wallet — non-custodial vs custodial architecture, key generation, storage, and transaction signing.",
     category: "How-To Guide",
@@ -2838,7 +2882,8 @@ myth analyze src/MyToken.sol`,
 
     hero: {
       badge: "HOW-TO",
-      title: "How to Build a Crypto Wallet — Non-Custodial vs Custodial Architecture Guide",
+      title:
+        "How to Build a Crypto Wallet — Non-Custodial vs Custodial Architecture Guide",
       description:
         "Building a crypto wallet requires choosing between custodial (you hold keys) and non-custodial (user holds keys) architecture — and this choice determines every subsequent technical decision. Here is the complete technical guide for each model.",
     },
@@ -2976,7 +3021,8 @@ myth analyze src/MyToken.sol`,
 
     cta: {
       title: "Ready to Build Your Crypto Wallet?",
-      description: "Get expert guidance on building a secure, production-grade crypto wallet.",
+      description:
+        "Get expert guidance on building a secure, production-grade crypto wallet.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Wallet Architecture Guide",
     },
@@ -2984,7 +3030,8 @@ myth analyze src/MyToken.sol`,
   {
     id: 17,
     slug: "how-to-integrate-blockchain-existing-business",
-    title: "How to Integrate Blockchain Into an Existing Business | Clickmasters",
+    title:
+      "How to Integrate Blockchain Into an Existing Business | Clickmasters",
     excerpt:
       "A complete guide to integrating blockchain into an existing business — assessment, planning, platform selection, and implementation.",
     category: "How-To Guide",
@@ -2995,7 +3042,8 @@ myth analyze src/MyToken.sol`,
 
     hero: {
       badge: "HOW-TO",
-      title: "How to Integrate Blockchain Into an Existing Business — Assessment, Planning, and Implementation",
+      title:
+        "How to Integrate Blockchain Into an Existing Business — Assessment, Planning, and Implementation",
       description:
         "Integrating blockchain into an existing business is a 5-phase process: use case assessment, platform selection, architecture design, development and integration, and deployment. Most businesses make the mistake of starting at phase 3. Here is why assessment comes first.",
     },
@@ -3111,7 +3159,8 @@ myth analyze src/MyToken.sol`,
 
     cta: {
       title: "Ready to Integrate Blockchain Into Your Business?",
-      description: "Get expert guidance on assessing, planning, and implementing blockchain integration.",
+      description:
+        "Get expert guidance on assessing, planning, and implementing blockchain integration.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Integration Assessment Guide",
     },
@@ -3119,7 +3168,8 @@ myth analyze src/MyToken.sol`,
   {
     id: 18,
     slug: "how-to-launch-a-token",
-    title: "How to Launch a Token — Legal, Technical, and Go-to-Market | Clickmasters",
+    title:
+      "How to Launch a Token — Legal, Technical, and Go-to-Market | Clickmasters",
     excerpt:
       "A complete guide to launching a token — legal framework (SEC compliance), technical development, liquidity strategy, and go-to-market.",
     category: "How-To Guide",
@@ -3130,7 +3180,8 @@ myth analyze src/MyToken.sol`,
 
     hero: {
       badge: "HOW-TO",
-      title: "How to Launch a Token — Legal Framework, Technical Build, and Listing Strategy",
+      title:
+        "How to Launch a Token — Legal Framework, Technical Build, and Listing Strategy",
       description:
         "Launching a token requires three parallel workstreams: legal analysis (is it a security?), technical development (contract, audit), and liquidity strategy (how does trading start). Here is the complete process.",
     },
@@ -3165,7 +3216,7 @@ myth analyze src/MyToken.sol`,
       },
       {
         type: "paragraph",
-        text: "If your token is genuinely a utility token: Still consult securities counsel. The SEC has taken the position that many \"utility tokens\" are in fact securities. The utility claim does not create legal safety — the substance of the offering does.",
+        text: 'If your token is genuinely a utility token: Still consult securities counsel. The SEC has taken the position that many "utility tokens" are in fact securities. The utility claim does not create legal safety — the substance of the offering does.',
       },
       {
         type: "heading",
@@ -3240,7 +3291,8 @@ myth analyze src/MyToken.sol`,
 
     cta: {
       title: "Ready to Launch Your Token?",
-      description: "Get expert guidance on launching your token with SEC-compliant structure.",
+      description:
+        "Get expert guidance on launching your token with SEC-compliant structure.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Token Launch Checklist",
     },
@@ -3248,7 +3300,8 @@ myth analyze src/MyToken.sol`,
   {
     id: 19,
     slug: "how-to-build-web3-application",
-    title: "How to Build a Web3 Application — From Idea to Production | Clickmasters",
+    title:
+      "How to Build a Web3 Application — From Idea to Production | Clickmasters",
     excerpt:
       "A complete guide to building a Web3 application — from smart contract to production dApp with The Graph, React, and wallet integration.",
     category: "How-To Guide",
@@ -3259,7 +3312,8 @@ myth analyze src/MyToken.sol`,
 
     hero: {
       badge: "HOW-TO",
-      title: "How to Build a Web3 Application — From Smart Contract to Production dApp",
+      title:
+        "How to Build a Web3 Application — From Smart Contract to Production dApp",
       description:
         "A Web3 application (dApp) consists of smart contracts, a blockchain data indexer, and a React front-end with wallet integration. Here is the complete architecture and development process.",
     },
@@ -3371,7 +3425,8 @@ myth analyze src/MyToken.sol`,
 
     hero: {
       badge: "HOW-TO",
-      title: "How to Choose a Blockchain Development Company — The 7 Verification Steps",
+      title:
+        "How to Choose a Blockchain Development Company — The 7 Verification Steps",
       description:
         "After 1,000+ blockchain projects and inheriting dozens of failed builds from vendors who did not deliver, we know exactly what separates credible blockchain development firms from expensive mistakes. Here are the 7 verification steps.",
     },
@@ -3473,7 +3528,8 @@ myth analyze src/MyToken.sol`,
 
     cta: {
       title: "Need Help Choosing a Blockchain Development Company?",
-      description: "Get expert guidance on selecting the right partner for your blockchain project.",
+      description:
+        "Get expert guidance on selecting the right partner for your blockchain project.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Vendor Evaluation Checklist",
     },
@@ -3492,7 +3548,8 @@ myth analyze src/MyToken.sol`,
 
     hero: {
       badge: "HOW-TO",
-      title: "How to Write a Blockchain Business Case — The Framework That Gets Executive Approval",
+      title:
+        "How to Write a Blockchain Business Case — The Framework That Gets Executive Approval",
       description:
         "A blockchain business case that gets executive approval contains six sections: problem definition, cost of current state, solution description, projected cost and savings, risk assessment, and implementation plan. Here is the exact framework.",
     },
@@ -3534,9 +3591,21 @@ myth analyze src/MyToken.sol`,
         columns: ["Cost Category", "Annual Amount", "Source/Verification"],
         rows: [
           ["Direct transaction fees", "$1,188,000", "Accounts payable data"],
-          ["Operations FTE (70% of $680K)", "$476,000", "HR payroll allocation"],
-          ["Error remediation costs", "$180,000", "Error log × remediation time"],
-          ["Working capital float cost", "$144,000", "Finance: cost of capital × avg float"],
+          [
+            "Operations FTE (70% of $680K)",
+            "$476,000",
+            "HR payroll allocation",
+          ],
+          [
+            "Error remediation costs",
+            "$180,000",
+            "Error log × remediation time",
+          ],
+          [
+            "Working capital float cost",
+            "$144,000",
+            "Finance: cost of capital × avg float",
+          ],
           ["Total", "$1,988,000", ""],
         ],
       },
@@ -3550,7 +3619,7 @@ myth analyze src/MyToken.sol`,
       },
       {
         type: "paragraph",
-        text: "Describe what blockchain replaces or improves. Do not assume technical literacy. Use the \"before and after\" format:",
+        text: 'Describe what blockchain replaces or improves. Do not assume technical literacy. Use the "before and after" format:',
       },
       {
         type: "paragraph",
@@ -3589,10 +3658,30 @@ myth analyze src/MyToken.sol`,
         type: "table",
         columns: ["Risk", "Probability", "Impact", "Mitigation"],
         rows: [
-          ["Counterparty fails to onboard", "Medium", "High", "Web portal + API option + onboarding support"],
-          ["Regulatory change", "Low", "High", "Regulatory monitoring + architecture flexibility"],
-          ["Smart contract vulnerability", "Low", "Very High", "Independent security audit"],
-          ["Key loss/compromise", "Very Low", "Very High", "HSM infrastructure + multi-sig"],
+          [
+            "Counterparty fails to onboard",
+            "Medium",
+            "High",
+            "Web portal + API option + onboarding support",
+          ],
+          [
+            "Regulatory change",
+            "Low",
+            "High",
+            "Regulatory monitoring + architecture flexibility",
+          ],
+          [
+            "Smart contract vulnerability",
+            "Low",
+            "Very High",
+            "Independent security audit",
+          ],
+          [
+            "Key loss/compromise",
+            "Very Low",
+            "Very High",
+            "HSM infrastructure + multi-sig",
+          ],
         ],
       },
       {
@@ -3607,12 +3696,14 @@ myth analyze src/MyToken.sol`,
 
     faqs: [
       {
-        question: "What is the most common reason blockchain business cases fail to get approval?",
+        question:
+          "What is the most common reason blockchain business cases fail to get approval?",
         answer:
           "Vague problem definition and unverified cost numbers. A CFO who cannot verify the baseline cost numbers will not approve spending millions on a solution to an unquantified problem.",
       },
       {
-        question: "How do I get Finance to validate the current-state cost numbers?",
+        question:
+          "How do I get Finance to validate the current-state cost numbers?",
         answer:
           "Work with Finance to pull the actuals from accounts payable, payroll allocation, and working capital reports. The business case becomes much stronger when the CFO's team has contributed to the baseline numbers.",
       },
@@ -3620,7 +3711,8 @@ myth analyze src/MyToken.sol`,
 
     cta: {
       title: "Ready to Write Your Blockchain Business Case?",
-      description: "Get expert guidance on building a business case that gets executive approval.",
+      description:
+        "Get expert guidance on building a business case that gets executive approval.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Business Case Template",
     },
@@ -3628,7 +3720,8 @@ myth analyze src/MyToken.sol`,
   {
     id: 22,
     slug: "how-to-conduct-smart-contract-audit",
-    title: "How to Conduct a Smart Contract Audit — Buyer's Guide | Clickmasters",
+    title:
+      "How to Conduct a Smart Contract Audit — Buyer's Guide | Clickmasters",
     excerpt:
       "A complete buyer's guide to managing a smart contract audit — from pre-audit preparation through findings report and re-audit.",
     category: "How-To Guide",
@@ -3639,7 +3732,8 @@ myth analyze src/MyToken.sol`,
 
     hero: {
       badge: "HOW-TO",
-      title: "How to Conduct a Smart Contract Audit — The Buyer's Guide to Managing the Process",
+      title:
+        "How to Conduct a Smart Contract Audit — The Buyer's Guide to Managing the Process",
       description:
         "Managing a smart contract audit is a discipline unto itself. The preparation you do before the audit begins determines how efficiently findings are addressed and how quickly you reach deployment. Here is how to run a professional audit engagement.",
     },
@@ -3745,7 +3839,8 @@ myth analyze src/MyToken.sol`,
 
     cta: {
       title: "Need Help Managing Your Smart Contract Audit?",
-      description: "Get expert guidance on preparing for and managing a smart contract audit.",
+      description:
+        "Get expert guidance on preparing for and managing a smart contract audit.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Audit Management Checklist",
     },
@@ -3764,7 +3859,8 @@ myth analyze src/MyToken.sol`,
 
     hero: {
       badge: "HOW-TO",
-      title: "How to Add Blockchain to an Existing Application — Integration Patterns and Technical Guide",
+      title:
+        "How to Add Blockchain to an Existing Application — Integration Patterns and Technical Guide",
       description:
         "Most blockchain integrations are additive — blockchain is a new layer alongside your existing application, not a replacement. Here are the four integration patterns and which to use for your use case.",
     },
@@ -3865,12 +3961,14 @@ myth analyze src/MyToken.sol`,
 
     faqs: [
       {
-        question: "Does adding blockchain require rebuilding my entire application?",
+        question:
+          "Does adding blockchain require rebuilding my entire application?",
         answer:
           "No — blockchain is additive for all four integration patterns above. Your existing application continues to function exactly as before. Blockchain adds a new capability layer on top of existing functionality.",
       },
       {
-        question: "What is the smallest blockchain integration that delivers real value?",
+        question:
+          "What is the smallest blockchain integration that delivers real value?",
         answer:
           "Crypto payment acceptance (Pattern 1) via a third-party processor: $0 development cost, live in 1–3 days. This delivers immediate value (new payment option for crypto-holding customers) with zero technical risk.",
       },
@@ -3878,17 +3976,17 @@ myth analyze src/MyToken.sol`,
 
     cta: {
       title: "Ready to Add Blockchain to Your Existing App?",
-      description: "Get expert guidance on integrating blockchain capabilities into your application.",
+      description:
+        "Get expert guidance on integrating blockchain capabilities into your application.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Integration Guide",
     },
   },
-// ============================================================
-// HOW-TO GUIDES DATA FILE (COMPLETE)
-// A comprehensive collection of step-by-step guides for blockchain development
-// Total: 36 guides (IDs 1-36)
-// ============================================================
-
+  // ============================================================
+  // HOW-TO GUIDES DATA FILE (COMPLETE)
+  // A comprehensive collection of step-by-step guides for blockchain development
+  // Total: 36 guides (IDs 1-36)
+  // ============================================================
 
   // ===== NEW HOW-TO GUIDES (IDs 24-36) =====
   {
@@ -3905,7 +4003,8 @@ myth analyze src/MyToken.sol`,
 
     hero: {
       badge: "HOW-TO",
-      title: "How to Create a Smart Contract — The Professional Development Process (Not Just the Tutorial)",
+      title:
+        "How to Create a Smart Contract — The Professional Development Process (Not Just the Tutorial)",
       description:
         "Online tutorials show you how to write a 50-line smart contract. This guide shows you how a production-grade smart contract is actually created — specification, architecture, development, testing, audit, and deployment. The process that prevents the $3.8 billion in annual DeFi losses from vulnerabilities that tutorials never mention.",
     },
@@ -4058,7 +4157,8 @@ myth analyze src/MyToken.sol`,
 
     faqs: [
       {
-        question: "Can I write a smart contract without a formal specification?",
+        question:
+          "Can I write a smart contract without a formal specification?",
         answer:
           "Yes — but the probability of an expensive audit finding or post-deployment logic error increases significantly. Specifications catch edge cases before they become deployed vulnerabilities.",
       },
@@ -4076,7 +4176,8 @@ myth analyze src/MyToken.sol`,
 
     cta: {
       title: "Ready to Create Your Smart Contract?",
-      description: "Get expert guidance on developing, testing, and deploying your smart contract.",
+      description:
+        "Get expert guidance on developing, testing, and deploying your smart contract.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Smart Contract Checklist",
     },
@@ -4084,7 +4185,8 @@ myth analyze src/MyToken.sol`,
   {
     id: 25,
     slug: "how-to-launch-nft-collection",
-    title: "How to Launch an NFT Collection — The Complete Professional Guide | Clickmasters",
+    title:
+      "How to Launch an NFT Collection — The Complete Professional Guide | Clickmasters",
     excerpt:
       "A complete professional guide to launching an NFT collection — from concept through artwork, smart contract, minting site, and community management.",
     category: "How-To Guide",
@@ -4095,7 +4197,8 @@ myth analyze src/MyToken.sol`,
 
     hero: {
       badge: "HOW-TO",
-      title: "How to Launch an NFT Collection — 10 Steps From Concept to Sold-Out Mint",
+      title:
+        "How to Launch an NFT Collection — 10 Steps From Concept to Sold-Out Mint",
       description:
         "We have built NFT launch infrastructure for dozens of collections since 2014. Here is the complete professional process — from artwork to audited smart contract to a mint event that doesn't crash under 50,000 simultaneous users.",
     },
@@ -4214,7 +4317,8 @@ myth analyze src/MyToken.sol`,
 
     cta: {
       title: "Ready to Launch Your NFT Collection?",
-      description: "Get expert guidance on launching your NFT project from concept to sellout.",
+      description:
+        "Get expert guidance on launching your NFT project from concept to sellout.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the NFT Launch Checklist",
     },
@@ -4222,7 +4326,8 @@ myth analyze src/MyToken.sol`,
   {
     id: 26,
     slug: "how-to-build-defi-protocol",
-    title: "How to Build a DeFi Protocol — From Concept to Mainnet | Clickmasters",
+    title:
+      "How to Build a DeFi Protocol — From Concept to Mainnet | Clickmasters",
     excerpt:
       "A complete guide to building a DeFi protocol — from economic model design through architecture, development, audit, and staged launch.",
     category: "How-To Guide",
@@ -4233,7 +4338,8 @@ myth analyze src/MyToken.sol`,
 
     hero: {
       badge: "HOW-TO",
-      title: "How to Build a DeFi Protocol — The Process That Produces Protocols That Survive Their First Market Stress Test",
+      title:
+        "How to Build a DeFi Protocol — The Process That Produces Protocols That Survive Their First Market Stress Test",
       description:
         "We have built DeFi protocols since 2014. Here is the correct process — starting with the economic model that most teams skip, through to the staged launch that all serious protocols use.",
     },
@@ -4356,7 +4462,8 @@ myth analyze src/MyToken.sol`,
 
     cta: {
       title: "Ready to Build Your DeFi Protocol?",
-      description: "Get expert guidance on building your DeFi protocol from economics to mainnet.",
+      description:
+        "Get expert guidance on building your DeFi protocol from economics to mainnet.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the DeFi Architecture Guide",
     },
@@ -4364,7 +4471,8 @@ myth analyze src/MyToken.sol`,
   {
     id: 27,
     slug: "how-to-tokenize-real-estate",
-    title: "How to Tokenize Real Estate — Complete US Compliance Guide | Clickmasters",
+    title:
+      "How to Tokenize Real Estate — Complete US Compliance Guide | Clickmasters",
     excerpt:
       "A complete guide to tokenizing real estate in the US — from SEC compliance and SPV formation to smart contract development and investor onboarding.",
     category: "How-To Guide",
@@ -4375,7 +4483,8 @@ myth analyze src/MyToken.sol`,
 
     hero: {
       badge: "HOW-TO",
-      title: "How to Tokenize Real Estate — The Complete US Legal and Technical Process",
+      title:
+        "How to Tokenize Real Estate — The Complete US Legal and Technical Process",
       description:
         "Real estate tokenization is a legal and financial engineering project with a blockchain implementation — not a blockchain project with a legal review. Here is the correct sequence for a US property owner who wants to offer fractional tokenized ownership to accredited investors.",
     },
@@ -4497,7 +4606,8 @@ myth analyze src/MyToken.sol`,
 
     faqs: [
       {
-        question: "Can retail (non-accredited) investors participate in US real estate tokenization?",
+        question:
+          "Can retail (non-accredited) investors participate in US real estate tokenization?",
         answer:
           "Under Regulation A+ (up to $75M per year, with SEC-qualified offering circular) or Regulation CF (up to $5M per year through a registered funding portal). Both are significantly more expensive to set up than Regulation D. For most first-time tokenization projects, Regulation D (accredited investors only) is the starting point.",
       },
@@ -4507,7 +4617,8 @@ myth analyze src/MyToken.sol`,
           "SPV formation: 2 weeks. PPM drafting and review: 4–8 weeks. First close after subscription agreements: ongoing. The legal and technical development can run in parallel — legal structure can be designed simultaneously with technical architecture.",
       },
       {
-        question: "What is the minimum property value for tokenization to make economic sense?",
+        question:
+          "What is the minimum property value for tokenization to make economic sense?",
         answer:
           "The fixed costs of tokenization (legal: $40,000–$80,000, technology: $80,000–$200,000) mean that properties below $2M generally do not produce attractive economics unless the platform is built to handle multiple properties (where the per-property cost drops significantly).",
       },
@@ -4515,7 +4626,8 @@ myth analyze src/MyToken.sol`,
 
     cta: {
       title: "Ready to Tokenize Your Real Estate?",
-      description: "Get expert guidance on tokenizing real estate with SEC-compliant structure.",
+      description:
+        "Get expert guidance on tokenizing real estate with SEC-compliant structure.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Real Estate Tokenization Guide",
     },
@@ -4523,7 +4635,8 @@ myth analyze src/MyToken.sol`,
   {
     id: 28,
     slug: "how-to-start-crypto-exchange",
-    title: "How to Start a Crypto Exchange — Complete US Legal and Technical Guide | Clickmasters",
+    title:
+      "How to Start a Crypto Exchange — Complete US Legal and Technical Guide | Clickmasters",
     excerpt:
       "A complete guide to starting a US crypto exchange — legal entity formation, FinCEN MSB registration, state money transmitter licenses, technology development, and launch strategy.",
     category: "How-To Guide",
@@ -4534,7 +4647,8 @@ myth analyze src/MyToken.sol`,
 
     hero: {
       badge: "HOW-TO",
-      title: "How to Start a Crypto Exchange in the US — Licensing, Technology, and Launch Sequence",
+      title:
+        "How to Start a Crypto Exchange in the US — Licensing, Technology, and Launch Sequence",
       description:
         "Starting a US crypto exchange involves three parallel workstreams: legal entity formation and regulatory licensing, technology development, and liquidity strategy. We have delivered exchange infrastructure for US-facing platforms since 2014. Here is the complete process — in the correct order.",
     },
@@ -4649,7 +4763,8 @@ myth analyze src/MyToken.sol`,
 
     cta: {
       title: "Ready to Start Your Crypto Exchange?",
-      description: "Get expert guidance on building a US-compliant crypto exchange.",
+      description:
+        "Get expert guidance on building a US-compliant crypto exchange.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Exchange Startup Guide",
     },
@@ -4657,7 +4772,8 @@ myth analyze src/MyToken.sol`,
   {
     id: 29,
     slug: "how-to-accept-crypto-payments",
-    title: "How to Accept Crypto Payments in 2025 — US Business Guide | Clickmasters",
+    title:
+      "How to Accept Crypto Payments in 2025 — US Business Guide | Clickmasters",
     excerpt:
       "A complete guide to accepting crypto payments for US businesses — setup, settlement, and compliance across three approaches.",
     category: "How-To Guide",
@@ -4668,7 +4784,8 @@ myth analyze src/MyToken.sol`,
 
     hero: {
       badge: "HOW-TO",
-      title: "How to Accept Crypto Payments for Your Business — Setup, Settlement, and Compliance",
+      title:
+        "How to Accept Crypto Payments for Your Business — Setup, Settlement, and Compliance",
       description:
         "Accepting cryptocurrency payments reduces processing fees, eliminates chargebacks, and opens your business to 420 million crypto users globally. Here is the complete setup guide for a US business — from payment method selection to accounting integration.",
     },
@@ -4774,7 +4891,8 @@ myth analyze src/MyToken.sol`,
 
     faqs: [
       {
-        question: "What happens if a customer sends too little or too much cryptocurrency?",
+        question:
+          "What happens if a customer sends too little or too much cryptocurrency?",
         answer:
           "A correctly built payment system handles both automatically: partial payment → invoice remains open, customer is notified of remaining balance. Overpayment → refund the excess to the original address. Configure these edge cases before launch — they will occur.",
       },
@@ -4792,7 +4910,8 @@ myth analyze src/MyToken.sol`,
 
     cta: {
       title: "Ready to Accept Crypto Payments?",
-      description: "Get expert guidance on setting up crypto payment acceptance for your business.",
+      description:
+        "Get expert guidance on setting up crypto payment acceptance for your business.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Crypto Payments Guide",
     },
@@ -4800,7 +4919,8 @@ myth analyze src/MyToken.sol`,
   {
     id: 30,
     slug: "how-to-create-dao",
-    title: "How to Create a DAO — Technical and Governance Guide | Clickmasters",
+    title:
+      "How to Create a DAO — Technical and Governance Guide | Clickmasters",
     excerpt:
       "A complete guide to creating a DAO — technical architecture, legal structure, governance token design, and smart contract implementation.",
     category: "How-To Guide",
@@ -4811,7 +4931,8 @@ myth analyze src/MyToken.sol`,
 
     hero: {
       badge: "HOW-TO",
-      title: "How to Create a DAO — Technical Architecture, Legal Structure, and Governance Design",
+      title:
+        "How to Create a DAO — Technical Architecture, Legal Structure, and Governance Design",
       description:
         "A DAO is not a Discord server with a governance token. It is an economic entity with on-chain decision-making authority and a treasury. Here is how to build one that works — technically and legally — in the US regulatory environment.",
     },
@@ -4939,7 +5060,8 @@ myth analyze src/MyToken.sol`,
 
     cta: {
       title: "Ready to Create Your DAO?",
-      description: "Get expert guidance on structuring, launching, and governing your DAO.",
+      description:
+        "Get expert guidance on structuring, launching, and governing your DAO.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the DAO Creation Guide",
     },
@@ -4958,7 +5080,8 @@ myth analyze src/MyToken.sol`,
 
     hero: {
       badge: "HOW-TO",
-      title: "How to Build a Crypto Wallet App — Architecture Decisions, Key Management, and Development Process",
+      title:
+        "How to Build a Crypto Wallet App — Architecture Decisions, Key Management, and Development Process",
       description:
         "The architecture decisions made in week one of a crypto wallet project determine its security, regulatory status, and user experience for its entire lifespan. Here is how to make them correctly — and what the professional development process looks like.",
     },
@@ -5063,7 +5186,8 @@ myth analyze src/MyToken.sol`,
 
     cta: {
       title: "Ready to Build Your Crypto Wallet?",
-      description: "Get expert guidance on building a secure, production-grade crypto wallet.",
+      description:
+        "Get expert guidance on building a secure, production-grade crypto wallet.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Wallet Architecture Guide",
     },
@@ -5071,7 +5195,8 @@ myth analyze src/MyToken.sol`,
   {
     id: 32,
     slug: "how-to-integrate-blockchain-existing-business",
-    title: "How to Integrate Blockchain Into Your Existing Business | Clickmasters",
+    title:
+      "How to Integrate Blockchain Into Your Existing Business | Clickmasters",
     excerpt:
       "A complete guide to integrating blockchain into an existing business — identifying the right processes, mapping integration requirements, and implementing a pilot.",
     category: "How-To Guide",
@@ -5082,7 +5207,8 @@ myth analyze src/MyToken.sol`,
 
     hero: {
       badge: "HOW-TO",
-      title: "How to Integrate Blockchain Into Your Existing Business — Without Replacing Your Existing Systems",
+      title:
+        "How to Integrate Blockchain Into Your Existing Business — Without Replacing Your Existing Systems",
       description:
         "Blockchain integration does not mean replacing your ERP, CRM, or existing technology. It means adding an immutable, auditable layer to the specific processes where multi-party trust, automation, or auditability creates business value. Here is how to identify those processes and integrate correctly.",
     },
@@ -5197,7 +5323,8 @@ myth analyze src/MyToken.sol`,
 
     cta: {
       title: "Ready to Integrate Blockchain Into Your Business?",
-      description: "Get expert guidance on assessing, planning, and implementing blockchain integration.",
+      description:
+        "Get expert guidance on assessing, planning, and implementing blockchain integration.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Integration Assessment Guide",
     },
@@ -5205,7 +5332,8 @@ myth analyze src/MyToken.sol`,
   {
     id: 33,
     slug: "how-to-launch-a-token",
-    title: "How to Launch a Token — Complete US Legal and Technical Guide | Clickmasters",
+    title:
+      "How to Launch a Token — Complete US Legal and Technical Guide | Clickmasters",
     excerpt:
       "A complete guide to launching a token in the US — legal classification, tokenomics design, smart contract development, and distribution strategy.",
     category: "How-To Guide",
@@ -5216,7 +5344,8 @@ myth analyze src/MyToken.sol`,
 
     hero: {
       badge: "HOW-TO",
-      title: "How to Launch a Token in 2025 — Legal Classification, Technical Development, and Distribution",
+      title:
+        "How to Launch a Token in 2025 — Legal Classification, Technical Development, and Distribution",
       description:
         "The first question in any token launch is not 'which chain?' or 'what supply?' — it is 'is this token a security under US law?' The answer determines everything that follows. After 1,000+ blockchain projects since 2014, here is the correct sequence.",
     },
@@ -5319,7 +5448,8 @@ myth analyze src/MyToken.sol`,
           "Smart contract (ERC-20 + vesting + governance): $20,000–$60,000 including audit. Legal (securities assessment + Reg D structure): $20,000–$60,000. DEX liquidity provision: variable (capital cost). Total technical and legal: $40,000–$120,000 before exchange listing costs.",
       },
       {
-        question: "What happens if the SEC classifies our token as a security after launch?",
+        question:
+          "What happens if the SEC classifies our token as a security after launch?",
         answer:
           "The SEC can pursue: disgorgement of funds raised, civil penalties, registration requirements, and trading restrictions. Founders may face personal liability. Retroactive securities registration is possible but expensive ($100,000+). Prevention through pre-launch legal review is orders of magnitude cheaper.",
       },
@@ -5327,7 +5457,8 @@ myth analyze src/MyToken.sol`,
 
     cta: {
       title: "Ready to Launch Your Token?",
-      description: "Get expert guidance on launching your token with SEC-compliant structure.",
+      description:
+        "Get expert guidance on launching your token with SEC-compliant structure.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Token Launch Checklist",
     },
@@ -5335,7 +5466,8 @@ myth analyze src/MyToken.sol`,
   {
     id: 34,
     slug: "how-to-build-web3-app",
-    title: "How to Build a Web3 App — From Concept to Production | Clickmasters",
+    title:
+      "How to Build a Web3 App — From Concept to Production | Clickmasters",
     excerpt:
       "A complete guide to building a Web3 app — from smart contracts and indexing layer to front-end development and wallet integration.",
     category: "How-To Guide",
@@ -5448,8 +5580,7 @@ myth analyze src/MyToken.sol`,
       },
       {
         question: "What does a full Web3 app cost to build?",
-        answer:
-          "$52,000–$430,000 depending on complexity.",
+        answer: "$52,000–$430,000 depending on complexity.",
       },
     ],
 
@@ -5474,7 +5605,8 @@ myth analyze src/MyToken.sol`,
 
     hero: {
       badge: "HOW-TO",
-      title: "How to Choose a Blockchain Development Company — 8 Questions That Separate Credible Vendors From Expensive Mistakes",
+      title:
+        "How to Choose a Blockchain Development Company — 8 Questions That Separate Credible Vendors From Expensive Mistakes",
       description:
         "The blockchain development vendor market includes some of the world's most experienced specialists and some of the most capable resume-fabricators in tech. After 1,000+ projects since 2014 and having inherited dozens of failed projects from other vendors, here is how to tell the difference.",
     },
@@ -5565,18 +5697,25 @@ myth analyze src/MyToken.sol`,
         rows: [
           ["Production projects", "1,000+ delivered since 2014"],
           ["Audit inclusion", "Mandatory — never optional"],
-          ["Specification process", "Formal Spec Document before development begins"],
+          [
+            "Specification process",
+            "Formal Spec Document before development begins",
+          ],
           ["Pricing", "Fixed-scope with documented change request process"],
           ["Post-launch", "Structured SLA — defined in project scoping"],
           ["NDA", "Mutual NDA signed before discovery call"],
-          ["Failure experience", "11 years of real projects, documented learnings"],
+          [
+            "Failure experience",
+            "11 years of real projects, documented learnings",
+          ],
         ],
       },
     ],
 
     faqs: [
       {
-        question: "What red flags should I look for in a blockchain development company?",
+        question:
+          "What red flags should I look for in a blockchain development company?",
         answer:
           "Quotes with no audit line item. Time-and-materials with no cap. No formal specification phase. Inability to name specific production projects they have delivered. Guarantees of timeline or price before completing discovery. Offshore teams with no senior architect oversight.",
       },
@@ -5594,7 +5733,8 @@ myth analyze src/MyToken.sol`,
 
     cta: {
       title: "Need Help Choosing a Blockchain Development Company?",
-      description: "Get expert guidance on selecting the right partner for your blockchain project.",
+      description:
+        "Get expert guidance on selecting the right partner for your blockchain project.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Vendor Evaluation Checklist",
     },
@@ -5602,7 +5742,8 @@ myth analyze src/MyToken.sol`,
   {
     id: 36,
     slug: "how-to-write-blockchain-business-case",
-    title: "How to Write a Blockchain Business Case for Your Board | Clickmasters",
+    title:
+      "How to Write a Blockchain Business Case for Your Board | Clickmasters",
     excerpt:
       "A complete guide to writing a blockchain business case that your CFO will approve — current-state cost documentation, blockchain-enabled future state, cost of implementation, ROI calculation, and risk assessment.",
     category: "How-To Guide",
@@ -5613,7 +5754,8 @@ myth analyze src/MyToken.sol`,
 
     hero: {
       badge: "HOW-TO",
-      title: "How to Write a Blockchain Business Case That Your CFO Will Approve",
+      title:
+        "How to Write a Blockchain Business Case That Your CFO Will Approve",
       description:
         "The blockchain business case that gets approved is not the one that explains how blockchain works. It is the one that documents the current-state cost, models the blockchain-enabled cost reduction, and presents a payback calculation the CFO can validate.",
     },
@@ -5739,22 +5881,23 @@ myth analyze src/MyToken.sol`,
 
     cta: {
       title: "Ready to Write Your Blockchain Business Case?",
-      description: "Get expert guidance on building a business case that gets executive approval.",
+      description:
+        "Get expert guidance on building a business case that gets executive approval.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Business Case Template",
     },
   },
   // ============================================================
-// HOW-TO GUIDES DATA FILE (COMPLETE)
-// A comprehensive collection of step-by-step guides for blockchain development
-// Total: 43 guides (IDs 1-43)
-// ============================================================
-
+  // HOW-TO GUIDES DATA FILE (COMPLETE)
+  // A comprehensive collection of step-by-step guides for blockchain development
+  // Total: 43 guides (IDs 1-43)
+  // ============================================================
 
   {
     id: 37,
     slug: "how-to-build-defi-protocol-step-by-step",
-    title: "How to Build a DeFi Protocol — Step-by-Step Development Guide | Clickmasters",
+    title:
+      "How to Build a DeFi Protocol — Step-by-Step Development Guide | Clickmasters",
     excerpt:
       "A complete 8-phase development guide for building a DeFi protocol — from economics modeling through development, audit, testnet, and mainnet launch.",
     category: "How-To Guide",
@@ -5973,7 +6116,8 @@ mythril analyze src/LendingPool.sol --execution-timeout 900
 
     faqs: [
       {
-        question: "What is the minimum timeline for a safe DeFi protocol launch?",
+        question:
+          "What is the minimum timeline for a safe DeFi protocol launch?",
         answer:
           "24–30 weeks for a simple DeFi protocol (single pool, standard collateral, no novel architecture). 34–44 weeks for complex protocols (multiple pool types, novel mechanisms, cross-chain). Any promise of 'DeFi protocol in 6 weeks' is either not production-grade or not fully audited.",
       },
@@ -5981,7 +6125,8 @@ mythril analyze src/LendingPool.sol --execution-timeout 900
 
     cta: {
       title: "Ready to Build Your DeFi Protocol?",
-      description: "Get expert guidance on building your DeFi protocol from economics to mainnet.",
+      description:
+        "Get expert guidance on building your DeFi protocol from economics to mainnet.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the DeFi Architecture Guide",
     },
@@ -5989,7 +6134,8 @@ mythril analyze src/LendingPool.sol --execution-timeout 900
   {
     id: 38,
     slug: "how-to-launch-token-checklist",
-    title: "How to Launch a Token — Legal, Technical, and Community Checklist | Clickmasters",
+    title:
+      "How to Launch a Token — Legal, Technical, and Community Checklist | Clickmasters",
     excerpt:
       "A complete step-by-step checklist for launching a token — legal analysis, tokenomics design, smart contract development, security audit, liquidity provision, and community building.",
     category: "How-To Guide",
@@ -6133,7 +6279,8 @@ mythril analyze src/LendingPool.sol --execution-timeout 900
 
     cta: {
       title: "Ready to Launch Your Token?",
-      description: "Get expert guidance on launching your token with SEC-compliant structure.",
+      description:
+        "Get expert guidance on launching your token with SEC-compliant structure.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Token Launch Checklist",
     },
@@ -6141,7 +6288,8 @@ mythril analyze src/LendingPool.sol --execution-timeout 900
   {
     id: 39,
     slug: "how-to-integrate-crypto-payment-gateway",
-    title: "How to Integrate a Crypto Payment Gateway — Technical Guide | Clickmasters",
+    title:
+      "How to Integrate a Crypto Payment Gateway — Technical Guide | Clickmasters",
     excerpt:
       "A complete technical guide to integrating crypto payments — three options by complexity: third-party processor, API integration, and full custom gateway.",
     category: "How-To Guide",
@@ -6152,7 +6300,8 @@ mythril analyze src/LendingPool.sol --execution-timeout 900
 
     hero: {
       badge: "HOW-TO",
-      title: "How to Integrate a Crypto Payment Gateway — Three Options by Technical Complexity",
+      title:
+        "How to Integrate a Crypto Payment Gateway — Three Options by Technical Complexity",
       description:
         "Adding crypto payment to your website takes 1–3 days with a third-party processor, or 5–8 weeks for a custom integration. Here is the complete technical guide for each option.",
     },
@@ -6314,7 +6463,8 @@ class PaymentAddressManager {
 
     faqs: [
       {
-        question: "How do we handle crypto price volatility when accepting payments?",
+        question:
+          "How do we handle crypto price volatility when accepting payments?",
         answer:
           "Auto-conversion to USD on receipt eliminates price risk. The customer pays with crypto; your payment processor or custom integration sells it immediately (within seconds) and credits you in USD. Your business is never exposed to crypto price movements.",
       },
@@ -6322,7 +6472,8 @@ class PaymentAddressManager {
 
     cta: {
       title: "Ready to Integrate Crypto Payments?",
-      description: "Get expert guidance on setting up crypto payment acceptance for your business.",
+      description:
+        "Get expert guidance on setting up crypto payment acceptance for your business.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Crypto Payments Guide",
     },
@@ -6341,7 +6492,8 @@ class PaymentAddressManager {
 
     hero: {
       badge: "HOW-TO",
-      title: "How to Implement Cross-Chain Token Transfer — LayerZero OFT vs Custom Bridge",
+      title:
+        "How to Implement Cross-Chain Token Transfer — LayerZero OFT vs Custom Bridge",
       description:
         "Cross-chain token transfer requires either an existing messaging protocol (LayerZero, Axelar) or a custom bridge. For most applications: use LayerZero OFT. For regulated or specialized requirements: custom bridge. Here is the implementation for both.",
     },
@@ -6490,7 +6642,8 @@ contract TokenLock is ReentrancyGuard, Ownable {
 
     faqs: [
       {
-        question: "What is the security difference between LayerZero OFT and a custom bridge?",
+        question:
+          "What is the security difference between LayerZero OFT and a custom bridge?",
         answer:
           "LayerZero uses a decentralized oracle network for message verification. A custom lock-and-mint bridge with authorized relayers creates a centralized trust assumption — if the relayer is compromised, the bridge is compromised. The advantage of a custom bridge: full control over validation logic (can add KYC checks, rate limits, etc.). For most applications: LayerZero's security is superior to a custom bridge.",
       },
@@ -6517,7 +6670,8 @@ contract TokenLock is ReentrancyGuard, Ownable {
 
     hero: {
       badge: "HOW-TO",
-      title: "How to Set Up Blockchain Monitoring — Tenderly, Forta, and On-Chain Alerts",
+      title:
+        "How to Set Up Blockchain Monitoring — Tenderly, Forta, and On-Chain Alerts",
       description:
         "Production blockchain systems require real-time monitoring for security anomalies, unusual transaction patterns, and circuit breaker events. Here is the complete monitoring stack.",
     },
@@ -6671,11 +6825,31 @@ contract CircuitBreaker is Ownable {
         type: "table",
         columns: ["Tool", "Cost", "What It Covers"],
         rows: [
-          ["Tenderly (Team plan)", "$99/month", "Transaction alerts, simulation, debugging"],
-          ["Forta (self-hosted)", "Free (pay per detection agent)", "Automated threat detection"],
-          ["The Graph (hosted)", "$0–$49/month", "Historical query anomaly detection"],
-          ["PagerDuty", "$21/user/month", "On-call rotation for security alerts"],
-          ["Uptime monitoring", "$20–$50/month", "RPC endpoint, front-end availability"],
+          [
+            "Tenderly (Team plan)",
+            "$99/month",
+            "Transaction alerts, simulation, debugging",
+          ],
+          [
+            "Forta (self-hosted)",
+            "Free (pay per detection agent)",
+            "Automated threat detection",
+          ],
+          [
+            "The Graph (hosted)",
+            "$0–$49/month",
+            "Historical query anomaly detection",
+          ],
+          [
+            "PagerDuty",
+            "$21/user/month",
+            "On-call rotation for security alerts",
+          ],
+          [
+            "Uptime monitoring",
+            "$20–$50/month",
+            "RPC endpoint, front-end availability",
+          ],
           ["Total monthly", "~$200–$350", "Full monitoring stack"],
         ],
       },
@@ -6683,7 +6857,8 @@ contract CircuitBreaker is Ownable {
 
     faqs: [
       {
-        question: "How quickly can an exploit be detected with proper monitoring?",
+        question:
+          "How quickly can an exploit be detected with proper monitoring?",
         answer:
           "With Tenderly webhook alerts: typically 1–3 minutes from the first suspicious transaction (webhook latency + manual review). With automated circuit breakers: milliseconds (the protocol pauses itself before the next block). The difference: automated circuit breakers are faster but require defining the anomaly threshold correctly in advance; Tenderly alerts require human decision-making but can catch more novel patterns.",
       },
@@ -6691,7 +6866,8 @@ contract CircuitBreaker is Ownable {
 
     cta: {
       title: "Ready to Set Up Blockchain Monitoring?",
-      description: "Get expert guidance on setting up production-grade blockchain monitoring.",
+      description:
+        "Get expert guidance on setting up production-grade blockchain monitoring.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Monitoring Setup Guide",
     },
@@ -6710,7 +6886,8 @@ contract CircuitBreaker is Ownable {
 
     hero: {
       badge: "HOW-TO",
-      title: "How to Conduct a Smart Contract Security Audit — The Auditor's Process",
+      title:
+        "How to Conduct a Smart Contract Security Audit — The Auditor's Process",
       description:
         "Understanding how auditors work helps you prepare better code and get more value from the engagement. Here is the complete audit process from the auditor's perspective.",
     },
@@ -6852,7 +7029,8 @@ echidna-test . --contract LendingPool --config echidna.config.yaml`,
 
     cta: {
       title: "Need Help Managing Your Smart Contract Audit?",
-      description: "Get expert guidance on preparing for and managing a smart contract audit.",
+      description:
+        "Get expert guidance on preparing for and managing a smart contract audit.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Audit Management Checklist",
     },
@@ -6871,7 +7049,8 @@ echidna-test . --contract LendingPool --config echidna.config.yaml`,
 
     hero: {
       badge: "HOW-TO",
-      title: "How to Write a Blockchain Technical Specification — The Document That Prevents Auditors From Finding Logic Errors",
+      title:
+        "How to Write a Blockchain Technical Specification — The Document That Prevents Auditors From Finding Logic Errors",
       description:
         "A technical specification defines what every contract must do before any code is written. Without one, auditors can only check that code compiles correctly — they cannot check that it is correct. Here is how to write a production-quality specification.",
     },
@@ -6918,11 +7097,29 @@ echidna-test . --contract LendingPool --config echidna.config.yaml`,
       },
       {
         type: "table",
-        columns: ["Variable Name", "Type", "Initial Value", "Valid Range", "Who Can Modify"],
+        columns: [
+          "Variable Name",
+          "Type",
+          "Initial Value",
+          "Valid Range",
+          "Who Can Modify",
+        ],
         rows: [
-          ["totalDeposits", "uint256", "0", "0 ≤ x ≤ MAX_UINT256", "Internal only (via deposit/withdraw)"],
+          [
+            "totalDeposits",
+            "uint256",
+            "0",
+            "0 ≤ x ≤ MAX_UINT256",
+            "Internal only (via deposit/withdraw)",
+          ],
           ["feeRate", "uint256", "250", "0 ≤ x ≤ 1000 (0%–10%)", "Owner only"],
-          ["userBalances", "mapping(address→uint256)", "{}", "0 ≤ each ≤ totalDeposits", "Internal only"],
+          [
+            "userBalances",
+            "mapping(address→uint256)",
+            "{}",
+            "0 ≤ each ≤ totalDeposits",
+            "Internal only",
+          ],
         ],
       },
       {
@@ -6968,7 +7165,8 @@ Edge cases:
 
     cta: {
       title: "Need Help Writing Your Technical Specification?",
-      description: "Get expert guidance on writing a production-quality blockchain specification.",
+      description:
+        "Get expert guidance on writing a production-quality blockchain specification.",
       primaryText: "Book a Free Strategy Call",
       secondaryText: "Download the Specification Template",
     },
@@ -6999,7 +7197,7 @@ function getHowToCards(o2 = {}) {
     c = c.filter(
       (x) =>
         x.title.toLowerCase().includes(q) ||
-        x.description.toLowerCase().includes(q)
+        x.description.toLowerCase().includes(q),
     );
   }
 
@@ -7017,14 +7215,8 @@ function searchHowTos(q2) {
   const q = q2.toLowerCase();
   return howTos.filter(
     (i) =>
-      i.title.toLowerCase().includes(q) ||
-      i.slug.toLowerCase().includes(q)
+      i.title.toLowerCase().includes(q) || i.slug.toLowerCase().includes(q),
   );
 }
 
-export {
-  getHowToBySlug,
-  getHowToCards,
-  getHowTosByTag,
-  searchHowTos,
-};
+export { getHowToBySlug, getHowToCards, getHowTosByTag, searchHowTos };

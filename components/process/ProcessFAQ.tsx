@@ -1,9 +1,6 @@
 // components/process/ProcessFAQ.tsx
 
-import {
-  CircleHelp,
-  Plus,
-} from "lucide-react";
+import { CircleHelp, Plus } from "lucide-react";
 
 import type { ProcessFAQ as ProcessFAQType } from "@/lib/process";
 
@@ -49,7 +46,6 @@ export default function ProcessFAQ({
         <div className="max-w-2xl">
           <span className="inline-flex items-center gap-2 rounded-full border border-amber-base/20 bg-amber-base/[0.06] px-4 py-2 text-[11px] font-black uppercase tracking-[0.16em] text-amber-base">
             <CircleHelp className="h-4 w-4" />
-
             FAQ
           </span>
 

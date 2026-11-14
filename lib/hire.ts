@@ -104,11 +104,8 @@ export function getHireVisual(slug = ""): string {
   const visualIndex =
     source
       .split("")
-      .reduce(
-        (sum, character) =>
-          sum + character.charCodeAt(0),
-        0
-      ) % hireVisuals.length;
+      .reduce((sum, character) => sum + character.charCodeAt(0), 0) %
+    hireVisuals.length;
 
   return hireVisuals[visualIndex];
 }
@@ -117,35 +114,22 @@ function normalizeSlug(slug: string): string {
   return slug.trim().toLowerCase();
 }
 
-function normalizeText(
-  value: unknown,
-  fallback = ""
-): string {
-  return typeof value === "string"
-    ? value.trim()
-    : fallback;
+function normalizeText(value: unknown, fallback = ""): string {
+  return typeof value === "string" ? value.trim() : fallback;
 }
 
-function normalizeStringArray(
-  value: unknown
-): string[] {
+function normalizeStringArray(value: unknown): string[] {
   if (!Array.isArray(value)) {
     return [];
   }
 
   return value
-    .filter(
-      (item): item is string =>
-        typeof item === "string"
-    )
+    .filter((item): item is string => typeof item === "string")
     .map((item) => item.trim())
     .filter(Boolean);
 }
 
-function normalizeImage(
-  value: unknown,
-  slug: string
-): string {
+function normalizeImage(value: unknown, slug: string): string {
   const image = normalizeText(value);
 
   if (image.startsWith("/media/")) {
@@ -155,19 +139,16 @@ function normalizeImage(
   return getHireVisual(slug);
 }
 
-function isHireCategory(
-  category: unknown
-): boolean {
+function isHireCategory(category: unknown): boolean {
   return (
-    typeof category === "string" &&
-    category.trim().toLowerCase() === "hire"
+    typeof category === "string" && category.trim().toLowerCase() === "hire"
   );
 }
 
 function normalizeHero(
   value: unknown,
   title: string,
-  excerpt: string
+  excerpt: string,
 ): HireHero {
   if (!value || typeof value !== "object") {
     return {
@@ -180,22 +161,13 @@ function normalizeHero(
   const hero = value as Partial<HireHero>;
 
   return {
-    badge: normalizeText(
-      hero.badge,
-      "Hire Blockchain Expert"
-    ),
+    badge: normalizeText(hero.badge, "Hire Blockchain Expert"),
     title: normalizeText(hero.title, title),
-    description: normalizeText(
-      hero.description,
-      excerpt
-    ),
+    description: normalizeText(hero.description, excerpt),
   };
 }
 
-function normalizeCta(
-  value: unknown,
-  title: string
-): HireCta {
+function normalizeCta(value: unknown, title: string): HireCta {
   if (!value || typeof value !== "object") {
     return {
       title: `Ready to ${title}?`,
@@ -209,99 +181,64 @@ function normalizeCta(
   const cta = value as Partial<HireCta>;
 
   return {
-    title: normalizeText(
-      cta.title,
-      `Ready to ${title}?`
-    ),
+    title: normalizeText(cta.title, `Ready to ${title}?`),
     description: normalizeText(
       cta.description,
-      "Share your project requirements and get matched with the right blockchain development expertise."
+      "Share your project requirements and get matched with the right blockchain development expertise.",
     ),
-    primaryText: normalizeText(
-      cta.primaryText,
-      "Discuss Your Project"
-    ),
-    secondaryText: normalizeText(
-      cta.secondaryText,
-      "Explore More Experts"
-    ),
+    primaryText: normalizeText(cta.primaryText, "Discuss Your Project"),
+    secondaryText: normalizeText(cta.secondaryText, "Explore More Experts"),
   };
 }
 
-function normalizeFaqs(
-  value: unknown
-): HireFaq[] {
+function normalizeFaqs(value: unknown): HireFaq[] {
   if (!Array.isArray(value)) {
     return [];
   }
 
   return value
-    .filter(
-      (item): item is Partial<HireFaq> =>
-        Boolean(
-          item &&
-            typeof item === "object"
-        )
+    .filter((item): item is Partial<HireFaq> =>
+      Boolean(item && typeof item === "object"),
     )
     .map((item) => ({
       question: normalizeText(item.question),
       answer: normalizeText(item.answer),
     }))
-    .filter(
-      (item) =>
-        item.question.length > 0 &&
-        item.answer.length > 0
-    );
+    .filter((item) => item.question.length > 0 && item.answer.length > 0);
 }
 
-function normalizeContent(
-  value: unknown
-): HireContentBlock[] {
+function normalizeContent(value: unknown): HireContentBlock[] {
   if (!Array.isArray(value)) {
     return [];
   }
 
-  return value.filter(
-    (block): block is HireContentBlock => {
-      if (
-        !block ||
-        typeof block !== "object" ||
-        !("type" in block)
-      ) {
-        return false;
-      }
-
-      const item = block as Record<
-        string,
-        unknown
-      >;
-
-      switch (item.type) {
-        case "featuredAnswer":
-        case "heading":
-        case "paragraph":
-        case "code":
-          return typeof item.text === "string";
-
-        case "list":
-          return Array.isArray(item.items);
-
-        case "table":
-          return (
-            Array.isArray(item.headers) &&
-            Array.isArray(item.rows)
-          );
-
-        default:
-          return false;
-      }
+  return value.filter((block): block is HireContentBlock => {
+    if (!block || typeof block !== "object" || !("type" in block)) {
+      return false;
     }
-  );
+
+    const item = block as Record<string, unknown>;
+
+    switch (item.type) {
+      case "featuredAnswer":
+      case "heading":
+      case "paragraph":
+      case "code":
+        return typeof item.text === "string";
+
+      case "list":
+        return Array.isArray(item.items);
+
+      case "table":
+        return Array.isArray(item.headers) && Array.isArray(item.rows);
+
+      default:
+        return false;
+    }
+  });
 }
 
-function normalizeHirePage(
-  item: unknown
-): HirePage | null {
+function normalizeHirePage(item: unknown): HirePage | null {
   if (!item || typeof item !== "object") {
     return null;
   }
@@ -321,14 +258,11 @@ function normalizeHirePage(
 
   const excerpt = normalizeText(
     page.excerpt,
-    `Hire experienced professionals for ${title}.`
+    `Hire experienced professionals for ${title}.`,
   );
 
   return {
-    id:
-      typeof page.id === "number"
-        ? page.id
-        : 0,
+    id: typeof page.id === "number" ? page.id : 0,
 
     slug: normalizeSlug(slug),
 
@@ -338,29 +272,17 @@ function normalizeHirePage(
 
     category: "Hire",
 
-    author: normalizeText(
-      page.author,
-      "ClickMasters"
-    ),
+    author: normalizeText(page.author, "ClickMasters"),
 
     date: normalizeText(page.date),
 
-    readTime: normalizeText(
-      page.readTime,
-      "8 min read"
-    ),
+    readTime: normalizeText(page.readTime, "8 min read"),
 
     image: normalizeImage(page.image, slug),
 
-    hero: normalizeHero(
-      page.hero,
-      title,
-      excerpt
-    ),
+    hero: normalizeHero(page.hero, title, excerpt),
 
-    credibility: normalizeStringArray(
-      page.credibility
-    ),
+    credibility: normalizeStringArray(page.credibility),
 
     content: normalizeContent(page.content),
 
@@ -375,35 +297,24 @@ export function getAllHirePages(): HirePage[] {
     return [];
   }
 
-  const uniquePages = new Map<
-    string,
-    HirePage
-  >();
+  const uniquePages = new Map<string, HirePage>();
 
   for (const item of hireData) {
-    const normalizedPage =
-      normalizeHirePage(item);
+    const normalizedPage = normalizeHirePage(item);
 
     if (!normalizedPage) {
       continue;
     }
 
-    uniquePages.set(
-      normalizedPage.slug,
-      normalizedPage
-    );
+    uniquePages.set(normalizedPage.slug, normalizedPage);
   }
 
-  return Array.from(
-    uniquePages.values()
-  ).sort((a, b) =>
-    a.title.localeCompare(b.title)
+  return Array.from(uniquePages.values()).sort((a, b) =>
+    a.title.localeCompare(b.title),
   );
 }
 
-function toHireCard(
-  page: HirePage
-): HireCardData {
+function toHireCard(page: HirePage): HireCardData {
   return {
     id: page.id,
     slug: page.slug,
@@ -420,24 +331,18 @@ export function getHireCards(): HireCardData[] {
 }
 
 export function getHirePageBySlug(
-  slug: string | undefined
+  slug: string | undefined,
 ): HirePage | undefined {
   if (!slug) {
     return undefined;
   }
 
-  const normalizedSlug =
-    normalizeSlug(slug);
+  const normalizedSlug = normalizeSlug(slug);
 
-  return getAllHirePages().find(
-    (page) =>
-      page.slug === normalizedSlug
-  );
+  return getAllHirePages().find((page) => page.slug === normalizedSlug);
 }
 
-export function hasHirePage(
-  slug: string
-): boolean {
+export function hasHirePage(slug: string): boolean {
   return Boolean(getHirePageBySlug(slug));
 }
 
@@ -451,41 +356,30 @@ export function getHireStaticParams(): Array<{
 
 export function getRelatedHirePages(
   currentSlug: string,
-  limit = 3
+  limit = 3,
 ): HireCardData[] {
   if (limit <= 0) {
     return [];
   }
 
-  const currentPage =
-    getHirePageBySlug(currentSlug);
+  const currentPage = getHirePageBySlug(currentSlug);
 
   if (!currentPage) {
     return [];
   }
 
   const currentKeywords = new Set(
-    currentPage.credibility.map((item) =>
-      item.toLowerCase()
-    )
+    currentPage.credibility.map((item) => item.toLowerCase()),
   );
 
   return getAllHirePages()
-    .filter(
-      (page) =>
-        page.slug !== currentPage.slug
-    )
+    .filter((page) => page.slug !== currentPage.slug)
     .map((page) => {
-      const relevanceScore =
-        page.credibility.reduce(
-          (score, item) =>
-            currentKeywords.has(
-              item.toLowerCase()
-            )
-              ? score + 1
-              : score,
-          0
-        );
+      const relevanceScore = page.credibility.reduce(
+        (score, item) =>
+          currentKeywords.has(item.toLowerCase()) ? score + 1 : score,
+        0,
+      );
 
       return {
         page,
@@ -493,27 +387,17 @@ export function getRelatedHirePages(
       };
     })
     .sort((a, b) => {
-      if (
-        b.relevanceScore !==
-        a.relevanceScore
-      ) {
-        return (
-          b.relevanceScore -
-          a.relevanceScore
-        );
+      if (b.relevanceScore !== a.relevanceScore) {
+        return b.relevanceScore - a.relevanceScore;
       }
 
-      return a.page.title.localeCompare(
-        b.page.title
-      );
+      return a.page.title.localeCompare(b.page.title);
     })
     .slice(0, limit)
     .map(({ page }) => toHireCard(page));
 }
 
-export function getFeaturedHirePages(
-  limit = 6
-): HireCardData[] {
+export function getFeaturedHirePages(limit = 6): HireCardData[] {
   if (limit <= 0) {
     return [];
   }
@@ -529,15 +413,12 @@ export function getFeaturedHirePages(
 
   return getAllHirePages()
     .map((page) => {
-      const priorityIndex =
-        prioritySlugs.indexOf(page.slug);
+      const priorityIndex = prioritySlugs.indexOf(page.slug);
 
       return {
         page,
         priority:
-          priorityIndex === -1
-            ? Number.MAX_SAFE_INTEGER
-            : priorityIndex,
+          priorityIndex === -1 ? Number.MAX_SAFE_INTEGER : priorityIndex,
       };
     })
     .sort((a, b) => {
@@ -545,9 +426,7 @@ export function getFeaturedHirePages(
         return a.priority - b.priority;
       }
 
-      return a.page.title.localeCompare(
-        b.page.title
-      );
+      return a.page.title.localeCompare(b.page.title);
     })
     .slice(0, limit)
     .map(({ page }) => toHireCard(page));

@@ -5,7 +5,11 @@ import { motion, useReducedMotion } from "framer-motion";
 import { useState } from "react";
 import { X } from "lucide-react";
 
-export default function StickyCTA({ label = "Schedule call" }: { label?: string }) {
+export default function StickyCTA({
+  label = "Schedule call",
+}: {
+  label?: string;
+}) {
   const reduce = useReducedMotion();
   const [dismissed, setDismissed] = useState(false);
 
@@ -26,9 +30,17 @@ export default function StickyCTA({ label = "Schedule call" }: { label?: string 
         <X className="h-4 w-4" />
       </button>
       <h2 className="font-semibold">Quick estimate</h2>
-      <p className="mt-2 text-sm text-silver-base">Small module: 2–4 weeks · Medium: 6–10 weeks · Large: 10+ weeks</p>
+      <p className="mt-2 text-sm text-silver-base">
+        Small module: 2–4 weeks · Medium: 6–10 weeks · Large: 10+ weeks
+      </p>
       <div className="mt-4">
-        <Link href="/contact" aria-label="Schedule a call" className="inline-flex w-full justify-center items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground cta-btn">{label}</Link>
+        <Link
+          href="/contact"
+          aria-label="Schedule a call"
+          className="inline-flex w-full justify-center items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground cta-btn"
+        >
+          {label}
+        </Link>
       </div>
     </motion.div>
   );

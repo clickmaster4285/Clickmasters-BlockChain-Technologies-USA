@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  BadgeCheck,
-  Quote,
-  Sparkles,
-  Star,
-  TrendingUp,
-} from "lucide-react";
+import { BadgeCheck, Quote, Sparkles, Star, TrendingUp } from "lucide-react";
 
 type TestimonialStat = {
   value: string;
@@ -99,9 +93,7 @@ export default function CaseStudyTestimonial({
                   </div>
 
                   <div>
-                    <p className="text-base font-black text-white">
-                      {author}
-                    </p>
+                    <p className="text-base font-black text-white">{author}</p>
 
                     <p className="mt-1 text-xs font-bold text-[#7b899d]">
                       {role}, {company}
@@ -177,8 +169,8 @@ export default function CaseStudyTestimonial({
                       <BadgeCheck className="mt-0.5 h-4 w-4 shrink-0 text-amber-400" />
 
                       <p className="text-xs font-medium leading-6 text-[#8c99ac]">
-                        Performance tracked through shared reporting and
-                        agreed commercial metrics throughout the engagement.
+                        Performance tracked through shared reporting and agreed
+                        commercial metrics throughout the engagement.
                       </p>
                     </div>
                   </div>

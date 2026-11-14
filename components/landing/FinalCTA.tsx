@@ -8,7 +8,10 @@ const ctaPoster = "/media/cta-bg.webp";
 
 export function FinalCTA() {
   return (
-    <section id="contact" className="relative overflow-hidden bg-linear-to-br from-amber-dim via-amber-base to-amber-light py-24 md:py-32">
+    <section
+      id="contact"
+      className="relative overflow-hidden bg-linear-to-br from-amber-dim via-amber-base to-amber-light py-24 md:py-32"
+    >
       {/* Background video */}
       <VideoWithFallback
         src={ctaVideo}
@@ -42,9 +45,13 @@ export function FinalCTA() {
         <h2 className="text-3xl font-bold tracking-tight text-white md:text-5xl lg:text-6xl">
           Start Your Blockchain Project
         </h2>
-        <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed md:text-lg" style={{ color: "rgba(255,255,255,0.8)" }}>
-          Tell us about your product, protocol, or platform idea. Our team will respond with
-          a scoped plan and honest read on timeline and cost — no pressure, no jargon.
+        <p
+          className="mx-auto mt-5 max-w-2xl text-base leading-relaxed md:text-lg"
+          style={{ color: "rgba(255,255,255,0.8)" }}
+        >
+          Tell us about your product, protocol, or platform idea. Our team will
+          respond with a scoped plan and honest read on timeline and cost — no
+          pressure, no jargon.
         </p>
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-3">

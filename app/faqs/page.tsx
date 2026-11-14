@@ -30,10 +30,7 @@ export async function generateMetadata({
 }: FAQsPageProps): Promise<Metadata> {
   const resolvedSearchParams = await searchParams;
   const faqs = getAllFAQs();
-  const totalPages = Math.max(
-    Math.ceil(faqs.length / CARDS_PER_PAGE),
-    1,
-  );
+  const totalPages = Math.max(Math.ceil(faqs.length / CARDS_PER_PAGE), 1);
   const currentPage = Math.min(
     getCurrentPage(resolvedSearchParams?.page),
     totalPages,
@@ -51,22 +48,14 @@ export async function generateMetadata({
   });
 }
 
-export default async function FAQsPage({
-  searchParams,
-}: FAQsPageProps) {
+export default async function FAQsPage({ searchParams }: FAQsPageProps) {
   const resolvedSearchParams = await searchParams;
   const faqs = getAllFAQs();
   const requestedPage = getCurrentPage(resolvedSearchParams?.page);
-  const totalPages = Math.max(
-    1,
-    Math.ceil(faqs.length / CARDS_PER_PAGE)
-  );
+  const totalPages = Math.max(1, Math.ceil(faqs.length / CARDS_PER_PAGE));
   const currentPage = Math.min(requestedPage, totalPages);
   const startIndex = (currentPage - 1) * CARDS_PER_PAGE;
-  const paginatedFAQs = faqs.slice(
-    startIndex,
-    startIndex + CARDS_PER_PAGE
-  );
+  const paginatedFAQs = faqs.slice(startIndex, startIndex + CARDS_PER_PAGE);
 
   return (
     <>
@@ -76,9 +65,7 @@ export default async function FAQsPage({
         <FAQHero
           totalQuestions={faqs.length}
           pageContext={
-            currentPage > 1
-              ? `Page ${currentPage} of ${totalPages}`
-              : undefined
+            currentPage > 1 ? `Page ${currentPage} of ${totalPages}` : undefined
           }
         />
 

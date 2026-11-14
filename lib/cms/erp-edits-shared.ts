@@ -10,10 +10,15 @@
 export type ErpStyle = [property: string, value: string];
 
 export type ErpEdit =
-  | { type: 'elementEdit'; selector: string; text?: string; styles: ErpStyle[] }
-  | { type: 'sectionMove'; selector: string; target: string; position: 'before' | 'after' }
-  | { type: 'sectionRemove'; selector: string }
-  | { type: 'sectionDuplicate'; selector: string; id: string };
+  | { type: "elementEdit"; selector: string; text?: string; styles: ErpStyle[] }
+  | {
+      type: "sectionMove";
+      selector: string;
+      target: string;
+      position: "before" | "after";
+    }
+  | { type: "sectionRemove"; selector: string }
+  | { type: "sectionDuplicate"; selector: string; id: string };
 
 /**
  * Selectors that point at (or inside) a copy made by a sectionDuplicate edit.
@@ -21,33 +26,33 @@ export type ErpEdit =
  * duplicate step has run.
  */
 export const isCopySelector = (selector: unknown): boolean =>
-  typeof selector === 'string' && selector.startsWith('[data-erp-clone="');
+  typeof selector === "string" && selector.startsWith('[data-erp-clone="');
 
 // Copy ids end up in a data-erp-clone attribute and in selectors.
 const COPY_ID_REGEX = /^[A-Za-z0-9-]{1,64}$/;
 
 const ALLOWED_STYLE_PROPERTIES = new Set([
-  'color',
-  'font-size',
-  'font-weight',
-  'font-style',
-  'font-family',
-  'text-align',
-  'text-transform',
-  'text-decoration',
-  'line-height',
-  'letter-spacing',
-  'background-color',
-  'padding',
-  'margin',
-  'border',
-  'border-width',
-  'border-style',
-  'border-color',
-  'border-radius',
-  'width',
-  'max-width',
-  'opacity',
+  "color",
+  "font-size",
+  "font-weight",
+  "font-style",
+  "font-family",
+  "text-align",
+  "text-transform",
+  "text-decoration",
+  "line-height",
+  "letter-spacing",
+  "background-color",
+  "padding",
+  "margin",
+  "border",
+  "border-width",
+  "border-style",
+  "border-color",
+  "border-radius",
+  "width",
+  "max-width",
+  "opacity",
 ]);
 
 const STYLE_VALUE_REGEX = /^[\w\s#(),.%'"+\-/]*$/;
@@ -57,40 +62,46 @@ const MAX_TEXT_LENGTH = 20000;
 
 /** Same path key on server and client: decoded, lowercase, no trailing slash, home is "/". */
 export function normalizeEditPath(input: string): string {
-  let path = (input || '').split(/[?#]/)[0];
+  let path = (input || "").split(/[?#]/)[0];
   try {
     path = decodeURIComponent(path);
   } catch {
     // Malformed escape sequence: compare the raw path instead.
   }
-  path = path.trim().toLowerCase().replace(/\/{2,}/g, '/').replace(/\/+$/, '');
-  if (!path.startsWith('/')) path = `/${path}`;
+  path = path
+    .trim()
+    .toLowerCase()
+    .replace(/\/{2,}/g, "/")
+    .replace(/\/+$/, "");
+  if (!path.startsWith("/")) path = `/${path}`;
   return path;
 }
 
 export function isSafeStyle(property: string, value: string): boolean {
   return (
     ALLOWED_STYLE_PROPERTIES.has(property) &&
-    value.trim() !== '' &&
+    value.trim() !== "" &&
     STYLE_VALUE_REGEX.test(value) &&
     !BLOCKED_STYLE_VALUE.test(value)
   );
 }
 
-const str = (v: unknown) => (typeof v === 'string' ? v : '');
+const str = (v: unknown) => (typeof v === "string" ? v : "");
 const obj = (v: unknown): Record<string, unknown> =>
-  v && typeof v === 'object' && !Array.isArray(v) ? (v as Record<string, unknown>) : {};
+  v && typeof v === "object" && !Array.isArray(v)
+    ? (v as Record<string, unknown>)
+    : {};
 
 function selector(v: unknown): string {
   const s = str(v).trim();
-  return s.length > 0 && s.length <= MAX_SELECTOR_LENGTH ? s : '';
+  return s.length > 0 && s.length <= MAX_SELECTOR_LENGTH ? s : "";
 }
 
 function parseStyles(raw: unknown): ErpStyle[] {
   const styles: ErpStyle[] = [];
   for (const [key, value] of Object.entries(obj(raw))) {
     const property = key.trim().toLowerCase();
-    if (typeof value !== 'string') continue;
+    if (typeof value !== "string") continue;
     if (isSafeStyle(property, value)) styles.push([property, value.trim()]);
   }
   return styles;
@@ -104,7 +115,7 @@ export function parseErpSections(raw: unknown): ErpEdit[] {
   if (!Array.isArray(raw)) return [];
   return raw
     .map(obj)
-    .map((s, i) => ({ s, order: typeof s.order === 'number' ? s.order : i, i }))
+    .map((s, i) => ({ s, order: typeof s.order === "number" ? s.order : i, i }))
     .filter(({ s }) => s.hidden !== true)
     .sort((a, b) => a.order - b.order || a.i - b.i)
     .map(({ s }): ErpEdit | null => {
@@ -112,27 +123,38 @@ export function parseErpSections(raw: unknown): ErpEdit[] {
       const sel = selector(content.selector);
       if (!sel) return null;
       switch (s.type) {
-        case 'elementEdit': {
+        case "elementEdit": {
           const styles = parseStyles(s.styles);
           const text =
-            typeof content.text === 'string' && content.text.length <= MAX_TEXT_LENGTH
+            typeof content.text === "string" &&
+            content.text.length <= MAX_TEXT_LENGTH
               ? content.text
               : undefined;
           if (text === undefined && styles.length === 0) return null;
-          return { type: 'elementEdit', selector: sel, styles, ...(text !== undefined ? { text } : {}) };
+          return {
+            type: "elementEdit",
+            selector: sel,
+            styles,
+            ...(text !== undefined ? { text } : {}),
+          };
         }
-        case 'sectionMove': {
+        case "sectionMove": {
           const target = selector(content.target);
-          const position = content.position === 'after' ? 'after' : content.position === 'before' ? 'before' : null;
+          const position =
+            content.position === "after"
+              ? "after"
+              : content.position === "before"
+                ? "before"
+                : null;
           if (!target || !position) return null;
-          return { type: 'sectionMove', selector: sel, target, position };
+          return { type: "sectionMove", selector: sel, target, position };
         }
-        case 'sectionRemove':
-          return { type: 'sectionRemove', selector: sel };
-        case 'sectionDuplicate': {
+        case "sectionRemove":
+          return { type: "sectionRemove", selector: sel };
+        case "sectionDuplicate": {
           const id = str(content.id);
           if (!COPY_ID_REGEX.test(id)) return null;
-          return { type: 'sectionDuplicate', selector: sel, id };
+          return { type: "sectionDuplicate", selector: sel, id };
         }
         default:
           return null;

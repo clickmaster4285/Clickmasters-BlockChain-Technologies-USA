@@ -58,12 +58,14 @@ export function Benefits() {
           </div>
           <h2 className="mt-5 text-4xl font-bold tracking-tight text-text-primary md:text-5xl">
             Benefits of Working With a Dedicated{" "}
-            <span className="text-gradient">Blockchain Development Company</span>
+            <span className="text-gradient">
+              Blockchain Development Company
+            </span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-text-secondary md:text-lg">
-            Partnering with a specialized blockchain development company changes what's
-            possible for your project. Here's what clients consistently get from working
-            with Clickmasters:
+            Partnering with a specialized blockchain development company changes
+            what's possible for your project. Here's what clients consistently
+            get from working with Clickmasters:
           </p>
         </div>
 
@@ -71,10 +73,7 @@ export function Benefits() {
           {benefits.map((benefit, index) => {
             const Icon = benefit.icon;
             return (
-              <article
-                key={benefit.title}
-                className="group glow-card"
-              >
+              <article key={benefit.title} className="group glow-card">
                 <div className="relative">
                   <div className="flex items-center justify-between gap-4">
                     <span className="grid h-12 w-12 place-items-center rounded-xl border border-amber-border/40 bg-amber-glow text-amber-base">

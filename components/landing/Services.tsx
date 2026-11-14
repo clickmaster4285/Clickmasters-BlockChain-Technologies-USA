@@ -16,7 +16,10 @@ export function Services() {
   const rest = blockchainServices.slice(2);
 
   return (
-    <section id="services" className="relative overflow-hidden bg-bg-elevated py-24 md:py-32">
+    <section
+      id="services"
+      className="relative overflow-hidden bg-bg-elevated py-24 md:py-32"
+    >
       {/* Background texture */}
       <div className="bg-hex pointer-events-none absolute inset-0 opacity-60" />
       <div className="pointer-events-none absolute -left-40 top-1/3 h-[30rem] w-[30rem] animate-orb rounded-full bg-amber-glow blur-[100px]" />
@@ -37,10 +40,11 @@ export function Services() {
             <span className="text-gradient">Development Services</span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-text-secondary md:text-lg">
-            Clickmasters offers full-spectrum blockchain development services for teams
-            building on-chain products from the ground up, and for organizations adding
-            blockchain technology into systems that already exist. Below is an overview of
-            the core blockchain development solutions we deliver.
+            Clickmasters offers full-spectrum blockchain development services
+            for teams building on-chain products from the ground up, and for
+            organizations adding blockchain technology into systems that already
+            exist. Below is an overview of the core blockchain development
+            solutions we deliver.
           </p>
         </div>
 
@@ -56,21 +60,27 @@ export function Services() {
                 {/* Hover glow */}
                 <div className="relative">
                   <div className="mb-5 flex items-center justify-between gap-4">
-                    <div className={`inline-flex h-14 w-14 items-center justify-center rounded-xl border ${accentMap[s.accent]}`}>
+                    <div
+                      className={`inline-flex h-14 w-14 items-center justify-center rounded-xl border ${accentMap[s.accent]}`}
+                    >
                       <Icon className="h-7 w-7" strokeWidth={1.5} />
                     </div>
                     <span className="font-mono text-xs font-semibold text-text-muted">
-                      0{blockchainServices.findIndex((item) => item.slug === s.slug) + 1}
+                      0
+                      {blockchainServices.findIndex(
+                        (item) => item.slug === s.slug,
+                      ) + 1}
                     </span>
                   </div>
-                  <h2 className="text-xl font-semibold text-text-primary md:text-2xl">{s.title}</h2>
-                  <p className="mt-2 text-sm leading-relaxed text-text-secondary">{s.fullDescription}</p>
+                  <h2 className="text-xl font-semibold text-text-primary md:text-2xl">
+                    {s.title}
+                  </h2>
+                  <p className="mt-2 text-sm leading-relaxed text-text-secondary">
+                    {s.fullDescription}
+                  </p>
                   <div className="mt-5 flex flex-wrap gap-2">
                     {s.benefits.map((t) => (
-                      <span
-                        key={t}
-                        className="tag-chip px-2.5 text-[11px]"
-                      >
+                      <span key={t} className="tag-chip px-2.5 text-[11px]">
                         {t}
                       </span>
                     ))}
@@ -94,27 +104,31 @@ export function Services() {
           {rest.map((s) => {
             const Icon = s.icon;
             return (
-              <article
-                key={s.slug}
-                className="group glow-card"
-              >
+              <article key={s.slug} className="group glow-card">
                 <div className="relative">
                   <div className="mb-4 flex items-center justify-between gap-4">
-                    <div className={`inline-flex h-11 w-11 items-center justify-center rounded-lg border ${accentMap[s.accent]}`}>
+                    <div
+                      className={`inline-flex h-11 w-11 items-center justify-center rounded-lg border ${accentMap[s.accent]}`}
+                    >
                       <Icon className="h-5 w-5" strokeWidth={1.5} />
                     </div>
                     <span className="font-mono text-[11px] font-semibold text-text-muted">
-                      {String(blockchainServices.findIndex((item) => item.slug === s.slug) + 1).padStart(2, "0")}
+                      {String(
+                        blockchainServices.findIndex(
+                          (item) => item.slug === s.slug,
+                        ) + 1,
+                      ).padStart(2, "0")}
                     </span>
                   </div>
-                  <h2 className="text-lg font-semibold text-text-primary">{s.title}</h2>
-                  <p className="mt-2 text-sm leading-relaxed text-text-secondary">{s.fullDescription}</p>
+                  <h2 className="text-lg font-semibold text-text-primary">
+                    {s.title}
+                  </h2>
+                  <p className="mt-2 text-sm leading-relaxed text-text-secondary">
+                    {s.fullDescription}
+                  </p>
                   <div className="mt-4 flex flex-wrap gap-1.5">
                     {s.benefits.slice(0, 3).map((t) => (
-                      <span
-                        key={t}
-                        className="tag-chip"
-                      >
+                      <span key={t} className="tag-chip">
                         {t}
                       </span>
                     ))}

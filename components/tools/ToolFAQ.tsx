@@ -12,7 +12,7 @@ type FAQItem = {
 export default function ToolFAQ({ item }: { item: ToolData }) {
   const faqs: FAQItem[] = item?.faqs || item?.faq || [];
   const [activeIndex, setActiveIndex] = useState<number | null>(
-    faqs.length ? 0 : null
+    faqs.length ? 0 : null,
   );
 
   if (!faqs.length) return null;
@@ -58,9 +58,7 @@ export default function ToolFAQ({ item }: { item: ToolData }) {
             >
               <button
                 type="button"
-                onClick={() =>
-                  setActiveIndex(isOpen ? null : index)
-                }
+                onClick={() => setActiveIndex(isOpen ? null : index)}
                 className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
               >
                 <div className="flex items-center gap-4">
@@ -76,9 +74,7 @@ export default function ToolFAQ({ item }: { item: ToolData }) {
 
                   <h2
                     className={`text-sm font-bold leading-6 sm:text-base ${
-                      isOpen
-                        ? "text-amber-base"
-                        : "text-white"
+                      isOpen ? "text-amber-base" : "text-white"
                     }`}
                   >
                     {faq.question}

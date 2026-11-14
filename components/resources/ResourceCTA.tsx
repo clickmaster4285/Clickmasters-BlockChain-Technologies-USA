@@ -37,9 +37,7 @@ export default function ResourceCTA({
   newsletterEnabled = true,
 }: ResourceCTAProps) {
   const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<
-    "idle" | "success" | "error"
-  >("idle");
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -132,19 +130,14 @@ export default function ResourceCTA({
             </h2>
 
             <p className="mt-3 text-sm font-medium leading-6 text-silver">
-              Receive carefully selected guides, frameworks,
-              and insights without unnecessary noise.
+              Receive carefully selected guides, frameworks, and insights
+              without unnecessary noise.
             </p>
 
             {newsletterEnabled ? (
-              <form
-                onSubmit={handleSubmit}
-                className="mt-6"
-              >
+              <form onSubmit={handleSubmit} className="mt-6">
                 <label className="relative block">
-                  <span className="sr-only">
-                    Email address
-                  </span>
+                  <span className="sr-only">Email address</span>
 
                   <Mail className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-silver" />
 

@@ -27,16 +27,40 @@ import {
   CmsTextSection,
   CmsVideoSection,
 } from "./CmsContentSections";
-import { CmsContactSection, CmsCtaSection, CmsFaqSection, CmsNewsletterSection } from "./CmsActionSections";
-import { button, items, pick, plainButton, safeHref, safeImage } from "./cmsContent";
+import {
+  CmsContactSection,
+  CmsCtaSection,
+  CmsFaqSection,
+  CmsNewsletterSection,
+} from "./CmsActionSections";
+import {
+  button,
+  items,
+  pick,
+  plainButton,
+  safeHref,
+  safeImage,
+} from "./cmsContent";
 
 // The site's own Navbar / Footer render around every created page instead.
 const SITE_CHROME = new Set(["header", "navbar", "footer"]);
-const GRID_TYPES = new Set(["features", "services", "benefits", "process", "cards"]);
+const GRID_TYPES = new Set([
+  "features",
+  "services",
+  "benefits",
+  "process",
+  "cards",
+]);
 
 function formatDate(iso: string) {
   const d = new Date(iso);
-  return Number.isNaN(d.getTime()) ? "" : d.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+  return Number.isNaN(d.getTime())
+    ? ""
+    : d.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      });
 }
 
 function postCards(section: CmsSection, page: CmsPage): CmsPostCard[] {
@@ -60,21 +84,30 @@ function postCards(section: CmsSection, page: CmsPage): CmsPostCard[] {
             image: safeImage(p.image),
             date: formatDate(p.publishedAt),
           }));
-  const limit = typeof c.limit === "number" ? Math.min(Math.max(Math.floor(c.limit), 1), 24) : 3;
+  const limit =
+    typeof c.limit === "number"
+      ? Math.min(Math.max(Math.floor(c.limit), 1), 24)
+      : 3;
   return cards.filter((p) => p.title && p.url).slice(0, limit);
 }
 
-function renderSection(section: CmsSection, page: CmsPage, id: string | undefined): ReactNode {
+function renderSection(
+  section: CmsSection,
+  page: CmsPage,
+  id: string | undefined,
+): ReactNode {
   const { content: c, settings, type } = section;
   const required = settings.required === true;
   const props = { c, settings, id, required };
 
   if (SITE_CHROME.has(type)) return null;
-  if (GRID_TYPES.has(type)) return <CmsFeaturesSection {...props} type={type} />;
+  if (GRID_TYPES.has(type))
+    return <CmsFeaturesSection {...props} type={type} />;
 
   switch (type) {
     case "hero": {
-      const heading = pick(c, "heading", "title") || (required ? page.title : "");
+      const heading =
+        pick(c, "heading", "title") || (required ? page.title : "");
       if (!heading) return null;
       return (
         <CmsHeroSection
@@ -153,7 +186,8 @@ export default function CmsSectionRenderer({ page }: { page: CmsPage }) {
       {page.sections.map((section) => {
         // Anchor id per type ("#features", "#pricing") for the first of each, or settings.anchor.
         const anchor =
-          typeof section.settings.anchor === "string" && /^[a-z][\w-]*$/i.test(section.settings.anchor)
+          typeof section.settings.anchor === "string" &&
+          /^[a-z][\w-]*$/i.test(section.settings.anchor)
             ? section.settings.anchor
             : seen.has(section.type)
               ? undefined

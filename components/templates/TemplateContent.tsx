@@ -10,7 +10,13 @@ import {
 } from "lucide-react";
 
 import TemplatePreview from "./TemplatePreview";
-import type { ContentBlock, ContentListEntry, ContentListObject, TemplateItem, TemplateSection } from "@/lib/content-types";
+import type {
+  ContentBlock,
+  ContentListEntry,
+  ContentListObject,
+  TemplateItem,
+  TemplateSection,
+} from "@/lib/content-types";
 
 export default function TemplateContent({ item }: { item: TemplateItem }) {
   const blocks =

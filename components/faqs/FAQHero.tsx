@@ -1,15 +1,17 @@
 import Link from "next/link";
-import { ArrowDown, BadgeCheck, BookOpenCheck, MessageCircleQuestion } from "lucide-react";
+import {
+  ArrowDown,
+  BadgeCheck,
+  BookOpenCheck,
+  MessageCircleQuestion,
+} from "lucide-react";
 
 interface FAQHeroProps {
   totalQuestions: number;
   pageContext?: string;
 }
 
-export default function FAQHero({
-  totalQuestions,
-  pageContext,
-}: FAQHeroProps) {
+export default function FAQHero({ totalQuestions, pageContext }: FAQHeroProps) {
   return (
     <section
       className="relative overflow-hidden bg-gradient-to-b from-bg-base via-amber-base/5 to-bg-base pb-14 pt-28 sm:pt-32"
@@ -98,13 +100,7 @@ export default function FAQHero({
   );
 }
 
-function HeroStat({
-  label,
-  value,
-}: {
-  label: string;
-  value: string;
-}) {
+function HeroStat({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-xl border border-border-default bg-bg-base p-4">
       <p className="text-2xl font-black tracking-tight text-text-primary">

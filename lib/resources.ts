@@ -12,15 +12,11 @@ function normalizeResourceImage(image?: string) {
 }
 
 export function getAllResources() {
-  return Array.isArray(resources)
-    ? (resources as ResourceSource[])
-    : [];
+  return Array.isArray(resources) ? (resources as ResourceSource[]) : [];
 }
 
 export function getResourceBySlug(slug: string) {
-  return getAllResources().find(
-    (item) => item?.slug === slug
-  );
+  return getAllResources().find((item) => item?.slug === slug);
 }
 
 export function estimateResourceReadTime(item: ResourceItem) {
@@ -41,21 +37,15 @@ export function estimateResourceReadTime(item: ResourceItem) {
             .map((entry: ContentListEntry) =>
               typeof entry === "string"
                 ? entry
-                : [
-                    entry?.title,
-                    entry?.description,
-                    entry?.text,
-                  ]
+                : [entry?.title, entry?.description, entry?.text]
                     .filter(Boolean)
-                    .join(" ")
+                    .join(" "),
             )
             .join(" ");
         }
 
         if (Array.isArray(block?.rows)) {
-          return block.rows
-            .flat()
-            .join(" ");
+          return block.rows.flat().join(" ");
         }
 
         if (block?.code) {
@@ -76,42 +66,27 @@ export function estimateResourceReadTime(item: ResourceItem) {
     .filter(Boolean)
     .join(" ");
 
-  const words = fallbackText
-    .split(/\s+/)
-    .filter(Boolean).length;
+  const words = fallbackText.split(/\s+/).filter(Boolean).length;
 
-  return `${Math.max(
-    2,
-    Math.ceil(words / 220)
-  )} min read`;
+  return `${Math.max(2, Math.ceil(words / 220))} min read`;
 }
 
 export function getResourceCards(
-  sourceResources: ResourceSource[] = getAllResources()
+  sourceResources: ResourceSource[] = getAllResources(),
 ) {
   return sourceResources
-    .filter(
-      (item) =>
-        item &&
-        (item.slug || item.title)
-    )
+    .filter((item) => item && (item.slug || item.title))
     .map((item, index: number) => ({
       id: item?.id || index + 1,
 
       slug:
         item?.slug ||
-        String(
-          item?.title ||
-            `resource-${index + 1}`
-        )
+        String(item?.title || `resource-${index + 1}`)
           .toLowerCase()
           .replace(/[^a-z0-9]+/g, "-")
           .replace(/^-+|-+$/g, ""),
 
-      title:
-        item?.title ||
-        item?.name ||
-        "Blockchain Resource",
+      title: item?.title || item?.name || "Blockchain Resource",
 
       excerpt:
         item?.excerpt ||
@@ -120,65 +95,43 @@ export function getResourceCards(
         "Explore this practical blockchain resource from ClickMasters.",
 
       category:
-        item?.category ||
-        item?.type ||
-        item?.group ||
-        "Blockchain Resource",
+        item?.category || item?.type || item?.group || "Blockchain Resource",
 
-      badge:
-        item?.hero?.badge ||
-        item?.badge ||
-        "RESOURCE",
+      badge: item?.hero?.badge || item?.badge || "RESOURCE",
 
-      image:
-        normalizeResourceImage(item?.image),
+      image: normalizeResourceImage(item?.image),
 
-      author:
-        item?.author ||
-        "ClickMasters Team",
+      author: item?.author || "ClickMasters Team",
 
-      date:
-        item?.date ||
-        item?.published ||
-        "",
+      date: item?.date || item?.published || "",
 
-      readTime:
-        estimateResourceReadTime(item),
+      readTime: estimateResourceReadTime(item),
 
-      featured:
-        Boolean(item?.featured),
+      featured: Boolean(item?.featured),
 
-      popular:
-        Boolean(item?.popular),
+      popular: Boolean(item?.popular),
 
-      format:
-        item?.format ||
-        item?.resourceType ||
-        item?.type ||
-        "Article",
+      format: item?.format || item?.resourceType || item?.type || "Article",
 
-      tags:
-        item?.tags ||
-        item?.credibility ||
-        [],
+      tags: item?.tags || item?.credibility || [],
     }));
 }
 
 export function getResourceCategories(
-  sourceResources: ResourceSource[] = getAllResources()
+  sourceResources: ResourceSource[] = getAllResources(),
 ) {
   return Array.from(
     new Set(
       getResourceCards(sourceResources)
         .map((item) => item.category)
-        .filter(Boolean)
-    )
+        .filter(Boolean),
+    ),
   ).sort();
 }
 
 export function getFeaturedResources(
   sourceResourcesOrLimit: ResourceSource[] | number = getAllResources(),
-  maybeLimit = 3
+  maybeLimit = 3,
 ) {
   const sourceResources = Array.isArray(sourceResourcesOrLimit)
     ? sourceResourcesOrLimit
@@ -190,104 +143,66 @@ export function getFeaturedResources(
 
   const cards = getResourceCards(sourceResources);
 
-  const featured = cards.filter(
-    (item) => item.featured
-  );
+  const featured = cards.filter((item) => item.featured);
 
   const remaining = cards.filter(
-    (item) =>
-      !featured.some(
-        (featuredItem) =>
-          featuredItem.slug === item.slug
-      )
+    (item) => !featured.some((featuredItem) => featuredItem.slug === item.slug),
   );
 
-  return [...featured, ...remaining].slice(
-    0,
-    limit
-  );
+  return [...featured, ...remaining].slice(0, limit);
 }
 
 export function getPopularResources(limit = 6) {
   const cards = getResourceCards();
 
-  const popular = cards.filter(
-    (item) => item.popular
-  );
+  const popular = cards.filter((item) => item.popular);
 
   const remaining = cards.filter(
-    (item) =>
-      !popular.some(
-        (popularItem) =>
-          popularItem.slug === item.slug
-      )
+    (item) => !popular.some((popularItem) => popularItem.slug === item.slug),
   );
 
-  return [...popular, ...remaining].slice(
-    0,
-    limit
-  );
+  return [...popular, ...remaining].slice(0, limit);
 }
 
 export function getLatestResources(limit = 6) {
   return [...getResourceCards()]
     .sort((a, b) => {
-      const dateA = a.date
-        ? new Date(a.date).getTime()
-        : 0;
+      const dateA = a.date ? new Date(a.date).getTime() : 0;
 
-      const dateB = b.date
-        ? new Date(b.date).getTime()
-        : 0;
+      const dateB = b.date ? new Date(b.date).getTime() : 0;
 
       return dateB - dateA;
     })
     .slice(0, limit);
 }
 
-export function getRelatedResources(
-  slug: string,
-  limit = 4
-) {
+export function getRelatedResources(slug: string, limit = 4) {
   const current = getResourceBySlug(slug);
 
   if (!current) return [];
 
-  const currentCategory =
-    current?.category ||
-    current?.type ||
-    current?.group;
+  const currentCategory = current?.category || current?.type || current?.group;
 
   const sameCategory = getAllResources().filter(
     (item) =>
       item?.slug !== slug &&
       currentCategory &&
-      (
-        item?.category === currentCategory ||
+      (item?.category === currentCategory ||
         item?.type === currentCategory ||
-        item?.group === currentCategory
-      )
+        item?.group === currentCategory),
   );
 
   const remaining = getAllResources().filter(
     (item) =>
       item?.slug !== slug &&
-      !sameCategory.some(
-        (related) =>
-          related?.slug === item?.slug
-      )
+      !sameCategory.some((related) => related?.slug === item?.slug),
   );
 
-  return [...sameCategory, ...remaining].slice(
-    0,
-    limit
-  );
+  return [...sameCategory, ...remaining].slice(0, limit);
 }
 
 export function searchResources(query: string) {
-  const normalized = query
-    .trim()
-    .toLowerCase();
+  const normalized = query.trim().toLowerCase();
 
   if (!normalized) {
     return getResourceCards();
@@ -295,51 +210,28 @@ export function searchResources(query: string) {
 
   return getResourceCards().filter(
     (item) =>
-      item?.title
-        ?.toLowerCase()
-        .includes(normalized) ||
-      item?.excerpt
-        ?.toLowerCase()
-        .includes(normalized) ||
-      item?.category
-        ?.toLowerCase()
-        .includes(normalized) ||
-      item?.format
-        ?.toLowerCase()
-        .includes(normalized) ||
-      item?.tags?.some((tag) =>
-        String(tag)
-          .toLowerCase()
-          .includes(normalized)
-      )
+      item?.title?.toLowerCase().includes(normalized) ||
+      item?.excerpt?.toLowerCase().includes(normalized) ||
+      item?.category?.toLowerCase().includes(normalized) ||
+      item?.format?.toLowerCase().includes(normalized) ||
+      item?.tags?.some((tag) => String(tag).toLowerCase().includes(normalized)),
   );
 }
 
 export function getResourceCTA(item: ResourceItem) {
   return {
-    title:
-      item?.cta?.title ||
-      "Need expert help applying this resource?",
+    title: item?.cta?.title || "Need expert help applying this resource?",
 
     description:
       item?.cta?.description ||
       "Talk with ClickMasters and turn this guidance into a practical blockchain strategy, architecture, or implementation plan.",
 
-    primaryText:
-      item?.cta?.primaryText ||
-      "Book a Free Strategy Call",
+    primaryText: item?.cta?.primaryText || "Book a Free Strategy Call",
 
-    secondaryText:
-      item?.cta?.secondaryText ||
-      "Explore More Resources",
+    secondaryText: item?.cta?.secondaryText || "Explore More Resources",
 
-    href:
-      item?.cta?.primaryHref ||
-      item?.cta?.href ||
-      "/contact",
+    href: item?.cta?.primaryHref || item?.cta?.href || "/contact",
 
-    secondaryHref:
-      item?.cta?.secondaryHref ||
-      "/resources",
+    secondaryHref: item?.cta?.secondaryHref || "/resources",
   };
 }

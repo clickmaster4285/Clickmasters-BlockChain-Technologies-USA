@@ -97,10 +97,7 @@ export default function CaseStudyResults({
             </div>
 
             <h2 className="mt-6 max-w-4xl text-4xl font-black leading-[1.04] tracking-[-0.045em] text-white sm:text-5xl lg:text-6xl">
-              {title}{" "}
-              <span className="text-amber-400">
-                {highlightedText}
-              </span>
+              {title} <span className="text-amber-400">{highlightedText}</span>
             </h2>
           </div>
 
@@ -121,9 +118,7 @@ export default function CaseStudyResults({
           {results.map((result, index) => {
             const Icon = result.icon;
             const TrendIcon =
-              result.trend === "down"
-                ? TrendingDown
-                : TrendingUp;
+              result.trend === "down" ? TrendingDown : TrendingUp;
 
             return (
               <article

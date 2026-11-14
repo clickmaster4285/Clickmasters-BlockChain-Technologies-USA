@@ -110,7 +110,11 @@ export function normalizeCmsSlug(input: string): string {
   } catch {
     // keep raw
   }
-  path = path.trim().toLowerCase().replace(/\/{2,}/g, "/").replace(/^\/+|\/+$/g, "");
+  path = path
+    .trim()
+    .toLowerCase()
+    .replace(/\/{2,}/g, "/")
+    .replace(/^\/+|\/+$/g, "");
   return `/${path}`;
 }
 
@@ -151,24 +155,45 @@ async function fetchCmsPageList(): Promise<CmsPageListItem[]> {
 
 // unstable_cache (not fetch's cache) so 404s are cached too; thrown errors
 // (outages) are never cached. Bypassed in development.
-const opts = (tag: string) => ({ revalidate: CMS_REVALIDATE_SECONDS, tags: [tag] });
+const opts = (tag: string) => ({
+  revalidate: CMS_REVALIDATE_SECONDS,
+  tags: [tag],
+});
 const fetchCmsPageCached = isDev
   ? fetchCmsPage
-  : unstable_cache(fetchCmsPage, ["cms-page", CMS_SITE_DOMAIN], opts(CMS_PAGE_TAG));
+  : unstable_cache(
+      fetchCmsPage,
+      ["cms-page", CMS_SITE_DOMAIN],
+      opts(CMS_PAGE_TAG),
+    );
 const fetchCmsSiteCached = isDev
   ? fetchCmsSite
-  : unstable_cache(fetchCmsSite, ["cms-site", CMS_SITE_DOMAIN], opts(CMS_SITE_TAG));
+  : unstable_cache(
+      fetchCmsSite,
+      ["cms-site", CMS_SITE_DOMAIN],
+      opts(CMS_SITE_TAG),
+    );
 const fetchCmsPageListCached = isDev
   ? fetchCmsPageList
-  : unstable_cache(fetchCmsPageList, ["cms-page-list", CMS_SITE_DOMAIN], opts(CMS_PAGE_TAG));
+  : unstable_cache(
+      fetchCmsPageList,
+      ["cms-page-list", CMS_SITE_DOMAIN],
+      opts(CMS_PAGE_TAG),
+    );
 
 // After a failure, skip the ERP for a while so builds and renders stay fast.
 const FAILURE_BACKOFF_MS = 30_000;
 let lastFailureAt = 0;
 
-async function guarded<T>(label: string, fallback: T, run: () => Promise<T>, fresh = false): Promise<T> {
+async function guarded<T>(
+  label: string,
+  fallback: T,
+  run: () => Promise<T>,
+  fresh = false,
+): Promise<T> {
   if (!CMS_ENABLED) return fallback;
-  if (!fresh && Date.now() - lastFailureAt < FAILURE_BACKOFF_MS) return fallback;
+  if (!fresh && Date.now() - lastFailureAt < FAILURE_BACKOFF_MS)
+    return fallback;
   try {
     return await run();
   } catch (error) {
@@ -179,10 +204,18 @@ async function guarded<T>(label: string, fallback: T, run: () => Promise<T>, fre
 }
 
 /** One published page, or null (not found / not published / ERP down). */
-export function getCmsPage(path: string, { fresh = false } = {}): Promise<CmsPage | null> {
+export function getCmsPage(
+  path: string,
+  { fresh = false } = {},
+): Promise<CmsPage | null> {
   const slug = normalizeCmsSlug(path);
   if (slug !== "/" && !SLUG_REGEX.test(slug)) return Promise.resolve(null);
-  return guarded(`page ${slug}`, null, () => (fresh ? fetchCmsPage(slug) : fetchCmsPageCached(slug)), fresh);
+  return guarded(
+    `page ${slug}`,
+    null,
+    () => (fresh ? fetchCmsPage(slug) : fetchCmsPageCached(slug)),
+    fresh,
+  );
 }
 
 /** Site info + navigation, or null. */
@@ -201,11 +234,16 @@ const HANDLE = /^@?[A-Za-z0-9_]{1,15}$/;
 
 /** Server-rendered SEO for a created page (A7). ERP values win; site defaults fill gaps. */
 export function buildCmsMetadata(page: CmsPage | null): Metadata {
-  if (!page) return { title: "Page Not Found", robots: { index: false, follow: false } };
+  if (!page)
+    return { title: "Page Not Found", robots: { index: false, follow: false } };
   const { seo } = page;
   const noindex = page.noindex || /noindex/i.test(seo.robots);
   const image = seo.ogImage || page.featuredImage;
-  const safeImage = /^https?:\/\//i.test(image) || (image.startsWith("/") && !image.startsWith("//")) ? image : "";
+  const safeImage =
+    /^https?:\/\//i.test(image) ||
+    (image.startsWith("/") && !image.startsWith("//"))
+      ? image
+      : "";
 
   const base = createMetadata({
     title: page.title || seo.title || siteConfig.name,
@@ -219,16 +257,27 @@ export function buildCmsMetadata(page: CmsPage | null): Metadata {
 
   const title = seo.title || (base.title as string);
   const description = seo.metaDescription || (base.description as string);
-  const canonical = absoluteSiteUrl(seo.canonicalUrl || page.slug, siteConfig.url);
-  const ogImage = safeImage ? absoluteSiteUrl(safeImage, siteConfig.url) : undefined;
-  const handle = HANDLE.test(seo.twitterHandle) ? `@${seo.twitterHandle.replace(/^@/, "")}` : undefined;
+  const canonical = absoluteSiteUrl(
+    seo.canonicalUrl || page.slug,
+    siteConfig.url,
+  );
+  const ogImage = safeImage
+    ? absoluteSiteUrl(safeImage, siteConfig.url)
+    : undefined;
+  const handle = HANDLE.test(seo.twitterHandle)
+    ? `@${seo.twitterHandle.replace(/^@/, "")}`
+    : undefined;
 
   return {
     ...base,
     title,
     description,
     alternates: { canonical },
-    robots: noindex ? (/noindex/i.test(seo.robots) ? seo.robots : "noindex, follow") : seo.robots || base.robots,
+    robots: noindex
+      ? /noindex/i.test(seo.robots)
+        ? seo.robots
+        : "noindex, follow"
+      : seo.robots || base.robots,
     openGraph: {
       ...base.openGraph,
       url: canonical,
@@ -249,7 +298,10 @@ export function buildCmsMetadata(page: CmsPage | null): Metadata {
 /* ------------------------- defensive parsing ------------------------- */
 // ERP content is untrusted data: only copy known fields of the right type.
 
-function parseColors(raw: unknown, fallback: Record<string, unknown> = {}): CmsColors {
+function parseColors(
+  raw: unknown,
+  fallback: Record<string, unknown> = {},
+): CmsColors {
   const c = obj(raw);
   const pick = (v: unknown) => (HEX_COLOR.test(str(v)) ? str(v) : "");
   return {

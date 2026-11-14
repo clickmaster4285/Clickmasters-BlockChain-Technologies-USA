@@ -1,15 +1,8 @@
 // components/process/ProcessArticleContent.tsx
 
-import {
-  CheckCircle2,
-  Copy,
-  Lightbulb,
-} from "lucide-react";
+import { CheckCircle2, Copy, Lightbulb } from "lucide-react";
 
-import type {
-  ProcessContentBlock,
-  ProcessHeadingBlock,
-} from "@/lib/process";
+import type { ProcessContentBlock, ProcessHeadingBlock } from "@/lib/process";
 
 /* =========================================================
    Types
@@ -24,9 +17,7 @@ type ProcessArticleContentProps = {
    Helpers
 ========================================================= */
 
-function createHeadingId(
-  text: string,
-): string {
+function createHeadingId(text: string): string {
   return text
     .trim()
     .toLowerCase()
@@ -35,9 +26,7 @@ function createHeadingId(
     .replace(/^-+|-+$/g, "");
 }
 
-function getHeadingClasses(
-  level: ProcessHeadingBlock["level"],
-): string {
+function getHeadingClasses(level: ProcessHeadingBlock["level"]): string {
   switch (level) {
     case 3:
       return [
@@ -85,11 +74,7 @@ function getHeadingClasses(
    Featured Answer
 ========================================================= */
 
-function FeaturedAnswer({
-  text,
-}: {
-  text: string;
-}) {
+function FeaturedAnswer({ text }: { text: string }) {
   return (
     <aside className="relative my-8 overflow-hidden rounded-[1.75rem] border border-amber-base/25 bg-amber-base/[0.055] p-6 sm:p-8">
       <div className="pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-amber-base/[0.12] blur-3xl" />
@@ -117,25 +102,15 @@ function FeaturedAnswer({
    Heading
 ========================================================= */
 
-function ArticleHeading({
-  block,
-}: {
-  block: ProcessHeadingBlock;
-}) {
+function ArticleHeading({ block }: { block: ProcessHeadingBlock }) {
   const level = block.level ?? 2;
-  const headingId = createHeadingId(
-    block.text,
-  );
+  const headingId = createHeadingId(block.text);
 
-  const classes =
-    getHeadingClasses(level);
+  const classes = getHeadingClasses(level);
 
   if (level === 4) {
     return (
-      <h2
-        id={headingId}
-        className={classes}
-      >
+      <h2 id={headingId} className={classes}>
         {block.text}
       </h2>
     );
@@ -143,20 +118,14 @@ function ArticleHeading({
 
   if (level === 3) {
     return (
-      <h2
-        id={headingId}
-        className={classes}
-      >
+      <h2 id={headingId} className={classes}>
         {block.text}
       </h2>
     );
   }
 
   return (
-    <h2
-      id={headingId}
-      className={classes}
-    >
+    <h2 id={headingId} className={classes}>
       {block.text}
     </h2>
   );
@@ -166,11 +135,7 @@ function ArticleHeading({
    Paragraph
 ========================================================= */
 
-function ArticleParagraph({
-  text,
-}: {
-  text: string;
-}) {
+function ArticleParagraph({ text }: { text: string }) {
   return (
     <p className="mt-5 text-[15px] leading-8 text-silver sm:text-base sm:leading-8">
       {text}
@@ -182,11 +147,7 @@ function ArticleParagraph({
    List
 ========================================================= */
 
-function ArticleList({
-  items,
-}: {
-  items: string[];
-}) {
+function ArticleList({ items }: { items: string[] }) {
   return (
     <ul className="mt-5 space-y-3">
       {items.map((item, index) => (
@@ -225,49 +186,42 @@ function ArticleTable({
     <div className="my-7 overflow-hidden rounded-[1.5rem] border border-white/[0.09] bg-surface">
       <div className="overflow-x-auto">
         <table className="min-w-full border-collapse text-left">
-          {headers &&
-            headers.length > 0 && (
-              <thead>
-                <tr className="border-b border-white/[0.09] bg-amber-base/[0.07]">
-                  {Array.from({
-                    length: columnCount,
-                  }).map((_, index) => (
-                    <th
-                      key={`header-${index}`}
-                      scope="col"
-                      className="min-w-[180px] px-5 py-4 text-[11px] font-black uppercase tracking-[0.14em] text-amber-base"
-                    >
-                      {headers[index] ??
-                        ""}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-            )}
+          {headers && headers.length > 0 && (
+            <thead>
+              <tr className="border-b border-white/[0.09] bg-amber-base/[0.07]">
+                {Array.from({
+                  length: columnCount,
+                }).map((_, index) => (
+                  <th
+                    key={`header-${index}`}
+                    scope="col"
+                    className="min-w-[180px] px-5 py-4 text-[11px] font-black uppercase tracking-[0.14em] text-amber-base"
+                  >
+                    {headers[index] ?? ""}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+          )}
 
           <tbody>
-            {rows.map(
-              (row, rowIndex) => (
-                <tr
-                  key={`row-${rowIndex}`}
-                  className="border-b border-white/[0.07] last:border-b-0"
-                >
-                  {Array.from({
-                    length: columnCount,
-                  }).map(
-                    (_, columnIndex) => (
-                      <td
-                        key={`cell-${rowIndex}-${columnIndex}`}
-                        className="min-w-[180px] px-5 py-4 align-top text-sm leading-7 text-silver"
-                      >
-                        {row[columnIndex] ??
-                          ""}
-                      </td>
-                    ),
-                  )}
-                </tr>
-              ),
-            )}
+            {rows.map((row, rowIndex) => (
+              <tr
+                key={`row-${rowIndex}`}
+                className="border-b border-white/[0.07] last:border-b-0"
+              >
+                {Array.from({
+                  length: columnCount,
+                }).map((_, columnIndex) => (
+                  <td
+                    key={`cell-${rowIndex}-${columnIndex}`}
+                    className="min-w-[180px] px-5 py-4 align-top text-sm leading-7 text-silver"
+                  >
+                    {row[columnIndex] ?? ""}
+                  </td>
+                ))}
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
@@ -279,13 +233,7 @@ function ArticleTable({
    Code
 ========================================================= */
 
-function ArticleCode({
-  text,
-  language,
-}: {
-  text: string;
-  language?: string;
-}) {
+function ArticleCode({ text, language }: { text: string; language?: string }) {
   return (
     <div className="my-9 overflow-hidden rounded-[1.5rem] border border-white/[0.1] bg-[#090b0f]">
       <div className="flex items-center justify-between gap-4 border-b border-white/[0.08] bg-white/[0.025] px-5 py-3">
@@ -299,10 +247,7 @@ function ArticleCode({
           {language || "Code"}
         </span>
 
-        <span
-          aria-hidden="true"
-          className="text-silver/50"
-        >
+        <span aria-hidden="true" className="text-silver/50">
           <Copy className="h-4 w-4" />
         </span>
       </div>
@@ -320,42 +265,23 @@ function ArticleCode({
    Block Renderer
 ========================================================= */
 
-function renderContentBlock(
-  block: ProcessContentBlock,
-  index: number,
-) {
+function renderContentBlock(block: ProcessContentBlock, index: number) {
   switch (block.type) {
     case "featuredAnswer":
       return (
-        <FeaturedAnswer
-          key={`featured-answer-${index}`}
-          text={block.text}
-        />
+        <FeaturedAnswer key={`featured-answer-${index}`} text={block.text} />
       );
 
     case "heading":
       return (
-        <ArticleHeading
-          key={`heading-${block.text}-${index}`}
-          block={block}
-        />
+        <ArticleHeading key={`heading-${block.text}-${index}`} block={block} />
       );
 
     case "paragraph":
-      return (
-        <ArticleParagraph
-          key={`paragraph-${index}`}
-          text={block.text}
-        />
-      );
+      return <ArticleParagraph key={`paragraph-${index}`} text={block.text} />;
 
     case "list":
-      return (
-        <ArticleList
-          key={`list-${index}`}
-          items={block.items}
-        />
-      );
+      return <ArticleList key={`list-${index}`} items={block.items} />;
 
     case "table":
       return (
@@ -401,20 +327,14 @@ export default function ProcessArticleContent({
         </h2>
 
         <p className="mt-3 text-sm leading-7 text-silver">
-          Detailed information for this
-          process guide will be added soon.
+          Detailed information for this process guide will be added soon.
         </p>
       </div>
     );
   }
 
   return (
-    <article
-      className={[
-        "min-w-0",
-        className,
-      ].join(" ")}
-    >
+    <article className={["min-w-0", className].join(" ")}>
       {content.map(renderContentBlock)}
     </article>
   );

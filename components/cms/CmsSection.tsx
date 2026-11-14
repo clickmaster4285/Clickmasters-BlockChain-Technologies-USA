@@ -27,13 +27,19 @@ const BACKGROUNDS: Record<string, string> = {
   light: "cms-surface-light",
 };
 
-export const settingStr = (s: Settings, key: string) => (typeof s[key] === "string" ? (s[key] as string) : "");
+export const settingStr = (s: Settings, key: string) =>
+  typeof s[key] === "string" ? (s[key] as string) : "";
 
 function padding(s: Settings, fallback: [number, number]): [number, number] {
   const p = s.paddingY;
-  const clamp = (n: unknown, d: number) => (typeof n === "number" && Number.isFinite(n) ? Math.min(Math.max(n, 0), 320) : d);
-  if (Array.isArray(p)) return [clamp(p[0], fallback[0]), clamp(p[1] ?? p[0], fallback[1])];
-  if (typeof p === "number") return [clamp(p, fallback[0]), clamp(p, fallback[1])];
+  const clamp = (n: unknown, d: number) =>
+    typeof n === "number" && Number.isFinite(n)
+      ? Math.min(Math.max(n, 0), 320)
+      : d;
+  if (Array.isArray(p))
+    return [clamp(p[0], fallback[0]), clamp(p[1] ?? p[0], fallback[1])];
+  if (typeof p === "number")
+    return [clamp(p, fallback[0]), clamp(p, fallback[1])];
   return fallback;
 }
 
@@ -65,11 +71,24 @@ export function CmsSection({
   const [pt, pb] = padding(settings, defaultPadding);
   const width = WIDTHS[settingStr(settings, "width")] ?? WIDTHS[defaultWidth];
   const bg = background ?? sectionBackground(settings);
-  const style = { "--cms-pt": `${pt}px`, "--cms-pb": `${pb}px` } as React.CSSProperties;
-  const body = contained ? <div className={`relative ${width}`}>{children}</div> : children;
+  const style = {
+    "--cms-pt": `${pt}px`,
+    "--cms-pb": `${pb}px`,
+  } as React.CSSProperties;
+  const body = contained ? (
+    <div className={`relative ${width}`}>{children}</div>
+  ) : (
+    children
+  );
   return (
-    <section id={id} className={`cms-pad relative overflow-hidden ${bg} ${className}`} style={style}>
-      <CmsMotion motion={settingStr(settings, "motion") || "none"}>{body}</CmsMotion>
+    <section
+      id={id}
+      className={`cms-pad relative overflow-hidden ${bg} ${className}`}
+      style={style}
+    >
+      <CmsMotion motion={settingStr(settings, "motion") || "none"}>
+        {body}
+      </CmsMotion>
     </section>
   );
 }
@@ -124,7 +143,9 @@ export function SectionHeader({
   if (!eyebrow && !heading && !description) return null;
   const center = align === "center";
   return (
-    <div className={`${center ? "mx-auto max-w-3xl text-center" : "max-w-3xl"} ${className}`}>
+    <div
+      className={`${center ? "mx-auto max-w-3xl text-center" : "max-w-3xl"} ${className}`}
+    >
       {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
       {heading && (
         <div className={eyebrow ? "mt-5" : ""}>
@@ -132,7 +153,9 @@ export function SectionHeader({
         </div>
       )}
       {description && (
-        <p className={`mt-4 text-base leading-relaxed text-text-secondary md:text-lg ${center ? "mx-auto max-w-2xl" : ""}`}>
+        <p
+          className={`mt-4 text-base leading-relaxed text-text-secondary md:text-lg ${center ? "mx-auto max-w-2xl" : ""}`}
+        >
           {description}
         </p>
       )}
@@ -149,7 +172,11 @@ export function CmsButton({
   variant?: "primary" | "secondary";
   shape?: string;
 }) {
-  const radius = /square|sharp/i.test(shape) ? "rounded-md" : /rounded/i.test(shape) ? "rounded-xl" : "rounded-full";
+  const radius = /square|sharp/i.test(shape)
+    ? "rounded-md"
+    : /rounded/i.test(shape)
+      ? "rounded-xl"
+      : "rounded-full";
   const cls =
     variant === "primary"
       ? `cms-btn-primary group inline-flex items-center gap-2 ${radius} bg-amber-base px-6 py-3 text-sm font-semibold text-white shadow-glow transition-all hover:-translate-y-0.5 hover:shadow-lg active:scale-[0.98]`
@@ -157,12 +184,19 @@ export function CmsButton({
   const inner = (
     <>
       {link.text}
-      {variant === "primary" && <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />}
+      {variant === "primary" && (
+        <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+      )}
     </>
   );
   if (isExternal(link.link)) {
     return (
-      <a href={link.link} className={cls} target="_blank" rel="noopener noreferrer">
+      <a
+        href={link.link}
+        className={cls}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         {inner}
       </a>
     );
@@ -194,18 +228,35 @@ export function ButtonRow({
 }) {
   if (!primary && !secondary) return null;
   return (
-    <div className={`mt-8 flex flex-wrap items-center gap-3 ${center ? "justify-center" : ""}`}>
+    <div
+      className={`mt-8 flex flex-wrap items-center gap-3 ${center ? "justify-center" : ""}`}
+    >
       {primary && <CmsButton link={primary} shape={shape} />}
-      {secondary && <CmsButton link={secondary} variant="secondary" shape={shape} />}
+      {secondary && (
+        <CmsButton link={secondary} variant="secondary" shape={shape} />
+      )}
     </div>
   );
 }
 
 /** Link that picks next/link for site paths and a new tab for external URLs. */
-export function SmartLink({ href, className, children }: { href: string; className?: string; children: ReactNode }) {
+export function SmartLink({
+  href,
+  className,
+  children,
+}: {
+  href: string;
+  className?: string;
+  children: ReactNode;
+}) {
   if (isExternal(href)) {
     return (
-      <a href={href} className={className} target="_blank" rel="noopener noreferrer">
+      <a
+        href={href}
+        className={className}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         {children}
       </a>
     );
@@ -235,11 +286,30 @@ const GRID_COLS: Record<number, string> = {
 
 /** settings.columns → responsive grid classes. */
 export function gridCols(settings: Settings, fallback: number) {
-  const n = typeof settings.columns === "number" ? Math.round(settings.columns) : Number(settings.columns);
+  const n =
+    typeof settings.columns === "number"
+      ? Math.round(settings.columns)
+      : Number(settings.columns);
   return GRID_COLS[Number.isFinite(n) && n >= 1 && n <= 6 ? n : fallback];
 }
 
 /** Plain <img> (CMS images come from arbitrary hosts, so next/image isn't used). */
-export function CmsImg({ src, alt, className }: { src: string; alt?: string; className?: string }) {
-  return <img src={src} alt={alt ?? ""} loading="lazy" decoding="async" className={className} />;
+export function CmsImg({
+  src,
+  alt,
+  className,
+}: {
+  src: string;
+  alt?: string;
+  className?: string;
+}) {
+  return (
+    <img
+      src={src}
+      alt={alt ?? ""}
+      loading="lazy"
+      decoding="async"
+      className={className}
+    />
+  );
 }

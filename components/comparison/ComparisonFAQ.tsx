@@ -1,7 +1,11 @@
 import { HelpCircle, MessageCircleQuestion, Plus } from "lucide-react";
 import type { ComparisonItem, FAQItem } from "@/lib/content-types";
 
-export default function ComparisonFAQ({ article }: { article: ComparisonItem }) {
+export default function ComparisonFAQ({
+  article,
+}: {
+  article: ComparisonItem;
+}) {
   if (!article.faqs?.length) return null;
 
   return (

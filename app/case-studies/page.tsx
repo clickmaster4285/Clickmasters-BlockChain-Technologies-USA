@@ -35,14 +35,14 @@ function getCurrentPage(page?: string | string[]) {
   return Number.isFinite(parsedPage) && parsedPage > 0 ? parsedPage : 1;
 }
 
-export async function generateMetadata({
-  searchParams,
-}: CaseStudiesPageProps) {
+export async function generateMetadata({ searchParams }: CaseStudiesPageProps) {
   const resolvedSearchParams = await searchParams;
   const featuredCaseStudy =
     caseStudies.find((caseStudy) => caseStudy.featured) ?? caseStudies[0];
   const remainingCaseStudies = featuredCaseStudy
-    ? caseStudies.filter((caseStudy) => caseStudy.slug !== featuredCaseStudy.slug)
+    ? caseStudies.filter(
+        (caseStudy) => caseStudy.slug !== featuredCaseStudy.slug,
+      )
     : caseStudies;
   const totalPages = Math.max(
     1,
@@ -75,24 +75,26 @@ export default async function CaseStudiesPage({
     caseStudies.find((caseStudy) => caseStudy.featured) ?? caseStudies[0];
 
   const remainingCaseStudies = featuredCaseStudy
-    ? caseStudies.filter((caseStudy) => caseStudy.slug !== featuredCaseStudy.slug)
+    ? caseStudies.filter(
+        (caseStudy) => caseStudy.slug !== featuredCaseStudy.slug,
+      )
     : caseStudies;
 
   const totalPages = Math.max(
     1,
-    Math.ceil(remainingCaseStudies.length / cardsPerPage)
+    Math.ceil(remainingCaseStudies.length / cardsPerPage),
   );
   const currentPage = Math.min(requestedPage, totalPages);
   const firstCardIndex = (currentPage - 1) * cardsPerPage;
   const paginatedCaseStudies = remainingCaseStudies.slice(
     firstCardIndex,
-    firstCardIndex + cardsPerPage
+    firstCardIndex + cardsPerPage,
   );
   const pageNumbers = Array.from(
     {
       length: totalPages,
     },
-    (_, index) => index + 1
+    (_, index) => index + 1,
   );
 
   const stats = [
@@ -293,7 +295,8 @@ export default async function CaseStudiesPage({
               </div>
 
               <p className="max-w-xl text-sm leading-7 text-text-secondary sm:text-base">
-                Each project includes the challenge, architecture, timeline, and measurable outcomes.
+                Each project includes the challenge, architecture, timeline, and
+                measurable outcomes.
               </p>
             </div>
 
@@ -371,7 +374,7 @@ export default async function CaseStudiesPage({
                   Showing {firstCardIndex + 1}-
                   {Math.min(
                     firstCardIndex + cardsPerPage,
-                    remainingCaseStudies.length
+                    remainingCaseStudies.length,
                   )}{" "}
                   of {remainingCaseStudies.length} case studies
                 </p>
@@ -380,7 +383,7 @@ export default async function CaseStudiesPage({
                   <Link
                     href={getPageHref(
                       "/case-studies",
-                      Math.max(1, currentPage - 1)
+                      Math.max(1, currentPage - 1),
                     )}
                     aria-disabled={currentPage === 1}
                     className={`inline-flex min-h-10 items-center justify-center gap-2 rounded-full border px-4 py-2 text-sm font-black transition-all ${
@@ -415,7 +418,7 @@ export default async function CaseStudiesPage({
                   <Link
                     href={getPageHref(
                       "/case-studies",
-                      Math.min(totalPages, currentPage + 1)
+                      Math.min(totalPages, currentPage + 1),
                     )}
                     aria-disabled={currentPage === totalPages}
                     className={`inline-flex min-h-10 items-center justify-center gap-2 rounded-full border px-4 py-2 text-sm font-black transition-all ${
@@ -445,7 +448,8 @@ export default async function CaseStudiesPage({
                 </h2>
 
                 <p className="mt-4 max-w-2xl text-base leading-8 text-text-secondary">
-                  Tell us what you want to build and we will help scope the architecture, roadmap, compliance needs, and launch plan.
+                  Tell us what you want to build and we will help scope the
+                  architecture, roadmap, compliance needs, and launch plan.
                 </p>
               </div>
 

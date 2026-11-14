@@ -6,12 +6,13 @@ import { getCostCards } from "@/data/costs";
 import CostCard from "@/components/cost/CostCard";
 import RevealOnScroll from "@/components/cost/RevealOnScroll";
 
-export const generateMetadata = () => createPageMetadata({
-  title: "Blockchain Development Cost Guides | Clickmasters",
-  description:
-    "Real 2025 pricing for smart contracts, DeFi, NFTs, crypto exchanges, wallets, tokenization, and enterprise blockchain projects — broken down by scope, phase, and audit cost.",
-  path: "/cost",
-});
+export const generateMetadata = () =>
+  createPageMetadata({
+    title: "Blockchain Development Cost Guides | Clickmasters",
+    description:
+      "Real 2025 pricing for smart contracts, DeFi, NFTs, crypto exchanges, wallets, tokenization, and enterprise blockchain projects — broken down by scope, phase, and audit cost.",
+    path: "/cost",
+  });
 
 export default function CostIndexPage() {
   const cards = getCostCards();
@@ -39,9 +40,10 @@ export default function CostIndexPage() {
               </RevealOnScroll>
               <RevealOnScroll effect="slide-left" delay={140}>
                 <p className="mt-5 text-pretty text-base leading-relaxed text-text-secondary md:text-lg">
-                  Explore indicative ranges for smart contracts, DeFi, NFTs, exchanges, wallets,
-                  tokenization, and more. Pick a category below for a breakdown of the factors
-                  that affect project scope and cost.
+                  Explore indicative ranges for smart contracts, DeFi, NFTs,
+                  exchanges, wallets, tokenization, and more. Pick a category
+                  below for a breakdown of the factors that affect project scope
+                  and cost.
                 </p>
               </RevealOnScroll>
             </div>

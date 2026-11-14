@@ -23,18 +23,11 @@ export default function ToolSidebar({
   readTime: string;
 }) {
   const category =
-    item?.category ||
-    item?.type ||
-    item?.group ||
-    "Blockchain Tool";
+    item?.category || item?.type || item?.group || "Blockchain Tool";
 
   const faqs = item?.faqs || item?.faq || [];
 
-  const tags =
-    item?.tags ||
-    item?.credibility ||
-    item?.keywords ||
-    [];
+  const tags = item?.tags || item?.credibility || item?.keywords || [];
 
   return (
     <aside className="space-y-6">
@@ -94,9 +87,7 @@ export default function ToolSidebar({
                 Read time
               </span>
 
-              <strong className="text-right text-amber-base">
-                {readTime}
-              </strong>
+              <strong className="text-right text-amber-base">{readTime}</strong>
             </div>
 
             <div className="flex items-center justify-between gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-4">
@@ -127,9 +118,7 @@ export default function ToolSidebar({
                 FAQ
               </span>
 
-              <strong className="text-amber-base">
-                {faqs.length}
-              </strong>
+              <strong className="text-amber-base">{faqs.length}</strong>
             </div>
 
             <div className="flex items-center justify-between gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-4">
@@ -158,9 +147,7 @@ export default function ToolSidebar({
                 const text =
                   typeof tag === "string"
                     ? tag
-                    : tag?.title ||
-                      tag?.label ||
-                      tag?.text;
+                    : tag?.title || tag?.label || tag?.text;
 
                 if (!text) return null;
 

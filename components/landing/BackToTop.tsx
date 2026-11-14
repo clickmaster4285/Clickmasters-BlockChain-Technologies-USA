@@ -16,8 +16,13 @@ export function BackToTop() {
   }, []);
 
   const scrollToTop = () => {
-    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    window.scrollTo({ top: 0, behavior: prefersReduced ? "instant" : "smooth" });
+    const prefersReduced = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    window.scrollTo({
+      top: 0,
+      behavior: prefersReduced ? "instant" : "smooth",
+    });
   };
 
   return (

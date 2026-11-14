@@ -14,10 +14,17 @@ const NO_STORE = { "Cache-Control": "no-store" };
 export async function GET(request: NextRequest) {
   const raw = request.nextUrl.searchParams.get("path");
   if (raw === null) {
-    const paths = await coalesce("paths", () => getEditedPaths({ fresh: true }));
+    const paths = await coalesce("paths", () =>
+      getEditedPaths({ fresh: true }),
+    );
     return NextResponse.json({ paths }, { headers: NO_STORE });
   }
   const path = normalizeEditPath(raw);
-  const page = await coalesce(`edits:${path}`, () => getEditedPage(path, { fresh: true }));
-  return NextResponse.json({ edits: page?.edits ?? [], hash: page?.hash ?? null }, { headers: NO_STORE });
+  const page = await coalesce(`edits:${path}`, () =>
+    getEditedPage(path, { fresh: true }),
+  );
+  return NextResponse.json(
+    { edits: page?.edits ?? [], hash: page?.hash ?? null },
+    { headers: NO_STORE },
+  );
 }

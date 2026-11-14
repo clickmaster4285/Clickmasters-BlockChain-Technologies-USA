@@ -8,19 +8,39 @@ import { Footer } from "@/components/landing/Footer";
 import { Navbar } from "@/components/landing/Navbar";
 import { JsonLd } from "@/components/seo/JsonLd";
 import BackToTop from "@/components/ui/BackToTop";
-import { CONSULTING_SERVICE_PATH, consultingService as c } from "@/data/consulting";
+import {
+  CONSULTING_SERVICE_PATH,
+  consultingService as c,
+} from "@/data/consulting";
 import { faqPageSchema, serviceSchema } from "@/lib/structured-data";
 
-function SectionHeading({ id, eyebrow, title, intro }: { id: string; eyebrow?: string; title: string; intro?: string }) {
+function SectionHeading({
+  id,
+  eyebrow,
+  title,
+  intro,
+}: {
+  id: string;
+  eyebrow?: string;
+  title: string;
+  intro?: string;
+}) {
   return (
     <div className="max-w-3xl">
       {eyebrow && (
-        <p className="text-xs font-black uppercase tracking-[0.18em] text-amber-base">{eyebrow}</p>
+        <p className="text-xs font-black uppercase tracking-[0.18em] text-amber-base">
+          {eyebrow}
+        </p>
       )}
-      <h2 id={id} className="mt-3 text-3xl font-black tracking-tight text-text-primary sm:text-4xl">
+      <h2
+        id={id}
+        className="mt-3 text-3xl font-black tracking-tight text-text-primary sm:text-4xl"
+      >
         {title}
       </h2>
-      {intro && <p className="mt-4 text-base leading-8 text-text-secondary">{intro}</p>}
+      {intro && (
+        <p className="mt-4 text-base leading-8 text-text-secondary">{intro}</p>
+      )}
     </div>
   );
 }
@@ -52,15 +72,35 @@ export default function ConsultingServicePage({ image }: { image?: string }) {
         {/* 1. Hero */}
         <section className="relative bg-gradient-to-b from-bg-base via-amber-base/5 to-bg-base pb-16 pt-28 sm:pt-32">
           <div className="container relative mx-auto max-w-7xl px-4 sm:px-6">
-            <nav aria-label="Breadcrumb" className="mb-6 flex flex-wrap items-center gap-2 text-sm text-text-secondary">
-              <Link href="/" className="hover:text-amber-base">Home</Link>
-              <ChevronRight className="h-4 w-4 text-text-muted" aria-hidden="true" />
-              <Link href="/service" className="hover:text-amber-base">Services</Link>
-              <ChevronRight className="h-4 w-4 text-text-muted" aria-hidden="true" />
-              <span className="font-semibold text-text-primary" aria-current="page">{c.breadcrumb}</span>
+            <nav
+              aria-label="Breadcrumb"
+              className="mb-6 flex flex-wrap items-center gap-2 text-sm text-text-secondary"
+            >
+              <Link href="/" className="hover:text-amber-base">
+                Home
+              </Link>
+              <ChevronRight
+                className="h-4 w-4 text-text-muted"
+                aria-hidden="true"
+              />
+              <Link href="/service" className="hover:text-amber-base">
+                Services
+              </Link>
+              <ChevronRight
+                className="h-4 w-4 text-text-muted"
+                aria-hidden="true"
+              />
+              <span
+                className="font-semibold text-text-primary"
+                aria-current="page"
+              >
+                {c.breadcrumb}
+              </span>
             </nav>
 
-            <p className="font-mono text-xs uppercase tracking-[0.3em] text-amber-base">{c.eyebrow}</p>
+            <p className="font-mono text-xs uppercase tracking-[0.3em] text-amber-base">
+              {c.eyebrow}
+            </p>
             <h1 className="mt-4 max-w-4xl text-4xl font-black leading-[1.08] tracking-tight [overflow-wrap:anywhere] sm:text-5xl lg:text-6xl">
               {c.h1}
             </h1>
@@ -84,14 +124,19 @@ export default function ConsultingServicePage({ image }: { image?: string }) {
                 {c.secondaryCta.label}
               </Link>
             </div>
-            <p className="mt-5 max-w-2xl text-sm leading-7 text-text-secondary">{c.supportingLine}</p>
+            <p className="mt-5 max-w-2xl text-sm leading-7 text-text-secondary">
+              {c.supportingLine}
+            </p>
           </div>
         </section>
 
         {/* 2. Which decision do you need to make? */}
         <section className="py-14 sm:py-16" aria-labelledby="decisions-heading">
           <div className="container mx-auto max-w-7xl px-4 sm:px-6">
-            <SectionHeading id="decisions-heading" title="Which decision do you need to make?" />
+            <SectionHeading
+              id="decisions-heading"
+              title="Which decision do you need to make?"
+            />
             <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
               {c.decisions.map((item) => (
                 <a
@@ -99,8 +144,12 @@ export default function ConsultingServicePage({ image }: { image?: string }) {
                   href={item.href}
                   className="group flex flex-col rounded-2xl border border-border-default bg-white p-5 shadow-[0_18px_55px_rgba(15,23,42,0.05)] transition hover:-translate-y-1 hover:border-amber-base/40"
                 >
-                  <h3 className="text-lg font-black text-text-primary group-hover:text-amber-base">{item.title}</h3>
-                  <p className="mt-2 flex-1 text-sm leading-7 text-text-secondary">{item.description}</p>
+                  <h3 className="text-lg font-black text-text-primary group-hover:text-amber-base">
+                    {item.title}
+                  </h3>
+                  <p className="mt-2 flex-1 text-sm leading-7 text-text-secondary">
+                    {item.description}
+                  </p>
                   <span className="mt-4 inline-flex items-center gap-1 text-sm font-black text-amber-base">
                     See the deliverable
                     <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -112,7 +161,10 @@ export default function ConsultingServicePage({ image }: { image?: string }) {
         </section>
 
         {/* 3. What you receive */}
-        <section className="py-14 sm:py-16" aria-labelledby="deliverables-heading">
+        <section
+          className="py-14 sm:py-16"
+          aria-labelledby="deliverables-heading"
+        >
           <div className="container mx-auto max-w-7xl px-4 sm:px-6">
             <SectionHeading
               id="deliverables-heading"
@@ -125,15 +177,22 @@ export default function ConsultingServicePage({ image }: { image?: string }) {
                   id={item.id}
                   className="scroll-mt-32 rounded-2xl border border-border-default bg-white p-5 target:border-amber-base target:ring-2 target:ring-amber-base/30"
                 >
-                  <CheckCircle2 className="h-5 w-5 text-emerald-base" aria-hidden="true" />
-                  <h3 className="mt-3 text-lg font-black text-text-primary">{item.title}</h3>
-                  <p className="mt-2 text-sm leading-7 text-text-secondary">{item.description}</p>
+                  <CheckCircle2
+                    className="h-5 w-5 text-emerald-base"
+                    aria-hidden="true"
+                  />
+                  <h3 className="mt-3 text-lg font-black text-text-primary">
+                    {item.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-7 text-text-secondary">
+                    {item.description}
+                  </p>
                 </article>
               ))}
             </div>
             <p className="mt-6 max-w-3xl text-sm leading-7 text-text-secondary">
-              Implementation is not part of a consulting engagement. If you want development
-              support afterwards, it is scoped as a separate option.
+              Implementation is not part of a consulting engagement. If you want
+              development support afterwards, it is scoped as a separate option.
             </p>
           </div>
         </section>
@@ -146,17 +205,30 @@ export default function ConsultingServicePage({ image }: { image?: string }) {
         </section>
 
         {/* 5. How an engagement works */}
-        <section className="py-14 sm:py-16" aria-labelledby="engagement-heading">
+        <section
+          className="py-14 sm:py-16"
+          aria-labelledby="engagement-heading"
+        >
           <div className="container mx-auto max-w-7xl px-4 sm:px-6">
-            <SectionHeading id="engagement-heading" title="How an engagement works" />
+            <SectionHeading
+              id="engagement-heading"
+              title="How an engagement works"
+            />
             <ol className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
               {c.engagementSteps.map((step, index) => (
-                <li key={step.title} className="rounded-2xl border border-border-default bg-white p-5">
+                <li
+                  key={step.title}
+                  className="rounded-2xl border border-border-default bg-white p-5"
+                >
                   <span className="grid h-9 w-9 place-items-center rounded-full bg-amber-base/10 text-sm font-black text-amber-base">
                     {index + 1}
                   </span>
-                  <h3 className="mt-3 text-lg font-black text-text-primary">{step.title}</h3>
-                  <p className="mt-2 text-sm leading-7 text-text-secondary">{step.description}</p>
+                  <h3 className="mt-3 text-lg font-black text-text-primary">
+                    {step.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-7 text-text-secondary">
+                    {step.description}
+                  </p>
                 </li>
               ))}
             </ol>
@@ -176,8 +248,14 @@ export default function ConsultingServicePage({ image }: { image?: string }) {
               />
               <ul className="mt-5 grid gap-3 sm:grid-cols-2">
                 {c.feeDrivers.map((item) => (
-                  <li key={item} className="flex gap-3 rounded-xl border border-border-default bg-bg-base p-4 text-sm font-medium leading-6 text-text-secondary">
-                    <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-emerald-base" aria-hidden="true" />
+                  <li
+                    key={item}
+                    className="flex gap-3 rounded-xl border border-border-default bg-bg-base p-4 text-sm font-medium leading-6 text-text-secondary"
+                  >
+                    <CheckCircle2
+                      className="mt-0.5 h-5 w-5 shrink-0 text-emerald-base"
+                      aria-hidden="true"
+                    />
                     {item}
                   </li>
                 ))}
@@ -189,12 +267,22 @@ export default function ConsultingServicePage({ image }: { image?: string }) {
         {/* 8. Questions before engaging */}
         <section className="py-14 sm:py-16" aria-labelledby="questions-heading">
           <div className="container mx-auto max-w-5xl px-4 sm:px-6">
-            <SectionHeading id="questions-heading" title="Questions before engaging" />
+            <SectionHeading
+              id="questions-heading"
+              title="Questions before engaging"
+            />
             <div className="mt-8 space-y-4">
               {c.questions.map((item) => (
-                <article key={item.question} className="rounded-2xl border border-border-default bg-white p-5 sm:p-6">
-                  <h3 className="text-lg font-black text-text-primary">{item.question}</h3>
-                  <p className="mt-3 text-base leading-8 text-text-secondary">{item.answer}</p>
+                <article
+                  key={item.question}
+                  className="rounded-2xl border border-border-default bg-white p-5 sm:p-6"
+                >
+                  <h3 className="text-lg font-black text-text-primary">
+                    {item.question}
+                  </h3>
+                  <p className="mt-3 text-base leading-8 text-text-secondary">
+                    {item.answer}
+                  </p>
                 </article>
               ))}
             </div>
@@ -205,7 +293,10 @@ export default function ConsultingServicePage({ image }: { image?: string }) {
         <ConsultingEnquiryForm formId="consulting_service_enquiry" />
 
         {/* 10. Supporting guide */}
-        <section className="border-t border-border-default py-16 sm:py-20" aria-labelledby="guide-heading">
+        <section
+          className="border-t border-border-default py-16 sm:py-20"
+          aria-labelledby="guide-heading"
+        >
           <div className="container mx-auto max-w-7xl px-4 sm:px-6">
             <SectionHeading id="guide-heading" title="Supporting guide" />
             <div className="mt-8 grid gap-5 md:grid-cols-3">
@@ -215,8 +306,12 @@ export default function ConsultingServicePage({ image }: { image?: string }) {
                   href={item.href}
                   className="group rounded-2xl border border-border-default bg-white p-5 shadow-[0_18px_55px_rgba(15,23,42,0.06)] transition hover:-translate-y-1 hover:border-amber-base/40"
                 >
-                  <h3 className="text-lg font-black leading-7 text-text-primary group-hover:text-amber-base">{item.title}</h3>
-                  <p className="mt-2 text-sm leading-7 text-text-secondary">{item.description}</p>
+                  <h3 className="text-lg font-black leading-7 text-text-primary group-hover:text-amber-base">
+                    {item.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-7 text-text-secondary">
+                    {item.description}
+                  </p>
                   <span className="mt-4 inline-flex items-center gap-2 text-sm font-black text-amber-base">
                     Read guide
                     <ArrowRight className="h-4 w-4" aria-hidden="true" />

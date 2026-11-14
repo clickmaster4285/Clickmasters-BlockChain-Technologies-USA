@@ -11,7 +11,8 @@
  * the evidence, and record who approved it.
  */
 
-export const CONSULTING_FAQ_PATH = "/faqs/blockchain-development-consulting-enterprise";
+export const CONSULTING_FAQ_PATH =
+  "/faqs/blockchain-development-consulting-enterprise";
 export const CONSULTING_SERVICE_PATH = "/service/blockchain-consulting";
 
 export type TextItem = { title: string; description: string };
@@ -133,7 +134,8 @@ export const consultingGuide = {
         "A description of the business process and the problem you want to solve, the organizations and roles involved, the existing systems and data that would need to integrate, any regulatory or privacy constraints, and who will make the final decision. Vendor proposals you have already received are also useful. You do not need complete information to start; gaps are recorded as assumptions so that the recommendation shows what it depends on.",
     },
     {
-      question: "Can you review a proposal from a vendor we are already talking to?",
+      question:
+        "Can you review a proposal from a vendor we are already talking to?",
       answer:
         "Yes. A vendor evaluation can review an existing proposal or delivery plan against your requirements, covering scope completeness, architecture choices, stated assumptions and delivery risk. The review is limited to the documents and information you share, so it is an assessment of the proposal rather than an audit of the vendor.",
     },
@@ -162,7 +164,8 @@ export const consultingGuide = {
     },
     {
       title: "Hyperledger Fabric vs Ethereum",
-      description: "How permissioned and public platforms compare for enterprise use.",
+      description:
+        "How permissioned and public platforms compare for enterprise use.",
       href: "/comparison/hyperledger-fabric-vs-ethereum",
     },
     {
@@ -187,7 +190,10 @@ export const consultingService = {
   intro:
     "Evaluate whether blockchain fits your business process, compare implementation options, and define a practical next step. Discuss your requirements for feasibility assessment, platform selection, vendor review, or an implementation roadmap.",
   primaryCta: { label: "Request a Consulting Discussion", href: "#contact" },
-  secondaryCta: { label: "View a Sample Assessment", href: "#sample-assessment" },
+  secondaryCta: {
+    label: "View a Sample Assessment",
+    href: "#sample-assessment",
+  },
   supportingLine:
     "Tell us the decision you need to make and the systems involved. We will review your enquiry and discuss an appropriate scope.",
 

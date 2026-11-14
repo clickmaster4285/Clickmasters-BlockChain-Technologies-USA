@@ -6,7 +6,10 @@ import { motion, type Variants } from "framer-motion";
 /* ── Shared IntersectionObserver singleton ── */
 
 const observers = new Map<string, IntersectionObserver>();
-const observedCallbacks = new Map<Element, { cb: () => void; margin: string }>();
+const observedCallbacks = new Map<
+  Element,
+  { cb: () => void; margin: string }
+>();
 
 function getObserver(rootMargin: string): IntersectionObserver {
   if (!observers.has(rootMargin)) {
@@ -30,7 +33,10 @@ function getObserver(rootMargin: string): IntersectionObserver {
   return observers.get(rootMargin)!;
 }
 
-function useSharedInView(ref: React.RefObject<Element | null>, margin: string): boolean {
+function useSharedInView(
+  ref: React.RefObject<Element | null>,
+  margin: string,
+): boolean {
   const [inView, setInView] = useState(false);
 
   useEffect(() => {

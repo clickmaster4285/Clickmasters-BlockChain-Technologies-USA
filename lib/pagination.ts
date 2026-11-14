@@ -52,7 +52,9 @@ export function resolveListingCategory(
     return emptyValue;
   }
 
-  return categories.find((category) => categoryMatches(category, value)) ?? value;
+  return (
+    categories.find((category) => categoryMatches(category, value)) ?? value
+  );
 }
 
 function cleanSegment(
@@ -72,7 +74,7 @@ function cleanSegment(
 export function getPageHref(
   basePath: string,
   page: number,
-  query: Record<string, PageQueryValue> = {}
+  query: Record<string, PageQueryValue> = {},
 ) {
   const parts: string[] = [];
 

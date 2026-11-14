@@ -1,12 +1,43 @@
-import { Building2, Coins, HeartPulse, Image as ImageIcon, ShoppingBag, Truck } from "lucide-react";
+import {
+  Building2,
+  Coins,
+  HeartPulse,
+  Image as ImageIcon,
+  ShoppingBag,
+  Truck,
+} from "lucide-react";
 
 const audiences = [
-  { icon: Coins, title: "Finance & DeFi", desc: "Lending platforms, decentralized exchanges, and asset management tools built with security and transaction integrity as top priorities." },
-  { icon: Building2, title: "Real Estate", desc: "Tokenization of property assets and fractional ownership platforms that make investment access simpler and more transparent." },
-  { icon: Truck, title: "Supply Chain & Logistics", desc: "Traceability and verification systems that give every party in a supply chain a shared, tamper-resistant source of truth." },
-  { icon: HeartPulse, title: "Healthcare", desc: "Secure, permissioned data-sharing systems that keep sensitive patient information under the right access controls." },
-  { icon: ImageIcon, title: "Gaming & NFTs", desc: "In-game assets, marketplaces, and reward systems built on token standards that support real ownership and trading." },
-  { icon: ShoppingBag, title: "Retail & E-commerce", desc: "Loyalty programs, provenance verification, and payment infrastructure that bring blockchain technology into everyday transactions." },
+  {
+    icon: Coins,
+    title: "Finance & DeFi",
+    desc: "Lending platforms, decentralized exchanges, and asset management tools built with security and transaction integrity as top priorities.",
+  },
+  {
+    icon: Building2,
+    title: "Real Estate",
+    desc: "Tokenization of property assets and fractional ownership platforms that make investment access simpler and more transparent.",
+  },
+  {
+    icon: Truck,
+    title: "Supply Chain & Logistics",
+    desc: "Traceability and verification systems that give every party in a supply chain a shared, tamper-resistant source of truth.",
+  },
+  {
+    icon: HeartPulse,
+    title: "Healthcare",
+    desc: "Secure, permissioned data-sharing systems that keep sensitive patient information under the right access controls.",
+  },
+  {
+    icon: ImageIcon,
+    title: "Gaming & NFTs",
+    desc: "In-game assets, marketplaces, and reward systems built on token standards that support real ownership and trading.",
+  },
+  {
+    icon: ShoppingBag,
+    title: "Retail & E-commerce",
+    desc: "Loyalty programs, provenance verification, and payment infrastructure that bring blockchain technology into everyday transactions.",
+  },
 ];
 
 export function Audience() {
@@ -31,22 +62,23 @@ export function Audience() {
             <span className="text-gradient">real industry use cases</span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-text-secondary md:text-lg">
-            Our blockchain implementation services are shaped around how different industries
-            actually use this technology:
+            Our blockchain implementation services are shaped around how
+            different industries actually use this technology:
           </p>
         </div>
 
         <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {audiences.map((a) => (
-            <article
-              key={a.title}
-              className="group glow-card"
-            >
+            <article key={a.title} className="group glow-card">
               <span className="relative grid h-11 w-11 place-items-center rounded-xl bg-amber-glow text-amber-base">
                 <a.icon className="h-5 w-5" />
               </span>
-              <h2 className="relative mt-4 text-lg font-semibold text-text-primary">{a.title}</h2>
-              <p className="relative mt-2 text-sm leading-relaxed text-text-secondary">{a.desc}</p>
+              <h2 className="relative mt-4 text-lg font-semibold text-text-primary">
+                {a.title}
+              </h2>
+              <p className="relative mt-2 text-sm leading-relaxed text-text-secondary">
+                {a.desc}
+              </p>
             </article>
           ))}
         </div>

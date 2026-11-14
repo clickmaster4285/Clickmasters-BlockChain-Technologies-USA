@@ -1,15 +1,7 @@
-import {
-  HelpCircle,
-  MessageCircleQuestion,
-  Plus,
-} from "lucide-react";
+import { HelpCircle, MessageCircleQuestion, Plus } from "lucide-react";
 import type { FAQItem, GlossaryItem } from "@/lib/content-types";
 
-export default function GlossaryFAQ({
-  item,
-}: {
-  item: GlossaryItem;
-}) {
+export default function GlossaryFAQ({ item }: { item: GlossaryItem }) {
   const faqs = item?.faqs || item?.faq || [];
 
   if (!faqs.length) return null;
@@ -42,9 +34,7 @@ export default function GlossaryFAQ({
           </div>
 
           <div className="shrink-0 rounded-2xl border border-white/10 bg-bg-base/60 px-5 py-4 text-center">
-            <p className="text-3xl font-black text-amber-base">
-              {faqs.length}
-            </p>
+            <p className="text-3xl font-black text-amber-base">{faqs.length}</p>
 
             <p className="mt-1 text-xs font-semibold uppercase tracking-[0.18em] text-silver">
               Answers

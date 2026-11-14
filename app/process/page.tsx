@@ -33,9 +33,7 @@ import {
    Metadata
 ========================================================= */
 
-export async function generateMetadata({
-  searchParams,
-}: ProcessPageProps) {
+export async function generateMetadata({ searchParams }: ProcessPageProps) {
   const resolvedSearchParams = await searchParams;
   const totalPages = Math.max(
     Math.ceil(getProcessCount() / PROCESSES_PER_PAGE),
@@ -99,22 +97,12 @@ type ProcessPageProps = {
    Helpers
 ========================================================= */
 
-function parsePageNumber(
-  value: string | string[] | undefined,
-): number {
-  const rawValue = Array.isArray(value)
-    ? value[0]
-    : value;
+function parsePageNumber(value: string | string[] | undefined): number {
+  const rawValue = Array.isArray(value) ? value[0] : value;
 
-  const parsedValue = Number.parseInt(
-    rawValue ?? "1",
-    10,
-  );
+  const parsedValue = Number.parseInt(rawValue ?? "1", 10);
 
-  if (
-    !Number.isFinite(parsedValue) ||
-    parsedValue < 1
-  ) {
+  if (!Number.isFinite(parsedValue) || parsedValue < 1) {
     return 1;
   }
 
@@ -125,47 +113,27 @@ function parsePageNumber(
    Page
 ========================================================= */
 
-export default async function ProcessPage({
-  searchParams,
-}: ProcessPageProps) {
-  const resolvedSearchParams =
-    await searchParams;
+export default async function ProcessPage({ searchParams }: ProcessPageProps) {
+  const resolvedSearchParams = await searchParams;
 
   const allProcesses = getProcessCards();
   const processCount = getProcessCount();
   const categories = getProcessCategories();
 
-  const requestedPage = parsePageNumber(
-    resolvedSearchParams?.page,
+  const requestedPage = parsePageNumber(resolvedSearchParams?.page);
+
+  const totalPages = Math.max(1, Math.ceil(processCount / PROCESSES_PER_PAGE));
+
+  const currentPage = Math.min(requestedPage, totalPages);
+
+  const startIndex = (currentPage - 1) * PROCESSES_PER_PAGE;
+
+  const visibleProcesses = allProcesses.slice(
+    startIndex,
+    startIndex + PROCESSES_PER_PAGE,
   );
 
-  const totalPages = Math.max(
-    1,
-    Math.ceil(
-      processCount / PROCESSES_PER_PAGE,
-    ),
-  );
-
-  const currentPage = Math.min(
-    requestedPage,
-    totalPages,
-  );
-
-  const startIndex =
-    (currentPage - 1) *
-    PROCESSES_PER_PAGE;
-
-  const visibleProcesses =
-    allProcesses.slice(
-      startIndex,
-      startIndex +
-        PROCESSES_PER_PAGE,
-    );
-
-  const visibleStart =
-    processCount === 0
-      ? 0
-      : startIndex + 1;
+  const visibleStart = processCount === 0 ? 0 : startIndex + 1;
 
   const visibleEnd = Math.min(
     startIndex + visibleProcesses.length,
@@ -196,8 +164,7 @@ export default async function ProcessPage({
 
               backgroundSize: "72px 72px",
 
-              maskImage:
-                "linear-gradient(to bottom, black, transparent 90%)",
+              maskImage: "linear-gradient(to bottom, black, transparent 90%)",
             }}
           />
 
@@ -217,10 +184,7 @@ export default async function ProcessPage({
 
               <ChevronRight className="h-3.5 w-3.5 text-amber-base" />
 
-              <span
-                aria-current="page"
-                className="text-text-primary"
-              >
+              <span aria-current="page" className="text-text-primary">
                 Process
               </span>
             </nav>
@@ -231,39 +195,33 @@ export default async function ProcessPage({
               <div>
                 <div className="inline-flex items-center gap-2 rounded-full border border-amber-base/25 bg-amber-base/[0.07] px-4 py-2 text-[11px] font-black uppercase tracking-[0.18em] text-amber-base">
                   <BookOpenCheck className="h-4 w-4" />
-
                   Production Process Guides
                 </div>
 
                 <h1 className="mt-7 max-w-5xl text-4xl font-black leading-[1.08] tracking-[-0.045em] text-text-primary sm:text-5xl lg:text-7xl">
                   Blockchain Development Process
-                  {currentPage > 1 &&
-                    ` — Page ${currentPage} of ${totalPages}`}
+                  {currentPage > 1 && ` — Page ${currentPage} of ${totalPages}`}
                 </h1>
 
                 <p className="mt-7 max-w-3xl text-base leading-8 text-silver sm:text-lg">
-                  Explore detailed guides covering
-                  blockchain architecture, smart
-                  contract security, DeFi systems,
-                  wallet infrastructure, exchanges,
-                  tokenization, governance, bridges,
-                  and production deployment.
+                  Explore detailed guides covering blockchain architecture,
+                  smart contract security, DeFi systems, wallet infrastructure,
+                  exchanges, tokenization, governance, bridges, and production
+                  deployment.
                 </p>
 
                 {/* Category Pills */}
 
                 {categories.length > 0 && (
                   <div className="mt-9 flex flex-wrap gap-2.5">
-                    {categories.map(
-                      (category) => (
-                        <span
-                          key={category}
-                          className="rounded-full border border-white/[0.09] bg-white/[0.025] px-4 py-2 text-xs font-bold text-silver"
-                        >
-                          {category}
-                        </span>
-                      ),
-                    )}
+                    {categories.map((category) => (
+                      <span
+                        key={category}
+                        className="rounded-full border border-white/[0.09] bg-white/[0.025] px-4 py-2 text-xs font-bold text-silver"
+                      >
+                        {category}
+                      </span>
+                    ))}
                   </div>
                 )}
               </div>
@@ -287,10 +245,8 @@ export default async function ProcessPage({
                   </p>
 
                   <p className="mt-5 text-sm leading-7 text-silver">
-                    Practical technical knowledge
-                    developed from production
-                    blockchain architecture and
-                    implementation experience.
+                    Practical technical knowledge developed from production
+                    blockchain architecture and implementation experience.
                   </p>
 
                   <div className="mt-6 space-y-3 border-t border-white/[0.08] pt-6">
@@ -321,30 +277,24 @@ export default async function ProcessPage({
 
         <section className="border-b border-white/[0.07] py-12">
           <div className="site-container relative grid gap-5 px-6 md:grid-cols-3">
-            {processBenefits.map(
-              ({
-                icon: Icon,
-                title,
-                description,
-              }) => (
-                <article
-                  key={title}
-                  className="rounded-[1.6rem] border border-white/[0.08] bg-surface/60 p-6"
-                >
-                  <span className="grid h-11 w-11 place-items-center rounded-xl border border-amber-base/20 bg-amber-base/[0.07] text-amber-base">
-                    <Icon className="h-5 w-5" />
-                  </span>
+            {processBenefits.map(({ icon: Icon, title, description }) => (
+              <article
+                key={title}
+                className="rounded-[1.6rem] border border-white/[0.08] bg-surface/60 p-6"
+              >
+                <span className="grid h-11 w-11 place-items-center rounded-xl border border-amber-base/20 bg-amber-base/[0.07] text-amber-base">
+                  <Icon className="h-5 w-5" />
+                </span>
 
-                  <h2 className="mt-5 text-lg font-black text-text-primary">
-                    {title}
-                  </h2>
+                <h2 className="mt-5 text-lg font-black text-text-primary">
+                  {title}
+                </h2>
 
-                  <p className="mt-3 text-sm leading-7 text-silver">
-                    {description}
-                  </p>
-                </article>
-              ),
-            )}
+                <p className="mt-3 text-sm leading-7 text-silver">
+                  {description}
+                </p>
+              </article>
+            ))}
           </div>
         </section>
 
@@ -367,11 +317,9 @@ export default async function ProcessPage({
                 </h2>
 
                 <p className="mt-4 max-w-2xl text-sm leading-7 text-silver sm:text-base">
-                  Each guide breaks down the
-                  architecture, risks, implementation
-                  phases, production requirements,
-                  costs, and technical decisions
-                  involved.
+                  Each guide breaks down the architecture, risks, implementation
+                  phases, production requirements, costs, and technical
+                  decisions involved.
                 </p>
               </div>
 
@@ -392,18 +340,13 @@ export default async function ProcessPage({
 
             {visibleProcesses.length > 0 ? (
               <div className="mt-10 grid gap-7 md:grid-cols-2 xl:grid-cols-3">
-                {visibleProcesses.map(
-                  (process, index) => (
-                    <ProcessCard
-                      key={process.slug}
-                      process={process}
-                      priority={
-                        currentPage === 1 &&
-                        index < 3
-                      }
-                    />
-                  ),
-                )}
+                {visibleProcesses.map((process, index) => (
+                  <ProcessCard
+                    key={process.slug}
+                    process={process}
+                    priority={currentPage === 1 && index < 3}
+                  />
+                ))}
               </div>
             ) : (
               <div className="mt-10 rounded-[2rem] border border-white/[0.08] bg-surface p-10 text-center">
@@ -412,8 +355,7 @@ export default async function ProcessPage({
                 </h2>
 
                 <p className="mt-3 text-sm leading-7 text-silver">
-                  Process guides will appear here
-                  when valid data is available.
+                  Process guides will appear here when valid data is available.
                 </p>
               </div>
             )}
@@ -435,38 +377,35 @@ export default async function ProcessPage({
         <section className="pb-24 lg:pb-32">
           <div className="site-container relative px-6">
             <div className="relative overflow-hidden rounded-[2.4rem] border border-amber-base/25 bg-surface px-7 py-12 sm:px-10 lg:px-16 lg:py-16">
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(225,157,45,0.18),transparent_35%),radial-gradient(circle_at_90%_70%,rgba(225,157,45,0.08),transparent_30%)]" />
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(225,157,45,0.18),transparent_35%),radial-gradient(circle_at_90%_70%,rgba(225,157,45,0.08),transparent_30%)]" />
 
-            <div className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full border border-amber-base/[0.08]" />
+              <div className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full border border-amber-base/[0.08]" />
 
-            <div className="relative flex flex-col items-start justify-between gap-9 lg:flex-row lg:items-center">
-              <div className="max-w-3xl">
-                <span className="text-xs font-black uppercase tracking-[0.18em] text-amber-base">
-                  Build with confidence
-                </span>
+              <div className="relative flex flex-col items-start justify-between gap-9 lg:flex-row lg:items-center">
+                <div className="max-w-3xl">
+                  <span className="text-xs font-black uppercase tracking-[0.18em] text-amber-base">
+                    Build with confidence
+                  </span>
 
-                <h2 className="mt-4 text-3xl font-black leading-tight tracking-[-0.035em] text-text-primary sm:text-4xl lg:text-5xl">
-                  Need help applying these
-                  processes to your project?
-                </h2>
+                  <h2 className="mt-4 text-3xl font-black leading-tight tracking-[-0.035em] text-text-primary sm:text-4xl lg:text-5xl">
+                    Need help applying these processes to your project?
+                  </h2>
 
-                <p className="mt-5 max-w-2xl text-sm leading-7 text-silver sm:text-base">
-                  Our team can help you define the
-                  architecture, development roadmap,
-                  security strategy, implementation
-                  phases, and production launch plan.
-                </p>
+                  <p className="mt-5 max-w-2xl text-sm leading-7 text-silver sm:text-base">
+                    Our team can help you define the architecture, development
+                    roadmap, security strategy, implementation phases, and
+                    production launch plan.
+                  </p>
+                </div>
+
+                <Link
+                  href="/contact"
+                  className="group inline-flex min-h-14 shrink-0 items-center justify-center gap-3 rounded-xl bg-amber-base px-6 text-sm font-black text-bg-base transition-all duration-300 hover:-translate-y-1 hover:bg-amber-light hover:shadow-[0_18px_50px_rgba(225,157,45,0.25)]"
+                >
+                  Book a Strategy Call
+                  <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                </Link>
               </div>
-
-              <Link
-                href="/contact"
-                className="group inline-flex min-h-14 shrink-0 items-center justify-center gap-3 rounded-xl bg-amber-base px-6 text-sm font-black text-bg-base transition-all duration-300 hover:-translate-y-1 hover:bg-amber-light hover:shadow-[0_18px_50px_rgba(225,157,45,0.25)]"
-              >
-                Book a Strategy Call
-
-                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
-            </div>
             </div>
           </div>
         </section>

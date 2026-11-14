@@ -35,7 +35,10 @@ export default function TemplateCard({
           </div>
 
           {/* Document preview */}
-          <div className="relative mt-7 flex h-[150px] items-center justify-center" aria-hidden="true">
+          <div
+            className="relative mt-7 flex h-[150px] items-center justify-center"
+            aria-hidden="true"
+          >
             <div className="tpl-card__sheet tpl-card__sheet--left" />
             <div className="tpl-card__sheet tpl-card__sheet--right" />
 
@@ -63,7 +66,10 @@ export default function TemplateCard({
           {/* Category */}
           <div className="mt-5">
             <span className="tpl-card__category">
-              <span className="mask-icon icon-layers h-4 w-4 text-amber-base" aria-hidden="true" />
+              <span
+                className="mask-icon icon-layers h-4 w-4 text-amber-base"
+                aria-hidden="true"
+              />
               {item.category || "Blockchain Template"}
             </span>
           </div>
@@ -78,19 +84,28 @@ export default function TemplateCard({
           <div className="mt-6 flex flex-wrap gap-2">
             {item.format && (
               <span className="tpl-card__chip">
-                <span className="mask-icon icon-file-text h-3.5 w-3.5 text-amber-base" aria-hidden="true" />
+                <span
+                  className="mask-icon icon-file-text h-3.5 w-3.5 text-amber-base"
+                  aria-hidden="true"
+                />
                 {item.format}
               </span>
             )}
 
             <span className="tpl-card__chip">
-              <span className="mask-icon icon-layers h-3.5 w-3.5 text-amber-base" aria-hidden="true" />
+              <span
+                className="mask-icon icon-layers h-3.5 w-3.5 text-amber-base"
+                aria-hidden="true"
+              />
               {item.sections || "Complete"} sections
             </span>
 
             {item.readTime && (
               <span className="tpl-card__chip">
-                <span className="mask-icon icon-clock h-3.5 w-3.5 text-amber-base" aria-hidden="true" />
+                <span
+                  className="mask-icon icon-clock h-3.5 w-3.5 text-amber-base"
+                  aria-hidden="true"
+                />
                 {item.readTime}
               </span>
             )}
@@ -98,10 +113,15 @@ export default function TemplateCard({
 
           {/* Footer */}
           <div className="mt-7 flex items-center justify-between border-t border-border-default pt-5">
-            <span className="text-sm font-black text-amber-base">View Template</span>
+            <span className="text-sm font-black text-amber-base">
+              View Template
+            </span>
 
             <span className="tpl-card__arrow">
-              <span className="mask-icon icon-arrow-up-right" aria-hidden="true" />
+              <span
+                className="mask-icon icon-arrow-up-right"
+                aria-hidden="true"
+              />
             </span>
           </div>
         </div>

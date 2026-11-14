@@ -9,7 +9,10 @@ import { createMetadata } from "@/config/metadata";
 import { siteConfig } from "@/config/site";
 import { Providers } from "./providers";
 import ErpPageEdits from "@/components/cms/ErpPageEdits";
-import { CmsNavigationProvider, type NavLink } from "@/components/cms/CmsNavigation";
+import {
+  CmsNavigationProvider,
+  type NavLink,
+} from "@/components/cms/CmsNavigation";
 import { safeHref } from "@/components/cms/cmsContent";
 import { getCmsSite, type CmsNavItem } from "@/lib/cms/cms";
 import "./styles.css";
@@ -55,7 +58,10 @@ export default async function RootLayout({
   // ERP header/footer navigation (cached 60s; null when the ERP is down).
   const site = await getCmsSite();
   const nav = site
-    ? { header: toNavLinks(site.navigation.header), footer: toNavLinks(site.navigation.footer) }
+    ? {
+        header: toNavLinks(site.navigation.header),
+        footer: toNavLinks(site.navigation.footer),
+      }
     : null;
 
   return (

@@ -44,9 +44,7 @@ function formatResourceDate(date?: string) {
   }).format(parsedDate);
 }
 
-export default function ResourceSpotlight({
-  item,
-}: ResourceSpotlightProps) {
+export default function ResourceSpotlight({ item }: ResourceSpotlightProps) {
   if (!item) return null;
 
   const formattedDate = formatResourceDate(item.date);
@@ -76,17 +74,13 @@ export default function ResourceSpotlight({
 
             <h2 className="mt-5 max-w-3xl text-3xl font-black leading-tight tracking-[-0.04em] text-white sm:text-4xl lg:text-5xl">
               Start with our most valuable
-              <span className="text-amber-base">
-                {" "}
-                featured resource
-              </span>
+              <span className="text-amber-base"> featured resource</span>
             </h2>
           </div>
 
           <p className="max-w-xl text-sm font-medium leading-7 text-[#8f9db1] sm:text-base">
-            Carefully selected guidance designed to help
-            founders, teams, and decision-makers move from
-            research to practical execution.
+            Carefully selected guidance designed to help founders, teams, and
+            decision-makers move from research to practical execution.
           </p>
         </div>
 
@@ -184,9 +178,7 @@ export default function ResourceSpotlight({
 
               {/* Number marker */}
               <div className="absolute bottom-6 right-6 grid h-16 w-16 place-items-center rounded-full border border-white/[0.1] bg-[#07101d]/70 backdrop-blur-xl sm:bottom-10 sm:right-10">
-                <span className="text-xl font-black text-amber-base">
-                  01
-                </span>
+                <span className="text-xl font-black text-amber-base">01</span>
               </div>
             </div>
 
@@ -291,7 +283,6 @@ export default function ResourceSpotlight({
                   className="group inline-flex min-h-13 items-center justify-center gap-3 rounded-full bg-amber-base px-7 py-3.5 text-sm font-black text-[#101827] shadow-[0_16px_40px_rgba(245,158,11,0.22)] transition-all duration-300 hover:-translate-y-1 hover:bg-amber-300 hover:shadow-[0_22px_50px_rgba(245,158,11,0.3)]"
                 >
                   Explore Resource
-
                   <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </Link>
 
@@ -300,7 +291,6 @@ export default function ResourceSpotlight({
                   className="group inline-flex min-h-13 items-center justify-center gap-3 rounded-full border border-white/[0.1] bg-white/[0.025] px-7 py-3.5 text-sm font-black text-[#c7d1df] transition-all duration-300 hover:-translate-y-1 hover:border-amber-base/25 hover:bg-amber-base/[0.06] hover:text-amber-base"
                 >
                   View All Resources
-
                   <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-1" />
                 </Link>
               </div>

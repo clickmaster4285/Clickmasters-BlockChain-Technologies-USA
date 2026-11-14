@@ -1,10 +1,5 @@
 import Link from "next/link";
-import {
-  ArrowRight,
-  BookOpen,
-  Clock3,
-  Layers3,
-} from "lucide-react";
+import { ArrowRight, BookOpen, Clock3, Layers3 } from "lucide-react";
 import type { GlossaryCardData } from "@/lib/glossary";
 
 export default function GlossaryCard({
@@ -30,9 +25,7 @@ export default function GlossaryCard({
             {item.badge || "Glossary"}
           </div>
 
-          <span className="text-xs font-bold text-silver">
-            #{index + 1}
-          </span>
+          <span className="text-xs font-bold text-silver">#{index + 1}</span>
         </div>
 
         {/* Category */}
@@ -60,7 +53,6 @@ export default function GlossaryCard({
 
           <span className="inline-flex items-center gap-2 text-sm font-bold text-amber-base">
             Read Definition
-
             <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
           </span>
         </div>
