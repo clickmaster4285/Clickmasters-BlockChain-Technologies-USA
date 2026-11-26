@@ -42,7 +42,10 @@ const benefits = [
 
 export function Benefits() {
   return (
-    <section className="relative overflow-hidden border-y border-border bg-bg-elevated py-24 md:py-32">
+    <section
+      id="benefits"
+      className="relative overflow-hidden border-y border-border bg-bg-elevated py-24 md:py-32"
+    >
       <div className="bg-dots pointer-events-none absolute inset-0 opacity-30" />
       <div className="pointer-events-none absolute -left-32 top-16 h-[28rem] w-[28rem] animate-orb rounded-full bg-amber-glow blur-[110px]" />
       <div

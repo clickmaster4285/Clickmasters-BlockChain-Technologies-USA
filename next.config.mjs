@@ -43,7 +43,10 @@ const securityHeaders = [
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   poweredByHeader: false,
-  allowedDevOrigins: ["192.168.88.61", "192.168.88.62", "192.168.34.54"],
+  // Dev only: hosts allowed to load dev scripts/HMR when the site is opened via
+  // a LAN IP. Without a match the page renders but never hydrates (menus,
+  // dropdowns and buttons stop working). Wildcard covers DHCP address changes.
+  allowedDevOrigins: ["192.168.88.*", "192.168.88.61", "192.168.88.62", "192.168.34.54"],
   async headers() {
     return [
       {
