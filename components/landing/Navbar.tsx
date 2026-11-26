@@ -2,814 +2,17 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { currentSourcePage, trackEvent } from "@/lib/analytics";
-import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import type { ElementType, ReactNode } from "react";
-import {
-  BadgeCheck,
-  Banknote,
-  BookOpen,
-  Boxes,
-  BriefcaseBusiness,
-  Building2,
-  ChevronDown,
-  Coins,
-  Cpu,
-  Factory,
-  FileText,
-  Gamepad2,
-  GitCompare,
-  Globe2,
-  GraduationCap,
-  HeartPulse,
-  Hexagon,
-  Home,
-  Library,
-  ListChecks,
-  LockKeyhole,
-  Menu,
-  Network,
-  Newspaper,
-  PlugZap,
-  ShieldCheck,
-  ShoppingBag,
-  Star,
-  Truck,
-  Users,
-  WalletCards,
-  Workflow,
-  Wrench,
-  X,
-  Zap,
-} from "lucide-react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import type { KeyboardEvent as ReactKeyboardEvent } from "react";
+import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
+import { currentSourcePage, trackEvent } from "@/lib/analytics";
 import { CmsHeaderLinks, CmsMobileLinks } from "@/components/cms/CmsNavigation";
-
-type NavItem = {
-  label: string;
-  href?: string;
-  desc: string;
-  icon: ElementType;
-};
-
-const servicesLinks: NavItem[] = [
-  {
-    label: "Smart Contract Development",
-    href: "/service/smart-contract-development",
-    desc: "Secure smart contracts for production blockchain products.",
-    icon: ShieldCheck,
-  },
-  {
-    label: "DApp Development",
-    href: "/service/blockchain-development-services",
-    desc: "Decentralized apps with polished product experiences.",
-    icon: Hexagon,
-  },
-  {
-    label: "Web3 Development",
-    href: "/service/web3-development-company",
-    desc: "Wallet, token, and chain-connected applications.",
-    icon: Globe2,
-  },
-  {
-    label: "Crypto Wallet Development",
-    href: "/service/crypto-wallet-development",
-    desc: "Custody, signing, and multi-chain wallet flows.",
-    icon: WalletCards,
-  },
-  {
-    label: "Crypto Exchange Development",
-    href: "/service/crypto-exchange-development",
-    desc: "Exchange architecture, trading, and liquidity systems.",
-    icon: Banknote,
-  },
-  {
-    label: "DeFi Development",
-    href: "/service/defi-development-company",
-    desc: "Lending, staking, swaps, vaults, and protocol tooling.",
-    icon: Coins,
-  },
-  {
-    label: "NFT Marketplace Development",
-    href: "/service/nft-development-company",
-    desc: "Marketplaces for collections, assets, and digital goods.",
-    icon: ShoppingBag,
-  },
-  {
-    label: "Token Development",
-    href: "/howto/how-to-launch-a-token",
-    desc: "Token contracts, launches, vesting, and tokenomics.",
-    icon: BadgeCheck,
-  },
-  {
-    label: "DAO Development",
-    href: "/service/hire-dao-governance-consultant",
-    desc: "Governance, treasury, voting, and community systems.",
-    icon: Users,
-  },
-  {
-    label: "Blockchain Consulting",
-    href: "/service/blockchain-consulting",
-    desc: "Technical strategy for launches and enterprise adoption.",
-    icon: BriefcaseBusiness,
-  },
-  {
-    label: "Blockchain Security & Audit",
-    href: "/process/smart-contract-audit-process",
-    desc: "Security reviews, risk reduction, and audit readiness.",
-    icon: LockKeyhole,
-  },
-  {
-    label: "Blockchain Integration",
-    href: "/service/enterprise-blockchain-solutions",
-    desc: "Connect blockchain systems with existing products.",
-    icon: PlugZap,
-  },
-];
-
-const industriesLinks: NavItem[] = [
-  {
-    label: "FinTech & Banking",
-    href: "/industries/blockchain-development-fintech",
-    desc: "Payments, custody, compliance, and financial rails.",
-    icon: Banknote,
-  },
-  {
-    label: "Healthcare",
-    href: "/industries/blockchain-development-healthcare",
-    desc: "Records, consent, identity, and secure data exchange.",
-    icon: HeartPulse,
-  },
-  {
-    label: "Real Estate",
-    href: "/industries/blockchain-development-real-estate",
-    desc: "Tokenization, escrow, property records, and ownership.",
-    icon: Home,
-  },
-  {
-    label: "Supply Chain & Logistics",
-    href: "/industries/blockchain-development-supply-chain",
-    desc: "Traceability, provenance, and multi-party workflows.",
-    icon: Truck,
-  },
-  {
-    label: "Manufacturing",
-    href: "/comparison/blockchain-development-manufacturing",
-    desc: "Parts tracking, quality records, and supplier networks.",
-    icon: Factory,
-  },
-  {
-    label: "Retail & E-commerce",
-    href: "/industries/blockchain-development-retail",
-    desc: "Loyalty, payments, authentication, and marketplaces.",
-    icon: ShoppingBag,
-  },
-  {
-    label: "Education",
-    href: "/industries/blockchain-development-education",
-    desc: "Credentials, certificates, identity, and learning records.",
-    icon: GraduationCap,
-  },
-  {
-    label: "Gaming & Entertainment",
-    href: "/industries/blockchain-development-gaming",
-    desc: "Game assets, rewards, memberships, and fan economies.",
-    icon: Gamepad2,
-  },
-  {
-    label: "Insurance",
-    href: "/industries/blockchain-development-insurance",
-    desc: "Claims, policies, parametric products, and audit trails.",
-    icon: ShieldCheck,
-  },
-  {
-    label: "Energy & Utilities",
-    href: "/industries/blockchain-development-energy",
-    desc: "Grid data, carbon tracking, and settlement systems.",
-    icon: Zap,
-  },
-  {
-    label: "Government",
-    href: "/industries/blockchain-development-government",
-    desc: "Public records, procurement, identity, and transparency.",
-    icon: Building2,
-  },
-];
-
-const solutionLinks: NavItem[] = [
-  {
-    label: "Crypto Solutions",
-    href: "/solution",
-    desc: "Crypto-native product strategy and implementation.",
-    icon: Coins,
-  },
-  {
-    label: "Enterprise Blockchain Solutions",
-    href: "/service/enterprise-blockchain-solutions",
-    desc: "Private and consortium systems for business workflows.",
-    icon: Building2,
-  },
-  {
-    label: "Private Blockchain Solutions",
-    href: "/service/hyperledger-fabric-network-setup",
-    desc: "Permissioned networks for controlled environments.",
-    icon: LockKeyhole,
-  },
-  {
-    label: "Web3 Solutions",
-    href: "/service/web3-development-company",
-    desc: "Wallet-enabled applications, memberships, and token systems.",
-    icon: Globe2,
-  },
-  {
-    label: "DeFi Solutions",
-    href: "/service/defi-development-company",
-    desc: "Protocol architecture for decentralized finance products.",
-    icon: Banknote,
-  },
-  {
-    label: "Tokenization Solutions",
-    href: "/service/asset-tokenization-platform",
-    desc: "Real-world asset and digital asset tokenization.",
-    icon: BadgeCheck,
-  },
-  {
-    label: "DAO Solutions",
-    href: "/service/vetoken-governance-economics",
-    desc: "Governance and treasury systems for communities.",
-    icon: Users,
-  },
-  {
-    label: "DEX Solutions",
-    href: "/comparison/crypto-exchange-cex-vs-dex",
-    desc: "Swap, liquidity, and decentralized exchange tooling.",
-    icon: Workflow,
-  },
-  {
-    label: "Cross-Chain Solutions",
-    href: "/process/cross-chain-bridge-architecture",
-    desc: "Bridge and interoperability patterns across chains.",
-    icon: Network,
-  },
-  {
-    label: "Blockchain Payment Solutions",
-    href: "/service/crypto-payment-gateway-development",
-    desc: "On-chain payments, settlement, and merchant flows.",
-    icon: WalletCards,
-  },
-  {
-    label: "Layer 2 Solutions",
-    href: "/comparison/layer1-vs-layer2-blockchain",
-    desc: "Scaling, rollups, and low-fee blockchain experiences.",
-    icon: Boxes,
-  },
-  {
-    label: "Blockchain Integration Solutions",
-    href: "/process/blockchain-oracle-integration",
-    desc: "Integrate chains, contracts, wallets, and APIs.",
-    icon: PlugZap,
-  },
-];
-
-const technologyLinks: NavItem[] = [
-  {
-    label: "Ethereum",
-    href: "/technologies/ethereum-blockchain-development",
-    desc: "EVM smart contracts, DeFi, NFTs, and protocol builds.",
-    icon: Hexagon,
-  },
-  {
-    label: "Solana",
-    href: "/technologies/solana-development",
-    desc: "High-throughput apps, tokens, and performance-focused UX.",
-    icon: Zap,
-  },
-  {
-    label: "Polygon",
-    href: "/technologies/polygon-blockchain-development",
-    desc: "Scaling, marketplaces, payments, and consumer Web3.",
-    icon: Network,
-  },
-  {
-    label: "BNB Chain",
-    href: "/technologies/bnb-chain-development",
-    desc: "BSC tokens, DeFi products, and wallet integrations.",
-    icon: Coins,
-  },
-  {
-    label: "Hyperledger",
-    href: "/technologies/hyperledger-development",
-    desc: "Enterprise and permissioned blockchain networks.",
-    icon: Building2,
-  },
-  {
-    label: "Avalanche",
-    href: "/technologies/avalanche-blockchain-development",
-    desc: "Subnets, DeFi, tokenization, and custom networks.",
-    icon: Boxes,
-  },
-  {
-    label: "Arbitrum",
-    href: "/technologies/arbitrum-development",
-    desc: "Layer 2 apps with Ethereum security and lower fees.",
-    icon: Workflow,
-  },
-  {
-    label: "Optimism",
-    href: "/comparison/arbitrum-vs-optimism-vs-base",
-    desc: "OP Stack, rollups, and scalable EVM ecosystems.",
-    icon: Cpu,
-  },
-];
-
-const companyLinks: NavItem[] = [
-  {
-    label: "About Us",
-    href: "/about",
-    desc: "Learn about ClickMasters and our Web3 delivery approach.",
-    icon: Building2,
-  },
-  {
-    label: "Why Choose Us",
-    href: "/#why-choose-us",
-    desc: "What makes our blockchain team a stronger partner.",
-    icon: Star,
-  },
-  // "Our Team" removed until verified team details are published (see the
-  // BCT-03 TODO in app/about/page.tsx); it linked nowhere.
-  {
-    label: "Example Engagements",
-    href: "/#example-engagements",
-    desc: "Illustrative scenarios of the projects we take on.",
-    icon: BadgeCheck,
-  },
-];
-
-const blogLinks: NavItem[] = [
-  {
-    label: "Comparison",
-    href: "/comparison",
-    desc: "Compare platforms, tools, chains, and Web3 solutions.",
-    icon: GitCompare,
-  },
-  {
-    label: "How To",
-    href: "/howto",
-    desc: "Step-by-step blockchain guides and implementation tutorials.",
-    icon: BookOpen,
-  },
-  {
-    label: "Listicles",
-    href: "/listicles",
-    desc: "Curated lists, rankings, ideas, and expert recommendations.",
-    icon: ListChecks,
-  },
-  {
-    label: "News",
-    href: "/news",
-    desc: "Latest blockchain, crypto, Web3, and enterprise updates.",
-    icon: Newspaper,
-  },
-];
-
-const resourceLinks: NavItem[] = [
-  {
-    label: "Glossary",
-    href: "/glossary",
-    desc: "Simple explanations of blockchain and Web3 terminology.",
-    icon: Library,
-  },
-  {
-    label: "Tools",
-    href: "/tools",
-    desc: "Calculators, checklists, audit tools, and useful resources.",
-    icon: Wrench,
-  },
-  {
-    label: "Templates",
-    href: "/templates",
-    desc: "Ready-to-use documents, specs, and planning templates.",
-    icon: FileText,
-  },
-  {
-    label: "Resources",
-    href: "/resources",
-    desc: "Guides, frameworks, insights, and expert learning material.",
-    icon: Boxes,
-  },
-];
-
-const primaryDropdowns = [
-  { label: "Services", items: servicesLinks },
-  { label: "Industries", items: industriesLinks },
-  { label: "Solution", items: solutionLinks },
-  { label: "Technologies", items: technologyLinks },
-];
-
-const mobileSections = [
-  ...primaryDropdowns,
-  { label: "Blog", items: blogLinks },
-  { label: "Resources", items: resourceLinks },
-  { label: "Company", items: companyLinks },
-];
-
-type FeaturedCard = {
-  title: string;
-  desc: string;
-  href: string;
-  badge: string;
-};
-
-const blogFeatured: Record<string, FeaturedCard[]> = {
-  Comparison: [
-    {
-      title: "Hyperledger Fabric vs Ethereum",
-      desc: "Enterprise blockchain comparison for private vs public infrastructure.",
-      href: "/comparison/hyperledger-fabric-vs-ethereum",
-      badge: "Comparison",
-    },
-    {
-      title: "Ethereum vs Solana",
-      desc: "Which blockchain should you choose for your application in 2025?",
-      href: "/comparison/ethereum-vs-solana",
-      badge: "Popular",
-    },
-  ],
-  "How To": [
-    {
-      title: "How to Launch a Token",
-      desc: "From tokenomics and contracts to liquidity and exchange listings.",
-      href: "/howto/how-to-launch-a-token",
-      badge: "Guide",
-    },
-    {
-      title: "Build a Blockchain App",
-      desc: "Step-by-step implementation guidance for Web3 builders.",
-      href: "/howto",
-      badge: "How-To",
-    },
-  ],
-  Listicles: [
-    {
-      title: "Best Blockchain Certifications",
-      desc: "Courses and certifications that actually matter in 2025.",
-      href: "/listicles",
-      badge: "List",
-    },
-    {
-      title: "Top Blockchain Use Cases",
-      desc: "Real-world blockchain use cases with practical ROI.",
-      href: "/listicles",
-      badge: "Featured",
-    },
-  ],
-  News: [
-    {
-      title: "Blockchain News Hub",
-      desc: "Latest enterprise blockchain, crypto, and Web3 updates.",
-      href: "/news",
-      badge: "News",
-    },
-    {
-      title: "Ethereum Roadmap Updates",
-      desc: "Track important ecosystem and infrastructure changes.",
-      href: "/news",
-      badge: "Latest",
-    },
-  ],
-};
-
-const resourceFeatured: Record<string, FeaturedCard[]> = {
-  Glossary: [
-    {
-      title: "Advanced Blockchain Glossary",
-      desc: "Explore 50 advanced technical terms used in DeFi, smart contracts, EVM development, and production blockchain systems.",
-      href: "/glossary/advanced-blockchain-glossary",
-      badge: "Developer Glossary",
-    },
-    {
-      title: "Enterprise & Regulatory Glossary",
-      desc: "Understand enterprise blockchain, compliance, regulatory, identity, custody, and institutional terminology.",
-      href: "/glossary/enterprise-regulatory-glossary",
-      badge: "Enterprise Glossary",
-    },
-  ],
-  Tools: [
-    {
-      title: "Token Launch Checklist",
-      desc: "Token launches that fail from exploited contracts, weak economics, or poor launch sequencing.",
-      href: "/tools/token-launch-checklist",
-      badge: "Checklist",
-    },
-    {
-      title: "NFT Project Launch Checklist",
-      desc: "The most common NFT project failures are preventable with the right launch plan.",
-      href: "/tools/nft-launch-checklist",
-      badge: "Checklist",
-    },
-  ],
-  Templates: [
-    {
-      title: "Blockchain Industry News Hub",
-      desc: "Track US regulatory developments, DeFi security incidents, and enterprise blockchain launches.",
-      href: "/templates/blockchain-news-us-businesses",
-      badge: "Template",
-    },
-    {
-      title: "Blockchain Technology Partner Program",
-      desc: "Partner resources for firms serving clients who need blockchain execution.",
-      href: "/templates/blockchain-technology-partner-program",
-      badge: "Docs",
-    },
-  ],
-  Resources: [
-    {
-      title: "Blockchain Resource Hub",
-      desc: "Guides, frameworks, checklists, and planning resources.",
-      href: "/resources",
-      badge: "Hub",
-    },
-    {
-      title: "Developer Path Guide",
-      desc: "Structured learning path for blockchain builders.",
-      href: "/resources",
-      badge: "Guide",
-    },
-  ],
-};
-
-function NavEntry({
-  item,
-  children,
-  className = "",
-  onClick,
-}: {
-  item: NavItem;
-  children: ReactNode;
-  className?: string;
-  onClick?: () => void;
-}) {
-  if (item.href) {
-    return (
-      <Link href={item.href} onClick={onClick} className={className}>
-        {children}
-      </Link>
-    );
-  }
-
-  return (
-    <button type="button" onClick={onClick} className={className}>
-      {children}
-    </button>
-  );
-}
-
-function DesktopSimpleDropdown({
-  label,
-  items,
-}: {
-  label: string;
-  items: NavItem[];
-}) {
-  const [active, setActive] = useState(items[0]?.label);
-  const [mounted, setMounted] = useState(false);
-  const activeItem = items.find((item) => item.label === active) || items[0];
-  const ActiveIcon = activeItem?.icon || Hexagon;
-
-  return (
-    <li
-      className="group relative"
-      onPointerEnter={() => setMounted(true)}
-      onFocus={() => setMounted(true)}
-    >
-      <button className="inline-flex items-center gap-1.5 text-sm font-medium text-silver transition-colors hover:text-silver-light xl:text-base">
-        {label}
-        <ChevronDown className="h-4 w-4 transition-transform duration-300 group-hover:rotate-180" />
-      </button>
-
-      {/* Panel is mounted on first hover/focus so its markup isn't shipped in every page's HTML. */}
-      {mounted && (
-        <div className="pointer-events-none absolute left-1/2 top-full z-50 mt-5 w-[760px] -translate-x-1/2 translate-y-4 opacity-0 transition-all duration-300 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100">
-          <div className="absolute -top-5 left-0 h-5 w-full" />
-
-          <div className="relative overflow-hidden rounded-[26px] border border-white/10 bg-bg-base/95 p-4 shadow-[0_30px_100px_rgba(0,0,0,0.6)] backdrop-blur-2xl">
-            <div className="absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-amber-base/80 to-transparent" />
-            <div className="absolute -left-20 -bottom-20 h-60 w-60 rounded-full bg-amber-base/10 blur-3xl" />
-
-            <div className="relative grid gap-4 lg:grid-cols-[1fr_250px]">
-              <div>
-                <p className="px-2 pb-3 text-[11px] font-black uppercase tracking-[0.24em] text-amber-base">
-                  {label}
-                </p>
-
-                <div className="grid grid-cols-2 gap-2">
-                  {items.map((item) => {
-                    const Icon = item.icon;
-                    const isActive = active === item.label;
-
-                    return (
-                      <div
-                        key={item.label}
-                        onMouseEnter={() => setActive(item.label)}
-                      >
-                        <NavEntry
-                          item={item}
-                          className={`group/item flex min-h-[86px] w-full items-start gap-3 rounded-2xl border p-3 text-left transition-all ${
-                            isActive
-                              ? "border-amber-base/35 bg-amber-base/10"
-                              : "border-white/5 bg-white/[0.025] hover:border-amber-base/25 hover:bg-amber-base/10"
-                          }`}
-                        >
-                          <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-amber-base/10 text-amber-base transition-transform group-hover/item:scale-110">
-                            <Icon className="h-5 w-5" />
-                          </span>
-
-                          <span className="min-w-0">
-                            <span
-                              className={`block text-sm font-black leading-tight ${
-                                isActive
-                                  ? "text-amber-base"
-                                  : "text-text-primary"
-                              }`}
-                            >
-                              {item.label}
-                            </span>
-                            <span className="mt-1 line-clamp-2 block text-xs leading-5 text-silver">
-                              {item.desc}
-                            </span>
-                          </span>
-                        </NavEntry>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-
-              <div className="relative overflow-hidden rounded-[22px] border border-white/10 bg-white/[0.035] p-5">
-                <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-amber-base/15 blur-2xl" />
-                <div className="relative">
-                  <span className="grid h-12 w-12 place-items-center rounded-2xl bg-amber-base text-bg-base">
-                    <ActiveIcon className="h-6 w-6" />
-                  </span>
-                  <p className="mt-5 text-[11px] font-black uppercase tracking-[0.22em] text-amber-base">
-                    Explore
-                  </p>
-                  <p className="mt-2 font-display text-2xl font-black leading-tight text-text-primary">
-                    {activeItem?.label}
-                  </p>
-                  <p className="mt-3 text-sm leading-6 text-silver">
-                    {activeItem?.desc}
-                  </p>
-                  <div className="mt-6 h-px bg-gradient-to-r from-amber-base/60 to-transparent" />
-                  <p className="mt-4 text-xs leading-5 text-silver">
-                    Pages will be connected here as each section is finalized.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-    </li>
-  );
-}
-
-function DesktopDropdown({
-  label,
-  items,
-}: {
-  label: string;
-  items: NavItem[];
-}) {
-  const isBlog = label.toLowerCase() === "blog";
-  const featuredMap = isBlog ? blogFeatured : resourceFeatured;
-  const [active, setActive] = useState(items[0]?.label);
-  const [mounted, setMounted] = useState(false);
-
-  const activeCards = featuredMap[active] || [];
-
-  return (
-    <li
-      className="group relative"
-      onPointerEnter={() => setMounted(true)}
-      onFocus={() => setMounted(true)}
-    >
-      <button className="inline-flex items-center gap-1.5 text-sm font-medium text-silver transition-colors hover:text-silver-light xl:text-base">
-        {label}
-        <ChevronDown className="h-4 w-4 transition-transform duration-300 group-hover:rotate-180" />
-      </button>
-
-      {/* Panel is mounted on first hover/focus so its markup isn't shipped in every page's HTML. */}
-      {mounted && (
-        <div className="pointer-events-none absolute left-1/2 top-full z-50 mt-5 w-[850px] -translate-x-1/2 translate-y-4 opacity-0 transition-all duration-300 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100">
-          <div className="absolute -top-5 left-0 h-5 w-full" />
-
-          <div className="relative overflow-hidden rounded-[30px] border border-white/10 bg-bg-base/95 p-4 shadow-[0_30px_100px_rgba(0,0,0,0.6)] backdrop-blur-2xl">
-            <div className="absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-amber-base/80 to-transparent" />
-            <div className="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-amber-base/15 blur-3xl" />
-
-            <div className="relative grid gap-4 lg:grid-cols-[300px_1fr]">
-              <div className="rounded-[24px] border border-white/10 bg-white/[0.03] p-4">
-                <p className="px-2 pb-3 text-[11px] font-black uppercase tracking-[0.24em] text-amber-base">
-                  {isBlog ? "Blog Categories" : "Resource Categories"}
-                </p>
-
-                <div className="space-y-2">
-                  {items.map((item) => {
-                    const Icon = item.icon;
-                    const isActive = active === item.label;
-
-                    return (
-                      <Link
-                        key={item.href}
-                        href={item.href || "#"}
-                        onMouseEnter={() => setActive(item.label)}
-                        className={`group/item flex items-center gap-3 rounded-2xl border p-3 transition-all ${
-                          isActive
-                            ? "border-amber-base/35 bg-amber-base/10"
-                            : "border-transparent hover:border-amber-base/25 hover:bg-amber-base/10"
-                        }`}
-                      >
-                        <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-amber-base/10 text-amber-base transition-transform group-hover/item:scale-110">
-                          <Icon className="h-5 w-5" />
-                        </span>
-
-                        <span className="min-w-0">
-                          <span
-                            className={`block text-sm font-black ${
-                              isActive ? "text-amber-base" : "text-text-primary"
-                            }`}
-                          >
-                            {item.label}
-                          </span>
-                          <span className="line-clamp-1 block text-xs leading-5 text-silver">
-                            {item.desc}
-                          </span>
-                        </span>
-                      </Link>
-                    );
-                  })}
-                </div>
-              </div>
-
-              <div className="rounded-[24px] border border-white/10 bg-white/[0.025] p-4">
-                <div className="mb-4 flex items-center justify-between">
-                  <div>
-                    <p className="text-[11px] font-black uppercase tracking-[0.24em] text-amber-base">
-                      Featured in {active}
-                    </p>
-                    <p className="mt-1 font-display text-xl font-black text-text-primary">
-                      Latest picks
-                    </p>
-                  </div>
-
-                  <Link
-                    href={items.find((i) => i.label === active)?.href || "#"}
-                    className="rounded-full border border-white/10 px-4 py-2 text-xs font-bold text-silver transition-colors hover:border-amber-base/30 hover:text-amber-base"
-                  >
-                    View all
-                  </Link>
-                </div>
-
-                <div className="grid grid-cols-2 gap-3">
-                  {activeCards.map((card) => (
-                    <Link
-                      key={card.title}
-                      href={card.href}
-                      className="group/card relative min-h-[210px] overflow-hidden rounded-[24px] border border-white/10 bg-gradient-to-br from-white/[0.06] via-white/[0.03] to-amber-base/10 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-amber-base/35"
-                    >
-                      <div className="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-amber-base/15 blur-2xl opacity-0 transition-opacity group-hover/card:opacity-100" />
-
-                      <div className="relative flex h-full flex-col justify-between">
-                        <div>
-                          <span className="inline-flex rounded-full bg-amber-base/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-amber-base">
-                            {card.badge}
-                          </span>
-
-                          <p className="mt-4 text-lg font-black leading-tight text-text-primary transition-colors group-hover/card:text-amber-base">
-                            {card.title}
-                          </p>
-
-                          <p className="mt-3 text-sm leading-6 text-silver">
-                            {card.desc}
-                          </p>
-                        </div>
-
-                        <span className="mt-5 text-sm font-black text-amber-base">
-                          Read more →
-                        </span>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-    </li>
-  );
-}
+import {
+  primaryNav,
+  type MenuLink,
+  type MenuSection,
+} from "@/components/landing/nav-config";
 
 /** Pages whose header CTA is reported as a consulting CTA click. */
 const CONSULTING_PAGES = new Set([
@@ -851,126 +54,667 @@ function useContactHref() {
   return { href, onCtaClick, label };
 }
 
+type ContactCta = ReturnType<typeof useContactHref>;
+
+const HOVER_CLOSE_DELAY = 140;
+
+const isCurrent = (pathname: string, href: string) =>
+  !href.includes("#") && pathname === href;
+
+function Badge({ text }: { text: string }) {
+  return (
+    <span className="ml-2 inline-flex shrink-0 items-center rounded-full border border-amber-border bg-amber-glow px-1.5 py-px align-middle text-[10px] font-semibold uppercase tracking-[0.08em] text-amber-dim">
+      {text}
+    </span>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* Desktop mega menu                                                          */
+/* -------------------------------------------------------------------------- */
+
+function MegaLink({ link, pathname }: { link: MenuLink; pathname: string }) {
+  const Icon = link.icon;
+  const current = isCurrent(pathname, link.href);
+  return (
+    <Link
+      href={link.href}
+      data-nav-link
+      aria-current={current ? "page" : undefined}
+      className="group/link flex items-start gap-3 rounded-2xl p-2.5 outline-none transition-colors duration-150 hover:bg-amber-glow focus-visible:bg-amber-glow focus-visible:ring-2 focus-visible:ring-amber-base/60 aria-[current=page]:bg-amber-glow"
+    >
+      {Icon && (
+        <span
+          aria-hidden="true"
+          className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-xl border border-amber-border bg-bg-base text-amber-base transition-transform duration-200 group-hover/link:scale-105 group-focus-visible/link:scale-105"
+        >
+          <Icon className="h-[18px] w-[18px]" />
+        </span>
+      )}
+      <span className="min-w-0">
+        <span className="flex items-center text-sm font-semibold leading-5 text-text-primary transition-colors group-hover/link:text-amber-dim group-focus-visible/link:text-amber-dim">
+          {link.label}
+          {link.badge && <Badge text={link.badge} />}
+        </span>
+        {link.desc && (
+          <span className="mt-0.5 block text-[13px] leading-5 text-text-secondary">
+            {link.desc}
+          </span>
+        )}
+      </span>
+    </Link>
+  );
+}
+
+function MegaPanel({
+  section,
+  pathname,
+  cta,
+}: {
+  section: MenuSection;
+  pathname: string;
+  cta: ContactCta;
+}) {
+  const columns = section.groups.filter((g) => !g.compact);
+  const chips = section.groups.filter((g) => g.compact);
+  const colClass =
+    columns.length >= 3
+      ? "grid-cols-3"
+      : columns.length === 2
+        ? "grid-cols-2"
+        : "grid-cols-1";
+
+  return (
+    <div className="relative overflow-hidden rounded-[28px] border border-border bg-bg-base/[0.98] shadow-[0_24px_80px_-12px_rgba(15,23,42,0.22)] backdrop-blur-2xl">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-12 top-0 h-px bg-gradient-to-r from-transparent via-amber-base/70 to-transparent"
+      />
+      <div
+        data-lenis-prevent
+        className="grid max-h-[calc(100vh-7.5rem)] grid-cols-[280px_1fr] overflow-y-auto overscroll-contain 2xl:grid-cols-[300px_1fr]"
+      >
+        {/* Intro card */}
+        <aside className="relative flex flex-col border-r border-border bg-bg-surface/70 p-6">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -left-16 -top-16 h-48 w-48 rounded-full bg-amber-glow blur-3xl"
+          />
+          <p className="relative font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-amber-dim">
+            {section.label}
+          </p>
+          <p className="relative mt-3 font-display text-lg font-semibold leading-snug text-text-primary">
+            {section.summary}
+          </p>
+          {section.overview && (
+            <Link
+              href={section.overview.href}
+              data-nav-link
+              className="group/ov relative mt-4 inline-flex w-fit items-center gap-1.5 rounded-full text-sm font-semibold text-amber-dim outline-none hover:text-text-primary focus-visible:ring-2 focus-visible:ring-amber-base/60"
+            >
+              {section.overview.label}
+              <ArrowRight
+                aria-hidden="true"
+                className="h-4 w-4 transition-transform group-hover/ov:translate-x-0.5"
+              />
+            </Link>
+          )}
+          {section.note && (
+            <p className="relative mt-4 rounded-xl border border-border bg-bg-base p-3 text-xs leading-5 text-text-secondary">
+              {section.note}
+            </p>
+          )}
+          <div className="relative mt-auto pt-6">
+            <Link
+              href={cta.href}
+              data-nav-link
+              onClick={cta.onCtaClick}
+              className="flex items-center justify-between gap-2 rounded-2xl bg-text-primary px-4 py-3 text-sm font-semibold text-bg-base outline-none transition-transform hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-amber-base focus-visible:ring-offset-2"
+            >
+              {cta.label}
+              <ArrowRight
+                aria-hidden="true"
+                className="h-4 w-4 text-amber-light"
+              />
+            </Link>
+          </div>
+        </aside>
+
+        {/* Link columns */}
+        <div className="p-5 2xl:p-6">
+          <div className={`grid gap-x-4 gap-y-6 ${colClass}`}>
+            {columns.map((group) => {
+              const headingId = `nav-${section.id}-${group.heading
+                .toLowerCase()
+                .replace(/[^a-z0-9]+/g, "-")}`;
+              return (
+                <div key={group.heading}>
+                  <p
+                    id={headingId}
+                    className="px-2.5 pb-2 font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-text-secondary"
+                  >
+                    {group.heading}
+                  </p>
+                  <ul aria-labelledby={headingId} className="space-y-0.5">
+                    {group.links.map((link) => (
+                      <li key={`${link.label}-${link.href}`}>
+                        <MegaLink link={link} pathname={pathname} />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
+          </div>
+
+          {chips.map((group) => {
+            const headingId = `nav-${section.id}-${group.heading
+              .toLowerCase()
+              .replace(/[^a-z0-9]+/g, "-")}`;
+            return (
+              <div
+                key={group.heading}
+                className="mt-5 flex flex-wrap items-center gap-2 border-t border-border px-2.5 pt-4"
+              >
+                <p
+                  id={headingId}
+                  className="mr-2 font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-text-secondary"
+                >
+                  {group.heading}
+                </p>
+                <ul
+                  aria-labelledby={headingId}
+                  className="flex flex-wrap gap-2"
+                >
+                  {group.links.map((link) => (
+                    <li key={link.href}>
+                      <Link
+                        href={link.href}
+                        data-nav-link
+                        aria-current={
+                          isCurrent(pathname, link.href) ? "page" : undefined
+                        }
+                        className="inline-flex rounded-full border border-border bg-bg-base px-3 py-1.5 text-[13px] font-medium text-text-secondary outline-none transition-colors hover:border-amber-border hover:bg-amber-glow hover:text-amber-dim focus-visible:ring-2 focus-visible:ring-amber-base/60 aria-[current=page]:border-amber-border aria-[current=page]:text-amber-dim"
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function DesktopMenu({ pathname, cta }: { pathname: string; cta: ContactCta }) {
+  const [openId, setOpenId] = useState<string | null>(null);
+  // Panels are mounted on first hover/focus so their markup isn't shipped in
+  // every page's HTML; once mounted they stay mounted.
+  const [mounted, setMounted] = useState<Set<string>>(() => new Set());
+  const rootRef = useRef<HTMLUListElement>(null);
+  const closeTimer = useRef<number | undefined>(undefined);
+  const focusFirstOnOpen = useRef(false);
+
+  const mount = useCallback((id: string) => {
+    setMounted((prev) => (prev.has(id) ? prev : new Set(prev).add(id)));
+  }, []);
+
+  const cancelClose = () => window.clearTimeout(closeTimer.current);
+
+  const open = useCallback(
+    (id: string) => {
+      window.clearTimeout(closeTimer.current);
+      mount(id);
+      setOpenId(id);
+    },
+    [mount],
+  );
+
+  const close = useCallback(() => {
+    window.clearTimeout(closeTimer.current);
+    setOpenId(null);
+  }, []);
+
+  const trigger = (id: string) =>
+    document.getElementById(`nav-trigger-${id}`) as HTMLButtonElement | null;
+
+  const panelLinks = (id: string) =>
+    Array.from(
+      document
+        .getElementById(`nav-panel-${id}`)
+        ?.querySelectorAll<HTMLAnchorElement>("a[data-nav-link]") ?? [],
+    );
+
+  // Close on navigation.
+  useEffect(() => close(), [pathname, close]);
+
+  // Close on outside click / tap.
+  useEffect(() => {
+    if (!openId) return;
+    const onPointerDown = (e: PointerEvent) => {
+      if (!rootRef.current?.contains(e.target as Node)) close();
+    };
+    document.addEventListener("pointerdown", onPointerDown);
+    return () => document.removeEventListener("pointerdown", onPointerDown);
+  }, [openId, close]);
+
+  // Move focus into a panel opened from the keyboard.
+  useEffect(() => {
+    if (!openId || !focusFirstOnOpen.current) return;
+    focusFirstOnOpen.current = false;
+    const raf = requestAnimationFrame(() => panelLinks(openId)[0]?.focus());
+    return () => cancelAnimationFrame(raf);
+  }, [openId]);
+
+  useEffect(() => () => window.clearTimeout(closeTimer.current), []);
+
+  const onTriggerKeyDown = (
+    e: ReactKeyboardEvent<HTMLButtonElement>,
+    index: number,
+  ) => {
+    const id = primaryNav[index].id;
+    const move = (delta: number) => {
+      const next =
+        primaryNav[(index + delta + primaryNav.length) % primaryNav.length];
+      trigger(next.id)?.focus();
+      if (openId) open(next.id);
+    };
+    switch (e.key) {
+      case "ArrowDown":
+        e.preventDefault();
+        focusFirstOnOpen.current = true;
+        if (openId === id) panelLinks(id)[0]?.focus();
+        else open(id);
+        break;
+      case "ArrowRight":
+        e.preventDefault();
+        move(1);
+        break;
+      case "ArrowLeft":
+        e.preventDefault();
+        move(-1);
+        break;
+      case "Home":
+        e.preventDefault();
+        trigger(primaryNav[0].id)?.focus();
+        break;
+      case "End":
+        e.preventDefault();
+        trigger(primaryNav[primaryNav.length - 1].id)?.focus();
+        break;
+      case "Escape":
+        if (openId) {
+          e.preventDefault();
+          close();
+        }
+        break;
+    }
+  };
+
+  const onPanelKeyDown = (
+    e: ReactKeyboardEvent<HTMLDivElement>,
+    id: string,
+  ) => {
+    const links = panelLinks(id);
+    const i = links.indexOf(document.activeElement as HTMLAnchorElement);
+    const focusAt = (n: number) =>
+      links[(n + links.length) % links.length]?.focus();
+    switch (e.key) {
+      case "Escape":
+        e.preventDefault();
+        close();
+        trigger(id)?.focus();
+        break;
+      case "ArrowDown":
+        e.preventDefault();
+        focusAt(i + 1);
+        break;
+      case "ArrowUp":
+        e.preventDefault();
+        if (i <= 0) trigger(id)?.focus();
+        else focusAt(i - 1);
+        break;
+      case "Home":
+        e.preventDefault();
+        focusAt(0);
+        break;
+      case "End":
+        e.preventDefault();
+        focusAt(links.length - 1);
+        break;
+    }
+  };
+
+  return (
+    <ul ref={rootRef} className="hidden items-center gap-0.5 xl:flex 2xl:gap-1">
+      {primaryNav.map((section, index) => {
+        const isOpen = openId === section.id;
+        const isMounted = mounted.has(section.id);
+        const panelId = `nav-panel-${section.id}`;
+        return (
+          <li
+            key={section.id}
+            onPointerEnter={(e) => {
+              if (e.pointerType !== "mouse") return;
+              open(section.id);
+            }}
+            onPointerLeave={(e) => {
+              if (e.pointerType !== "mouse") return;
+              cancelClose();
+              closeTimer.current = window.setTimeout(close, HOVER_CLOSE_DELAY);
+            }}
+            onFocus={() => mount(section.id)}
+            onBlur={(e) => {
+              const next = e.relatedTarget as Node | null;
+              if (next && !e.currentTarget.contains(next) && isOpen) close();
+            }}
+          >
+            <button
+              type="button"
+              id={`nav-trigger-${section.id}`}
+              aria-expanded={isOpen}
+              aria-controls={isMounted ? panelId : undefined}
+              onClick={() => (isOpen ? close() : open(section.id))}
+              onKeyDown={(e) => onTriggerKeyDown(e, index)}
+              className={`inline-flex items-center gap-1 whitespace-nowrap rounded-full px-2.5 py-2 text-[13px] font-medium outline-none transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-amber-base/60 2xl:px-3 2xl:text-sm ${
+                isOpen
+                  ? "bg-amber-glow text-amber-dim"
+                  : "text-text-secondary hover:bg-amber-glow hover:text-text-primary"
+              }`}
+            >
+              {section.label}
+              <ChevronDown
+                aria-hidden="true"
+                className={`h-3.5 w-3.5 transition-transform duration-200 ${
+                  isOpen ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+
+            {isMounted && (
+              <div
+                id={panelId}
+                role="region"
+                aria-labelledby={`nav-trigger-${section.id}`}
+                onKeyDown={(e) => onPanelKeyDown(e, section.id)}
+                onPointerEnter={cancelClose}
+                // Same-page hash links don't change the pathname; close explicitly.
+                onClick={(e) => {
+                  if ((e.target as HTMLElement).closest("a")) close();
+                }}
+                className={`absolute inset-x-0 top-full z-50 pt-3 transition-[opacity,transform,visibility] duration-200 ease-out motion-reduce:transition-none ${
+                  isOpen
+                    ? "visible translate-y-0 opacity-100"
+                    : "pointer-events-none invisible -translate-y-1 opacity-0"
+                }`}
+              >
+                <MegaPanel section={section} pathname={pathname} cta={cta} />
+              </div>
+            )}
+          </li>
+        );
+      })}
+      <CmsHeaderLinks />
+    </ul>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* Mobile accordion                                                           */
+/* -------------------------------------------------------------------------- */
+
+function MobileMenu({
+  pathname,
+  cta,
+  onClose,
+}: {
+  pathname: string;
+  cta: ContactCta;
+  onClose: () => void;
+}) {
+  const [expanded, setExpanded] = useState<string | null>(null);
+
+  return (
+    <div
+      id="mobile-nav"
+      data-lenis-prevent
+      className="absolute inset-x-3 top-[calc(100%+0.75rem)] max-h-[calc(100dvh-6.5rem)] overflow-y-auto overscroll-contain rounded-3xl border border-border bg-bg-base shadow-[0_24px_60px_-12px_rgba(15,23,42,0.25)] sm:inset-x-6 xl:hidden"
+    >
+      <ul className="divide-y divide-border px-2 py-2">
+        {primaryNav.map((section) => {
+          const isOpen = expanded === section.id;
+          const regionId = `mobile-nav-${section.id}`;
+          const buttonId = `mobile-nav-trigger-${section.id}`;
+          return (
+            <li key={section.id}>
+              <h2 className="m-0">
+                <button
+                  type="button"
+                  id={buttonId}
+                  aria-expanded={isOpen}
+                  aria-controls={regionId}
+                  onClick={() => setExpanded(isOpen ? null : section.id)}
+                  className="flex w-full items-center justify-between gap-3 rounded-2xl px-3 py-3.5 text-left text-base font-semibold text-text-primary outline-none transition-colors focus-visible:ring-2 focus-visible:ring-amber-base/60 aria-expanded:text-amber-dim"
+                >
+                  {section.label}
+                  <ChevronDown
+                    aria-hidden="true"
+                    className={`h-5 w-5 shrink-0 text-text-secondary transition-transform duration-200 motion-reduce:transition-none ${
+                      isOpen ? "rotate-180 text-amber-dim" : ""
+                    }`}
+                  />
+                </button>
+              </h2>
+              <div
+                id={regionId}
+                role="region"
+                aria-labelledby={buttonId}
+                hidden={!isOpen}
+                className="pb-3"
+              >
+                {section.note && (
+                  <p className="mx-3 mb-3 rounded-xl border border-border bg-bg-surface p-3 text-xs leading-5 text-text-secondary">
+                    {section.note}
+                  </p>
+                )}
+                {section.groups.map((group) => (
+                  <div key={group.heading} className="px-1 pt-2">
+                    <p className="px-2 pb-1.5 font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-text-secondary">
+                      {group.heading}
+                    </p>
+                    <ul
+                      className={
+                        group.compact
+                          ? "flex flex-wrap gap-2 px-2 pb-1"
+                          : "grid gap-0.5 sm:grid-cols-2"
+                      }
+                    >
+                      {group.links.map((link) => {
+                        const Icon = link.icon;
+                        const current = isCurrent(pathname, link.href);
+                        return (
+                          <li key={`${link.label}-${link.href}`}>
+                            <Link
+                              href={link.href}
+                              onClick={onClose}
+                              aria-current={current ? "page" : undefined}
+                              className={
+                                group.compact
+                                  ? "inline-flex rounded-full border border-border px-3 py-2 text-sm text-text-secondary outline-none active:bg-amber-glow focus-visible:ring-2 focus-visible:ring-amber-base/60"
+                                  : "flex min-h-11 items-center gap-3 rounded-xl px-2 py-2 outline-none active:bg-amber-glow focus-visible:ring-2 focus-visible:ring-amber-base/60 aria-[current=page]:bg-amber-glow"
+                              }
+                            >
+                              {Icon && !group.compact && (
+                                <span
+                                  aria-hidden="true"
+                                  className="grid h-8 w-8 shrink-0 place-items-center rounded-lg border border-amber-border text-amber-base"
+                                >
+                                  <Icon className="h-4 w-4" />
+                                </span>
+                              )}
+                              <span className="min-w-0">
+                                <span className="flex flex-wrap items-center text-sm font-medium text-text-primary">
+                                  {link.label}
+                                  {link.badge && <Badge text={link.badge} />}
+                                </span>
+                                {link.desc && !group.compact && (
+                                  <span className="block text-xs leading-5 text-text-secondary">
+                                    {link.desc}
+                                  </span>
+                                )}
+                              </span>
+                            </Link>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                ))}
+                {section.overview && (
+                  <Link
+                    href={section.overview.href}
+                    onClick={onClose}
+                    className="mx-3 mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-amber-dim outline-none focus-visible:ring-2 focus-visible:ring-amber-base/60"
+                  >
+                    {section.overview.label}
+                    <ArrowRight aria-hidden="true" className="h-4 w-4" />
+                  </Link>
+                )}
+              </div>
+            </li>
+          );
+        })}
+        <CmsMobileLinks onNavigate={onClose} />
+      </ul>
+
+      <div className="sticky bottom-0 border-t border-border bg-bg-base/95 p-3 backdrop-blur">
+        <Link
+          href={cta.href}
+          onClick={() => {
+            cta.onCtaClick();
+            onClose();
+          }}
+          className="flex items-center justify-center gap-2 rounded-full bg-amber-base px-4 py-3 text-sm font-semibold text-white outline-none focus-visible:ring-2 focus-visible:ring-amber-base focus-visible:ring-offset-2"
+        >
+          {cta.label}
+          <ArrowRight aria-hidden="true" className="h-4 w-4" />
+        </Link>
+      </div>
+    </div>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* Header                                                                     */
+/* -------------------------------------------------------------------------- */
+
 export function Navbar() {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const toggleRef = useRef<HTMLButtonElement>(null);
+  const headerRef = useRef<HTMLElement>(null);
   const contactCta = useContactHref();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     onScroll();
-
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Close the mobile menu on navigation.
+  useEffect(() => setMobileOpen(false), [pathname]);
+
+  // Mobile menu: Escape closes, outside tap closes, page behind doesn't scroll.
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return;
+      setMobileOpen(false);
+      toggleRef.current?.focus();
+    };
+    const onPointerDown = (e: PointerEvent) => {
+      if (!headerRef.current?.contains(e.target as Node)) setMobileOpen(false);
+    };
+    const prevOverflow = document.documentElement.style.overflow;
+    document.documentElement.style.overflow = "hidden";
+    document.addEventListener("keydown", onKey);
+    document.addEventListener("pointerdown", onPointerDown);
+    return () => {
+      document.documentElement.style.overflow = prevOverflow;
+      document.removeEventListener("keydown", onKey);
+      document.removeEventListener("pointerdown", onPointerDown);
+    };
+  }, [mobileOpen]);
+
   return (
-    <header className="fixed inset-x-0 top-4 z-50 flex justify-center">
+    <header
+      ref={headerRef}
+      className="fixed inset-x-0 top-4 z-50 flex justify-center"
+    >
       <nav
-        className={`site-container flex items-center justify-between gap-4 rounded-full border border-border bg-bg-base/5 px-3 py-3 backdrop-blur-xl transition-shadow ${
-          scrolled ? "shadow-soft" : ""
+        aria-label="Primary"
+        className={`relative flex w-[97vw] items-center justify-between gap-3 rounded-full border border-border px-3 py-2.5 backdrop-blur-xl transition-[background-color,box-shadow] duration-300 md:w-[90vw] xl:w-[96vw] 2xl:w-[90vw] ${
+          scrolled || mobileOpen ? "bg-bg-base/80 shadow-soft" : "bg-bg-base/5"
         }`}
       >
-        <Link href="/" className="flex items-center gap-3 pl-2">
+        <Link
+          href="/"
+          aria-label="ClickMasters home"
+          className="flex shrink-0 items-center rounded-full pl-2 outline-none focus-visible:ring-2 focus-visible:ring-amber-base/60"
+        >
           <Image
             src="/media/logo.webp"
             alt="ClickMasters Logo"
             width={170}
             height={45}
             priority
-            className="h-10 w-auto object-contain transition-transform duration-300 hover:scale-105"
+            className="h-9 w-auto object-contain transition-transform duration-300 hover:scale-105 2xl:h-10"
           />
         </Link>
 
-        <ul className="hidden items-center gap-4 lg:flex xl:gap-6">
-          {primaryDropdowns.map((dropdown) => (
-            <DesktopSimpleDropdown
-              key={dropdown.label}
-              label={dropdown.label}
-              items={dropdown.items}
-            />
-          ))}
-          <DesktopDropdown label="Blog" items={blogLinks} />
-          <DesktopDropdown label="Resources" items={resourceLinks} />
-          <DesktopSimpleDropdown label="Company" items={companyLinks} />
-          <CmsHeaderLinks />
-        </ul>
+        <DesktopMenu pathname={pathname} cta={contactCta} />
 
-        <div className="hidden xl:block">
+        <div className="flex items-center gap-2">
           <Link
             href={contactCta.href}
             onClick={contactCta.onCtaClick}
-            className="inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-amber-base px-4 py-2.5 text-sm font-semibold text-bg-base transition-all duration-200 ease-in-out hover:-translate-y-0.5 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-base"
+            className="hidden items-center gap-2 whitespace-nowrap rounded-full bg-amber-base px-4 py-2.5 text-sm font-semibold text-white shadow-[0_8px_24px_-8px_rgba(217,119,6,0.55)] outline-none transition-all duration-200 hover:-translate-y-0.5 hover:bg-amber-dim focus-visible:ring-2 focus-visible:ring-amber-base focus-visible:ring-offset-2 sm:inline-flex"
           >
             {contactCta.label}
+            <ArrowRight aria-hidden="true" className="h-4 w-4" />
           </Link>
+
+          <button
+            ref={toggleRef}
+            type="button"
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-nav"
+            className="grid h-10 w-10 place-items-center rounded-full text-text-primary outline-none transition-colors hover:bg-amber-glow focus-visible:ring-2 focus-visible:ring-amber-base/60 xl:hidden"
+            onClick={() => setMobileOpen((v) => !v)}
+          >
+            {mobileOpen ? (
+              <X aria-hidden="true" className="h-5 w-5" />
+            ) : (
+              <Menu aria-hidden="true" className="h-5 w-5" />
+            )}
+          </button>
         </div>
 
-        <button
-          aria-label="Toggle menu"
-          className="rounded-md p-2 text-foreground lg:hidden"
-          onClick={() => setOpen((v) => !v)}
-        >
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+        {mobileOpen && (
+          <MobileMenu
+            pathname={pathname}
+            cta={contactCta}
+            onClose={() => setMobileOpen(false)}
+          />
+        )}
       </nav>
-
-      {open && (
-        <div className="absolute left-4 right-4 top-20 max-h-[75vh] overflow-y-auto rounded-2xl border border-border bg-surface p-4 shadow-soft lg:hidden">
-          <ul className="flex flex-col gap-2">
-            {mobileSections.map((section) => (
-              <li key={section.label} className="pt-3">
-                <p className="px-3 pb-2 text-xs font-semibold uppercase tracking-[0.18em] text-amber-base">
-                  {section.label}
-                </p>
-
-                <div className="grid gap-2">
-                  {section.items.map((item) => {
-                    const Icon = item.icon;
-
-                    return (
-                      <NavEntry
-                        key={item.label}
-                        item={item}
-                        onClick={() => item.href && setOpen(false)}
-                        className="flex w-full gap-3 rounded-xl border border-white/5 bg-white/[0.03] p-3 text-left hover:bg-muted"
-                      >
-                        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-amber-base/10 text-amber-base">
-                          <Icon className="h-4 w-4" />
-                        </span>
-
-                        <span>
-                          <span className="block text-sm font-semibold text-foreground">
-                            {item.label}
-                          </span>
-                          <span className="block text-xs leading-5 text-silver">
-                            {item.desc}
-                          </span>
-                        </span>
-                      </NavEntry>
-                    );
-                  })}
-                </div>
-              </li>
-            ))}
-
-            <CmsMobileLinks onNavigate={() => setOpen(false)} />
-
-            <li>
-              <Link
-                href={contactCta.href}
-                onClick={() => {
-                  contactCta.onCtaClick();
-                  setOpen(false);
-                }}
-                className="mt-3 block rounded-full bg-amber-base px-4 py-2.5 text-center text-sm font-semibold text-bg-base"
-              >
-                {contactCta.label}
-              </Link>
-            </li>
-          </ul>
-        </div>
-      )}
     </header>
   );
 }
