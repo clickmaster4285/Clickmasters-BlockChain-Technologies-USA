@@ -162,7 +162,7 @@ export function Figure({
   priority?: boolean;
 }) {
   return (
-    <figure className="my-8 overflow-hidden rounded-2xl border border-slate-200 bg-[#0a1020] shadow-[0_20px_50px_-24px_rgba(15,23,42,0.45)]">
+    <figure className="group my-8 overflow-hidden rounded-2xl border border-slate-200 bg-[#0a1020] shadow-[0_20px_50px_-24px_rgba(15,23,42,0.45)]">
       <Image
         src={block.src}
         alt={block.alt}
@@ -172,7 +172,7 @@ export function Figure({
         priority={priority}
         loading={priority ? undefined : "lazy"}
         sizes="(min-width: 1280px) calc(90vw - 400px), (min-width: 1024px) calc(90vw - 330px), 100vw"
-        className="h-auto w-full"
+        className="h-auto w-full transition-transform duration-500 ease-out group-hover:scale-[1.015] motion-reduce:transition-none"
       />
     </figure>
   );

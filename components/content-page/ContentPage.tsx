@@ -20,6 +20,7 @@ import type { Block, ContentPageData, Inline } from "@/data/content-pages";
 import type { ContentType } from "@/lib/related-links";
 
 import { Blocks, CtaButtons, Figure, Inlines } from "./Blocks";
+import ScrollReveal from "./ScrollReveal";
 import TableOfContents from "./TableOfContents";
 
 const plain = (nodes: Inline[]): string =>
@@ -355,23 +356,23 @@ export default function ContentPage({
                 </ol>
               </details>
 
-              <article className="space-y-14">
+              <article className="space-y-6">
                 {main.map((s, i) => (
-                  <section
+                  <ScrollReveal
                     key={s.id}
                     id={s.id}
-                    className={`scroll-mt-28 ${i ? "border-t border-slate-200 pt-12" : ""}`}
+                    className="relative scroll-mt-28 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-[border-color,box-shadow] duration-300 hover:border-amber-base/35 hover:shadow-md md:p-8"
                   >
-                    <p className="font-mono text-xs font-semibold text-amber-600">
+                    <p className="inline-flex h-8 min-w-8 items-center justify-center rounded-full bg-amber-50 px-2 font-mono text-xs font-bold text-amber-700 ring-1 ring-amber-base/15">
                       {String(i + 1).padStart(2, "0")}
                     </p>
-                    <h2 className="mt-2 text-3xl font-extrabold leading-tight tracking-tight text-text-primary md:text-[2.15rem]">
+                    <h2 className="mt-4 text-2xl font-extrabold leading-tight tracking-tight text-text-primary md:text-3xl">
                       <Inlines nodes={s.title} />
                     </h2>
-                    <div className="[&>*:first-child]:mt-5">
+                    <div className="[&>*:first-child]:mt-4">
                       <Blocks blocks={s.blocks} />
                     </div>
-                  </section>
+                  </ScrollReveal>
                 ))}
 
                 {faq && (
@@ -400,9 +401,9 @@ export default function ContentPage({
           ))}
         </div>
 
-        {related.length === 0 && (
+        {/* {related.length === 0 && (
           <RelatedLinks type={relatedType} slug={relatedSlug} />
-        )}
+        )} */}
       </main>
 
       <Footer />
