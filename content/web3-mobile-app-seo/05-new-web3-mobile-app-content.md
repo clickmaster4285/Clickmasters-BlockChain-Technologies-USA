@@ -25,6 +25,10 @@ ClickMasters builds iOS and Android apps where a wallet is how people sign in an
 
 *Free 30-minute call. We sign an NDA before the first meeting.*
 
+> - **What we build:** iOS and Android apps with wallet onboarding, readable transaction signing, smart contract calls, multi-chain RPC, indexing, notifications, and protected backend services.
+> - **Who it is for:** teams that need a mobile product to hold, trade, or interact with digital assets without exposing users to an unclear signing flow or fragile wallet integration.
+> - **Key trade-off:** embedded wallets reduce onboarding friction, while external wallets give users direct control; the required custody and recovery model should be decided before UI work starts.
+
 ---
 
 ## What Web3 Mobile App Development Actually Involves

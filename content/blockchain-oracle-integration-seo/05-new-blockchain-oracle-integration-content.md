@@ -21,6 +21,10 @@ ClickMasters designs and builds blockchain oracle integrations for DeFi protocol
 
 **[Book a free 30-minute strategy call]** → `/contact`  **[Send us your requirements]** → `mailto:sales@clickmastersblockchaintechnologies.com`
 
+> - **What we integrate:** Chainlink, Pyth, custom APIs, first-party data sources, VRF, automation, and cross-chain oracle workflows.
+> - **Who it is for:** DeFi, tokenization, insurance, gaming, derivatives, and enterprise applications that need verified external data or verifiable randomness.
+> - **Key trade-off:** oracle integration improves smart-contract access to real-world data, but data freshness, source trust, availability, and failure handling become part of the contract's security model.
+
 ---
 
 ## What Is Blockchain Oracle Integration?
