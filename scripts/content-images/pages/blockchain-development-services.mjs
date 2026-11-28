@@ -241,6 +241,8 @@ export default {
       file: "blockchain-development-process.webp",
       placement: "Process section (IMAGE 4)",
       alt: "Six-phase blockchain development process from discovery to post-launch operations",
+      w: 1600,
+      h: 650,
       svg: () => {
         const steps = [
           {
@@ -269,8 +271,9 @@ export default {
             sub: "Monitoring dashboards, incident runbook, next-release roadmap",
           },
         ].map((s) => ({ ...s, subKicker: "YOU RECEIVE" }));
-        const body = timeline(steps, { y: 330, cardH: 250 });
+        const body = timeline(steps, { y: 260, cardH: 210, top: false });
         return frame({
+          h: 650,
           kicker: K,
           title: "Our six-phase blockchain development process",
           body,

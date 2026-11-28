@@ -11,7 +11,7 @@ All images are WebP with fixed dimensions. Set `width`/`height` to avoid layout 
 | 4 | Platforms | `/images/enterprise-blockchain-solutions/hyperledger-fabric-vs-besu-data-visibility.webp` | 1600×900, 58 KB | How data visibility differs between Hyperledger Fabric channels and a Hyperledger Besu network |
 | 5 | Architecture | `/images/enterprise-blockchain-solutions/enterprise-blockchain-architecture-layers.webp` | 1600×900, 55 KB | Layers of a production enterprise blockchain architecture, from nodes to applications |
 | 6 | Integration | `/images/enterprise-blockchain-solutions/blockchain-erp-integration-pattern.webp` | 1600×900, 45 KB | Event-driven integration between an ERP system and an enterprise blockchain network |
-| 7 | Process | `/images/enterprise-blockchain-solutions/enterprise-blockchain-delivery-process.webp` | 1600×900, 46 KB | Nine stages of enterprise blockchain delivery, from discovery to ongoing maintenance |
+| 7 | Process | `/images/enterprise-blockchain-solutions/enterprise-blockchain-delivery-process.webp` | 1600×760, 47 KB | Nine stages of enterprise blockchain delivery, from discovery to ongoing maintenance |
 | 8 | OG / social image (1200×630) | `/images/enterprise-blockchain-solutions/enterprise-blockchain-solutions-og.webp` | 1200×630, 23 KB | Enterprise blockchain solutions by ClickMasters |
 
 ## Ready-to-paste markup
@@ -55,7 +55,7 @@ All images are WebP with fixed dimensions. Set `width`/`height` to avoid layout 
 **7. Process**
 
 ```html
-<img src="/images/enterprise-blockchain-solutions/enterprise-blockchain-delivery-process.webp" alt="Nine stages of enterprise blockchain delivery, from discovery to ongoing maintenance" width="1600" height="900" loading="lazy" decoding="async" />
+<img src="/images/enterprise-blockchain-solutions/enterprise-blockchain-delivery-process.webp" alt="Nine stages of enterprise blockchain delivery, from discovery to ongoing maintenance" width="1600" height="760" loading="lazy" decoding="async" />
 ```
 
 **8. OG / social image (1200×630)**

@@ -20,6 +20,7 @@ import type { Block, ContentPageData, Inline } from "@/data/content-pages";
 import type { ContentType } from "@/lib/related-links";
 
 import { Blocks, CtaButtons, Figure, Inlines } from "./Blocks";
+import ServiceEnquiryForm from "./ServiceEnquiryForm";
 import ScrollReveal from "./ScrollReveal";
 import TableOfContents from "./TableOfContents";
 
@@ -136,15 +137,7 @@ function Hero({ page }: { page: ContentPageData }) {
           </div>
         </div>
 
-        <div className="relative">
-          <div
-            aria-hidden="true"
-            className="absolute -inset-3 rounded-[1.75rem] bg-gradient-to-br from-amber-400/25 via-transparent to-sky-400/10 blur-xl"
-          />
-          <div className="relative [&_figure]:my-0 [&_figure]:border-white/10">
-            <Figure block={page.hero.image} priority />
-          </div>
-        </div>
+        <ServiceEnquiryForm serviceType={page.titleText} />
       </div>
     </section>
   );
@@ -330,10 +323,24 @@ export default function ContentPage({
         <Hero page={page} />
 
         <div className="site-container px-6 py-14 lg:py-20">
-          {glance && glance.t === "quote" && (
-            <aside className="mb-14 rounded-3xl border border-amber-base/25 bg-gradient-to-br from-amber-50 via-white to-white p-6 shadow-sm md:p-8 [&>*:first-child]:mt-0">
-              <Blocks blocks={glance.blocks} />
+          {glance && glance.t === "quote" ? (
+            <aside className="mb-14 grid items-center gap-8 rounded-3xl border border-amber-base/25 bg-gradient-to-br from-amber-50 via-white to-white p-6 shadow-sm md:p-8 xl:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] [&>*:first-child]:mt-0">
+              <div className="relative min-w-0">
+                <div className="relative z-10">
+                  <h2 className="mb-4 text-xl font-extrabold tracking-tight text-text-primary md:text-2xl">
+                    At a glance
+                  </h2>
+                  <Blocks blocks={glance.blocks} />
+                </div>
+              </div>
+              <div className="[&_figure]:my-0">
+                <Figure block={page.hero.image} />
+              </div>
             </aside>
+          ) : (
+            <div className="mx-auto mb-14 max-w-5xl [&_figure]:my-0">
+              <Figure block={page.hero.image} />
+            </div>
           )}
 
           <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_250px] xl:grid-cols-[minmax(0,1fr)_320px]">

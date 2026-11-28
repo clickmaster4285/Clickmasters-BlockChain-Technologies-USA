@@ -357,8 +357,8 @@ function build(page) {
     t: "img",
     src: `/images/${page.imageDir}/${f.file}`,
     alt: f.alt,
-    w: 1600,
-    h: 900,
+    w: f.w ?? 1600,
+    h: f.h ?? 900,
   });
   for (const f of page.images) {
     let placed = false;

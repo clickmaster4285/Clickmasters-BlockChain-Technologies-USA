@@ -13,7 +13,7 @@ All images are WebP with fixed dimensions. Set `width`/`height` to avoid layout 
 | 6 | Upgradeable or Immutable: Choosing Deliberately | `/images/smart-contract-development/upgradeable-smart-contract-proxy-architecture.webp` | 1600×900, 43 KB | Upgradeable smart contract proxy architecture separating storage from logic |
 | 7 | Our Smart Contract Testing Layers | `/images/smart-contract-development/smart-contract-testing-layers.webp` | 1600×900, 44 KB | Smart contract testing layers including fuzz, invariant and mainnet fork tests |
 | 8 | Development Testing vs. an Independent Smart Contract Audit | `/images/smart-contract-development/smart-contract-testing-vs-independent-audit.webp` | 1600×900, 58 KB | Comparison of internal smart contract testing and an independent security audit |
-| 9 | Our Smart Contract Development Process | `/images/smart-contract-development/smart-contract-development-process.webp` | 1600×900, 43 KB | Seven-step smart contract development process with deliverables at each stage |
+| 9 | Our Smart Contract Development Process | `/images/smart-contract-development/smart-contract-development-process.webp` | 1600×650, 42 KB | Seven-step smart contract development process with deliverables at each stage |
 
 ## Ready-to-paste markup
 
@@ -71,5 +71,5 @@ All images are WebP with fixed dimensions. Set `width`/`height` to avoid layout 
 **9. Our Smart Contract Development Process**
 
 ```html
-<img src="/images/smart-contract-development/smart-contract-development-process.webp" alt="Seven-step smart contract development process with deliverables at each stage" width="1600" height="900" loading="lazy" decoding="async" />
+<img src="/images/smart-contract-development/smart-contract-development-process.webp" alt="Seven-step smart contract development process with deliverables at each stage" width="1600" height="650" loading="lazy" decoding="async" />
 ```

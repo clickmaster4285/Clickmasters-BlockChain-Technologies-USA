@@ -694,6 +694,8 @@ export default {
       file: "cosmos-appchain-testnet-to-mainnet-launch-timeline.webp",
       placement: "Launch H2",
       alt: "Cosmos appchain launch timeline from devnet to mainnet genesis",
+      w: 1600,
+      h: 640,
       svg: () => {
         const steps = [
           {
@@ -722,8 +724,9 @@ export default {
             sub: "First block once > 2/3 of genesis voting power is online",
           },
         ];
-        const body = timeline(steps, { y: 320, cardH: 250 });
+        const body = timeline(steps, { y: 260, cardH: 210, top: false });
         return frame({
+          h: 640,
           kicker: K,
           title: "From devnet to mainnet: the launch timeline",
           body,
@@ -734,6 +737,8 @@ export default {
       file: "cosmos-chain-upgrade-cosmovisor-flow.webp",
       placement: "Upgrades H2",
       alt: "Cosmos SDK chain upgrade flow using governance and Cosmovisor",
+      w: 1600,
+      h: 680,
       svg: () => {
         const steps = [
           [
@@ -749,8 +754,8 @@ export default {
         let body = "";
         const w = 216,
           gap = 28,
-          y = 300,
-          h = 250;
+          y = 260,
+          h = 190;
         steps.forEach(([t, s], i) => {
           const x = 80 + i * (w + gap);
           body += box(x, y, w, h, {
@@ -759,15 +764,14 @@ export default {
             titleSize: 20,
             subSize: 15.5,
             accent: i === 3 || i === 4,
-            top: true,
             pad: 16,
           });
           body += numCircle(x + w / 2, y, i + 1, { r: 21 });
           if (i < steps.length - 1)
             body += arrow(x + w + 2, y + h / 2, x + w + gap - 2, y + h / 2);
         });
-        body += box(80, 640, 1440, 120, { title: "", fill: C.card });
-        body += text(110, 690, "WHAT WE DO", {
+        body += box(80, 500, 1440, 100, { title: "", fill: C.card });
+        body += text(110, 540, "WHAT WE DO", {
           size: 14,
           weight: 700,
           fill: C.amber,
@@ -775,11 +779,12 @@ export default {
         });
         body += text(
           110,
-          724,
+          574,
           "Write and rehearse upgrade handlers on a testnet, coordinate validators, and keep the chain on a supported SDK and CometBFT release line.",
           { size: 18, maxWidth: 1380 },
         );
         return frame({
+          h: 680,
           kicker: K,
           title: "How a Cosmos chain upgrade works",
           body,

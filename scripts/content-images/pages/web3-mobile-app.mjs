@@ -588,6 +588,8 @@ export default {
       file: "web3-mobile-app-development-process.webp",
       placement: "Process",
       alt: "Six-step Web3 mobile app development process from discovery to store launch and support",
+      w: 1600,
+      h: 650,
       svg: () => {
         const steps = [
           [
@@ -615,8 +617,9 @@ export default {
             "App Store and Google Play submission, then ongoing support",
           ],
         ].map(([title, sub]) => ({ title, sub }));
-        const body = timeline(steps, { y: 310, cardH: 250 });
+        const body = timeline(steps, { y: 260, cardH: 210, top: false });
         return frame({
+          h: 650,
           kicker: K,
           title: "Our six-step Web3 mobile app process",
           body,

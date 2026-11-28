@@ -12,7 +12,7 @@ All images are WebP with fixed dimensions. Set `width`/`height` to avoid layout 
 | 5 | "Transaction Signing Users Can Understand" | `/images/web3-mobile-app/readable-transaction-signing-mobile-ui.webp` | 1600×900, 46 KB | Mobile transaction signing screen showing readable approval details, network fee in dollars and confirmation status |
 | 6 | "Private Key Protection" | `/images/web3-mobile-app/mobile-wallet-private-key-protection-secure-enclave.webp` | 1600×900, 47 KB | How a mobile wallet protects private keys: encryption with a Secure Enclave or Android Keystore key and biometric unlock |
 | 7 | "Native vs Cross-Platform" (optional) | `/images/web3-mobile-app/react-native-flutter-native-web3-comparison.webp` | 1600×900, 41 KB | Comparison of React Native, Flutter and native Swift/Kotlin for Web3 mobile app development |
-| 8 | Process | `/images/web3-mobile-app/web3-mobile-app-development-process.webp` | 1600×900, 44 KB | Six-step Web3 mobile app development process from discovery to store launch and support |
+| 8 | Process | `/images/web3-mobile-app/web3-mobile-app-development-process.webp` | 1600×650, 43 KB | Six-step Web3 mobile app development process from discovery to store launch and support |
 | 9 | OG / social image (1200×630, not rendered on page) | `/images/web3-mobile-app/og-web3-mobile-app-development.webp` | 1200×630, 24 KB | Web3 mobile app development services by ClickMasters |
 
 ## Ready-to-paste markup
@@ -62,7 +62,7 @@ All images are WebP with fixed dimensions. Set `width`/`height` to avoid layout 
 **8. Process**
 
 ```html
-<img src="/images/web3-mobile-app/web3-mobile-app-development-process.webp" alt="Six-step Web3 mobile app development process from discovery to store launch and support" width="1600" height="900" loading="lazy" decoding="async" />
+<img src="/images/web3-mobile-app/web3-mobile-app-development-process.webp" alt="Six-step Web3 mobile app development process from discovery to store launch and support" width="1600" height="650" loading="lazy" decoding="async" />
 ```
 
 **9. OG / social image (1200×630, not rendered on page)**

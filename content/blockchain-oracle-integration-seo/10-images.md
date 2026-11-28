@@ -10,7 +10,7 @@ All images are WebP with fixed dimensions. Set `width`/`height` to avoid layout 
 | 3 | Types of Oracle Integration | `/images/blockchain-oracle-integration/push-vs-pull-oracle-models.webp` (+ .svg) | 1600×900, 49 KB | Comparison of push-based and pull-based oracle data delivery |
 | 4 | Connecting External APIs and Data to Smart Contracts | `/images/blockchain-oracle-integration/api-to-smart-contract-oracle-workflow.webp` (+ .svg) | 1600×900, 48 KB | Oracle workflow querying two flight-data APIs and paying an insurance claim on-chain |
 | 5 | Oracle Security and Data Reliability | `/images/blockchain-oracle-integration/oracle-failure-handling-flow.webp` (+ .svg) | 1600×900, 48 KB | Decision flow showing how a contract handles stale, invalid or conflicting oracle data |
-| 6 | Our Blockchain Oracle Integration Process | `/images/blockchain-oracle-integration/oracle-integration-process.webp` (+ .svg) | 1600×900, 55 KB | Eight-phase blockchain oracle integration process from assessment to monitoring |
+| 6 | Our Blockchain Oracle Integration Process | `/images/blockchain-oracle-integration/oracle-integration-process.webp` (+ .svg) | 1600×760, 56 KB | Eight-phase blockchain oracle integration process from assessment to monitoring |
 
 ## Ready-to-paste markup
 
@@ -47,5 +47,5 @@ All images are WebP with fixed dimensions. Set `width`/`height` to avoid layout 
 **6. Our Blockchain Oracle Integration Process**
 
 ```html
-<img src="/images/blockchain-oracle-integration/oracle-integration-process.webp" alt="Eight-phase blockchain oracle integration process from assessment to monitoring" width="1600" height="900" loading="lazy" decoding="async" />
+<img src="/images/blockchain-oracle-integration/oracle-integration-process.webp" alt="Eight-phase blockchain oracle integration process from assessment to monitoring" width="1600" height="760" loading="lazy" decoding="async" />
 ```

@@ -23,7 +23,6 @@ We build on the current, supported Cosmos stack: the Cosmos SDK, CometBFT consen
 
 > **[EDITOR NOTE — remove before publishing]:** The site already offers "Free 30-min strategy call. NDA signed before the first meeting." Confirm that the person on this call is an engineer before keeping "with an engineer". Otherwise use "Free 30-minute strategy call."
 
-> **At a glance**
 > - **What you get:** a sovereign, application-specific blockchain built with the Cosmos SDK, with your own business logic, fee model, governance and validator set.
 > - **Who it's for:** DeFi and trading protocols, payment and stablecoin networks, tokenisation platforms, enterprises that need a permissioned ledger, and Web3 products with high throughput or custom economics.
 > - **What we deliver:** architecture specification, custom Go modules, chain configuration and genesis, IBC integration, an optional smart contract layer, test suites, security review and audit coordination, testnet and mainnet launch, infrastructure runbooks and upgrade support.

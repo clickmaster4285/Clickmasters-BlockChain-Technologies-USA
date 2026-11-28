@@ -12,8 +12,8 @@ All images are WebP with fixed dimensions. Set `width`/`height` to avoid layout 
 | 5 | IBC H3 "How IBC works" | `/images/cosmos-sdk-appchain/ibc-light-clients-connections-channels-packets.webp` | 1600×900, 44 KB | How IBC works: light clients, connections, channels and packets relayed between two chains |
 | 6 | IBC v2 H3 | `/images/cosmos-sdk-appchain/ibc-v2-cosmos-ethereum-connection.webp` | 1600×900, 51 KB | IBC v2 connection between a Cosmos appchain and Ethereum |
 | 7 | Validator H2 | `/images/cosmos-sdk-appchain/cosmos-validator-sentry-node-architecture.webp` | 1600×900, 56 KB | Cosmos validator infrastructure with sentry nodes, remote signer and monitoring |
-| 8 | Launch H2 | `/images/cosmos-sdk-appchain/cosmos-appchain-testnet-to-mainnet-launch-timeline.webp` | 1600×900, 41 KB | Cosmos appchain launch timeline from devnet to mainnet genesis |
-| 9 | Upgrades H2 | `/images/cosmos-sdk-appchain/cosmos-chain-upgrade-cosmovisor-flow.webp` | 1600×900, 44 KB | Cosmos SDK chain upgrade flow using governance and Cosmovisor |
+| 8 | Launch H2 | `/images/cosmos-sdk-appchain/cosmos-appchain-testnet-to-mainnet-launch-timeline.webp` | 1600×640, 40 KB | Cosmos appchain launch timeline from devnet to mainnet genesis |
+| 9 | Upgrades H2 | `/images/cosmos-sdk-appchain/cosmos-chain-upgrade-cosmovisor-flow.webp` | 1600×680, 43 KB | Cosmos SDK chain upgrade flow using governance and Cosmovisor |
 | 10 | OG / social image (1200×630) | `/images/cosmos-sdk-appchain/cosmos-sdk-appchain-development-og.webp` | 1200×630, 28 KB | Cosmos SDK appchain development services by ClickMasters |
 
 ## Ready-to-paste markup
@@ -63,13 +63,13 @@ All images are WebP with fixed dimensions. Set `width`/`height` to avoid layout 
 **8. Launch H2**
 
 ```html
-<img src="/images/cosmos-sdk-appchain/cosmos-appchain-testnet-to-mainnet-launch-timeline.webp" alt="Cosmos appchain launch timeline from devnet to mainnet genesis" width="1600" height="900" loading="lazy" decoding="async" />
+<img src="/images/cosmos-sdk-appchain/cosmos-appchain-testnet-to-mainnet-launch-timeline.webp" alt="Cosmos appchain launch timeline from devnet to mainnet genesis" width="1600" height="640" loading="lazy" decoding="async" />
 ```
 
 **9. Upgrades H2**
 
 ```html
-<img src="/images/cosmos-sdk-appchain/cosmos-chain-upgrade-cosmovisor-flow.webp" alt="Cosmos SDK chain upgrade flow using governance and Cosmovisor" width="1600" height="900" loading="lazy" decoding="async" />
+<img src="/images/cosmos-sdk-appchain/cosmos-chain-upgrade-cosmovisor-flow.webp" alt="Cosmos SDK chain upgrade flow using governance and Cosmovisor" width="1600" height="680" loading="lazy" decoding="async" />
 ```
 
 **10. OG / social image (1200×630)**

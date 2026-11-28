@@ -581,6 +581,8 @@ export default {
       file: "smart-contract-development-process.webp",
       placement: "Our Smart Contract Development Process",
       alt: "Seven-step smart contract development process with deliverables at each stage",
+      w: 1600,
+      h: 650,
       svg: () => {
         const steps = [
           ["Discovery", "Written specification draft, scope and estimate"],
@@ -599,8 +601,9 @@ export default {
           subKicker: "YOU RECEIVE",
           accent: i === 4,
         }));
-        const body = timeline(steps, { y: 310, cardH: 260 });
+        const body = timeline(steps, { y: 260, cardH: 210, top: false });
         return frame({
+          h: 650,
           kicker: K,
           title: "Our seven-step smart contract process",
           body,

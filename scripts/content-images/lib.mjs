@@ -261,7 +261,14 @@ ${body}
 /** Horizontal numbered timeline. steps: [{title, sub}] */
 export function timeline(
   steps,
-  { x0 = 80, x1 = 1520, y = 330, cardH = 300, alternate = false } = {},
+  {
+    x0 = 80,
+    x1 = 1520,
+    y = 330,
+    cardH = 300,
+    alternate = false,
+    top = true,
+  } = {},
 ) {
   const n = steps.length;
   const gap = alternate ? (x1 - x0) / (n + 1) : (x1 - x0) / n;
@@ -280,7 +287,7 @@ export function timeline(
       sub: st.sub,
       kicker: st.kicker,
       subKicker: st.subKicker,
-      top: true,
+      top,
       titleSize: st.titleSize ?? (alternate ? 19 : n > 6 ? 19 : 21),
       subSize: alternate ? 15 : n > 6 ? 14.5 : 16,
       pad: 16,

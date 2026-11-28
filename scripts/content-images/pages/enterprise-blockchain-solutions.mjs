@@ -476,6 +476,8 @@ export default {
       file: "enterprise-blockchain-delivery-process.webp",
       placement: "Process",
       alt: "Nine stages of enterprise blockchain delivery, from discovery to ongoing maintenance",
+      w: 1600,
+      h: 760,
       svg: () => {
         const steps = [
           ["Business discovery", "Process map, stakeholders, requirements"],
@@ -488,8 +490,13 @@ export default {
           ["Production readiness", "Production environment, runbooks"],
           ["Monitoring & maintenance", "Support per agreed terms"],
         ].map(([title, sub]) => ({ title, sub }));
-        const body = timeline(steps, { y: 500, alternate: true });
+        const body = timeline(steps, {
+          y: 440,
+          alternate: true,
+          top: false,
+        });
         return frame({
+          h: 760,
           kicker: K,
           title: "Nine stages of enterprise blockchain delivery",
           body,

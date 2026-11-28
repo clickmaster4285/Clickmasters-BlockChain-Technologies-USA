@@ -168,10 +168,9 @@ export function Figure({
         alt={block.alt}
         width={block.w}
         height={block.h}
-        quality={90}
+        unoptimized
         priority={priority}
         loading={priority ? undefined : "lazy"}
-        sizes="(min-width: 1280px) calc(90vw - 400px), (min-width: 1024px) calc(90vw - 330px), 100vw"
         className="h-auto w-full transition-transform duration-500 ease-out group-hover:scale-[1.015] motion-reduce:transition-none"
       />
     </figure>

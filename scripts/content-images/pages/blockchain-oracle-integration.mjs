@@ -420,6 +420,8 @@ export default {
       alsoSvg: true,
       placement: "Our Blockchain Oracle Integration Process",
       alt: "Eight-phase blockchain oracle integration process from assessment to monitoring",
+      w: 1600,
+      h: 760,
       svg: () => {
         const steps = [
           [
@@ -452,8 +454,13 @@ export default {
           ],
           ["Monitoring & maintenance", "Dashboards, alerts and runbook"],
         ].map(([title, sub]) => ({ title, sub, subKicker: "YOU RECEIVE" }));
-        const body = timeline(steps, { y: 500, alternate: true });
+        const body = timeline(steps, {
+          y: 440,
+          alternate: true,
+          top: false,
+        });
         return frame({
+          h: 760,
           kicker: K,
           title: "Our eight-phase oracle integration process",
           body,
