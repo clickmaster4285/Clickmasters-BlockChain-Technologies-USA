@@ -131,15 +131,16 @@ export default async function GlossaryPage({
                 </div>
 
                 <h1 className="mt-6 max-w-4xl font-display text-4xl font-black leading-tight tracking-tight text-text-primary md:text-6xl">
-                  Understand Blockchain and Web3 Terms Clearly
+                  Blockchain Glossary: Understand Web3 Terms Clearly
                   {safeCurrentPage > 1 &&
                     ` — Page ${safeCurrentPage} of ${totalPages}`}
                 </h1>
 
                 <p className="mt-5 max-w-2xl text-base leading-8 text-silver md:text-lg">
-                  Explore simple definitions, practical examples, technical
-                  explanations, and real-world uses of blockchain, crypto, Web3,
-                  DeFi, smart-contract, and enterprise terminology.
+                  Use this blockchain glossary to explore simple definitions,
+                  practical examples, technical explanations, and real-world
+                  applications across crypto, Web3, DeFi, smart contracts,
+                  security, and enterprise blockchain terminology.
                 </p>
 
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
@@ -233,6 +234,35 @@ export default async function GlossaryPage({
               </div>
             </div>
           </div>
+
+          <section className="mt-12 rounded-[2rem] border border-white/10 bg-surface/80 p-6 md:p-10">
+            <p className="text-xs font-black uppercase tracking-[0.22em] text-amber-base">
+              Blockchain Glossary
+            </p>
+            <h2 className="mt-3 text-2xl font-black text-text-primary md:text-4xl">
+              Find the Blockchain Glossary Term You Need
+            </h2>
+            <p className="mt-4 max-w-4xl text-sm leading-7 text-silver md:text-base">
+              This blockchain glossary separates network, cryptography,
+              consensus, smart-contract, DeFi, wallet, and compliance terms.
+              Use the blockchain glossary search and letter filters to move
+              from a broad concept to an implementation-focused definition.
+            </p>
+            <div className="mt-6 grid gap-4 md:grid-cols-3">
+              {[
+                "Blockchain glossary terms explain the same concept across developer and business contexts.",
+                "Use the blockchain glossary to compare similar concepts before choosing an architecture.",
+                "The blockchain glossary connects core terminology with practical risks and real-world use cases.",
+              ].map((item) => (
+                <p
+                  key={item}
+                  className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-sm leading-7 text-silver"
+                >
+                  {item}
+                </p>
+              ))}
+            </div>
+          </section>
 
           {/* Search and filters */}
           <section id="terms" className="mt-16">
