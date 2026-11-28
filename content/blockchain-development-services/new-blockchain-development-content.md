@@ -21,6 +21,10 @@ Before any of that, we help you settle the question that decides whether a proje
 - **Security in every phase.** Threat modelling, fuzz and invariant testing, and audit preparation are part of the build, not an add-on at the end.
 - **Built to be operated.** You get deployment scripts, monitoring and runbooks along with the product, so launch day isn't the last time anyone understands the system.
 
+> - **What we build:** smart contracts, dApps, backend and indexing services, wallet experiences, and integrations for public, L2, and permissioned networks.
+> - **Who it is for:** startups, fintech teams, enterprises, and consortiums that need one team to take an on-chain product from architecture through launch and operations.
+> - **Key trade-off:** a blockchain adds independent verification and shared-state guarantees, but it adds deployment, key-management, monitoring, and incident-response obligations.
+
 <!-- IMAGE 1: Hero illustration — layered architecture diagram (users → app → backend/indexer → smart contracts → network). -->
 
 ---

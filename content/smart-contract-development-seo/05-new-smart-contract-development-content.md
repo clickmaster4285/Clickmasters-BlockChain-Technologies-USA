@@ -21,6 +21,10 @@ We build on Ethereum and EVM-compatible networks in Solidity and Vyper, on Solan
 
 *NDA available before the first technical conversation.* **[VERIFY: confirm the NDA policy stated on the homepage is current.]**
 
+> - **What we build:** Solidity, Vyper, Rust, or Go contracts for tokens, DeFi, NFTs, governance, enterprise workflows, and smart accounts.
+> - **Who it is for:** teams deploying contracts that hold assets or enforce rules, or teams inheriting, extending, reviewing, or upgrading existing contract code.
+> - **Key trade-off:** code and assets become transparent and difficult to reverse after deployment, so the upgrade model, permissions, invariants, testing, and incident procedures must be specified early.
+
 ---
 
 ## Who Hires a Smart Contract Development Company and Why

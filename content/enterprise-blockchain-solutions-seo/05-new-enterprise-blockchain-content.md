@@ -25,6 +25,10 @@ ClickMasters designs, builds and integrates permissioned blockchain networks tha
 
 [CONFIRM: Trust strip goes here, e.g. years in enterprise delivery, number of production networks, named certifications. The current site shows "Enterprise since 2014" and "1,000+ projects", but neither is substantiated anywhere on the site. Publish only figures the company can evidence. Otherwise leave the strip out.]
 
+> - **What we build:** permissioned networks, participant governance, private data controls, smart contracts, ERP and system integrations, and production operating procedures.
+> - **Who it is for:** enterprises and consortiums where several organizations need a shared record, controlled participation, and a cryptographic audit trail.
+> - **Key trade-off:** permissioned networks add cross-party governance and operational work, but avoid public data exposure and depend less on anonymous validators or public cryptocurrency economics.
+
 ---
 
 ## What Are Enterprise Blockchain Solutions?
