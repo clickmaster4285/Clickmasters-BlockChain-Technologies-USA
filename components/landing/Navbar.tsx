@@ -619,6 +619,8 @@ export function Navbar() {
   const toggleRef = useRef<HTMLButtonElement>(null);
   const headerRef = useRef<HTMLElement>(null);
   const contactCta = useContactHref();
+  const isServicePage =
+    pathname === "/service" || pathname.startsWith("/service/");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -659,8 +661,14 @@ export function Navbar() {
     >
       <nav
         aria-label="Primary"
-        className={`relative flex w-[97vw] items-center justify-between gap-3 rounded-full border border-border px-3 py-2.5 backdrop-blur-xl transition-[background-color,box-shadow] duration-300 md:w-[90vw] xl:w-[96vw] 2xl:w-[90vw] ${
-          scrolled || mobileOpen ? "bg-bg-base/80 shadow-soft" : "bg-bg-base/5"
+        className={`relative flex w-[97vw] items-center justify-between gap-3 rounded-full border px-3 py-2.5 backdrop-blur-xl transition-[background-color,box-shadow,border-color,color] duration-300 md:w-[90vw] xl:w-[96vw] 2xl:w-[90vw] ${
+          isServicePage
+            ? scrolled || mobileOpen
+              ? "border-white/10 bg-slate-950/95 shadow-soft [--text-primary:#f8fafc] [--text-secondary:#cbd5e1] [--text-muted:#94a3b8] [--foreground:#f8fafc] [--muted-foreground:#cbd5e1] [--border-default:rgba(255,255,255,0.14)] [--border:rgba(255,255,255,0.14)] [--bg-base:#0f172a] [--bg-surface:#1e293b] [--amber-dim:#fde68a]"
+              : "border-slate-200 bg-white shadow-soft [--text-primary:#0f172a] [--text-secondary:#475569] [--text-muted:#64748b] [--foreground:#0f172a] [--muted-foreground:#475569] [--border-default:#e2e8f0] [--border:#e2e8f0] [--bg-base:#ffffff] [--bg-surface:#f8fafc]"
+            : scrolled || mobileOpen
+              ? "border-border bg-bg-base/80 shadow-soft"
+              : "border-border bg-bg-base/5"
         }`}
       >
         <Link
@@ -669,7 +677,11 @@ export function Navbar() {
           className="flex shrink-0 items-center rounded-full pl-2 outline-none focus-visible:ring-2 focus-visible:ring-amber-base/60"
         >
           <Image
-            src="/media/logo.webp"
+            src={
+              isServicePage && (scrolled || mobileOpen)
+                ? "/media/logo-white-orange.webp"
+                : "/media/logo.webp"
+            }
             alt="ClickMasters Logo"
             width={170}
             height={45}

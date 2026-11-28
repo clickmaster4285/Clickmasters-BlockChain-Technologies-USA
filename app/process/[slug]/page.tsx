@@ -22,6 +22,8 @@ import {
 import RelatedLinks from "@/components/RelatedLinks";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { faqPageSchema } from "@/lib/structured-data";
+import ContentPage from "@/components/content-page/ContentPage";
+import { getContentPage } from "@/data/content-pages";
 
 type ProcessSlugPageProps = {
   params: Promise<{
@@ -39,6 +41,16 @@ export async function generateMetadata({
   params,
 }: ProcessSlugPageProps): Promise<Metadata> {
   const { slug } = await params;
+  const contentPage = getContentPage(`/process/${slug}`);
+  if (contentPage) {
+    return createPageMetadata({
+      title: contentPage.meta.title,
+      description: contentPage.meta.description,
+      path: contentPage.path,
+      image: contentPage.ogImage?.src ?? contentPage.hero.image.src,
+      type: "website",
+    });
+  }
   const process = getProcessBySlug(slug);
 
   if (!process) {
@@ -63,6 +75,16 @@ export default async function ProcessSlugPage({
   params,
 }: ProcessSlugPageProps) {
   const { slug } = await params;
+  const contentPage = getContentPage(`/process/${slug}`);
+  if (contentPage) {
+    return (
+      <ContentPage
+        page={contentPage}
+        relatedType="process"
+        relatedSlug={slug}
+      />
+    );
+  }
   const process = getProcessBySlug(slug);
 
   if (!process) {
