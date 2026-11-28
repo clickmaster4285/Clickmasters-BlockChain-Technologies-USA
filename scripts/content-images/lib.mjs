@@ -43,14 +43,20 @@ export function wrap(text, maxWidth, size) {
 export function text(x, y, str, o = {}) {
   const size = o.size ?? 20;
   const lh = o.lh ?? size * 1.28;
-  const lines = o.maxWidth ? wrap(str, o.maxWidth, size) : String(str).split("\n");
+  const lines = o.maxWidth
+    ? wrap(str, o.maxWidth, size)
+    : String(str).split("\n");
   const y0 = o.vcenter ? y - ((lines.length - 1) * lh) / 2 + size * 0.35 : y;
   const tsp = lines
-    .map((l, i) => `<tspan x="${x}" y="${(y0 + i * lh).toFixed(1)}">${esc(l)}</tspan>`)
+    .map(
+      (l, i) =>
+        `<tspan x="${x}" y="${(y0 + i * lh).toFixed(1)}">${esc(l)}</tspan>`,
+    )
     .join("");
   return `<text font-family="${o.mono ? MONO : FONT}" font-size="${size}" font-weight="${o.weight ?? 400}" fill="${o.fill ?? C.text}" text-anchor="${o.anchor ?? "start"}"${o.ls ? ` letter-spacing="${o.ls}"` : ""}${o.italic ? ` font-style="italic"` : ""}>${tsp}</text>`;
 }
-export const linesOf = (str, maxWidth, size) => wrap(str, maxWidth, size).length;
+export const linesOf = (str, maxWidth, size) =>
+  wrap(str, maxWidth, size).length;
 
 export function rect(x, y, w, h, o = {}) {
   return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${o.r ?? 14}" fill="${o.fill ?? C.card}" stroke="${o.stroke ?? C.stroke}" stroke-width="${o.sw ?? 1.5}"${o.dash ? ` stroke-dasharray="${o.dash}"` : ""}${o.filter ? ` filter="url(#${o.filter})"` : ""}/>`;
@@ -75,34 +81,75 @@ export function box(x, y, w, h, o = {}) {
   const anchor = left ? "start" : "middle";
   const titleLines = o.title ? linesOf(o.title, w - pad * 2, ts) : 0;
   const subLines = o.sub ? linesOf(o.sub, w - pad * 2, ss) : 0;
-  const blockH = titleLines * ts * 1.25 + (subLines ? 8 + subLines * ss * 1.35 : 0) + (o.subKicker ? 26 : 0);
+  const blockH =
+    titleLines * ts * 1.25 +
+    (subLines ? 8 + subLines * ss * 1.35 : 0) +
+    (o.subKicker ? 26 : 0);
   let cy = o.top ? y + pad + ts * 0.85 : y + h / 2 - blockH / 2 + ts * 0.85;
   if (o.kicker) {
-    s += text(tx, o.top ? cy - 2 : cy - 4, o.kicker, { size: 13, weight: 700, fill: C.amber, anchor, ls: 2 });
+    s += text(tx, o.top ? cy - 2 : cy - 4, o.kicker, {
+      size: 13,
+      weight: 700,
+      fill: C.amber,
+      anchor,
+      ls: 2,
+    });
     cy += 24;
   }
   if (o.title) {
-    s += text(tx, cy, o.title, { size: ts, weight: 600, maxWidth: w - pad * 2, anchor, fill: o.titleFill ?? C.text, lh: ts * 1.25 });
+    s += text(tx, cy, o.title, {
+      size: ts,
+      weight: 600,
+      maxWidth: w - pad * 2,
+      anchor,
+      fill: o.titleFill ?? C.text,
+      lh: ts * 1.25,
+    });
     cy += titleLines * ts * 1.25 + 8;
   }
   if (o.subKicker) {
-    s += text(tx, cy + 4, o.subKicker, { size: 12, weight: 700, fill: C.amber, anchor, ls: 2 });
+    s += text(tx, cy + 4, o.subKicker, {
+      size: 12,
+      weight: 700,
+      fill: C.amber,
+      anchor,
+      ls: 2,
+    });
     cy += 26;
   }
   if (o.sub) {
-    s += text(tx, cy - ss * 0.2, o.sub, { size: ss, maxWidth: w - pad * 2, anchor, fill: C.muted, lh: ss * 1.35, mono: o.subMono });
+    s += text(tx, cy - ss * 0.2, o.sub, {
+      size: ss,
+      maxWidth: w - pad * 2,
+      anchor,
+      fill: C.muted,
+      lh: ss * 1.35,
+      mono: o.subMono,
+    });
   }
   return s;
 }
 
 export function arrow(x1, y1, x2, y2, o = {}) {
   const col = o.color ?? C.amberSoft;
-  const marker = col === C.amberSoft ? "ah" : col === C.red ? "ahRed" : col === C.green ? "ahGreen" : "ahMuted";
+  const marker =
+    col === C.amberSoft
+      ? "ah"
+      : col === C.red
+        ? "ahRed"
+        : col === C.green
+          ? "ahGreen"
+          : "ahMuted";
   let s = `<path d="M${x1},${y1} L${x2},${y2}" stroke="${col}" stroke-width="${o.sw ?? 2.5}" fill="none"${o.dash ? ` stroke-dasharray="${o.dash}"` : ""} marker-end="url(#${marker})"${o.both ? ` marker-start="url(#${marker}S)"` : ""}/>`;
   if (o.label) {
     const mx = (x1 + x2) / 2 + (o.lx ?? 0);
     const my = (y1 + y2) / 2 + (o.ly ?? -10);
-    s += text(mx, my, o.label, { size: o.lsize ?? 15, fill: o.lfill ?? C.muted, anchor: "middle", weight: 500 });
+    s += text(mx, my, o.label, {
+      size: o.lsize ?? 15,
+      fill: o.lfill ?? C.muted,
+      anchor: "middle",
+      weight: 500,
+    });
   }
   return s;
 }
@@ -110,7 +157,14 @@ export function arrow(x1, y1, x2, y2, o = {}) {
 /** Orthogonal path arrow through points. */
 export function path(points, o = {}) {
   const col = o.color ?? C.amberSoft;
-  const marker = col === C.amberSoft ? "ah" : col === C.red ? "ahRed" : col === C.green ? "ahGreen" : "ahMuted";
+  const marker =
+    col === C.amberSoft
+      ? "ah"
+      : col === C.red
+        ? "ahRed"
+        : col === C.green
+          ? "ahGreen"
+          : "ahMuted";
   const d = points.map((p, i) => `${i ? "L" : "M"}${p[0]},${p[1]}`).join(" ");
   return `<path d="${d}" stroke="${col}" stroke-width="${o.sw ?? 2.5}" fill="none" stroke-linejoin="round"${o.dash ? ` stroke-dasharray="${o.dash}"` : ""}${o.noHead ? "" : ` marker-end="url(#${marker})"`}/>`;
 }
@@ -124,7 +178,13 @@ export function pill(x, y, label, o = {}) {
   const bx = o.anchor === "middle" ? x - w / 2 : x;
   return (
     `<rect x="${bx}" y="${y}" width="${w}" height="${h}" rx="${h / 2}" fill="${fill}" stroke="${col}" stroke-opacity="0.5"/>` +
-    text(bx + w / 2, y + h / 2 + size * 0.36, label, { size, weight: 700, fill: col, anchor: "middle", ls: o.ls ?? 0.5 })
+    text(bx + w / 2, y + h / 2 + size * 0.36, label, {
+      size,
+      weight: 700,
+      fill: col,
+      anchor: "middle",
+      ls: o.ls ?? 0.5,
+    })
   );
 }
 
@@ -133,7 +193,11 @@ export function numCircle(cx, cy, n, o = {}) {
   return (
     `<circle cx="${cx}" cy="${cy}" r="${r + 6}" fill="${C.amber}" opacity="0.15"/>` +
     `<circle cx="${cx}" cy="${cy}" r="${r}" fill="${o.fill ?? C.bg2}" stroke="${C.amber}" stroke-width="2.5"/>` +
-    text(cx, cy + r * 0.36, String(n).padStart(2, "0"), { size: r * 0.82, weight: 700, anchor: "middle" })
+    text(cx, cy + r * 0.36, String(n).padStart(2, "0"), {
+      size: r * 0.82,
+      weight: 700,
+      anchor: "middle",
+    })
   );
 }
 
@@ -151,17 +215,30 @@ const defs = `
   <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
     <feDropShadow dx="0" dy="0" stdDeviation="8" flood-color="${C.amber}" flood-opacity="0.28"/>
   </filter>
-  ${[["ah", C.amberSoft], ["ahMuted", C.muted], ["ahRed", C.red], ["ahGreen", C.green]]
+  ${[
+    ["ah", C.amberSoft],
+    ["ahMuted", C.muted],
+    ["ahRed", C.red],
+    ["ahGreen", C.green],
+  ]
     .map(
       ([id, col]) =>
         `<marker id="${id}" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="${col}"/></marker>` +
-        `<marker id="${id}S" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="${col}"/></marker>`
+        `<marker id="${id}S" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="${col}"/></marker>`,
     )
     .join("")}
 </defs>`;
 
 /** Full canvas with brand background, kicker, title and footer mark. */
-export function frame({ w = 1600, h = 900, kicker, title, subtitle, body, titleSize }) {
+export function frame({
+  w = 1600,
+  h = 900,
+  kicker,
+  title,
+  subtitle,
+  body,
+  titleSize,
+}) {
   const ts = titleSize ?? (w < 1400 ? 40 : 44);
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">
 ${defs}
@@ -182,7 +259,10 @@ ${body}
 }
 
 /** Horizontal numbered timeline. steps: [{title, sub}] */
-export function timeline(steps, { x0 = 80, x1 = 1520, y = 330, cardH = 300, alternate = false } = {}) {
+export function timeline(
+  steps,
+  { x0 = 80, x1 = 1520, y = 330, cardH = 300, alternate = false } = {},
+) {
   const n = steps.length;
   const gap = alternate ? (x1 - x0) / (n + 1) : (x1 - x0) / n;
   const cxOf = (i) => (alternate ? x0 + gap * (i + 1) : x0 + gap * i + gap / 2);
@@ -212,20 +292,52 @@ export function timeline(steps, { x0 = 80, x1 = 1520, y = 330, cardH = 300, alte
 }
 
 /** Vertical stack of layers with arrows between. layers: [{title, sub, accent}] */
-export function stack(layers, { x = 80, y = 200, w = 900, h = 100, gap = 26, arrows = true, both = false } = {}) {
+export function stack(
+  layers,
+  {
+    x = 80,
+    y = 200,
+    w = 900,
+    h = 100,
+    gap = 26,
+    arrows = true,
+    both = false,
+  } = {},
+) {
   let s = "";
   layers.forEach((l, i) => {
     const ly = y + i * (h + gap);
-    s += box(x, ly, w, h, { title: l.title, sub: l.sub, accent: l.accent, align: "left", pad: 28, titleSize: l.titleSize ?? 22, kicker: l.kicker });
-    if (l.tag) s += pill(x + w - 28 - (l.tag.length * 13 * 0.62 + 30), ly + h / 2 - 14.5, l.tag, { size: 13 });
+    s += box(x, ly, w, h, {
+      title: l.title,
+      sub: l.sub,
+      accent: l.accent,
+      align: "left",
+      pad: 28,
+      titleSize: l.titleSize ?? 22,
+      kicker: l.kicker,
+    });
+    if (l.tag)
+      s += pill(
+        x + w - 28 - (l.tag.length * 13 * 0.62 + 30),
+        ly + h / 2 - 14.5,
+        l.tag,
+        { size: 13 },
+      );
     if (arrows && i < layers.length - 1)
-      s += arrow(x + w / 2, ly + h + 3, x + w / 2, ly + h + gap - 3, { both, sw: 2.5 });
+      s += arrow(x + w / 2, ly + h + 3, x + w / 2, ly + h + gap - 3, {
+        both,
+        sw: 2.5,
+      });
   });
   return s;
 }
 
 /** Sequence diagram. parts: [{id,label,sub}] msgs: [{from,to,label,dash,color,note}] */
-export function sequence(parts, msgs, { x0 = 215, x1 = 1385, y = 200, rowH = 64, headH = 76 } = {}) {
+export function sequence(
+  parts,
+  msgs,
+  { x0 = 215, x1 = 1385, y = 200, rowH = 64, headH = 76 } = {},
+) {
   const n = parts.length;
   const gap = (x1 - x0) / (n - 1);
   const xOf = (id) => x0 + parts.findIndex((p) => p.id === id) * gap;
@@ -234,7 +346,14 @@ export function sequence(parts, msgs, { x0 = 215, x1 = 1385, y = 200, rowH = 64,
   parts.forEach((p, i) => {
     const cx = x0 + i * gap;
     s += `<line x1="${cx}" y1="${y + headH}" x2="${cx}" y2="${yEnd}" stroke="${C.stroke}" stroke-width="2" stroke-dasharray="6 6"/>`;
-    s += box(cx - 125, y, 250, headH, { title: p.label, sub: p.sub, titleSize: 19, subSize: 14, accent: p.accent, pad: 12 });
+    s += box(cx - 125, y, 250, headH, {
+      title: p.label,
+      sub: p.sub,
+      titleSize: 19,
+      subSize: 14,
+      accent: p.accent,
+      pad: 12,
+    });
   });
   msgs.forEach((m, i) => {
     const my = y + headH + 50 + i * rowH;
@@ -242,31 +361,92 @@ export function sequence(parts, msgs, { x0 = 215, x1 = 1385, y = 200, rowH = 64,
       const cx = xOf(m.from);
       s += `<rect x="${cx - 6}" y="${my - 20}" width="12" height="34" rx="3" fill="${C.amber}" opacity="0.8"/>`;
       const last = parts.findIndex((p) => p.id === m.from) === n - 1;
-      s += text(last ? cx - 22 : cx + 22, my + 4, m.label, { size: 16, fill: m.color ?? C.text, weight: 500, anchor: last ? "end" : "start" });
+      s += text(last ? cx - 22 : cx + 22, my + 4, m.label, {
+        size: 16,
+        fill: m.color ?? C.text,
+        weight: 500,
+        anchor: last ? "end" : "start",
+      });
       return;
     }
-    const a = xOf(m.from), b = xOf(m.to);
+    const a = xOf(m.from),
+      b = xOf(m.to);
     const dir = b > a ? 1 : -1;
-    s += arrow(a + dir * 8, my, b - dir * 8, my, { dash: m.dash, color: m.color });
-    s += text((a + b) / 2, my - 12, m.label, { size: 16, anchor: "middle", fill: m.lcolor ?? C.text, weight: 500 });
+    s += arrow(a + dir * 8, my, b - dir * 8, my, {
+      dash: m.dash,
+      color: m.color,
+    });
+    s += text((a + b) / 2, my - 12, m.label, {
+      size: 16,
+      anchor: "middle",
+      fill: m.lcolor ?? C.text,
+      weight: 500,
+    });
   });
   return s;
 }
 
 /** Decision chain: questions left→right with "Yes" continuing and "No" dropping to outcome cards. */
-export function decisionChain(steps, final, { x0 = 80, x1 = 1520, y = 230, qh = 150, oy = 560, oh = 170, yes = "Yes", no = "No" } = {}) {
+export function decisionChain(
+  steps,
+  final,
+  {
+    x0 = 80,
+    x1 = 1520,
+    y = 230,
+    qh = 150,
+    oy = 560,
+    oh = 170,
+    yes = "Yes",
+    no = "No",
+  } = {},
+) {
   const n = steps.length + 1;
   const gap = 40;
   const w = (x1 - x0 - gap * (n - 1)) / n;
   let s = "";
   steps.forEach((st, i) => {
     const bx = x0 + i * (w + gap);
-    s += box(bx, y, w, qh, { title: st.q, titleSize: 19, kicker: `CHECK ${i + 1}`, pad: 16 });
-    s += arrow(bx + w + 2, y + qh / 2, bx + w + gap - 2, y + qh / 2, { color: C.green, label: st.yes ?? yes, lfill: C.green, ly: -12, lsize: 14 });
-    s += arrow(bx + w / 2, y + qh + 2, bx + w / 2, oy - 4, { color: C.red, label: st.no ?? no, lfill: C.red, lx: 24, ly: 4, lsize: 14 });
-    s += box(bx, oy, w, oh, { title: st.out, sub: st.outSub, titleSize: 18, subSize: 14.5, stroke: "rgba(248,113,113,0.55)", fill: "#1d1a2a", top: true, pad: 16 });
+    s += box(bx, y, w, qh, {
+      title: st.q,
+      titleSize: 19,
+      kicker: `CHECK ${i + 1}`,
+      pad: 16,
+    });
+    s += arrow(bx + w + 2, y + qh / 2, bx + w + gap - 2, y + qh / 2, {
+      color: C.green,
+      label: st.yes ?? yes,
+      lfill: C.green,
+      ly: -12,
+      lsize: 14,
+    });
+    s += arrow(bx + w / 2, y + qh + 2, bx + w / 2, oy - 4, {
+      color: C.red,
+      label: st.no ?? no,
+      lfill: C.red,
+      lx: 24,
+      ly: 4,
+      lsize: 14,
+    });
+    s += box(bx, oy, w, oh, {
+      title: st.out,
+      sub: st.outSub,
+      titleSize: 18,
+      subSize: 14.5,
+      stroke: "rgba(248,113,113,0.55)",
+      fill: "#1d1a2a",
+      top: true,
+      pad: 16,
+    });
   });
   const fx = x0 + steps.length * (w + gap);
-  s += box(fx, y, w, oy + oh - y, { title: final.title, sub: final.sub, accent: true, titleSize: 22, subSize: 15.5, kicker: final.kicker ?? "RESULT" });
+  s += box(fx, y, w, oy + oh - y, {
+    title: final.title,
+    sub: final.sub,
+    accent: true,
+    titleSize: 22,
+    subSize: 15.5,
+    kicker: final.kicker ?? "RESULT",
+  });
   return s;
 }

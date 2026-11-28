@@ -6,8 +6,15 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
-const pageFiles = (await fs.readdir(path.join(path.dirname(fileURLToPath(import.meta.url)), "pages"))).filter((f) => f.endsWith(".mjs"));
+const root = path.resolve(
+  path.dirname(fileURLToPath(import.meta.url)),
+  "../..",
+);
+const pageFiles = (
+  await fs.readdir(
+    path.join(path.dirname(fileURLToPath(import.meta.url)), "pages"),
+  )
+).filter((f) => f.endsWith(".mjs"));
 const only = process.argv.slice(2);
 
 for (const pf of pageFiles) {
@@ -19,9 +26,13 @@ for (const pf of pageFiles) {
   for (const img of page.images) {
     const svg = img.svg();
     const base = img.file.replace(/\.(webp|svg)$/, "");
-    const w = img.w ?? (img.og ? 1200 : 1600), h = img.h ?? (img.og ? 630 : 900);
+    const w = img.w ?? (img.og ? 1200 : 1600),
+      h = img.h ?? (img.og ? 630 : 900);
     const webpPath = path.join(outDir, `${base}.webp`);
-    await sharp(Buffer.from(svg), { density: 96 }).resize(w, h).webp({ quality: 82, effort: 6 }).toFile(webpPath);
+    await sharp(Buffer.from(svg), { density: 96 })
+      .resize(w, h)
+      .webp({ quality: 82, effort: 6 })
+      .toFile(webpPath);
     if (img.alsoSvg) await fs.writeFile(path.join(outDir, `${base}.svg`), svg);
     const kb = ((await fs.stat(webpPath)).size / 1024).toFixed(0);
     rows.push({ ...img, base, w, h, kb });
@@ -36,7 +47,10 @@ for (const pf of pageFiles) {
     "",
     "| # | Placement | File | Size | Alt text |",
     "|---|---|---|---|---|",
-    ...rows.map((r, i) => `| ${i + 1} | ${r.placement} | \`/images/${page.slug}/${r.base}.webp\`${r.alsoSvg ? ` (+ .svg)` : ""} | ${r.w}×${r.h}, ${r.kb} KB | ${r.alt} |`),
+    ...rows.map(
+      (r, i) =>
+        `| ${i + 1} | ${r.placement} | \`/images/${page.slug}/${r.base}.webp\`${r.alsoSvg ? ` (+ .svg)` : ""} | ${r.w}×${r.h}, ${r.kb} KB | ${r.alt} |`,
+    ),
     "",
     "## Ready-to-paste markup",
     "",
@@ -51,5 +65,8 @@ for (const pf of pageFiles) {
       "",
     ]),
   ].join("\n");
-  await fs.writeFile(path.join(root, "content", page.contentDir, "10-images.md"), md);
+  await fs.writeFile(
+    path.join(root, "content", page.contentDir, "10-images.md"),
+    md,
+  );
 }

@@ -19,6 +19,8 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { faqPageSchema, serviceSchema } from "@/lib/structured-data";
 import ConsultingServicePage from "@/components/consulting/ConsultingServicePage";
 import { consultingService } from "@/data/consulting";
+import ContentPage from "@/components/content-page/ContentPage";
+import { getContentPage } from "@/data/content-pages";
 
 const CONSULTING_SERVICE_SLUG = "blockchain-consulting";
 
@@ -194,6 +196,17 @@ export async function generateMetadata({
   const svc = getServiceBySlug(slug);
   if (!svc) return {};
 
+  const contentPage = getContentPage(`/service/${slug}`);
+  if (contentPage) {
+    return createPageMetadata({
+      title: contentPage.meta.title,
+      description: contentPage.meta.description,
+      path: contentPage.path,
+      image: contentPage.ogImage?.src ?? contentPage.hero.image.src,
+      type: "website",
+    });
+  }
+
   if (slug === CONSULTING_SERVICE_SLUG) {
     return createPageMetadata({
       title: consultingService.metaTitle,
@@ -227,6 +240,16 @@ export default async function ServicePage({
   }
   if (slug === CONSULTING_SERVICE_SLUG) {
     return <ConsultingServicePage image={service.image} />;
+  }
+  const contentPage = getContentPage(`/service/${slug}`);
+  if (contentPage) {
+    return (
+      <ContentPage
+        page={contentPage}
+        relatedType="service"
+        relatedSlug={slug}
+      />
+    );
   }
 
   return (
