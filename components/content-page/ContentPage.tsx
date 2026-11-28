@@ -335,14 +335,8 @@ export default function ContentPage({
             </aside>
           )}
 
-          <div className="grid gap-12 lg:grid-cols-[250px_minmax(0,1fr)] xl:grid-cols-[270px_minmax(0,1fr)]">
-            <aside className="hidden lg:block">
-              <div className="sticky top-28">
-                <TableOfContents items={toc} />
-              </div>
-            </aside>
-
-            <div className="min-w-0 max-w-[880px]">
+          <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_250px] xl:grid-cols-[minmax(0,1fr)_320px]">
+            <div className="min-w-0 w-full">
               <details className="mb-10 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm lg:hidden">
                 <summary className="cursor-pointer text-sm font-bold uppercase tracking-[0.14em] text-amber-700">
                   On this page
@@ -385,6 +379,12 @@ export default function ContentPage({
                 )}
               </article>
             </div>
+
+            <aside className="hidden self-stretch lg:block">
+              <div className="sticky top-24 z-20">
+                <TableOfContents items={toc} />
+              </div>
+            </aside>
           </div>
 
           {cta && (
